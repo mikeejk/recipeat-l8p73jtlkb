@@ -1,3 +1,5 @@
+@extends('layouts.tailwind.guest')
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -13,8 +15,3 @@
         </div>
     </div>
 </x-app-layout>
-
-@push('styles')
-    <link href="{{ asset('keen/app.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
-@endpush

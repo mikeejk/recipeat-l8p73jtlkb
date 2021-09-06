@@ -15,10 +15,13 @@
 
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-
     <!--end::Fonts-->
+
+    <!--begin::keencss-->
     <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('keen/login-1.css') }}" rel="stylesheet" />
+    <link href="{{ asset('keen/app.css') }}" rel="stylesheet" type="text/css">
+    <!--end::keencss-->
 
     @stack('styles')
 

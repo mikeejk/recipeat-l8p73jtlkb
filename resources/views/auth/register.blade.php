@@ -1,9 +1,5 @@
 @extends('layouts.bootstrap.guest')
 
-@push('styles')
-    <link href="{{ asset('keen/app.css') }}" rel="stylesheet" type="text/css">
-@endpush
-
 @section('content')
     <!--begin::Login-->
     <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
@@ -110,8 +106,10 @@
                         <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
                             <button type="submit" id="kt_login_signup_submit"
                                 class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">{{ __('Sign Up') }}</button>
-                            <button type="button" id="kt_login_signup_cancel"
-                                class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel</button>
+                            <a href="/">
+                                <button type="button" id="kt_login_signup_cancel"
+                                    class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel</button>
+                            </a>
                         </div>
                         <!--end::Form group-->
                     </form>
@@ -122,8 +120,8 @@
             <!--end::Content body-->
             <!--begin::Content footer-->
             <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
-                <a href="#" class="text-primary font-weight-bolder font-size-h5">Terms</a>
-                <a href="#" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
+                <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
+                <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
             </div>
             <!--end::Content footer-->
         </div>

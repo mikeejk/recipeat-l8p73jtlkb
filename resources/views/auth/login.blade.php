@@ -1,14 +1,10 @@
 @extends('layouts.bootstrap.guest')
 
-@push('styles')
-    <link href="{{ asset('keen/app.css') }}" rel="stylesheet" type="text/css">
-@endpush
-
 @section('content')
     <!-- begin::Login -->
     <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
         <!--begin::Aside-->
-        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #7EBFDB;">
+        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #E97474;">
             <!--begin::Aside Top-->
             <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
                 <!--begin::Aside header-->
@@ -17,8 +13,9 @@
                 </a>
                 <!--end::Aside header-->
                 <!--begin::Aside title-->
-                <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg text-white">Discover Keen's Amazing
-                    <br />Features &amp; Possibilites
+                <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg text-white">Plan your activities and
+                    control your
+                    <br />Progress online
                 </h3>
                 <!--end::Aside title-->
             </div>
@@ -122,8 +119,8 @@
 
             <!--begin::Content footer-->
             <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
-                <a href="#" class="text-primary font-weight-bolder font-size-h5">Terms</a>
-                <a href="#" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
+                <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
+                <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
             </div>
             <!--end::Content footer-->
 
