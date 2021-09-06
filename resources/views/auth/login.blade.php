@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap.guest')
+@extends('layouts.bootstrap.app')
 
 @section('content')
     <!-- begin::Login -->

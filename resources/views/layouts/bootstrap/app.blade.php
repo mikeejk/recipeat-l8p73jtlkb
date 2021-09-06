@@ -21,7 +21,6 @@
     <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('keen/login-1.css') }}" rel="stylesheet" />
     <link href="{{ asset('keen/app.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <!--end::keencss-->
 
     @stack('styles')
@@ -34,59 +33,11 @@
 <!--begin::Body-->
 <body id="kt_body"
     class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable">
-
-    @include('partials._header-mobile')
-
+    <!--begin::Main-->
     <div class="d-flex flex-column flex-root">
-
-        <!--begin::Page-->
-        <div class="d-flex flex-row flex-column-fluid page">
-
-            @include('partials._aside')
-
-            <!--begin::Wrapper-->
-            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
-
-                @include('partials._header')
-
-                <!--begin::Content-->
-                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-
-                    @include('partials._subheader.general')
-
-                    <!--Content area here-->
-                    @yield('content')
-
-                </div>
-                <!--end::Content-->
-
-                @include('partials._footer')
-
-            </div>
-            <!--end::Wrapper-->
-
-        </div>
-        <!--end::Page-->
-
+        @yield('content')
     </div>
     <!--end::Main-->
-
-    @include('partials._extras.offcanvas.quick-user')
-
-
-    @include('partials._extras.offcanvas.quick-panel')
-
-
-    @include('partials._extras.chat')
-
-
-    @include('partials._extras.scrolltop')
-
-
-    @include('partials._extras.toolbar')
-
-
-    @include('partials._extras.offcanvas.demo-panel')
 
     <script>
         var HOST_URL = "https://preview.keenthemes.com/keen/theme/tools/preview";
