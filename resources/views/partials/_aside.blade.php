@@ -259,7 +259,7 @@
                                 </span>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="/add_user" class="menu-link">
+                                <a href="/user" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
