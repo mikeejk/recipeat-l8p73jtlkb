@@ -41,8 +41,8 @@
             <!--begin::Container-->
             <div class="container">
                 <div class="container">
-                    <form class="form">
-                        <!-- @csrf -->
+                    <form class="form" action="/invite" method="post">
+                        @csrf
                         <div class="card-body bg-white">
                             <div class="form-group row mt-3">
 
@@ -68,13 +68,10 @@
                                     </div>
                                     <span class="form-text text-muted">Enter member mail address</span>
                                 </div>
-
                             </div>
 
                             <div class="form-group row">
-
                                 <div class="col-lg-2"></div>
-
                                 <label class="col-lg-1 col-form-label text-lg-right">Contact:</label>
                                 <div class="col-lg-3">
                                     <div class="input-group">
@@ -90,7 +87,11 @@
                                 <div class="col-lg-3">
                                     <div class="input-group">
                                         <select class="custom-select form-control" name="roles">
-                                           
+                                            @foreach ($roles as $role)
+                                                    <option value="{{ $role->id }} ">
+                                                        {{ $role->name }}
+                                                    </option>
+                                                @endforeach
                                         </select>
                                         <div class="input-group-append"><span class="input-group-text"><i
                                                     class="las la-spinner"></i></span></div>

@@ -24,6 +24,14 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <!--end::keencss-->
 
+    <!-- icon8 - font-awesome-line-awesome -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <!-- icon8 - line-awesome -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!-- end:: Custom Stylesheets -->
+
     @stack('styles')
 
     <!--end::Layout Themes-->
