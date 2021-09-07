@@ -1,7 +1,7 @@
 @extends('layouts.bootstrap.guest')
 @section('content')
- <!--begin::Content-->
- <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+   <!--begin::Content-->
+   <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
     <div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -21,7 +21,7 @@
                             <a href="" class="text-muted">My Recipes</a>
                         </li>
                         <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Ingredient</a>
+                            <a href="" class="text-muted">Measurement</a>
                         </li>
                     </ul>
                     <!--end::Breadcrumb-->
@@ -37,19 +37,19 @@
         <!--begin::Container-->
         <div class="container">
             <!--begin::Card-->
-            <form class="form" action="/ingredients" method="post">
+            <form class="form" action="/measurements" method="post">
                 @csrf
                 <div class="card-body bg-white">
                     <div class="form-group row mt-3">
                         <div class="col-lg-3">
-                            <label class="col-lg-1 col-form-label text-lg-right">Ingredient</label>
+                            <label class="col-lg-1 col-form-label text-lg-right">Measurement</label>
                         </div>
                         <div class="col-lg-6">
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i class="las la-sitemap"></i></span></div>
-                                <input type="text" class="form-control" placeholder="New Ingredient" name="ingredient" />
+                                <input type="text" class="form-control" placeholder="New Measurement" name="measurement" />
                             </div>
-                            <span class="form-text text-muted">Add some new ingredient</span>
+                            <span class="form-text text-muted">Add some new measurement</span>
                         </div>
                     </div>
                 </div>
@@ -71,6 +71,5 @@
     <!--end::Entry-->
 </div>
 <!--end::Content-->
+
 @endsection
-
-

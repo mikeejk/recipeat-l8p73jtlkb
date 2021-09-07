@@ -37,6 +37,10 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/invite', [InviteControll
 // User Invite Aceept Tab
 Route::get('accept/{token}', [InviteController::class, 'accept']);
 
+// -------------------------------------------------------------------------------------------------------------------
+//                                                     Admin-Recipe Routes
+// -------------------------------------------------------------------------------------------------------------------
+
 //Admin_recipe
 Route::middleware(['auth:sanctum', 'verified'])->get('/adminRecipe', function () {
     return view('screens.admin.recipe.admin_recipe');
@@ -52,6 +56,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/addCuisine', function () 
 //Add Ingredient
 Route::middleware(['auth:sanctum', 'verified'])->get('/addIngredient', function () {
     return view('screens.admin.recipe.add_ingredient');
+});
+//Add Measurement
+Route::middleware(['auth:sanctum', 'verified'])->get('/addMeasurement', function () {
+    return view('screens.admin.recipe.add_measurement');
 });
 
 
