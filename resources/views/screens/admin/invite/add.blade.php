@@ -1,5 +1,6 @@
 @extends('layouts.bootstrap.guest')
 @section('content')
+
 <div>
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -52,8 +53,8 @@
                                 <div class="col-lg-3">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Full name" name="name" />
-                                        <div class="input-group-append"><span class="input-group-text"><i
-                                                    class="las la-user-check"></i></span></div>
+                                        <div class="input-group-append"><span class="input-group-text">
+                                        <i class="las la-user-check"></i></span></div>
                                     </div>
                                     <span class="form-text text-muted">Enter member name</span>
                                 </div>
