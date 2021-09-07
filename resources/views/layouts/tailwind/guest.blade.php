@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
