@@ -1,4 +1,5 @@
 @extends('layouts.bootstrap.guest')
+
 @section('content')
 <div>
     <!--begin::Content-->
@@ -32,7 +33,7 @@
                 <div class="d-flex align-items-center flex-wrap">
                     <!--begin::Dropdown-->
                     <div class="menu-link" title="Quick actions" data-placement="top">
-                        <a href="/add_user"
+                        <a href="/invite"
                             class="btn btn-fixed-height btn-bg-white btn-text-dark-50 btn-hover-text-primary btn-icon-primary font-weight-bolder font-size-sm px-5 my-1 mr-3"
                             aria-haspopup="true" aria-expanded="false">
                             <span class="svg-icon svg-icon-md">
