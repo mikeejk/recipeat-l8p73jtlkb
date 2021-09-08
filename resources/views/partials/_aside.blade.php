@@ -68,7 +68,7 @@
                     </a>
                 </li>
 
-                @hasrole('chef|home-chef|user')
+                @hasrole('Chef|Home-Chef|User')
                 <li class="menu-section">
                     <h4 class="menu-text">Recipe</h4>
                 </li>
@@ -179,7 +179,7 @@
                 </li>
                 @endhasrole
 
-                @hasrole('admin')
+                @hasrole('Admin')
                 <li class="menu-section">
                     <h4 class="menu-text">Admin</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
