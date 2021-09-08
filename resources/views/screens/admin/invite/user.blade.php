@@ -173,8 +173,19 @@
                         <!--end::Search Form-->
 
                         <!--begin: Datatable-->
-                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
-
+                        <div class="">
+                            <table class="table table-bordered" id="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Token</th>
+                                        <th>Invite Status</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                         <!--end: Datatable-->
 
@@ -192,5 +203,43 @@
     <!--end::Content-->
 
 </div>
+
+{{-- @push('scripts')
+<script>
+    $(function() {
+        $('#users-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('customers.data') !!}',
+            columns: [{
+                    data: 'id',
+                    name: 'id'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'email',
+                    name: 'email'
+                },
+                {
+                    data: 'role_id',
+                    name: 'role_id'
+                },
+                {
+                    data: 'token',
+                    name: 'token'
+                },
+                {
+                    data: 'invite_accepted_at',
+                    name: 'invite_accepted_at'
+                }
+            ]
+        });
+    });
+</script>
+@endpush --}}
+
 
 @endsection

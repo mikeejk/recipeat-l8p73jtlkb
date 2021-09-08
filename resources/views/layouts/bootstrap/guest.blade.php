@@ -9,6 +9,7 @@
     <title>Recipeat</title>
     <meta name="description" content="Updates and statistics" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Recipeat') }}</title>
@@ -31,6 +32,11 @@
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- end:: Custom Stylesheets -->
+
+    <!-- begin:Bootstrap CSS & DataTables CSS -->
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <!-- end:Bootstrap CSS & DataTables CSS -->
 
     @stack('styles')
 
@@ -165,6 +171,17 @@
     <!--end::Global Config-->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
+
+    <!-- begin::custome script -->
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- DataTables -->
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- App scripts -->
+    @stack('scripts')
+    <!-- end::custome script -->
 
 </body>
 <!--end::Body-->

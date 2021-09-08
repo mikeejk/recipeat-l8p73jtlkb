@@ -10,6 +10,7 @@ use App\Mail\InviteCreated;
 use Carbon\Carbon;
 use App\Models\Invite;
 use App\Models\User;
+use Yajra\Datatables\Datatables;
 
 class InviteController extends Controller
 {
@@ -106,5 +107,17 @@ class InviteController extends Controller
             'email' => 'required|email',
             'user' => 'roles',
         ]);
+    }
+
+    // Function - getIndex
+    public function getIndex()
+    {
+        return view('screens.admin.invite.user');
+    }
+
+    // Function - anyData
+    public function anyData()
+    {
+        return Datatables::of(Invite::query())->make(true);
     }
 }

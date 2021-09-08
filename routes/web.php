@@ -41,6 +41,12 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/invite', [InviteControll
 // User Invite Aceept Tab
 Route::get('accept/{token}', [InviteController::class, 'accept']);
 
+// User Invite Data Table - Data
+Route::get('/customers.data', [InviteController::class, 'anyData']);
+
+// User Invute Data Table - Index
+Route::get('/customers', [InviteController::class, 'getIndex']);
+
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     Admin-Recipe Routes
 // -------------------------------------------------------------------------------------------------------------------
