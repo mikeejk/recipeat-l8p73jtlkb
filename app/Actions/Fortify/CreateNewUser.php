@@ -22,10 +22,12 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
 
+        // Check the email is exists with the name and password as empty.
         $email_exists = User::where('email', $input['email'])
             ->where('name', false)
             ->where('password', false);
 
+        // If that is not empty it's store the new row of enterd data.
         if (!$email_exists) {
             Validator::make($input, [
                 'name' => ['required', 'string', 'max:255'],
@@ -39,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);
-        } else {
+        } else { // If the email is present the name and password hase be update
             Validator::make($input, [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255'],
@@ -47,6 +49,8 @@ class CreateNewUser implements CreatesNewUsers
                 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
             ])->validate();
 
+            // If the user emailid is exists use the Carbon packege to udate the email_verified_at field
+            // If use an Carbon packege the verification email can not be sended to the the invited user.
             $update_user =  User::where('email', $input['email'])
                 ->update(
                     [
@@ -54,6 +58,7 @@ class CreateNewUser implements CreatesNewUsers
                     ]
                 );
 
+            // Update the exixting invite user data
             return User::updateOrCreate(
                 ['email' => $input['email']],
                 [

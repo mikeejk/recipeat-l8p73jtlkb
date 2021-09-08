@@ -75,6 +75,7 @@ class InviteController extends Controller
             abort(404);
         }
 
+        // store the data
         $user = new User();
 
         $user->email = $invite->email;
