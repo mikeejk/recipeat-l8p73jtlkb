@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InviteController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CuisineController;
+use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\MeasurementController;
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
@@ -42,24 +46,32 @@ Route::get('accept/{token}', [InviteController::class, 'accept']);
 // -------------------------------------------------------------------------------------------------------------------
 
 //Admin_recipe
-Route::middleware(['auth:sanctum', 'verified'])->get('/adminRecipe', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function () {
     return view('screens.admin.recipe.admin_recipe');
 });
-//Add Category
-Route::middleware(['auth:sanctum', 'verified'])->get('/addCategory', function () {
-    return view('screens.admin.recipe.add_category');
-});
-//Add Cuisine
-Route::middleware(['auth:sanctum', 'verified'])->get('/addCuisine', function () {
-    return view('screens.admin.recipe.add_cuisine');
-});
-//Add Ingredient
-Route::middleware(['auth:sanctum', 'verified'])->get('/addIngredient', function () {
-    return view('screens.admin.recipe.add_ingredient');
-});
-//Add Measurement
-Route::middleware(['auth:sanctum', 'verified'])->get('/addMeasurement', function () {
-    return view('screens.admin.recipe.add_measurement');
-});
+
+// Add Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'create']);
+
+// Store Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
+
+// Add Cuisine Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
+
+// Store Cuisine Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
+
+// Add Ingredient Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'create']);
+
+// Store Ingredient Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/ingredients', [IngredientController::class, 'store']);
+
+// Add Measurement Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'create']);
+
+// Store Measurement Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'store']);
 
 

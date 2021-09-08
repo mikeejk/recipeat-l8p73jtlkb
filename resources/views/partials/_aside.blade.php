@@ -68,6 +68,7 @@
                     </a>
                 </li>
 
+                @hasrole('chef|home-chef|user')
                 <li class="menu-section">
                     <h4 class="menu-text">Recipe</h4>
                 </li>
@@ -176,7 +177,9 @@
                         </ul>
                     </div>
                 </li>
+                @endhasrole
 
+                @hasrole('admin')
                 <li class="menu-section">
                     <h4 class="menu-text">Admin</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -216,7 +219,7 @@
                                 </span>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="/adminRecipe" class="menu-link">
+                                <a href="/admin_recipe" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
@@ -277,6 +280,7 @@
                         </ul>
                     </div>
                 </li>
+                @endhasrole
 
                 {{-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
