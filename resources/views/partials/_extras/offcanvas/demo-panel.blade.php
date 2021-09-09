@@ -1,4 +1,4 @@
-
+{{--
 <!--begin::Demo Panel-->
 		<div id="kt_demo_panel" class="offcanvas offcanvas-right p-10">
 
@@ -120,4 +120,4 @@
 			<!--end::Content-->
 		</div>
 
-		<!--end::Demo Panel-->
+		<!--end::Demo Panel--> --}}

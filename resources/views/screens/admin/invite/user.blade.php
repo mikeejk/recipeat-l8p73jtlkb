@@ -174,15 +174,15 @@
 
                         <!--begin: Datatable-->
                         <div class="">
-                            <table class="table table-bordered" id="users-table">
+                            <table class="table" id="users-table">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Contact Number</th>
                                         <th>Role</th>
                                         <th>Token</th>
-                                        <th>Invite Status</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -204,42 +204,45 @@
 
 </div>
 
-{{-- @push('scripts')
-<script>
-    $(function() {
-        $('#users-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{!! route('customers.data') !!}',
-            columns: [{
-                    data: 'id',
-                    name: 'id'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'email',
-                    name: 'email'
-                },
-                {
-                    data: 'role_id',
-                    name: 'role_id'
-                },
-                {
-                    data: 'token',
-                    name: 'token'
-                },
-                {
-                    data: 'invite_accepted_at',
-                    name: 'invite_accepted_at'
-                }
-            ]
+@push('scripts')
+    <script>
+        $(function() {
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: 'customers.data',
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'contact',
+                        name: 'contact',
+                        searchable: false
+                    },
+                    {
+                        data: 'role_id',
+                        name: 'role_id',
+                        searchable: false
+                    },
+                    {
+                        data: 'token',
+                        name: 'token',
+                        searchable: false
+                    },
+                ]
+            });
         });
-    });
-</script>
-@endpush --}}
+    </script>
+@endpush
 
 
 @endsection

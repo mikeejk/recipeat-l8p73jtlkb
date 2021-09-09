@@ -45,7 +45,7 @@
             <ul class="menu-nav">
 
                 <li class="menu-item menu-item-active" aria-haspopup="true">
-                    <a href="/home" class="menu-link">
+                    <a href="/dashboard" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <span class="svg-icon svg-icon-primary svg-icon-2x">
                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg

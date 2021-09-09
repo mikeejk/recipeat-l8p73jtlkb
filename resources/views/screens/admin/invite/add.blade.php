@@ -107,7 +107,7 @@
                                 <div class="col-lg-5"></div>
                                 <div class="col-lg-7">
                                     <button type="submit" class="btn btn-primary mr-2">Invite</button>
-                                    <a href="/user">
+                                    <a href="/customers_aside">
                                         <button type="button" class="btn btn-secondary">Cancel</button>
                                     </a>
                                 </div>

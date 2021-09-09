@@ -1,4 +1,4 @@
-
+{{--
 <!--begin::Quick Panel-->
 		<div id="kt_quick_panel" class="offcanvas offcanvas-right pt-5 pb-10">
 
@@ -842,4 +842,4 @@
 			<!--end::Content-->
 		</div>
 
-		<!--end::Quick Panel-->
+		<!--end::Quick Panel--> --}}
