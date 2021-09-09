@@ -57,12 +57,18 @@
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <div class="col-lg-10">
-                                <a href="/admin_recipe"><button type="button" class="btn btn-secondary mr-2">Get
-                                        Back</button></a>
+                            <div class="col-lg-8 col-4 d-lg-block d-none">
+                                <a href="/admin_recipe"><button type="button"
+                                        class="btn btn-secondary mr-2 w-lg-auto w-100">Get Back</button></a>
                             </div>
-                            <div class="col-lg-2">
-                                <button type="submit" class="btn btn-primary">Save and Insert Next</button>
+                            <div class="col-lg-2 col-5">
+                                <button type="submit" name="action" value="cuisine_save"
+                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                            </div>
+                            <div class="col-lg-2 col-7">
+                                <button type="submit" name="action" value="cuisine_save_next"
+                                    class="btn btn-primary w-lg-auto w-100">Save & Insert
+                                    Next</button>
                             </div>
                         </div>
                     </div>

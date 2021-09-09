@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-Use App\Models\Measurement;
+use App\Models\Measurement;
 
 class MeasurementController extends Controller
 {
@@ -11,19 +11,6 @@ class MeasurementController extends Controller
     public function create()
     {
         return view('screens.admin.recipe.add_measurement');
-    }
-
-    // Function - Save
-    public function save(Request $request)
-    {
-        // Data - Save
-        $data = request()->validate([
-            'measurement' => 'required',
-        ]);
-
-        Measurement::create($data);
-
-        return redirect('admin_recipe');
     }
 
     // Function - Store
@@ -36,6 +23,10 @@ class MeasurementController extends Controller
 
         Measurement::create($data);
 
-        return redirect()->back();
+        if ($request->get('action') == 'measurement_save') {
+            return redirect('/admin_recipe');
+        } elseif ($request->get('action') == 'measurement_save_next') {
+            return redirect()->back();
+        }
     }
 }

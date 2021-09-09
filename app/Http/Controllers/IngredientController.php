@@ -13,19 +13,6 @@ class IngredientController extends Controller
         return view('screens.admin.recipe.add_ingredient');
     }
 
-    // Function - Save
-    public function save(Request $request)
-    {
-        // Data - Save
-        $data = request()->validate([
-            'ingredient' => 'required',
-        ]);
-
-        Ingredient::create($data);
-
-        return redirect('admin_recipe');
-    }
-
     // Function - Store
     public function store(Request $request)
     {
@@ -36,6 +23,10 @@ class IngredientController extends Controller
 
         Ingredient::create($data);
 
-        return redirect()->back();
+        if ($request->get('action') == 'ingredient_save') {
+            return redirect('/admin_recipe');
+        } elseif ($request->get('action') == 'ingredient_save_next') {
+            return redirect()->back();
+        }
     }
 }

@@ -13,19 +13,6 @@ class CategoryController extends Controller
         return view('screens.admin.recipe.add_category');
     }
 
-    // Function - Save
-    public function save(Request $request)
-    {
-        // Data - Save
-        $data = request()->validate([
-            'category' => 'required',
-        ]);
-
-        Category::create($data);
-
-        return redirect('admin_recipe');
-    }
-
 
     // Function - Store
     public function store(Request $request)
@@ -37,6 +24,10 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        return redirect()->back();
+        if ($request->get('action') == 'category_save') {
+            return redirect('/admin_recipe');
+        } elseif ($request->get('action') == 'category_save_next') {
+            return redirect()->back();
+        }
     }
 }
