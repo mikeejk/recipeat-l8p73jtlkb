@@ -58,6 +58,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [Categ
 // Store Category Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
 
+// Save Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'save']);
+
 // Add Cuisine Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
 
