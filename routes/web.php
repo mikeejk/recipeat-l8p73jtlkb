@@ -67,14 +67,23 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [Cuisin
 // Store Cuisine Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
 
+// Save Cuisine Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'save']);
+
 // Add Ingredient Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'create']);
 
 // Store Ingredient Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/ingredients', [IngredientController::class, 'store']);
 
+// Save Ingredient Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/ingredients', [IngredientController::class, 'save']);
+
 // Add Measurement Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'create']);
 
 // Store Measurement Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'store']);
+
+// Save Measurement Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'save']);

@@ -13,6 +13,19 @@ class MeasurementController extends Controller
         return view('screens.admin.recipe.add_measurement');
     }
 
+    // Function - Save
+    public function save(Request $request)
+    {
+        // Data - Save
+        $data = request()->validate([
+            'measurement' => 'required',
+        ]);
+
+        Measurement::create($data);
+
+        return redirect('admin_recipe');
+    }
+
     // Function - Store
     public function store(Request $request)
     {
