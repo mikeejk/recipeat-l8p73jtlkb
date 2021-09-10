@@ -61,10 +61,12 @@
                                 <a href="/admin_recipe"><button type="button"
                                         class="btn btn-secondary mr-2 w-lg-auto w-100">Get Back</button></a>
                             </div>
+                            <!-- If Condition -->
                             <div class="col-lg-2 col-5">
                                 <button type="submit" name="action" value="category_save"
                                     class="btn btn-primary w-lg-100 w-100">Save</button>
                             </div>
+                            <!-- Else Condition -->
                             <div class="col-lg-2 col-7">
                                 <button type="submit" name="action" value="category_save_next"
                                     class="btn btn-primary w-lg-auto w-100">Save & Insert Next</button>
