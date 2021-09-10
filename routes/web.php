@@ -76,3 +76,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [Me
 // Store Measurement Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'store']);
 
+// -------------------------------------------------------------------------------------------------------------------
+//                                                    User Routes
+// -------------------------------------------------------------------------------------------------------------------
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', function () {
+    return view('screens.user.profile.change_password');
+});

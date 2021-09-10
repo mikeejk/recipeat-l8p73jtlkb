@@ -44,7 +44,7 @@
 
                                     <!--begin::Button-->
                                     <a href="/categorys_create" style="margin-bottom: 2px;"
-                                        class="btn btn-primary font-weight-bolder">
+                                        class="btn btn-primary font-weight-bolder w-100">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Cooking/Dinner.svg--><svg
