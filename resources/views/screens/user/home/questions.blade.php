@@ -13,10 +13,10 @@
     <link href="{{ asset('question.css') }}" rel="stylesheet" id="bootstrap">
 </head>
 
-<body class="mt-5">
-    <div class="container">
+<body class="">
+
         <livewire:questionnaire />
-    </div>
+   
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

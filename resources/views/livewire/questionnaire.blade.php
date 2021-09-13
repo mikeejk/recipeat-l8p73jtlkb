@@ -6,30 +6,35 @@
     @endif
 
     <!-- Question 01 -->
-    <div class="row setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
-        <div class="w-2/6 bg-gray-800 h-full -mt-10">
-            Hi
+    <div class="row w-full -mx-2 h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
+        <div class="md:w-3/12 bg-gray-200 flex px-2 h-full md:block hidden">
+                <h1 class="text-gray-900 flex items-center justify-center font-medium lg:mt-32 mt-20 lg:text-3xl text-xl mb-2 ">Cooks Love us!</h1>
+                <div class="flex justify-center">
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star-half text-red-400"></i>
+                </div>
+                <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
         </div>
-        <div class="w-4/6">
+        <div class="md:w-9/12 w-full  flex flex-col justify-center items-center">
             <div for="name"
-                class="xl:text-center xl:text-4xl text-black font-bold text-3xl leading-relaxed font-serif italic">How
+                class="md:text-center mb-10 text-center lg:text-4xl text-black font-bold text-2xl leading-relaxed font-serif italic">How
                 should we call you ?</div>
-            <div class="xl:mr-60 xl:ml-60 mt-14 form-group">
+            <div class="form-group">
                 <input type="text" wire:model="name" placeholder="Name"
-                    class="w-full px-4 py-3 mb-2 rounded-lg bg-gray-700 text-white text-xl mt-2 border-opacity-50 border-b-2 text-center focus:outline-none focus:ring-2 focus:ring-gray-700 focus:border-transparent"
+                    class="w-full px-4 py-3 mb-2  text-xl mt-2 border-b-2 border-gray-800 text-center focus:border-b-2 focus:outline-none "
                     autocomplete required>
                 @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
             </div>
-            <a href="/dashboard">
-                <button type="submit" class="xl:ml-96 bg-yellow-500 hover:bg-yellow-400 text-white font-semibold rounded-l-2xl
-              px-6 py-2">Skip</button></a>
-            <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-r-2xl
+            <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl
               px-6 py-2 mt-8" wire:click="firstStepSubmit">Next</button>
         </div>
     </div>
 
     <!-- Question 02 -->
-    <div class="row setup-content {{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
+    {{-- <div class="row setup-content {{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
         <div class="col-md-12">
             <div for="gender"
                 class="xl:text-center xl:text-4xl text-black font-bold text-3xl leading-relaxed font-serif italic">How
@@ -56,6 +61,48 @@
             <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-r-2xl
               px-6 py-2 mt-8" wire:click="secondStepSubmit">Next</button>
         </div>
+    </div> --}}
+    <div class="row w-full overflow-hidden h-screen setup-content {{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
+        <div class="md:w-3/12 bg-gray-200 flex  -mt-5 px-2 md:block hidden">
+            <button type="button" class="xl:ml-0 text-gray-800 font-semibold rounded-xl
+            px-6 py-2 mt-8" wire:click="firstStepSubmit">Back</button>
+                <h1 class="text-gray-900 flex items-center justify-center font-medium mt-20 lg:text-3xl text-xl mb-2 ">Cooks Love us!</h1>
+                <div class="flex justify-center">
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star text-red-400"></i>
+                    <i class="las la-star-half text-red-400"></i>
+                </div>
+                <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
+        </div>
+        <div class="md:w-9/12  w-full  flex flex-col justify-center items-center">
+            <div for="name"
+                class="md:text-center mb-10 p-2 text-center lg:text-4xl text-black font-bold text-2xl  font-serif italic">How
+                do
+                you I dentify
+                yourself ?
+            </div>
+            <div class="form-group text-xl">
+                 <label class="radio-inline"><input type="radio" wire:model="gender" value="Male"
+                        {{{ $gender == 'Male' ? "checked" : "" }}}>&nbsp; <i class="fas fa-male"></i> &nbsp; Male
+                </label>
+                <br /><br />
+                <label class="radio-inline"><input type="radio" wire:model="gender" value="Fe-Male"
+                        {{{ $gender == 'Fe-Male' ? "checked" : "" }}}>&nbsp; <i class="fas fa-female"></i> &nbsp;
+                    Fe-Male</label>
+                <br /><br />
+                <label class="radio-inline"><input type="radio" wire:model="gender" value="Other"
+                        {{{ $gender == 'Other' ? "checked" : "" }}}>&nbsp; <i class="fas fa-mars"></i> &nbsp; Other
+                </label>
+                <br />
+                @error('gender') <span class="error text-red-500">{{ $message }}</span> @enderror
+            </div>
+            <div class="flex justify-center items-center">
+            <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl
+              px-6 py-2" wire:click="secondStepSubmit">Next</button>
+            </div>
+        </div>
     </div>
 
     <!-- Question 03 -->
@@ -71,7 +118,7 @@
             </div>
             <button type="submit" class="xl:ml-96 bg-red-500 hover:bg-red-400 text-white font-semibold rounded-l-2xl
               px-6 py-2" wire:click="back(2)">back</button>
-            <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-r-2xl
+            <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-2xl
               px-6 py-2 mt-8" wire:click="thirdStepSubmit">Next</button>
         </div>
     </div>

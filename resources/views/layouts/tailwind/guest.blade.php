@@ -16,6 +16,14 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('question.css') }}" rel="stylesheet" id="bootstrap">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
+    <!-- icon8 - font-awesome-line-awesome -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <!-- icon8 - line-awesome -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!-- end:: Custom Stylesheets -->
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
