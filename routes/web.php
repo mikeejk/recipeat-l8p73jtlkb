@@ -83,3 +83,15 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [Measurem
 Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', function () {
     return view('screens.user.profile.change_password');
 });
+
+// -------------------------------------------------------------------------------------------------------------------
+//                                                     User-Recipe Routes
+// -------------------------------------------------------------------------------------------------------------------
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', function () {
+    return view('screens.user.recipe.recipe');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', function () {
+    return view('screens.user.recipe.add_recipe');
+});
