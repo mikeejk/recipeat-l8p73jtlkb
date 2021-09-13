@@ -97,3 +97,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', [RecipeC
 
 // Store Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/recipes', [RecipeController::class, 'store']);
+
+// -------------------------------------------------------------------------------------------------------------------
+//                                                     Test Routes
+// -------------------------------------------------------------------------------------------------------------------
+
+Route::get('/home', function () {
+    return view('screens.user.home.questions');
+});
