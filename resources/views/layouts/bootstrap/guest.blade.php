@@ -34,9 +34,12 @@
     <!-- end:: Custom Stylesheets -->
 
     <!-- begin:Bootstrap CSS & DataTables CSS -->
-
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <!-- end:Bootstrap CSS & DataTables CSS -->
+
+    <!-- begin:: Classic Editor  -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+    <!-- end:: Classic Editor -->
 
     @stack('styles')
 
@@ -46,6 +49,7 @@
 <!--end::Head-->
 
 <!--begin::Body-->
+
 <body id="kt_body"
     class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable">
 
@@ -173,6 +177,13 @@
     <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
 
     <!-- begin::custome script -->
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- DataTables -->

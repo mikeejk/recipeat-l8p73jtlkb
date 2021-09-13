@@ -21,8 +21,11 @@ class CuisineController extends Controller
             'cuisine' => 'required',
         ]);
 
+        // Send the use inputed data to create function
         Cuisine::create($data);
 
+        // If the user click the (SAVE) button run the if condition
+        // If the user click the (SAVE AND INSERT NEXT) button run the else condition
         if ($request->get('action') == 'cuisine_save') {
             return redirect('/admin_recipe');
         } elseif ($request->get('action') == 'cuisine_save_next') {

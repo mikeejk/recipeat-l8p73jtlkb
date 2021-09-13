@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
+use App\Http\Controllers\RecipeController;
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
@@ -76,3 +77,31 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [Me
 // Store Measurement Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'store']);
 
+// -------------------------------------------------------------------------------------------------------------------
+//                                                    User Routes
+// -------------------------------------------------------------------------------------------------------------------
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', function () {
+    return view('screens.user.profile.change_password');
+});
+
+// -------------------------------------------------------------------------------------------------------------------
+//                                                     User-Recipe Routes
+// -------------------------------------------------------------------------------------------------------------------
+
+// Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeController::class, 'index']);
+
+// Add Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', [RecipeController::class, 'create']);
+
+// Store Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/recipes', [RecipeController::class, 'store']);
+
+// -------------------------------------------------------------------------------------------------------------------
+//                                                     Test Routes
+// -------------------------------------------------------------------------------------------------------------------
+
+Route::get('/home', function () {
+    return view('screens.user.home.questions');
+});
