@@ -91,11 +91,11 @@
                                         <div class="col-lg-4">
                                             <label>Category</label>
                                             <select class="custom-select form-control" name="category">
-                                                {{-- @foreach ($categories as $categorie)
+                                                @foreach ($categories as $categorie)
                                                     <option value="{{ $categorie->id }} ">
                                                         {{ $categorie->category }}
                                                     </option>
-                                                @endforeach --}}
+                                                @endforeach
                                             </select>
                                             <span class="form-text text-muted">Select any one of the category</span>
                                         </div>
@@ -105,11 +105,11 @@
                                         <div class="col-lg-4">
                                             <label>Cuisine</label>
                                             <select class="custom-select form-control" name="cuisine">
-                                                {{-- @foreach ($cuisines as $cuisine)
+                                                @foreach ($cuisines as $cuisine)
                                                     <option value="{{ $cuisine->id }} ">
                                                         {{ $cuisine->cuisine }}
                                                     </option>
-                                                @endforeach --}}
+                                                @endforeach
                                             </select>
                                             <span class="form-text text-muted">Select your style of cuisine</span>
                                         </div>
@@ -160,7 +160,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="las la-hourglass-start"></i></span></div>
-                                                <input type="text" class="form-control" placeholder="30 Minutes"
+                                                <input type="number" class="form-control" placeholder="30 Minutes"
                                                     name="preparing_time" />
                                             </div>
                                             <span class="form-text text-muted">How much time it's take for Prepareing (In
@@ -174,7 +174,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                             class="las la-stopwatch"></i></span></div>
-                                                <input type="text" class="form-control" placeholder="20 Minutes"
+                                                <input type="number" class="form-control" placeholder="20 Minutes"
                                                     name="cooking_time" />
                                             </div>
                                             <span class="form-text text-muted">How much time it's take for Cooking (In

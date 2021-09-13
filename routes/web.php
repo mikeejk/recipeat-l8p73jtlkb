@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
+use App\Http\Controllers\RecipeController;
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
@@ -88,10 +89,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', functio
 //                                                     User-Recipe Routes
 // -------------------------------------------------------------------------------------------------------------------
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', function () {
-    return view('screens.user.recipe.recipe');
-});
+// Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeController::class, 'index']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', function () {
-    return view('screens.user.recipe.add_recipe');
-});
+// Add Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', [RecipeController::class, 'create']);
+
+// Store Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->post('/recipes', [RecipeController::class, 'store']);
