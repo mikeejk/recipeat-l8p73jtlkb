@@ -14,21 +14,33 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
+
+            // Auto Genrated - ID
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('mail')->nullable();
-            $table->string('cookinglevel')->nullable();
-            $table->string('allergies')->nullable();
-            $table->string('lifestyle')->nullable();
-            $table->string('ingredient')->nullable();
-            $table->string('pref_cuisine')->nullable();
-            $table->string('goals')->nullable();
-            $table->string('serving_time')->nullable();
-            $table->string('cho_cook')->nullable();
-            $table->string('fav_ingr')->nullable();
-            $table->string('level_spici')->nullable();
-            $table->string('time_spend')->nullable();
+
+            // Foreign Keys - Data Saving
+            $table->unsignedBigInteger('user_id')->nullable();
+
+             // User Entered - Data Saving
+            $table->string('name');
+            $table->string('gender');
+            $table->string('mail');
+            $table->string('cookinglevel');
+            $table->string('allergies');
+            $table->string('lifestyle');
+            $table->string('ingredient');
+            $table->string('pref_cuisine');
+            $table->string('goals');
+            $table->string('serving_time');
+            $table->string('cho_cook');
+            $table->string('fav_ingr');
+            $table->string('level_spici');
+            $table->string('time_spend');
+
+            // Foreign Keys
+            $table->foreign('user_id')->references('id')->on('users');
+
+            // Time-Stamp Data
             $table->timestamps();
         });
     }

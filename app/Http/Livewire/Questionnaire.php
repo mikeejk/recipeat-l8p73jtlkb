@@ -156,6 +156,15 @@ class Questionnaire extends Component
 
     public function submitForm()
     {
+        // Create New Object
+        $questionnaire = new Questionnaire();
+
+        // User_id Form User Model
+        $user_id = auth()->user()->id;
+
+        // Recipe-Data Storeing - Foreign Keys
+        $questionnaire->user_id = $user_id;
+
         Question::create([
             'name' => $this->name,
             'gender' => $this->gender,
@@ -172,8 +181,6 @@ class Questionnaire extends Component
             'level_spici' => $this->level_spici,
             'time_spend' => $this->time_spend,
         ]);
-
-        $this->clearForm();
 
         $this->currentStep = 15;
     }

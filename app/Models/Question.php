@@ -10,6 +10,11 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
+
+        // Foreign Keys - Data Saving
+        'user_id',
+
+        // User Entered - Data Saving
         'name',
         'gender',
         'mail',
