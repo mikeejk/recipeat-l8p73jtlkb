@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 use App\Models\Category;
 use App\Models\Cuisine;
 use App\Models\Recipe;
@@ -35,8 +36,8 @@ class RecipeController extends Controller
 
         // Recipe-Data Storeing - Foreign Keys
         $recipe->user_id = $user_id;
-        $recipe->cuisine_id = request()->get('cuisine');
         $recipe->category_id = request()->get('category');
+        $recipe->cuisine_id = request()->get('cuisine');
 
         // Recipe-Data Storeing - User Entered
         $recipe->recipe_name = request()->get('recipe_name');
@@ -58,5 +59,17 @@ class RecipeController extends Controller
         $recipe->save();
 
         return redirect('/recipes');
+    }
+
+    // Function - getIndex
+    public function getIndex()
+    {
+        return view('screens.user.recipe.recipe');
+    }
+
+    // Function - anyData
+    public function anyData()
+    {
+        return Datatables::of(Recipe::query())->make(true);
     }
 }

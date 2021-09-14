@@ -82,13 +82,17 @@
                         </div>
                         <!--end::Search Form-->
                         <!--begin: Datatable-->
-                        <div>
-                            {{-- @forelse($recipes as $recipe)
-                                <p>{{ $recipe->category_id }}</p>
-                                <p>{{ $recipe->recipe_name }}</p>
-                            @empty
-                                <p>No Data</p>
-                            @endforelse --}}
+                        <div class="">
+                            <table class="table" id="recipes-table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Recipe Name</th>
+                                        <th>Category</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                         <!--end: Datatable-->
                     </div>
@@ -100,4 +104,37 @@
         <!--end::Entry-->
     </div>
     <!--end::Content-->
+
+    @push('scripts')
+    <script>
+        $(function() {
+            $('#recipes-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: 'recipes.data',
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'recipe_name',
+                        name: 'recipe_name'
+                    },
+                    {
+                        data: 'category_id',
+                        name: 'category_id',
+                        searchable: false
+                    },
+                    {
+                        data: 'serves_people',
+                        name: 'serves_people',
+                        searchable: false,
+                        orderable: false,
+                    },
+                ]
+            });
+        });
+    </script>
+@endpush
+
 @endsection

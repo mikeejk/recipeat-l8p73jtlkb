@@ -57,12 +57,12 @@
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <div class="col-lg-7 col-4 d-lg-block d-none">
+                            <div class="col-lg-9 col-4 d-lg-block d-none">
                                 <a href="/admin_recipe"><button type="button"
                                         class="btn btn-secondary mr-2 w-lg-auto w-100">Get Back</button></a>
                             </div>
                             <!-- If Condition -->
-                            <div class="col-lg-2 col-5">
+                            <div class="col-lg-1 col-5">
                                 <button type="submit" name="action" value="cuisine_save"
                                     class="btn btn-primary w-lg-100 w-100">Save</button>
                             </div>

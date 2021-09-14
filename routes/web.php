@@ -98,6 +98,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', [RecipeC
 // Store Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/recipes', [RecipeController::class, 'store']);
 
+// User Invite Data Table - Data
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes.data', [RecipeController::class, 'anyData']);
+
+// User Invute Data Table - Index
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeController::class, 'getIndex']);
+
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     Test Routes
 // -------------------------------------------------------------------------------------------------------------------

@@ -180,9 +180,7 @@
                                         <th>Id</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Contact Number</th>
                                         <th>Role</th>
-                                        <th>Token</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -224,18 +222,8 @@
                         name: 'email'
                     },
                     {
-                        data: 'contact',
-                        name: 'contact',
-                        searchable: false
-                    },
-                    {
                         data: 'role_id',
                         name: 'role_id',
-                        searchable: false
-                    },
-                    {
-                        data: 'token',
-                        name: 'token',
                         searchable: false
                     },
                 ]
