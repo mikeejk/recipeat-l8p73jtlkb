@@ -7,6 +7,7 @@ use App\Models\Question;
 
 class Questionnaire extends Component
 {
+    // Create New-Object's
     public $currentStep = 1;
     public $name;
     public $gender;
@@ -23,137 +24,182 @@ class Questionnaire extends Component
     public $level_spici;
     public $time_spend;
 
+    // Function - Render
     public function render()
     {
+        // rend the view file
         return view('livewire.questionnaire');
     }
 
+    // Function - FirstStepSubmit
     public function firstStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'name' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 2;
     }
 
+    // Function - SecondStepSubmit
     public function secondStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'gender' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 3;
     }
 
+    // Function - ThirdStepSubmit
     public function thirdStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'mail' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 4;
     }
 
+    // Function - FourthStepSubmit
     public function fourthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'cookinglevel' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 5;
     }
 
+    // Function - FifthStepSubmit
     public function fifthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'allergies' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 6;
     }
 
+    // Function - SixthStepSubmit
     public function sixthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'lifestyle' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 7;
     }
 
+    // Function - SeventhStepSubmit
     public function seventhStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'ingredient' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 8;
     }
 
+    // Function - EighthStepSubmit
     public function eighthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'pref_cuisine' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 9;
     }
 
+    // Function - NinthStepSubmit
     public function ninthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'goals' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 10;
     }
 
+    // Function - TenthStepSubmit
     public function tenthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'serving_time' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 11;
     }
 
+    // Function - EleventhStepSubmit
     public function eleventhStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'cho_cook' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 12;
     }
 
+    // Function - TwelfthStepSubmit
     public function twelfthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'fav_ingr' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 13;
     }
 
+    // Function - ThirteenthStepSubmit
     public function thirteenthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'level_spici' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 14;
     }
 
+    // Function - FourteenthStepSubmit
     public function fourteenthStepSubmit()
     {
+        // Data - Save
         $validatedData = $this->validate([
             'time_spend' => 'required',
         ]);
 
+        // Next Step
         $this->currentStep = 15;
     }
 
+    // Function - SubmitForm
     public function submitForm()
     {
         // Create New Object
@@ -165,6 +211,7 @@ class Questionnaire extends Component
         // Recipe-Data Storeing - Foreign Keys
         $questionnaire->user_id = $user_id;
 
+         // Data - Save
         Question::create([
             'name' => $this->name,
             'gender' => $this->gender,
@@ -182,11 +229,14 @@ class Questionnaire extends Component
             'time_spend' => $this->time_spend,
         ]);
 
+        // Next Step
         $this->currentStep = 15;
     }
 
+    // Function - Back
     public function back($step)
     {
+        // Back Step
         $this->currentStep = $step;
     }
 }

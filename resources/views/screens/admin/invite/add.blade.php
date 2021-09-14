@@ -76,7 +76,7 @@
 
                                 <div class="form-group row">
                                     <div class="col-lg-2"></div>
-                                    <label class="col-lg-1 col-form-label text-lg-right">Contact:</label>
+                                    <label class="col-lg-1 col-form-label text-lg-left">Contact:</label>
                                     <div class="col-lg-3">
                                         <div class="input-group">
                                             <input type="number" class="form-control" placeholder="Contact number"
