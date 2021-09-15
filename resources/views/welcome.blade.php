@@ -9,6 +9,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <style>
@@ -402,22 +404,70 @@
 </head>
 
 <body class="antialiased">
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-white sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-black">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm text-black">Log in</a>
+    <section>
+        <div class="flex items-top justify-center min-h-screen bg-white sm:items-center py-4 sm:pt-0">
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-black">Dashboard</a> --}}
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-black">Log in</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-black">Register</a>
-                    @endif
-                @endauth
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-black">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+            <!-- component -->
+            <div>
+                <div class="h-screen flex justify-center items-center bg-cover bg-center"
+                    style="background-image: url('https://media.timesfreepress.com/img/photos/2016/01/25/1453757150_FareExchange_t800_h8b85500a03d041223b2a438cf638337b74225071.jpg')">
+                    <div class="absolute top-0 left-0 mt-5 ml-5">
+                        <img alt="Logo" src="assets/media/logos/recipeat.svg" class="h-20px" />
+                    </div>
+                    <a href="{{ url('/dashboard') }}"
+                        class="absolute bg-red-600 hover:bg-red-700 text-white p-3 top-0 right-0 mt-3 mr-5">My
+                        Recipe's</a>
+
+                    <div class="space-y-5">
+                        <p class="text-white font-bold text-5xl flex flex-col items-center">
+                            <span>Hi!<br /></span>
+                        </p>
+                        <p class="text-white font-semibold text-3xl flex flex-col items-center">Search Recipe here.</p>
+                        <p class="text-white text-lg flex flex-col items-center"></p>
+                        <div class="flex flex-row items-center justify-center">
+                            <input type="search" placeholder="Search"
+                                class="p-4 focus:outline-none focus:ring-1 focus:ring-blue-300 w-3/4" />
+                            <button
+                                class="p-4 text-l font-semibold bg-red-600 hover:bg-red-700 text-white">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="h-screen flex items-center justify-center bg-black p-5">
+                    <div class="space-y-5 p-5">
+                        <p class="text-white font-bold text-4xl">RECIPEAT. <b>EAT.</b> REPEAT</p>
+                        <p class="text-white font-semiboldbold text-xl">OUR MISSION IS TO EASE YOUR EVERYDAY COOKING LIFE BY PROVIDING A PLATFORM FOR HOMECHEFS TO LOOK UP AS WELL AS SHARE RECIPES WITH YOU</p>
+                    </div>
+                    <div>
+                        <img alt="TV"
+                            src="https://icon.holidaypng.com/20191115/yje/cuisine-christmas-ornament-food-for-christmas-5dce1f378cc717.01463877.png" />
+                    </div>
+                </div>
+                <hr />
+
+
+
             </div>
-        @endif
-    </div>
+        </div>
+    </section>
+
+    <section>
+        <!-- component -->
+
+    </section>
+
 
     <script>
         var HOST_URL = "https://preview.keenthemes.com/keen/theme/tools/preview";

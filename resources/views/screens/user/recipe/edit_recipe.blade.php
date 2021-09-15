@@ -7,12 +7,16 @@
         <div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
             <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
                 <!--begin::Info-->
+
                 <div class="d-flex align-items-center flex-wrap mr-1">
                     <!--begin::Page Heading-->
+
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
+
                         <!--begin::Page Title-->
                         <h5 class="text-dark font-weight-bold my-1 mr-5">Recipeat</h5>
                         <!--end::Page Title-->
+
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                             <li class="breadcrumb-item text-muted">
@@ -22,28 +26,34 @@
                                 <a href="" class="text-muted">My Kitchen</a>
                             </li>
                             <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">New Recipe</a>
+                                <a href="" class="text-muted">Edit Recipe</a>
                             </li>
                         </ul>
                         <!--end::Breadcrumb-->
+
                     </div>
                     <!--end::Page Heading-->
+
                 </div>
                 <!--end::Info-->
+
             </div>
         </div>
         <!--end::Subheader-->
         <!--begin::Entry-->
-        <div>
-            <form class="form" action="/recipes" method="post">
+        <div class="">
+            <form class="form" action="/recipes/{{ $recipe->id }}" method="post">
+                @method('PATCH')
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Card-->
                     <div class="card card-custom card-sticky" id="kt_page_sticky_card">
+                        <!--begin::header-->
                         <div class="card-header">
+                            <div class="col-lg-4 d-flex justify-content-start align-items-center">
+                                <p><b class="text-danger">{{ $recipe->recipe_name }}</b> Recipe Update</p>
+                            </div>
                             <div class="col-lg-4"></div>
-                            <div class="col-lg-4"></div>
-                            <!-- Form-Button::start -->
                             <div class="col-lg-4 d-flex justify-content-end align-items-center">
                                 <div class="">
                                         <a href=" /recipes"
@@ -51,55 +61,50 @@
                                     <i class="las la-arrow-left"></i>Back</a>
                                     <div class="btn-group">
                                         <button type="submit" class="btn btn-primary font-weight-bolder">
-                                            <i class="las la-cloud-upload-alt"></i>Go to Live</button>
+                                            <i class="las la-cloud-upload-alt"></i>Update to Live</button>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Form-Button::end -->
                         </div>
-
+                        <!--end::header-->
+                        <!-- begin::form -->
                         <div class="card-body">
                             <!-- Recipe Intro::start -->
                             <div>
                                 <div class="form-group row">
+
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
                                         <h3>Recipe Intro</h3>
                                     </div>
                                     <!-- Side Text::end -->
+
                                     <!-- Form-Category::start -->
                                     <div class="col-lg-4">
                                         <label>Category</label>
-                                        <select class="custom-select form-control" name="category">
-                                            @foreach ($categories as $categorie)
-                                                <option value="{{ $categorie->id }} ">
-                                                    {{ $categorie->category }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <span class="form-text text-muted">Select any one of the category</span>
+                                        <input type="text" class="form-control no-drop" name="recipe_name"
+                                            value="{{ $recipe->category_id }}" disabled />
+                                        <span class="form-text text-muted">This field doesn't be editable</span>
                                     </div>
                                     <!-- Form-Category::end -->
+
                                     <!-- Form-Cuisine::start -->
                                     <div class="col-lg-4">
                                         <label>Cuisine</label>
-                                        <select class="custom-select form-control" name="cuisine">
-                                            @foreach ($cuisines as $cuisine)
-                                                <option value="{{ $cuisine->id }} ">
-                                                    {{ $cuisine->cuisine }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <span class="form-text text-muted">Select your style of cuisine</span>
+                                        <input type="text" class="form-control no-drop" name="cuisine"
+                                            value="{{ $recipe->cuisine_id }}" disabled />
+                                        <span class="form-text text-muted">This field doesn't be editable</span>
                                     </div>
                                     <!-- Form-Cuisine::end -->
-                                </div>
 
+                                </div>
                                 <div class="form-group row">
+
                                     <!-- Side Space::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
+
                                     <!-- Form-Name::start -->
                                     <div class="col-lg-8">
                                         <label>Recipe Name</label>
@@ -107,13 +112,13 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-utensils"></i></span></div>
                                             <input type="text" class="form-control" placeholder="Egg Pepper Fry"
-                                                name="recipe_name" />
+                                                name="recipe_name" value="{{ $recipe->recipe_name }}" />
                                         </div>
-                                        <span class="form-text text-muted">Enter your recipe name</span>
+                                        <span class="form-text text-muted">Enter your updated recipe name</span>
                                     </div>
                                     <!-- Form-Name::end -->
-                                </div>
 
+                                </div>
                             </div>
                             <!-- Recipe Intro::end -->
 
@@ -122,12 +127,14 @@
                             <!-- Recipe Timeing::start -->
                             <div>
                                 <div class="form-group row">
+
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
                                         <h3>Recipe Timeing</h3>
                                     </div>
                                     <!-- Side Text::end -->
+
                                     <!-- Form-Prepare Time::start -->
                                     <div class="col-lg-4">
                                         <label>Prepare Time</label>
@@ -135,12 +142,14 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-hourglass-start"></i></span></div>
                                             <input type="number" class="form-control" placeholder="30 Minutes"
-                                                name="preparing_time" />
+                                                name="preparing_time" value="{{ $recipe->preparing_time }}" />
                                         </div>
-                                        <span class="form-text text-muted">How much time it's take for Prepareing (In
+                                        <span class="form-text text-muted">If the prepare time is increased enter the
+                                            new one(In
                                             Minutes)</span>
                                     </div>
                                     <!-- Form-Prepare Time::end -->
+
                                     <!-- Form-Cooking Time::start -->
                                     <div class="col-lg-4">
                                         <label>Cooking Time</label>
@@ -148,17 +157,21 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-stopwatch"></i></span></div>
                                             <input type="number" class="form-control" placeholder="20 Minutes"
-                                                name="cooking_time" />
+                                                name="cooking_time" value="{{ $recipe->cooking_time }}" />
                                         </div>
-                                        <span class="form-text text-muted">How much time it's take for Cooking (In
+                                        <span class="form-text text-muted">If the cokking time is increased enter the
+                                            new one(In
                                             Minutes)</span>
                                     </div>
                                     <!-- Form-Cooking Time::end -->
+
                                 </div>
                                 <div class="form-group row">
+
                                     <!-- Side Space::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
+
                                     <!-- Form-Serves::start -->
                                     <div class="col-lg-4">
                                         <label>Serves</label>
@@ -166,12 +179,13 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-users"></i></span></div>
                                             <input type="number" class="form-control" placeholder="4 People"
-                                                name="serves_people" />
+                                                name="serves_people" value="{{ $recipe->serves_people }}" />
                                         </div>
-                                        <span class="form-text text-muted">Your proper this recipe for how many
-                                            people</span>
+                                        <span class="form-text text-muted">If the number of serves people is changed
+                                            enter the new one</span>
                                     </div>
                                     <!-- Form-Serves::end -->
+
                                     <!-- Form-Calories::start -->
                                     <div class="col-lg-4">
                                         <label>Calories</label>
@@ -179,12 +193,13 @@
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-cookie-bite"></i></span></div>
                                             <input type="number" class="form-control" placeholder="150 Calories"
-                                                name="calories_in" />
+                                                name="calories_in" value="{{ $recipe->calories_in }}" />
                                         </div>
-                                        <span class="form-text text-muted">How much of calories contain this
-                                            recipe</span>
+                                        <span class="form-text text-muted">If the food is contain more calories update
+                                            it</span>
                                     </div>
                                     <!-- Form-Calories::end -->
+
                                 </div>
                             </div>
                             <!-- Recipe Timeing::end -->
@@ -194,23 +209,27 @@
                             <!-- Recipe Description::start -->
                             <div>
                                 <div class="form-group row">
+
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
                                         <h3>Recipe Description</h3>
                                     </div>
                                     <!-- Side Text::end -->
+
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-8">
                                         <label>Description</label>
-                                        <textarea class="form-control" rows="3" name="description"></textarea>
-                                        <span class="form-text text-muted">What special in this recipe</span>
+                                        <textarea class="form-control" rows="3" name="description"
+                                            value="{{ $recipe->steps }}"></textarea>
+                                        <span class="form-text text-muted">Add the more specialized for this
+                                            recipe</span>
                                     </div>
                                     <!-- Form-Description::end -->
 
                                 </div>
-
                                 <div class="form-group row">
+
                                     <!-- Side Space::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
@@ -218,19 +237,14 @@
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
                                         <label>Setps</label>
-                                        <textarea id="editor" rows="3" name="steps">
-                                            <h4>Add your RECIPE <strong>"Egg Pepper Fry"</strong> STEPS like this...</h4>
-                                            <ul>
-                                                <li>To a wide pan/kadhai add 2tbsp vegetable oil. Add the sliced onions. Saute them in high flame until they change color to a nice dark rich brown.</li>
-                                                <li>Now add 1 tbsp ginger garlic paste followed by 1 chopped tomato and 4 slit green chilies and few curry leaves. Mix everything. Saute on low flame for 2 -3 mins.</li>
-                                                <li>...</li>
-                                                <li>...</li>
-                                            </ul>
-                                        </textarea>
-                                        <span class="form-text text-muted">Add the diffend step of prepare the your
-                                            Recipe (In using BULLET poins)</span>
+                                        <textarea id="editor" rows="3" name="steps" value="{{ $recipe->steps }}">
+
+                                                            </textarea>
+                                        <span class="form-text text-muted">Add some more steps of creating this recipe
+                                            (In using BULLET poins)</span>
                                     </div>
                                     <!-- Form-Setps::end -->
+
                                 </div>
                             </div>
                             <!-- Recipe Description::end -->
@@ -240,12 +254,14 @@
                             <!-- Recipe Ingredients::start -->
                             <div>
                                 <div class="form-group row">
+
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
                                         <h3>Recipe Ingredient</h3>
                                     </div>
                                     <!-- Side Text::end -->
+
                                     <!-- Form-Ingredient::start -->
                                     <div class="col-lg-3">
                                         <label>Ingredient</label>
@@ -259,6 +275,7 @@
                                         <span class="form-text text-muted">Add the Ingredient for this recipe</span>
                                     </div>
                                     <!-- Form-Ingredient::end -->
+
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-1">
                                         <label>Quantity</label>
@@ -266,6 +283,7 @@
                                         <span class="form-text text-muted">Add the Quantity</span>
                                     </div>
                                     <!-- Form-Description::end -->
+
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-2">
                                         <label>Measurement</label>
@@ -280,12 +298,14 @@
                                             recipe</span>
                                     </div>
                                     <!-- Form-Description::end -->
+
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-2">
                                         <label>Action</label>
                                         <input type="text" class="form-control" placeholder="Egg Pepper Fry" />
                                     </div>
                                     <!-- Form-Description::end -->
+
                                 </div>
                             </div>
                             <!-- Recipe Ingredients::end -->
@@ -295,12 +315,14 @@
                             <!-- Recipe Meta-Description & Image::start -->
                             <div>
                                 <div class="form-group row">
+
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
                                         <h3>Recipe Meta-Data & Image</h3>
                                     </div>
                                     <!-- Side Text::end -->
+
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-8">
                                         <label>Meta-Description</label>
@@ -309,11 +331,14 @@
                                             for thsi recipe (ADD HEAR)</span>
                                     </div>
                                     <!-- Form-Description::end -->
+
                                 </div>
                                 <div class="form-group row">
+
                                     <!-- Side Space::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
+
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
@@ -321,6 +346,7 @@
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
                                     <!-- Form-Image::end -->
+
                                 </div>
                             </div>
                             <!-- Recipe Meta-Description & Image::end -->
@@ -336,6 +362,7 @@
                                         <h3>Recipe Tast-Bud</h3>
                                     </div>
                                     <!-- Side Text::end -->
+
                                     <!-- Form-Sweet::start -->
                                     <div class="col-lg-4">
                                         <label>Sweet</label>
@@ -360,6 +387,7 @@
                                             recipe</span>
                                     </div>
                                     <!-- Form-Sweet::end -->
+
                                     <!-- Form-Sour::start -->
                                     <div class="col-lg-4">
                                         <label>Sour</label>
@@ -384,11 +412,14 @@
                                             recipe</span>
                                     </div>
                                     <!-- Form-Sour::end -->
+
                                 </div>
                                 <div class="form-group row">
+
                                     <!-- Side Space::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
+
                                     <!-- Form-Salty::start -->
                                     <div class="col-lg-4">
                                         <label>Salty</label>
@@ -413,6 +444,7 @@
                                             recipe</span>
                                     </div>
                                     <!-- Form-Salty::end -->
+
                                     <!-- Form-Pungent (Spicy)::start -->
                                     <div class="col-lg-4">
                                         <label>Pungent (Spicy)</label>
@@ -437,11 +469,14 @@
                                             recipe</span>
                                     </div>
                                     <!-- Form-Pungent (Spicy)::end -->
+
                                 </div>
                                 <div class="form-group row">
+
                                     <!-- Side Space::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
+
                                     <!-- Form-Bitter::start -->
                                     <div class="col-lg-4">
                                         <label>Bitter</label>
@@ -466,6 +501,7 @@
                                             recipe</span>
                                     </div>
                                     <!-- Form-Bitter::end -->
+
                                     <!-- Form-Astringent::start -->
                                     <div class="col-lg-4">
                                         <label>Astringent</label>
@@ -494,13 +530,13 @@
                             </div>
                             <!-- Recipe Timeing::end -->
                         </div>
+                        <!-- end::form -->
                     </div>
                 </div>
-                <!--end::Container-->
                 @csrf
             </form>
         </div>
         <!--end::Card-->
     </div>
-    <!--end::Content-->
+    <!--end::Container-->
 @endsection

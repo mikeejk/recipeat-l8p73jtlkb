@@ -26,7 +26,7 @@
                 should we call you ?
             </div>
             <div class="form-group">
-                <input type="text" wire:model="name" placeholder="Name"
+                <input type="text" wire:model="name" placeholder="{{ Auth::user()->name }}"
                     class="w-full px-4 py-3 mb-2  text-xl mt-2 border-b-2 border-gray-500 text-center focus:border-b-2 focus:outline-none "
                     autocomplete required>
                 @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
@@ -125,7 +125,7 @@
             class="md:text-center mb-10 text-center lg:text-3xl text-black font-bold text-xl leading-relaxed font-serif italic ">For your
                 monthly dose of Mouth-watering content ?</div>
             <div class="form-group">
-                <input type="email" wire:model="mail" placeholder="E-Mail ID" required
+                <input type="email" wire:model="mail" placeholder="{{ Auth::user()->email }}" required
                     class="w-full px-4 py-3 mb-2  text-xl mt-2 border-b-2 border-gray-500 text-center focus:border-b-2 focus:outline-none "
                     autocomplete required>
                 @error('mail') <span class="error text-red-500">{{ $message }}</span> @enderror
@@ -425,7 +425,7 @@
 
                             <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
                               <div class="p-1 sm:w-1/2 w-full">
-                                <div class="bg-gray-100 rounded flex p-2 h-full items-center">
+                                <div class="bg-gray-100 rounded flex p-3 h-full items-center">
                                    <label class="radio-inline"><input type="radio" wire:model="goals" value="New Skill"
                                                     {{{ $goals == 'New Skill' ? "checked" : "" }}}>&nbsp; <i class="fas fa-book-reader"></i> &nbsp;
                                                     New Skill
@@ -434,7 +434,7 @@
                                 </div>
                               </div>
                               <div class="p-1 sm:w-1/2 w-full">
-                                <div class="bg-gray-100 rounded flex p-2 h-full items-center">
+                                <div class="bg-gray-100 rounded flex p-3 h-full items-center">
                                   <label class="radio-inline"><input type="radio" wire:model="goals" value="Experiment With Cuisine"
                                                     {{{ $goals == 'Experiment With Cuisine' ? "checked" : "" }}}>&nbsp; <i
                                                     class="fas fa-drumstick-bite"></i> &nbsp;
@@ -442,7 +442,7 @@
                                 </div>
                               </div>
                               <div class="p-1 sm:w-1/2 w-full">
-                                <div class="bg-gray-100 rounded flex p-2 h-full items-center">
+                                <div class="bg-gray-100 rounded flex p-3 h-full items-center">
                                   <label class="radio-inline"><input type="radio" wire:model="goals" value="Save Time"
                                                     {{{ $goals == 'Save Time' ? "checked" : "" }}}>&nbsp; <i class="fas fa-stopwatch"></i>
                                                 &nbsp; Save Time
@@ -450,7 +450,7 @@
                                 </div>
                               </div>
                               <div class="p-1 sm:w-1/2 w-full">
-                                <div class="bg-gray-100 rounded flex p-2 h-full items-center">
+                                <div class="bg-gray-100 rounded flex p-3 h-full items-center">
                         <label class="radio-inline"><input type="radio" wire:model="goals" value="Save Money"
                                                     {{{ $goals == 'Save Money' ? "checked" : "" }}}>&nbsp; <i class="fas fa-hand-holding-usd"></i>
                                                 &nbsp;
@@ -459,14 +459,14 @@
                                 </div>
                               </div>
                               <div class="p-1 sm:w-1/2 w-full">
-                                <div class="bg-gray-100 rounded flex p-2 h-full items-center">
+                                <div class="bg-gray-100 rounded flex p-3 h-full items-center">
                                    <label class="radio-inline"><input type="radio" wire:model="goals" value=" Eat Healthy "
                                                     {{{ $goals == 'Eat Healthy' ? "checked" : "" }}}>&nbsp; <i class="fas fa-heartbeat"></i> &nbsp;
                                                 Eat Healthy </label>
                                 </div>
                               </div>
                               <div class="p-1 sm:w-1/2 w-full">
-                                <div class="bg-gray-100 rounded flex p-2 h-full items-center">
+                                <div class="bg-gray-100 rounded flex p-3 h-full items-center">
                                   <label class="radio-inline"><input type="radio" wire:model="goals" value="Dietary Goal"
                                                     {{{ $goals == 'Dietary Goal' ? "checked" : "" }}}>&nbsp; <i class="fas fa-apple-alt"></i>
                                                 &nbsp; Dietary Goal
@@ -710,26 +710,25 @@
                    </div>
                     <div class="form-group lg:text-xl md:text-lg">
                         <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-                            <div class="p-2 sm:w-1/2 w-full">
-                              <div class="bg-gray-100 rounded flex p-3 h-full items-center">
+                            <div class="p-1 sm:w-2/4 w-full">
+                              <div class="bg-gray-100 rounded flex p-2 h-full items-center">
                                  <label class="radio-inline"><input type="radio" wire:model="time_spend" value="30 Mins and below"
-                                                  {{{ $time_spend == '30 Mins and below' ? "checked" : "" }}}>&nbsp; <i
-                                                  class="fas fa-hourglass-start"></i>
-                                              &nbsp;
-                                              30 Mins and Below
-                                          </label>
+                                                {{{ $time_spend == '30 Mins and below' ? "checked" : "" }}}>&nbsp; <i
+                                                class="fas fa-hourglass-start"></i>
+                                            &nbsp;
+                                            30 Mins and Below
+                                        </label>
 
                               </div>
                             </div>
-                            <div class="p-2 sm:w-1/2 w-full">
-                              <div class="bg-gray-100 rounded flex p-3 h-full items-center">
+                            <div class="p-1 sm:w-1/2 w-full">
+                              <div class="bg-gray-100 rounded flex p-2 h-full items-center">
                                 <label class="radio-inline"><input type="radio" wire:model="time_spend" value="more than 1 hour"
-                                                  {{{ $time_spend == 'more than 1 hour' ? "checked" : "" }}}>&nbsp; <i
-                                                  class="fas fa-hourglass"></i> &nbsp;
-                                              More than 1 Hour</label>
+                                                {{{ $time_spend == 'more than 1 hour' ? "checked" : "" }}}>&nbsp; <i
+                                                class="fas fa-hourglass"></i> &nbsp;
+                                            More than 1 Hour</label>
                               </div>
                             </div>
-
 
                           </div>
                     @error('time_spend') <span class="error text-red-500">{{ $message }}</span> @enderror
@@ -747,9 +746,7 @@
                     Hi {{ Auth::user()->name }}! Welcome to your Personal  </h1>
                     <h1 class="text-xl text-start md:text-3xl md:tracking-widest font-bold leading-tight  mb-10"><span class="text-3xl md:text-5xl text-red-600">Recip</span><span  class="text-3xl md:text-5xl text-black">eat</span> Account</h1>
 
-                {{-- <button type="submit" class="xl:ml-96 bg-red-500 hover:bg-red-400 text-white font-semibold rounded-l-2xl
-                  px-6 py-2" wire:click="back(14)">back</button> --}}
-                <a href="/dashboard" class="flex justify-start text-decoration-none">
+                <a href="/" class="flex justify-start text-decoration-none">
                     <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-lg
                   px-6 py-2 mt-8" wire:click="submitForm">Go to Dashboard</button>
                 </a>

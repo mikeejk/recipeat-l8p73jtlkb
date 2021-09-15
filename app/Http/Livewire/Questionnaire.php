@@ -7,7 +7,6 @@ use App\Models\Question;
 
 class Questionnaire extends Component
 {
-    // Create New-Object's
     public $currentStep = 1;
     public $name;
     public $gender;
@@ -203,13 +202,13 @@ class Questionnaire extends Component
     public function submitForm()
     {
         // Create New Object
-        $questionnaire = new Questionnaire();
+        // $questionnaire = new Questionnaire();
 
-        // User_id Form User Model
-        $user_id = auth()->user()->id;
+        // // User_id Form User Model
+        // $user_id = auth()->user()->id;
 
         // Recipe-Data Storeing - Foreign Keys
-        $questionnaire->user_id = $user_id;
+        // $questionnaire->user_id = $user_id;
 
          // Data - Save
         Question::create([
@@ -227,6 +226,7 @@ class Questionnaire extends Component
             'fav_ingr' => $this->fav_ingr,
             'level_spici' => $this->level_spici,
             'time_spend' => $this->time_spend,
+            // 'user_id' => $this->user_id,
         ]);
 
         // Next Step

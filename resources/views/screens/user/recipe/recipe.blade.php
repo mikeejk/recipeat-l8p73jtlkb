@@ -61,7 +61,7 @@
                     <div class="card-body">
                         <!--begin: Search Form-->
                         <!--begin::Search Form-->
-                        <div class="mb-7">
+                        {{-- <div class="mb-7">
                             <div class="row align-items-center">
                                 <div class="col-lg-9 col-xl-8">
                                     <div class="row align-items-center">
@@ -79,14 +79,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!--end::Search Form-->
                         <!--begin: Datatable-->
                         <div class="">
                             <table class="table" id="recipes-table">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+
                                         <th>Recipe Name</th>
                                         <th>Category</th>
                                         <th>Action</th>
@@ -112,24 +112,23 @@
                 processing: true,
                 serverSide: true,
                 ajax: 'recipes.data',
-                columns: [{
-                        data: 'id',
-                        name: 'id'
-                    },
+                columns: [
                     {
                         data: 'recipe_name',
-                        name: 'recipe_name'
+                        name: 'recipe_name',
+                        orderable: false
                     },
                     {
                         data: 'category_id',
                         name: 'category_id',
-                        searchable: false
-                    },
-                    {
-                        data: 'serves_people',
-                        name: 'serves_people',
                         searchable: false,
                         orderable: false,
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        searchable: false,
+                        orderable: false
                     },
                 ]
             });

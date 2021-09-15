@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
 
         // Foreign Keys - Data Saving
@@ -32,5 +32,6 @@ class Recipe extends Model
         'bud_bitter',
         'bud_astringent',
 
+        'id'
     ];
 }

@@ -14,7 +14,7 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('screens.user.recipe.recipe', compact('recipes'));
+        return redirect('/recipes', compact('recipes'));
     }
 
     // Function - Create
@@ -61,6 +61,47 @@ class RecipeController extends Controller
         return redirect('/recipes');
     }
 
+    // Function - Edit
+    public function edit(Recipe $recipe)
+    {
+        return view('screens.user.recipe.edit_recipe', compact('recipe'));
+    }
+
+    // Function - Update
+    public function update(Recipe $recipe)
+    {
+        $data = request()->validate(
+            [
+                'recipe_name' => 'required',
+                'preparing_time' => 'required',
+                'cooking_time' => 'required',
+                'serves_people' => 'required',
+                'calories_in' => 'required',
+                // 'description' => 'required',
+                // 'steps' => 'required',
+                // 'meta_description' => 'required',
+                // 'bud_sweet' => 'required',
+                // 'bud_sour' => 'required',
+                // 'bud_salt' => 'required',
+                // 'bud_spicy' => 'required',
+                // 'bud_bitter' => 'required',
+                // 'bud_astringent' => 'required'
+            ]
+        );
+
+        $recipe->update($data);
+
+        return redirect('/recipes');
+    }
+
+    // Function - Destroy
+    public function destroy(Recipe $recipe)
+    {
+        $recipe->delete();
+
+        return redirect('/recipes');
+    }
+
     // Function - getIndex
     public function getIndex()
     {
@@ -68,8 +109,16 @@ class RecipeController extends Controller
     }
 
     // Function - anyData
-    public function anyData()
+    public function anyData(Request $request)
     {
+            $customers = Recipe::all();
+            return datatables()->of($customers)
+                ->addColumn('action', function ($recipe) {
+                    $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';
+                    $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete this Recipe</button>';
+                    return $html;
+                })->toJson();
+
         return Datatables::of(Recipe::query())->make(true);
     }
 }

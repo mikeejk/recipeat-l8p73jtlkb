@@ -38,10 +38,10 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/invite', [InviteControll
 // User Invite Aceept Tab
 Route::get('accept/{token}', [InviteController::class, 'accept']);
 
-// User Invite Data Table - Data
+// User Invite Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/customers.data', [InviteController::class, 'anyData']);
 
-// User Invute Data Table - Index
+// User Invite Data Table - Index Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/customers', [InviteController::class, 'getIndex']);
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -89,25 +89,39 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', functio
 //                                                     User-Recipe Routes
 // -------------------------------------------------------------------------------------------------------------------
 
-// Recipe Tab
+// Index Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeController::class, 'index']);
 
-// Add Recipe Tab
+// Create Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', [RecipeController::class, 'create']);
 
 // Store Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/recipes', [RecipeController::class, 'store']);
 
-// User Invite Data Table - Data
+// Edit Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes/{recipe}/edit', [RecipeController::class, 'edit']);
+
+// Update Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->patch('/recipes/{recipe}', [RecipeController::class, 'update']);
+
+// Delete Recipe Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipes/{recipe}/delete', [RecipeController::class, 'destroy']);
+
+// Recipe Post Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipes.data', [RecipeController::class, 'anyData']);
 
-// User Invute Data Table - Index
+// Recipe Post Data Table - Index Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeController::class, 'getIndex']);
 
 // -------------------------------------------------------------------------------------------------------------------
-//                                                     Test Routes
+//                                                     Question Routes
 // -------------------------------------------------------------------------------------------------------------------
 
-Route::get('/home', function () {
-    return view('screens.user.home.questions');
-});
+// // User Questionnaire Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
+    if (auth()->user()->hasRole('Chef')) {
+        return view('screens.user.home.questions');
+    } else {
+        return view('dashboard');
+    }
+})->name('home');

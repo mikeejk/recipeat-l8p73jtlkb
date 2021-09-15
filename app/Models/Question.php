@@ -11,8 +11,8 @@ class Question extends Model
 
     protected $fillable = [
 
-        // Foreign Keys - Data Saving
-        'user_id',
+        // // Foreign Keys - Data Saving
+        // 'user_id',
 
         // User Entered - Data Saving
         'name',
