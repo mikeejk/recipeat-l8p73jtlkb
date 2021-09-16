@@ -746,7 +746,7 @@
                     Hi {{ Auth::user()->name }}! Welcome to your Personal  </h1>
                     <h1 class="text-xl text-start md:text-3xl md:tracking-widest font-bold leading-tight  mb-10"><span class="text-3xl md:text-5xl text-red-600">Recip</span><span  class="text-3xl md:text-5xl text-black">eat</span> Account</h1>
 
-                <a href="/" class="flex justify-start text-decoration-none">
+                <a href="/welcome" class="flex justify-start text-decoration-none">
                     <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-lg
                   px-6 py-2 mt-8" wire:click="submitForm">Go to Dashboard</button>
                 </a>
@@ -754,8 +754,4 @@
 
            </div>
      </div>
-
-
-
-
 </div>

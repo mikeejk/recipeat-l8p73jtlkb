@@ -405,7 +405,7 @@
 
 <body class="antialiased">
     <section>
-        <div class="flex items-top justify-center min-h-screen bg-white sm:items-center py-4 sm:pt-0">
+        {{-- <div class="flex items-top justify-center min-h-screen bg-white sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -419,6 +419,91 @@
                     @endauth
                 </div>
             @endif
+
+        </div> --}}
+        <!-- component -->
+        <div>
+            <div class="h-screen flex justify-center items-center bg-cover bg-center"
+                style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
+                <div class="absolute top-0 left-0 mt-5 ml-5">
+                    <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
+                </div>
+                <a href="/dashboard"><button class="rounded-lg absolute bg-red-600 hover:bg-red-700 text-white p-3 top-0 right-0 mt-3 mr-5">My
+                    Recipe's</button></a>
+                <div class="space-y-5">
+                    <p class="text-white font-bold text-4xl flex flex-col items-center">
+                        <span class="text-yellow-400">RECIPEAT. <span class="text-white text-5xl">EAT.</span> REPEAT.
+                        </span>
+                    </p>
+                    <div class="flex flex-row items-center justify-center">
+                        <input type="text" placeholder="Find a Recipe"
+                            class="rounded-l-lg p-4 focus:outline-none focus:ring-1 focus:ring-blue-300 " />
+                        <button
+                            class="rounded-r-lg p-4 text-l font-semibold bg-red-600 hover:bg-red-700 text-white">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="h-screen flex items-center justify-center bg-black p-5">
+                <div class="flex justify-center w-2/6">
+                    <img alt="" class="our-story-card-img"
+                        src="https://www.freepnglogos.com/uploads/food-png/food-grass-fed-beef-foodservice-products-grass-run-farms-4.png"
+                        data-uia="our-story-card-img" />
+                </div>
+                <div class="space-y-5 w-4/6">
+                    <p class="text-center px-4 text-white font-bold text-4xl">A RECIPE HAS NO SOUL <br />
+                        YOU MUST <span class="text-yellow-400 text-5xl">BRING SOUL</span> TO THE RECIPE!</p>
+                </div>
+            </div>
+            <div class="pl-10 h-screen flex items-center justify-center bg-black p-5">
+                <div class="p-5 w-8/12">
+                    <p class="text-yellow-400 font-black text-4xl uppercase">HOW RECIPEAT WORKS <span
+                            class="text-xs text-white border-2 text-center w-36 mb-3">HOW WE DO IT?</span></p>
+                    <p>HOW WE DO IT?</p>
+                    <section class="text-gray-600 body-font">
+                        <div class="container px-5 py-24 mx-auto">
+                            <div class="flex flex-wrap -m-4">
+                                <div class="xl:w-1/4 md:w-1/2 p-4">
+                                    <div class="bg-gray-700 p-6 rounded-lg">
+                                        <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                            src="https://mk0muwucepum99ape3ia.kinstacdn.com/wp-content/uploads/2019/12/%E2%80%94Pngtree%E2%80%94flat-wind-men-s-business_4575829-400x400.png" alt="content">
+                                        <h3 class="tracking-widest text-white text-xl font-bold text-center title-font">
+                                            CREATE A PROFILE</h3>
+                                    </div>
+                                </div>
+                                <div class="xl:w-1/4 md:w-1/2 p-4">
+                                    <div class="bg-gray-700 p-6 rounded-lg">
+                                        <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                            src="https://www.transparentpng.com/thumb/food/n0nASj-food-plate-cut-out.png" alt="content">
+                                        <h3 class="tracking-widest text-white text-xl font-bold text-center title-font">
+                                            WHAT TO YOU HAVE?</h3>
+                                    </div>
+                                </div>
+                                <div class="xl:w-1/4 md:w-1/2 p-4">
+                                    <div class="bg-gray-700 p-6 rounded-lg">
+                                        <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                            src="https://cdn3.iconfinder.com/data/icons/food-delivery-28/128/expand-foodDelivery_2px-14-512.png" alt="content">
+                                        <h3 class="tracking-widest text-white text-xl font-bold text-center title-font">
+                                            ADD YOUR LIST</h3>
+                                    </div>
+                                </div>
+                                <div class="xl:w-1/4 md:w-1/2 p-4">
+                                    <div class="bg-gray-700 p-6 rounded-lg">
+                                        <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                            src="https://static.abbottnutrition.com/cms-prod/abbottfamily.com.sg/img/1-Eat_tcm150-144864.png" alt="content">
+                                        <h3 class="tracking-widest text-white text-xl font-bold text-center title-font">
+                                            RECIPEAT <br/>IT!</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="w-4/12">
+                    <img alt="" class="our-story-card-img"
+                        src="https://img.pngio.com/png-for-food-transparent-for-foodpng-images-pluspng-small-amount-of-food-png-885_431.png"
+                        data-uia="our-story-card-img" />
+                </div>
+            </div>
 
         </div>
     </section>
