@@ -14,7 +14,7 @@ use App\Http\Controllers\RecipeController;
 
 // Welcome Tab
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Dashboard Tab
