@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Models\Category;
 use App\Models\Cuisine;
+use App\Models\Measurement;
+use App\Models\Ingredient;
 use App\Models\Recipe;
 
 class RecipeController extends Controller
@@ -22,7 +24,9 @@ class RecipeController extends Controller
     {
         $categories = Category::all(['id', 'category']);
         $cuisines = Cuisine::all(['id', 'cuisine']);
-        return view('screens.user.recipe.add_recipe', compact('categories', 'cuisines'));
+        $measurements = Measurement::all(['id', 'measurement']);
+        $ingredients = Ingredient::all(['id', 'ingredient']);
+        return view('screens.user.recipe.add_recipe', compact('categories', 'cuisines', 'measurements', 'ingredients'));
     }
 
     // Function - Store
@@ -38,6 +42,8 @@ class RecipeController extends Controller
         $recipe->user_id = $user_id;
         $recipe->category_id = request()->get('category');
         $recipe->cuisine_id = request()->get('cuisine');
+        $recipe->measurement_id = request()->get('measurement');
+        $recipe->ingredient_id = request()->get('ingredient');
 
         // Recipe-Data Storeing - User Entered
         $recipe->recipe_name = request()->get('recipe_name');

@@ -21,7 +21,7 @@ class CreateInvitesTable extends Migration
             // User Entered - Data Saving
             $table->string('email')->unique();
             $table->string('name');
-            $table->string('contact');
+            $table->string('contact')->nullable();
 
             // Foreign Keys - Data Saving
             $table->unsignedBigInteger('role_id')->nullable();
