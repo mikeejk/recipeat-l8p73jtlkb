@@ -260,7 +260,7 @@
                                     </div>
                                     <!-- Form-Ingredient::end -->
                                     <!-- Form-Description::start -->
-                                    <div class="col-lg-1">
+                                    <div class="col-lg-2">
                                         <label>Quantity</label>
                                         <input type="text" class="form-control" placeholder="Egg Pepper Fry" />
                                         <span class="form-text text-muted">Add the Quantity</span>
@@ -281,9 +281,9 @@
                                     </div>
                                     <!-- Form-Description::end -->
                                     <!-- Form-Description::start -->
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-1">
                                         <label>Action</label>
-                                        <button type="submit" class="form-control btn-primary"><i class="fas fa-plus mr-2 text-white"></i>Add</button>
+                                        <button type="submit" class="form-control btn-primary"><i class="fas fa-plus text-white"></i></button>
                                     </div>
                                     <!-- Form-Description::end -->
                                 </div>
