@@ -283,7 +283,7 @@
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-2">
                                         <label>Action</label>
-                                        <input type="text" class="form-control" placeholder="Egg Pepper Fry" />
+                                        <button type="submit" class="form-control btn-primary"><i class="fas fa-plus mr-2 text-white"></i>Add</button>
                                     </div>
                                     <!-- Form-Description::end -->
                                 </div>
