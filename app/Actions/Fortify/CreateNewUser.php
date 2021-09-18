@@ -21,7 +21,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-
         // Check the email is exists with the name and password as empty.
         $email_exists = User::where('email', $input['email'])
             ->where('name', false)
@@ -44,7 +43,7 @@ class CreateNewUser implements CreatesNewUsers
         } else { // If the email is present the name and password hase be update
             Validator::make($input, [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => $this->passwordRules(),
                 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
             ])->validate();

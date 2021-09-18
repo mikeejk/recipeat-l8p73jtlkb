@@ -104,8 +104,10 @@ class InviteController extends Controller
     {
         // Validation the data
         return request()->validate([
-            'email' => 'required|email',
-            'user' => 'roles',
+            'name' => 'required',
+            'email' => 'required|email', 'required', 'string', 'unique:users',
+            'user' => 'roles', 'required',
+            'contact' => 'required',
         ]);
     }
 

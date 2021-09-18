@@ -446,7 +446,7 @@
             <div class="h-screen flex items-center justify-center bg-black p-5">
                 <div class="flex justify-center w-2/6">
                     <img alt="" class="our-story-card-img"
-                        src="https://www.freepnglogos.com/uploads/food-png/food-grass-fed-beef-foodservice-products-grass-run-farms-4.png"
+                        src="https://freepikpsd.com/media/2019/11/non-veg-thali-png-Transparent-Images.png"
                         data-uia="our-story-card-img" />
                 </div>
                 <div class="space-y-5 w-4/6">
@@ -473,7 +473,7 @@
                                 <div class="xl:w-1/4 md:w-1/2 p-4">
                                     <div class="bg-gray-700 p-6 rounded-lg">
                                         <img class="h-40 rounded w-full object-cover object-center mb-6"
-                                            src="https://www.transparentpng.com/thumb/food/n0nASj-food-plate-cut-out.png" alt="content">
+                                            src="https://www.freepnglogos.com/uploads/vegetables-png/fruit-and-vegetables-basket-png-20.png" alt="content">
                                         <h3 class="tracking-widest text-white text-xl font-bold text-center title-font">
                                             WHAT TO YOU HAVE?</h3>
                                     </div>
