@@ -121,7 +121,8 @@
                         </ul>
                     </div>
                 </li>
-
+                @else
+                 You Don't Have Any Permission
                 {{-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
@@ -248,7 +249,7 @@
 
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Implore</span>
+                        <span class="menu-text">Member</span>
 
                     </a>
                     <div class="menu-submenu">

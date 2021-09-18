@@ -33,15 +33,6 @@
                     </button>
                 </div>
             </form>
-
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <button type="submit"
-                    class="px-5 py-3 border-solid border border-blue-500 text-black font-bold text-base rounded-xl hover:bg-blue-400 hover:text-white">
-                    {{ __('Log Out') }}
-                </button>
-            </form>
         </div>
     </div>
 </div>

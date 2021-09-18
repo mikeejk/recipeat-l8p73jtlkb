@@ -250,11 +250,11 @@
                                     <div class="col-lg-3">
                                         <label>Ingredient</label>
                                         <select class="custom-select form-control" name="ingredient">
-                                            {{-- @foreach ($ingredients as $ingredient)
+                                            @foreach ($ingredients as $ingredient)
                                                     <option value="{{ $ingredient->id }} ">
                                                         {{ $ingredient->ingredient }}
                                                     </option>
-                                                @endforeach --}}
+                                                @endforeach
                                         </select>
                                         <span class="form-text text-muted">Add the Ingredient for this recipe</span>
                                     </div>
@@ -270,11 +270,11 @@
                                     <div class="col-lg-2">
                                         <label>Measurement</label>
                                         <select class="custom-select form-control" name="measurement">
-                                            {{-- @foreach ($measurements as $measurement)
+                                            @foreach ($measurements as $measurement)
                                                     <option value="{{ $measurement->id }} ">
                                                         {{ $measurement->measurement }}
                                                     </option>
-                                                @endforeach --}}
+                                                @endforeach
                                         </select>
                                         <span class="form-text text-muted">Select the measurement for the selected
                                             recipe</span>
