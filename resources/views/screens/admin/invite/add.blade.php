@@ -42,7 +42,8 @@
                 <!--begin::Container-->
                 <div class="container">
                     <div class="container">
-                        <form class="form" action="/invite" method="post">
+                        <form class="
+                                form" action="/invite" method="post">
                             @csrf
                             <div class="card-body bg-white">
                                 <div class="form-group row mt-3">
@@ -52,7 +53,7 @@
                                     <label class="col-lg-1 col-form-label text-lg-left">Name:</label>
                                     <div class="col-lg-3">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Full name" name="name" />
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Full name" name="name" />
                                             <div class="input-group-append"><span class="input-group-text">
                                                     <i class="las la-user-check"></i></span></div>
                                         </div>
@@ -64,8 +65,8 @@
                                     <label class="col-lg-1 col-form-label text-lg-left ">Email:</label>
                                     <div class="col-lg-3">
                                         <div class="input-group">
-                                            <input type="email" class="form-control" placeholder="Mail address"
-                                                name="email" />
+                                            <input type="email" class="form-control  @error('email') is-invalid @enderror"
+                                                placeholder="Mail address" name="email" />
                                             <div class="input-group-append"><span class="input-group-text"><i
                                                         class="las la-at"></i></span></div>
                                         </div>
@@ -93,6 +94,7 @@
                                     <div class="col-lg-3">
                                         <div class="input-group">
                                             <select class="custom-select form-control" name="roles">
+                                                <option>Select the user Membership</option>
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->id }} ">
                                                         {{ $role->name }}
@@ -102,7 +104,7 @@
                                             <div class="input-group-append"><span class="input-group-text"><i
                                                         class="las la-spinner"></i></span></div>
                                         </div>
-                                        <span class="form-text text-muted">Select membership role</span>
+                                        <span class="form-text text-muted">Select the membership role</span>
                                     </div>
 
                                 </div>
@@ -112,7 +114,7 @@
                                     <div class="col-lg-9"></div>
                                     <div class="col-lg-3">
                                         <button type="submit" class="btn btn-primary mr-2">Send Invite</button>
-                                        <a href="/customers_aside">
+                                        <a href="/customers">
                                             <button type="button" class="btn btn-secondary">Cancel</button>
                                         </a>
                                     </div>

@@ -16,13 +16,12 @@
         <!--begin::Header-->
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
-                <div class="symbol-label" style="background-image:url('assets/media/users/150-6.jpg')"></div>
-                <i class="symbol-badge bg-success"></i>
+                <div class="symbol-label" style="background-image:url('assets/media/users/blank.png')"></div>
+
             </div>
             <div class="d-flex flex-column">
                 <a href="#"
                     class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->name }}</a>
-                <div class="text-muted mt-1">Role</div>
                 <div class="navi mt-1">
                     <a href="#" class="navi-item">
                         <span class="navi-link p-0 pb-2">
@@ -62,7 +61,7 @@
         <div class="navi navi-spacer-x-0 p-0">
 
             <!--begin::Item-->
-            <a href="/profile" class="navi-item">
+            <a href="#" class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
@@ -94,6 +93,7 @@
 
             <!--end:Item-->
 
+            @hasrole('Chef|Home-Chef|User|Admin')
             <!--begin::Item-->
             <a href="/recipes" class="navi-item">
                 <div class="navi-link">
@@ -124,8 +124,7 @@
                     </div>
                 </div>
             </a>
-
-            <!--end:Item-->
+            @endhasrole
 
             {{-- <!--begin::Item-->
 					<a href="custom/apps/user/profile-2.html" class="navi-item">
@@ -206,7 +205,7 @@
         <!--end::Nav-->
 
         <!--begin::Separator-->
-        <div class="separator separator-dashed my-7"></div>
+        {{-- <div class="separator separator-dashed my-7"></div> --}}
 
         <!--end::Separator-->
 

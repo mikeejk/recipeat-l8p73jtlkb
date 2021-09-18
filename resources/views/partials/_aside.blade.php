@@ -122,7 +122,7 @@
                     </div>
                 </li>
 
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                {{-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
 
@@ -171,10 +171,10 @@
                                     </i>
                                     <span class="menu-text">Email settings</span>
                                 </a>
-                            </li> --}}
+                            </li>l
                         </ul>
                     </div>
-                </li>
+                </li> --}}
                 @endhasrole
 
                 @hasrole('Admin')

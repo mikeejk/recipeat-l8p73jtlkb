@@ -1,8 +1,3 @@
-<p>Hi,</p>
-<p>Someone has invited you to access their account.</p>
-<a href="{{ url('accept', $invite->token) }}">Click here</a> to activate!
-
-
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
