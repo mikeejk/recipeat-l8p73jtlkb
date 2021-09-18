@@ -37,68 +37,61 @@
     </div>
 
     <!-- Question 02 -->
-    <div class="row w-full overflow-hidden h-screen setup-content {{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
-        <div class="md:w-4/12 lg:w-3/12 bg-gray-200  flex px-2 h-full md:block hidden">
-            <div class="flex px-6 py-2 mt-2 ">
-                <i class="las la-angle-left mt-1"></i>
-            <button type="submit" class="xl:ml-0 text-gray-800 font-semibold rounded-xl focus:outline-none
-                " wire:click="back(1)">Back</button>
-            </div>
-            <div class="flex flex-col lg:mt-40 mt-20 p-2">
-                <h1 class="text-gray-900 text-center font-medium  lg:text-3xl text-xl mb-2 ">Cooks Love us!</h1>
-                <div class="flex justify-center">
-                    <i class="las la-star text-red-400"></i>
-                    <i class="las la-star text-red-400"></i>
-                    <i class="las la-star text-red-400"></i>
-                    <i class="las la-star text-red-400"></i>
-                    <i class="las la-star-half text-red-400"></i>
-                </div>
-                <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
-            </div>
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
+        <div class="md:w-4/12 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
+        <div class="flex px-6 py-2 mt-2">
+        <i class="las la-angle-left mt-1"></i>
+        <button type="submit" class="xl:ml-0 text-gray-800 font-semibold rounded-xl focus:outline-none" wire:click="back(1)">Back</button>
         </div>
-        <div class="md:w-8/12 lg:9/12 w-full px-5  flex flex-col justify-center items-center">
-            <div for="name"
-                class="md:text-center mb-10 p-2  text-center lg:text-4xl text-black font-bold text-xl  font-serif italic">How
-                do
-                you I dentify
-                yourself ?
-            </div>
-            <div class="form-group lg:text-xl md:text-lg w-full">
-                <div class="flex md:flex-row flex-col md:space-x-4 px-5 justify-center">
-                    <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-                        <div class="p-2 sm:w-1/2 w-full">
-                          <div class="bg-gray-100 rounded flex p-2 h-full items-center">
-                            <label class="radio-inline"><input type="radio" wire:model="gender" value="Male"
-                                          {{{ $gender == 'Male' ? "checked" : "" }}}>&nbsp; <i class="fas fa-male"></i> &nbsp; Male
-                                  </label>
-
-                          </div>
-                        </div>
-                        <div class="p-2 sm:w-1/2 w-full">
-                          <div class="bg-gray-100 rounded flex p-2 h-full items-center">
-                            <label class="radio-inline"><input type="radio" wire:model="gender" value="Fe-Male"
-                                          {{{ $gender == 'Fe-Male' ? "checked" : "" }}}>&nbsp; <i class="fas fa-female"></i> &nbsp;
-                                      Fe-Male</label>
-                          </div>
-                        </div>
-                        <div class="p-2 sm:w-1/2 w-full">
-                          <div class="bg-gray-100 rounded flex p-2 h-full items-center">
-                            <label class="radio-inline"><input type="radio" wire:model="gender" value="Other"
-                                          {{{ $gender == 'Other' ? "checked" : "" }}}>&nbsp; <i class="fas fa-mars"></i> &nbsp; Other
-                                  </label>
-                          </div>
-                        </div>
-                      </div>
-            </div>
-
-                @error('gender') <span class="error text-red-500">{{ $message }}</span> @enderror
-            </div>
-            <div class="flex justify-center items-center">
-            <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md
-              px-6 py-2 focus:outline-none" wire:click="secondStepSubmit">Next</button>
-            </div>
+        <div class="flex flex-col lg:mt-40 mt-20 p-2">
+        <h1 class="text-gray-900 text-center font-medium lg:text-3xl text-xl mb-2">Cooks Love us!</h1>
+        <div class="flex justify-center">
+        <i class="las la-star text-red-400"></i>
+        <i class="las la-star text-red-400"></i>
+        <i class="las la-star text-red-400"></i>
+        <i class="las la-star text-red-400"></i>
+        <i class="las la-star-half text-red-400"></i>
         </div>
-    </div>
+        <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
+        </div>
+        </div>
+        <div class="md:w-8/12 lg:w-9/12 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
+        <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
+        <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
+        <h4 class="text-white text-center font-bold lg:text-3xl md:text-2xl text-lg">How do you I dentify yourself ?</h4>
+        </div>
+        <div class="flex flex-col py-6 h-68 space-y-5 bg-white rounded-b-2xl">
+        <div class="w-full flex flex-col justify-center items-center form-group">
+        <div class="flex md:flex-row flex-col md:space-x-4 px-5 justify-center">
+        <div class="flex flex-wrap lg:w-full sm:mx-auto sm:mb-2 -mx-2">
+        <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-2 h-full items-center font-bold text-lg">
+        <label class="radio-inline"><input type="radio" wire:model="gender" value="Male" {{{ $gender == 'Male' ? "checked" : "" }}}>&nbsp; <i class="fas fa-male"></i> &nbsp; Male </label>
+        </div>
+        </div>
+        <div class="p-2 sm:w-1/2 w-full">
+        <div class="border-green-400 border rounded-xl flex p-2 h-full items-center font-bold text-lg">
+        <label class="radio-inline"><input type="radio" wire:model="gender" value="Fe-Male" {{{ $gender == 'Fe-Male' ? "checked" : "" }}}>&nbsp; <i class="fas fa-female"></i> &nbsp; Female</label>
+        </div>
+        </div>
+        <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-2 h-full items-center font-bold text-lg">
+        <label class="radio-inline"><input type="radio" wire:model="gender" value="Other" {{{ $gender == 'Other' ? "checked" : "" }}}>&nbsp; <i class="fas fa-mars"></i> &nbsp; Other </label>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="w-full flex mt-5 justify-center">
+        <button type="button" class="md:w-1/2 lg:w-1/3 py-2 px-1 bg-green-500 hover:bg-green-600 text-white rounded-md lg:text-lg text-base focus:outline-none focus:border-transparent shadow-lg" wire:click="secondStepSubmit">Hit me! To Next</button>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
 
     <!-- Question 03 -->
     <div class="row w-full -mx-2 h-screen setup-content {{ $currentStep != 3 ? 'display-none' : '' }}" id="step-3">
