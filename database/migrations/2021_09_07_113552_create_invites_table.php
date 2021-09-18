@@ -14,14 +14,14 @@ class CreateInvitesTable extends Migration
     public function up()
     {
         Schema::create('invites', function (Blueprint $table) {
-            
+
             // Auto Genrated - ID
             $table->id();
 
             // User Entered - Data Saving
-            $table->string('email');
-            $table->string('name')->nullable();
-            $table->string('contact')->nullable();
+            $table->string('email')->unique();
+            $table->string('name');
+            $table->string('contact');
 
             // Foreign Keys - Data Saving
             $table->unsignedBigInteger('role_id')->nullable();

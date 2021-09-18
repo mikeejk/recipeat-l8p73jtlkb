@@ -201,16 +201,6 @@ class Questionnaire extends Component
     // Function - SubmitForm
     public function submitForm()
     {
-        // Create New Object
-        // $questionnaire = new Questionnaire();
-
-        // // User_id Form User Model
-        // $user_id = auth()->user()->id;
-
-        // Recipe-Data Storeing - Foreign Keys
-        // $questionnaire->user_id = $user_id;
-
-         // Data - Save
         Question::create([
             'name' => $this->name,
             'gender' => $this->gender,
@@ -226,7 +216,7 @@ class Questionnaire extends Component
             'fav_ingr' => $this->fav_ingr,
             'level_spici' => $this->level_spici,
             'time_spend' => $this->time_spend,
-            // 'user_id' => $this->user_id,
+            'user_id' => $this->user_id,
         ]);
 
         // Next Step
