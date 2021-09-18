@@ -21,7 +21,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -60,7 +60,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-8/12 lg:w-9/12 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-8/12 lg:w-9/12 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -117,7 +117,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -155,7 +155,7 @@
                     <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
                   </div>
                 </div>
-                <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+                <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
                   <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
                     <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
                       <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -216,7 +216,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -254,7 +254,7 @@
                     <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
                   </div>
                 </div>
-                <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+                <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
                   <div class="w-3/4 flex lg:justify-start items-center h-auto p-4 justify-center">
                     <div class="flex flex-col h-full w-full ml-3 shadow-xl">
                       <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -323,7 +323,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -364,7 +364,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -403,7 +403,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -487,7 +487,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -561,7 +561,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -602,7 +602,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -643,7 +643,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -686,7 +686,7 @@
             <p class="text-center p-2 text-base">We rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
           </div>
         </div>
-        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://img.freepik.com/free-photo/basil-leaves-chia-seeds-halved-tomato-oil-arranged-white-wooden-floor_23-2148026880.jpg?size=626&ext=jpg)">
+        <div class="md:w-3/4 w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center" style="background-image:url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg)">
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
@@ -731,7 +731,7 @@
                     <h1 class="text-xl text-start md:text-3xl md:tracking-widest font-bold leading-tight  mb-10"><span class="text-3xl md:text-5xl text-red-600">Recip</span><span  class="text-3xl md:text-5xl text-black">eat</span> Account</h1>
 
                 <a href="/welcome" class="flex justify-start text-decoration-none">
-                    <button type="button" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-lg
+                    <button type="submit" class="xl:ml-0 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-lg
                   px-6 py-2 mt-8" wire:click="submitForm">Go to Dashboard</button>
                 </a>
 
