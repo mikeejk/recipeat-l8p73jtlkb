@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-md-1 col-5">
                                 <button type="submit" name="action" value="category_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                                    class="btn btn-primary w-lg-100 w-100">Save & Exit</button>
                             </div>
                             <div class="col-md-2 col-7">
                                 <button type="submit" name="action" value="category_save_next"

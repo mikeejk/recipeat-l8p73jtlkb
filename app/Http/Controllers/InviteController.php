@@ -53,7 +53,7 @@ class InviteController extends Controller
         // Invite-Data Storeing - User Entered
         $invite->name = $request->get('name');
         $invite->contact = $request->get('contact');
-        $invite->email = $request->get('email')->unique();
+        $invite->email = $request->get('email');
 
         // Invite-Data Storeing - Random Genrated
         $invite->token = $token;
