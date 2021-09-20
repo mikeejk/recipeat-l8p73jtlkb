@@ -2,14 +2,15 @@
 
 @section('content')
     <!-- begin::Login -->
-    <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+    <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid h-100 bg-white" id="kt_login">
         <!--begin::Content-->
         <div
-            class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+            class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden mx-auto">
             <!--begin::Content body-->
             <div class="d-flex flex-column-fluid flex-center">
                 <!--begin::Signin-->
                 <div class="login-form login-signin">
+                    
                     <!--begin::Form-->
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -58,7 +59,7 @@
                         <!--end::Form group-->
 
                         <!--begin::Action-->
-                        <div class="pb-lg-0 pb-5">
+                        <div class="pb-lg-0">
                             <button type="submit" id="kt_login_signin_submit"
                                 class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">{{ __('Sign In') }}</button>
                         </div>
@@ -67,7 +68,10 @@
 
                     </form>
                     <!--end::Form-->
-
+                    <div class="d-flex justify-content-lg-start border-1 justify-content-center align-items-end py-7 py-lg-0">
+                        <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
+                        <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
+                    </div>
                 </div>
                 <!--end::Signin-->
 
@@ -75,10 +79,7 @@
             <!--end::Content body-->
 
             <!--begin::Content footer-->
-            <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
-                <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
-                <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
-            </div>
+
             <!--end::Content footer-->
 
         </div>
