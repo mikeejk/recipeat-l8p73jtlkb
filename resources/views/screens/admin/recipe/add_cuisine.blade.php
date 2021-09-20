@@ -64,7 +64,7 @@
                             <!-- If Condition -->
                             <div class="col-lg-1 col-5">
                                 <button type="submit" name="action" value="cuisine_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save & Exit</button>
+                                    class="btn btn-primary w-lg-100 w-100">Save</button>
                             </div>
                             <!-- Else Condition -->
                             <div class="col-lg-2 col-7">
