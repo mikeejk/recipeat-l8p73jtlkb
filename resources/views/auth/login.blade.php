@@ -5,7 +5,7 @@
     <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid h-100 bg-white" id="kt_login">
         <!--begin::Content-->
         <div
-            class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden mx-auto">
+            class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
             <!--begin::Content body-->
             <div class="d-flex flex-column-fluid flex-center">
                 <!--begin::Signin-->
@@ -15,14 +15,13 @@
                         @csrf
                         <!--begin::Title-->
                         <div class="pb-13 pt-lg-0 pt-5">
-                            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome Back to Recipeat
-                            </h3>
+                            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome Back to Recipeat</h3>
                             <span class="text-muted font-weight-bold font-size-h4">New Here?
                                 <a href="register" id="kt_login_signup" class="text-primary font-weight-bolder">Create
                                     an Account</a></span>
                         </div>
                         <!--end::Title-->
-
+                        
                         <!--begin::Form group-->
                         <div class="form-group">
                             <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
@@ -64,24 +63,19 @@
                                 class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">{{ __('Sign In') }}</button>
                         </div>
                         <!--end::Action-->
-
-
+                        <!--end::Form group-->
                     </form>
                     <!--end::Form-->
-
                 </div>
                 <!--end::Signin-->
-
             </div>
             <!--end::Content body-->
-
             <!--begin::Content footer-->
-            <div class="d-flex justify-content-lg-start border-1 justify-content-center align-items-end py-7 py-lg-0">
+            <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
                 <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
                 <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
             </div>
             <!--end::Content footer-->
-
         </div>
         <!--end::Content-->
         <!--begin::Aside-->
