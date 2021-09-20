@@ -123,7 +123,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 
 // // User Questionnaire Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
-    if (auth()->user()->hasRole('Chef|Home-Chef')) {
+    if (auth()->user()->hasRole('Home-Chef')) {
         return view('screens.user.home.questions');
     } else {
         return view('dashboard');
