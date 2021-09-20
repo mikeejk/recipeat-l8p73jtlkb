@@ -247,7 +247,7 @@
 
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Member</span>
+                        <span class="menu-text">User</span>
 
                     </a>
                     <div class="menu-submenu">
@@ -255,7 +255,7 @@
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link">
-                                    <span class="menu-text">Member</span>
+                                    <span class="menu-text">User</span>
                                 </span>
                             </li>
                             <li class="menu-item" aria-haspopup="true">

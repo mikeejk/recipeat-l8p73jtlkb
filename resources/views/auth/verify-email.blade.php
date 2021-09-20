@@ -23,10 +23,9 @@
             </div>
         @endif
 
-        <div class="mt-8 md:px-72 flex items-center justify-between">
+        <div class="mt-8 md:px-72 flex items-center justify-center">
             <form method="POST" action="{{ route('verification.send') }}">
                 @csrf
-
                 <div>
                     <button type="submit" class="px-5 py-3 bg-blue-700 text-white font-bold text-base rounded-xl">
                         {{ __('Resend Email') }}
