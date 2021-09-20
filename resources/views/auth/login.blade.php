@@ -10,13 +10,13 @@
             <div class="d-flex flex-column-fluid flex-center">
                 <!--begin::Signin-->
                 <div class="login-form login-signin">
-                    
                     <!--begin::Form-->
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <!--begin::Title-->
                         <div class="pb-13 pt-lg-0 pt-5">
-                            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome Back to Recipeat</h3>
+                            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome Back to Recipeat
+                            </h3>
                             <span class="text-muted font-weight-bold font-size-h4">New Here?
                                 <a href="register" id="kt_login_signup" class="text-primary font-weight-bolder">Create
                                     an Account</a></span>
@@ -68,10 +68,7 @@
 
                     </form>
                     <!--end::Form-->
-                    <div class="d-flex justify-content-lg-start border-1 justify-content-center align-items-end py-7 py-lg-0">
-                        <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
-                        <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
-                    </div>
+
                 </div>
                 <!--end::Signin-->
 
@@ -79,7 +76,10 @@
             <!--end::Content body-->
 
             <!--begin::Content footer-->
-
+            <div class="d-flex justify-content-lg-start border-1 justify-content-center align-items-end py-7 py-lg-0">
+                <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
+                <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
+            </div>
             <!--end::Content footer-->
 
         </div>
