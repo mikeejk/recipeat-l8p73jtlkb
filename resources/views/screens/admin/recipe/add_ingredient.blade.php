@@ -81,6 +81,56 @@
             <!--end::Container-->
         </div>
         <!--end::Entry-->
+        <!--begin::Data-Table-->
+        <div class="mt-5 d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Card-->
+                <div class="card-body bg-white">
+                    <table class="table" id="ingredient-table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ingredient</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Data-Table-->
     </div>
     <!--end::Content-->
+
+    @push('scripts')
+        <script>
+            $(function() {
+                $('#ingredient-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: 'ingredient.data',
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'ingredient',
+                            name: 'ingredient',
+                            orderable: false
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            searchable: false,
+                            orderable: false
+                        },
+                    ]
+                });
+            });
+        </script>
+    @endpush
+
 @endsection

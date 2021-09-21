@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
 
 class CreateNewUser implements CreatesNewUsers
@@ -66,5 +67,17 @@ class CreateNewUser implements CreatesNewUsers
                 ]
             );
         }
+    }
+
+    // Function - getIndex
+    public function getIndex()
+    {
+        return view('screens.admin.home.dashboard');
+    }
+
+    // Function - anyData
+    public function anyData()
+    {
+        return Datatables::of(User::query())->make(true);
     }
 }

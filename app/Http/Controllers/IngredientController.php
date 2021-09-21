@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ingredient;
+use Yajra\Datatables\Datatables;
 
 class IngredientController extends Controller
 {
@@ -31,5 +32,25 @@ class IngredientController extends Controller
         } elseif ($request->get('action') == 'ingredient_save_next') {
             return redirect()->back();
         }
+    }
+
+    // Function - getIndex
+    public function getIndex()
+    {
+        return view('screens.admin.recipe.add_ingredient');
+    }
+
+    // Function - anyData
+    public function anyData()
+    {
+        $ingredients = Ingredient::all();
+        return datatables()->of($ingredients)
+            ->addColumn('action', function ($ingredient) {
+                $html = '<button href="/recipes/'.$ingredient->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end" disabled>Edit this Ingredient</button> ';
+                $html .= '<button href="/recipes/'.$ingredient->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end" disabled>Delete this Ingredient</button>';
+                return $html;
+            })->toJson();
+
+        return Datatables::of(Ingredient::query())->make(true);
     }
 }

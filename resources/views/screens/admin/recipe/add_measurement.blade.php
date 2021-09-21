@@ -80,7 +80,56 @@
             <!--end::Container-->
         </div>
         <!--end::Entry-->
+        <!--begin::Data-Table-->
+        <div class="mt-5 d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Card-->
+                <div class="card-body bg-white">
+                    <table class="table" id="measurement-table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Measurement</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Data-Table-->
     </div>
     <!--end::Content-->
+
+    @push('scripts')
+        <script>
+            $(function() {
+                $('#measurement-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: 'measurement.data',
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'measurement',
+                            name: 'measurement',
+                            orderable: false
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            searchable: false,
+                            orderable: false
+                        },
+                    ]
+                });
+            });
+        </script>
+    @endpush
 
 @endsection

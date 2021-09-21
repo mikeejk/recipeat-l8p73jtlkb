@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Measurement;
+use Yajra\Datatables\Datatables;
 
 class MeasurementController extends Controller
 {
@@ -31,5 +32,25 @@ class MeasurementController extends Controller
         } elseif ($request->get('action') == 'measurement_save_next') {
             return redirect()->back();
         }
+    }
+
+    // Function - getIndex
+    public function getIndex()
+    {
+        return view('screens.admin.recipe.add_measurement');
+    }
+
+    // Function - anyData
+    public function anyData()
+    {
+        $measurements = Measurement::all();
+        return datatables()->of($measurements)
+            ->addColumn('action', function ($measurement) {
+                $html = '<button href="/recipes/'.$measurement->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end" disabled>Edit this Measurement</button> ';
+                $html .= '<button href="/recipes/'.$measurement->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end" disabled>Delete this Measurement</button>';
+                return $html;
+            })->toJson();
+
+        return Datatables::of(Measurement::query())->make(true);
     }
 }

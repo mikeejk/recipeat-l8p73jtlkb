@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Yajra\Datatables\Datatables;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,6 @@ class CategoryController extends Controller
     {
         return view('screens.admin.recipe.add_category');
     }
-
 
     // Function - Store
     public function store(Request $request)
@@ -32,5 +32,25 @@ class CategoryController extends Controller
         } elseif ($request->get('action') == 'category_save_next') {
             return redirect()->back();
         }
+    }
+
+    // Function - getIndex
+    public function getIndex()
+    {
+        return view('screens.admin.recipe.add_category');
+    }
+
+    // Function - anyData
+    public function anyData()
+    {
+        $categorys = Category::all();
+        return datatables()->of($categorys)
+            ->addColumn('action', function ($category) {
+                $html = '<button href="/recipes/'.$category->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end" disabled>Edit this Category</button> ';
+                $html .= '<button href="/recipes/'.$category->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end" disabled>Delete this Category</button>';
+                return $html;
+            })->toJson();
+
+        return Datatables::of(Category::query())->make(true);
     }
 }

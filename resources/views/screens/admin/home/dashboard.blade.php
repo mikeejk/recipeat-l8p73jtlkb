@@ -25,7 +25,7 @@
                 </div>
                 <!--end::Subheader-->
 
-                <!--begin::Row-->
+                {{-- <!--begin::Row-->
                 <div class="row">
                     <div class="col-lg-4">
                         <!--begin::Stats Widget 1-->
@@ -295,7 +295,7 @@
                         <!--end::Stats Widget 3-->
                     </div>
                 </div>
-                <!--end::Row-->
+                <!--end::Row--> --}}
 
                 <!--begin::Table Widget 6-->
                 <div class="card card-custom gutter-b">
@@ -303,13 +303,13 @@
                     <div class="card-header border-0 py-5">
                         <h3 class="card-title align-items-start flex-column">
                             <span class="card-label font-weight-bold font-size-h4 text-dark-75">Recipeat Memebrs</span>
-                            <span class="text-muted mt-3 font-weight-bold font-size-sm">More than 100+ new members</span>
+                            <span class="text-muted mt-3 font-weight-bold font-size-sm">All my recipeat users</span>
                         </h3>
                     </div>
                     <!--end::Header-->
                     <!--begin::Body-->
-                    <div class="card-body py-0">
-                        <!--begin::Table-->
+                    <div class="card-body">
+                        {{-- <!--begin::Table-->
                         <div class="table-responsive">
                             <table class="table table-borderless table-head-custom table-vertical-center"
                                 id="kt_advance_table_widget_1">
@@ -634,7 +634,20 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--end::Table-->
+                        <!--end::Table--> --}}
+                        <!--begin: Datatable-->
+                        <div class="">
+                            <table class=" table" id="customers-table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            </table>
+                        </div>
+                        <!--end: Datatable-->
                     </div>
                     <!--end::Body-->
                 </div>
@@ -645,4 +658,33 @@
 
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            $(function() {
+                $('#customers-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: 'users.data',
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'email',
+                            name: 'email',
+                            searchable: false,
+                            orderable: false,
+
+                        }
+                    ]
+                });
+            });
+        </script>
+    @endpush
+
 @endsection

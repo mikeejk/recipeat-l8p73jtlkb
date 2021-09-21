@@ -7,6 +7,7 @@ use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
+use App\Actions\Fortify\CreateNewUser;
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
@@ -25,6 +26,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
     return view('welcome');
 });
+
+// Recipeat Customer Data Table - Data Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
+
+// Recipeat Customer Data Table - Index Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', [CreateNewUser::class, 'getIndex']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Admin Routes
@@ -63,11 +70,23 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [Categ
 // Store Category Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
 
+// Recipeat Category Data Table - Data Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/category.data', [CategoryController::class, 'anyData']);
+
+// Recipeat Category Data Table - Index Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'getIndex']);
+
 // Add Cuisine Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
 
 // Store Cuisine Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
+
+// Recipeat Cuisine Data Table - Data Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/cuisine.data', [CuisineController::class, 'anyData']);
+
+// Recipeat Cuisine Data Table - Index Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'getIndex']);
 
 // Add Ingredient Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'create']);
@@ -75,11 +94,23 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [Ing
 // Store Ingredient Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/ingredients', [IngredientController::class, 'store']);
 
+// Recipeat Ingredient Data Table - Data Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/ingredient.data', [IngredientController::class, 'anyData']);
+
+// Recipeat Ingredient Data Table - Index Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'getIndex']);
+
 // Add Measurement Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'create']);
 
 // Store Measurement Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'store']);
+
+// Recipeat Measurement Data Table - Data Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/measurement.data', [MeasurementController::class, 'anyData']);
+
+// Recipeat Measurement Data Table - Index Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'getIndex']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    User Routes

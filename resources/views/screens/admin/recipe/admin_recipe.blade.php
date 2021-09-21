@@ -101,7 +101,8 @@
                                     <!--end::Button-->
 
                                     <!--begin::Button-->
-                                    <a href="/ingredients_create" style="margin-bottom: 2px;" class="btn btn-primary font-weight-bolder">
+                                    <a href="/ingredients_create" style="margin-bottom: 2px;"
+                                        class="btn btn-primary font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Food/Two-bottles.svg--><svg
@@ -269,6 +270,128 @@
                     </div>
                 </div> --}}
                 <!--end::Card-->
+                {{-- <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <!--begin::Row-->
+                        <div class="row">
+                            <!--begin::Col-->
+                            <div class="col-xxl-3 col-xl-6 col-md-6 col-sm-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom gutter-b card-stretch">
+                                    <!--begin::Body-->
+                                    <div class="card-body pt-4">
+
+                                        <!--begin::User-->
+                                        <div class="d-flex align-items-end py-2">
+                                            <!--begin::Pic-->
+                                            <div class="d-flex align-items-center">
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column">
+                                                    <a href="#"
+                                                        class="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">Category</a>
+                                                </div>
+                                                <!--end::Title-->
+                                            </div>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::User-->
+
+                                    </div>
+                                    <!--end::Body-->
+                                </div>
+                                <!--end::Card-->
+                            </div>
+                            <!--end::Col-->
+
+                            <!--begin::Col-->
+                            <div class="col-xxl-3 col-xl-6 col-md-6 col-sm-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom gutter-b card-stretch">
+                                    <!--begin::Body-->
+                                    <div class="card-body pt-4">
+                                        <!--begin::User-->
+                                        <div class="d-flex align-items-end py-2">
+                                            <!--begin::Pic-->
+                                            <div class="d-flex align-items-center">
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column">
+                                                    <a href="#"
+                                                        class="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">Cuisine</a>
+                                                </div>
+                                                <!--end::Title-->
+                                            </div>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::User-->
+                                    </div>
+                                    <!--end::Body-->
+                                </div>
+                                <!--end::Card-->
+                            </div>
+                            <!--end::Col-->
+
+                            <!--begin::Col-->
+                            <div class="col-xxl-3 col-xl-6 col-md-6 col-sm-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom gutter-b card-stretch">
+                                    <!--begin::Body-->
+                                    <div class="card-body pt-4">
+                                        <!--begin::User-->
+                                        <div class="d-flex align-items-end py-2">
+                                            <!--begin::Pic-->
+                                            <div class="d-flex align-items-center">
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column">
+                                                    <a href="#"
+                                                        class="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">Ingredient</a>
+                                                </div>
+                                                <!--end::Title-->
+                                            </div>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::User-->
+                                    </div>
+                                    <!--end::Body-->
+                                </div>
+                                <!--end::Card-->
+                            </div>
+                            <!--end::Col-->
+
+                            <!--begin::Col-->
+                            <div class="col-xxl-3 col-xl-6 col-md-6 col-sm-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom gutter-b card-stretch">
+                                    <!--begin::Body-->
+                                    <div class="card-body pt-4">
+
+                                        <!--begin::User-->
+                                        <div class="d-flex align-items-end py-2">
+                                            <!--begin::Pic-->
+                                            <div class="d-flex align-items-center">
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column">
+                                                    <a href="#"
+                                                        class="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">Measurement</a>
+                                                </div>
+                                                <!--end::Title-->
+                                            </div>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::User-->
+                                    </div>
+                                    <!--end::Body-->
+                                </div>
+                                <!--end::Card-->
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Row-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Entry--> --}}
             </div>
             <!--end::Container-->
         </div>

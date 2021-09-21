@@ -117,13 +117,13 @@ class RecipeController extends Controller
     // Function - anyData
     public function anyData(Request $request)
     {
-            $customers = Recipe::all();
-            return datatables()->of($customers)
-                ->addColumn('action', function ($recipe) {
-                    $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';
-                    $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete this Recipe</button>';
-                    return $html;
-                })->toJson();
+        $customers = Recipe::all();
+        return datatables()->of($customers)
+            ->addColumn('action', function ($recipe) {
+                $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';
+                $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete this Recipe</button>';
+                return $html;
+            })->toJson();
 
         return Datatables::of(Recipe::query())->make(true);
     }
