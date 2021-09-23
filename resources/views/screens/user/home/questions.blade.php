@@ -17,7 +17,13 @@
 
 <body class="">
 
-        <livewire:questionnaire />
+    @hasrole('Home-Chef')
+    <livewire:questionnaire />
+    @endhasrole
+
+    @hasrole('Chef')
+    <livewire:chef-question />
+    @endhasrole
 
 </body>
 
