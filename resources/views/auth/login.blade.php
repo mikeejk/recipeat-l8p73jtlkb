@@ -21,7 +21,7 @@
                                     an Account</a></span>
                         </div>
                         <!--end::Title-->
-                        
+
                         <!--begin::Form group-->
                         <div class="form-group">
                             <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
@@ -79,7 +79,7 @@
         </div>
         <!--end::Content-->
         <!--begin::Aside-->
-        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #E97474;">
+        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #E97474; width: auto;">
             <!--begin::Aside Top-->
             <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
                 <!--begin::Aside header-->
@@ -88,9 +88,9 @@
                 </a>
                 <!--end::Aside header-->
                 <!--begin::Aside title-->
-                <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg text-white">Plan your activities and
-                    control your
-                    <br />Progress online
+                <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg text-white">&nbsp;&nbsp;&nbsp;Plan your activities and
+                    control&nbsp;&nbsp;&nbsp;<br />Your
+                    progress online
                 </h3>
                 <!--end::Aside title-->
             </div>
