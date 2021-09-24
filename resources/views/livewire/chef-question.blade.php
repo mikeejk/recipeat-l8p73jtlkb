@@ -6,7 +6,7 @@
     @endif
     <div class="bg-black w-full">
         <!-- Question 01 -->
-        <div class="row w-full flex h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
+        <div class="row w-full flex lg:h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
             <div class="w-full bg-cover bg-center bg-no-repeat bg-white flex flex-col justify-center items-center"
                 style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://img1.wsimg.com/isteam/ip/5086b5de-5e42-44ab-8021-9f54dcff236a/AdobeStock_232483527.jpeg')">
                 <div class="md:w-3/4 mx-auto w-full flex lg:justify-center items-center h-auto p-4 justify-center">
