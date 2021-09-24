@@ -415,6 +415,103 @@
         }
 
     </style>
+    <!--Style for Buttons-->
+    <style>
+        /* Nina */
+        .button--nina {
+            -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+        }
+
+        .button--nina>span {
+            display: inline-block;
+            padding: 0;
+            opacity: 0;
+            -webkit-transform: translate3d(0, -10px, 0);
+            transform: translate3d(0, -10px, 0);
+            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+            transition: transform 0.3s, opacity 0.3s;
+            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        }
+
+        .button--nina::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+            transition: transform 0.3s, opacity 0.3s;
+            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        }
+
+        .button--nina:hover::before {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+
+        .button--nina:hover>span {
+            opacity: 1;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .button--nina:hover>span:nth-child(1) {
+            -webkit-transition-delay: 0.045s;
+            transition-delay: 0.045s;
+        }
+
+        .button--nina:hover>span:nth-child(2) {
+            -webkit-transition-delay: 0.09s;
+            transition-delay: 0.09s;
+        }
+
+        .button--nina:hover>span:nth-child(3) {
+            -webkit-transition-delay: 0.135s;
+            transition-delay: 0.135s;
+        }
+
+        .button--nina:hover>span:nth-child(4) {
+            -webkit-transition-delay: 0.18s;
+            transition-delay: 0.18s;
+        }
+
+        .button--nina:hover>span:nth-child(5) {
+            -webkit-transition-delay: 0.225s;
+            transition-delay: 0.225s;
+        }
+
+        .button--nina:hover>span:nth-child(6) {
+            -webkit-transition-delay: 0.27s;
+            transition-delay: 0.27s;
+        }
+
+        .button--nina:hover>span:nth-child(7) {
+            -webkit-transition-delay: 0.315s;
+            transition-delay: 0.315s;
+        }
+
+        .button--nina:hover>span:nth-child(8) {
+            -webkit-transition-delay: 0.36s;
+            transition-delay: 0.36s;
+        }
+
+        .button--nina:hover>span:nth-child(9) {
+            -webkit-transition-delay: 0.405s;
+            transition-delay: 0.405s;
+        }
+
+        .button--nina:hover>span:nth-child(10) {
+            -webkit-transition-delay: 0.45s;
+            transition-delay: 0.45s;
+        }
+
+    </style>
 </head>
 
 <body class="antialiased">
@@ -499,12 +596,31 @@
                                                         </div>
                                                     </div>
                                                     <!-- label -->
-                                                    <div class="ml-3 text-gray-700 font-medium">
+                                                    <div id="toggle_label" class="ml-3 text-gray-700 font-medium">
                                                         Ingredients
                                                     </div>
                                                 </label>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- Buttons -->
+                                    <div class="flex flex-wrap justify-center space-x-10 py-5 my-5">
+                                        <a href="!"
+                                            class="button button--nina px-8 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                            data-text="Chef">
+                                            <span class="align-middle">C</span>
+                                            <span class="align-middle">h</span>
+                                            <span class="align-middle">e</span>
+                                            <span class="align-middle">f</span>
+                                        </a>
+                                        <a href="!"
+                                            class="button button--nina px-8 py-2   text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                            data-text="user">
+                                            <span class="align-middle">U</span>
+                                            <span class="align-middle">s</span>
+                                            <span class="align-middle">e</span>
+                                            <span class="align-middle">r</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -998,11 +1114,14 @@
         // }
 
         function myFunction() {
-            var x = document.getElementById("textbox");
-            if (document.getElementById("textbox").placeholder == "Search by Recipes") {
-                document.getElementById("textbox").placeholder = "Search by Ingredient";
+            var search_box = document.getElementById("textbox");
+            var tooglebtn_label = document.getElementById("toggle_label");
+            if (search_box.placeholder == "Search by Recipes") {
+                search_box.placeholder = "Search by Ingredient";
+	            tooglebtn_label.style.color = 'red';
             } else {
-                document.getElementById("textbox").placeholder = "Search by Recipes";
+                search_box.placeholder = "Search by Recipes";
+                tooglebtn_label.style.color = '#808080';
             }
         }
     </script>
