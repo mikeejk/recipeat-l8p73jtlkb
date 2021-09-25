@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Livewire;
-
-use Livewire\Component;
 use App\Models\Chef_question;
+use Livewire\Component;
+
 
 class ChefQuestion extends Component
 {
