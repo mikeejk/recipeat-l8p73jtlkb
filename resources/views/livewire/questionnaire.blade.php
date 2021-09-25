@@ -1,12 +1,6 @@
-<div>
-    @if(!empty($successMsg))
-    <div class="alert alert-success">
-        {{ $successMsg }}
-    </div>
-    @endif
+
 
     <!-- Question 01 -->
-
    <div class="row w-full flex h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
         <div class="md:w-1/4 bg-gray-200 md:flex px-2 h-full hidden">
           <div class="flex flex-col border-2 lg:mt-40 mt-20 p-2">
@@ -29,7 +23,7 @@
               </div>
               <div class="flex flex-col py-6 h-56  px-8 space-y-5 bg-white rounded-b-2xl">
                 <div class="w-full flex flex-col justify-center items-center pt-6 form-group">
-                  <input type="text" wire:model="name" placeholder="{{ Auth::user()->name }}" class=" w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" autocomplete required />
+                  <input type="text" wire:model="name" placeholder="Your Name" class=" w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" autocomplete required />
                   @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="w-full flex justify-center">
@@ -125,7 +119,7 @@
               </div>
               <div class="flex flex-col py-6 h-56 px-8 space-y-5 bg-white rounded-b-2xl">
                 <div class="w-full flex flex-col justify-center items-center pt-6 form-group">
-                  <input type="text" wire:model="mail" placeholder="{{ Auth::user()->email }}" class="w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" autocomplete required />
+                  <input type="text" wire:model="mail" placeholder="Mail@something.com" class="w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" autocomplete required />
                   @error('mail') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="w-full flex justify-center">

@@ -7,6 +7,7 @@ use App\Models\Question;
 
 class Questionnaire extends Component
 {
+    // Deceling the varieable in public
     public $currentStep = 1;
     public $name;
     public $gender;

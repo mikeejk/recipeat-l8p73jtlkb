@@ -15,7 +15,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('question.css') }}" rel="stylesheet" id="bootstrap">
+    {{-- <link href="{{ asset('question.css') }}" rel="stylesheet" id="bootstrap"> --}}
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <!-- icon8 - font-awesome-line-awesome -->
     <link rel="stylesheet"

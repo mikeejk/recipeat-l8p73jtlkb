@@ -1,62 +1,48 @@
-<div>
-    @if (!empty($successMsg))
-        <div class="alert alert-success">
-            {{ $successMsg }}
-        </div>
-    @endif
     <div class="bg-black w-full">
+
         <!-- Question 01 -->
-        <div class="row w-full flex lg:h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
+        <div class="row w-full flex lg:h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}"
+            id="step-1">
             <div class="w-full bg-cover bg-center bg-no-repeat bg-white flex flex-col justify-center items-center"
                 style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://img1.wsimg.com/isteam/ip/5086b5de-5e42-44ab-8021-9f54dcff236a/AdobeStock_232483527.jpeg')">
                 <div class="md:w-3/4 mx-auto w-full flex lg:justify-center items-center h-auto p-4 justify-center">
                     <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
                         <div
-                            class="py-6 bg-gradient-to-tr from-red-900 to-red-600 mb-2 border-b-2 border-white rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
+                            class="py-6 bg-gradient-to-tr from-red-900 to-red-600 mb-2 border-b-2 border-white rounded-t-2xl text-center space-y-8">
                             <h4 class="text-white text-center font-bold lg:text-2xl md:text-xl text-lg">What is your
                                 name?</h4>
                         </div>
-                        {{-- <div class="flex flex-col py-6 h-56  px-8 space-y-5 bg-white rounded-b-2xl">
-                <div class="w-full flex flex-col justify-center items-center pt-6 form-group">
-                  <input type="text" wire:model="name" placeholder="{{ Auth::user()->name }}" class=" w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" autocomplete required />
-                  @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
-                </div>
-                <div class="w-full flex justify-center">
-                  <button type="button" class="md:w-1/2 lg:w-1/3 py-2 px-1 bg-green-500 hover:bg-green-600 text-white rounded-md lg:text-lg text-base focus:outline-none focus:border-transparent shadow-lg" wire:click="firstStepSubmit">Hit me! To Next</button>
-                </div>
-              </div> --}}
-                        <div class="bg-white shadow-2xl p-4 rounded-lg">
-                            <div class="mb-5">
-                                <label for="firstname" wire:model="name"
-                                    class="font-bold mb-1 text-gray-700 block">Firstname</label>
-                                <input type="text"
-                                    class="w-full px-4 py-3 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Enter your firstname..." required />
-                                @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
+                        <div class="flex w-full flex-col bg-gray-200 shadow-2xl pt-4 px-4 pb-2 rounded-b-2xl">
+                            <div class="flex flex-row w-full space-x-4 ">
+                                <div class="mb-1 w-1/3">
+                                    <input type="text" wire:model="f_name"
+                                        class="w-full py-2 px-2 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        placeholder="First Name" required />
+                                    @error('f_name') <span class="error text-red-500 text-xs pl-1 font-bold"><i class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>   Required</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-1 w-1/3">
+                                    <input type="text" wire:model="m_name"
+                                        class="w-full py-2 px-2 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        placeholder="Middle Name" required />
+                                    @error('m_name') <span class="error text-red-500 text-xs pl-1 font-bold"><i class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>   Required</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-1 w-1/3">
+                                    <input type="text" wire:model="l_name"
+                                        class="w-full py-2 px-2 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        placeholder="Last Name" required />
+                                    @error('l_name') <span class="error text-red-500 text-xs pl-1 font-bold"><i class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>   Required</span>
+                                    @enderror
+                                </div>
                             </div>
-
-                            <div class="mb-5">
-                                <label for="middlename" wire:model="name"
-                                    class="font-bold mb-1 text-gray-700 block">Middle Name</label>
-                                <input type="text"
-                                    class="w-full px-4 py-3 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Enter your middlename..." required />
-                                @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
-                            </div>
-                            <div class="mb-5">
-                                <label for="lastname" wire:model="name" class="font-bold mb-1 text-gray-700 block">Last
-                                    Name</label>
-                                <input type="text"
-                                    class="w-full px-4 py-3 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Enter your lastname..." required />
-                                @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
-                            </div>
-                            <div class="w-full flex justify-center">
+                            <div class="w-full mt-2 flex justify-end">
                                 <button type="button"
-                                    class=" py-2 px-5 bg-green-500 hover:bg-green-600 text-white rounded-md lg:text-lg text-base focus:outline-none focus:border-transparent shadow-lg"
+                                    class="py-2 px-2 bg-green-500 hover:bg-green-600 text-white rounded-md lg:text-base font-medium text-base focus:outline-none focus:border-transparent shadow-lg"
                                     wire:click="firstStepSubmit">Hit me! To Next</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -75,20 +61,10 @@
                                 date of
                                 birth?</h4>
                         </div>
-                        {{-- <div class="flex flex-col py-6 h-56  px-8 space-y-5 bg-white rounded-b-2xl">
-                  <div class="w-full flex flex-col justify-center items-center pt-6 form-group">
-                    <input type="text" wire:model="name" placeholder="{{ Auth::user()->name }}" class=" w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" autocomplete required />
-                    @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
-                  </div>
-                  <div class="w-full flex justify-center">
-                    <button type="button" class="md:w-1/2 lg:w-1/3 py-2 px-1 bg-green-500 hover:bg-green-600 text-white rounded-md lg:text-lg text-base focus:outline-none focus:border-transparent shadow-lg" wire:click="firstStepSubmit">Hit me! To Next</button>
-                  </div>
-                </div> --}}
                         <div class="bg-white shadow-2xl p-4 rounded-lg">
                             <div class="mb-5">
                                 <label for="password" class="font-bold mb-1 text-gray-700 block">Date
                                     Of Birth</label>
-
                                 <div class="flex flex-wrap -mx-3 mt-10 mb-2">
                                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                         <label
@@ -98,7 +74,7 @@
                                         </label>
                                         <input
                                             class="appearance-none block w-full bg-white shadow-md text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                            id="grid-date" type="text" placeholder="14" required>
+                                            wir:model="date" type="number" placeholder="00" min="0" max="31" required>
                                     </div>
                                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                         <label
@@ -110,18 +86,18 @@
                                             <select
                                                 class="block appearance-none w-full bg-white shadow-md border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                 id="grid-month">
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                                <option>April</option>
-                                                <option>May</option>
-                                                <option>June</option>
-                                                <option>July</option>
-                                                <option>Augest</option>
-                                                <option>September</option>
-                                                <option>October</option>
-                                                <option>November</option>
-                                                <option>December</option>
+                                                <option value="01">January</option>
+                                                <option value="02">February</option>
+                                                <option value="03">March</option>
+                                                <option value="04">April</option>
+                                                <option value="05">May</option>
+                                                <option value="06">June</option>
+                                                <option value="07">July</option>
+                                                <option value="08">August</option>
+                                                <option value="09">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
                                             </select>
                                             <div
                                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -295,8 +271,7 @@
             </div>
         </div>
         <!-- Question 07 -->
-        <div class="row w-full flex h-screen setup-content {{ $currentStep != 7 ? 'display-none' : '' }}"
-            id="step-7">
+        <div class="row w-full flex h-screen setup-content {{ $currentStep != 7 ? 'display-none' : '' }}" id="step-7">
             <div class=" w-full bg-cover bg-no-repeat bg-white flex flex-col justify-center items-center"
                 style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://img1.wsimg.com/isteam/ip/5086b5de-5e42-44ab-8021-9f54dcff236a/AdobeStock_232483527.jpeg')">
                 <div class="md:w-3/4 mx-auto w-full flex lg:justify-center items-center h-auto p-4 justify-center">
@@ -880,4 +855,4 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
