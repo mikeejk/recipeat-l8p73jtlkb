@@ -12,7 +12,7 @@
 
                 <!--begin::Header Nav-->
                 <ul class="menu-nav">
-                    <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active"
+                    {{-- <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active"
                         data-menu-toggle="click" aria-haspopup="true">
                         <a href="#"
                             class="btn btn-fixed-height btn-bg-white btn-text-dark-50 btn-hover-text-primary btn-icon-primary font-weight-bolder font-size-sm px-5 my-1 mr-3"
@@ -24,7 +24,7 @@
                             echo date('F j');
                             ?>
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
                         <a href="javascript:;" class="menu-link menu-toggle">
                             <span class="menu-text">Features</span>
