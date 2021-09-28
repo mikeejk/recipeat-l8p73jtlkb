@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- begin::Login -->
-    <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid h-100 bg-white" id="kt_login">
+    <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid h-100 bg-dark" id="kt_login">
         <!--begin::Content-->
         <div
             class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
@@ -14,20 +14,22 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <!--begin::Title-->
-                        <div class="pb-13 pt-lg-0 pt-5">
-                            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome Back to Recipeat</h3>
-                            <span class="text-muted font-weight-bold font-size-h4">New Here?
-                                <a href="register" id="kt_login_signup" class="text-primary font-weight-bolder">Create
-                                    an Account</a></span>
-                        </div>
+                        <h1 class="text-xl text-center md:text-2xl font-bold leading-tight mt-12 mb-10 text-gray-600">
+                            <img alt="Logo" src="assets/media/logos/recipeat.svg" class="h-30px" />
+                            <br /><br />
+                            <span class="text-white">Sign In</span> &nbsp;
+                            <span class="text-primary">&</span> &nbsp;
+                            <a href="{{ route('register') }}">
+                                <span class="text-danger hover:text-danger">Sign Up</span>
+                            </a>
+                        </h1>
                         <!--end::Title-->
 
                         <!--begin::Form group-->
                         <div class="form-group">
-                            <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
                             <input id="email" type="email"
-                                class="form-control form-control-solid h-auto p-6 rounded-lg @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                class="form-control form-control-solid h-auto p-6 rounded-md bg-white @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email ID">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -38,22 +40,22 @@
 
                         <!--begin::Form group-->
                         <div class="form-group">
-                            <div class="d-flex justify-content-between mt-n5">
-                                <label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
+                            <input id="password" type="password"
+                                class="form-control form-control-solid h-auto p-6 rounded-md bg-white @error('password') is-invalid @enderror"
+                                name="password" required autocomplete="current-password" Placeholder="Password">
+                            <div class="d-flex float-right mt-1">
                                 @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}"
-                                        class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5"
+                                        class="text-white font-size-h6 font-weight-bolder text-hover-primary pt-5"
                                         id="kt_login_forgot">{{ __('Forgot Password ?') }}</a>
                                 @endif
                             </div>
-                            <input id="password" type="password"
-                                class="form-control form-control-solid h-auto p-6 rounded-lg @error('password') is-invalid @enderror"
-                                name="password" required autocomplete="current-password">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+
                         </div>
                         <!--end::Form group-->
 
@@ -72,14 +74,16 @@
             <!--end::Content body-->
             <!--begin::Content footer-->
             <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
-                <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
-                <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
+                <a href="http://web.adsdunia.com/"
+                    class="text-white text-hover-primary font-weight-bolder font-size-h5">Terms</a>
+                <a href="http://web.adsdunia.com/"
+                    class="text-white text-hover-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
             </div>
             <!--end::Content footer-->
         </div>
         <!--end::Content-->
         <!--begin::Aside-->
-        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #E97474; width: auto;">
+        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #9F9D9D; width: auto;">
             <!--begin::Aside Top-->
             <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
                 <!--begin::Aside header-->
@@ -88,7 +92,8 @@
                 </a>
                 <!--end::Aside header-->
                 <!--begin::Aside title-->
-                <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg text-white">&nbsp;&nbsp;&nbsp;Plan your activities and
+                <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg text-white">&nbsp;&nbsp;&nbsp;Plan
+                    your activities and
                     control&nbsp;&nbsp;&nbsp;<br />Your
                     progress online
                 </h3>

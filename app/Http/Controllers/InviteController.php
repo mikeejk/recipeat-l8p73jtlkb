@@ -44,6 +44,8 @@ class InviteController extends Controller
         // Chef if the token is already present or not in the Data-Base
         while (Invite::where('token', $token)->first());
 
+        $invite = Invite::create($this->validatedData());
+        
         // Create New Object
         $invite = new Invite();
 
@@ -76,13 +78,15 @@ class InviteController extends Controller
             abort(404);
         }
 
-        // store the data
+        // Create New Object
         $user = new User();
 
+        // Pass data to User-DBS
         $user->email = $invite->email;
         $user->name = false;
         $user->password = false;
 
+        // store the data
         $user->save();
 
         // If invite is accepted get the timeline for the user updated to Data-Base

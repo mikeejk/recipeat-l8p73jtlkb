@@ -15,8 +15,8 @@
 
 							<!--begin::Nav-->
 							<div class="nav nav-dark">
-								<a href="http://web.adsdunia.com" target="_blank" class="nav-link pl-0 pr-2">About</a>
-								<a href="http://web.adsdunia.com" target="_blank" class="nav-link pr-0">Contact</a>
+								<a href="" target="_blank" class="nav-link pl-0 pr-2">About</a>
+								<a href="" target="_blank" class="nav-link pr-0">Contact</a>
 							</div>
 
 							<!--end::Nav-->

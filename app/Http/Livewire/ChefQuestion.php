@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Livewire;
+
 use App\Models\Chef_question;
 use Livewire\Component;
-
 
 class ChefQuestion extends Component
 {
@@ -40,6 +40,4 @@ class ChefQuestion extends Component
         // Back Step
         $this->currentStep = $step;
     }
-
-
 }

@@ -2,9 +2,9 @@
 
 @section('content')
     <!--begin::Login-->
-    <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+    <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-dark" id="kt_login">
         <!--begin::Aside-->
-        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #76D7C4;  width: auto;">
+        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #9F9D9D;  width: auto;">
             <!--begin::Aside Top-->
             <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
                 <!--begin::Aside header-->
@@ -37,16 +37,22 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <!--begin::Title-->
-                        <div class="pb-13 pt-lg-0 pt-5">
-                            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome to Recipeat</h3>
-                            <span class="text-muted font-weight-bold font-size-h4">Click Here?
-                                <a href="login" id="kt_login_signup" class="text-primary font-weight-bolder">Existing User</a></span>
-                        </div>
+                        <h1 class="text-xl text-center md:text-2xl font-bold leading-tight mt-12 mb-10 text-gray-600">
+                            <span class="">
+                                <img alt="Logo" src="assets/media/logos/recipeat.svg" class="h-30px" />
+                            </span>
+                            <br /><br />
+                            <a href="{{ route('login') }}">
+                                <span class="text-danger hover:text-danger">Sign In</span> &nbsp;
+                            </a>
+                            <span class="text-primary">&</span> &nbsp;
+                            <span class="text-white">Sign Up</span>
+                        </h1>
                         <!--end::Title-->
                         <!--begin::Form group-->
                         <div class="form-group">
                             <input id="name" type="text"
-                                class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('name') is-invalid @enderror"
+                                class="form-control form-control-solid h-auto p-6 rounded-md font-size-h6 bg-white @error('name') is-invalid @enderror"
                                 name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Fullname"
                                 autofocus>
 
@@ -60,7 +66,7 @@
                         <!--begin::Form group-->
                         <div class="form-group">
                             <input id="email" type="email"
-                                class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6 @error('email') is-invalid @enderror"
+                                class="form-control form-control-solid h-auto p-6 rounded-md font-size-h6 bg-white @error('email') is-invalid @enderror"
                                 name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 
                             @error('email')
@@ -73,7 +79,7 @@
                         <!--begin::Form group-->
                         <div class="form-group">
                             <input id="password" type="password"
-                                class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6 @error('password') is-invalid @enderror"
+                                class="form-control form-control-solid h-auto p-6 rounded-md font-size-h6 bg-white @error('password') is-invalid @enderror"
                                 name="password" required autocomplete="new-password" placeholder="Password">
 
                             @error('password')
@@ -86,7 +92,7 @@
                         <!--begin::Form group-->
                         <div class="form-group">
                             <input id="password-confirm" type="password"
-                                class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6"
+                                class="bg-white form-control form-control-solid h-auto p-6 rounded-md font-size-h6"
                                 name="password_confirmation" required autocomplete="new-password"
                                 placeholder="Confirm password">
                         </div>
@@ -97,7 +103,7 @@
                                 <input type="checkbox" name="agree" />
                                 <span></span>
                             </label>
-                            <div class="pl-2">I Agree the
+                            <div class="pl-2 text-white">I Agree the
                                 <a href="#" class="ml-1">terms and conditions</a>
                             </div>
                         </div>
@@ -120,8 +126,8 @@
             <!--end::Content body-->
             <!--begin::Content footer-->
             <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
-                <a href="http://web.adsdunia.com/" class="text-primary font-weight-bolder font-size-h5">Terms</a>
-                <a href="http://web.adsdunia.com/" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
+                <a href="http://web.adsdunia.com/" class="text-white font-weight-bolder font-size-h5">Terms</a>
+                <a href="http://web.adsdunia.com/" class="text-white ml-10 font-weight-bolder font-size-h5">Contact Us</a>
             </div>
             <!--end::Content footer-->
         </div>
