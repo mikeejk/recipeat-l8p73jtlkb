@@ -10,7 +10,7 @@
                 <div class="d-flex align-items-center flex-wrap mr-1">
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
-                        <!--begin::Page Title-->
+                        {{-- <!--begin::Page Title-->
                         <h5 class="text-dark font-weight-bold my-1 mr-5">Recipeat</h5>
                         <!--end::Page Title-->
                         <!--begin::Breadcrumb-->
@@ -25,7 +25,7 @@
                                 <a href="" class="text-muted">New Recipe</a>
                             </li>
                         </ul>
-                        <!--end::Breadcrumb-->
+                        <!--end::Breadcrumb--> --}}
                     </div>
                     <!--end::Page Heading-->
                 </div>

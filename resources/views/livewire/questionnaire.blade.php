@@ -1,4 +1,9 @@
-
+<div>
+    @if (!empty($successMsg))
+        <div class="alert alert-success">
+            {{ $successMsg }}
+        </div>
+    @endif
 
     <!-- Question 01 -->
    <div class="row w-full flex h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
