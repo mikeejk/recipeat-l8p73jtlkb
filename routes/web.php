@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 
 // Recipeat Customer Data Table - Index Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/home', [CreateNewUser::class, 'getIndex']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/all_user', [CreateNewUser::class, 'getIndex']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Admin Routes

@@ -43,11 +43,11 @@ class InviteController extends Controller
         // While - Condition
         // Chef if the token is already present or not in the Data-Base
         while (Invite::where('token', $token)->first());
-
-        $invite = Invite::create($this->validatedData());
         
         // Create New Object
         $invite = new Invite();
+
+        // $invite = $this->validatedData();
 
         // Invite-Data Storeing - Foreign Keys
         $invite->role_id = $request->get('roles');
@@ -124,6 +124,13 @@ class InviteController extends Controller
     // Function - anyData
     public function anyData()
     {
+        $inviteuser = Invite::all();
+        return datatables()->of($inviteuser)
+            ->addColumn('status', function () {
+                $html = 'Invite Send';
+                return $html;
+            })->toJson();
+
         return Datatables::of(Invite::query())->make(true);
     }
 }
