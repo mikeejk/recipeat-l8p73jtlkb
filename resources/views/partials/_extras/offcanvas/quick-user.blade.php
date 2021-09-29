@@ -164,7 +164,7 @@
 
             @hasrole('Admin')
             <!--begin::Item-->
-            <a href="/admin_recipe" class="navi-item">
+            <a href="/categorys_create" class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">

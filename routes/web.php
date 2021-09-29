@@ -70,6 +70,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [Categ
 // Store Category Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
 
+// Edit Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{catagory}/edit', [CategoryController::class, 'edit']);
+
+// Update Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->patch('/categorys/{catagory}', [CategoryController::class, 'update']);
+
+// Destroy Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{catagory}/delete', [CategoryController::class, 'destroy']);
+
 // Recipeat Category Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/category.data', [CategoryController::class, 'anyData']);
 

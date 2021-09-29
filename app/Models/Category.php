@@ -11,6 +11,6 @@ class Category extends Model
 
     protected $fillable = [
         // User Entered - Data Saving
-        'category'
+        'name'
     ];
 }

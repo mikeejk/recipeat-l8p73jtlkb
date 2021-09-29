@@ -155,24 +155,24 @@
                 </div>
                 <!--end::Notice-->
                 <!--begin::Card-->
-                <form class="form" action="/categorys" method="post">
+                <form class="form" action="/categorys/{{ $category->id }}" method="post">
+                    @method('PATCH')
                     @csrf
-
                         <div class="form-group bg-white row p-4 m-1">
                             <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Category</label>
+                                <label class="col-lg-1 col-form-label text-lg-right">Edit Category</label>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control" placeholder="New Category" name="name" />
+                                    <input type="text" class="form-control" placeholder="Edit Category" name="name" value="{{ $category->name }}" />
                                 </div>
-                                <span class="form-text text-muted">Add some new category</span>
+                                <span class="form-text text-muted">Edit category</span>
                             </div>
                             <div class="col-lg-1 col-md-2 col-5 mt-1">
                                 <button type="submit" name="action" value="category_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                                    class="btn btn-primary w-lg-100 w-100">Update</button>
                             </div>
                         </div>
 
@@ -198,56 +198,13 @@
             <!--end::Container-->
         </div>
         <!--end::Entry-->
-        <!--begin::Data-Table-->
-        <div class="-mt-lg-10 m-1 d-flex flex-column-fluid">
-            <!--begin::Container-->
-            <div class="container">
-                <!--begin::Card-->
-                <div class="card-body bg-white">
-                    <table class="table" id="category-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <!--end::Card-->
-            </div>
-            <!--end::Container-->
-        </div>
-        <!--end::Data-Table-->
-
     </div>
     <!--end::Content-->
 
-    @push('scripts')
-        <script>
-            $(function() {
-                $('#category-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: 'category.data',
-                    columns: [{
-                            data: 'name',
-                            name: 'name',
-                            orderable: false
-                        },
-                        {
-                            data: 'action',
-                            name: 'action',
-                            searchable: false,
-                            orderable: false
-                        },
-                    ]
-                });
-            });
-        </script>
-    @endpush
 <style>
     .mt {
   margin-top: -50px !important;
 }
 </style>
+
 @endsection

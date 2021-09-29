@@ -18,20 +18,48 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // Data - Save
-        $data = request()->validate([
-            'category' => 'required',
+        $category = request()->validate([
+            'name' => 'required',
         ]);
 
         // Send the use inputed data to create function
-        Category::create($data);
+        Category::create($category);
 
         // If the user click the (SAVE) button run the if condition
         // If the user click the (SAVE AND INSERT NEXT) button run the else condition
         if ($request->get('action') == 'category_save') {
-            return redirect('/admin_recipe');
+            return redirect()->back();
         } elseif ($request->get('action') == 'category_save_next') {
             return redirect()->back();
         }
+    }
+
+    // Function - Edit
+    public function edit(Category $category)
+    {
+        return view('screens.admin.recipe.edit_category', compact('category'));
+    }
+
+    //Function - Update
+    public function update(Category $category)
+    {
+        $data = request()->validate(
+            [
+                'name' => 'required',
+            ]
+        );
+
+        $category->update($data);
+
+        return redirect()->back();
+    }
+
+    // Function - Destroy
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return redirect()->back();
     }
 
     // Function - getIndex
@@ -46,8 +74,8 @@ class CategoryController extends Controller
         $categorys = Category::all();
         return datatables()->of($categorys)
             ->addColumn('action', function ($category) {
-                $html = '<button href="/recipes/'.$category->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end" disabled>Edit this Category</button> ';
-                $html .= '<button href="/recipes/'.$category->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end" disabled>Delete this Category</button>';
+                $html = '<a href="/categorys/'.$category->id.'/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/categorys/'.$category->id.'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                 return $html;
             })->toJson();
 
