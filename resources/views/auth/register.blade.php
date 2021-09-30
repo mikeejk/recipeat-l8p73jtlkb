@@ -97,7 +97,7 @@
                                 placeholder="Confirm password">
                         </div>
                         <!--end::Form group-->
-                        <!--begin::Form group-->
+                        {{-- <!--begin::Form group-->
                         <div class="form-group d-flex align-items-center">
                             <label class="checkbox mb-0">
                                 <input type="checkbox" name="agree" />
@@ -107,7 +107,7 @@
                                 <a href="#" class="ml-1">terms and conditions</a>
                             </div>
                         </div>
-                        <!--end::Form group-->
+                        <!--end::Form group--> --}}
                         <!--begin::Form group-->
                         <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
                             <button type="submit" id="kt_login_signup_submit"

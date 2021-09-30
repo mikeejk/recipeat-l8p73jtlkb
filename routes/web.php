@@ -64,6 +64,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
     return view('screens.admin.recipe.admin_recipe');
 });
 
+// Index Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorys', [CategoryController::class, 'index']);
+
 // Add Category Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'create']);
 
@@ -71,13 +74,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [Categ
 Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
 
 // Edit Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{catagory}/edit', [CategoryController::class, 'edit']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/edit', [CategoryController::class, 'edit']);
 
 // Update Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->patch('/categorys/{catagory}', [CategoryController::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->patch('/categorys/{category}', [CategoryController::class, 'update']);
 
 // Destroy Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{catagory}/delete', [CategoryController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/delete', [CategoryController::class, 'destroy']);
 
 // Recipeat Category Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/category.data', [CategoryController::class, 'anyData']);

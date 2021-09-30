@@ -8,6 +8,13 @@ use Yajra\Datatables\Datatables;
 
 class CategoryController extends Controller
 {
+    // Function - Index
+    public function index()
+    {
+        $categorys = Category::all();
+        return redirect('/categorys', compact('category'));
+    }
+
     // Function - Create
     public function create()
     {
@@ -17,13 +24,14 @@ class CategoryController extends Controller
     // Function - Store
     public function store(Request $request)
     {
-        // Data - Save
-        $category = request()->validate([
-            'name' => 'required',
-        ]);
+        // Create New Object
+        $category = new Category();
 
-        // Send the use inputed data to create function
-        Category::create($category);
+        // User Entered - Data Saving
+        $category->name = $request->get('name');
+
+        // Data
+        $category->save();
 
         // If the user click the (SAVE) button run the if condition
         // If the user click the (SAVE AND INSERT NEXT) button run the else condition
@@ -51,7 +59,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        return redirect()->back();
+        return redirect('/categorys_create');
     }
 
     // Function - Destroy
@@ -59,7 +67,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->back();
+        return redirect('/categorys_create');
     }
 
     // Function - getIndex

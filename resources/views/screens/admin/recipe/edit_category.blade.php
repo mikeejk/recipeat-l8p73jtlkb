@@ -13,14 +13,14 @@
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-0 font-size-sm">
                             <!-- <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">Recipe</a>
-                            </li>
-                            <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">My Recipes</a>
-                            </li>
-                            <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">Category</a>
-                            </li> -->
+                                    <a href="" class="text-muted">Recipe</a>
+                                </li>
+                                <li class="breadcrumb-item text-muted">
+                                    <a href="" class="text-muted">My Recipes</a>
+                                </li>
+                                <li class="breadcrumb-item text-muted">
+                                    <a href="" class="text-muted">Category</a>
+                                </li> -->
                         </ul>
                         <!--end::Breadcrumb-->
                     </div>
@@ -157,24 +157,24 @@
                 <!--begin::Card-->
                 <form class="form" action="/categorys/{{ $category->id }}" method="post">
                     @method('PATCH')
-                    @csrf
-                        <div class="form-group bg-white row p-4 m-1">
-                            <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Edit Category</label>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control" placeholder="Edit Category" name="name" value="{{ $category->name }}" />
-                                </div>
-                                <span class="form-text text-muted">Edit category</span>
-                            </div>
-                            <div class="col-lg-1 col-md-2 col-5 mt-1">
-                                <button type="submit" name="action" value="category_save"
-                                    class="btn btn-primary w-lg-100 w-100">Update</button>
-                            </div>
+                    <div class="form-group bg-white row p-4 m-1">
+                        <div class="col-md-3 col-8">
+                            <label class="col-lg-1 col-form-label text-lg-right">Edit Category</label>
                         </div>
+                        <div class="col-md-6 col-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="las la-sitemap"></i></span></div>
+                                <input type="text" class="form-control" placeholder="Edit Category" name="name"
+                                    value="{{ $category->name }}" />
+                            </div>
+                            <span class="form-text text-muted">Edit category</span>
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-5 mt-1">
+                            <button type="submit" name="action" value="category_save"
+                                class="btn btn-primary w-lg-100 w-100">Update</button>
+                        </div>
+                    </div>
 
                     {{-- <div class="card-footer">
                         <div class="row">
@@ -192,6 +192,7 @@
                             </div>
                         </div>
                     </div> --}}
+                    @csrf
                 </form>
                 <!--end::Card-->
             </div>
@@ -201,10 +202,11 @@
     </div>
     <!--end::Content-->
 
-<style>
-    .mt {
-  margin-top: -50px !important;
-}
-</style>
+    <style>
+        .mt {
+            margin-top: -50px !important;
+        }
+
+    </style>
 
 @endsection
