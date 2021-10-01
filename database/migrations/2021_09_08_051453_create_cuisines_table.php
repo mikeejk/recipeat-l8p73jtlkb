@@ -19,7 +19,7 @@ class CreateCuisinesTable extends Migration
             $table->id();
 
             // User Entered - Data Saving
-            $table->string('cuisine');
+            $table->string('cuisine')->unique();
 
             // Time-Stamp Data
             $table->timestamps();

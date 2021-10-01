@@ -27,12 +27,13 @@ class CategoryController extends Controller
         // Create New Object
         $category = new Category();
 
+        // Validate the Data
         $category = Category::create($this->ValidatedData());
 
         // User Entered - Data Saving
         $category->category = $request->get('category');
 
-        // Data
+        // Data Save
         $category->save();
 
         // If the user click the (SAVE) button run the if condition
