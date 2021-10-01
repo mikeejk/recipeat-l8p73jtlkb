@@ -95,8 +95,10 @@ class CategoryController extends Controller
     // Function - ValidatedData
     protected function validatedData()
     {
-        return request()->validate([
-            'category' => 'required', 'string', 'unique:categories',
-        ]);
+        return request()->validate(
+            [
+                'category' => 'required', 'string', 'unique:categories',
+            ]
+        );
     }
 }
