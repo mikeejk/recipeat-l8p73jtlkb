@@ -19,7 +19,7 @@ class CreateIngredientsTable extends Migration
             $table->id();
 
             // User Entered - Data Saving
-            $table->string('ingredient');
+            $table->string('ingredient')->unique();
 
             // Time-Stamp Data
             $table->timestamps();

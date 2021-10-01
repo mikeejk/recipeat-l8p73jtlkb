@@ -19,7 +19,7 @@ class CreateMeasurementsTable extends Migration
             $table->id();
 
             // User Entered - Data Saving
-            $table->string('measurement');
+            $table->string('measurement')->unique();
 
             // Time-Stamp Data
             $table->timestamps();
