@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
 
             // User Entered - Data Saving
-            $table->string('name');
+            $table->string('category')->unique();
 
             // Time-Stamp Data
             $table->timestamps();

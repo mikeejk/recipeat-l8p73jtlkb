@@ -27,8 +27,10 @@ class CategoryController extends Controller
         // Create New Object
         $category = new Category();
 
+        $category = Category::create($this->ValidatedData());
+
         // User Entered - Data Saving
-        $category->name = $request->get('name');
+        $category->category = $request->get('category');
 
         // Data
         $category->save();
@@ -53,7 +55,7 @@ class CategoryController extends Controller
     {
         $data = request()->validate(
             [
-                'name' => 'required',
+                'category' => 'required',
             ]
         );
 
@@ -88,5 +90,13 @@ class CategoryController extends Controller
             })->toJson();
 
         return Datatables::of(Category::query())->make(true);
+    }
+
+    // Function - ValidatedData
+    protected function validatedData()
+    {
+        return request()->validate([
+            'category' => 'required', 'string', 'unique:categories',
+        ]);
     }
 }

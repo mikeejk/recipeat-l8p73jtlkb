@@ -165,8 +165,8 @@
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="las la-sitemap"></i></span></div>
-                                <input type="text" class="form-control" placeholder="Edit Category" name="name"
-                                    value="{{ $category->name }}" />
+                                <input type="text" class="form-control" placeholder="Edit Category" name="category"
+                                    value="{{ $category->category }}" />
                             </div>
                             <span class="form-text text-muted">Edit category</span>
                         </div>

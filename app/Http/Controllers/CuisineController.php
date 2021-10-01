@@ -8,6 +8,13 @@ use Yajra\Datatables\Datatables;
 
 class CuisineController extends Controller
 {
+    // Function - Index
+    public function index()
+    {
+        $cuisines = Cuisine::all();
+        return redirect('/cuisines', compact('cuisine'));
+    }
+
     // Function - Create
     public function create()
     {

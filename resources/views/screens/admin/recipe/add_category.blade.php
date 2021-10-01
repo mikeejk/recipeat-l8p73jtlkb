@@ -166,9 +166,11 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control" placeholder="New Category" name="name" />
+                                    <input type="text" class="form-control @error('category') is-invalid @enderror" placeholder="New Category" name="category" />
                                 </div>
-                                <span class="form-text text-muted">Add some new category</span>
+                                @error('category')
+                                    <p class="error-message" style="color: red;">Some thing went wrong</p>
+                                @enderror
                             </div>
                             <div class="col-lg-1 col-md-2 col-5 mt-1">
                                 <button type="submit" name="action" value="category_save"
@@ -230,8 +232,8 @@
                     serverSide: true,
                     ajax: 'category.data',
                     columns: [{
-                            data: 'name',
-                            name: 'name',
+                            data: 'category',
+                            name: 'category',
                             orderable: false
                         },
                         {

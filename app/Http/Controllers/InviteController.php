@@ -43,7 +43,7 @@ class InviteController extends Controller
         // While - Condition
         // Chef if the token is already present or not in the Data-Base
         while (Invite::where('token', $token)->first());
-        
+
         // Create New Object
         $invite = new Invite();
 
@@ -100,6 +100,8 @@ class InviteController extends Controller
         // Assign the role to the user
         $user->assignRole($role->name);
 
+        $invite->delete();
+
         return redirect('register');
     }
 
@@ -109,7 +111,7 @@ class InviteController extends Controller
         // Validation the data
         return request()->validate([
             'name' => 'required',
-            'email' => 'required|email', 'required', 'string', 'unique:users',
+            'email' => 'required|email', 'string', 'unique:users',
             'user' => 'roles', 'required',
             'contact' => 'required',
         ]);

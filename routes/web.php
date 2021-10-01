@@ -64,41 +64,51 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
     return view('screens.admin.recipe.admin_recipe');
 });
 
-// Index Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys', [CategoryController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    // Index Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys', [CategoryController::class, 'index']);
 
-// Add Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'create']);
+    // Add Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'create']);
 
-// Store Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
+    // Store Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
 
-// Edit Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/edit', [CategoryController::class, 'edit']);
+    // Edit Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/edit', [CategoryController::class, 'edit']);
 
-// Update Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->patch('/categorys/{category}', [CategoryController::class, 'update']);
+    // Update Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->patch('/categorys/{category}', [CategoryController::class, 'update']);
 
-// Destroy Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/delete', [CategoryController::class, 'destroy']);
+    // Destroy Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/delete', [CategoryController::class, 'destroy']);
 
-// Recipeat Category Data Table - Data Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/category.data', [CategoryController::class, 'anyData']);
+    // Recipeat Category Data Table - Data Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/category.data', [CategoryController::class, 'anyData']);
 
-// Recipeat Category Data Table - Index Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'getIndex']);
+    // Recipeat Category Data Table - Index Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'getIndex']);
+});
 
-// Add Cuisine Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    // Index Cuisine Tab
+    Route::middleware(['auth::sanctum', 'verified'])->get('/cuisines', [CuisineController::class, 'index']);
+    
+    // Add Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
 
-// Store Cuisine Tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
+    // Store Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
 
-// Recipeat Cuisine Data Table - Data Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/cuisine.data', [CuisineController::class, 'anyData']);
+    // Recipeat Cuisine Data Table - Data Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisine.data', [CuisineController::class, 'anyData']);
 
-// Recipeat Cuisine Data Table - Index Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'getIndex']);
+    // Recipeat Cuisine Data Table - Index Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'getIndex']);
+});
+
 
 // Add Ingredient Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'create']);
