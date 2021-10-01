@@ -24,13 +24,13 @@ class CuisineController extends Controller
     // Function - Store
     public function store(Request $request)
     {
-        // Data - Save
-        $data = request()->validate([
-            'cuisine' => 'required',
-        ]);
+        // Crate New Object
+        $cuisine = new Cuisine();
 
-        // Send the use inputed data to create function
-        Cuisine::create($data);
+        $cuisine->cuisine = $request->get('cuisine');
+
+        // Data Save
+        $cuisine->save();
 
         // If the user click the (SAVE) button run the if condition
         // If the user click the (SAVE AND INSERT NEXT) button run the else condition
@@ -39,6 +39,34 @@ class CuisineController extends Controller
         } elseif ($request->get('action') == 'cuisine_save_next') {
             return redirect()->back();
         }
+    }
+
+    // Function - Edit
+    public function edit(Cuisine $cuisine)
+    {
+        return view('screens.admin.recipe.edit_cuisine', compact('cuisine'));
+    }
+
+    // Function - Update
+    public function update(Cuisine $cuisine)
+    {
+        $data = request()->validate(
+            [
+                'cuisine' => 'required',
+            ]
+        );
+
+        $cuisine->update($data);
+
+        return redirect('/cuisines_create');
+    }
+
+    // Function - Destroy
+    public function destroy(Cuisine $cuisine)
+    {
+        $cuisine->delete();
+
+        return redirect('/cuisines_create');
     }
 
     // Function - getIndex
@@ -53,11 +81,21 @@ class CuisineController extends Controller
         $cuisines = Cuisine::all();
         return datatables()->of($cuisines)
             ->addColumn('action', function ($cuisine) {
-                $html = '<a href="/categorys/'.$cuisine->id.'/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
-                $html .= '<a href="/categorys/'.$cuisine->id.'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+                $html = '<a href="/cuisines/'.$cuisine->id.'/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/cuisines/'.$cuisine->id.'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                 return $html;
             })->toJson();
 
         return Datatables::of(Cuisine::query())->make(true);
+    }
+
+    // Function - ValidateData
+    protected function validateData()
+    {
+        return request()->validate(
+            [
+                'cuisine' => 'required', 'string', 'unique:cuisine'
+            ]
+        );
     }
 }

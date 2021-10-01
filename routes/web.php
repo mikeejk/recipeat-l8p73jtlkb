@@ -95,12 +95,21 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     // Index Cuisine Tab
     Route::middleware(['auth::sanctum', 'verified'])->get('/cuisines', [CuisineController::class, 'index']);
-    
+
     // Add Cuisine Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
 
     // Store Cuisine Tab
     Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
+
+    // Edit Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines/{cuisine}/edit', [CuisineController::class, 'edit']);
+
+    // Update Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->patch('/cuisines/{cuisine}', [CuisineController::class, 'update']);
+
+    // Destroy Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines/{cuisine}/delete', [CuisineController::class, 'destroy']);
 
     // Recipeat Cuisine Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/cuisine.data', [CuisineController::class, 'anyData']);
