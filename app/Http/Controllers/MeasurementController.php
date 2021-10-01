@@ -28,7 +28,7 @@ class MeasurementController extends Controller
         // If the user click the (SAVE) button run the if condition
         // If the user click the (SAVE AND INSERT NEXT) button run the else condition
         if ($request->get('action') == 'measurement_save') {
-            return redirect('/admin_recipe');
+            return redirect()->back();
         } elseif ($request->get('action') == 'measurement_save_next') {
             return redirect()->back();
         }
@@ -46,9 +46,8 @@ class MeasurementController extends Controller
         $measurements = Measurement::all();
         return datatables()->of($measurements)
             ->addColumn('action', function ($measurement) {
-                $html = '<button href="/recipes/'.$measurement->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end" disabled>Edit this Measurement</button> ';
-                $html .= '<button href="/recipes/'.$measurement->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end" disabled>Delete this Measurement</button>';
-                return $html;
+                $html = '<a href="/categorys/'.$measurement->id.'/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/categorys/'.$measurement->id.'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';                return $html;
             })->toJson();
 
         return Datatables::of(Measurement::query())->make(true);

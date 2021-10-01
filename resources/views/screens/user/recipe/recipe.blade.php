@@ -10,7 +10,7 @@
                 <div class="d-flex align-items-center flex-wrap mr-1">
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
-                        <!--begin::Page Title-->
+                        {{-- <!--begin::Page Title-->
                         <h5 class="text-dark font-weight-bold my-1 mr-5">Recipeat</h5>
                         <!--end::Page Title-->
                         <!--begin::Breadcrumb-->
@@ -22,7 +22,7 @@
                                 <a href="" class="text-muted">My Kitchen</a>
                             </li>
                         </ul>
-                        <!--end::Breadcrumb-->
+                        <!--end::Breadcrumb--> --}}
                     </div>
                     <!--end::Page Heading-->
                 </div>
@@ -39,7 +39,7 @@
                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                         <div class="card-title">
                             <h3 class="card-label">My Kitchen
-                                <span class="d-block text-muted pt-2 font-size-sm">Your recipe's </span>
+                                {{-- <span class="d-block text-muted pt-2 font-size-sm">Your recipe's </span> --}}
                             </h3>
                         </div>
                         <div class="card-toolbar">
@@ -90,7 +90,6 @@
                             <table class=" table" id="recipes-table">
                             <thead>
                                 <tr>
-
                                     <th>Recipe Name</th>
                                     <th>Category</th>
                                     <th>Action</th>

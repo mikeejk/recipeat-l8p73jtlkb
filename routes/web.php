@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 
 // Recipeat Customer Data Table - Index Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/home', [CreateNewUser::class, 'getIndex']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/all_user', [CreateNewUser::class, 'getIndex']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Admin Routes
@@ -64,29 +64,51 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
     return view('screens.admin.recipe.admin_recipe');
 });
 
-// Add Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'create']);
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    // Index Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys', [CategoryController::class, 'index']);
 
-// Store Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
+    // Add Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'create']);
 
-// Recipeat Category Data Table - Data Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/category.data', [CategoryController::class, 'anyData']);
+    // Store Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->post('/categorys', [CategoryController::class, 'store']);
 
-// Recipeat Category Data Table - Index Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'getIndex']);
+    // Edit Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/edit', [CategoryController::class, 'edit']);
 
-// Add Cuisine Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
+    // Update Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->patch('/categorys/{category}', [CategoryController::class, 'update']);
 
-// Store Cuisine Tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
+    // Destroy Category Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys/{category}/delete', [CategoryController::class, 'destroy']);
 
-// Recipeat Cuisine Data Table - Data Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/cuisine.data', [CuisineController::class, 'anyData']);
+    // Recipeat Category Data Table - Data Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/category.data', [CategoryController::class, 'anyData']);
 
-// Recipeat Cuisine Data Table - Index Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'getIndex']);
+    // Recipeat Category Data Table - Index Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'getIndex']);
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    // Index Cuisine Tab
+    Route::middleware(['auth::sanctum', 'verified'])->get('/cuisines', [CuisineController::class, 'index']);
+    
+    // Add Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'create']);
+
+    // Store Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->post('/cuisines', [CuisineController::class, 'store']);
+
+    // Recipeat Cuisine Data Table - Data Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisine.data', [CuisineController::class, 'anyData']);
+
+    // Recipeat Cuisine Data Table - Index Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'getIndex']);
+});
+
 
 // Add Ingredient Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'create']);

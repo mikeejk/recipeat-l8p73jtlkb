@@ -4,11 +4,21 @@
     <!--begin::Brand-->
     <div class="brand flex-column-auto" id="kt_brand">
 
+        @hasrole('Admin')
         <!--begin::Logo-->
-        <a href="/home" class="brand-logo">
+        <a href="/dashboard" class="brand-logo">
             <img alt="Logo" src="assets/media/logos/recipeat.svg" class="h-20px" />
         </a>
         <!--end::Logo-->
+        @endhasrole
+
+        @hasrole('Chef|Home-Chef|User')
+        <!--begin::Logo-->
+        <a href="/welcome" class="brand-logo">
+            <img alt="Logo" src="assets/media/logos/recipeat.svg" class="h-20px" />
+        </a>
+        <!--end::Logo-->
+        @endhasrole
 
         <!--begin::Toggle-->
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -216,7 +226,7 @@
                                 </span>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="/admin_recipe" class="menu-link">
+                                <a href="/categorys_create" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>

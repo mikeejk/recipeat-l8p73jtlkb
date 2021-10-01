@@ -8,6 +8,13 @@ use Yajra\Datatables\Datatables;
 
 class CuisineController extends Controller
 {
+    // Function - Index
+    public function index()
+    {
+        $cuisines = Cuisine::all();
+        return redirect('/cuisines', compact('cuisine'));
+    }
+
     // Function - Create
     public function create()
     {
@@ -28,7 +35,7 @@ class CuisineController extends Controller
         // If the user click the (SAVE) button run the if condition
         // If the user click the (SAVE AND INSERT NEXT) button run the else condition
         if ($request->get('action') == 'cuisine_save') {
-            return redirect('/admin_recipe');
+            return redirect()->back();
         } elseif ($request->get('action') == 'cuisine_save_next') {
             return redirect()->back();
         }
@@ -46,8 +53,8 @@ class CuisineController extends Controller
         $cuisines = Cuisine::all();
         return datatables()->of($cuisines)
             ->addColumn('action', function ($cuisine) {
-                $html = '<button href="/recipes/'.$cuisine->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end" disabled>Edit this Cuisine</button> ';
-                $html .= '<button href="/recipes/'.$cuisine->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end" disabled>Delete this Cuisine</button>';
+                $html = '<a href="/categorys/'.$cuisine->id.'/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/categorys/'.$cuisine->id.'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                 return $html;
             })->toJson();
 

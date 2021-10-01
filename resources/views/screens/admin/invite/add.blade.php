@@ -5,28 +5,25 @@
         <!--begin::Content-->
         <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
             <!--begin::Subheader-->
-            <div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
+            <div class="subheader py-4 py-lg-4 subheader-transparent" id="kt_subheader">
                 <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
                     <!--begin::Info-->
                     <div class="d-flex align-items-center flex-wrap mr-1">
                         <!--begin::Page Heading-->
                         <div class="d-flex align-items-baseline flex-wrap mr-5">
-                            <!--begin::Page Title-->
-                            <h5 class="text-dark font-weight-bold my-1 mr-5">Recipeat</h5>
-                            <!--end::Page Title-->
                             <!--begin::Breadcrumb-->
-                            <ul
+                            {{-- <ul
                                 class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                                 <li class="breadcrumb-item text-muted">
-                                    <a href="" class="text-muted">Implore</a>
+                                    <a href="" class="text-muted">User</a>
                                 </li>
                                 <li class="breadcrumb-item text-muted">
-                                    <a href="/add_user" class="text-muted">Patronage</a>
+                                    <a href="/add_user" class="text-muted">Invite</a>
                                 </li>
                                 <li class="breadcrumb-item text-muted">
-                                    <a href="" class="text-muted">Add Member</a>
+                                    <a href="" class="text-muted">Create Invite</a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                             <!--end::Breadcrumb-->
                         </div>
                         <!--end::Page Heading-->
@@ -48,10 +45,10 @@
                             <div class="card-body bg-white">
                                 <div class="form-group row mt-3">
 
-                                    <div class="col-lg-2"></div>
+                                    <div class="col-lg-1"></div>
 
                                     <label class="col-lg-1 col-form-label text-lg-left">Name:</label>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Full name" name="name" />
                                             <div class="input-group-append"><span class="input-group-text">
@@ -63,7 +60,7 @@
                                     <div class="col-lg-1.5"></div>
 
                                     <label class="col-lg-1 col-form-label text-lg-left ">Email:</label>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="input-group">
                                             <input type="email" class="form-control  @error('email') is-invalid @enderror"
                                                 placeholder="Mail address" name="email" />
@@ -76,9 +73,9 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-lg-2"></div>
+                                    <div class="col-lg-1"></div>
                                     <label class="col-lg-1 col-form-label text-lg-left">Contact:</label>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="input-group">
                                             <input type="number" class="form-control" placeholder="Contact number"
                                                 name="contact" />
@@ -91,7 +88,7 @@
                                     <div class="col-lg-1.5"></div>
 
                                     <label class="col-lg-1 col-form-label text-lg-left">Role:</label>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="input-group">
                                             <select class="custom-select form-control" name="roles">
                                                 <option>Select the user Membership</option>
@@ -101,8 +98,6 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            <div class="input-group-append"><span class="input-group-text"><i
-                                                        class="las la-spinner"></i></span></div>
                                         </div>
                                         <span class="form-text text-muted">Select the membership role</span>
                                     </div>

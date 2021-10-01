@@ -72,12 +72,19 @@ class CreateNewUser implements CreatesNewUsers
     // Function - getIndex
     public function getIndex()
     {
-        return view('screens.admin.home.dashboard');
+        return view('screens.admin.invite.allusers');
     }
 
     // Function - anyData
     public function anyData()
     {
+        $alluser = User::all();
+        return datatables()->of($alluser)
+            ->addColumn('status', function () {
+                $html = 'Active';
+                return $html;
+            })->toJson();
+        
         return Datatables::of(User::query())->make(true);
     }
 }

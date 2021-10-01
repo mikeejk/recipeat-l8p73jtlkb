@@ -13,14 +13,14 @@
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-0 font-size-sm">
                             <!-- <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">Recipe</a>
-                            </li>
-                            <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">My Recipes</a>
-                            </li>
-                            <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">Category</a>
-                            </li> -->
+                                    <a href="" class="text-muted">Recipe</a>
+                                </li>
+                                <li class="breadcrumb-item text-muted">
+                                    <a href="" class="text-muted">My Recipes</a>
+                                </li>
+                                <li class="breadcrumb-item text-muted">
+                                    <a href="" class="text-muted">Category</a>
+                                </li> -->
                         </ul>
                         <!--end::Breadcrumb-->
                     </div>
@@ -155,28 +155,26 @@
                 </div>
                 <!--end::Notice-->
                 <!--begin::Card-->
-                <form class="form" action="/categorys" method="post">
-                    @csrf
-
-                        <div class="form-group bg-white row p-4 m-1">
-                            <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Category</label>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control @error('category') is-invalid @enderror" placeholder="New Category" name="category" />
-                                </div>
-                                @error('category')
-                                    <p class="error-message" style="color: red;">Some thing went wrong</p>
-                                @enderror
-                            </div>
-                            <div class="col-lg-1 col-md-2 col-5 mt-1">
-                                <button type="submit" name="action" value="category_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save</button>
-                            </div>
+                <form class="form" action="/categorys/{{ $category->id }}" method="post">
+                    @method('PATCH')
+                    <div class="form-group bg-white row p-4 m-1">
+                        <div class="col-md-3 col-8">
+                            <label class="col-lg-1 col-form-label text-lg-right">Edit Category</label>
                         </div>
+                        <div class="col-md-6 col-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="las la-sitemap"></i></span></div>
+                                <input type="text" class="form-control" placeholder="Edit Category" name="category"
+                                    value="{{ $category->category }}" />
+                            </div>
+                            <span class="form-text text-muted">Edit category</span>
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-5 mt-1">
+                            <button type="submit" name="action" value="category_save"
+                                class="btn btn-primary w-lg-100 w-100">Update</button>
+                        </div>
+                    </div>
 
                     {{-- <div class="card-footer">
                         <div class="row">
@@ -194,62 +192,21 @@
                             </div>
                         </div>
                     </div> --}}
+                    @csrf
                 </form>
                 <!--end::Card-->
             </div>
             <!--end::Container-->
         </div>
         <!--end::Entry-->
-        <!--begin::Data-Table-->
-        <div class="-mt-lg-10 m-1 d-flex flex-column-fluid">
-            <!--begin::Container-->
-            <div class="container">
-                <!--begin::Card-->
-                <div class="card-body bg-white">
-                    <table class="table" id="category-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <!--end::Card-->
-            </div>
-            <!--end::Container-->
-        </div>
-        <!--end::Data-Table-->
-
     </div>
     <!--end::Content-->
 
-    @push('scripts')
-        <script>
-            $(function() {
-                $('#category-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: 'category.data',
-                    columns: [{
-                            data: 'category',
-                            name: 'category',
-                            orderable: false
-                        },
-                        {
-                            data: 'action',
-                            name: 'action',
-                            searchable: false,
-                            orderable: false
-                        },
-                    ]
-                });
-            });
-        </script>
-    @endpush
-<style>
-    .mt {
-  margin-top: -50px !important;
-}
-</style>
+    <style>
+        .mt {
+            margin-top: -50px !important;
+        }
+
+    </style>
+
 @endsection

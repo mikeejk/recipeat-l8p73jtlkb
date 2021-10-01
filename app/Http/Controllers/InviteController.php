@@ -44,10 +44,10 @@ class InviteController extends Controller
         // Chef if the token is already present or not in the Data-Base
         while (Invite::where('token', $token)->first());
 
-        $invite = Invite::create($this->validatedData());
-        
         // Create New Object
         $invite = new Invite();
+
+        // $invite = $this->validatedData();
 
         // Invite-Data Storeing - Foreign Keys
         $invite->role_id = $request->get('roles');
@@ -100,6 +100,8 @@ class InviteController extends Controller
         // Assign the role to the user
         $user->assignRole($role->name);
 
+        $invite->delete();
+
         return redirect('register');
     }
 
@@ -109,7 +111,7 @@ class InviteController extends Controller
         // Validation the data
         return request()->validate([
             'name' => 'required',
-            'email' => 'required|email', 'required', 'string', 'unique:users',
+            'email' => 'required|email', 'string', 'unique:users',
             'user' => 'roles', 'required',
             'contact' => 'required',
         ]);
@@ -124,6 +126,13 @@ class InviteController extends Controller
     // Function - anyData
     public function anyData()
     {
+        $inviteuser = Invite::all();
+        return datatables()->of($inviteuser)
+            ->addColumn('status', function () {
+                $html = 'Invite Send';
+                return $html;
+            })->toJson();
+
         return Datatables::of(Invite::query())->make(true);
     }
 }

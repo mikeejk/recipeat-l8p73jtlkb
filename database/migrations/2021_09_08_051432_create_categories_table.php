@@ -14,12 +14,12 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            
+
             // Auto Genrated - ID
             $table->id();
 
             // User Entered - Data Saving
-            $table->string('category');
+            $table->string('category')->unique();
 
             // Time-Stamp Data
             $table->timestamps();
