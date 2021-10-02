@@ -19,7 +19,7 @@
                                 <a href="" class="text-muted">My Recipes</a>
                             </li>
                             <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">Ingredient</a>
+                                <a href="" class="text-muted">Measurement</a>
                             </li>
                         </ul> --}}
                         <!--end::Breadcrumb-->
@@ -103,7 +103,7 @@
 
                                     <!--begin::Button-->
                                     <a href="/ingredients_create" style="margin-bottom: 2px;"
-                                        class="btn btn-primary font-weight-bolder">
+                                        class="btn btn-outline-primary font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Food/Two-bottles.svg--><svg
@@ -127,7 +127,7 @@
 
                                     <!--begin::Button-->
                                     <a href="/measurements_create" style="margin-bottom: 2px;"
-                                        class="btn btn-outline-primary font-weight-bolder">
+                                        class="btn btn-primary font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Map/Compass.svg--><svg
@@ -155,26 +155,27 @@
                 </div>
                 <!--end::Notice-->
                 <!--begin::Card-->
-                <form class="form" action="/ingredients/{{ $ingredient->id }}" method="post">
+                <form class="form" action="/measurements/{{ $measurement->id }}" method="post">
                     @method('PATCH')
                     @csrf
-                        <div class="form-group row p-4 m-1 bg-white">
+                        <div class="form-group row p-4 m-1  bg-white">
                             <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Edit Ingredient</label>
+                                <label class="col-lg-1 col-form-label text-lg-right">Measurement</label>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control @error('ingredient') is-valid @enderror" placeholder="New Ingredient"
-                                        name="ingredient" value="{{ $ingredient->ingredient }}"/>
+                                    <input type="text" class="form-control @error('measurement') is-valid @enderror" placeholder="New Measurement"
+                                        name="measurement" value="{{ $measurement->measurement }}"/>
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-2 col-5 mt-1">
-                                <button type="submit" name="action" value="ingredient_save"
-                                    class="btn btn-primary w-lg-100 w-100">Update</button>
+                                <button type="submit" name="action" value="measurement_save"
+                                    class="btn btn-primary w-lg-100 w-100">Save</button>
                             </div>
                         </div>
+
                     {{-- <div class="card-footer">
                         <div class="row">
                             <div class="col-lg-9 col-4 d-lg-block d-none">
@@ -183,14 +184,13 @@
                             </div>
                             <!-- If Condition -->
                             <div class="col-lg-1 col-5">
-                                <button type="submit" name="action" value="ingredient_save"
+                                <button type="submit" name="action" value="measurement_save"
                                     class="btn btn-primary w-lg-100 w-100">Save</button>
                             </div>
                             <!-- Else Condition -->
                             <div class="col-lg-2 col-7">
-                                <button type="submit" name="action" value="ingredient_save_next"
-                                    class="btn btn-primary w-lg-auto w-100">Save & Insert
-                                    Next</button>
+                                <button type="submit" name="action" value="measurement_save_next"
+                                    class="btn btn-primary w-lg-auto w-100">Save & Insert Next</button>
                             </div>
                         </div>
                     </div> --}}

@@ -64,6 +64,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
     return view('screens.admin.recipe.admin_recipe');
 });
 
+// CategoryController
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     // Index Category Tab
@@ -91,6 +92,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::middleware(['auth:sanctum', 'verified'])->get('/categorys_create', [CategoryController::class, 'getIndex']);
 });
 
+// CuisineController
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     // Index Cuisine Tab
@@ -118,6 +120,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines_create', [CuisineController::class, 'getIndex']);
 });
 
+// IngredientController
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     // Index Ingredient Tab
@@ -145,17 +148,33 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'getIndex']);
 });
 
-// Add Measurement Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'create']);
+// MeasurementController
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    // Index Measurement Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/measurements', [MeasurementController::class, 'index']);
 
-// Store Measurement Tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'store']);
+    // Add Measurement Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'create']);
 
-// Recipeat Measurement Data Table - Data Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/measurement.data', [MeasurementController::class, 'anyData']);
+    // Store Measurement Tab
+    Route::middleware(['auth:sanctum', 'verified'])->post('/measurements', [MeasurementController::class, 'store']);
 
-// Recipeat Measurement Data Table - Index Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'getIndex']);
+    // Edit Measurement Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/measurements/{measurement}/edit', [MeasurementController::class, 'edit']);
+
+    // Update Measurement Tab
+    Route::middleware(['auth:sanctum', 'verified'])->patch('/measurements/{measurement}', [MeasurementController::class, 'update']);
+
+    // Destroy Measurement Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/measurements/{measurement}/delete', [MeasurementController::class, 'destroy']);
+
+    // Recipeat Measurement Data Table - Data Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/measurement.data', [MeasurementController::class, 'anyData']);
+
+    // Recipeat Measurement Data Table - Index Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/measurements_create', [MeasurementController::class, 'getIndex']);
+});
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    User Routes
