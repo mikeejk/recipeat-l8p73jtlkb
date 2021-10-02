@@ -36,16 +36,16 @@
             <div class="container">
                 <!--begin::Notice-->
                 <div class="pb-6 pb-lg-8">
-                    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
                         <!--begin::Info-->
-                        <div class="d-flex align-items-center flex-wrap">
+                        <div class="d-flex w-100 align-items-center flex-wrap">
                             <!--begin::Page Heading-->
-                            <div class="d-flex align-items-baseline flex-wrap">
-                                <div class="card-toolbar">
+                            <div class="d-flex w-100 align-items-baseline flex-wrap">
+                                <div class="card-toolbar w-100">
 
                                     <!--begin::Button-->
                                     <a href="/categorys_create" style="margin-bottom: 2px;"
-                                        class="btn btn-outline-primary font-weight-bolder">
+                                        class="btn btn-outline-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Cooking/Dinner.svg--><svg
@@ -74,12 +74,12 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add New Category</a>
+                                        </span>Add Category</a>
                                     <!--end::Button-->
 
                                     <!--begin::Button-->
                                     <a href="/cuisines_create" style="margin-bottom: 2px;"
-                                        class="btn btn-outline-primary font-weight-bolder">
+                                        class="btn btn-outline-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Communication/Flag.svg--><svg
@@ -98,12 +98,12 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add New Cuisine</a>
+                                        </span>Add Cuisine</a>
                                     <!--end::Button-->
 
                                     <!--begin::Button-->
                                     <a href="/ingredients_create" style="margin-bottom: 2px;"
-                                        class="btn btn-primary font-weight-bolder">
+                                        class="btn btn-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Food/Two-bottles.svg--><svg
@@ -122,12 +122,12 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add New Ingredient</a>
+                                        </span>Add Ingredient</a>
                                     <!--end::Button-->
 
                                     <!--begin::Button-->
                                     <a href="/measurements_create" style="margin-bottom: 2px;"
-                                        class="btn btn-outline-primary font-weight-bolder">
+                                        class="btn btn-outline-primary col-lg-3 col-md-3 col-12 font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Map/Compass.svg--><svg
@@ -143,7 +143,7 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add New Measurement</a>
+                                        </span>Add Measurement</a>
                                     <!--end::Button-->
 
                                 </div>
@@ -158,8 +158,8 @@
                 <form class="form" action="/ingredients" method="post">
                     @csrf
                         <div class="form-group row p-4 m-1 bg-white">
-                            <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Ingredient</label>
+                            <div class="col-md-3 col-8 text-md-center text-start">
+                                <label class="col-lg-1 col-form-label">Ingredient</label>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="input-group">
