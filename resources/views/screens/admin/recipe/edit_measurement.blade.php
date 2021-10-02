@@ -166,7 +166,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control @error('measurement') is-valid @enderror" placeholder="New Measurement"
+                                    <input type="text" class="form-control @error('measurement') is-invalid @enderror" placeholder="New Measurement"
                                         name="measurement" value="{{ $measurement->measurement }}"/>
                                 </div>
                             </div>

@@ -166,7 +166,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control @error('ingredient') is-valid @enderror" placeholder="New Ingredient"
+                                    <input type="text" class="form-control @error('ingredient') is-invalid @enderror" placeholder="New Ingredient"
                                         name="ingredient" value="{{ $ingredient->ingredient }}"/>
                                 </div>
                             </div>
