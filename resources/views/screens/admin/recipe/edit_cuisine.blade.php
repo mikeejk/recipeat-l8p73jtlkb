@@ -165,9 +165,8 @@
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="las la-sitemap"></i></span></div>
-                                <input type="text" class="form-control" placeholder="New Cuisine" name="cuisine" value="{{ $cuisine->cuisine }}"/>
+                                <input type="text" class="form-control @error('cuisine') is-invalid @enderror" placeholder="New Cuisine" name="cuisine" value="{{ $cuisine->cuisine }}"/>
                             </div>
-                            <span class="form-text text-muted">Add some new cuisine</span>
                         </div>
                         <div class="col-lg-1 col-md-2 col-5 mt-1">
                             <button type="submit" name="action" value="cuisine_save"

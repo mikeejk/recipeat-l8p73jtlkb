@@ -165,10 +165,9 @@
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="las la-sitemap"></i></span></div>
-                                <input type="text" class="form-control" placeholder="Edit Category" name="category"
+                                <input type="text" class="form-control  @error('category') is-invalid @enderror" placeholder="Edit Category" name="category"
                                     value="{{ $category->category }}" />
                             </div>
-                            <span class="form-text text-muted">Edit category</span>
                         </div>
                         <div class="col-lg-1 col-md-2 col-5 mt-1">
                             <button type="submit" name="action" value="category_save"

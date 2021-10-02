@@ -27,6 +27,8 @@ class CuisineController extends Controller
         // Crate New Object
         $cuisine = new Cuisine();
 
+        $cuisine = Cuisine::create($this->validatedData());
+
         $cuisine->cuisine = $request->get('cuisine');
 
         // Data Save
@@ -90,7 +92,7 @@ class CuisineController extends Controller
     }
 
     // Function - ValidateData
-    protected function validateData()
+    protected function validatedData()
     {
         return request()->validate(
             [

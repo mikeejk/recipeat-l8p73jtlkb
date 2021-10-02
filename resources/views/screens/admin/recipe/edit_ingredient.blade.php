@@ -159,19 +159,19 @@
                     @csrf
                         <div class="form-group row p-4 m-1 bg-white">
                             <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Ingredient</label>
+                                <label class="col-lg-1 col-form-label text-lg-right">Edit Ingredient</label>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control @error('ingredient') is-invalid @enderror" placeholder="New Ingredient"
-                                        name="ingredient" />
+                                    <input type="text" class="form-control @error('ingredient') is-valid @enderror" placeholder="New Ingredient"
+                                        name="ingredient" value="{{ $ingredient->ingredient }}"/>
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-2 col-5 mt-1">
                                 <button type="submit" name="action" value="ingredient_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                                    class="btn btn-primary w-lg-100 w-100">Update</button>
                             </div>
                         </div>
                     {{-- <div class="card-footer">
@@ -199,50 +199,7 @@
             <!--end::Container-->
         </div>
         <!--end::Entry-->
-        <!--begin::Data-Table-->
-        <div class="m-1 d-flex flex-column-fluid">
-            <!--begin::Container-->
-            <div class="container">
-                <!--begin::Card-->
-                <div class="card-body bg-white">
-                    <table class="table" id="ingredient-table">
-                        <thead>
-                            <tr>
-                                <th>Ingredient</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <!--end::Card-->
-            </div>
-            <!--end::Container-->
-        </div>
-        <!--end::Data-Table-->
     </div>
     <!--end::Content-->
-
-    @push('scripts')
-        <script>
-            $(function() {
-                $('#ingredient-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: 'ingredient.data',
-                    columns: [{
-                            data: 'ingredient',
-                            name: 'ingredient',
-                        },
-                        {
-                            data: 'action',
-                            name: 'action',
-                            searchable: false,
-                            orderable: false
-                        },
-                    ]
-                });
-            });
-        </script>
-    @endpush
 
 @endsection

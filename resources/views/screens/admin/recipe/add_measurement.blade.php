@@ -165,10 +165,9 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control" placeholder="New Measurement"
+                                    <input type="text" class="form-control @error('measurement') is-valid @enderror" placeholder="New Measurement"
                                         name="measurement" />
                                 </div>
-                                <span class="form-text text-muted">Add some new measurement</span>
                             </div>
                             <div class="col-lg-1 col-md-2 col-5 mt-1">
                                 <button type="submit" name="action" value="measurement_save"
@@ -208,7 +207,7 @@
                 <div class="card-body bg-white">
                     <table class="table" id="measurement-table">
                         <thead>
-                            <tr>    
+                            <tr>
                                 <th>Measurement</th>
                                 <th>Action</th>
                             </tr>
