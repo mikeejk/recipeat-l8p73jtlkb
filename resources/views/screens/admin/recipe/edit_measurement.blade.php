@@ -155,23 +155,24 @@
                 </div>
                 <!--end::Notice-->
                 <!--begin::Card-->
-                <form class="form" action="/measurements" method="post">
+                <form class="form" action="/measurements/{{ $measurement->id }}" method="post">
+                    @method('PATCH')
                     @csrf
                         <div class="form-group row p-4 m-1  bg-white">
                             <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Measurement</label>
+                                <label class="col-lg-1 col-form-label text-lg-right">Edit Measurement</label>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
                                     <input type="text" class="form-control @error('measurement') is-invalid @enderror" placeholder="New Measurement"
-                                        name="measurement" />
+                                        name="measurement" value="{{ $measurement->measurement }}"/>
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-2 col-5 mt-1">
                                 <button type="submit" name="action" value="measurement_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                                    class="btn btn-primary w-lg-100 w-100">Update</button>
                             </div>
                         </div>
 
@@ -199,50 +200,7 @@
             <!--end::Container-->
         </div>
         <!--end::Entry-->
-        <!--begin::Data-Table-->
-        <div class="m-1 d-flex flex-column-fluid">
-            <!--begin::Container-->
-            <div class="container">
-                <!--begin::Card-->
-                <div class="card-body bg-white">
-                    <table class="table" id="measurement-table">
-                        <thead>
-                            <tr>
-                                <th>Measurement</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <!--end::Card-->
-            </div>
-            <!--end::Container-->
-        </div>
-        <!--end::Data-Table-->
     </div>
     <!--end::Content-->
-
-    @push('scripts')
-        <script>
-            $(function() {
-                $('#measurement-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: 'measurement.data',
-                    columns: [{
-                            data: 'measurement',
-                            name: 'measurement',
-                        },
-                        {
-                            data: 'action',
-                            name: 'action',
-                            searchable: false,
-                            orderable: false
-                        },
-                    ]
-                });
-            });
-        </script>
-    @endpush
 
 @endsection

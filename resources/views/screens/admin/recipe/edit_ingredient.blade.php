@@ -155,7 +155,8 @@
                 </div>
                 <!--end::Notice-->
                 <!--begin::Card-->
-                <form class="form" action="/ingredients" method="post">
+                <form class="form" action="/ingredients/{{ $ingredient->id }}" method="post">
+                    @method('PATCH')
                     @csrf
                         <div class="form-group row p-4 m-1 bg-white">
                             <div class="col-md-3 col-8">
@@ -165,7 +166,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control @error('ingredient') is-valid @enderror" placeholder="New Ingredient"
+                                    <input type="text" class="form-control @error('ingredient') is-invalid @enderror" placeholder="New Ingredient"
                                         name="ingredient" value="{{ $ingredient->ingredient }}"/>
                                 </div>
                             </div>
