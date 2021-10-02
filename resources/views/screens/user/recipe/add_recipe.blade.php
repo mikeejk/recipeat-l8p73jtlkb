@@ -71,7 +71,7 @@
                                     <!-- Form-Category::start -->
                                     <div class="col-lg-4">
                                         <label>Category</label>
-                                        <select class="custom-select form-control" name="category">
+                                        <select class="custom-select form-control @error('category') is-invalid @enderror" name="category">
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }} ">
                                                     {{ $categorie->category }}
@@ -84,7 +84,7 @@
                                     <!-- Form-Cuisine::start -->
                                     <div class="col-lg-4">
                                         <label>Cuisine</label>
-                                        <select class="custom-select form-control" name="cuisine">
+                                        <select class="custom-select form-control @error('cuisine') is-invalid @enderror" name="cuisine">
                                             @foreach ($cuisines as $cuisine)
                                                 <option value="{{ $cuisine->id }} ">
                                                     {{ $cuisine->cuisine }}
@@ -106,7 +106,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-utensils"></i></span></div>
-                                            <input type="text" class="form-control" placeholder="Egg Pepper Fry"
+                                            <input type="text" class="form-control @error('recipe_name') is-invalid @enderror" placeholder="Egg Pepper Fry"
                                                 name="recipe_name" />
                                         </div>
                                         <span class="form-text text-muted">Enter your recipe name</span>
@@ -134,7 +134,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-hourglass-start"></i></span></div>
-                                            <input type="number" class="form-control" placeholder="30 Minutes"
+                                            <input type="number" class="form-control  @error('preparing_time') is-invalid @enderror" placeholder="30 Minutes"
                                                 name="preparing_time" />
                                         </div>
                                         <span class="form-text text-muted">How much time it's take for Prepareing (In
@@ -147,7 +147,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-stopwatch"></i></span></div>
-                                            <input type="number" class="form-control" placeholder="20 Minutes"
+                                            <input type="number" class="form-control @error('cooking_time') is-invalid @enderror" placeholder="20 Minutes"
                                                 name="cooking_time" />
                                         </div>
                                         <span class="form-text text-muted">How much time it's take for Cooking (In
@@ -165,7 +165,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-users"></i></span></div>
-                                            <input type="number" class="form-control" placeholder="4 People"
+                                            <input type="number" class="form-control @error('serves_people') is-invalid @enderror" placeholder="4 People"
                                                 name="serves_people" />
                                         </div>
                                         <span class="form-text text-muted">Your proper this recipe for how many
@@ -178,7 +178,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-cookie-bite"></i></span></div>
-                                            <input type="number" class="form-control" placeholder="150 Calories"
+                                            <input type="number" class="form-control @error('calories_in') is-invalid @enderror" placeholder="150 Calories"
                                                 name="calories_in" />
                                         </div>
                                         <span class="form-text text-muted">How much of calories contain this
@@ -203,7 +203,7 @@
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-8">
                                         <label>Description</label>
-                                        <textarea class="form-control" rows="3" name="description"></textarea>
+                                        <textarea class="form-control @error('description') is-invalid @enderror" rows="3" name="description"></textarea>
                                         <span class="form-text text-muted">What special in this recipe</span>
                                     </div>
                                     <!-- Form-Description::end -->
@@ -218,14 +218,7 @@
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
                                         <label>Setps</label>
-                                        <textarea id="editor" rows="3" name="steps">
-                                            <h4>Add your RECIPE <strong>"Egg Pepper Fry"</strong> STEPS like this...</h4>
-                                            <ul>
-                                                <li>To a wide pan/kadhai add 2tbsp vegetable oil. Add the sliced onions. Saute them in high flame until they change color to a nice dark rich brown.</li>
-                                                <li>Now add 1 tbsp ginger garlic paste followed by 1 chopped tomato and 4 slit green chilies and few curry leaves. Mix everything. Saute on low flame for 2 -3 mins.</li>
-                                                <li>...</li>
-                                                <li>...</li>
-                                            </ul>
+                                        <textarea class="form-control @error('steps') is-invalid @enderror" rows="3" name="steps"></textarea>
                                         </textarea>
                                         <span class="form-text text-muted">Add the diffend step of prepare the your
                                             Recipe (In using BULLET poins)</span>
@@ -249,7 +242,7 @@
                                     <!-- Form-Ingredient::start -->
                                     <div class="col-lg-3">
                                         <label>Ingredient</label>
-                                        <select class="custom-select form-control" name="ingredient">
+                                        <select class="custom-select form-control @error('ingredient') is-invalid @enderror" name="ingredient">
                                             @foreach ($ingredients as $ingredient)
                                                     <option value="{{ $ingredient->id }} ">
                                                         {{ $ingredient->ingredient }}
@@ -262,14 +255,14 @@
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-2">
                                         <label>Quantity</label>
-                                        <input type="text" class="form-control" placeholder="Egg Pepper Fry" />
+                                        <input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Egg Pepper Fry" name="quantity" />
                                         <span class="form-text text-muted">Add the Quantity</span>
                                     </div>
                                     <!-- Form-Description::end -->
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-2">
                                         <label>Measurement</label>
-                                        <select class="custom-select form-control" name="measurement">
+                                        <select class="custom-select form-control @error('measurement') is-invalid @enderror" name="measurement">
                                             @foreach ($measurements as $measurement)
                                                     <option value="{{ $measurement->id }} ">
                                                         {{ $measurement->measurement }}
@@ -304,7 +297,7 @@
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-8">
                                         <label>Meta-Description</label>
-                                        <textarea class="form-control" rows="3" name="meta_description"></textarea>
+                                        <textarea class="form-control @error('meta_description') is-invalid @enderror" rows="3" name="meta_description"></textarea>
                                         <span class="form-text text-muted">If you want to add some special description
                                             for thsi recipe (ADD HEAR)</span>
                                     </div>
@@ -317,7 +310,7 @@
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
-                                        <textarea class="form-control" readonly rows="2"></textarea>
+                                        <textarea class="form-control @error('image') is-invalid @enderror" readonly rows="2"></textarea>
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
                                     <!-- Form-Image::end -->
@@ -333,7 +326,7 @@
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
-                                        <h3>Recipe Tast-Bud</h3>
+                                        <h3>Recipe Taste-Bud</h3>
                                     </div>
                                     <!-- Side Text::end -->
                                     <!-- Form-Sweet::start -->
@@ -358,6 +351,9 @@
                                         </div>
                                         <span class="form-text text-muted">Select level of <b>sweet</b> in this
                                             recipe</span>
+                                        @error('bud_sweet')
+                                            <p class="error-message" style="color: red;">Some thing went wrong</p>
+                                        @enderror
                                     </div>
                                     <!-- Form-Sweet::end -->
                                     <!-- Form-Sour::start -->
@@ -382,6 +378,9 @@
                                         </div>
                                         <span class="form-text text-muted">Select level of <b>sour</b> in this
                                             recipe</span>
+                                        @error('bud_sour')
+                                            <p class="error-message" style="color: red;">Some thing went wrong</p>
+                                        @enderror
                                     </div>
                                     <!-- Form-Sour::end -->
                                 </div>
@@ -411,6 +410,9 @@
                                         </div>
                                         <span class="form-text text-muted">Select level of <b>salty</b> in this
                                             recipe</span>
+                                        @error('bud_salt')
+                                            <p class="error-message" style="color: red;">Some thing went wrong</p>
+                                        @enderror
                                     </div>
                                     <!-- Form-Salty::end -->
                                     <!-- Form-Pungent (Spicy)::start -->
@@ -435,6 +437,9 @@
                                         </div>
                                         <span class="form-text text-muted">Select level of <b>spicy</b> in this
                                             recipe</span>
+                                        @error('bud_spicy')
+                                            <p class="error-message" style="color: red;">Some thing went wrong</p>
+                                        @enderror
                                     </div>
                                     <!-- Form-Pungent (Spicy)::end -->
                                 </div>
@@ -464,6 +469,9 @@
                                         </div>
                                         <span class="form-text text-muted">Select level of <b>bitter</b> in this
                                             recipe</span>
+                                        @error('bud_bitter')
+                                            <p class="error-message" style="color: red;">Some thing went wrong</p>
+                                        @enderror
                                     </div>
                                     <!-- Form-Bitter::end -->
                                     <!-- Form-Astringent::start -->
@@ -488,6 +496,9 @@
                                         </div>
                                         <span class="form-text text-muted">Select level of <b>astringent</b> in this
                                             recipe</span>
+                                        @error('bud_astringent')
+                                            <p class="error-message" style="color: red;">Some thing went wrong</p>
+                                        @enderror
                                     </div>
                                     <!-- Form-Calories::end -->
                                 </div>

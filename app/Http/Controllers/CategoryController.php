@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Yajra\Datatables\Datatables;
 
+
 class CategoryController extends Controller
 {
     // Function - Index
@@ -24,11 +25,11 @@ class CategoryController extends Controller
     // Function - Store
     public function store(Request $request)
     {
+        // Validate the Data
+        $this->ValidatedData();
+
         // Create New Object
         $category = new Category();
-
-        // Validate the Data
-        $category = Category::create($this->ValidatedData());
 
         // User Entered - Data Saving
         $category->category = $request->get('category');

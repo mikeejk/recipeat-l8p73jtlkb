@@ -359,7 +359,7 @@
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
-                                        <h3>Recipe Tast-Bud</h3>
+                                        <h3>Recipe Taste-Bud</h3>
                                     </div>
                                     <!-- Side Text::end -->
 

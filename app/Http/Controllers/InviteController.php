@@ -33,6 +33,8 @@ class InviteController extends Controller
     // Function - Process
     public function process(Request $request)
     {
+        $this->ValidatedData();
+
         // Do - Condition
         // generate a random token
         do
@@ -46,8 +48,6 @@ class InviteController extends Controller
 
         // Create New Object
         $invite = new Invite();
-
-        // $invite = $this->validatedData();
 
         // Invite-Data Storeing - Foreign Keys
         $invite->role_id = $request->get('roles');
@@ -105,18 +105,6 @@ class InviteController extends Controller
         return redirect('register');
     }
 
-    // Function - ValidateData
-    protected function validatedData()
-    {
-        // Validation the data
-        return request()->validate([
-            'name' => 'required',
-            'email' => 'required|email', 'string', 'unique:users',
-            'user' => 'roles', 'required',
-            'contact' => 'required',
-        ]);
-    }
-
     // Function - getIndex
     public function getIndex()
     {
@@ -134,5 +122,15 @@ class InviteController extends Controller
             })->toJson();
 
         return Datatables::of(Invite::query())->make(true);
+    }
+
+    // Function - ValidateData
+    protected function validatedData()
+    {
+    // Validation the data
+        return request()->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users', 'string',
+        ]);
     }
 }
