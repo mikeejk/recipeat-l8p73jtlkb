@@ -91,7 +91,6 @@
                                     <div class="col-lg-4">
                                         <div class="input-group">
                                             <select class="custom-select form-control" name="roles">
-                                                <option>Select the user Membership</option>
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->id }} ">
                                                         {{ $role->name }}

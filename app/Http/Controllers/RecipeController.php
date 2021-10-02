@@ -32,6 +32,8 @@ class RecipeController extends Controller
     // Function - Store
     public function store(Request $request)
     {
+        $this->ValidatedData();
+
         // Create New Object
         $recipe = new Recipe();
 
@@ -40,26 +42,26 @@ class RecipeController extends Controller
 
         // Recipe-Data Storeing - Foreign Keys
         $recipe->user_id = $user_id;
-        $recipe->category_id = request()->get('category');
-        $recipe->cuisine_id = request()->get('cuisine');
-        $recipe->measurement_id = request()->get('measurement');
-        $recipe->ingredient_id = request()->get('ingredient');
+        $recipe->category_id = $request->get('category');
+        $recipe->cuisine_id = $request->get('cuisine');
+        $recipe->measurement_id = $request->get('measurement');
+        $recipe->ingredient_id = $request->get('ingredient');
 
         // Recipe-Data Storeing - User Entered
-        $recipe->recipe_name = request()->get('recipe_name');
-        $recipe->preparing_time = request()->get('preparing_time');
-        $recipe->cooking_time = request()->get('cooking_time');
-        $recipe->serves_people = request()->get('serves_people');
-        $recipe->calories_in = request()->get('calories_in');
-        $recipe->description = request()->get('description');
-        $recipe->steps = request()->get('steps');
-        $recipe->meta_description = request()->get('meta_description');
-        $recipe->bud_sweet = request()->get('bud_sweet');
-        $recipe->bud_sour = request()->get('bud_sour');
-        $recipe->bud_salt = request()->get('bud_salt');
-        $recipe->bud_spicy = request()->get('bud_spicy');
-        $recipe->bud_bitter = request()->get('bud_bitter');
-        $recipe->bud_astringent = request()->get('bud_astringent');
+        $recipe->recipe_name = $request->get('recipe_name');
+        $recipe->preparing_time = $request->get('preparing_time');
+        $recipe->cooking_time = $request->get('cooking_time');
+        $recipe->serves_people = $request->get('serves_people');
+        $recipe->calories_in = $request->get('calories_in');
+        $recipe->description = $request->get('description');
+        $recipe->steps = $request->get('steps');
+        $recipe->meta_description = $request->get('meta_description');
+        $recipe->bud_sweet = $request->get('bud_sweet');
+        $recipe->bud_sour = $request->get('bud_sour');
+        $recipe->bud_salt = $request->get('bud_salt');
+        $recipe->bud_spicy = $request->get('bud_spicy');
+        $recipe->bud_bitter = $request->get('bud_bitter');
+        $recipe->bud_astringent = $request->get('bud_astringent');
 
         // Save Data
         $recipe->save();
@@ -126,5 +128,28 @@ class RecipeController extends Controller
             })->toJson();
 
         return Datatables::of(Recipe::query())->make(true);
+    }
+
+    // Function - ValidateData
+    protected function validatedData()
+    {
+        return request()->validate(
+            [
+                'recipe_name'  => 'required',
+                'preparing_time'  => 'required',
+                'cooking_time'  => 'required',
+                'serves_people'  => 'required',
+                'calories_in' => 'required',
+                'description'  => 'required',
+                'steps'  => 'required',
+                'meta_description'  => 'required',
+                'bud_sweet'  => 'required',
+                'bud_sour'  => 'required',
+                'bud_salt'  => 'required',
+                'bud_spicy'  => 'required',
+                'bud_bitter'  => 'required',
+                'bud_astringent'  => 'required',
+            ]
+        );
     }
 }
