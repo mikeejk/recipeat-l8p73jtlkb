@@ -111,7 +111,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::middleware(['auth:sanctum', 'verified'])->patch('/cuisines/{cuisine}', [CuisineController::class, 'update']);
 
     // Destroy Cuisine Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines/{cuisine}/delete', [CategoryController::class, 'destroy']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/cuisines/{cuisine}/delete', [CuisineController::class, 'destroy']);
 
     // Recipeat Cuisine Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/cuisine.data', [CuisineController::class, 'anyData']);
@@ -129,18 +129,24 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     // Add Ingredient Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'create']);
 
-    // Add Ingredient Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'create']);
-
     // Store Ingredient Tab
     Route::middleware(['auth:sanctum', 'verified'])->post('/ingredients', [IngredientController::class, 'store']);
+
+    // Edit Ingredient Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients/{ingredient}/edit', [IngredientController::class, 'edit']);
+
+    // Update Ingredient Tab
+    Route::middleware(['auth:sanctum', 'verified'])->patch('/ingredients/{ingredient}', [IngredientController::class, 'update']);
+
+    // Destroy ingredient Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients/{ingredient}/delete', [IngredientController::class, 'destroy']);
 
     // Recipeat Ingredient Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/ingredient.data', [IngredientController::class, 'anyData']);
 
     // Recipeat Ingredient Data Table - Index Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients_create', [IngredientController::class, 'getIndex']);
-}
+});
 
 // MeasurementController
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
