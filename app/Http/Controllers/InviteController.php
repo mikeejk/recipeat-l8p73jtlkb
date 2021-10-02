@@ -117,7 +117,7 @@ class InviteController extends Controller
         $inviteuser = Invite::all();
         return datatables()->of($inviteuser)
             ->addColumn('status', function () {
-                $html = 'Invite Send';
+                $html = 'Invite Sent';
                 return $html;
             })->toJson();
 
