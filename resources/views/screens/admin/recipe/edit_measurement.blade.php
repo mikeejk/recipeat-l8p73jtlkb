@@ -160,7 +160,7 @@
                     @csrf
                         <div class="form-group row p-4 m-1  bg-white">
                             <div class="col-md-3 col-8">
-                                <label class="col-lg-1 col-form-label text-lg-right">Measurement</label>
+                                <label class="col-lg-1 col-form-label text-lg-right">Edit Measurement</label>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="input-group">
@@ -172,7 +172,7 @@
                             </div>
                             <div class="col-lg-1 col-md-2 col-5 mt-1">
                                 <button type="submit" name="action" value="measurement_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                                    class="btn btn-primary w-lg-100 w-100">Update</button>
                             </div>
                         </div>
 
