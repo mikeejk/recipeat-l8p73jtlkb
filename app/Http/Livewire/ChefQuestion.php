@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Http\Request;
 use App\Models\Chef_question;
 use Livewire\Component;
 
@@ -277,30 +278,93 @@ class ChefQuestion extends Component
         $this->currentStep = 19;
     }
 
-    // // Function - SubmitForm
-    // public function submitForm()
-    // {
-    //     Chef_question::create([
-    //         'name' => $this->name,
-    //         'gender' => $this->gender,
-    //         'mail' => $this->mail,
-    //         'cookinglevel' => $this->cookinglevel,
-    //         'allergies' => $this->allergies,
-    //         'lifestyle' => $this->lifestyle,
-    //         'ingredient' => $this->ingredient,
-    //         'pref_cuisine' => $this->pref_cuisine,
-    //         'goals' => $this->goals,
-    //         'serving_time' => $this->serving_time,
-    //         'cho_cook' => $this->cho_cook,
-    //         'fav_ingr' => $this->fav_ingr,
-    //         'level_spici' => $this->level_spici,
-    //         'time_spend' => $this->time_spend,
-    //         // 'user_id' => $this->user_id,
-    //     ]);
+    // Function - SubmitForm
+    public function submitForm(Request $request)
+    {
+        Chef_question::create([
+            'f_name' => $this->f_name,
+            'm_name' => $this->m_name,
+            'l_name' => $this->l_name,
+            'dob' => $this->dob,
+            'month' => $this->month,
+            'year' => $this->year,
+            'current_des' => $this->current_des,
+            'specialisation' => $this->specialisation,
+            'company_name' => $this->company_name,
+            'experience_year' => $this->experience_year,
+            'state' => $this->state,
+            'location' => $this->location,
+            'job_describe' => $this->job_describe,
+            'job_responsibilities' => $this->job_responsibilities,
+            'profile_image' => $this->profile_image,
+            'college_name' => $this->college_name,
+            'college_degree' => $this->college_degree,
+            'college_from' => $this->college_from,
+            'college_to' => $this->college_to,
+            'exp_job_employeer' => $this->exp_job_employeer,
+            'exp_job_title' => $this->exp_job_title,
+            'exp_from' => $this->exp_from,
+            'exp_to' => $this->exp_to,
+            'exp_job_description' => $this->exp_job_description,
+            'resume' => $this->resume,
+            'skills' => $this->skills,
+            'accomplishment_title' => $this->accomplishment_title,
+            'accomplishment_description' => $this->accomplishment_description,
+            'accomplishment_upload' => $this->accomplishment_upload,
+            'degree_name' => $this->degree_name,
+            'degree_description' => $this->degree_description,
+            'about_my_profile' => $this->about_my_profile,
+            'user_id' => auth()->user()->id,
+        ]);
 
-    //     // Next Step
-    //     $this->currentStep = 20;
-    // }
+
+        // // Create New Object
+        // $chef_question = new Chef_question();
+
+        // // User_id Form User Model
+        // $user_id = auth()->user()->id;
+
+        // // Chef Question - User Enterd data
+        // $chef_question->user_id = $user_id;
+        // $chef_question->f_name = $request->get('f_name');
+        // $chef_question->m_name = $request->get('m_name');
+        // $chef_question->l_name = $request->get('l_name');
+        // $chef_question->dob = $request->get('dob');
+        // $chef_question->month = $request->get('month');
+        // $chef_question->year = $request->get('l_name');
+        // $chef_question->current_des = $request->get('current_des');
+        // $chef_question->specialisation = $request->get('specialisation');
+        // $chef_question->company_name = $request->get('company_name');
+        // $chef_question->experience_year = $request->get('experience_year');
+        // $chef_question->state = $request->get('state');
+        // $chef_question->location = $request->get('location');
+        // $chef_question->job_describe = $request->get('job_describe');
+        // $chef_question->job_responsibilities = $request->get('job_responsibilities');
+        // $chef_question->profile_image = $request->get('profile_image');
+        // $chef_question->college_name = $request->get('college_name');
+        // $chef_question->college_degree = $request->get('college_degree');
+        // $chef_question->college_from = $request->get('college_from');
+        // $chef_question->college_to = $request->get('college_to');
+        // $chef_question->exp_job_employeer = $request->get('exp_job_employeer');
+        // $chef_question->exp_job_title = $request->get('exp_job_title');
+        // $chef_question->exp_from = $request->get('exp_from');
+        // $chef_question->exp_to = $request->get('exp_to');
+        // $chef_question->exp_job_description = $request->get('exp_job_description');
+        // $chef_question->resume = $request->get('resume');
+        // $chef_question->skills = $request->get('skills');
+        // $chef_question->accomplishment_title = $request->get('accomplishment_title');
+        // $chef_question->accomplishment_description = $request->get('accomplishment_description');
+        // $chef_question->accomplishment_upload = $request->get('accomplishment_upload');
+        // $chef_question->degree_name = $request->get('degree_name');
+        // $chef_question->degree_description = $request->get('degree_description');
+        // $chef_question->about_my_profile = $request->get('about_my_profile');
+
+        // // Save Data
+        // $chef_question->save();
+
+        // Next Step
+        $this->currentStep = 20;
+    }
 
     // Function - Back
     public function back($step)

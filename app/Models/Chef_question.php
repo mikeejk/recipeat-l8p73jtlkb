@@ -11,6 +11,9 @@ class Chef_question extends Model
 
     protected $fillable = [
 
+        // Foreign Keys - Data Saving
+        'user_id',
+
         // User Entered - Data Saving
         'f_name',
         'm_name',
