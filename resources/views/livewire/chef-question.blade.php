@@ -168,6 +168,10 @@
                                 <input type="profession"
                                     class="w-full px-4 py-3 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="current_des" />
+                                @error('current_des') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -201,6 +205,10 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="specialisation" />
+                                @error('specialisation') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -235,6 +243,10 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-md focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="company_name" />
+                                @error('company_name') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -262,7 +274,6 @@
                                 have you
                                 been working at the company name?</h4>
                         </div>
-
                         <div class="bg-white shadow-2xl p-4 rounded-lg">
                             <div class="mb-5">
                                 <label class="font-bold mb-1 text-gray-700 block">Experience
@@ -270,6 +281,10 @@
                                 <input type="number"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="experience_year" />
+                                @error('experience_year') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -305,6 +320,10 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="state" />
+                                @error('state') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -333,13 +352,16 @@
                                 you
                                 currently situated in?</h4>
                         </div>
-
                         <div class="bg-white shadow-2xl p-4 rounded-lg">
                             <div class="mb-5">
                                 <label class="font-bold mb-1 text-gray-700 block">Location</label>
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="location" />
+                                @error('location') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -373,6 +395,10 @@
                                 <textarea type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="job_describe"></textarea>
+                                @error('job_describe') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -407,6 +433,11 @@
                                 <textarea
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="job_responsibilities"></textarea>
+                                @error('job_responsibilities') <span
+                                        class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -437,6 +468,10 @@
                         <div class="bg-white shadow-2xl p-4 rounded-lg">
                             <div class="mb-5 text-center">
                                 <input class="border" type="text" wire:model="profile_image">
+                                @error('profile_image') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -471,6 +506,10 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="college_name" />
+                                @error('college_name') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="mb-5">
                                 <label class="font-bold mb-1 text-gray-700 block">Enter your
@@ -478,6 +517,10 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="college_degree" />
+                                @error('college_degree') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="mb-5 flex">
                                 <label class="font-bold mb-1 text-gray-700 block">Year</label>
@@ -491,6 +534,11 @@
                                         <input
                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             wire:model="college_from" type="number" placeholder="1996">
+                                        @error('college_from') <span
+                                                class="error text-red-500 text-xs pl-1 font-bold"><i
+                                                    class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                                Required</span>
+                                        @enderror
                                     </div>
                                     <div class="w-full md:w-1/2 px-3 mb-3 md:mb-0">
                                         <label
@@ -501,6 +549,10 @@
                                         <input
                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             wire:model="college_to" type="number" placeholder="1999">
+                                        @error('college_to') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                                    class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                                Required</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -537,12 +589,20 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="exp_job_title" />
+                                @error('exp_job_title') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="employeer" class="font-bold mb-1 text-gray-700 block">Employeer</label>
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="exp_job_employeer" />
+                                @error('exp_job_employeer') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="mb-2 flex">
                                 <label for="year" class="font-bold mb-1 text-gray-700 block">Year</label>
@@ -556,6 +616,10 @@
                                         <input
                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             wire:model="exp_from" type="number" placeholder="1996">
+                                        @error('exp_from') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                                    class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                                Required</span>
+                                        @enderror
                                     </div>
                                     <div class="w-full md:w-1/2 px-3 mb-3 md:mb-0">
                                         <label
@@ -566,6 +630,10 @@
                                         <input
                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             wire:model="exp_to" type="number" placeholder="1999">
+                                        @error('exp_to') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                                    class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                                Required</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -575,6 +643,11 @@
                                 <textarea
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="exp_job_description"></textarea>
+                                @error('exp_job_description') <span
+                                        class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -602,7 +675,6 @@
                             <h4 class="text-white text-center font-bold lg:text-2xl md:text-xl text-lg">
                                 Resume</h4>
                         </div>
-
                         <div class="bg-white shadow-2xl p-4 rounded-lg">
                             <div class="mb-5 text-center">
                                 <div>
@@ -610,8 +682,11 @@
                                         Resume
                                     </label>
                                     <input class="border" type="text" wire:model="resume">
+                                    @error('resume') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                                class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                            Required</span>
+                                    @enderror
                                 </div>
-
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -645,6 +720,10 @@
                                 <textarea
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="skills"></textarea>
+                                @error('skills') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -680,12 +759,22 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="accomplishment_title" />
+                                @error('accomplishment_title') <span
+                                        class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="description" class="font-bold mb-1 text-gray-700 block">Description</label>
                                 <textarea
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="accomplishment_description"></textarea>
+                                @error('accomplishment_description') <span
+                                        class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="relevent_uploads" class="font-bold mb-1 text-gray-700 block">Relevent
@@ -693,6 +782,11 @@
                                 <textarea
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="accomplishment_upload"></textarea>
+                                @error('accomplishment_upload') <span
+                                        class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -728,6 +822,10 @@
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="degree_name" />
+                                @error('degree_name') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="mb-5">
                                 <label for="degree_descripiton" class="font-bold mb-1 text-gray-700 block">brief
@@ -735,6 +833,10 @@
                                 <textarea
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="degree_description"></textarea>
+                                @error('degree_description') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
@@ -772,6 +874,10 @@
                                 <textarea
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     wire:model="about_my_profile"></textarea>
+                                @error('about_my_profile') <span class="error text-red-500 text-xs pl-1 font-bold"><i
+                                            class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
+                                        Required</span>
+                                @enderror
                             </div>
                             <div class="w-full flex justify-center">
                                 <button type="submit"
