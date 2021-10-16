@@ -61,6 +61,9 @@
         <div class="d-flex flex-row flex-column-fluid page">
 
             @include('partials._aside')
+            @hasrole('Admin')
+            @include('partials._aside-admin')
+            @endhasrole
 
             <!--begin::Wrapper-->
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
@@ -89,7 +92,11 @@
     </div>
     <!--end::Main-->
 
+    @hasrole('Admin|Chef|Home-Chef')
     @include('partials._extras.offcanvas.quick-user')
+    @endhasrole
+
+    @include('partials._extras.offcanvas.guest-quick-user')
 
 
     @include('partials._extras.offcanvas.quick-panel')

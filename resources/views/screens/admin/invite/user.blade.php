@@ -132,9 +132,8 @@ $(function() {
                 name: 'name'
             },
             {
-                data: 'role_id',
-                name: 'role_id',
-                searchable: false
+                data: 'role',
+                name: 'role',
             },
             {
                 data: 'email',

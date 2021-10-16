@@ -10,9 +10,9 @@ I am chef
 I am Home-Chef
 @endhasrole
 
-@hasrole('User')
-I am Guest
-@endhasrole
+
+
+
 
 
 @endsection
