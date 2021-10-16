@@ -642,7 +642,7 @@
                                         <div class="flex flex-col w-full p-2 border-2 rounded-lg">
                                             <div class="flex items-center  justify-center w-full border-b-2">
                                                 <img class="rounded-t-lg h-40 w-full"
-                                                    src="https://d1uz88p17r663j.cloudfront.net/resized/bbaea66d221311621bf352c8526098f7_chicken-beryani_744_419.jpg">
+                                                    src="https://spicecravings.com/wp-content/uploads/2021/04/Chicken-Biryani-Featured-2-500x375.jpg">
                                             </div>
                                             <div
                                                 class="flex items-center justify-center bg-yellow-500 text-white hover:text-blue-600 font-bold md:text-xl text-lg w-full border-b-2 py-1 ">
