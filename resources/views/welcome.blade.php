@@ -537,14 +537,14 @@
         <div>
             <div class="h-full sm:mt-0 lg-mt-32 flex flex-col justify-center items-center bg-fixed bg-center"
                 style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
-                <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
+                <a href="/" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a>
                 <a href="/dashboard"><button
                         class="rounded-lg absolute bg-red-600 hover:bg-red-700 text-white p-3 top-0 right-0 mt-3 mr-5">My
                         Recipe's</button>
                 </a>
-                <form action="{{ route('web.search') }}" method="HEAD">
+                <form action="{{ route('web.search') }}" method="GET">
                     <div class="space-y-5">
                         <div class="flex flex-row w-full">
                             <div class="w-full">
@@ -618,12 +618,24 @@
                                                 <span class="align-middle">f</span>
                                             </a>
                                             <a href="!"
-                                                class="button button--nina px-8 py-2   text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
-                                                data-text="user">
-                                                <span class="align-middle">U</span>
-                                                <span class="align-middle">s</span>
+                                                class="button button--nina px-8 py-2  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                                data-text="Home Chef">
+                                                <span class="align-middle">H</span>
+                                                <span class="align-middle">o</span>
+                                                <span class="align-middle">m</span>
                                                 <span class="align-middle">e</span>
-                                                <span class="align-middle">r</span>
+                                                <span class="align-middle">c</span>
+                                                <span class="align-middle">h</span>
+                                                <span class="align-middle">e</span>
+                                                <span class="align-middle">f</span>
+                                            </a>
+                                            <a href="!"
+                                                class="button button--nina px-8 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                                data-text="All">
+                                                <span class="align-middle">a</span>
+                                                <span class="align-middle">l</span>
+                                                <span class="align-middle">l</span>
+
                                             </a>
                                         </div>
                                     </div>
@@ -637,7 +649,7 @@
                         <div class="w-full flex md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
-                                    <a href=""
+                                    <a href="/recipeview" name="view"
                                         class="flex xl:flex-row md:flex-col lg:w-1/4 md:w-full w-full p-2 transition duration-500 ease-in transform hover:-translate-x-1 hover:scale-110 mr-5">
                                         <div class="flex flex-col w-full p-2 border-2 rounded-lg">
                                             <div class="flex items-center  justify-center w-full border-b-2">
@@ -652,7 +664,10 @@
                                                 <h1
                                                     class="font-bold md:text-base text-sm text-black flex border-b-2 pb-2 pt-1 mb-2">
                                                     Description:</h1>
-                                                <h1 class="mt-1 mb-2 h-10">{{ $recipes->description }}</h1>
+                                                <h1 class="mt-1 mb-1 h-10 border-b-2 pb-1 text-sm overflow-hidden">{{ $recipes->description }}</h1>
+                                                <div class="m-1 text-sm"><h1>Created at:</h1>
+                                                    {{ $recipes->created_at }}
+                                                </div>
                                             </div>
                                         </div>
                                     </a>

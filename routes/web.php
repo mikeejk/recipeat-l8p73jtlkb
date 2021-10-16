@@ -23,9 +23,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
-//     return view('welcome');
-// });
+Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
+    return view('welcome');
+});
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview', function () {
+    return view('recipe_view');
+});
+
 
 // Route::get('/welcome',[RecipeController::class,'welcome'])->name('web.search');
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
