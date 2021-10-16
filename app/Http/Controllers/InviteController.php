@@ -119,11 +119,11 @@ class InviteController extends Controller
                 $html = 'Invite Sent';
                 return $html;
             })
-            ->setRowId(function ($role)
-            {
-                return $role->id;
-            })
-            ->setRowData(['data-name' => 'row-{{$name}}',])
+            // ->setRowId(function ($role)
+            // {
+            //     return $role->id;
+            // })
+            // ->setRowData(['data-name' => 'row-{{$name}}',])
             ->addColumn('role', function ($role) {
                 return Role::find($role->id)->name;
             })
