@@ -23,16 +23,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
-    return view('welcome');
-});
-Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview', function () {
-    return view('recipe_view');
-});
+// Recipe Search - Result Display Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview',function(){ return view('recipe_view');});
 
-
-// Route::get('/welcome',[RecipeController::class,'welcome'])->name('web.search');
-// recipe Search Tab
+// Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
 
 // Recipeat Customer Data Table - Data Tab
@@ -62,6 +56,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/customers.data', [InviteC
 
 // User Invite Data Table - Index Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/customers', [InviteController::class, 'getIndex']);
+
+// -------------------------------------------------------------------------------------------------------------------
+//                                                     Admin-Recipe Routes
+// -------------------------------------------------------------------------------------------------------------------
 
 //Admin_recipe
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function () {
