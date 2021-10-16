@@ -115,11 +115,21 @@ class InviteController extends Controller
     public function anyData()
     {
         $inviteuser = Invite::all();
+
         return datatables()->of($inviteuser)
             ->addColumn('status', function () {
                 $html = 'Invite Sent';
                 return $html;
-            })->toJson();
+            })
+            ->setRowId(function ($role)
+            {
+                return $role->id;
+            })
+            ->setRowData(['data-name' => 'row-{{$name}}',])
+            ->addColumn('role', function ($role) {
+                return Role::find($role->id)->name;
+            })
+            ->toJson();
 
         return Datatables::of(Invite::query())->make(true);
     }

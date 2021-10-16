@@ -758,7 +758,7 @@
             <!--begin::User-->
             <div class="topbar-item ml-4">
                 <div class="btn btn-icon btn-light-primary h-40px w-40px p-0" id="kt_quick_user_toggle">
-                    <img src="assets/media/svg/avatars/004-boy-1.svg" class="h-30px align-self-end" alt="" />
+                    <img src="assets/media/svg/avatars/004-boy-1.jpg" class="h-30px align-self-end" alt="" />
                 </div>
 
                 {{-- <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2"

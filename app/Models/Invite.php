@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
 
 class Invite extends Model
 {
     use HasFactory;
-    
+    use HasRoles;
+
     protected $fillable = [
 
         // User Entered - Data Saving
@@ -22,4 +25,9 @@ class Invite extends Model
         // Random token - Data Saving
         'token'
     ];
+
+    public function role()
+    {
+        return $this->hasOne(Role::class);
+    }
 }
