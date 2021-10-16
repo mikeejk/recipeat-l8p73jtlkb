@@ -217,7 +217,7 @@ class Questionnaire extends Component
             'fav_ingr' => $this->fav_ingr,
             'level_spici' => $this->level_spici,
             'time_spend' => $this->time_spend,
-            // 'user_id' => $this->user_id,
+            'user_id' => auth()->user()->id,
         ]);
 
         // Next Step

@@ -21,7 +21,7 @@ class CreateQuestionsTable extends Migration
             // Foreign Keys - Data Saving
             $table->unsignedBigInteger('user_id')->nullable();
 
-             // User Entered - Data Saving
+            // User Entered - Data Saving
             $table->string('name');
             $table->string('gender');
             $table->string('mail');

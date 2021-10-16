@@ -13,14 +13,14 @@
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-0 font-size-sm">
                             <!-- <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">Recipe</a>
-                            </li>
-                            <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">My Recipes</a>
-                            </li>
-                            <li class="breadcrumb-item text-muted">
-                                <a href="" class="text-muted">Category</a>
-                            </li> -->
+                                    <a href="" class="text-muted">Recipe</a>
+                                </li>
+                                <li class="breadcrumb-item text-muted">
+                                    <a href="" class="text-muted">My Recipes</a>
+                                </li>
+                                <li class="breadcrumb-item text-muted">
+                                    <a href="" class="text-muted">Category</a>
+                                </li> -->
                         </ul>
                         <!--end::Breadcrumb-->
                     </div>
@@ -42,7 +42,6 @@
                             <!--begin::Page Heading-->
                             <div class="d-flex w-100 align-items-baseline flex-wrap">
                                 <div class="card-toolbar w-100">
-
                                     <!--begin::Button-->
                                     <a href="/categorys_create" style="margin-bottom: 2px;"
                                         class="btn btn-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
@@ -127,7 +126,7 @@
 
                                     <!--begin::Button-->
                                     <a href="/measurements_create" style="margin-bottom: 2px;"
-                                        class="btn btn-outline-primary col-lg-3 col-md-3 col-12 font-weight-bolder">
+                                        class="btn btn-outline-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Map/Compass.svg--><svg
@@ -157,23 +156,23 @@
                 <!--begin::Card-->
                 <form class="form" action="/categorys" method="post">
                     @csrf
-
-                        <div class="form-group bg-white row p-4 m-1">
-                            <div class="col-md-3 col-8 text-md-center text-start">
-                                <label class="col-lg-1 col-form-label ">Category</label>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="las la-sitemap"></i></span></div>
-                                    <input type="text" class="form-control @error('category') is-invalid @enderror" placeholder="New Category" name="category" />
-                                </div>
-                            </div>
-                            <div class="col-lg-1 col-md-2 col-5 mt-1">
-                                <button type="submit" name="action" value="category_save"
-                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                    <div class="form-group bg-white row p-4 m-1">
+                        <div class="col-md-3 col-8 text-md-center text-start">
+                            <label class="col-lg-1 col-form-label ">Category</label>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="las la-sitemap"></i></span></div>
+                                <input type="text" class="form-control @error('category') is-invalid @enderror"
+                                    placeholder="New Category" name="category" />
                             </div>
                         </div>
+                        <div class="col-lg-1 col-md-2 col-5 mt-1">
+                            <button type="submit" name="action" value="category_save"
+                                class="btn btn-primary w-lg-100 w-100">Save</button>
+                        </div>
+                    </div>
 
                     {{-- <div class="card-footer">
                         <div class="row">
@@ -244,9 +243,10 @@
             });
         </script>
     @endpush
-<style>
-    .mt {
-  margin-top: -50px !important;
-}
-</style>
+    <style>
+        .mt {
+            margin-top: -50px !important;
+        }
+
+    </style>
 @endsection

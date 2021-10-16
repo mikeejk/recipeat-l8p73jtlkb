@@ -665,8 +665,6 @@
 
 
     <!-- Question 14 -->
-
-
      <div class="row w-full flex h-screen setup-content {{ $currentStep != 14 ? 'display-none' : '' }}" id="step-14">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">

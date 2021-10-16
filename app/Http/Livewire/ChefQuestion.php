@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Http\Request;
 use App\Models\Chef_question;
 use Livewire\Component;
 
@@ -12,6 +13,35 @@ class ChefQuestion extends Component
     public $f_name;
     public $m_name;
     public $l_name;
+    public $dob;
+    public $month;
+    public $year;
+    public $current_des;
+    public $specialisation;
+    public $company_name;
+    public $experience_year;
+    public $state;
+    public $location;
+    public $job_describe;
+    public $job_responsibilities;
+    public $profile_image;
+    public $college_name;
+    public $college_degree;
+    public $college_from;
+    public $college_to;
+    public $exp_job_employeer;
+    public $exp_job_title;
+    public $exp_from;
+    public $exp_to;
+    public $exp_job_description;
+    public $resume;
+    public $skills;
+    public $accomplishment_title;
+    public $accomplishment_description;
+    public $accomplishment_upload;
+    public $degree_name;
+    public $degree_description;
+    public $about_my_profile;
 
     // Function - Render
     public function render()
@@ -31,7 +61,309 @@ class ChefQuestion extends Component
         ]);
 
         // Next Step
-        $this->currentStep =2;
+        $this->currentStep = 2;
+    }
+
+    // Function - SecondStepSubmit
+    public function secondStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'dob' => 'required',
+            'month' => 'required',
+            'year' => 'required'
+        ]);
+
+        // Next Step
+        $this->currentStep = 3;
+    }
+
+    // Function - ThirdStepSubmit
+    public function thirdStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'current_des' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 4;
+    }
+
+    // Function - FourthStepSubmit
+    public function fourthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'specialisation' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 5;
+    }
+
+    // Function - FifthStepSubmit
+    public function fifthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'company_name' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 6;
+    }
+
+    // Function - SixthStepSubmit
+    public function sixthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'experience_year' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 7;
+    }
+
+    // Function - SeventhStepSubmit
+    public function seventhStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'state' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 8;
+    }
+
+    // Function - EighthStepSubmit
+    public function eighthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'location' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 9;
+    }
+
+    // Function - NinthStepSubmit
+    public function ninthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'job_describe' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 10;
+    }
+
+    // Function - TenthStepSubmit
+    public function tenthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'job_responsibilities' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 11;
+    }
+
+    // Function - EleventhStepSubmit
+    public function eleventhStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'profile_image' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 12;
+    }
+
+    // Function - TwelfthStepSubmit
+    public function twelfthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'college_name' => 'required',
+            'college_degree' => 'required',
+            'college_from' => 'required',
+            'college_to' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 13;
+    }
+
+    // Function - ThirteenthStepSubmit
+    public function thirteenthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'exp_job_employeer' => 'required',
+            'exp_job_title' => 'required',
+            'exp_from' => 'required',
+            'exp_to' => 'required',
+            'exp_job_description' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 14;
+    }
+
+    // Function - FourteenthStepSubmit
+    public function fourteenthStepSubmit()
+    {
+        // Data - Save
+        $validatedData = $this->validate([
+            'resume' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 15;
+    }
+
+    // Function - fifteenStepSubmit
+    public function fifteenStepSubmit()
+    {
+        //Data - Save
+        $validatedData = $this->validate([
+            'skills' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 16;
+    }
+
+    // Function - sixteenStepSubmit
+    public function sixteenStepSubmit()
+    {
+        // Data- Step
+        $validatedData = $this->validate([
+            'accomplishment_title' => 'required',
+            'accomplishment_description' => 'required',
+            'accomplishment_upload' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 17;
+    }
+
+    // Function - seventeenStepSubmit
+    public function seventeenStepSubmit()
+    {
+        $validatedData = $this->validate([
+            'degree_name' =>'required',
+            'degree_description' =>'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 18;
+    }
+
+    // Function - eighteenStepSubmit
+    public function eighteenStepSubmit()
+    {
+        $validatedData = $this->validate([
+            'about_my_profile' => 'required',
+        ]);
+
+        // Next Step
+        $this->currentStep = 19;
+    }
+
+    // Function - SubmitForm
+    public function submitForm(Request $request)
+    {
+        Chef_question::create([
+            'f_name' => $this->f_name,
+            'm_name' => $this->m_name,
+            'l_name' => $this->l_name,
+            'dob' => $this->dob,
+            'month' => $this->month,
+            'year' => $this->year,
+            'current_des' => $this->current_des,
+            'specialisation' => $this->specialisation,
+            'company_name' => $this->company_name,
+            'experience_year' => $this->experience_year,
+            'state' => $this->state,
+            'location' => $this->location,
+            'job_describe' => $this->job_describe,
+            'job_responsibilities' => $this->job_responsibilities,
+            'profile_image' => $this->profile_image,
+            'college_name' => $this->college_name,
+            'college_degree' => $this->college_degree,
+            'college_from' => $this->college_from,
+            'college_to' => $this->college_to,
+            'exp_job_employeer' => $this->exp_job_employeer,
+            'exp_job_title' => $this->exp_job_title,
+            'exp_from' => $this->exp_from,
+            'exp_to' => $this->exp_to,
+            'exp_job_description' => $this->exp_job_description,
+            'resume' => $this->resume,
+            'skills' => $this->skills,
+            'accomplishment_title' => $this->accomplishment_title,
+            'accomplishment_description' => $this->accomplishment_description,
+            'accomplishment_upload' => $this->accomplishment_upload,
+            'degree_name' => $this->degree_name,
+            'degree_description' => $this->degree_description,
+            'about_my_profile' => $this->about_my_profile,
+            'user_id' => auth()->user()->id,
+        ]);
+
+
+        // // Create New Object
+        // $chef_question = new Chef_question();
+
+        // // User_id Form User Model
+        // $user_id = auth()->user()->id;
+
+        // // Chef Question - User Enterd data
+        // $chef_question->user_id = $user_id;
+        // $chef_question->f_name = $request->get('f_name');
+        // $chef_question->m_name = $request->get('m_name');
+        // $chef_question->l_name = $request->get('l_name');
+        // $chef_question->dob = $request->get('dob');
+        // $chef_question->month = $request->get('month');
+        // $chef_question->year = $request->get('l_name');
+        // $chef_question->current_des = $request->get('current_des');
+        // $chef_question->specialisation = $request->get('specialisation');
+        // $chef_question->company_name = $request->get('company_name');
+        // $chef_question->experience_year = $request->get('experience_year');
+        // $chef_question->state = $request->get('state');
+        // $chef_question->location = $request->get('location');
+        // $chef_question->job_describe = $request->get('job_describe');
+        // $chef_question->job_responsibilities = $request->get('job_responsibilities');
+        // $chef_question->profile_image = $request->get('profile_image');
+        // $chef_question->college_name = $request->get('college_name');
+        // $chef_question->college_degree = $request->get('college_degree');
+        // $chef_question->college_from = $request->get('college_from');
+        // $chef_question->college_to = $request->get('college_to');
+        // $chef_question->exp_job_employeer = $request->get('exp_job_employeer');
+        // $chef_question->exp_job_title = $request->get('exp_job_title');
+        // $chef_question->exp_from = $request->get('exp_from');
+        // $chef_question->exp_to = $request->get('exp_to');
+        // $chef_question->exp_job_description = $request->get('exp_job_description');
+        // $chef_question->resume = $request->get('resume');
+        // $chef_question->skills = $request->get('skills');
+        // $chef_question->accomplishment_title = $request->get('accomplishment_title');
+        // $chef_question->accomplishment_description = $request->get('accomplishment_description');
+        // $chef_question->accomplishment_upload = $request->get('accomplishment_upload');
+        // $chef_question->degree_name = $request->get('degree_name');
+        // $chef_question->degree_description = $request->get('degree_description');
+        // $chef_question->about_my_profile = $request->get('about_my_profile');
+
+        // // Save Data
+        // $chef_question->save();
+
+        // Next Step
+        $this->currentStep = 20;
     }
 
     // Function - Back
