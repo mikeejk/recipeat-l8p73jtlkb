@@ -515,6 +515,7 @@
 </head>
 
 <body class="antialiased">
+
     <section>
         {{-- <div class="flex items-top justify-center min-h-screen bg-white sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
@@ -534,196 +535,259 @@
         </div> --}}
         <!-- component -->
         <div>
-            <div class="h-screen sm:mt-0 -mt-32 flex justify-center items-center bg-cover bg-center"
+            <div class="h-full sm:mt-0 lg-mt-32 flex flex-col justify-center items-center bg-fixed bg-center"
                 style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
-                <div class="absolute top-0 left-0 mt-5 ml-5">
+                <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
-                </div>
+                </a>
                 <a href="/dashboard"><button
                         class="rounded-lg absolute bg-red-600 hover:bg-red-700 text-white p-3 top-0 right-0 mt-3 mr-5">My
-                        Recipe's</button></a>
-                <div class="space-y-5">
-                    <div class="flex flex-row w-full">
-                        <div class="w-full">
-                            <!-- Search -->
-                            <div class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
-                                <!-- hero -->
-                                <div class="hero">
-                                    <!-- hero headline -->
-                                    <div
-                                        class="hero-headline flex flex-col items-center justify-center pt-24 text-center">
-                                        <p
-                                            class="text-white font-bold lg:text-4xl md:text-3xl text-2xl flex flex-col items-center mb-4">
-                                            <a class="text-white">RECIP<span class="text-red-600">EAT
-                                                    -</span><span
-                                                    class="text-yellow-400 lg:text-5xl md:text-4xl text-3xl"> EAT
-                                                    -</span> REPEAT</a>
-                                        </p>
-                                        <p class="lg:text-xl md:text-lg text-base text-white">Where food speaks with
-                                            your palate.
-                                        </p>
-                                    </div>
-                                    <!-- image search box -->
-                                    <div class="box pt-6">
-                                        <div class="box-wrapper w-full mx-auto">
-                                            <div
-                                                class="bg-white rounded-full flex items-center w-full p-3 shadow-sm border border-gray-200">
-                                                <button
-                                                    class="outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">
-                                                    <svg class="w-5 text-white h-5 cursor-pointer" fill="none"
-                                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                                    </svg>
-                                                </button>
-                                                <input type="search" name="" id="textbox"
-                                                    placeholder="Search by Recipes"
-                                                    class="w-full pl-4 text-base outline-none focus:outline-none bg-transparent" />
+                        Recipe's</button>
+                </a>
+                <form action="{{ route('web.search') }}" method="HEAD">
+                    <div class="space-y-5">
+                        <div class="flex flex-row w-full">
+                            <div class="w-full">
+                                <!-- Search -->
+                                <div class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
+                                    <!-- hero -->
+                                    <div class="hero">
+                                        <!-- hero headline -->
+                                        <div
+                                            class="hero-headline flex flex-col items-center justify-center pt-20 mt-10 text-center">
+                                            <p
+                                                class="text-white font-bold lg:text-4xl md:text-3xl text-2xl flex flex-col items-center mb-4">
+                                                <a class="text-white">RECIP<span class="text-red-600">EAT
+                                                        -</span><span
+                                                        class="text-yellow-400 lg:text-5xl md:text-4xl text-3xl"> EAT
+                                                        -</span> REPEAT</a>
+                                            </p>
+                                            <p class="lg:text-xl md:text-lg text-base text-white">Where food speaks with
+                                                your palate.
+                                            </p>
+                                        </div>
+                                        <!-- image search box -->
+                                        <div class="box pt-6">
+                                            <div class="box-wrapper w-full mx-auto">
+                                                <div
+                                                    class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
+                                                    <button
+                                                        class="outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">
+                                                        <svg class="w-5 text-white h-5 cursor-pointer" fill="none"
+                                                            stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                                                            </path>
+                                                        </svg>
+                                                    </button>
+                                                    <input type="search" name="query" id="textbox"
+                                                        placeholder="Search by Recipes"
+                                                        class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
 
-                                                <!--For toggle -->
-                                                <label for="toogleA" class="flex items-center cursor-pointer">
-                                                    <!-- toggle -->
-                                                    <div class="relative">
-                                                        <!-- input -->
-                                                        <input onclick="myFunction()" id="toogleA" type="checkbox"
-                                                            class="sr-only" />
-                                                        <!-- line -->
-                                                        <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner">
+                                                    <!--For toggle -->
+                                                    <label for="toogleA" class="flex items-center cursor-pointer">
+                                                        <!-- toggle -->
+                                                        <div class="relative">
+                                                            <!-- input -->
+                                                            <input onclick="myFunction()" id="toogleA" type="checkbox"
+                                                                class="sr-only" />
+                                                            <!-- line -->
+                                                            <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner">
+                                                            </div>
+                                                            <!-- dot -->
+                                                            <div
+                                                                class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition">
+                                                            </div>
                                                         </div>
-                                                        <!-- dot -->
-                                                        <div
-                                                            class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition">
+                                                        <!-- label -->
+                                                        <div id="toggle_label" class="ml-3 text-gray-700 font-medium">
+                                                            Ingredients
                                                         </div>
-                                                    </div>
-                                                    <!-- label -->
-                                                    <div id="toggle_label" class="ml-3 text-gray-700 font-medium">
-                                                        Ingredients
-                                                    </div>
-                                                </label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Buttons -->
+                                        <div class="flex flex-wrap justify-center space-x-10 py-5 my-5">
+                                            <a href="!"
+                                                class="button button--nina px-8 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                                data-text="Chef">
+                                                <span class="align-middle">C</span>
+                                                <span class="align-middle">h</span>
+                                                <span class="align-middle">e</span>
+                                                <span class="align-middle">f</span>
+                                            </a>
+                                            <a href="!"
+                                                class="button button--nina px-8 py-2   text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                                data-text="user">
+                                                <span class="align-middle">U</span>
+                                                <span class="align-middle">s</span>
+                                                <span class="align-middle">e</span>
+                                                <span class="align-middle">r</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @if (isset($recipe))
+                    <div class="w-3/4 flex flex-col py-5 mx-auto">
+                        <div class="w-full flex md:flex-row flex-col">
+                            @if (count($recipe) > 0)
+                                @foreach ($recipe as $recipes)
+                                    <a href=""
+                                        class="flex xl:flex-row md:flex-col lg:w-1/4 md:w-full w-full p-2 transition duration-500 ease-in transform hover:-translate-x-1 hover:scale-110 mr-5">
+                                        <div class="flex flex-col w-full p-2 border-2 rounded-lg">
+                                            <div class="flex items-center  justify-center w-full border-b-2">
+                                                <img class="rounded-t-lg h-40 w-full"
+                                                    src="https://d1uz88p17r663j.cloudfront.net/resized/bbaea66d221311621bf352c8526098f7_chicken-beryani_744_419.jpg">
+                                            </div>
+                                            <div
+                                                class="flex items-center justify-center bg-yellow-500 text-white hover:text-blue-600 font-bold md:text-xl text-lg w-full border-b-2 py-1 ">
+                                                {{ $recipes->recipe_name }}
+                                            </div>
+                                            <div class="flex flex-col bg-gray-100 rounded-b-lg w-full p-2 mt-2 ">
+                                                <h1
+                                                    class="font-bold md:text-base text-sm text-black flex border-b-2 pb-2 pt-1 mb-2">
+                                                    Description:</h1>
+                                                <h1 class="mt-1 mb-2 h-10">{{ $recipes->description }}</h1>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            @else
+                                <div class="flex w-3/4 mx-auto  text-white justify-center">
+                                    <div class="flex flex-col  md:w-1/2 w-full border-2 bg-white p-2  rounded-lg">
+                                        <div class="flex items-center justify-center w-full">
+                                            {{-- <img class="rounded-t-lg h-20 w-20"
+                                                src="https://icon-library.com/images/not-found-icon/not-found-icon-15.jpg"> --}}
+                                            <img class="h-14 w-14"
+                                                src="https://img.icons8.com/material-outlined/96/fa314a/box-important--v1.png" />
+                                        </div>
+                                        <h1
+                                            class="flex justify-center md:w-3/4 w-full mx-auto rounded-b-lg mt-2 mb-1 md:text-lg text-base font-medium py-2 text-gray-800">
+                                            No Results Matched your Search!</h1>
+
+                                        {{-- <h1 class="flex justify-center w-3/4 mx-auto rounded-b-lg mt-2 mb-1 bg-red-600 text-base py-2 text-white">No Results Matched your Search!</h1> --}}
+
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="pagination block px-5 py-4">
+                            {{ $recipe->links() }}
+                        </div>
+                    </div>
+                @endif
+                <div class="flex w-full items-center justify-center p-5 py-20">
+                    <div class="w-full">
+                        <div class="flex">
+                            <p class="text-yellow-400 font-black lg:text-4xl md:text-3xl text-2xl uppercase">HOW
+                                RECIPEAT WORKS
+                            </p>
+                            <p class="text-xs text-white border-2 p-2 mt-7 ml-3   text-center w-44 mb-3">HOW WE DO IT?
+                            </p>
+                        </div>
+                        <p>HOW WE DO IT?</p>
+                        <div class="flex lg:flex-row flex-col">
+                            <section class="text-white body-font lg:3/4 md:w-full w-full">
+                                <div class="container w-full px-5 py-24 mx-auto">
+                                    <div class="flex flex-wrap w-full -m-4">
+                                        <div
+                                            class="lg:w-1/4 sm:w-1/2 border-2   border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
+                                            <div class="h-full bg-black  rounded-lg overflow-hidden">
+                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
+                                                    src="https://mk0muwucepum99ape3ia.kinstacdn.com/wp-content/uploads/2019/12/%E2%80%94Pngtree%E2%80%94flat-wind-men-s-business_4575829-400x400.png"
+                                                    alt="blog">
+                                                <div class="p-6">
+                                                    <h2
+                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                                                        Step 1</h2>
+                                                    <h1 class="title-font text-lg font-medium text-white mb-3">CREATE A
+                                                        PROFILE
+                                                    </h1>
+                                                    <p class="leading-relaxed mb-3">Become an INSTANT Recipeat Community
+                                                        Member
+                                                        by
+                                                        signing up for FREE</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class=" lg:w-1/4 sm:w-1/2 border-2  border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
+                                            <div class="h-full bg-black rounded-lg overflow-hidden">
+                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
+                                                    src="https://www.freepnglogos.com/uploads/vegetables-png/fruit-and-vegetables-basket-png-20.png"
+                                                    alt="blog">
+                                                <div class="p-6">
+                                                    <h2
+                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                                                        Step 2</h2>
+                                                    <h1 class="title-font text-lg font-medium text-white mb-3">WHAT DO
+                                                        YOU HAVE?
+                                                    </h1>
+                                                    <p class="leading-relaxed mb-3">Check for available ingredients in
+                                                        your
+                                                        kitchen
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class=" lg:w-1/4 sm:w-1/2 border-2  border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
+                                            <div class="h-full bg-black rounded-lg overflow-hidden">
+                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
+                                                    src="https://cdn3.iconfinder.com/data/icons/food-delivery-28/128/expand-foodDelivery_2px-14-512.png"
+                                                    alt="blog">
+                                                <div class="p-6">
+                                                    <h2
+                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                                                        Step 3</h2>
+                                                    <h1 class="title-font text-lg font-medium text-white mb-3">ADD TO
+                                                        YOUR LIST
+                                                    </h1>
+                                                    <p class="leading-relaxed mb-3">Tell us what you have in your
+                                                        kitchen by
+                                                        adding
+                                                        your ingredients to a list</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class=" lg:w-1/4 sm:w-1/2 border-2 border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
+                                            <div class="h-full bg-black rounded-lg overflow-hidden">
+                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
+                                                    src="https://static.abbottnutrition.com/cms-prod/abbottfamily.com.sg/img/1-Eat_tcm150-144864.png"
+                                                    alt="blog">
+                                                <div class="p-6">
+                                                    <h2
+                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                                                        Step 4</h2>
+                                                    <h1 class="title-font text-lg font-medium text-white mb-3">RECIPEAT
+                                                        IT!</h1>
+                                                    <p class="leading-relaxed mb-3">Begin your Recipeat experience by
+                                                        cooking
+                                                        recipes provided by our trusted homechefs</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Buttons -->
-                                    <div class="flex flex-wrap justify-center space-x-10 py-5 my-5">
-                                        <a href="!"
-                                            class="button button--nina px-8 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
-                                            data-text="Chef">
-                                            <span class="align-middle">C</span>
-                                            <span class="align-middle">h</span>
-                                            <span class="align-middle">e</span>
-                                            <span class="align-middle">f</span>
-                                        </a>
-                                        <a href="!"
-                                            class="button button--nina px-8 py-2   text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
-                                            data-text="user">
-                                            <span class="align-middle">U</span>
-                                            <span class="align-middle">s</span>
-                                            <span class="align-middle">e</span>
-                                            <span class="align-middle">r</span>
-                                        </a>
-                                    </div>
                                 </div>
+                            </section>
+                            <div class="lg:flex lg:visible invisible flex-wrap items-center   lg:w-1/4">
+                                <img alt="" class="our-story-card-img"
+                                    src="https://img.pngio.com/png-for-food-transparent-for-foodpng-images-pluspng-small-amount-of-food-png-885_431.png"
+                                    data-uia="our-story-card-img" />
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="flex w-full items-center justify-center bg-black p-5">
-            <div class="w-full">
-                <div class="flex">
-                    <p class="text-yellow-400 font-black lg:text-4xl md:text-3xl text-2xl uppercase">HOW RECIPEAT WORKS
-                    </p>
-                    <p class="text-xs text-white border-2 p-2 mt-7 ml-3   text-center w-44 mb-3">HOW WE DO IT?</p>
-                </div>
-                <p>HOW WE DO IT?</p>
-                <div class="flex lg:flex-row flex-col">
-                    <section class="text-white body-font lg:3/4 md:w-full w-full">
-                        <div class="container w-full px-5 py-24 mx-auto">
-                            <div class="flex flex-wrap w-full -m-4">
-                                <div
-                                    class="lg:w-1/4 sm:w-1/2 border-2   border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                    <div class="h-full bg-black  rounded-lg overflow-hidden">
-                                        <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                            src="https://mk0muwucepum99ape3ia.kinstacdn.com/wp-content/uploads/2019/12/%E2%80%94Pngtree%E2%80%94flat-wind-men-s-business_4575829-400x400.png"
-                                            alt="blog">
-                                        <div class="p-6">
-                                            <h2
-                                                class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                Step 1</h2>
-                                            <h1 class="title-font text-lg font-medium text-white mb-3">CREATE A PROFILE
-                                            </h1>
-                                            <p class="leading-relaxed mb-3">Become an INSTANT Recipeat Community Member
-                                                by
-                                                signing up for FREE</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class=" lg:w-1/4 sm:w-1/2 border-2  border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                    <div class="h-full bg-black rounded-lg overflow-hidden">
-                                        <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                            src="https://www.freepnglogos.com/uploads/vegetables-png/fruit-and-vegetables-basket-png-20.png"
-                                            alt="blog">
-                                        <div class="p-6">
-                                            <h2
-                                                class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                Step 2</h2>
-                                            <h1 class="title-font text-lg font-medium text-white mb-3">WHAT DO YOU HAVE?
-                                            </h1>
-                                            <p class="leading-relaxed mb-3">Check for available ingredients in your
-                                                kitchen
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class=" lg:w-1/4 sm:w-1/2 border-2  border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                    <div class="h-full bg-black rounded-lg overflow-hidden">
-                                        <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                            src="https://cdn3.iconfinder.com/data/icons/food-delivery-28/128/expand-foodDelivery_2px-14-512.png"
-                                            alt="blog">
-                                        <div class="p-6">
-                                            <h2
-                                                class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                Step 3</h2>
-                                            <h1 class="title-font text-lg font-medium text-white mb-3">ADD TO YOUR LIST
-                                            </h1>
-                                            <p class="leading-relaxed mb-3">Tell us what you have in your kitchen by
-                                                adding
-                                                your ingredients to a list</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class=" lg:w-1/4 sm:w-1/2 border-2 border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                    <div class="h-full bg-black rounded-lg overflow-hidden">
-                                        <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                            src="https://static.abbottnutrition.com/cms-prod/abbottfamily.com.sg/img/1-Eat_tcm150-144864.png"
-                                            alt="blog">
-                                        <div class="p-6">
-                                            <h2
-                                                class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                Step 4</h2>
-                                            <h1 class="title-font text-lg font-medium text-white mb-3">RECIPEAT IT!</h1>
-                                            <p class="leading-relaxed mb-3">Begin your Recipeat experience by cooking
-                                                recipes provided by our trusted homechefs</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <div class="lg:flex lg:visible invisible flex-wrap items-center   lg:w-1/4">
-                        <img alt="" class="our-story-card-img"
-                            src="https://img.pngio.com/png-for-food-transparent-for-foodpng-images-pluspng-small-amount-of-food-png-885_431.png"
-                            data-uia="our-story-card-img" />
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </section>
     <!--Multistep Forms-->
     {{-- <div class="h-screen">
@@ -1118,7 +1182,7 @@
             var tooglebtn_label = document.getElementById("toggle_label");
             if (search_box.placeholder == "Search by Recipes") {
                 search_box.placeholder = "Search by Ingredient";
-	            tooglebtn_label.style.color = 'red';
+                tooglebtn_label.style.color = 'red';
             } else {
                 search_box.placeholder = "Search by Recipes";
                 tooglebtn_label.style.color = '#808080';

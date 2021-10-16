@@ -23,10 +23,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
-    return view('welcome');
-});
+// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
+//     return view('welcome');
+// });
 
+// Route::get('/welcome',[RecipeController::class,'welcome'])->name('web.search');
+Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
 // Recipeat Customer Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 
@@ -211,6 +213,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes.data', [RecipeCon
 
 // Recipe Post Data Table - Index Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeController::class, 'getIndex']);
+
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     Question Routes

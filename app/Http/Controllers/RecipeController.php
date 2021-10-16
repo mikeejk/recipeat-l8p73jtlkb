@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 use Yajra\Datatables\Datatables;
 use App\Models\Category;
 use App\Models\Cuisine;
@@ -151,5 +153,21 @@ class RecipeController extends Controller
                 'bud_astringent'  => 'required',
             ]
         );
+    }
+
+
+    public function search(Request $request)
+    {
+
+        if(isset($_GET['query'])){
+        $search_text=$_GET['query'];
+        $recipe = DB::table('recipes')->where('recipe_name','LIKE','%'.$search_text.'%')->Paginate(4);
+        $recipe->appends($request->all());
+        return view('welcome',['recipe'=>$recipe]);
+        }
+        else{
+            return view('/welcome');
+        }
+
     }
 }

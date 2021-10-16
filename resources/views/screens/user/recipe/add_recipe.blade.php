@@ -125,7 +125,7 @@
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
-                                        <h3>Recipe Timeing</h3>
+                                        <h3>Recipe Timing</h3>
                                     </div>
                                     <!-- Side Text::end -->
                                     <!-- Form-Prepare Time::start -->
@@ -217,11 +217,11 @@
 
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
-                                        <label>Setps</label>
+                                        <label>Steps</label>
                                         <textarea class="form-control @error('steps') is-invalid @enderror" rows="3" name="steps"></textarea>
                                         </textarea>
                                         <span class="form-text text-muted">Add the diffend step of prepare the your
-                                            Recipe (In using BULLET poins)</span>
+                                            Recipe (In using BULLET points)</span>
                                     </div>
                                     <!-- Form-Setps::end -->
                                 </div>
@@ -255,7 +255,7 @@
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-2">
                                         <label>Quantity</label>
-                                        <input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Egg Pepper Fry" name="quantity" />
+                                        <input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" name="quantity" />
                                         <span class="form-text text-muted">Add the Quantity</span>
                                     </div>
                                     <!-- Form-Description::end -->
