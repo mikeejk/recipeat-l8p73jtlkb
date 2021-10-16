@@ -100,8 +100,6 @@ class InviteController extends Controller
         // Assign the role to the user
         $user->assignRole($role->name);
 
-        $invite->delete();
-
         return redirect('register');
     }
 
