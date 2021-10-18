@@ -28,6 +28,6 @@ class Invite extends Model
 
     public function role()
     {
-        return $this->hasOne(Role::class);
+        return $this->hasMany(Role::class,  'role_id');
     }
 }
