@@ -300,5 +300,4 @@
             <!--end::Container-->
         </div>
     </div>
-
 @endsection
