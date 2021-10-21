@@ -224,12 +224,47 @@
 
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
-                                        <label>Steps</label>
+                                        {{-- <label>Steps</label>
                                         <textarea class="form-control @error('steps') is-invalid @enderror" rows="3"
                                             name="steps"></textarea>
                                         </textarea>
-                                        <span class="form-text text-muted">Add the diffend step of prepare the your
-                                            Recipe (In using BULLET points)</span>
+                                        <span class="form-text text-muted">Add Recipe Steps</span> --}}
+
+                                        <table id="recipeSteps" class="col-lg-11 table list">
+                                            <thead>
+                                                <tr>
+                                                    <td>Steps</td>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class="border border-light">
+                                                <tr>
+
+                                                    <td class="col-sm-11">
+                                                        {{-- <input type="mail" name="mail" class="form-control" /> --}}
+                                                        <input type="text"
+                                                            class="form-control @error('steps') is-invalid @enderror"
+                                                            rows="3" name="steps" />
+                                                        <span class="form-text text-muted">Add Steps</span>
+                                                    </td>
+
+                                                    <td class="col-sm-2"><a class="deleteRow"></a>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td class="" style="text-align: left;">
+                                                        <input type="button"
+                                                            class="btn btn-bg-primary w-20 text-white btn-sm  "
+                                                            id="addSteps" value="Add Row" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
                                     </div>
                                     <!-- Form-Setps::end -->
                                 </div>
@@ -341,8 +376,9 @@
                                         <tfoot>
                                             <tr>
                                                 <td class="" style="text-align: left;">
-                                                    <input type="button" class="btn btn-bg-primary w-20 text-white btn-sm  "
-                                                        id="addrow" value="Add Row" />
+                                                    <input type="button"
+                                                        class="btn btn-bg-primary w-20 text-white btn-sm  " id="addrow"
+                                                        value="Add Row" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -591,7 +627,28 @@
     <script>
         $(document).ready(function() {
             var counter = 0;
+            /*Add Steps Row*/
+            $("#addSteps").on("click", function() {
+                var newSteps = $("<tr>");
+                var cols = "";
 
+                cols +=
+                    '<td><input type="text" class="form-control @error('steps') is-invalid @enderror" rows="3" name="steps' +
+                    counter + '" /></td>';
+
+                cols +=
+                    '<td><input type="button" class="btnDel btn btn-sm btn-danger" value="Delete"></td>';
+                newSteps.append(cols);
+                $("table.list").append(newSteps);
+                counter++;
+            });
+
+            $("table.list").on("click", ".btnDel", function(event) {
+                $(this).closest("tr").remove();
+                counter -= 1
+            });
+
+            /*Add Ingredients Row*/
             $("#addrow").on("click", function() {
                 var newRow = $("<tr>");
                 var cols = "";
@@ -610,7 +667,7 @@
                     counter +
                     '"> @foreach ($measurements as $measurement)<option value="{{ $measurement->id }} ">{{ $measurement->measurement }}</option>@endforeach</select><span class="form-text text-muted">Select the measurement for the selected recipe</span></td>'
 
-                    cols +=
+                cols +=
                     '<td><input type="button" class="ibtnDel btn btn-sm btn-danger" value="Delete"></td>';
                 newRow.append(cols);
                 $("table.order-list").append(newRow);
@@ -623,4 +680,6 @@
             });
         });
     </script>
+
+
 @endsection
