@@ -26,8 +26,10 @@ class Invite extends Model
         'token'
     ];
 
+    // Function - Role
     public function role()
     {
-        return $this->hasOne(Role::class);
+        // Return (role model has many data refer from the the role model)
+        return $this->hasMany(Role::class,  'role_id');
     }
 }

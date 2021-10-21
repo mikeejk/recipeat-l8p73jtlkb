@@ -49,6 +49,7 @@ class CreateNewUser implements CreatesNewUsers
                 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
             ])->validate();
 
+
             // If the user emailid is exists use the Carbon packege to udate the email_verified_at field
             // If use an Carbon packege the verification email can not be sended to the the invited user.
             $update_user =  User::where('email', $input['email'])
@@ -84,7 +85,7 @@ class CreateNewUser implements CreatesNewUsers
                 $html = 'Active';
                 return $html;
             })->toJson();
-        
+
         return Datatables::of(User::query())->make(true);
     }
 }

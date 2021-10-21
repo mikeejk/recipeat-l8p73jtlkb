@@ -100,8 +100,6 @@ class InviteController extends Controller
         // Assign the role to the user
         $user->assignRole($role->name);
 
-        $invite->delete();
-
         return redirect('register');
     }
 
@@ -116,21 +114,23 @@ class InviteController extends Controller
     {
         $inviteuser = Invite::all();
 
+        // render the data form the data-base
         return datatables()->of($inviteuser)
+            // Add Column 'status'
             ->addColumn('status', function () {
+                // Create the html code
                 $html = 'Invite Sent';
+                // return to view
                 return $html;
             })
-            ->setRowId(function ($role)
-            {
-                return $role->id;
+            // Add Column 'role'
+            ->addColumn('role', function ($invite) {
+                // return to view (What: get the role_id form invite table and check with role table then display the correspond name of the role_id)
+                return Role::find($invite->role_id)->name;
             })
-            ->setRowData(['data-name' => 'row-{{$name}}',])
-            ->addColumn('role', function ($role) {
-                return Role::find($role->id)->name;
-            })
+            // send the data to view via json
             ->toJson();
-
+        // Return the all the to the corespoing view file
         return Datatables::of(Invite::query())->make(true);
     }
 
