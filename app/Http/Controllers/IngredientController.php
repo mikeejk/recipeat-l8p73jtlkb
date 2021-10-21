@@ -99,8 +99,7 @@ class IngredientController extends Controller
     {
         return request()->validate(
             [
-                'ingredient' => 'required', 'string', 'unique:ingredient',
-            ]
+                'ingredient' => "required|string|unique:ingredients,ingredient"            ]
         );
     }
 }

@@ -96,7 +96,7 @@ class CuisineController extends Controller
     {
         return request()->validate(
             [
-                'cuisine' => 'required', 'string', 'unique:cuisine'
+                'cuisine' => "required|string|unique:cuisines,cuisine"
             ]
         );
     }

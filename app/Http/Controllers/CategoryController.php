@@ -99,7 +99,7 @@ class CategoryController extends Controller
     {
         return request()->validate(
             [
-                'category' => 'required', 'string', 'unique:categories',
+                'category' => "required|string|unique:categories,category"
             ]
         );
     }

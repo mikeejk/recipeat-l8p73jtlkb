@@ -98,7 +98,7 @@ class MeasurementController extends Controller
     {
         return request()->validate(
             [
-                'measurement' => 'required', 'string', 'unique:measurements'
+                'measurement' => "required|string|unique:measurements,measurement"
             ]
         );
     }
