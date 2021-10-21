@@ -554,7 +554,7 @@
                                     <div class="hero">
                                         <!-- hero headline -->
                                         <div
-                                            class="hero-headline flex flex-col items-center justify-center pt-20 mt-10 text-center">
+                                            class="hero-headline flex flex-col items-center justify-center md:pt-10 pt-20 text-center">
                                             <p
                                                 class="text-white font-bold lg:text-4xl md:text-3xl text-2xl flex flex-col items-center mb-4">
                                                 <a class="text-white">RECIP<span class="text-red-600">EAT
@@ -608,9 +608,9 @@
                                             </div>
                                         </div>
                                         <!-- Buttons -->
-                                        <div class="flex flex-wrap justify-center space-x-10 py-5 my-5">
+                                        <div class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
                                             <a href="!"
-                                                class="button button--nina px-8 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                                class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"
                                                 data-text="Chef">
                                                 <span class="align-middle">C</span>
                                                 <span class="align-middle">h</span>
@@ -618,7 +618,7 @@
                                                 <span class="align-middle">f</span>
                                             </a>
                                             <a href="!"
-                                                class="button button--nina px-8 py-2  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                                class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"
                                                 data-text="Home Chef">
                                                 <span class="align-middle">H</span>
                                                 <span class="align-middle">o</span>
@@ -630,7 +630,7 @@
                                                 <span class="align-middle">f</span>
                                             </a>
                                             <a href="!"
-                                                class="button button--nina px-8 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-base text-center font-semibold uppercase tracking-widest overflow-hidden"
+                                                class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"
                                                 data-text="All">
                                                 <span class="align-middle">a</span>
                                                 <span class="align-middle">l</span>

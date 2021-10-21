@@ -46,9 +46,8 @@
                             <!-- Form-Button::start -->
                             <div class="col-lg-4 d-flex justify-content-end align-items-center">
                                 <div class="">
-                                        <a href=" /recipes"
-                                    class="btn btn-light-primary font-weight-bolder">
-                                    <i class="las la-arrow-left"></i>Back</a>
+                                    <a href=" /recipes" class="btn btn-light-primary font-weight-bolder">
+                                        <i class="las la-arrow-left"></i>Back</a>
                                     <div class="btn-group">
                                         <button type="submit" class="btn btn-primary font-weight-bolder">
                                             <i class="las la-cloud-upload-alt"></i>Go to Live</button>
@@ -71,7 +70,8 @@
                                     <!-- Form-Category::start -->
                                     <div class="col-lg-4">
                                         <label>Category</label>
-                                        <select class="custom-select form-control @error('category') is-invalid @enderror" name="category">
+                                        <select class="custom-select form-control @error('category') is-invalid @enderror"
+                                            name="category">
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }} ">
                                                     {{ $categorie->category }}
@@ -84,7 +84,8 @@
                                     <!-- Form-Cuisine::start -->
                                     <div class="col-lg-4">
                                         <label>Cuisine</label>
-                                        <select class="custom-select form-control @error('cuisine') is-invalid @enderror" name="cuisine">
+                                        <select class="custom-select form-control @error('cuisine') is-invalid @enderror"
+                                            name="cuisine">
                                             @foreach ($cuisines as $cuisine)
                                                 <option value="{{ $cuisine->id }} ">
                                                     {{ $cuisine->cuisine }}
@@ -106,8 +107,9 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-utensils"></i></span></div>
-                                            <input type="text" class="form-control @error('recipe_name') is-invalid @enderror" placeholder="Egg Pepper Fry"
-                                                name="recipe_name" />
+                                            <input type="text"
+                                                class="form-control @error('recipe_name') is-invalid @enderror"
+                                                placeholder="Egg Pepper Fry" name="recipe_name" />
                                         </div>
                                         <span class="form-text text-muted">Enter your recipe name</span>
                                     </div>
@@ -134,8 +136,9 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-hourglass-start"></i></span></div>
-                                            <input type="number" class="form-control  @error('preparing_time') is-invalid @enderror" placeholder="30 Minutes"
-                                                name="preparing_time" />
+                                            <input type="number"
+                                                class="form-control  @error('preparing_time') is-invalid @enderror"
+                                                placeholder="30 Minutes" name="preparing_time" />
                                         </div>
                                         <span class="form-text text-muted">How much time it's take for Prepareing (In
                                             Minutes)</span>
@@ -147,8 +150,9 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-stopwatch"></i></span></div>
-                                            <input type="number" class="form-control @error('cooking_time') is-invalid @enderror" placeholder="20 Minutes"
-                                                name="cooking_time" />
+                                            <input type="number"
+                                                class="form-control @error('cooking_time') is-invalid @enderror"
+                                                placeholder="20 Minutes" name="cooking_time" />
                                         </div>
                                         <span class="form-text text-muted">How much time it's take for Cooking (In
                                             Minutes)</span>
@@ -165,8 +169,9 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-users"></i></span></div>
-                                            <input type="number" class="form-control @error('serves_people') is-invalid @enderror" placeholder="4 People"
-                                                name="serves_people" />
+                                            <input type="number"
+                                                class="form-control @error('serves_people') is-invalid @enderror"
+                                                placeholder="4 People" name="serves_people" />
                                         </div>
                                         <span class="form-text text-muted">Your proper this recipe for how many
                                             people</span>
@@ -178,8 +183,9 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="las la-cookie-bite"></i></span></div>
-                                            <input type="number" class="form-control @error('calories_in') is-invalid @enderror" placeholder="150 Calories"
-                                                name="calories_in" />
+                                            <input type="number"
+                                                class="form-control @error('calories_in') is-invalid @enderror"
+                                                placeholder="150 Calories" name="calories_in" />
                                         </div>
                                         <span class="form-text text-muted">How much of calories contain this
                                             recipe</span>
@@ -203,7 +209,8 @@
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-8">
                                         <label>Description</label>
-                                        <textarea class="form-control @error('description') is-invalid @enderror" rows="3" name="description"></textarea>
+                                        <textarea class="form-control @error('description') is-invalid @enderror" rows="3"
+                                            name="description"></textarea>
                                         <span class="form-text text-muted">What special in this recipe</span>
                                     </div>
                                     <!-- Form-Description::end -->
@@ -218,7 +225,8 @@
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
                                         <label>Steps</label>
-                                        <textarea class="form-control @error('steps') is-invalid @enderror" rows="3" name="steps"></textarea>
+                                        <textarea class="form-control @error('steps') is-invalid @enderror" rows="3"
+                                            name="steps"></textarea>
                                         </textarea>
                                         <span class="form-text text-muted">Add the diffend step of prepare the your
                                             Recipe (In using BULLET points)</span>
@@ -238,7 +246,7 @@
                                         <label></label>
                                         <h3>Recipe Ingredient</h3>
                                     </div>
-                                    <!-- Side Text::end -->
+                                    {{-- <!-- Side Text::end -->
                                     <!-- Form-Ingredient::start -->
                                     <div class="col-lg-3">
                                         <label>Ingredient</label>
@@ -277,7 +285,70 @@
                                     <div class="col-lg-1">
                                         <label>Action</label>
                                         <button type="submit" class="form-control btn-primary"><i class="fas fa-plus text-white"></i></button>
-                                    </div>
+                                    </div> --}}
+
+                                    <table id="myTable" class="col-lg-8 table order-list">
+                                        <thead>
+                                            <tr>
+                                                <td>Ingredient</td>
+                                                <td>Quantity</td>
+                                                <td>Measurement</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border border-light">
+                                            <tr>
+                                                <td class="col-sm-3">
+                                                    {{-- <input type="text" name="name" class="form-control" /> --}}
+                                                    <select
+                                                        class="custom-select form-control @error('ingredient') is-invalid @enderror"
+                                                        name="ingredient">
+                                                        @foreach ($ingredients as $ingredient)
+                                                            <option value="{{ $ingredient->id }} ">
+                                                                {{ $ingredient->ingredient }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <span class="form-text text-muted">Add the Ingredient for this
+                                                        recipe</span>
+                                                </td>
+                                                <td class="col-sm-3">
+                                                    {{-- <input type="mail" name="mail" class="form-control" /> --}}
+                                                    <input type="text"
+                                                        class="form-control @error('quantity') is-invalid @enderror"
+                                                        placeholder="Quantity" name="quantity" />
+                                                    <span class="form-text text-muted">Add the Quantity</span>
+                                                </td>
+                                                <td class="col-sm-3">
+                                                    {{-- <input type="text" name="phone" class="form-control" /> --}}
+                                                    <select
+                                                        class="custom-select form-control @error('measurement') is-invalid @enderror"
+                                                        name="measurement">
+                                                        @foreach ($measurements as $measurement)
+                                                            <option value="{{ $measurement->id }} ">
+                                                                {{ $measurement->measurement }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <span class="form-text text-muted">Select the measurement for the
+                                                        selected
+                                                        recipe</span>
+                                                </td>
+                                                <td class="col-sm-2"><a class="deleteRow"></a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td class="" style="text-align: left;">
+                                                    <input type="button" class="btn btn-bg-primary w-20 text-white btn-sm  "
+                                                        id="addrow" value="Add Row" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                     <!-- Form-Description::end -->
                                 </div>
                             </div>
@@ -297,7 +368,8 @@
                                     <!-- Form-Description::start -->
                                     <div class="col-lg-8">
                                         <label>Meta-Description</label>
-                                        <textarea class="form-control @error('meta_description') is-invalid @enderror" rows="3" name="meta_description"></textarea>
+                                        <textarea class="form-control @error('meta_description') is-invalid @enderror"
+                                            rows="3" name="meta_description"></textarea>
                                         <span class="form-text text-muted">If you want to add some special description
                                             for thsi recipe (ADD HEAR)</span>
                                     </div>
@@ -310,7 +382,8 @@
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
-                                        <textarea class="form-control @error('image') is-invalid @enderror" readonly rows="2"></textarea>
+                                        <textarea class="form-control @error('image') is-invalid @enderror" readonly
+                                            rows="2"></textarea>
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
                                     <!-- Form-Image::end -->
@@ -514,4 +587,40 @@
         <!--end::Card-->
     </div>
     <!--end::Content-->
+
+    <script>
+        $(document).ready(function() {
+            var counter = 0;
+
+            $("#addrow").on("click", function() {
+                var newRow = $("<tr>");
+                var cols = "";
+
+                cols +=
+                    '<td><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient' +
+                    counter +
+                    '" > @foreach ($ingredients as $ingredient) <option value="{{ $ingredient->id }} "> {{ $ingredient->ingredient }}</option>@endforeach </select> <span class = "form-text text-muted" > Add the Ingredient for this recipe </span></td > '
+
+                cols +=
+                    '<td><input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" name="quantity' +
+                    counter + '" /><span class="form-text text-muted">Add the Quantity</span></td>';
+
+                cols +=
+                    '<td><select class="custom-select form-control @error('measurement') is-invalid @enderror" name="measurement' +
+                    counter +
+                    '"> @foreach ($measurements as $measurement)<option value="{{ $measurement->id }} ">{{ $measurement->measurement }}</option>@endforeach</select><span class="form-text text-muted">Select the measurement for the selected recipe</span></td>'
+
+                    cols +=
+                    '<td><input type="button" class="ibtnDel btn btn-sm btn-danger" value="Delete"></td>';
+                newRow.append(cols);
+                $("table.order-list").append(newRow);
+                counter++;
+            });
+
+            $("table.order-list").on("click", ".ibtnDel", function(event) {
+                $(this).closest("tr").remove();
+                counter -= 1
+            });
+        });
+    </script>
 @endsection
