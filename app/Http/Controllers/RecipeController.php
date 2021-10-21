@@ -161,7 +161,7 @@ class RecipeController extends Controller
 
         if(isset($_GET['query'])){
         $search_text=$_GET['query'];
-        $recipe = DB::table('recipes')->where('recipe_name','LIKE','%'.$search_text.'%')->Paginate(4);
+        $recipe = DB::table('recipes')->where('recipe_name','LIKE','%'.$search_text.'%')->Paginate(8);
         $recipe->appends($request->all());
         return view('welcome',['recipe'=>$recipe]);
         }

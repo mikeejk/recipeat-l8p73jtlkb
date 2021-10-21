@@ -45,6 +45,9 @@
 
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="assets/media/logos/logo-5.png" />
+
+    <!--JQuery-->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <!--end::Head-->
 
