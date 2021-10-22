@@ -221,9 +221,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 
 // // User Questionnaire Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
-    if (auth()->user()->hasRole('Home-Chef|Chef')) {
+   if (auth()->user()->hasRole('Home-Chef|Chef')) {
         return view('screens.user.home.questions');
-    } else {
-        return view('dashboard');
-    }
+   } else {
+       return view('dashboard');
+   }
 })->name('home');
+//user profile
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', function () {
+return view('screens.user.profile.profile');
+});

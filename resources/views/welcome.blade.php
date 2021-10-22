@@ -537,7 +537,7 @@
         <div>
             <div class="h-full sm:mt-0 lg-mt-32 flex flex-col justify-center items-center bg-fixed bg-center"
                 style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
-                <a href="/" class="absolute top-0 left-0 mt-5 ml-5">
+                <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a>
                 <a href="/dashboard"><button
@@ -646,12 +646,12 @@
                 </form>
                 @if (isset($recipe))
                     <div class="w-3/4 flex flex-col py-5 mx-auto">
-                        <div class="w-full flex md:flex-row flex-col">
+                        <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
                                     <a href="/recipeview" name="view"
-                                        class="flex xl:flex-row md:flex-col lg:w-1/4 md:w-full w-full p-2 transition duration-500 ease-in transform hover:-translate-x-1 hover:scale-110 mr-5">
-                                        <div class="flex flex-col w-full p-2 border-2 rounded-lg">
+                                        class="flex xl:flex-row  h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
+                                        {{-- <div class="flex  flex-col w-full p-2 border-2 rounded-lg">
                                             <div class="flex items-center  justify-center w-full border-b-2">
                                                 <img class="rounded-t-lg h-40 w-full"
                                                     src="https://spicecravings.com/wp-content/uploads/2021/04/Chicken-Biryani-Featured-2-500x375.jpg">
@@ -669,7 +669,25 @@
                                                     {{ $recipes->created_at }}
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
+
+
+                                              <div class="flex w-full  flex-row relative">
+                                                <img alt="gallery" class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg" src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" />
+                                                <p class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium"> {{ $recipes->recipe_name }}</p>
+                                                <div class="py-1 relative z-10 h-72 w-full border-4 rounded-md border-gray-200 bg-white opacity-0 hover:opacity-100">
+                                                  <div class="flex flex-col h-full rounded-b-lg w-full p-2 mt-2">
+                                                      <div class="h-52 overflow-hidden">
+                                                    <h1 class="font-bold md:text-base text-sm text-black flex border-b-2 border-yellow-400 pb-2  mb-2">Description:</h1>
+                                                    <h1 class="mt-1 mb-1 h-auto  pb-1 text-sm overflow-hidden">{{ $recipes->description }}</h1>
+                                                </div>
+                                                    <div class="pt-2 border-t-2  border-yellow-400 text-sm"><h1>Created at:</h1>
+                                                        {{ $recipes->created_at }}
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
                                     </a>
                                 @endforeach
                             @else

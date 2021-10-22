@@ -62,7 +62,7 @@
 
             @hasrole('Chef')
             <!--begin::Item-->
-            <a href="#" class="navi-item">
+            <a href="/my_profile" class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
@@ -96,7 +96,7 @@
 
             @hasrole('Home-Chef|User|Admin')
             <!--begin::Item-->
-            <a href="#" class="navi-item">
+            <a href="/my_profile" class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">

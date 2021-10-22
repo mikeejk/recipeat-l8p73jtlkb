@@ -258,7 +258,7 @@
                                                     <td class="" style="text-align: left;">
                                                         <input type="button"
                                                             class="btn btn-bg-primary w-20 text-white btn-sm  "
-                                                            id="addSteps" value="Add Row" />
+                                                            id="addSteps" value="Add Steps" />
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -378,7 +378,7 @@
                                                 <td class="" style="text-align: left;">
                                                     <input type="button"
                                                         class="btn btn-bg-primary w-20 text-white btn-sm  " id="addrow"
-                                                        value="Add Row" />
+                                                        value="Add Ingredient" />
                                                 </td>
                                             </tr>
                                             <tr>
