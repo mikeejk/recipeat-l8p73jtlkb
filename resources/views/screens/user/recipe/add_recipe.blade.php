@@ -214,38 +214,24 @@
                                         <span class="form-text text-muted">What special in this recipe</span>
                                     </div>
                                     <!-- Form-Description::end -->
-
                                 </div>
 
                                 <div class="form-group row">
                                     <!-- Side Space::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
-
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
-                                        {{-- <label>Steps</label>
-                                        <textarea class="form-control @error('steps') is-invalid @enderror" rows="3"
-                                            name="steps"></textarea>
-                                        </textarea>
-                                        <span class="form-text text-muted">Add Recipe Steps</span> --}}
-
-                                        <table id="recipeSteps" class="col-lg-11 table list">
-                                            <thead>
-                                                <tr>
-                                                    <td>Steps</td>
-
-                                                </tr>
-                                            </thead>
+                                        <label>Steps</label>
+                                        <table id="recipeSteps" class="col-lg-12 table list">
                                             <tbody class="border border-light">
                                                 <tr>
-
-                                                    <td class="col-sm-11">
-                                                        {{-- <input type="mail" name="mail" class="form-control" /> --}}
+                                                    <td class="col-sm-12">
                                                         <input type="text"
                                                             class="form-control @error('steps') is-invalid @enderror"
                                                             rows="3" name="steps" />
-                                                        <span class="form-text text-muted">Add Steps</span>
+                                                        <span class="form-text text-muted">Add how to cook this recipe in
+                                                            steps</span>
                                                     </td>
 
                                                     <td class="col-sm-2"><a class="deleteRow"></a>
@@ -281,59 +267,19 @@
                                         <label></label>
                                         <h3>Recipe Ingredient</h3>
                                     </div>
-                                    {{-- <!-- Side Text::end -->
-                                    <!-- Form-Ingredient::start -->
-                                    <div class="col-lg-3">
-                                        <label>Ingredient</label>
-                                        <select class="custom-select form-control @error('ingredient') is-invalid @enderror" name="ingredient">
-                                            @foreach ($ingredients as $ingredient)
-                                                    <option value="{{ $ingredient->id }} ">
-                                                        {{ $ingredient->ingredient }}
-                                                    </option>
-                                                @endforeach
-                                        </select>
-                                        <span class="form-text text-muted">Add the Ingredient for this recipe</span>
-                                    </div>
-                                    <!-- Form-Ingredient::end -->
-                                    <!-- Form-Description::start -->
-                                    <div class="col-lg-2">
-                                        <label>Quantity</label>
-                                        <input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" name="quantity" />
-                                        <span class="form-text text-muted">Add the Quantity</span>
-                                    </div>
-                                    <!-- Form-Description::end -->
-                                    <!-- Form-Description::start -->
-                                    <div class="col-lg-2">
-                                        <label>Measurement</label>
-                                        <select class="custom-select form-control @error('measurement') is-invalid @enderror" name="measurement">
-                                            @foreach ($measurements as $measurement)
-                                                    <option value="{{ $measurement->id }} ">
-                                                        {{ $measurement->measurement }}
-                                                    </option>
-                                                @endforeach
-                                        </select>
-                                        <span class="form-text text-muted">Select the measurement for the selected
-                                            recipe</span>
-                                    </div>
-                                    <!-- Form-Description::end -->
-                                    <!-- Form-Description::start -->
-                                    <div class="col-lg-1">
-                                        <label>Action</label>
-                                        <button type="submit" class="form-control btn-primary"><i class="fas fa-plus text-white"></i></button>
-                                    </div> --}}
-
+                                    <!-- Side Text::end -->
+                                    <!-- Form-Next Row::start -->
                                     <table id="myTable" class="col-lg-8 table order-list">
                                         <thead>
                                             <tr>
-                                                <td>Ingredient</td>
-                                                <td>Quantity</td>
-                                                <td>Measurement</td>
+                                                <td><label>Ingredient</label></td>
+                                                <td><label>Quantity</label></td>
+                                                <td><label>Measurement</label></td>
                                             </tr>
                                         </thead>
                                         <tbody class="border border-light">
                                             <tr>
-                                                <td class="col-sm-3">
-                                                    {{-- <input type="text" name="name" class="form-control" /> --}}
+                                                <td class="col-sm-4">
                                                     <select
                                                         class="custom-select form-control @error('ingredient') is-invalid @enderror"
                                                         name="ingredient">
@@ -346,15 +292,13 @@
                                                     <span class="form-text text-muted">Add the Ingredient for this
                                                         recipe</span>
                                                 </td>
-                                                <td class="col-sm-3">
-                                                    {{-- <input type="mail" name="mail" class="form-control" /> --}}
+                                                <td class="col-sm-4">
                                                     <input type="text"
                                                         class="form-control @error('quantity') is-invalid @enderror"
                                                         placeholder="Quantity" name="quantity" />
                                                     <span class="form-text text-muted">Add the Quantity</span>
                                                 </td>
-                                                <td class="col-sm-3">
-                                                    {{-- <input type="text" name="phone" class="form-control" /> --}}
+                                                <td class="col-sm-4">
                                                     <select
                                                         class="custom-select form-control @error('measurement') is-invalid @enderror"
                                                         name="measurement">
@@ -385,41 +329,27 @@
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <!-- Form-Description::end -->
+                                    <!-- Form-Next Row::end -->
                                 </div>
                             </div>
                             <!-- Recipe Ingredients::end -->
 
                             <div class="separator separator-dashed my-10"></div>
 
-                            <!-- Recipe Meta-Description & Image::start -->
+                            <!-- Recipe Image::start -->
                             <div>
                                 <div class="form-group row">
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
-                                        <h3>Recipe Meta-Data & Image</h3>
+                                        <h3>Recipe Image</h3>
                                     </div>
                                     <!-- Side Text::end -->
-                                    <!-- Form-Description::start -->
-                                    <div class="col-lg-8">
-                                        <label>Meta-Description</label>
-                                        <textarea class="form-control @error('meta_description') is-invalid @enderror"
-                                            rows="3" name="meta_description"></textarea>
-                                        <span class="form-text text-muted">If you want to add some special description
-                                            for thsi recipe (ADD HEAR)</span>
-                                    </div>
-                                    <!-- Form-Description::end -->
-                                </div>
-                                <div class="form-group row">
-                                    <!-- Side Space::start -->
-                                    <div class="col-lg-4"></div>
-                                    <!-- Side Space::end -->
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
-                                        <textarea class="form-control @error('image') is-invalid @enderror" readonly
-                                            rows="2"></textarea>
+                                        <input type="file" name="recipeimage" class="form-control">
+                                        {{-- <x-media-library-attachment multiple name="myUpload" rules="mimes:jpeg,png" /> --}}
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
                                     <!-- Form-Image::end -->
@@ -624,6 +554,7 @@
     </div>
     <!--end::Content-->
 
+<!-- Begin::Scripts -->
     <script>
         $(document).ready(function() {
             var counter = 0;
@@ -634,7 +565,8 @@
 
                 cols +=
                     '<td><input type="text" class="form-control @error('steps') is-invalid @enderror" rows="3" name="steps' +
-                    counter + '" /></td>';
+                    counter +
+                    '" /> <span class="form-text text-muted">Add how to cook this recipe in steps</span></td>';
 
                 cols +=
                     '<td><input type="button" class="btnDel btn btn-sm btn-danger" value="Delete"></td>';
@@ -680,6 +612,6 @@
             });
         });
     </script>
-
+<!-- end::Scripts -->
 
 @endsection
