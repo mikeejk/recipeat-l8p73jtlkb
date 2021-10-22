@@ -24,7 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Recipe Search - Result Display Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview',function(){ return view('recipe_view');});
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview', [RecipeController::class, 'view_recipe'],function(){ return view('recipe_view');});
 
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
@@ -65,6 +65,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/customers', [InviteContro
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function () {
     return view('screens.admin.recipe.admin_recipe');
 });
+
+// PendingApprovel Controller
+Route::middleware(['auth:sanctum', 'verified'])->get('/pending_approvel', function(){
+    return view('screens.admin.recipe.pending_approvel');
+    });
 
 // CategoryController
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()

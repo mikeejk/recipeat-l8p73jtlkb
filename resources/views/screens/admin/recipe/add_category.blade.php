@@ -13,14 +13,14 @@
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-0 font-size-sm">
                             <!-- <li class="breadcrumb-item text-muted">
-                                    <a href="" class="text-muted">Recipe</a>
-                                </li>
-                                <li class="breadcrumb-item text-muted">
-                                    <a href="" class="text-muted">My Recipes</a>
-                                </li>
-                                <li class="breadcrumb-item text-muted">
-                                    <a href="" class="text-muted">Category</a>
-                                </li> -->
+                                        <a href="" class="text-muted">Recipe</a>
+                                    </li>
+                                    <li class="breadcrumb-item text-muted">
+                                        <a href="" class="text-muted">My Recipes</a>
+                                    </li>
+                                    <li class="breadcrumb-item text-muted">
+                                        <a href="" class="text-muted">Category</a>
+                                    </li> -->
                         </ul>
                         <!--end::Breadcrumb-->
                     </div>
@@ -73,7 +73,8 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add Category</a>
+                                        </span>Add Category
+                                    </a>
                                     <!--end::Button-->
 
                                     <!--begin::Button-->
@@ -97,7 +98,8 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add Cuisine</a>
+                                        </span>Add Cuisine
+                                    </a>
                                     <!--end::Button-->
 
                                     <!--begin::Button-->
@@ -121,7 +123,8 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add Ingredient</a>
+                                        </span>Add Ingredient
+                                    </a>
                                     <!--end::Button-->
 
                                     <!--begin::Button-->
@@ -142,9 +145,30 @@
                                                 </svg>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                        </span>Add Measurement</a>
+                                        </span>Add Measurement
+                                    </a>
                                     <!--end::Button-->
-
+                                    <!--begin::Button-->
+                                    <a href="/pending_approvel" style="margin-bottom: 2px;"
+                                        class="btn btn-outline-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
+                                        <span class="svg-icon svg-icon-md">
+                                            <span class="svg-icon svg-icon-white">
+                                                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Map/Compass.svg--><svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <path
+                                                            d="M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z M14.1654881,7.35483745 L9.61055177,10.3622525 C9.47921741,10.4489666 9.39637436,10.592455 9.38694497,10.7495509 L9.05991526,16.197949 C9.04337012,16.4735952 9.25341309,16.7104632 9.52905936,16.7270083 C9.63705011,16.7334903 9.74423017,16.7047714 9.83451193,16.6451626 L14.3894482,13.6377475 C14.5207826,13.5510334 14.6036256,13.407545 14.613055,13.2504491 L14.9400847,7.80205104 C14.9566299,7.52640477 14.7465869,7.28953682 14.4709406,7.27299168 C14.3629499,7.26650974 14.2557698,7.29522855 14.1654881,7.35483745 Z"
+                                                            fill="#000000" />
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </span>Approvel
+                                    </a>
+                                    <!--end::Button-->
                                 </div>
                             </div>
                             <!--end::Page Heading-->
