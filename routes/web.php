@@ -232,6 +232,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
        return view('dashboard');
    }
 })->name('home');
+
 //user profile
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', function () {
 return view('screens.user.profile.profile');
