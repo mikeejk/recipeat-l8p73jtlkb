@@ -336,15 +336,29 @@
 
                             <div class="separator separator-dashed my-10"></div>
 
-                            <!-- Recipe Image::start -->
+                            <!-- Recipe Meta-Description & Image::start -->
                             <div>
                                 <div class="form-group row">
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4">
                                         <label></label>
-                                        <h3>Recipe Image</h3>
+                                        <h3>Recipe Meta-Description & Image</h3>
                                     </div>
                                     <!-- Side Text::end -->
+                                    <!-- Form-Description::start -->
+                                    <div class="col-lg-8">
+                                        <label>Meta-Description</label>
+                                        <textarea class="form-control @error('meta_description') is-invalid @enderror"
+                                            rows="3" name="meta_description"></textarea>
+                                        <span class="form-text text-muted">If you want to add some special description
+                                            for thsi recipe (ADD HEAR)</span>
+                                    </div>
+                                    <!-- Form-Description::end -->
+                                </div>
+                                <div class="form-group row">
+                                    <!-- Side Space::start -->
+                                    <div class="col-lg-4"></div>
+                                    <!-- Side Space::end -->
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
