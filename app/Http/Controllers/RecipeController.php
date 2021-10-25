@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Pagination\Paginator;
 use Yajra\Datatables\Datatables;
 use App\Models\Category;
 use App\Models\Cuisine;

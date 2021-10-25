@@ -94,7 +94,7 @@
                     <img src="https://spicecravings.com/wp-content/uploads/2021/04/Chicken-Biryani-Featured-2-500x375.jpg"
                         alt="" class="h-60 w-full object-cover content-center rounded-t-lg" />
                     <h1 class="text-center font-bold tracking-wider text-gray-700 mt-4">
-                        cuisine_id:{{ $recipe->cuisine_id }}</h1>
+                        cuisine: {{ $recipe->cuisine->cuisine }}</h1>
                     <p class="text-gray-500 mt-1 text-center">{{ $recipe->created_at }}</p>
                     <br />
                     <p class="bg-blue-700 py-2 px-4  text-white text-sm font-semibold">
