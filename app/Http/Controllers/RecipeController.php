@@ -163,19 +163,18 @@ class RecipeController extends Controller
         $search_text=$_GET['query'];
         $recipe = DB::table('recipes')->where('recipe_name','LIKE','%'.$search_text.'%')->Paginate(8);
         $recipe->appends($request->all());
-
         return view('welcome',['recipe'=>$recipe]);
         }
         else{
             return view('/welcome');
         }
-
     }
 
-    public function view_recipe(Request $request)
+    public function view_recipe(\App\Models\Recipe $recipe)
     {
-        $view_recipe=DB::select('select * from recipes');
-        return view('recipe_view',['recipe_view'=>$view_recipe]);
 
+        // $view_recipe=DB::select('select * from recipes');
+        // return view('recipe_view',['recipe_view'=>$view_recipe],compact('recipe'));
+        return view('recipe_view',compact('recipe'));
     }
 }

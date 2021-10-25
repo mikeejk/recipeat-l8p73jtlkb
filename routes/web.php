@@ -24,7 +24,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Recipe Search - Result Display Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview', [RecipeController::class, 'view_recipe'],function(){ return view('recipe_view');});
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}',[RecipeController::class, 'view_recipe']);
+
 
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
