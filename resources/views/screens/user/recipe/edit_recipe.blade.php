@@ -56,9 +56,8 @@
                             <div class="col-lg-4"></div>
                             <div class="col-lg-4 d-flex justify-content-end align-items-center">
                                 <div class="">
-                                        <a href=" /recipes"
-                                    class="btn btn-light-primary font-weight-bolder">
-                                    <i class="las la-arrow-left"></i>Back</a>
+                                    <a href=" /recipes" class="btn btn-light-primary font-weight-bolder">
+                                        <i class="las la-arrow-left"></i>Back</a>
                                     <div class="btn-group">
                                         <button type="submit" class="btn btn-primary font-weight-bolder">
                                             <i class="las la-cloud-upload-alt"></i>Update to Live</button>
@@ -84,7 +83,7 @@
                                     <div class="col-lg-4">
                                         <label>Category</label>
                                         <input type="text" class="form-control no-drop" name="recipe_name"
-                                            value="{{ $recipe->category_id }}" disabled />
+                                            value="{{ $recipe->category->category }}" disabled />
                                         <span class="form-text text-muted">This field doesn't be editable</span>
                                     </div>
                                     <!-- Form-Category::end -->
@@ -93,7 +92,7 @@
                                     <div class="col-lg-4">
                                         <label>Cuisine</label>
                                         <input type="text" class="form-control no-drop" name="cuisine"
-                                            value="{{ $recipe->cuisine_id }}" disabled />
+                                            value="{{ $recipe->cuisine->cuisine }}" disabled />
                                         <span class="form-text text-muted">This field doesn't be editable</span>
                                     </div>
                                     <!-- Form-Cuisine::end -->
@@ -221,7 +220,7 @@
                                     <div class="col-lg-8">
                                         <label>Description</label>
                                         <textarea class="form-control" rows="3" name="description"
-                                            value="{{ $recipe->steps }}"></textarea>
+                                            value="{{ $recipe->description }}"></textarea>
                                         <span class="form-text text-muted">Add the more specialized for this
                                             recipe</span>
                                     </div>
@@ -237,9 +236,7 @@
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
                                         <label>Setps</label>
-                                        <textarea id="editor" rows="3" name="steps" value="{{ $recipe->steps }}">
-
-                                                            </textarea>
+                                        <textarea id="editor" rows="3" name="steps" value="{{ $recipe->steps }}"></textarea>
                                         <span class="form-text text-muted">Add some more steps of creating this recipe
                                             (In using BULLET poins)</span>
                                     </div>

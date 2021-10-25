@@ -92,6 +92,7 @@
                                 <tr>
                                     <th>Recipe Name</th>
                                     <th>Category</th>
+                                    <th>Cuisine</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -121,8 +122,14 @@
                             orderable: false
                         },
                         {
-                            data: 'category_id',
-                            name: 'category_id',
+                            data: 'category',
+                            name: 'category',
+                            searchable: false,
+                            orderable: false,
+                        },
+                        {
+                            data: 'cuisine',
+                            name: 'cuisine',
                             searchable: false,
                             orderable: false,
                         },

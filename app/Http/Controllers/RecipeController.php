@@ -87,15 +87,15 @@ class RecipeController extends Controller
                 'cooking_time' => 'required',
                 'serves_people' => 'required',
                 'calories_in' => 'required',
-                // 'description' => 'required',
+                'description' => 'required',
                 // 'steps' => 'required',
                 // 'meta_description' => 'required',
-                // 'bud_sweet' => 'required',
-                // 'bud_sour' => 'required',
-                // 'bud_salt' => 'required',
-                // 'bud_spicy' => 'required',
-                // 'bud_bitter' => 'required',
-                // 'bud_astringent' => 'required'
+                'bud_sweet' => 'required',
+                'bud_sour' => 'required',
+                'bud_salt' => 'required',
+                'bud_spicy' => 'required',
+                'bud_bitter' => 'required',
+                'bud_astringent' => 'required'
             ]
         );
 
@@ -127,7 +127,19 @@ class RecipeController extends Controller
                 $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';
                 $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete this Recipe</button>';
                 return $html;
-            })->toJson();
+            })
+            // Add Column 'category'
+            ->addColumn('category', function ($category) {
+            // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
+                return Category::find($category->category_id)->category;
+            })
+            // Add Column 'cuisine'
+            ->addColumn('cuisine', function ($cuisine) {
+                // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
+                    return Cuisine::find($cuisine->cuisine_id)->cuisine;
+                })
+                // send the data to view via json
+            ->toJson();
 
         return Datatables::of(Recipe::query())->make(true);
     }

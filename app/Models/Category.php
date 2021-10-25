@@ -13,4 +13,11 @@ class Category extends Model
         // User Entered - Data Saving
         'category'
     ];
+
+    // Function - cuisine
+    public function recipe()
+    {
+        // Return (category model has many data refer from the the RECIPE model)
+        return $this->hasMany(Recipe::class, 'category_id');
+    }
 }

@@ -13,4 +13,11 @@ class Cuisine extends Model
         // User Entered - Data Saving
         'cuisine'
     ];
+
+    // Function - cuisine
+    public function recipe()
+    {
+        // Return (cuisine model has many data refer from the the RECIPE model)
+        return $this->hasMany(Recipe::class, 'cuisine_id');
+    }
 }

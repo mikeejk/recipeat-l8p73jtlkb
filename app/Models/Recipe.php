@@ -34,4 +34,18 @@ class Recipe extends Model
         'bud_bitter',
         'bud_astringent',
     ];
+
+    // Function - category
+    public function category()
+    {
+        // return (category model is belongs to this recipe model)
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    // Function - cuisine
+    public function cuisine()
+    {
+        // return (cuisine model is belongs to this recipe model)
+        return $this->belongsTo(Cuisine::class, 'cuisine_id');
+    }
 }
