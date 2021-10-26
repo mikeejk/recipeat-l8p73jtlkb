@@ -238,3 +238,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', function () {
 return view('screens.user.profile.profile');
 });
+
+//Follower
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', function () {
+    return view('screens.user.profile.follower');
+    });

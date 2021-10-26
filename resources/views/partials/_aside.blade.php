@@ -291,9 +291,19 @@
                                     <span class="menu-text">My Profile</span>
                                 </a>
                             </li>
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true">
+                                <a href="/my_follower" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Followers</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
+
+
 
                 {{-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
