@@ -253,3 +253,7 @@ return view('screens.user.profile.profile');
 Route::middleware(['auth:sanctum', 'verified'])->get('/edit_profile', function () {
     return view('screens.user.profile.profile_edit');
 });
+//Follower
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', function () {
+    return view('screens.user.profile.follower');
+    });
