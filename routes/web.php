@@ -7,6 +7,7 @@ use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\ApproveController;
 use App\Actions\Fortify\CreateNewUser;
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -25,7 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Recipe Search - Result Display Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}',[RecipeController::class, 'view_recipe']);
-
 
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
@@ -67,10 +67,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
     return view('screens.admin.recipe.admin_recipe');
 });
 
-// PendingApprovel Controller
-Route::middleware(['auth:sanctum', 'verified'])->get('/pending_approvel', function(){
-    return view('screens.admin.recipe.pending_approvel');
-    });
+// ApproveController
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    // Approve Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [ApproveController::class, 'index']);
+
+    // Recipeat Approve Data Table - Data Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve.data', [ApproveController::class, 'anyData']);
+
+    // Recipeat Approve Data Table - Index Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [ApproveController::class, 'getIndex']);
+});
 
 // CategoryController
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
@@ -220,12 +228,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes.data', [RecipeCon
 // Recipe Post Data Table - Index Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeController::class, 'getIndex']);
 
-
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     Question Routes
 // -------------------------------------------------------------------------------------------------------------------
 
-// // User Questionnaire Tab
+// User Questionnaire Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
    if (auth()->user()->hasRole('Home-Chef|Chef')) {
         return view('screens.user.home.questions');
@@ -237,4 +244,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
 //user profile
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', function () {
 return view('screens.user.profile.profile');
+});
+
+// -------------------------------------------------------------------------------------------------------------------
+//                                                     Testing Routes
+// -------------------------------------------------------------------------------------------------------------------
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/edit_profile', function () {
+    return view('screens.user.profile.profile_edit');
 });

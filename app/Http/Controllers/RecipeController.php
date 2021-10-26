@@ -120,7 +120,7 @@ class RecipeController extends Controller
     // Function - anyData
     public function anyData(Request $request)
     {
-        $customers = Recipe::all();
+        $customers = Recipe::where('user_id', auth()->user()->id);
         return datatables()->of($customers)
             ->addColumn('action', function ($recipe) {
                 $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';

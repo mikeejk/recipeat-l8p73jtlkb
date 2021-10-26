@@ -192,6 +192,14 @@
                                         <span class="menu-text">Measurement</span>
                                     </a>
                                 </li>
+                                <li class="menu-item" aria-haspopup="true">
+                                    <a href="/approve" class="menu-link">
+                                        <i class="menu-bullet menu-bullet-dot">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">Approve Recipe</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
