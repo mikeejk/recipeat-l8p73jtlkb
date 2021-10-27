@@ -233,4 +233,41 @@ class Questionnaire extends Component
         // Back Step
         $this->currentStep = $step;
     }
+
+    public function profile()
+    {
+        $questions = Question::where('user_id', auth()->user()->id)->first();
+        return view('screens.user.profile.profile',compact('questions'));
+    }
+
+    public function edit(Question $question)
+    {
+        $questions = Question::where('user_id', auth()->user()->id)->first();
+        return view('screens.user.profile.profile_edit',compact('questions'));
+    }
+
+    public function update(Question $question)
+    {
+        $data = request()->validate(
+            [
+                'name' => 'required',
+                'gender' => 'required',
+                'mail' => 'required',
+                'allergies' => 'required',
+                'lifestyle' => 'required',
+                'ingredient' => 'required',
+                'pref_cuisine' => 'required',
+                'goals' => 'required',
+                'serving_time' => 'required',
+                'cho_cook' => 'required',
+                'fav_ingr' => 'required',
+                'level_spici' => 'required',
+                'time_spend' => 'required',
+            ]
+        );
+
+        $question->update($data);
+
+        return redirect('/my_profile');
+    }
 }

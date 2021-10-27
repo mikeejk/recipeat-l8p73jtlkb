@@ -166,10 +166,8 @@ class RecipeController extends Controller
         );
     }
 
-
     public function search(Request $request)
     {
-
         if(isset($_GET['query'])){
         $search_text=$_GET['query'];
         $recipe = DB::table('recipes')->where('recipe_name','LIKE','%'.$search_text.'%')->Paginate(8);
@@ -181,11 +179,8 @@ class RecipeController extends Controller
         }
     }
 
-    public function view_recipe(\App\Models\Recipe $recipe)
+    public function view_recipe(Recipe $recipe)
     {
-
-        // $view_recipe=DB::select('select * from recipes');
-        // return view('recipe_view',['recipe_view'=>$view_recipe],compact('recipe'));
         return view('recipe_view',compact('recipe'));
     }
 }
