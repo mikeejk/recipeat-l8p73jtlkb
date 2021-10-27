@@ -29,5 +29,6 @@ class Question extends Model
         'fav_ingr',
         'level_spici',
         'time_spend',
+        'status'
     ];
 }

@@ -42,6 +42,7 @@ class ChefQuestion extends Component
     public $degree_name;
     public $degree_description;
     public $about_my_profile;
+    public $status = 1;
 
     // Function - Render
     public function render()
@@ -272,6 +273,7 @@ class ChefQuestion extends Component
     {
         $validatedData = $this->validate([
             'about_my_profile' => 'required',
+            'status' => 'required',
         ]);
 
         // Next Step
@@ -314,6 +316,7 @@ class ChefQuestion extends Component
             'degree_name' => $this->degree_name,
             'degree_description' => $this->degree_description,
             'about_my_profile' => $this->about_my_profile,
+            'status' => $this->status,
             'user_id' => auth()->user()->id,
         ]);
 

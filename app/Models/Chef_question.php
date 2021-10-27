@@ -46,6 +46,7 @@ class Chef_question extends Model
         'accomplishment_upload',
         'degree_name',
         'degree_description',
-        'about_my_profile'
+        'about_my_profile',
+        'status',
     ];
 }

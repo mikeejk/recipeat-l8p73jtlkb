@@ -23,6 +23,7 @@ class Questionnaire extends Component
     public $fav_ingr;
     public $level_spici;
     public $time_spend;
+    public $status = 1;
 
     // Function - Render
     public function render()
@@ -193,6 +194,7 @@ class Questionnaire extends Component
         // Data - Save
         $validatedData = $this->validate([
             'time_spend' => 'required',
+            'status' => 'required',
         ]);
 
         // Next Step
@@ -217,6 +219,7 @@ class Questionnaire extends Component
             'fav_ingr' => $this->fav_ingr,
             'level_spici' => $this->level_spici,
             'time_spend' => $this->time_spend,
+            'status' => $this->status,
             'user_id' => auth()->user()->id,
         ]);
 
