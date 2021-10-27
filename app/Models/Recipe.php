@@ -48,4 +48,9 @@ class Recipe extends Model
         // return (cuisine model is belongs to this recipe model)
         return $this->belongsTo(Cuisine::class, 'cuisine_id');
     }
+    public function user()
+    {
+        // return (user model is belongs to this recipe model)
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

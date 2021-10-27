@@ -10,6 +10,7 @@ use App\Models\Cuisine;
 use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
+use App\Models\User;
 
 class RecipeController extends Controller
 {
@@ -188,4 +189,39 @@ class RecipeController extends Controller
         // return view('recipe_view',['recipe_view'=>$view_recipe],compact('recipe'));
         return view('recipe_view',compact('recipe'));
     }
+
+     //Function - Index
+     public function index1()
+     {
+         $recipes = Recipe::all();
+         return view('screens.admin.recipe.approve', compact('recipes'));
+     }
+ 
+     // Function - getIndex
+     public function getIndex1()
+     {
+         return view('screens.admin.recipe.approve');
+     }
+ 
+     //Function - anyData
+     public function anyData1()
+     {
+         $recipes = Recipe::all();
+         return datatables()->of($recipes)
+             ->addColumn('action', function () {
+                 $html = '<a href="#" class="btn btn-sm btn-success justify-content-end">Approve</a> ';
+                 $html .= '<a href="#" class="btn btn-sm btn-danger justify-content-end">Denied</a>';
+                 return $html;
+         })
+         ->addColumn('name', function ($user) {
+            // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
+                return User::find($user->user_id)->name;
+         })
+         ->addColumn('status', function () { 
+            return view('screens.admin.recipe.approve');
+            })
+         ->toJson();
+ 
+         return Datatables::of(Recipe::query())->make(true);
+     }
 }

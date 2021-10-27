@@ -71,13 +71,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     // Approve Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [ApproveController::class, 'index']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'index1']);
 
     // Recipeat Approve Data Table - Data Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/approve.data', [ApproveController::class, 'anyData']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve.data', [RecipeController::class, 'anyData1']);
 
     // Recipeat Approve Data Table - Index Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [ApproveController::class, 'getIndex']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'getIndex1']);
 });
 
 // CategoryController

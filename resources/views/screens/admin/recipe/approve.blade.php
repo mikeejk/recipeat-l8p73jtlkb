@@ -70,8 +70,8 @@
                         orderable: false
                     },
                     {
-                        data: 'user_id',
-                        name: 'user_id',
+                        data: 'name',
+                        name: 'name',
                         searchable: false,
                         orderable: false
                     },
