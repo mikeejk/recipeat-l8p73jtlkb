@@ -40,7 +40,6 @@
         </div>
     </div>
     <!-- Question 02 -->
-
     <div class="row w-full flex h-screen setup-content {{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
         <div class="md:w-4/12 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
@@ -96,8 +95,8 @@
           </div>
         </div>
       </div>
-    <!-- Question 03 -->
 
+    <!-- Question 03 -->
     <div class="row w-full flex h-screen setup-content {{ $currentStep != 3 ? 'display-none' : '' }}" id="step-3">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
@@ -136,7 +135,7 @@
         </div>
       </div>
     <!-- Question 04 -->
-            <div class="row w-full flex h-screen setup-content {{ $currentStep != 4 ? 'display-none' : '' }}" id="step-4">
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 4 ? 'display-none' : '' }}" id="step-4">
                 <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
                   <div class="flex px-6 py-2 mt-2">
                     <i class="las la-angle-left mt-1"></i>
@@ -166,18 +165,18 @@
                             <div class="flex flex-wrap lg:w-full sm:mx-auto sm:mb-2 -mx-2">
                               <div class="p-2 sm:w-1/2 w-full font-medium">
                                 <div class="bg-gray-100 rounded flex p-3 h-full items-center">
-                                  <label class="radio-inline"><input type="radio" wire:model="cookinglevel" value="try" {{{ $cookinglevel == 'try' ? "checked" : "" }}}>&nbsp; <i class="fas fa-chess-pawn"></i> &nbsp; I Can Try </label>
+                                  <label class="radio-inline"><input type="radio" wire:model="cookinglevel" value="Beginner" {{{ $cookinglevel == 'Beginner' ? "checked" : "" }}}>&nbsp; <i class="fas fa-chess-pawn"></i> &nbsp; I Can Try </label>
                                 </div>
                               </div>
                               <div class="p-2 sm:w-1/2 w-full font-medium">
                                 <div class="bg-gray-100 rounded flex p-3 h-full items-center">
-                                  <label class="radio-inline"><input type="radio" wire:model="cookinglevel" value="cook" {{{ $cookinglevel == 'cook' ? "checked" : "" }}}>&nbsp; <i class="fas fa-chess-rook"></i> &nbsp; I Can Cook</label>
+                                  <label class="radio-inline"><input type="radio" wire:model="cookinglevel" value="Intermediate" {{{ $cookinglevel == 'Intermediate' ? "checked" : "" }}}>&nbsp; <i class="fas fa-chess-rook"></i> &nbsp; I Can Cook</label>
                                 </div>
                               </div>
                               <div class="p-2 w-full font-medium">
                                 <div class="bg-gray-100 rounded flex p-3 h-full items-center">
                                   <label class="radio-inline"
-                                    ><input type="radio" wire:model="cookinglevel" value="great" {{{ $cookinglevel == 'great' ? "checked" : "" }}}>&nbsp; <i class="fas fa-chess-queen"></i>
+                                    ><input type="radio" wire:model="cookinglevel" value="Wellversed" {{{ $cookinglevel == 'Wellversed' ? "checked" : "" }}}>&nbsp; <i class="fas fa-chess-queen"></i>
                                     &nbsp; Your Kidding? I am Great
                                   </label>
                                 </div>
@@ -235,7 +234,7 @@
         </div>
       </div>
     <!-- Question 06 -->
-            <div class="row w-full flex h-screen setup-content {{ $currentStep != 6 ? 'display-none' : '' }}" id="step-6">
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 6 ? 'display-none' : '' }}" id="step-6">
                 <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
                   <div class="flex px-6 py-2 mt-2">
                     <i class="las la-angle-left mt-1"></i>
@@ -304,7 +303,7 @@
 
 
     <!-- Question 07 -->
-     <div class="row w-full flex h-screen setup-content {{ $currentStep != 7 ? 'display-none' : '' }}" id="step-7">
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 7 ? 'display-none' : '' }}" id="step-7">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
             <i class="las la-angle-left mt-1"></i>
@@ -383,7 +382,6 @@
         </div>
       </div>
     <!-- Question 09 -->
-
      <div class="row w-full flex h-screen setup-content {{ $currentStep != 9 ? 'display-none' : '' }}" id="step-9">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
@@ -466,8 +464,6 @@
 
 
     <!-- Question 10 -->
-
-
      <div class="row w-full flex h-screen setup-content {{ $currentStep != 10 ? 'display-none' : '' }}" id="step-10">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
@@ -541,8 +537,7 @@
 
 
     <!-- Question 11 -->
-
-     <div class="row w-full flex h-screen setup-content {{ $currentStep != 11 ? 'display-none' : '' }}" id="step-11">
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 11 ? 'display-none' : '' }}" id="step-11">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
             <i class="las la-angle-left mt-1"></i>
@@ -564,7 +559,7 @@
           <div class="md:w-3/4 w-full flex lg:justify-start items-center h-auto p-4 justify-center">
             <div class="flex flex-col h-full md:w-3/4 w-full ml-3 shadow-xl">
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
-                <h4 class="text-white text-center font-bold lg:text-xl md:text-xl text-lg">Which one would you rather cook ?</h4>
+                <h4 class="text-white text-center font-bold lg:text-xl md:text-xl text-lg">Which one would you rather cook?</h4>
               </div>
               <div class="flex flex-col py-6 h-56 px-8 space-y-5 bg-white rounded-b-2xl">
                 <div class="w-full flex flex-col justify-center items-center pt-6 form-group">
@@ -582,8 +577,7 @@
 
 
     <!-- Question 12 -->
-
-     <div class="row w-full flex h-screen setup-content {{ $currentStep != 12 ? 'display-none' : '' }}" id="step-12">
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 12 ? 'display-none' : '' }}" id="step-12">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
             <i class="las la-angle-left mt-1"></i>
@@ -624,7 +618,7 @@
 
 
     <!-- Question 13 -->
-     <div class="row w-full flex h-screen setup-content {{ $currentStep != 13 ? 'display-none' : '' }}" id="step-13">
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 13 ? 'display-none' : '' }}" id="step-13">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
             <i class="las la-angle-left mt-1"></i>
@@ -665,7 +659,7 @@
 
 
     <!-- Question 14 -->
-     <div class="row w-full flex h-screen setup-content {{ $currentStep != 14 ? 'display-none' : '' }}" id="step-14">
+    <div class="row w-full flex h-screen setup-content {{ $currentStep != 14 ? 'display-none' : '' }}" id="step-14">
         <div class="md:w-1/4 lg:w-3/12 bg-gray-200 px-2 h-full md:block hidden">
           <div class="flex px-6 py-2 mt-2">
             <i class="las la-angle-left mt-1"></i>
@@ -719,7 +713,7 @@
         </div>
       </div>
 
-<!--End of the Questions-->
+    <!--End of the Questions-->
      <div class="row w-full h-screen bg-cover bg-center setup-content {{ $currentStep != 15 ? 'display-none' : '' }}" id="step-15" style="background-image:url(https://images.squarespace-cdn.com/content/v1/5f0c93dc1b1bc1564c698499/1623190785337-OUCJGE8KPPOAXQRHIQ6U/Campo+Website+Extended.jpg?format=2500w)">
             <div class="w-full flex flex-col justify-center px-20 items-start">
                    <h1
