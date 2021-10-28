@@ -175,8 +175,8 @@
                                 <div class="card-body text-center pt-4">
                                     <!--begin::Toolbar-->
                                     <div class="d-flex justify-content-end">
-                                        <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
-                                            <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="dropdown dropdown-inline" data-toggle="tooltip" data-placement="left">
+                                            <p class="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="svg-icon svg-icon-lg">
                                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Text/Dots.svg-->
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -187,7 +187,7 @@
                                                     </svg>
                                                     <!--end::Svg Icon-->
                                                 </span>
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                     <!--end::Toolbar-->
