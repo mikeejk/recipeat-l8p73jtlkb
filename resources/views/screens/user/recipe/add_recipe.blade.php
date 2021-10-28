@@ -226,24 +226,13 @@
                                         <table id="recipeSteps" class="col-lg-12 table list">
                                             <tbody class="border border-light">
                                                 <tr>
-                                                    <td class="col-sm-12">
-                                                        <input type="text"
-                                                            class="form-control @error('steps') is-invalid @enderror"
-                                                            rows="3" name="steps" />
-                                                        <span class="form-text text-muted">Add how to cook this recipe in
-                                                            steps</span>
-                                                    </td>
 
-                                                    <td class="col-sm-2"><a class="deleteRow"></a>
-
-                                                    </td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
                                                     <td class="" style="text-align: left;">
-                                                        <input type="button"
-                                                            class="btn btn-bg-primary w-20 text-white btn-sm  "
+                                                        <input type="button" class="btn btn-bg-primary w-20 text-white btn-sm  "
                                                             id="addSteps" value="Add Steps" />
                                                     </td>
                                                 </tr>
@@ -279,50 +268,14 @@
                                         </thead>
                                         <tbody class="border border-light">
                                             <tr>
-                                                <td class="col-sm-4">
-                                                    <select
-                                                        class="custom-select form-control @error('ingredient') is-invalid @enderror"
-                                                        name="ingredient">
-                                                        @foreach ($ingredients as $ingredient)
-                                                            <option value="{{ $ingredient->id }} ">
-                                                                {{ $ingredient->ingredient }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <span class="form-text text-muted">Add the Ingredient for this
-                                                        recipe</span>
-                                                </td>
-                                                <td class="col-sm-4">
-                                                    <input type="text"
-                                                        class="form-control @error('quantity') is-invalid @enderror"
-                                                        placeholder="Quantity" name="quantity" />
-                                                    <span class="form-text text-muted">Add the Quantity</span>
-                                                </td>
-                                                <td class="col-sm-4">
-                                                    <select
-                                                        class="custom-select form-control @error('measurement') is-invalid @enderror"
-                                                        name="measurement">
-                                                        @foreach ($measurements as $measurement)
-                                                            <option value="{{ $measurement->id }} ">
-                                                                {{ $measurement->measurement }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <span class="form-text text-muted">Select the measurement for the
-                                                        selected
-                                                        recipe</span>
-                                                </td>
-                                                <td class="col-sm-2"><a class="deleteRow"></a>
 
-                                                </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <td class="" style="text-align: left;">
-                                                    <input type="button"
-                                                        class="btn btn-bg-primary w-20 text-white btn-sm  " id="addrow"
-                                                        value="Add Ingredient" />
+                                                    <input type="button" class="btn btn-bg-primary w-20 text-white btn-sm  "
+                                                        id="addrow" value="Add Ingredient" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -568,22 +521,23 @@
     </div>
     <!--end::Content-->
 
-<!-- Begin::Scripts -->
+    <!-- Begin::Scripts -->
     <script>
         $(document).ready(function() {
             var counter = 0;
+
             /*Add Steps Row*/
             $("#addSteps").on("click", function() {
                 var newSteps = $("<tr>");
                 var cols = "";
 
                 cols +=
-                    '<td><input type="text" class="form-control @error('steps') is-invalid @enderror" rows="3" name="steps' +
+                    '<td class="col-lg-11"><input type="text" class="form-control @error('steps') is-invalid @enderror" name="steps[]' +
                     counter +
                     '" /> <span class="form-text text-muted">Add how to cook this recipe in steps</span></td>';
 
                 cols +=
-                    '<td><input type="button" class="btnDel btn btn-sm btn-danger" value="Delete"></td>';
+                    '<td class="col-lg-1"><input type="button" class="btnDel btn btn-sm btn-danger" value="Delete"></td>';
                 newSteps.append(cols);
                 $("table.list").append(newSteps);
                 counter++;
@@ -600,21 +554,21 @@
                 var cols = "";
 
                 cols +=
-                    '<td><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient' +
+                    '<td class="col-lg-4"><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient' +
                     counter +
                     '" > @foreach ($ingredients as $ingredient) <option value="{{ $ingredient->id }} "> {{ $ingredient->ingredient }}</option>@endforeach </select> <span class = "form-text text-muted" > Add the Ingredient for this recipe </span></td > '
 
                 cols +=
-                    '<td><input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" name="quantity' +
-                    counter + '" /><span class="form-text text-muted">Add the Quantity</span></td>';
+                    '<td class="col-lg-3"><input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" name="quantity' +
+                    counter + '" /><span class="form-text text-muted">Add the Quantity value</span></td>';
 
                 cols +=
-                    '<td><select class="custom-select form-control @error('measurement') is-invalid @enderror" name="measurement' +
+                    '<td class="col-lg-4"><select class="custom-select form-control @error('measurement') is-invalid @enderror" name="measurement' +
                     counter +
-                    '"> @foreach ($measurements as $measurement)<option value="{{ $measurement->id }} ">{{ $measurement->measurement }}</option>@endforeach</select><span class="form-text text-muted">Select the measurement for the selected recipe</span></td>'
+                    '"> @foreach ($measurements as $measurement)<option value="{{ $measurement->id }} ">{{ $measurement->measurement }}</option>@endforeach</select><span class="form-text text-muted">Select the measurement of the ingredient</td>'
 
                 cols +=
-                    '<td><input type="button" class="ibtnDel btn btn-sm btn-danger" value="Delete"></td>';
+                    '<td class="col-lg-1"><input type="button" class="ibtnDel btn btn-sm btn-danger" value="Delete"></td>';
                 newRow.append(cols);
                 $("table.order-list").append(newRow);
                 counter++;
@@ -626,6 +580,6 @@
             });
         });
     </script>
-<!-- end::Scripts -->
+    <!-- end::Scripts -->
 
 @endsection

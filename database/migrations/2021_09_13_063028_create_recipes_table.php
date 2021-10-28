@@ -32,7 +32,6 @@ class CreateRecipesTable extends Migration
             $table->integer('serves_people');
             $table->integer('calories_in');
             $table->string('description');
-            $table->text('steps');
             $table->string('meta_description');
             $table->char('bud_sweet');
             $table->char('bud_sour');

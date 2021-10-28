@@ -11,6 +11,7 @@ use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Models\Recipe_Step;
 
 class RecipeController extends Controller
 {
@@ -56,7 +57,6 @@ class RecipeController extends Controller
         $recipe->serves_people = $request->get('serves_people');
         $recipe->calories_in = $request->get('calories_in');
         $recipe->description = $request->get('description');
-        $recipe->steps = $request->get('steps');
         $recipe->meta_description = $request->get('meta_description');
         $recipe->bud_sweet = $request->get('bud_sweet');
         $recipe->bud_sour = $request->get('bud_sour');
@@ -67,6 +67,22 @@ class RecipeController extends Controller
 
         // Save Data
         $recipe->save();
+
+        // Declare steps
+        $steps = $request->steps;
+
+        // for lopping steps
+        for ($i=0; $i < count($steps); $i++)
+        {
+            $datastep = [
+                // Foreign Keys - Data Saving
+                'recipe_id' => $recipe->id,
+                // User Data - Enterd
+                'steps' => $steps[$i],
+            ];
+            // writing to DB
+            DB::table('recipe__steps')->insert($datastep);
+        }
 
         return redirect('/recipes');
     }
@@ -88,8 +104,7 @@ class RecipeController extends Controller
                 'serves_people' => 'required',
                 'calories_in' => 'required',
                 'description' => 'required',
-                // 'steps' => 'required',
-                // 'meta_description' => 'required',
+                'meta_description' => 'required',
                 'bud_sweet' => 'required',
                 'bud_sour' => 'required',
                 'bud_salt' => 'required',
@@ -185,38 +200,38 @@ class RecipeController extends Controller
         return view('recipe_view',compact('recipe'));
     }
 
-     //Function - Index
-     public function index1()
-     {
-         $recipes = Recipe::all();
-         return view('screens.admin.recipe.approve', compact('recipes'));
-     }
- 
-     // Function - getIndex
-     public function getIndex1()
-     {
-         return view('screens.admin.recipe.approve');
-     }
- 
-     //Function - anyData
-     public function anyData1()
-     {
-         $recipes = Recipe::all();
-         return datatables()->of($recipes)
-             ->addColumn('action', function () {
-                 $html = '<a href="#" class="btn btn-sm btn-success justify-content-end">Approve</a> ';
-                 $html .= '<a href="#" class="btn btn-sm btn-danger justify-content-end">Denied</a>';
-                 return $html;
-         })
-         ->addColumn('name', function ($user) {
+    //Function - Index1
+    public function index1()
+    {
+        $recipes = Recipe::all();
+        return view('screens.admin.recipe.approve', compact('recipes'));
+    }
+
+    // Function - getIndex1
+    public function getIndex1()
+    {
+        return view('screens.admin.recipe.approve');
+    }
+
+    //Function - anyData1
+    public function anyData1()
+    {
+        $recipes = Recipe::all();
+        return datatables()->of($recipes)
+            ->addColumn('action', function () {
+                $html = '<a href="#" class="btn btn-sm btn-success justify-content-end">Approve</a> ';
+                $html .= '<a href="#" class="btn btn-sm btn-danger justify-content-end">Denied</a>';
+                return $html;
+        })
+        ->addColumn('name', function ($user) {
             // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
-                return User::find($user->user_id)->name;
-         })
-         ->addColumn('status', function () { 
+            return User::find($user->user_id)->name;
+        })
+        ->addColumn('status', function () {
             return view('screens.admin.recipe.approve');
-            })
-         ->toJson();
- 
-         return Datatables::of(Recipe::query())->make(true);
-     }
+        })
+        ->toJson();
+
+        return Datatables::of(Recipe::query())->make(true);
+    }
 }

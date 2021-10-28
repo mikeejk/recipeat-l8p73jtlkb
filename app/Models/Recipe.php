@@ -25,7 +25,6 @@ class Recipe extends Model
         'serves_people',
         'calories_in',
         'description',
-        'steps',
         'meta_description',
         'bud_sweet',
         'bud_sour',
