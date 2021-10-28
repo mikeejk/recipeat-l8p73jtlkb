@@ -23,6 +23,7 @@ class Questionnaire extends Component
     public $fav_ingr;
     public $level_spici;
     public $time_spend;
+    public $status = 1;
 
     // Function - Render
     public function render()
@@ -193,6 +194,7 @@ class Questionnaire extends Component
         // Data - Save
         $validatedData = $this->validate([
             'time_spend' => 'required',
+            'status' => 'required',
         ]);
 
         // Next Step
@@ -217,6 +219,7 @@ class Questionnaire extends Component
             'fav_ingr' => $this->fav_ingr,
             'level_spici' => $this->level_spici,
             'time_spend' => $this->time_spend,
+            'status' => $this->status,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -229,5 +232,42 @@ class Questionnaire extends Component
     {
         // Back Step
         $this->currentStep = $step;
+    }
+
+    public function show(Question $questions)
+    {
+        $questions = Question::where('user_id', auth()->user()->id)->first();
+        return view('screens.user.profile.profile',compact('questions'));
+    }
+
+    public function edit(Question $questions)
+    {
+        $questions = Question::where('user_id', auth()->user()->id)->first();
+        return view('screens.user.profile.profile_edit',compact('questions'));
+    }
+
+    public function update(Question $questions)
+    {
+        $data = request()->validate(
+            [
+                'name' => 'required',
+                'gender' => 'required',
+                'mail' => 'required',
+                'allergies' => 'required',
+                'lifestyle' => 'required',
+                'ingredient' => 'required',
+                'pref_cuisine' => 'required',
+                'goals' => 'required',
+                'serving_time' => 'required',
+                'cho_cook' => 'required',
+                'fav_ingr' => 'required',
+                'level_spici' => 'required',
+                'time_spend' => 'required',
+            ]
+        );
+
+        $questions->update($data);
+
+        return redirect('/my_profile');
     }
 }

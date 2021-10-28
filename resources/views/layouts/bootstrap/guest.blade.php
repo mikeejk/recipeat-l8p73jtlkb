@@ -64,9 +64,6 @@
         <div class="d-flex flex-row flex-column-fluid page">
 
             @include('partials._aside')
-            @hasrole('Admin')
-            @include('partials._aside-admin')
-            @endhasrole
 
             <!--begin::Wrapper-->
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">

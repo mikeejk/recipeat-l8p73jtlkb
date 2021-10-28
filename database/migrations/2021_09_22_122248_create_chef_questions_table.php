@@ -54,6 +54,7 @@ class CreateChefQuestionsTable extends Migration
             $table->string('degree_name');
             $table->string('degree_description');
             $table->string('about_my_profile');
+            $table->integer('status');
 
             // Foreign Keys
             $table->foreign('user_id')->references('id')->on('users');

@@ -14,8 +14,6 @@ class Recipe extends Model
         // Foreign Keys - Data Saving
         'category_id',
         'cuisine_id',
-        'measurement_id',
-        'ingredient_id',
         'user_id',
 
         // User Entered - Data Saving
@@ -25,7 +23,6 @@ class Recipe extends Model
         'serves_people',
         'calories_in',
         'description',
-        'steps',
         'meta_description',
         'bud_sweet',
         'bud_sour',
@@ -47,5 +44,10 @@ class Recipe extends Model
     {
         // return (cuisine model is belongs to this recipe model)
         return $this->belongsTo(Cuisine::class, 'cuisine_id');
+    }
+    public function user()
+    {
+        // return (user model is belongs to this recipe model)
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
