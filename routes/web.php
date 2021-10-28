@@ -8,6 +8,7 @@ use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
 use App\Actions\Fortify\CreateNewUser;
+use App\Http\Controllers\FollowController;
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
@@ -240,6 +241,6 @@ return view('screens.user.profile.profile');
 });
 
 //Follower
-Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowController::class, 'index'], function () {
     return view('screens.user.profile.follower');
-    });
+    })->name('projects.index');;
