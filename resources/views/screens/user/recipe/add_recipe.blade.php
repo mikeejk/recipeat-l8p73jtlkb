@@ -554,16 +554,16 @@
                 var cols = "";
 
                 cols +=
-                    '<td class="col-lg-4"><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient' +
+                    '<td class="col-lg-4"><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient[]' +
                     counter +
                     '" > @foreach ($ingredients as $ingredient) <option value="{{ $ingredient->id }} "> {{ $ingredient->ingredient }}</option>@endforeach </select> <span class = "form-text text-muted" > Add the Ingredient for this recipe </span></td > '
 
                 cols +=
-                    '<td class="col-lg-3"><input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" name="quantity' +
+                    '<td class="col-lg-3"><input type="text" class="form-control @error('quantity') is-invalid @enderror" placeholder="Quantity" name="quantity[]' +
                     counter + '" /><span class="form-text text-muted">Add the Quantity value</span></td>';
 
                 cols +=
-                    '<td class="col-lg-4"><select class="custom-select form-control @error('measurement') is-invalid @enderror" name="measurement' +
+                    '<td class="col-lg-4"><select class="custom-select form-control @error('measurement') is-invalid @enderror" name="measurement[]' +
                     counter +
                     '"> @foreach ($measurements as $measurement)<option value="{{ $measurement->id }} ">{{ $measurement->measurement }}</option>@endforeach</select><span class="form-text text-muted">Select the measurement of the ingredient</td>'
 

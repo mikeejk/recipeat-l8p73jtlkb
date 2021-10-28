@@ -11,7 +11,6 @@ use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
-use App\Models\Recipe_Step;
 
 class RecipeController extends Controller
 {
@@ -47,8 +46,6 @@ class RecipeController extends Controller
         $recipe->user_id = $user_id;
         $recipe->category_id = $request->get('category');
         $recipe->cuisine_id = $request->get('cuisine');
-        $recipe->measurement_id = $request->get('measurement');
-        $recipe->ingredient_id = $request->get('ingredient');
 
         // Recipe-Data Storeing - User Entered
         $recipe->recipe_name = $request->get('recipe_name');
@@ -75,13 +72,30 @@ class RecipeController extends Controller
         for ($i=0; $i < count($steps); $i++)
         {
             $datastep = [
+
                 // Foreign Keys - Data Saving
                 'recipe_id' => $recipe->id,
+
                 // User Data - Enterd
                 'steps' => $steps[$i],
             ];
             // writing to DB
             DB::table('recipe__steps')->insert($datastep);
+        }
+
+        $ingredient = $request->ingredient;
+        $quantity = $request->quantity;
+        $measurement = $request->measurement;
+
+        for ($i=0; $i < count($ingredient); $i++)
+        {
+            $dataingredient = [
+                'recipe_id' => $recipe->id,
+                'ingredient_id' => $ingredient[$i],
+                'quantity' => $quantity[$i],
+                'measurement_id' => $measurement[$i]
+            ];
+            DB::table('recipe__ingredients')->insert($dataingredient);
         }
 
         return redirect('/recipes');

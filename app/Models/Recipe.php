@@ -14,8 +14,6 @@ class Recipe extends Model
         // Foreign Keys - Data Saving
         'category_id',
         'cuisine_id',
-        'measurement_id',
-        'ingredient_id',
         'user_id',
 
         // User Entered - Data Saving

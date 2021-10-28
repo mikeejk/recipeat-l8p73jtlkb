@@ -22,8 +22,6 @@ class CreateRecipesTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('cuisine_id')->nullable();
-            $table->unsignedBigInteger('measurement_id')->nullable();
-            $table->unsignedBigInteger('ingredient_id')->nullable();
 
             // User Entered - Data Saving
             $table->string('recipe_name');
@@ -43,8 +41,6 @@ class CreateRecipesTable extends Migration
             // Foreign Keys
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('cuisine_id')->references('id')->on('cuisines');
-            $table->foreign('measurement_id')->references('id')->on('measurements');
-            $table->foreign('ingredient_id')->references('id')->on('ingredients');
             $table->foreign('user_id')->references('id')->on('users');
 
             // Time-Stamp Data
