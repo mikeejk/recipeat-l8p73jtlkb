@@ -15,7 +15,7 @@
                     <!--end::Separator-->
                     <!--begin::Search Form-->
                     <div class="d-flex align-items-center" id="kt_subheader_search">
-                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ count($projects) }}</span>
+                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ count($projects) }} of {{ count($projects_count) }}</span>
                         <form class="ml-5" action="{{ route('projects.index') }}" method="GET" role="search">
                             <div class="input-group input-group-md bg-white border-0 rounded min-w-175px">
                                 <input name="term" type="text" class="form-control bg-white border-0"
@@ -140,7 +140,7 @@
                         </div>
                         <!--end::Card-->
                     </div> --}}
-                        <div class="col-xxl-3 col-xl-3 col-md-6 col-sm-4 mt-5 d-flex justify-content-center w-full">
+                        <div class="col-xxl-3 col-xl-3 col-md-6 col-sm-4  d-flex justify-content-center w-full" >
                             {{-- <div class="card p-5 w-full">
                                 <div class="d-flex  align-items-center w-full">
                                     <div class="image"> <img
@@ -170,9 +170,9 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="card card-custom gutter-b card-stretch">
+                            <div class="card card-custom gutter-b card-stretch" >
                                 <!--begin::Body-->
-                                <div class="card-body text-center pt-4">
+                                <div class="card-body text-center pt-1">
                                     <!--begin::Toolbar-->
                                     <div class="d-flex justify-content-end">
                                         <div class="dropdown dropdown-inline" data-toggle="tooltip" data-placement="left">
@@ -192,8 +192,8 @@
                                     </div>
                                     <!--end::Toolbar-->
                                     <!--begin::User-->
-                                    <div class="mt-5">
-                                        <div class="symbol symbol-circle symbol-lg-75">
+                                    <div class="">
+                                        <div class="symbol  symbol-lg-75">
                                             <img src="https://i.pinimg.com/474x/91/27/a5/9127a595d3a3421d984edc45230f6d9a.jpg" alt="image" />
                                         </div>
                                         <div class="symbol symbol-lg-75 symbol-circle symbol-primary">
@@ -205,9 +205,6 @@
                                     <div class="my-2">
                                         <a href="#" class="text-dark font-weight-bold text-hover-primary font-size-h4">{{ $users->name }}
                                         </a>
-                                        <div
-                                            class="text-black-50">{{ $users->email }}</div>
-                                            <div class="mt-2">Created On:<br><span class="mt-1">{{ $users->created_at }}</span></div>
                                     </div>
                                     <!--end::Name-->
                                     <!--begin::Label-->

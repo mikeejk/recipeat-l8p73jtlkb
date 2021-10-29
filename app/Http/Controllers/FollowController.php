@@ -10,6 +10,7 @@ class FollowController extends Controller
 {
     public function index(Request $request)
     {
+        $projects_count = User::all();
         $projects = User::where([
             ['name', '!=' , Null],
             [function ($query) use ($request) {
@@ -20,9 +21,9 @@ class FollowController extends Controller
             }]
         ])
          ->orderBy("id","asc")
-         ->paginate(4);
+         ->paginate(5);
 
-         return view('screens.user.profile.follower',compact('projects'))
+         return view('screens.user.profile.follower',compact('projects'),compact('projects_count'))
          ->with('i',(request()->input('page',1) -1)*5);
 
     }
