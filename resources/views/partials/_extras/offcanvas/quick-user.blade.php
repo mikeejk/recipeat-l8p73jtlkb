@@ -62,7 +62,7 @@
 
             @hasrole('Chef')
             <!--begin::Item-->
-            <a href="/my_profile" class="navi-item">
+            <a href="/my_portfolio" class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">

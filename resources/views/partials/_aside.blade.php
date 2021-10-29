@@ -289,13 +289,13 @@
 
                     </a>
                     <div class="menu-submenu">
-
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link">
                                     <span class="menu-text">Profile</span>
                                 </span>
                             </li>
+                            @unlessrole('Chef')
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="/my_profile" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-dot">
@@ -304,6 +304,17 @@
                                     <span class="menu-text">My Profile</span>
                                 </a>
                             </li>
+                            @endunlessrole
+                            @hasrole('Chef')
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="/my_portfolio" class="menu-link menu-toggle">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">My Portfolio</span>
+                                </a>
+                            </li>
+                            @endhasrole
                             <li class="menu-item menu-item-submenu" aria-haspopup="true">
                                 <a href="/my_follower" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">

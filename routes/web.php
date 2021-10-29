@@ -8,6 +8,7 @@ use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Livewire\Questionnaire;
+use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\FollowController;
 
@@ -202,7 +203,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', functio
     return view('screens.user.profile.change_password');
 });
 
-//user profile
+// User profile tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', [Questionnaire::class, 'show']);
 
 // Edit User Profile Tab
@@ -210,6 +211,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/edit_profile', [Questionn
 
 // Upadte User Profile Tab
 Route::middleware(['auth:sanctum', 'verified'])->patch('/update_profile', [Questionnaire::class, 'update']);
+
+// Porrtfolio tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuestion::class, 'show']);
+
+// Edit Portfolio tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/edit_portfolio', [ChefQuestion::class, 'edit']);
+
+// Update Portfolio tab
+Route::middleware(['auth:sanctum', 'verified'])->patch('/update_portfolio', [ChefQuestion::class, 'update']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes
