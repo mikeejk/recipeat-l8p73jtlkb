@@ -46,8 +46,6 @@ class RecipeController extends Controller
         $recipe->user_id = $user_id;
         $recipe->category_id = $request->get('category');
         $recipe->cuisine_id = $request->get('cuisine');
-        $recipe->measurement_id = $request->get('measurement');
-        $recipe->ingredient_id = $request->get('ingredient');
 
         // Recipe-Data Storeing - User Entered
         $recipe->recipe_name = $request->get('recipe_name');
@@ -56,7 +54,6 @@ class RecipeController extends Controller
         $recipe->serves_people = $request->get('serves_people');
         $recipe->calories_in = $request->get('calories_in');
         $recipe->description = $request->get('description');
-        $recipe->steps = $request->get('steps');
         $recipe->meta_description = $request->get('meta_description');
         $recipe->bud_sweet = $request->get('bud_sweet');
         $recipe->bud_sour = $request->get('bud_sour');
@@ -67,6 +64,39 @@ class RecipeController extends Controller
 
         // Save Data
         $recipe->save();
+
+        // Declare steps
+        $steps = $request->steps;
+
+        // for lopping steps
+        for ($i=0; $i < count($steps); $i++)
+        {
+            $datastep = [
+
+                // Foreign Keys - Data Saving
+                'recipe_id' => $recipe->id,
+
+                // User Data - Enterd
+                'steps' => $steps[$i],
+            ];
+            // writing to DB
+            DB::table('recipe__steps')->insert($datastep);
+        }
+
+        $ingredient = $request->ingredient;
+        $quantity = $request->quantity;
+        $measurement = $request->measurement;
+
+        for ($i=0; $i < count($ingredient); $i++)
+        {
+            $dataingredient = [
+                'recipe_id' => $recipe->id,
+                'ingredient_id' => $ingredient[$i],
+                'quantity' => $quantity[$i],
+                'measurement_id' => $measurement[$i]
+            ];
+            DB::table('recipe__ingredients')->insert($dataingredient);
+        }
 
         return redirect('/recipes');
     }
@@ -88,8 +118,7 @@ class RecipeController extends Controller
                 'serves_people' => 'required',
                 'calories_in' => 'required',
                 'description' => 'required',
-                // 'steps' => 'required',
-                // 'meta_description' => 'required',
+                'meta_description' => 'required',
                 'bud_sweet' => 'required',
                 'bud_sour' => 'required',
                 'bud_salt' => 'required',
@@ -210,14 +239,14 @@ class RecipeController extends Controller
          })
          ->addColumn('name', function ($user) {
             // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
-                return User::find($user->user_id)->name;
-         })
-         ->addColumn('status', function () { 
+            return User::find($user->user_id)->name;
+        })
+        ->addColumn('status', function () {
             return view('screens.admin.recipe.approve');
-            })
-         ->toJson();
- 
-         return Datatables::of(Recipe::query())->make(true);
-     }
+        })
+        ->toJson();
+
+        return Datatables::of(Recipe::query())->make(true);
+    }
 }
 

@@ -234,19 +234,19 @@ class Questionnaire extends Component
         $this->currentStep = $step;
     }
 
-    public function profile()
+    public function show(Question $questions)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
         return view('screens.user.profile.profile',compact('questions'));
     }
 
-    public function edit(Question $question)
+    public function edit(Question $questions)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
         return view('screens.user.profile.profile_edit',compact('questions'));
     }
 
-    public function update(Question $question)
+    public function update(Question $questions)
     {
         $data = request()->validate(
             [
@@ -266,7 +266,7 @@ class Questionnaire extends Component
             ]
         );
 
-        $question->update($data);
+        $questions->update($data);
 
         return redirect('/my_profile');
     }

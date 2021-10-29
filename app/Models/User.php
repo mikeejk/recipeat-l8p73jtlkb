@@ -60,6 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    
     public function recipe()
     {
         // Return (cuisine model has many data refer from the the RECIPE model)

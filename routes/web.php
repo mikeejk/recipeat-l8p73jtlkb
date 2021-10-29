@@ -7,9 +7,9 @@ use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\ApproveController;
 use App\Http\Livewire\Questionnaire;
 use App\Actions\Fortify\CreateNewUser;
+use App\Http\Controllers\FollowController;
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
@@ -68,10 +68,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
     return view('screens.admin.recipe.admin_recipe');
 });
 
-// ApproveController
+// RecipeController
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
-    // Approve Tab
+    // Recipeve Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'index1']);
 
     // Recipeat Approve Data Table - Data Tab
@@ -203,13 +203,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', functio
 });
 
 //user profile
-Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', [Questionnaire::class, 'profile']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', [Questionnaire::class, 'show']);
 
 // Edit User Profile Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/edit_profile', [Questionnaire::class, 'edit']);
 
 // Upadte User Profile Tab
-Route::middleware(['auth:sanctum', 'verified'])->patch('/edit_profile', [Questionnaire::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->patch('/update_profile', [Questionnaire::class, 'update']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes
@@ -257,6 +257,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
 // -------------------------------------------------------------------------------------------------------------------
 
 //Follower
-Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowController::class, 'index'], function () {
     return view('screens.user.profile.follower');
-    });
+    })->name('projects.index');;
