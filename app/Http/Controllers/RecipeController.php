@@ -146,7 +146,7 @@ class RecipeController extends Controller
     {
         return view('screens.user.recipe.recipe');
     }
-
+    
     // Function - anyData
     public function anyData(Request $request)
     {
@@ -214,30 +214,30 @@ class RecipeController extends Controller
         return view('recipe_view',compact('recipe'));
     }
 
-    //Function - Index1
-    public function index1()
-    {
-        $recipes = Recipe::all();
-        return view('screens.admin.recipe.approve', compact('recipes'));
-    }
-
-    // Function - getIndex1
-    public function getIndex1()
-    {
-        return view('screens.admin.recipe.approve');
-    }
-
-    //Function - anyData1
-    public function anyData1()
-    {
-        $recipes = Recipe::all();
-        return datatables()->of($recipes)
-            ->addColumn('action', function () {
-                $html = '<a href="#" class="btn btn-sm btn-success justify-content-end">Approve</a> ';
-                $html .= '<a href="#" class="btn btn-sm btn-danger justify-content-end">Denied</a>';
-                return $html;
-        })
-        ->addColumn('name', function ($user) {
+     //Function - Index1 for approve
+     public function index1()
+     {
+         $recipes = Recipe::all();
+         return view('screens.admin.recipe.approve', compact('recipes'));
+     }
+ 
+     // Function - getIndex1 for approve
+     public function getIndex1()
+     {
+         return view('screens.admin.recipe.approve');
+     }
+ 
+     //Function - anyData1 for approve
+     public function anyData1()
+     {
+         $recipes = Recipe::all();
+         return datatables()->of($recipes)
+             ->addColumn('action', function () {
+                 $html = '<a href="#" class="btn btn-sm btn-success justify-content-end">Approve</a> ';
+                 $html .= '<a href="#" class="btn btn-sm btn-danger justify-content-end">Denied</a>';
+                 return $html;
+         })
+         ->addColumn('name', function ($user) {
             // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
             return User::find($user->user_id)->name;
         })
@@ -249,3 +249,4 @@ class RecipeController extends Controller
         return Datatables::of(Recipe::query())->make(true);
     }
 }
+
