@@ -10,7 +10,7 @@ class Recipe extends Model
     use HasFactory;
 
     protected $fillable = [
-
+       
         // Foreign Keys - Data Saving
         'category_id',
         'cuisine_id',
@@ -33,8 +33,9 @@ class Recipe extends Model
         'bud_spicy',
         'bud_bitter',
         'bud_astringent',
+        'status',
     ];
-
+    
     // Function - category
     public function category()
     {
