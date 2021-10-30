@@ -3,7 +3,7 @@
 
     <!--begin::Header-->
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
-        <h3 class="font-weight-bold m-0">User Profile
+        <h3 class="font-weight-bold m-0">Guest
         </h3>
 
     </div>

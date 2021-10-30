@@ -3,8 +3,18 @@
 
     <!--begin::Header-->
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
-        <h3 class="font-weight-bold m-0">User Profile
+        @hasrole('Admin')
+        <h3 class="font-weight-bold m-0">Admin
         </h3>
+        @endhasrole
+        @hasrole('Chef')
+        <h3 class="font-weight-bold m-0">Chef
+        </h3>
+        @endhasrole
+        @hasrole('Home-Chef')
+        <h3 class="font-weight-bold m-0">Home Chef
+        </h3>
+        @endhasrole
 
     </div>
 
@@ -265,7 +275,6 @@
                             {{ __('Sign Out') }}
                         </x-jet-dropdown-link>
                     </form>
-
                 </span>
             </span>
 

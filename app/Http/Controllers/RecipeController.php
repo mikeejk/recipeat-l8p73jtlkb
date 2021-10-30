@@ -34,13 +34,13 @@ class RecipeController extends Controller
     // Function - Store
     public function store(Request $request)
     {
-        $this->ValidatedData();
+        $this->ValidatedData(); 
 
         // Create New Object
         $recipe = new Recipe();
 
         // User_id Form User Model
-        $user_id = auth()->user()->id;
+        $user_id = auth()->user()->id;      
 
         // Recipe-Data Storeing - Foreign Keys
         $recipe->user_id = $user_id;
@@ -61,6 +61,15 @@ class RecipeController extends Controller
         $recipe->bud_spicy = $request->get('bud_spicy');
         $recipe->bud_bitter = $request->get('bud_bitter');
         $recipe->bud_astringent = $request->get('bud_astringent');
+
+        // Staus ( Home-Chef & User = 0 || Chef = 1 )
+        $role = auth()->user()->hasRole('Chef');   
+        if($role){
+            $recipe->status = 1;
+        }else{
+            $recipe->status = 0;
+        }
+       
 
         // Save Data
         $recipe->save();
