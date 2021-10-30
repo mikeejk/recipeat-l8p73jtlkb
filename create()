@@ -1,0 +1,4 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'intl' (tried: C:/laragon/bin/php/php-7.4.22-Win32-vc15-x64/ext\intl (The specified module could not be found.), C:/laragon/bin/php/php-7.4.22-Win32-vc15-x64/ext\php_intl.dll (The specified module could not be found.)) in Unknown on line 0
+Psy Shell v0.10.9 (PHP 7.4.22 — cli) by Justin Hileman
+

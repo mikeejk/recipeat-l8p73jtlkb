@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Recipe Search - Result Display Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}',[RecipeController::class, 'view_recipe']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}', [RecipeController::class, 'view_recipe']);
 
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
@@ -70,8 +70,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
 });
 
 // RecipeController
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Recipeve Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'index1']);
 
@@ -83,8 +82,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 });
 
 // CategoryController
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/categorys', [CategoryController::class, 'index']);
 
@@ -111,8 +109,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 });
 
 // CuisineController
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index Cuisine Tab
     Route::middleware(['auth::sanctum', 'verified'])->get('/cuisines', [CuisineController::class, 'index']);
 
@@ -139,8 +136,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 });
 
 // IngredientController
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index Ingredient Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/ingredients', [IngredientController::class, 'index']);
 
@@ -167,8 +163,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 });
 
 // MeasurementController
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index Measurement Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/measurements', [MeasurementController::class, 'index']);
 
@@ -255,11 +250,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 
 // User Questionnaire Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
-   if (auth()->user()->hasRole('Home-Chef|Chef')) {
+    if (auth()->user()->hasRole('Home-Chef|Chef')) {
         return view('screens.user.home.questions');
-   } else {
-       return view('dashboard');
-   }
+    } else {
+        return view('dashboard');
+    }
 })->name('home');
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -269,4 +264,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
 //Follower
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowController::class, 'index'], function () {
     return view('screens.user.profile.follower');
-    })->name('projects.index');;
+})->name('projects.index');;
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
+Route::middleware(['auth:sanctum', 'verified'])->get('/{profileId}/unfollow', [FollowController::class, 'unFollowUser'])->name('user.unfollow');
