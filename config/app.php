@@ -168,7 +168,6 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
-        Overtrue\LaravelFollow\FollowServiceProvider::class,
 
         /*
          * Application Service Providers...
