@@ -30,7 +30,7 @@ class Recipe extends Model
         'bud_spicy',
         'bud_bitter',
         'bud_astringent',
-        'status',
+        'status'
     ];
     
     // Function - category
