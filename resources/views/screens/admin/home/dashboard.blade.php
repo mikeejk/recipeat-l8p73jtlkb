@@ -293,7 +293,7 @@
                         </div>
                         <!--end::Stats Widget 3-->
                     </div> --}}
-                    I am an Admin
+                    
                 </div>
                 <!--end::Row-->
             </div>
