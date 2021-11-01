@@ -19,9 +19,9 @@ class CreateRecipesTable extends Migration
             $table->id();
 
             // Foreign Keys - Data Saving
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('cuisine_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('cuisine_id');
 
             // User Entered - Data Saving
             $table->string('recipe_name');

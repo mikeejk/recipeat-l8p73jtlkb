@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
 
-class Recipe extends Model
+class Recipe extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $fillable = [
-       
+
         // Foreign Keys - Data Saving
         'category_id',
         'cuisine_id',
@@ -32,7 +35,7 @@ class Recipe extends Model
         'bud_astringent',
         'status'
     ];
-    
+
     // Function - category
     public function category()
     {

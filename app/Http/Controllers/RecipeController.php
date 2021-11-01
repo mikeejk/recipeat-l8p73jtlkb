@@ -62,14 +62,20 @@ class RecipeController extends Controller
         $recipe->bud_bitter = $request->get('bud_bitter');
         $recipe->bud_astringent = $request->get('bud_astringent');
 
+        if($request->hasFile('cover') && $request->file('cover')->isValid()) {
+            $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+        }
+
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
         $role = auth()->user()->hasRole('Chef');
+
+        // If the role Chef post the recipe 1
         if($role){
             $recipe->status = 1;
+        // Else the role Home-Chef & User post the recipe 0
         }else{
             $recipe->status = 0;
         }
-
 
         // Save Data
         $recipe->save();

@@ -35,7 +35,8 @@
         <!--end::Subheader-->
         <!--begin::Entry-->
         <div>
-            <form class="form" action="/recipes" method="post">
+            <form class="form" action="/recipes" enctype="multipart/form-data" method="post">
+                @csrf
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Card-->
@@ -315,7 +316,7 @@
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
-                                        <input type="file" name="recipeimage" class="form-control">
+                                        <input type="file" name="cover" class="form-control">
                                         {{-- <x-media-library-attachment multiple name="myUpload" rules="mimes:jpeg,png" /> --}}
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
