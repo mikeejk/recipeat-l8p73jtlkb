@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Illuminate\Http\Request;
 use Livewire\Component;
 use App\Models\Question;
+use App\Models\Follower;
 
 class Questionnaire extends Component
 {
@@ -235,10 +236,12 @@ class Questionnaire extends Component
         $this->currentStep = $step;
     }
 
-    public function show(Question $questions)
+    public function show(Question $questions,Follower $followers)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
-        return view('screens.user.profile.profile',compact('questions'));
+        $followers = Follower::all(['leader_id']);
+        $following = Follower::all(['follower_id']);
+        return view('screens.user.profile.profile',compact('questions','followers','following'));
     }
 
     public function edit(Question $questions)

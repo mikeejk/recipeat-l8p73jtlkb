@@ -320,18 +320,18 @@
     <script>
         $('.btnfollow').click(function() {
             $(this).text(function(_, text) {
-                return text === "Follow" ? "Unfollow" : "Follow";
+                return text === "Follow" ? "Following" : "Follow";
             });
 
             if ($(this).text() == "Follow") {
-                $(this).removeClass('unfollow'), $(this).css({
+                $(this).removeClass('Following'), $(this).css({
                     "background": "#1E90FF"
                 }), $(this).css({
                     "color": "white"
                 });
 
-            } else if ($(this).text() == "Unfollow") {
-                $(this).addClass('unfollow'), $(this).css({
+            } else if ($(this).text() == "Following") {
+                $(this).addClass('Follow'), $(this).css({
                     "background": "#FF0000"
                 }), $(this).css({
                     "color": "white"
