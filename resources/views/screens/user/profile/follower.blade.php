@@ -209,7 +209,9 @@
                                     <!--end::Name-->
                                     <!--begin::Label-->
                                     <div class="button mt-2 d-flex flex-row justify-content-center align-items-center">
-                                        <button id="" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</button>
+                                        {{-- <button id="" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</button> --}}
+                                        <a href="{{ route('user.follow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</a>
+                                        <a href="{{ route('user.unfollow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">UnFollow</a>
                                     </div>
                                     <!--end::Label-->
 
