@@ -10,6 +10,8 @@ use App\Models\Cuisine;
 use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
+use App\Models\Recipe_Ingredient;
+use App\Models\Recipe_Step;
 use App\Models\User;
 
 class RecipeController extends Controller
@@ -119,11 +121,13 @@ class RecipeController extends Controller
     // Function - Edit
     public function edit(Recipe $recipe)
     {
-        return view('screens.user.recipe.edit_recipe', compact('recipe'));
+        $measurements = Measurement::all(['id', 'measurement']);
+        $ingredients = Ingredient::all(['id', 'ingredient']);
+        return view('screens.user.recipe.edit_recipe', compact('recipe', 'measurements', 'ingredients'));
     }
 
     // Function - Update
-    public function update(Recipe $recipe)
+    public function update(Recipe $recipe, Request $request)
     {
         $data = request()->validate(
             [
@@ -142,6 +146,57 @@ class RecipeController extends Controller
                 'bud_astringent' => 'required'
             ]
         );
+
+        if($request->hasFile('cover') && $request->file('cover')->isValid()) {
+            $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+        }
+
+        // Staus ( Home-Chef & User = 0 || Chef = 1 )
+        $role = auth()->user()->hasRole('Chef');
+
+        // If the role Chef post the recipe 1
+        if($role){
+            $recipe->status = 'Approved';
+        // Else the role Home-Chef & User post the recipe 0
+        }else{
+            $recipe->status = 'Pending';
+        }
+
+        // Save Data
+        $recipe->save();
+
+        // Declare steps
+        $steps = $request->steps;
+
+        // for lopping steps
+        for ($i=0; $i < count($steps); $i++)
+        {
+            $datastep = [
+
+                // Foreign Keys - Data Saving
+                'recipe_id' => $recipe->id,
+
+                // User Data - Enterd
+                'steps' => $steps[$i],
+            ];
+            // writing to DB
+            DB::table('recipe__steps')->insert($datastep);
+        }
+
+        $ingredient = $request->ingredient;
+        $quantity = $request->quantity;
+        $measurement = $request->measurement;
+
+        for ($i=0; $i < count($ingredient); $i++)
+        {
+            $dataingredient = [
+                'recipe_id' => $recipe->id,
+                'ingredient_id' => $ingredient[$i],
+                'quantity' => $quantity[$i],
+                'measurement_id' => $measurement[$i]
+            ];
+            DB::table('recipe__ingredients')->insert($dataingredient);
+        }
 
         $recipe->update($data);
 
@@ -167,8 +222,8 @@ class RecipeController extends Controller
         $customers = Recipe::where('user_id', auth()->user()->id);
         return datatables()->of($customers)
             ->addColumn('action', function ($recipe) {
-                $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';
-                $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete this Recipe</button>';
+                $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete</button>';
                 return $html;
             })
             // Add Column 'category'

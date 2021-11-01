@@ -91,7 +91,6 @@
                             <thead>
                                 <tr>
                                     <th>Recipe Name</th>
-                                    <th>Category</th>
                                     <th>Cuisine</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -121,12 +120,6 @@
                             data: 'recipe_name',
                             name: 'recipe_name',
                             orderable: false
-                        },
-                        {
-                            data: 'category',
-                            name: 'category',
-                            searchable: false,
-                            orderable: false,
                         },
                         {
                             data: 'cuisine',
