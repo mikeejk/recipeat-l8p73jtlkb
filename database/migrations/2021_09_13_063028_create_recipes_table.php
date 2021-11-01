@@ -37,7 +37,7 @@ class CreateRecipesTable extends Migration
             $table->char('bud_spicy');
             $table->char('bud_bitter');
             $table->char('bud_astringent');
-            $table->tinyInteger('status');
+            $table->string('status');
 
             // Foreign Keys
             $table->foreign('category_id')->references('id')->on('categories');

@@ -93,6 +93,7 @@
                                     <th>Recipe Name</th>
                                     <th>Category</th>
                                     <th>Cuisine</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -130,6 +131,12 @@
                         {
                             data: 'cuisine',
                             name: 'cuisine',
+                            searchable: false,
+                            orderable: false,
+                        },
+                        {
+                            data: 'status',
+                            name: 'status',
                             searchable: false,
                             orderable: false,
                         },

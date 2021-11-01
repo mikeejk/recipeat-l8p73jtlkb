@@ -71,10 +71,10 @@ class RecipeController extends Controller
 
         // If the role Chef post the recipe 1
         if($role){
-            $recipe->status = 1;
+            $recipe->status = 'Approved';
         // Else the role Home-Chef & User post the recipe 0
         }else{
-            $recipe->status = 0;
+            $recipe->status = 'Pending';
         }
 
         // Save Data
@@ -179,7 +179,7 @@ class RecipeController extends Controller
             // Add Column 'cuisine'
             ->addColumn('cuisine', function ($cuisine) {
                 // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
-                    return Cuisine::find($cuisine->cuisine_id)->cuisine;
+                return Cuisine::find($cuisine->cuisine_id)->cuisine;
             })
             // send the data to view via json
             ->toJson();
@@ -226,7 +226,7 @@ class RecipeController extends Controller
     //Function - anyData1 for approve
     public function anyData1()
     {
-        $recipes = Recipe::where('status', 0);
+        $recipes = Recipe::where('status', 'Pending');
         return datatables()->of($recipes)
         ->addColumn('action', function () {
             $html = '<button type="button" onclick="myApproval()"class="btn btn-sm btn-outline-primary justify-content-end mr-2">Approve</button>';
@@ -256,7 +256,7 @@ class RecipeController extends Controller
     //Function - anyData1 for approve
     public function anyData2()
     {
-        $recipes = Recipe::where('status', 1);
+        $recipes = Recipe::where('status', 'Approved');
         return datatables()->of($recipes)
         ->addColumn('name', function ($user) {
            // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
