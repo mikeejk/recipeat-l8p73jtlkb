@@ -87,7 +87,7 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">24</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{count($following)}}</span>
                                     <span class="font-weight-bolder font-size-sm">
                                         <span class="text-dark-50 font-weight-bold"></span>Followers</span>
                                 </div>
@@ -96,7 +96,7 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">16</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{count($followers)}}</span>
                                     <span class="font-weight-bolder font-size-sm">
                                         <span class="text-dark-50 font-weight-bold"></span>Following</span>
                                 </div>

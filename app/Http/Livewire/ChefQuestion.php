@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Illuminate\Http\Request;
 use App\Models\Chef_question;
 use Livewire\Component;
+use App\Models\Follower;
+use App\Models\User;
 
 class ChefQuestion extends Component
 {
@@ -129,10 +131,20 @@ class ChefQuestion extends Component
     }
 
     // Function - show
-    public function show(Chef_question $chef_questions)
+    public function show(Request $request)
     {
         $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
-        return view('screens.user.profile.portfolio',compact('chef_questions'));
+        $role = auth()->user()->hasRole('Chef');
+        if($role){
+            $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
+            $following = Follower::where('follower_id',auth()->user()->id)->get()->count();
+
+            return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following'));
+        }else{
+
+        }
+
+
     }
 
     // Function - edit
