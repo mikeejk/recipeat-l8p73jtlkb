@@ -70,8 +70,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
 });
 
 // RecipeController
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    // Recipeve Tab
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    // Recipeat Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'index1']);
 
     // Recipeat Approve Data Table - Data Tab
@@ -79,6 +80,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Recipeat Approve Data Table - Index Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'getIndex1']);
+    //funtion of Approve button
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve/myApproval', [RecipeController::class, 'myApproval']);
+    //Denide Recipie button
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve/onDenide', [RecipeController::class, 'onDenide']);
+ 
+    Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'index2']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/allrecipe.data', [RecipeController::class, 'anyData2']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex2']);
 });
 
 // CategoryController

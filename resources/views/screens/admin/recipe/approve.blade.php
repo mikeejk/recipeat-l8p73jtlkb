@@ -12,7 +12,7 @@
                         <!--begin::Breadcrumb-->
                         <div>
                             <!--begin::Button-->
-                            <a href="#" style="margin-bottom: 2px;" class="btn btn-outline-primary font-weight-bolder">
+                            <a href="/all_recipes" style="margin-bottom: 2px;" class="btn btn-outline-primary font-weight-bolder">
                                 <i class="las la-user-alt"></i>
                                 </span>All Recipes</a>
                             <!--end::Button-->
