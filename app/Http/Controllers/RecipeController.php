@@ -34,13 +34,13 @@ class RecipeController extends Controller
     // Function - Store
     public function store(Request $request)
     {
-        $this->ValidatedData(); 
+        $this->ValidatedData();
 
         // Create New Object
         $recipe = new Recipe();
 
         // User_id Form User Model
-        $user_id = auth()->user()->id;      
+        $user_id = auth()->user()->id;
 
         // Recipe-Data Storeing - Foreign Keys
         $recipe->user_id = $user_id;
@@ -63,13 +63,13 @@ class RecipeController extends Controller
         $recipe->bud_astringent = $request->get('bud_astringent');
 
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
-        $role = auth()->user()->hasRole('Chef');   
+        $role = auth()->user()->hasRole('Chef');
         if($role){
             $recipe->status = 1;
         }else{
             $recipe->status = 0;
         }
-       
+
 
         // Save Data
         $recipe->save();
@@ -154,7 +154,7 @@ class RecipeController extends Controller
     {
         return view('screens.user.recipe.recipe');
     }
-    
+
     // Function - anyData
     public function anyData(Request $request)
     {
@@ -210,10 +210,10 @@ class RecipeController extends Controller
         $recipes = Recipe::all();
         return view('screens.admin.recipe.approve', compact('recipes'));
     }
- 
+
     // Function - getIndex1 for approve
     public function getIndex1(Recipe $recipe)
-    { 
+    {
         return view('screens.admin.recipe.approve');
     }
 
@@ -223,10 +223,10 @@ class RecipeController extends Controller
         $recipes = Recipe::where('status', 0);
         return datatables()->of($recipes)
         ->addColumn('action', function () {
-            $html = '<button type="button" onclick="myApproval()"class="btn btn-sm btn-outline-primary justify-content-end">Approve</button>';
+            $html = '<button type="button" onclick="myApproval()"class="btn btn-sm btn-outline-primary justify-content-end mr-2">Approve</button>';
             $html .= '<button type="button" onclick="onDenide()"class="btn btn-sm btn-outline-danger justify-content-end">Denide</button>';
         return $html;
-        })              
+        })
         ->addColumn('name', function ($user){
                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
                 return User::find($user->user_id)->name;
@@ -243,7 +243,7 @@ class RecipeController extends Controller
 
     // Function - getIndex1 for approve
     public function getIndex2(Recipe $recipe)
-    { 
+    {
        return view('screens.admin.recipe.all_recipe');
     }
 

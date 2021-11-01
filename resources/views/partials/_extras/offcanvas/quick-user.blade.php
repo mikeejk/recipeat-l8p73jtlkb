@@ -104,7 +104,7 @@
             <!--end:Item-->
             @endhasrole
 
-            @hasrole('Home-Chef|User|Admin')
+            @hasrole('Home-Chef|User')
             <!--begin::Item-->
             <a href="/my_profile" class="navi-item">
                 <div class="navi-link">

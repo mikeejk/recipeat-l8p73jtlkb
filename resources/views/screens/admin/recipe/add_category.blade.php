@@ -129,7 +129,7 @@
 
                                     <!--begin::Button-->
                                     <a href="/measurements_create" style="margin-bottom: 2px;"
-                                        class="btn btn-outline-primary col-lg-3 col-md-3 col-12 font-weight-bolder">
+                                        class="btn btn-outline-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
                                         <span class="svg-icon svg-icon-md">
                                             <span class="svg-icon svg-icon-white">
                                                 <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Map/Compass.svg--><svg
