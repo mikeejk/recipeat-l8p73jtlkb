@@ -35,7 +35,8 @@
         <!--end::Subheader-->
         <!--begin::Entry-->
         <div>
-            <form class="form" action="/recipes" method="post">
+            <form class="form" action="/recipes" enctype="multipart/form-data" method="post">
+                @csrf
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Card-->
@@ -315,8 +316,7 @@
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
-                                        <input type="file" name="recipeimage" class="form-control">
-                                        {{-- <x-media-library-attachment multiple name="myUpload" rules="mimes:jpeg,png" /> --}}
+                                        <input type="file" name="cover" class="form-control">
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
                                     <!-- Form-Image::end -->
@@ -340,17 +340,17 @@
                                         <label>Sweet</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_sweet" value="low" />
+                                                <input type="radio" name="bud_sweet" value="Low" />
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_sweet" value="medium" />
+                                                <input type="radio" name="bud_sweet" value="Medium" />
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_sweet" value="high" />
+                                                <input type="radio" name="bud_sweet" value="High" />
                                                 <span></span>
                                                 High
                                             </label>
@@ -367,17 +367,17 @@
                                         <label>Sour</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_sour" value="low" />
+                                                <input type="radio" name="bud_sour" value="Low" />
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_sour" value="medium" />
+                                                <input type="radio" name="bud_sour" value="Medium" />
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_sour" value="high" />
+                                                <input type="radio" name="bud_sour" value="High" />
                                                 <span></span>
                                                 High
                                             </label>
@@ -399,17 +399,17 @@
                                         <label>Salty</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_salt" value="low" />
+                                                <input type="radio" name="bud_salt" value="Low" />
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_salt" value="medium" />
+                                                <input type="radio" name="bud_salt" value="Medium" />
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_salt" value="high" />
+                                                <input type="radio" name="bud_salt" value="High" />
                                                 <span></span>
                                                 High
                                             </label>
@@ -426,17 +426,17 @@
                                         <label>Pungent (Spicy)</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_spicy" value="low" />
+                                                <input type="radio" name="bud_spicy" value="Low" />
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_spicy" value="medium" />
+                                                <input type="radio" name="bud_spicy" value="Medium" />
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_spicy" value="high" />
+                                                <input type="radio" name="bud_spicy" value="High" />
                                                 <span></span>
                                                 High
                                             </label>
@@ -458,17 +458,17 @@
                                         <label>Bitter</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_bitter" value="low" />
+                                                <input type="radio" name="bud_bitter" value="Low" />
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_bitter" value="medium" />
+                                                <input type="radio" name="bud_bitter" value="Medium" />
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_bitter" value="high" />
+                                                <input type="radio" name="bud_bitter" value="High" />
                                                 <span></span>
                                                 High
                                             </label>
@@ -485,17 +485,17 @@
                                         <label>Astringent</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_astringent" value="low" />
+                                                <input type="radio" name="bud_astringent" value="Low" />
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_astringent" value="medium" />
+                                                <input type="radio" name="bud_astringent" value="Medium" />
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_astringent" value="high" />
+                                                <input type="radio" name="bud_astringent" value="High" />
                                                 <span></span>
                                                 High
                                             </label>

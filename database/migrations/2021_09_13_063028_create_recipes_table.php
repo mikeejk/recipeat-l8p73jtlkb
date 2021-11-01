@@ -19,9 +19,9 @@ class CreateRecipesTable extends Migration
             $table->id();
 
             // Foreign Keys - Data Saving
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('cuisine_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('cuisine_id');
 
             // User Entered - Data Saving
             $table->string('recipe_name');
@@ -37,7 +37,7 @@ class CreateRecipesTable extends Migration
             $table->char('bud_spicy');
             $table->char('bud_bitter');
             $table->char('bud_astringent');
-            $table->tinyInteger('status');
+            $table->string('status');
 
             // Foreign Keys
             $table->foreign('category_id')->references('id')->on('categories');
