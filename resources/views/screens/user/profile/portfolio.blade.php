@@ -105,7 +105,7 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">7</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $recipes }}</span>
                                     <span class="font-weight-bolder font-size-sm">
                                         <span class="text-dark-50 font-weight-bold"></span>My recipes</span>
                                 </div>

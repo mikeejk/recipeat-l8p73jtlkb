@@ -64,9 +64,9 @@ class RecipeController extends Controller
 
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
         $role = auth()->user()->hasRole('Chef');
-        if($role){
+        if ($role) {
             $recipe->status = 1;
-        }else{
+        } else {
             $recipe->status = 0;
         }
 
@@ -78,8 +78,7 @@ class RecipeController extends Controller
         $steps = $request->steps;
 
         // for lopping steps
-        for ($i=0; $i < count($steps); $i++)
-        {
+        for ($i = 0; $i < count($steps); $i++) {
             $datastep = [
 
                 // Foreign Keys - Data Saving
@@ -96,8 +95,7 @@ class RecipeController extends Controller
         $quantity = $request->quantity;
         $measurement = $request->measurement;
 
-        for ($i=0; $i < count($ingredient); $i++)
-        {
+        for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
                 'ingredient_id' => $ingredient[$i],
@@ -161,19 +159,19 @@ class RecipeController extends Controller
         $customers = Recipe::where('user_id', auth()->user()->id);
         return datatables()->of($customers)
             ->addColumn('action', function ($recipe) {
-                $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';
-                $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete this Recipe</button>';
+                $html = '<a href="/recipes/' . $recipe->id . '/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit My Recipe</a> ';
+                $html .= '<a href="/recipes/' . $recipe->id . '/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete this Recipe</button>';
                 return $html;
             })
             // Add Column 'category'
             ->addColumn('category', function ($category) {
-            // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
+                // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
                 return Category::find($category->category_id)->category;
             })
             // Add Column 'cuisine'
             ->addColumn('cuisine', function ($cuisine) {
                 // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
-                    return Cuisine::find($cuisine->cuisine_id)->cuisine;
+                return Cuisine::find($cuisine->cuisine_id)->cuisine;
             })
             // send the data to view via json
             ->toJson();
@@ -222,12 +220,12 @@ class RecipeController extends Controller
     {
         $recipes = Recipe::where('status', 0);
         return datatables()->of($recipes)
-        ->addColumn('action', function () {
-            $html = '<button type="button" onclick="myApproval()"class="btn btn-sm btn-outline-primary justify-content-end mr-2">Approve</button>';
-            $html .= '<button type="button" onclick="onDenide()"class="btn btn-sm btn-outline-danger justify-content-end">Denide</button>';
-        return $html;
-        })
-        ->addColumn('name', function ($user){
+            ->addColumn('action', function () {
+                $html = '<button type="button" onclick="myApproval()"class="btn btn-sm btn-outline-primary justify-content-end mr-2">Approve</button>';
+                $html .= '<button type="button" onclick="onDenide()"class="btn btn-sm btn-outline-danger justify-content-end">Denide</button>';
+                return $html;
+            })
+            ->addColumn('name', function ($user) {
                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
                 return User::find($user->user_id)->name;
             })->toJson();
@@ -244,7 +242,7 @@ class RecipeController extends Controller
     // Function - getIndex1 for approve
     public function getIndex2(Recipe $recipe)
     {
-       return view('screens.admin.recipe.all_recipe');
+        return view('screens.admin.recipe.all_recipe');
     }
 
     //Function - anyData1 for approve
@@ -252,20 +250,20 @@ class RecipeController extends Controller
     {
         $recipes = Recipe::where('status', 1);
         return datatables()->of($recipes)
-        ->addColumn('name', function ($user) {
-           // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
-           return User::find($user->user_id)->name;
-        })
-        // Add Column 'category'
-        ->addColumn('category', function ($category) {
-        // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
-            return Category::find($category->category_id)->category;
-        })
-        // Add Column 'cuisine'
-        ->addColumn('cuisine', function ($cuisine) {
-            // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
-            return Cuisine::find($cuisine->cuisine_id)->cuisine;
-        })->toJson();
+            ->addColumn('name', function ($user) {
+                // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
+                return User::find($user->user_id)->name;
+            })
+            // Add Column 'category'
+            ->addColumn('category', function ($category) {
+                // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
+                return Category::find($category->category_id)->category;
+            })
+            // Add Column 'cuisine'
+            ->addColumn('cuisine', function ($cuisine) {
+                // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
+                return Cuisine::find($cuisine->cuisine_id)->cuisine;
+            })->toJson();
 
         return Datatables::of(Recipe::query())->make(true);
     }
@@ -273,13 +271,12 @@ class RecipeController extends Controller
     // Recipe Search
     public function search(Request $request)
     {
-        if(isset($_GET['query'])){
-        $search_text=$_GET['query'];
-        $recipe = DB::table('recipes')->where('recipe_name','LIKE','%'.$search_text.'%')->Paginate(8);
-        $recipe->appends($request->all());
-        return view('welcome',['recipe'=>$recipe]);
-        }
-        else{
+        if (isset($_GET['query'])) {
+            $search_text = $_GET['query'];
+            $recipe = DB::table('recipes')->where('recipe_name', 'LIKE', '%' . $search_text . '%')->Paginate(8);
+            $recipe->appends($request->all());
+            return view('welcome', ['recipe' => $recipe]);
+        } else {
             return view('/welcome');
         }
     }
@@ -287,7 +284,6 @@ class RecipeController extends Controller
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {
-        return view('recipe_view',compact('recipe'));
+        return view('recipe_view', compact('recipe'));
     }
 }
-

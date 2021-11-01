@@ -87,25 +87,25 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">{{count($following)}}</span>
-                                    <span class="font-weight-bolder font-size-sm">
-                                        <span class="text-dark-50 font-weight-bold"></span>Followers</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $followers }}</span>
+                                    <a href=""><span class="font-weight-bolder font-size-sm">
+                                        <span class="text-dark-50 font-weight-bold"></span>Followers</span></a>
                                 </div>
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">{{count($followers)}}</span>
-                                    <span class="font-weight-bolder font-size-sm">
-                                        <span class="text-dark-50 font-weight-bold"></span>Following</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $following }}</span>
+                                    <a href=""><span class="font-weight-bolder font-size-sm">
+                                        <span class="text-dark-50 font-weight-bold"></span>Following</span></a>
                                 </div>
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">7</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $recipes }}</span>
                                     <span class="font-weight-bolder font-size-sm">
                                         <span class="text-dark-50 font-weight-bold"></span>My recipes</span>
                                 </div>

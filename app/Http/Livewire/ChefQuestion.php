@@ -7,6 +7,7 @@ use App\Models\Chef_question;
 use Livewire\Component;
 use App\Models\Follower;
 use App\Models\User;
+use App\Models\Recipe;
 
 class ChefQuestion extends Component
 {
@@ -138,12 +139,10 @@ class ChefQuestion extends Component
         if($role){
             $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
             $following = Follower::where('follower_id',auth()->user()->id)->get()->count();
+            $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
 
-            return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following'));
-        }else{
-
+            return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes'));
         }
-
 
     }
 

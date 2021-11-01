@@ -56,4 +56,6 @@ class FollowController extends Controller
         $followings = $user->followings;
         return view('screens.user.profile.follower', compact('user', 'followers', 'followings'));
     }
+
+
 }
