@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
@@ -61,7 +62,7 @@ class RecipeController extends Controller
         $recipe->bud_bitter = $request->get('bud_bitter');
         $recipe->bud_astringent = $request->get('bud_astringent');
 
-        if($request->hasFile('cover') && $request->file('cover')->isValid()) {
+        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
         }
 
@@ -70,11 +71,13 @@ class RecipeController extends Controller
         $role1 = auth()->user()->hasRole('Home-Chef');
 
         // If the role Chef post the recipe 1
-        if($role){
-            $recipe->status = '1';
-        // Else the role Home-Chef & User post the recipe 0
-        }else{
-            $recipe->status = '0';
+        if ($role) {
+            $recipe->status = 'Approved';
+            // Else the role Home-Chef post the recipe 0
+        } elseif ($role1) {
+            $recipe->status = 'Pending';
+        } else {
+            $recipe->status = 'User';
         }
 
         // Save Data
@@ -143,7 +146,7 @@ class RecipeController extends Controller
             ]
         );
 
-        if($request->hasFile('cover') && $request->file('cover')->isValid()) {
+        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
         }
 
@@ -154,8 +157,7 @@ class RecipeController extends Controller
         $steps = $request->steps;
 
         // for lopping steps
-        for ($i=0; $i < count($steps); $i++)
-        {
+        for ($i = 0; $i < count($steps); $i++) {
             $datastep = [
 
                 // Foreign Keys - Data Saving
@@ -172,8 +174,7 @@ class RecipeController extends Controller
         $quantity = $request->quantity;
         $measurement = $request->measurement;
 
-        for ($i=0; $i < count($ingredient); $i++)
-        {
+        for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
                 'ingredient_id' => $ingredient[$i],
@@ -209,8 +210,8 @@ class RecipeController extends Controller
         $customers = Recipe::where('user_id', auth()->user()->id);
         return datatables()->of($customers)
             ->addColumn('action', function ($recipe) {
-                $html = '<a href="/recipes/'.$recipe->id.'/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit</a> ';
-                $html .= '<a href="/recipes/'.$recipe->id.'/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete</button>';
+                $html = '<a href="/recipes/' . $recipe->id . '/edit" class="btn btn-sm btn-outline-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/recipes/' . $recipe->id . '/delete" class="btn btn-sm btn-outline-danger justify-content-end">Delete</button>';
                 return $html;
             })
             // Add Column 'category'
@@ -264,33 +265,26 @@ class RecipeController extends Controller
     {
         return view('screens.admin.recipe.approve');
     }
-    public function approve(Recipe $recipe, Request $request)
-    {   
 
-               $recipes= DB::table('recipes')
-                ->where('id',$recipe->id)
-                ->where('status','=',0)
-                ->update(['status'=>true]);
-        
-            return redirect()->back();   
-    }
-    
-    public function denide(Recipe $recipe)
+    public function approve(Recipe $recipe, Request $request)
     {
-        $recipe->delete();
-        return redirect('/recipes');
-    
+        $recipes = DB::table('recipes')
+            ->where('id', $recipe->id)
+            ->where('status', '=', 'Pending')
+            ->update(['status' => 'Approved']);
+
+        return redirect()->back();
     }
 
     //Function - anyData1 for approve
     public function anyData1()
     {
-        $recipes = Recipe::where('status', '0');
+        $recipes = Recipe::where('status', 'Pending');
         return datatables()->of($recipes)
-            
+
             ->addColumn('action', function ($recipe) {
-                $html = '<a href="/approve/'.$recipe->id.'/approve" class="btn btn-sm btn-outline-primary justify-content-end">Approve</a> ';
-                $html .= '<a href="/approve/'.$recipe->id.'/denide" class="btn btn-sm btn-outline-danger justify-content-end">Denide</button>';
+                $html = '<a href="/approve/' . $recipe->id . '/approve" class="btn btn-sm btn-outline-primary justify-content-end">Approve</a> ';
+                // $html .= '<a href="/approve/' . $recipe->id . '/denide" class="btn btn-sm btn-outline-danger justify-content-end">Denide</button>';
                 return $html;
             })
             ->addColumn('name', function ($user) {
@@ -316,7 +310,7 @@ class RecipeController extends Controller
     //Function - anyData1 for approve
     public function anyData2()
     {
-        $recipes = Recipe::where('status', '1');
+        $recipes = Recipe::where('status', 'Approved');
         return datatables()->of($recipes)
             ->addColumn('name', function ($user) {
                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
