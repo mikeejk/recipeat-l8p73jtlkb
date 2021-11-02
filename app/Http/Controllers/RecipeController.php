@@ -70,12 +70,13 @@ class RecipeController extends Controller
         $role = auth()->user()->hasRole('Chef');
         $role1 = auth()->user()->hasRole('Home-Chef');
 
-        // If the role Chef post the recipe 1
+        // If the role Chef post the recipe Approve
         if ($role) {
             $recipe->status = 'Approved';
-            // Else the role Home-Chef post the recipe 0
+        // Elseif the role Home-Chef post the recipe Pending
         } elseif ($role1) {
             $recipe->status = 'Pending';
+        // Else the role Home-Chef post the recipe User
         } else {
             $recipe->status = 'User';
         }
