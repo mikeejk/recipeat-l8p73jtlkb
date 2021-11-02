@@ -68,13 +68,16 @@ class RecipeController extends Controller
 
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
         $role = auth()->user()->hasRole('Chef');
+        $role1 = auth()->user()->hasRole('Home-Chef');
 
         // If the role Chef post the recipe 1
         if($role){
             $recipe->status = 'Approved';
         // Else the role Home-Chef & User post the recipe 0
-        }else{
+        }elseif($role1){
             $recipe->status = 'Pending';
+        }else{
+            $recipe->status = 'User';
         }
 
         // Save Data
@@ -148,7 +151,7 @@ class RecipeController extends Controller
         }
 
         // Save Data
-        $recipe->save();
+        $recipe->upadte($data);
 
         // Declare steps
         $steps = $request->steps;
@@ -191,6 +194,8 @@ class RecipeController extends Controller
     // Function - Destroy
     public function destroy(Recipe $recipe)
     {
+        DB::table('recipe__steps')->where('recipe_id', '=', $recipe->id)->delete();
+        DB::table('recipe__ingredients')->where('recipe_id', '=', $recipe->id)->delete();
         $recipe->delete();
         return redirect('/recipes');
     }
@@ -321,7 +326,7 @@ class RecipeController extends Controller
     {
         if (isset($_GET['query'])) {
             $search_text = $_GET['query'];
-            $recipe = DB::table('recipes')->where('recipe_name', 'LIKE', '%' . $search_text . '%')->Paginate(8);
+            $recipe = DB::table('recipes')->where('status', 'Approved')->Paginate(8);
             $recipe->appends($request->all());
             return view('welcome', ['recipe' => $recipe]);
         } else {

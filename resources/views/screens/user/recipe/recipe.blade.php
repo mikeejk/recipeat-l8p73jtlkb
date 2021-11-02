@@ -92,7 +92,9 @@
                                 <tr>
                                     <th>Recipe Name</th>
                                     <th>Cuisine</th>
+                                    @hasrole('Chef|Home-Chef')
                                     <th>Status</th>
+                                    @endhasrole
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -127,12 +129,14 @@
                             searchable: false,
                             orderable: false,
                         },
+                        @hasrole('Chef|Home-Chef')
                         {
                             data: 'status',
                             name: 'status',
                             searchable: false,
                             orderable: false,
                         },
+                        @endhasrole
                         {
                             data: 'action',
                             name: 'action',
