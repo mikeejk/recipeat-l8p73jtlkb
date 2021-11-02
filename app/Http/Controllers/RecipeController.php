@@ -9,8 +9,6 @@ use App\Models\Cuisine;
 use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
-use App\Models\Recipe_Ingredient;
-use App\Models\Recipe_Step;
 use App\Models\User;
 
 class RecipeController extends Controller
@@ -69,6 +67,7 @@ class RecipeController extends Controller
 
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
         $role = auth()->user()->hasRole('Chef');
+        $role1 = auth()->user()->hasRole('Home-Chef');
 
         // If the role Chef post the recipe 1
         if($role){
@@ -149,7 +148,7 @@ class RecipeController extends Controller
         }
 
         // Save Data
-        $recipe->save();
+        $recipe->upadte($data);
 
         // Declare steps
         $steps = $request->steps;
@@ -192,6 +191,8 @@ class RecipeController extends Controller
     // Function - Destroy
     public function destroy(Recipe $recipe)
     {
+        DB::table('recipe__steps')->where('recipe_id', '=', $recipe->id)->delete();
+        DB::table('recipe__ingredients')->where('recipe_id', '=', $recipe->id)->delete();
         $recipe->delete();
         return redirect('/recipes');
     }
@@ -340,7 +341,7 @@ class RecipeController extends Controller
     {
         if (isset($_GET['query'])) {
             $search_text = $_GET['query'];
-            $recipe = DB::table('recipes')->where('recipe_name', 'LIKE', '%' . $search_text . '%')->Paginate(8);
+            $recipe = DB::table('recipes')->where('status', 'Approved')->Paginate(8);
             $recipe->appends($request->all());
             return view('welcome', ['recipe' => $recipe]);
         } else {
