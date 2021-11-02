@@ -10,8 +10,6 @@ use App\Models\Cuisine;
 use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
-use App\Models\Recipe_Ingredient;
-use App\Models\Recipe_Step;
 use App\Models\User;
 
 class RecipeController extends Controller
@@ -147,17 +145,6 @@ class RecipeController extends Controller
 
         if($request->hasFile('cover') && $request->file('cover')->isValid()) {
             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
-        }
-
-        // Staus ( Home-Chef & User = 0 || Chef = 1 )
-        $role = auth()->user()->hasRole('Chef');
-
-        // If the role Chef post the recipe 1
-        if($role){
-            $recipe->status = 'Approved';
-        // Else the role Home-Chef & User post the recipe 0
-        }else{
-            $recipe->status = 'Pending';
         }
 
         // Save Data
