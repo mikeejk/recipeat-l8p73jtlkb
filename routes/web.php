@@ -21,6 +21,32 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// -------------------------------------------------------------------------------------------------------------------
+//                                                    Follower FOllowing Routes
+// -------------------------------------------------------------------------------------------------------------------
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollower', [FollowController::class, 'index1']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollower.data', [FollowController::class, 'anyData1']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollower', [FollowController::class, 'getIndex1']);
+
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function ()
+{
+    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollowing', [FollowController::class, 'index2']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollowing.data', [FollowController::class, 'anyData2']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollowing', [FollowController::class, 'getIndex2']);
+
+});
+// -------------------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------------------------
+
 // Dashboard Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -84,7 +110,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve/myApproval', [RecipeController::class, 'myApproval']);
     //Denide Recipie button
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve/onDenide', [RecipeController::class, 'onDenide']);
- 
+
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'index2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/allrecipe.data', [RecipeController::class, 'anyData2']);
@@ -273,7 +299,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
 //                                                     Testing Routes
 // -------------------------------------------------------------------------------------------------------------------
 
-//Follower
+// -------------------------------------------------------------------------------------------------------------------
+//                                                    Follow Routes
+// -------------------------------------------------------------------------------------------------------------------
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowController::class, 'index'], function () {
     return view('screens.user.profile.follower');
 })->name('projects.index');;

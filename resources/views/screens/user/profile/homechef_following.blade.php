@@ -330,7 +330,7 @@
                     <!--begin::Header-->
                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                         <div class="card-title">
-                            <h3 class="card-label">Followers
+                            <h3 class="card-label">Following
 
                             </h3>
                         </div>
@@ -338,15 +338,15 @@
                     <!--end::Header-->
                     <!--begin::Body-->
                     <div class="card-body">
-                        <div class="m-1 mt-5 d-flex flex-column-fluid" >
+                        <div class="m-1 mt-5 d-flex flex-column-fluid">
                             <!--begin::Container-->
                             <div class="container">
                                 <!--begin::Card-->
-                                <table class="table" id="follow-table">
+                                <table class="table" id="following-table">
                                     <thead>
                                         <tr>
-                                            <th>Follower</th>
-                                            <th>Following From</th>
+                                            <th>Following</th>
+                                            <th>Follow From</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -375,10 +375,10 @@
     @push('scripts')
         <script>
             $(function() {
-                $('#follow-table').DataTable({
+                $('#following-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: 'homecheffollower.data',
+                    ajax: 'homecheffollowing.data',
                     columns: [{
                             data: 'follower',
                             name: 'follower',

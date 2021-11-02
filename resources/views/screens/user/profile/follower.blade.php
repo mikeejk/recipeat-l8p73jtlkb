@@ -15,7 +15,8 @@
                     <!--end::Separator-->
                     <!--begin::Search Form-->
                     <div class="d-flex align-items-center" id="kt_subheader_search">
-                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ count($projects) }} of {{ count($projects_count) }}</span>
+                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ count($projects) }} of
+                            {{ count($projects_count) }}</span>
                         <form class="ml-5" action="{{ route('projects.index') }}" method="GET" role="search">
                             <div class="input-group input-group-md bg-white border-0 rounded min-w-175px">
                                 <input name="term" type="text" class="form-control bg-white border-0"
@@ -140,7 +141,7 @@
                         </div>
                         <!--end::Card-->
                     </div> --}}
-                        <div class="col-xxl-3 col-xl-3 col-md-6 col-sm-4  d-flex justify-content-center w-full" >
+                        <div class="col-xxl-3 col-xl-3 col-md-6 col-sm-4  d-flex justify-content-center w-full">
                             {{-- <div class="card p-5 w-full">
                                 <div class="d-flex  align-items-center w-full">
                                     <div class="image"> <img
@@ -170,19 +171,23 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="card card-custom gutter-b card-stretch" >
+                            <div class="card card-custom gutter-b card-stretch">
                                 <!--begin::Body-->
                                 <div class="card-body text-center pt-1">
                                     <!--begin::Toolbar-->
                                     <div class="d-flex justify-content-end">
                                         <div class="dropdown dropdown-inline" data-toggle="tooltip" data-placement="left">
-                                            <p class="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <p class="btn btn-clean btn-hover-light-primary btn-sm btn-icon"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="svg-icon svg-icon-lg">
                                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Text/Dots.svg-->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                        height="24px" viewBox="0 0 24 24" version="1.1">
                                                         <g stroke="none" stroke-width="1">
                                                             <rect x="14" y="9" width="6" height="6" rx="3" fill="black" />
-                                                            <rect x="3" y="9" width="6" height="6" rx="3" fill="black" fill-opacity="0.7" />
+                                                            <rect x="3" y="9" width="6" height="6" rx="3" fill="black"
+                                                                fill-opacity="0.7" />
                                                         </g>
                                                     </svg>
                                                     <!--end::Svg Icon-->
@@ -194,24 +199,34 @@
                                     <!--begin::User-->
                                     <div class="">
                                         <div class="symbol  symbol-lg-75">
-                                            <img src="https://i.pinimg.com/474x/91/27/a5/9127a595d3a3421d984edc45230f6d9a.jpg" alt="image" />
+                                            <img src="https://i.pinimg.com/474x/91/27/a5/9127a595d3a3421d984edc45230f6d9a.jpg"
+                                                alt="image" />
                                         </div>
                                         <div class="symbol symbol-lg-75 symbol-circle symbol-primary">
-                                            <span class="font-size-h3 symbol-label font-weight-boldest d-none">{{ $users->created_at }}</span>
+                                            <span
+                                                class="font-size-h3 symbol-label font-weight-boldest d-none">{{ $users->created_at }}</span>
                                         </div>
                                     </div>
                                     <!--end::User-->
                                     <!--begin::Name-->
                                     <div class="my-2">
-                                        <a href="#" class="text-dark font-weight-bold text-hover-primary font-size-h4">{{ $users->name }}
+                                        <a href="#"
+                                            class="text-dark font-weight-bold text-hover-primary font-size-h4">{{ $users->name }}
                                         </a>
                                     </div>
                                     <!--end::Name-->
                                     <!--begin::Label-->
                                     <div class="button mt-2 d-flex flex-row justify-content-center align-items-center">
                                         {{-- <button id="" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</button> --}}
-                                        <a href="{{ route('user.follow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</a>
-                                        <a href="{{ route('user.unfollow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">UnFollow</a>
+                                        {{-- <a href="{{ route('user.follow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</a>
+                                        <a href="{{ route('user.unfollow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">UnFollow</a> --}}
+                                        @if (Auth::user()->isFollowedBy($users))
+                                            <a href="{{ route('user.unfollow', $users->id) }}"
+                                                class="btn btn-sm btn-danger white">UnFollow</a>
+                                        @else
+                                            <a href="{{ route('user.follow', $users->id) }}"
+                                                class="btn btn-sm btn-primary white">Follow</a>
+                                        @endif
                                     </div>
                                     <!--end::Label-->
 
@@ -222,53 +237,14 @@
                         </div>
                     @endforeach
                     <!--end::Col-->
+
                 </div>
                 <!--end::Row-->
-                <!--begin::Pagination-->
-                {{-- <div class="card card-custom">
-                    <div class="card-body">
-                        <!--begin::Pagination-->
-                        <div class="d-flex w-full  justify-content-center align-items-center flex-wrap">
-                            <div class="d-flex w-full flex-wrap justify-content-center  mr-3">
-                                <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                    <i class="fas fa-chevron-left"></i>
-                                </a>
-                                <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                    <i class="fas fa-arrow-left"></i>
-                                </a>
-                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary active mr-2 my-1">1</a>
-                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">2</a>
-                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary  mr-2 my-1">3</a>
-                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">4</a>
-                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">5</a>
-                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">6</a>
-                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">7</a>
-                                <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </div>
-
-                            For Filter Option
-                            <div class="d-flex align-items-center">
-                                <select
-                                    class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
-                                    style="width: 75px;">
-                                    <option value="10">10</option>
-                                    <option value="20">20</option>
-                                    <option value="30">30</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                                <span class="text-muted">Showing 10 of 150 records</span>
-                            </div>
-                        </div>
-                        <!--end:: Pagination-->
-                    </div>
-                </div> --}}
-                <!--end::Pagination-->
+                <div class="col-12">
+                    <!--begin::Pagination-->
+                    {!! $projects->links() !!}
+                    <!--end::Pagination-->
+                </div>
             </div>
             <!--end::Container-->
         </div>
