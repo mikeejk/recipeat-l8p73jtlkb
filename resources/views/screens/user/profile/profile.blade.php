@@ -389,5 +389,4 @@
         <!--end::Entry-->
     </div>
     <!--end::Content-->
-
 @endsection
