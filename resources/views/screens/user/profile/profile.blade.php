@@ -87,7 +87,7 @@
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center">{{ $followers }}</span>
-                                    <a href="/homecheffollower"><span class="font-weight-bolder font-size-sm">
+                                    <a href="/follower"><span class="font-weight-bolder font-size-sm">
                                         <span class="text-dark-50 font-weight-bold"></span>Followers</span></a>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center">{{ $following }}</span>
-                                    <a href="/homecheffollowing"><span class="font-weight-bolder font-size-sm">
+                                    <a href="/following"><span class="font-weight-bolder font-size-sm">
                                         <span class="text-dark-50 font-weight-bold"></span>Following</span></a>
                                 </div>
                             </div>

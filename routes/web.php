@@ -26,21 +26,21 @@ Route::get('/', function () {
 // -------------------------------------------------------------------------------------------------------------------
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
-    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollower', [FollowController::class, 'index1']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/follower', [FollowController::class, 'index1']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollower.data', [FollowController::class, 'anyData1']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/follower.data', [FollowController::class, 'anyData1']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollower', [FollowController::class, 'getIndex1']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/follower', [FollowController::class, 'getIndex1']);
 
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
-    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollowing', [FollowController::class, 'index2']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/following', [FollowController::class, 'index2']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollowing.data', [FollowController::class, 'anyData2']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/following.data', [FollowController::class, 'anyData2']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/homecheffollowing', [FollowController::class, 'getIndex2']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/following', [FollowController::class, 'getIndex2']);
 
 });
 // -------------------------------------------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 
     // Recipeat Approve Data Table - Index Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'getIndex1']);
-    
+
     //funtion of Approve button
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve/{recipe}/approve', [RecipeController::class, 'Approve']);
 

@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -95,5 +96,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isFollowedBy(User $user)
     {
         return !!$this->followings()->where('leader_id', $user->id)->count();
+    }
+    public function role()
+    {
+        // Return (role model has many data refer from the the role model)
+        return $this->hasMany(Role::class, 'id');
     }
 }

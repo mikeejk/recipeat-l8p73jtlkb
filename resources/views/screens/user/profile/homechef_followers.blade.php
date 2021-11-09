@@ -378,7 +378,7 @@
                 $('#follow-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: 'homecheffollower.data',
+                    ajax: 'follower.data',
                     columns: [{
                             data: 'follower',
                             name: 'follower',
