@@ -695,7 +695,7 @@
                         </div>
                         <div class="pagination block px-5 py-4">
                             {{-- {{ $recipe->links() }} --}}
-                            {!! $recipe->render() !!}
+                            {!! $recipe->links() !!}
                         </div>
                     </div>
                 @endif
