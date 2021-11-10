@@ -111,7 +111,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve/{recipe}/approve', [RecipeController::class, 'Approve']);
 
     //Denide Recipie button
-    // Route::middleware(['auth:sanctum', 'verified'])->get('/approve/{recipe}/denide', [RecipeController::class, 'denide']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/approve/{recipe}/denide', [RecipeController::class, 'denide']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'index2']);
 

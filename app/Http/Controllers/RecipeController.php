@@ -73,10 +73,10 @@ class RecipeController extends Controller
         // If the role Chef post the recipe Approve
         if ($role) {
             $recipe->status = 'Approved';
-        // Elseif the role Home-Chef post the recipe Pending
+            // Elseif the role Home-Chef post the recipe Pending
         } elseif ($role1) {
             $recipe->status = 'Pending';
-        // Else the role Home-Chef post the recipe User
+            // Else the role Home-Chef post the recipe User
         } else {
             $recipe->status = 'User';
         }
@@ -266,6 +266,15 @@ class RecipeController extends Controller
     {
         return view('screens.admin.recipe.approve');
     }
+    public function denide(Recipe $recipe)
+    {
+        $recipes = DB::table('recipes')
+            ->where('id', $recipe->id)
+            ->where('status', '=', 'Pending')
+            ->delete($recipe);
+        $recipe->delete();
+        return redirect()->back();
+    }
 
     public function approve(Recipe $recipe, Request $request)
     {
@@ -285,7 +294,7 @@ class RecipeController extends Controller
 
             ->addColumn('action', function ($recipe) {
                 $html = '<a href="/approve/' . $recipe->id . '/approve" class="btn btn-sm btn-outline-primary justify-content-end">Approve</a> ';
-                // $html .= '<a href="/approve/' . $recipe->id . '/denide" class="btn btn-sm btn-outline-danger justify-content-end">Denide</button>';
+                $html .= '<a href="/approve/' . $recipe->id . '/denide" class="btn btn-sm btn-outline-danger justify-content-end">Denide</button>';
                 return $html;
             })
             ->addColumn('name', function ($user) {
@@ -336,14 +345,15 @@ class RecipeController extends Controller
     {
         if (isset($_GET['query'])) {
             $search_text = $_GET['query'];
-            $recipe = DB::table('recipes')->where('status', 'Approved')->Paginate(8);
+            $recipe = DB::table('recipes')
+            ->where('recipe_name', 'LIKE', '%' . $search_text . '%')
+            ->where('status', 'Approved')->Paginate(8);
             $recipe->appends($request->all());
             return view('welcome', ['recipe' => $recipe]);
         } else {
             return view('/welcome');
         }
     }
-
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {

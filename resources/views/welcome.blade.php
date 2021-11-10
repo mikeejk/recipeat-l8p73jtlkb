@@ -593,7 +593,7 @@
                                         </div>
                                         <!-- Buttons -->
                                         <div class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
-                                            <a href="!"
+                                            <a href="{{ route('web.search') }}"
                                                 class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"
                                                 data-text="Chef">
                                                 <span class="align-middle">C</span>
@@ -601,7 +601,7 @@
                                                 <span class="align-middle">e</span>
                                                 <span class="align-middle">f</span>
                                             </a>
-                                            <a href="!"
+                                            <a href=""
                                                 class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"
                                                 data-text="Home Chef">
                                                 <span class="align-middle">H</span>
