@@ -25,6 +25,7 @@
                                 </button>
                             </div>
                         </form>
+
                     </div>
                     <!--end::Search Form-->
                 </div>
@@ -210,9 +211,20 @@
                                     <!--end::User-->
                                     <!--begin::Name-->
                                     <div class="my-2">
-                                        <a href="#"
-                                            class="text-dark font-weight-bold text-hover-primary font-size-h4">{{ $users->name }}
-                                        </a>
+                                        <h5
+                                            class="text-dark font-weight-bold text-hover-primary font-size-h4 text-truncate" data-toggle="tooltip" data-html="true" data-placement="right" title="{{ $users->name }}">{{ $users->name }}
+                                    </h5>
+                                    </div>
+                                    <div class="my-2 w-100">
+                                        <h6
+                                            class="h6 d-inline-flex justify-content-center p-1 text-center  bg-success
+                                             text-white rounded"><small class="">
+                                                 @if ($users->hasrole('Home-Chef') || $users->hasrole('Chef'))
+                                                 {{ $users->getRoleNames()->first() }}
+                                                 @else
+                                                 User
+                                                 @endif</small>
+                                             </h6>
                                     </div>
                                     <!--end::Name-->
                                     <!--begin::Label-->
@@ -235,6 +247,7 @@
                             </div>
                             <!--end::Card-->
                         </div>
+
                     @endforeach
                     <!--end::Col-->
 
@@ -242,7 +255,7 @@
                 <!--end::Row-->
                 <div class="col-12">
                     <!--begin::Pagination-->
-                    {!! $projects->links() !!}
+                    {!! $projects->appends(Request::all())->links() !!}
                     <!--end::Pagination-->
                 </div>
             </div>

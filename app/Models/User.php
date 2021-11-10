@@ -102,4 +102,5 @@ class User extends Authenticatable implements MustVerifyEmail
         // Return (role model has many data refer from the the role model)
         return $this->hasMany(Role::class, 'id');
     }
+    
 }

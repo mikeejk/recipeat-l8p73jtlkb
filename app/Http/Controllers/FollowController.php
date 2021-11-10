@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use App\Models\Follower;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
@@ -16,21 +17,25 @@ class FollowController extends Controller
         $role = auth()->user()->hasRole('Chef');
         $role1 = auth()->user()->hasRole('Home-Chef');
 
+
         //For Home-Chef
         if ($role1) {
+            // $students = User::whereHas(
+            //     'roles', function($q){
+            //         $q->where('id', '1');
+
+            //     }
+            // )->first();
+
+
             $projects_count = User::whereDoesntHave('roles')
                 ->orwhereHas("role", function ($q) {
                     $q->where("name", '!=', "Home-Chef");
                 })->whereHas("role", function ($q) {
                     $q->where("name", '!=', "Admin");
                 })->where('id', '!=', auth()->id())->get();
-            $projects = User::whereDoesntHave('roles')
-                ->orwhereHas("role", function ($q) {
-                    $q->where("name", '!=', "Home-Chef");
-                })->whereHas("role", function ($q) {
-                    $q->where("name", '!=', "Admin");
-                })->where('id', '!=', auth()->id())
-                ->where([
+
+            $projects = User::where([
                     ['name', '!=', Null],
                     [function ($query) use ($request) {
                         if (($term = $request->term)) {
@@ -38,7 +43,17 @@ class FollowController extends Controller
                         }
                     }]
                 ])
-                ->orderBy("id", "asc")
+
+                ->where(function ($query) {
+                    $query->whereDoesntHave('roles')->orwhereHas("role", function ($q) {
+                        $q->where("name", '!=', "Home-Chef");
+                    })->whereHas("role", function ($q) {
+                        $q->where("name", '!=', "Admin");
+                    })->orwhereHas("role", function ($q) {
+                        $q->where("name", '=', "Chef");
+                    })->where('id', '!=', auth()->id());
+                })
+                ->orderBy('id', 'asc')
                 ->paginate(4);
             return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
         }
@@ -48,11 +63,7 @@ class FollowController extends Controller
                 ->orwhereHas("role", function ($q) {
                     $q->where("name", '!=', "Admin");
                 })->where('id', '!=', auth()->id())->get();
-            $projects = User::whereDoesntHave('roles')
-                ->orwhereHas("role", function ($q) {
-                    $q->where("name", '!=', "Admin");
-                })->where('id', '!=', auth()->id())
-                ->where([
+            $projects = User::where([
                     ['name', '!=', Null],
                     [function ($query) use ($request) {
                         if (($term = $request->term)) {
@@ -60,6 +71,16 @@ class FollowController extends Controller
                         }
                     }]
                 ])
+
+                ->where(function ($query) {
+                    $query->whereDoesntHave('roles')->orwhereHas("role", function ($q) {
+                        $q->where("name", '=', "Home-Chef");
+                    })->whereHas("role", function ($q) {
+                        $q->where("name", '!=', "Admin");
+                    })->orwhereHas("role", function ($q) {
+                        $q->where("name", '=', "Chef");
+                    })->where('id', '!=', auth()->id());
+                })
                 ->orderBy("id", "asc")
                 ->paginate(4);
             return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
@@ -136,7 +157,7 @@ class FollowController extends Controller
         $followers = Follower::where('leader_id', auth()->user()->id)->get();
         return datatables()->of($followers)
             ->addColumn('action', function () {
-                $html = '<button type="button" onclick="myApproval()" class="btn btn-sm btn-danger justify-content-end mr-2">UnFollow</button>';
+                $html = '<button type="button" onclick="myApproval()" class="btn btn-sm btn-danger justify-content-end mr-2">Follow</button>';
                 return $html;
             })
             ->addColumn('follower', function ($follower) {
@@ -165,7 +186,7 @@ class FollowController extends Controller
         $followers = Follower::where('follower_id', auth()->user()->id)->get();
         return datatables()->of($followers)
             ->addColumn('action', function () {
-                $html = '<button type="button" onclick="myApproval()"class="btn btn-sm btn-primary justify-content-end mr-2">Follow</button>';
+                $html = '<button type="button" onclick="myApproval()"class="btn btn-sm btn-danger justify-content-end mr-2">UnFollow</button>';
                 return $html;
             })
             ->addColumn('follower', function ($follower) {
