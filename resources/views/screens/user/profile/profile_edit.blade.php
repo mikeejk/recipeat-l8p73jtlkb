@@ -74,7 +74,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-id-badge"></i></span></div>
-                                            <input type="text" class="form-control" name="name" value="{{ $questions->name }}" />
+                                            <input type="text" class="form-control" name="name"
+                                                value="{{ $questions->name }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your profile name</span>
                                     </div>
@@ -85,7 +86,17 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-venus-double"></i></span></div>
-                                            <input type="text" class="form-control" name="gender" value="{{ $questions->gender }}" />
+                                            <select type="text" class="form-control" name="gender" value="{{ $questions->gender }}">
+                                                    <option value="Male">
+                                                        Male
+                                                    </option>
+                                                    <option value="Fe-Male">
+                                                        Fe-Male
+                                                    </option>
+                                                    <option value="Other">
+                                                        Other
+                                                    </option>
+                                            </select>
                                         </div>
                                         <span class="form-text text-muted">Would you like change your gender</span>
                                     </div>
@@ -102,7 +113,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-at"></i></span></div>
-                                            <input type="text" class="form-control" name="mail" value="{{ $questions->mail }}"/>
+                                            <input type="text" class="form-control" name="mail"
+                                                value="{{ $questions->mail }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your mail id</span>
                                     </div>
@@ -129,7 +141,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-carrot"></i></span></div>
-                                            <input type="text" class="form-control" name="allergies" value="{{ $questions->allergies }}" />
+                                            <input type="text" class="form-control" name="allergies"
+                                                value="{{ $questions->allergies }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your Allergic
                                             Ingredient</span>
@@ -141,7 +154,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-utensils"></i></span></div>
-                                            <input type="text" class="form-control" name="lifestyle" value="{{ $questions->lifestyle }}" />
+                                            <input type="text" class="form-control" name="lifestyle"
+                                                value="{{ $questions->lifestyle }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your food life-style</span>
                                     </div>
@@ -157,7 +171,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-times-circle"></i></span></div>
-                                            <input type="text" class="form-control" name="ingredient" value="{{ $questions->ingredient }}" />
+                                            <input type="text" class="form-control" name="ingredient"
+                                                value="{{ $questions->ingredient }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your avoided
                                             ingredient</span>
@@ -169,7 +184,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fab fa-font-awesome-flag"></i></span></div>
-                                            <input type="text" class="form-control" name="pref_cuisine" value="{{ $questions->pref_cuisine }}" />
+                                            <input type="text" class="form-control" name="pref_cuisine"
+                                                value="{{ $questions->pref_cuisine }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your favorite
                                             cuisine</span>
@@ -186,7 +202,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-concierge-bell"></i></span></div>
-                                            <input type="text" class="form-control" name="goals" value="{{ $questions->goals }}" />
+                                            <input type="text" class="form-control" name="goals"
+                                                value="{{ $questions->goals }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your level of
                                             cooking</span>
@@ -198,7 +215,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-user-friends"></i></span></div>
-                                            <input type="text" class="form-control" name="serving_time" value="{{ $questions->serving_time }}" />
+                                            <input type="text" class="form-control" name="serving_time"
+                                                value="{{ $questions->serving_time }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your Serving Size</span>
                                     </div>
@@ -214,7 +232,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-stream"></i></span></div>
-                                            <input type="text" class="form-control" name="cho_cook" value="{{ $questions->cho_cook }}" />
+                                            <input type="text" class="form-control" name="cho_cook"
+                                                value="{{ $questions->cho_cook }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your rather cook</span>
                                     </div>
@@ -225,7 +244,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-cloud-meatball"></i></span></div>
-                                            <input type="text" class="form-control" name="fav_ingr" value="{{ $questions->fav_ingr }}"/>
+                                            <input type="text" class="form-control" name="fav_ingr"
+                                                value="{{ $questions->fav_ingr }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your favorite
                                             ingredient</span>
@@ -242,7 +262,8 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-pepper-hot"></i></span></div>
-                                            <input type="text" class="form-control" name="level_spici" value="{{ $questions->level_spici }}" />
+                                            <input type="text" class="form-control" name="level_spici"
+                                                value="{{ $questions->level_spici }}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your level of
                                             spiciness</span>
@@ -252,10 +273,13 @@
                                     <div class="col-lg-4">
                                         <label>Spare time for cook</label>
                                         <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-clock"></i></span></div>
-                                            <input type="text" class="form-control" name="time_spend" value="{{ $questions->time_spend }}" />
+                                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                                        class="fas fa-clock"></i></span></div>
+                                            <input type="text" class="form-control" name="time_spend"
+                                                value="{{ $questions->time_spend }}" />
                                         </div>
-                                        <span class="form-text text-muted">Would you like change your speare time of cook</span>
+                                        <span class="form-text text-muted">Would you like change your speare time of
+                                            cook</span>
                                     </div>
                                     <!-- Form-Spare time for cook::end -->
                                 </div>

@@ -24,6 +24,7 @@ Route::get('/', function () {
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Follower FOllowing Routes
 // -------------------------------------------------------------------------------------------------------------------
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower', [FollowController::class, 'index1']);
@@ -43,8 +44,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::middleware(['auth:sanctum', 'verified'])->get('/following', [FollowController::class, 'getIndex2']);
 
 });
-// -------------------------------------------------------------------------------------------------------------------
 
+// -------------------------------------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------------------------------
 
 // Dashboard Tab
@@ -298,16 +299,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
 })->name('home');
 
 // -------------------------------------------------------------------------------------------------------------------
-//                                                     Testing Routes
-// -------------------------------------------------------------------------------------------------------------------
-
-// -------------------------------------------------------------------------------------------------------------------
 //                                                    Follow Routes
 // -------------------------------------------------------------------------------------------------------------------
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowController::class, 'index'], function () {
     return view('screens.user.profile.follower');
 })->name('projects.index');;
 
-
 Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/{profileId}/unfollow', [FollowController::class, 'unFollowUser'])->name('user.unfollow');
