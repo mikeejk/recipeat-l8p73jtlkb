@@ -24,6 +24,8 @@
                                 <button class="border-0 bg-primary rounded w-25 text-white p-1 m-1">Search
                                 </button>
                             </div>
+
+
                         </form>
 
                     </div>

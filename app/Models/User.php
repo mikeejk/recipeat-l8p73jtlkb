@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Models\Role;
 
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasRoles;
@@ -20,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -100,7 +102,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function role()
     {
         // Return (role model has many data refer from the the role model)
-        return $this->hasMany(Role::class, 'id');
+        return $this->hasMany(Role::class, 'user_id');
     }
-    
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class,'id');
+    // }
+
+
 }

@@ -16,6 +16,17 @@ use App\Http\Controllers\FollowController;
 //                                                    Other Routes
 // -------------------------------------------------------------------------------------------------------------------
 
+Route::get('/test', function () {
+    $notifications=auth()->user()->unreadnotifications;
+    foreach($notifications as $notification){
+        dd($notification->data['user']['name']);
+    }
+});
+Route::get('/markAsRead', function () {
+    auth()->user()->unreadnotifications->markAsRead();
+});
+
+
 // Welcome Tab
 Route::get('/', function () {
     return view('auth.login');
