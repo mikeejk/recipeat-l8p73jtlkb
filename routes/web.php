@@ -68,8 +68,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}', [RecipeController::class, 'view_recipe']);
 
 // Recipe Search Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search'])->name('web.search');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
+// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome_homechef', [RecipeController::class, 'homechef_search']);
+// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome_all', [RecipeController::class, 'search_all']);
 // Recipeat Customer Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 

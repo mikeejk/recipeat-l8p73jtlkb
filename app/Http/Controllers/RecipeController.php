@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
@@ -72,7 +73,7 @@ class RecipeController extends Controller
 
         // If the role Chef post the recipe Approve
         if ($role) {
-            $recipe->status = 'Approved';
+            $recipe->status = 'Chef';
             // Elseif the role Home-Chef post the recipe Pending
         } elseif ($role1) {
             $recipe->status = 'Pending';
@@ -271,8 +272,8 @@ class RecipeController extends Controller
         $recipes = DB::table('recipes')
             ->where('id', $recipe->id)
             ->where('status', '=', 'Pending')
-            ->delete($recipe);
-        $recipe->delete();
+            ->update(['status' => 'Denide']);
+
         return redirect()->back();
     }
 
@@ -281,7 +282,7 @@ class RecipeController extends Controller
         $recipes = DB::table('recipes')
             ->where('id', $recipe->id)
             ->where('status', '=', 'Pending')
-            ->update(['status' => 'Approved']);
+            ->update(['status' => 'Home-Chef']);
 
         return redirect()->back();
     }
@@ -336,24 +337,24 @@ class RecipeController extends Controller
                 // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
                 return Cuisine::find($cuisine->cuisine_id)->cuisine;
             })->toJson();
-
         return Datatables::of(Recipe::query())->make(true);
     }
-
     // Recipe Search
-    public function search(Request $request)
+    public function search(request $request)
     {
-        if (isset($_GET['query'])) {
-            $search_text = $_GET['query'];
-            $recipe = DB::table('recipes')
-            ->where('recipe_name', 'LIKE', '%' . $search_text . '%')
-            ->where('status', 'Approved')->Paginate(8);
-            $recipe->appends($request->all());
-            return view('welcome', ['recipe' => $recipe]);
-        } else {
-            return view('/welcome');
-        }
+        $recipes = Recipe::when($request->term, function ($query, $term) {
+            return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
+        })
+
+            ->when($request->status, function ($query, $status) {
+                return $query->where('status', 'LIKE', '%' . $status . '%');
+            })
+            ->where('user_id', '!=', auth()->id())
+            ->paginate(4);
+            $recipes->appends($request->all());
+        return view('welcome', ['recipe' => $recipes]);
     }
+
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {
