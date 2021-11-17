@@ -339,7 +339,7 @@ class RecipeController extends Controller
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
-    // Recipe Search
+    Recipe Search
     public function search(request $request)
     {
         $recipes = Recipe::when($request->term, function ($query, $term) {
@@ -350,6 +350,7 @@ class RecipeController extends Controller
                 return $query->where('status', 'LIKE', '%' . $status . '%');
             })
             ->where('user_id', '!=', auth()->id())
+            ->where('status','!=','User')
             ->paginate(4);
             $recipes->appends($request->all());
         return view('welcome', ['recipe' => $recipes]);
@@ -360,4 +361,8 @@ class RecipeController extends Controller
     {
         return view('recipe_view', compact('recipe'));
     }
+
+
+
+  
 }

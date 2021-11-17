@@ -543,20 +543,15 @@
                                         <div class="box pt-6">
                                             <div class="box-wrapper w-full mx-auto">
                                                 <div class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
-                                                     <!-- <div class="outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">
-                                                        <svg class="w-5 text-white h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+                                                     <!-- <div class="outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">-->
+                                                         <svg class="w-5 text-white h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
                                                             </path>
-                                                        </svg> -->
-                                                    </div> 
+                                                        </svg> 
                                                  <input type="search" name="term" id="term" placeholder="Search by Recipes" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
-                                                 <input type="search" name="status" id="status" placeholder="Search by Role" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />   
-                                                      <!-- <select  value="status" name="status">
-                                                        <option value="Approved">Approved</option>
-                                                        <option value="chef">chef</option>
-                                                      </select> -->
-                                                      
+                                                 <input type="search" name="status" id="status" placeholder="Search by Role" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />      
                                                     <button type="submit"> search</button> 
+                                                 </div>
                                                 <!-- <select name="searchbox"id="searchby">
                                                         <option value="recipe">Recipe</option>
                                                         <option value="ingrediant">Ingrediant</option>
@@ -612,7 +607,7 @@
                                                     <span class="align-middle">l</span>
                                                 </button>
                                             </form> -->
-                                    <!-- </div> -->
+                                    </div> 
                                 </div>
                             </div>
                         </div>

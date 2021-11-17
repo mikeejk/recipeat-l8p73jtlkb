@@ -59,4 +59,9 @@ class Recipe extends Model implements HasMedia
         // Return (role model has many data refer from the the role model)
         return $this->hasMany(Role::class, 'role_id');
     }
+    public function ingredient()
+    {
+        // return (ingredient model is belongs to this recipe model)
+        return $this->belongsTo(Ingredient::class, 'ingredient_id');
+    }
 }
