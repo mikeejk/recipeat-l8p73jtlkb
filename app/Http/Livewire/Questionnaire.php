@@ -63,7 +63,7 @@ class Questionnaire extends Component
     public function thirdStepSubmit()
     {
         // Data - Save
-        $validatedData = $this->validate([
+        $this->validate([
             'mail' => 'required',
         ]);
 
@@ -243,7 +243,7 @@ class Questionnaire extends Component
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id',auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-       
+
         return view('screens.user.profile.profile',compact('questions','followers','following','recipes'));
     }
 

@@ -514,7 +514,7 @@
         <!-- component -->
         <div>
             <div class="h-full sm:mt-0 lg-mt-32 flex flex-col justify-center items-center bg-fixed bg-center" style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
-                <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
+                <a href="/search_ingredient" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a>
                 <a href="/dashboard"><button class="rounded-lg absolute bg-red-600 hover:bg-red-700 text-white p-3 top-0 right-0 mt-3 mr-5">My
@@ -548,12 +548,12 @@
                                                         <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
                                                         </path>
                                                     </svg>
-                                                    <input type="search" name="term" id="term" placeholder="Search by Recipes" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
-                                                    <select name="creator">
+                                                    <input type="search" name="term" id="term" placeholder="Search by Ingredient" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
+                                                    <select name="status">
                                                         <!-- <option>select</option> -->
-                                                         <option value="User">All</option>
-                                                        <option value="Chef">Chef</option>
-                                                        <option value="Home-Chef">Home-Chef</option>
+                                                        <option value="Chef">All</option>
+                                                        <option value="Home-Chef">Chef</option>
+                                                        <option value="All">Home-Chef</option>
                                                     </select>
 
                                                     <button type="submit"> search</button>
@@ -584,8 +584,8 @@
                                     <div class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
                                         <form action="/welcome" method="GET">
 
-                                            <button class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"">Recipes  
-                                            </button>
+                                            <a href="/welcome"button class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"">Recipes  
+            </a>
                                         </form>
                                     <form action=" /search_ingredient" method="GET">
                                                 <button class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients                                                </button>
