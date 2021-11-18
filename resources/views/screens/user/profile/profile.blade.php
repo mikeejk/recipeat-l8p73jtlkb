@@ -102,7 +102,7 @@
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
-                            <div class="d-flex align-items-center  mr-1 my-1">
+                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center">{{ $recipes }}</span>
                                     <a href="/recipes"><span class="font-weight-bolder font-size-sm">
@@ -116,7 +116,7 @@
                                     onclick="makeNotificationAsRead()">
 
                                     <span class="font-weight-bolder font-size-xs text-center"><span
-                                            class="badge bg-success text-white">{{ count(auth()->user()->unreadnotifications) }}</span></span>
+                                            class="badge text-black">{{ count(auth()->user()->unreadnotifications) }}</span></span>
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-expanded="false"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>Notification</span></a>

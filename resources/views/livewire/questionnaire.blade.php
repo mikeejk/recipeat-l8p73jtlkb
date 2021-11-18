@@ -121,9 +121,12 @@
               <div class="py-6 bg-gradient-to-tr from-red-900 to-red-600 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
                 <h4 class="text-white text-center font-bold lg:text-xl md:text-xl text-lg">For your monthly dose of Mouth-watering content ?</h4>
               </div>
+              <div>
+                  <p class="text-black bg-white text-center text-bold text-xl">Confirm your email id <span class="text-green-500">{{ Auth::user()->email }}</span></p>
+              </div>
               <div class="flex flex-col py-6 h-56 px-8 space-y-5 bg-white rounded-b-2xl">
                 <div class="w-full flex flex-col justify-center items-center pt-6 form-group">
-                  <input type="email" wire:model="mail" class="w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" autocomplete required />
+                  <input wire:model="mail" type="email" name="mail" id="mail" class="w-1/2 py-3 border-b-2 rounded-md border-gray-800 focus:outline-none text-center" placeholder="Registered mail id" />
                   @error('mail') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="w-full flex justify-center">
