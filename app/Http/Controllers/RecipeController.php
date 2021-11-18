@@ -339,7 +339,7 @@ class RecipeController extends Controller
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
-    Recipe Search
+    // Recipe Search
     public function search(request $request)
     {
         $recipes = Recipe::when($request->term, function ($query, $term) {
@@ -364,5 +364,5 @@ class RecipeController extends Controller
 
 
 
-  
+
 }
