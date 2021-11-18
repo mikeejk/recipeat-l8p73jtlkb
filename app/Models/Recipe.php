@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
+use App\Models\Recipe_ingredient;
 
 class Recipe extends Model implements HasMedia
 {
@@ -33,7 +34,8 @@ class Recipe extends Model implements HasMedia
         'bud_spicy',
         'bud_bitter',
         'bud_astringent',
-        'status'
+        'status',
+        'creator'
     ];
 
     // Function - category
@@ -59,9 +61,9 @@ class Recipe extends Model implements HasMedia
         // Return (role model has many data refer from the the role model)
         return $this->hasMany(Role::class, 'role_id');
     }
-    public function ingredient()
+    public function Recipe_Ingredient()
     {
         // return (ingredient model is belongs to this recipe model)
-        return $this->belongsTo(Ingredient::class, 'ingredient_id');
+        return $this->belongsTo(Recipe_Ingredient::class, 'recipe_id');
     }
 }

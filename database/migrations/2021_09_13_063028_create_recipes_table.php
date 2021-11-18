@@ -38,6 +38,8 @@ class CreateRecipesTable extends Migration
             $table->char('bud_bitter');
             $table->char('bud_astringent');
             $table->string('status');
+            $table->string('creator');
+
 
             // Foreign Keys
             $table->foreign('category_id')->references('id')->on('categories');
