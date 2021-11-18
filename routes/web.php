@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\InviteController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CuisineController;
@@ -11,6 +12,9 @@ use App\Http\Livewire\Questionnaire;
 use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\FollowController;
+use App\Models\User;
+use Illuminate\Support\Facades\Request;
+
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
@@ -315,7 +319,30 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowController::class, 'index'], function () {
     return view('screens.user.profile.follower');
-})->name('projects.index');;
+})->name('projects.index');
+
+Route::any('/search',function(){
+    $q=Request::input('q');
+    if($q != ''){
+        $projects = User::
+        orwhere('name','LIKE','%'.$q.'%',function($q){
+            $q->whereDoesntHave('roles')->whereHas('roles', function($q){
+                $q->where('id','!=','1');
+            })
+            ;
+        })->where('id', '!=', auth()->id())
+        ->paginate(8);
+        $projects->appends(array(
+            'q' => Request::input('q'),
+        ));
+        if(count($projects)>0){
+            return view('screens.user.profile.follower', compact('projects'));
+        }
+        return view('screens.user.profile.follower');
+
+    }
+
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
 

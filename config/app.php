@@ -235,6 +235,7 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Clockwork' => Clockwork\Support\Laravel\Facade::class,
         'Carbon' => Illuminate\Support\Carbon::class,
+        'Input' => Illuminate\Support\Facades\Input::class
     ],
 
 ];

@@ -15,11 +15,13 @@
                     <!--end::Separator-->
                     <!--begin::Search Form-->
                     <div class="d-flex align-items-center" id="kt_subheader_search">
-                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ count($projects) }} of
-                            {{ count($projects_count) }}</span>
-                        <form class="ml-5" action="{{ route('projects.index') }}" method="GET" role="search">
+                        {{-- <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ count($projects) }} of --}}
+                        {{-- {{ count($projects_count) }} --}}
+                        </span>
+                        <form class="ml-5" action="/search" method="POST" role="search">
+                            {{ csrf_field() }}
                             <div class="input-group input-group-md bg-white border-0 rounded min-w-175px">
-                                <input name="term" type="text" class="form-control bg-white border-0"
+                                <input name="q" type="text" class="form-control bg-white border-0"
                                     id="kt_subheader_search_form" placeholder="Search..." required />
                                 <button class="border-0 bg-primary rounded w-25 text-white p-1 m-1">Search
                                 </button>
@@ -41,11 +43,12 @@
         <div class="d-flex flex-column-fluid">
             <!--begin::Container-->
             <div class="container">
-                <!--begin::Row-->
-                <div class="row">
-                    @foreach ($projects as $users)
-                        <!--begin::Col-->
-                        {{-- <div class="col-xxl-3 col-xl-6 col-md-6 col-sm-6">
+                @if (isset($projects))
+                    <!--begin::Row-->
+                    <div class="row">
+                        @foreach ($projects as $users)
+                            <!--begin::Col-->
+                            {{-- <div class="col-xxl-3 col-xl-6 col-md-6 col-sm-6">
                         <!--begin::Card-->
                         <div class="card card-custom gutter-b card-stretch">
                             <!--begin::Body-->
@@ -144,8 +147,8 @@
                         </div>
                         <!--end::Card-->
                     </div> --}}
-                        <div class="col-xxl-3 col-xl-3 col-md-6 col-sm-4  d-flex justify-content-center w-full">
-                            {{-- <div class="card p-5 w-full">
+                            <div class="col-xxl-3 col-xl-3 col-md-6 col-sm-4  d-flex justify-content-center w-full">
+                                {{-- <div class="card p-5 w-full">
                                 <div class="d-flex  align-items-center w-full">
                                     <div class="image"> <img
                                             src="https://i.pinimg.com/474x/91/27/a5/9127a595d3a3421d984edc45230f6d9a.jpg"
@@ -174,96 +177,104 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="card card-custom gutter-b card-stretch">
-                                <!--begin::Body-->
-                                <div class="card-body text-center pt-1">
-                                    <!--begin::Toolbar-->
-                                    <div class="d-flex justify-content-end">
-                                        <div class="dropdown dropdown-inline" data-toggle="tooltip" data-placement="left">
-                                            <p class="btn btn-clean btn-hover-light-primary btn-sm btn-icon"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="svg-icon svg-icon-lg">
-                                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Text/Dots.svg-->
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                        height="24px" viewBox="0 0 24 24" version="1.1">
-                                                        <g stroke="none" stroke-width="1">
-                                                            <rect x="14" y="9" width="6" height="6" rx="3" fill="black" />
-                                                            <rect x="3" y="9" width="6" height="6" rx="3" fill="black"
-                                                                fill-opacity="0.7" />
-                                                        </g>
-                                                    </svg>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </p>
+                                <div class="card card-custom gutter-b card-stretch">
+                                    <!--begin::Body-->
+                                    <div class="card-body text-center pt-1">
+                                        <!--begin::Toolbar-->
+                                        <div class="d-flex justify-content-end">
+                                            <div class="dropdown dropdown-inline" data-toggle="tooltip"
+                                                data-placement="left">
+                                                <p class="btn btn-clean btn-hover-light-primary btn-sm btn-icon"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="svg-icon svg-icon-lg">
+                                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Text/Dots.svg-->
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                            height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1">
+                                                                <rect x="14" y="9" width="6" height="6" rx="3"
+                                                                    fill="black" />
+                                                                <rect x="3" y="9" width="6" height="6" rx="3" fill="black"
+                                                                    fill-opacity="0.7" />
+                                                            </g>
+                                                        </svg>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!--end::Toolbar-->
-                                    <!--begin::User-->
-                                    <div class="">
-                                        <div class="symbol  symbol-lg-75">
-                                            <img src="https://i.pinimg.com/474x/91/27/a5/9127a595d3a3421d984edc45230f6d9a.jpg"
-                                                alt="image" />
+                                        <!--end::Toolbar-->
+                                        <!--begin::User-->
+                                        <div class="">
+                                            <div class="symbol  symbol-lg-75">
+                                                <img src="https://i.pinimg.com/474x/91/27/a5/9127a595d3a3421d984edc45230f6d9a.jpg"
+                                                    alt="image" />
+                                            </div>
+                                            <div class="symbol symbol-lg-75 symbol-circle symbol-primary">
+                                                <span
+                                                    class="font-size-h3 symbol-label font-weight-boldest d-none">{{ $users->created_at }}</span>
+                                            </div>
                                         </div>
-                                        <div class="symbol symbol-lg-75 symbol-circle symbol-primary">
-                                            <span
-                                                class="font-size-h3 symbol-label font-weight-boldest d-none">{{ $users->created_at }}</span>
+                                        <!--end::User-->
+                                        <!--begin::Name-->
+                                        <div class="my-2">
+                                            <h5 class="text-dark font-weight-bold text-hover-primary font-size-h4 text-truncate"
+                                                data-toggle="tooltip" data-html="true" data-placement="right"
+                                                title="{{ $users->name }}">{{ $users->name }}
+                                            </h5>
                                         </div>
-                                    </div>
-                                    <!--end::User-->
-                                    <!--begin::Name-->
-                                    <div class="my-2">
-                                        <h5
-                                            class="text-dark font-weight-bold text-hover-primary font-size-h4 text-truncate" data-toggle="tooltip" data-html="true" data-placement="right" title="{{ $users->name }}">{{ $users->name }}
-                                    </h5>
-                                    </div>
-                                    <div class="my-2 w-100">
-                                        <h6
-                                            class="h6 d-inline-flex justify-content-center p-1 text-center  bg-success
-                                             text-white rounded"><small class="">
-                                                 @if ($users->hasrole('Home-Chef') || $users->hasrole('Chef'))
-                                                 {{ $users->getRoleNames()->first() }}
-                                                 @else
-                                                 User
-                                                 @endif</small>
-                                             </h6>
-                                    </div>
-                                    <!--end::Name-->
-                                    <!--begin::Label-->
-                                    <div class="button mt-2 d-flex flex-row justify-content-center align-items-center">
-                                        {{-- <button id="" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</button> --}}
-                                        {{-- <a href="{{ route('user.follow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</a>
+                                        <div class="my-2 w-100">
+                                            <h6
+                                                class="h6 d-inline-flex justify-content-center p-1 text-center  bg-success
+                                             text-white rounded">
+                                                <small class="">
+                                                    @if ($users->hasrole('Home-Chef') || $users->hasrole('Chef') || $users->hasrole('Admin'))
+                                                        {{ $users->getRoleNames()->first() }}
+                                                    @else
+                                                        User
+                                                    @endif
+                                                </small>
+                                            </h6>
+                                        </div>
+                                        <!--end::Name-->
+                                        <!--begin::Label-->
+                                        <div class="button mt-2 d-flex flex-row justify-content-center align-items-center">
+                                            {{-- <button id="" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</button> --}}
+                                            {{-- <a href="{{ route('user.follow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</a>
                                         <a href="{{ route('user.unfollow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">UnFollow</a> --}}
-                                        @if (Auth::user()->isFollowedBy($users))
-                                            <a href="{{ route('user.unfollow', $users->id) }}"
-                                                class="btn btn-sm btn-danger white">UnFollow</a>
-                                        @else
-                                            <a href="{{ route('user.follow', $users->id) }}"
-                                                class="btn btn-sm btn-primary white">Follow</a>
-                                        @endif
+                                            @if (Auth::user()->isFollowedBy($users))
+                                                <a href="{{ route('user.unfollow', $users->id) }}"
+                                                    class="btn btn-sm btn-danger white">UnFollow</a>
+                                            @else
+                                                <a href="{{ route('user.follow', $users->id) }}"
+                                                    class="btn btn-sm btn-primary white">Follow</a>
+                                            @endif
+                                        </div>
+                                        <!--end::Label-->
+
                                     </div>
-                                    <!--end::Label-->
-
+                                    <!--end::Body-->
                                 </div>
-                                <!--end::Body-->
+                                <!--end::Card-->
                             </div>
-                            <!--end::Card-->
-                        </div>
 
-                    @endforeach
-                    <!--end::Col-->
+                        @endforeach
+                        <!--end::Col-->
 
-                </div>
-                <!--end::Row-->
-                <div class="col-12">
-                    <!--begin::Pagination-->
-                    {!! $projects->appends(Request::all())->links() !!}
-                    <!--end::Pagination-->
-                </div>
+                    </div>
+                    <!--end::Row-->
+                    <div class="col-12">
+                        <!--begin::Pagination-->
+                        {!! $projects->render() !!}
+                        <!--end::Pagination-->
+                    @else
+                        {{ 'No Results Found' }}
+                @endif
             </div>
-            <!--end::Container-->
         </div>
-        <!--end::Entry-->
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
 
     </div>
     <!--end::Content-->

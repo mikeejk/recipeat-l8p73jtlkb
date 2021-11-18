@@ -13,6 +13,7 @@ use App\Notifications\NotificationDisplay;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use phpDocumentor\Reflection\Types\Null_;
 
 class FollowController extends Controller
@@ -33,34 +34,33 @@ class FollowController extends Controller
             // )->first();
 
 
-            $projects_count = User::whereDoesntHave('roles')
-                ->orwhereHas("role", function ($q) {
-                    $q->where("name", '!=', "Home-Chef");
-                })->whereHas("role", function ($q) {
-                    $q->where("name", '!=', "Admin");
-                })->where('id', '!=', auth()->id())->get();
+            // $projects_count = User::where([
+            //     ['name', '!=', Null],
+            //     [function ($query) use ($request) {
+            //         if (($q = $request->q)) {
+            //             $query->orWhere('name', 'LIKE', '%' . $q . '%')->get();
+            //         }
+            //     }]
+            // ])->get();
 
-            $projects = User::where([
-                    ['name', '!=', Null],
-                    [function ($query) use ($request) {
-                        if (($term = $request->term)) {
-                            $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
-                        }
-                    }]
-                ])
-
-                ->where(function ($query) {
-                    $query->whereDoesntHave('roles')->orwhereHas("role", function ($q) {
-                        $q->where("name", '!=', "Home-Chef");
-                    })->whereHas("role", function ($q) {
-                        $q->where("name", '!=', "Admin");
-                    })->orwhereHas("role", function ($q) {
-                        $q->where("name", '=', "Chef");
-                    })->where('id', '!=', auth()->id());
+                $projects = User::query()
+                ->whereDoesntHave('roles')
+                ->orwhereHas('roles', function($q){
+                    $q->whereIn('name', ['Chef','Home-Chef']);
                 })
-                ->orderBy('id', 'asc')
+                ->where('id', '!=', auth()->id())
+
+                // ->where([
+                //         ['name', '!=', Null],
+                //         [function ($query) use ($request) {
+                //             if (($term = $request->term)) {
+                //                 $query->Where('name', 'LIKE', '%' . $term . '%');
+                //             }
+                //         }]
+                //     ])
+                ->orderBy("id", "asc")
                 ->paginate(4);
-            return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
+            return view('screens.user.profile.follower',compact('projects'));
         }
         //For Chef
         elseif ($role) {
@@ -78,16 +78,21 @@ class FollowController extends Controller
                 }]
             ])->get();
 
-            $projects = User::DoesntHave('roles')->orwhereHas('roles', function($q){
+            $projects = User::DoesntHave('roles')
+            ->orwhereHas('roles', function($q){
                 $q->whereIn('name', ['Chef','Home-Chef']);
-            })->where('id', '!=', auth()->id())->where([
+            })
+            ->where('id', '!=', auth()->id())
+            ->where([
                     ['name', '!=', Null],
                     [function ($query) use ($request) {
+
                         if (($term = $request->term)) {
-                            $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
+                            $query->orWhere('name', 'LIKE', '%' . $term . '%');
                         }
                     }]
-                ]) ->orderBy("id", "asc")
+                ])
+                ->orderBy("id", "asc")
                 ->paginate(4);
 
 
@@ -127,6 +132,8 @@ class FollowController extends Controller
             // return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
         }
     }
+
+
 
     public function followUser(int $user_id )
     {
