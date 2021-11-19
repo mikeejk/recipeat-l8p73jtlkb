@@ -238,18 +238,24 @@
                                         </div>
                                         <!--end::Name-->
                                         <!--begin::Label-->
+                                        <form action="/follow" method="post">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="user" value="{{$users->id}}">
                                         <div class="button mt-2 d-flex flex-row justify-content-center align-items-center">
                                             {{-- <button id="" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</button> --}}
                                             {{-- <a href="{{ route('user.follow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">Follow</a>
                                         <a href="{{ route('user.unfollow', $users->id) }}" class="btn btn-sm btn-primary w-50 ml-2 btnfollow">UnFollow</a> --}}
                                             @if (Auth::user()->isFollowedBy($users))
-                                                <a href="{{ route('user.unfollow', $users->id) }}"
-                                                    class="btn btn-sm btn-danger white">UnFollow</a>
+                                            <input class="btn btn-danger" value="UnFollow" type="submit" name="UnFollow" >
+                                                {{-- <a href="{{ route('user.unfollow', $users->id) }}"
+                                                    class="btn btn-sm btn-danger white" value="{{$users->id}}">UnFollow</a> --}}
                                             @else
-                                                <a href="{{ route('user.follow', $users->id) }}"
-                                                    class="btn btn-sm btn-primary white">Follow</a>
+                                            <input class="btn btn-primary" value="Follow" type="submit" name="Follow" >
+                                                {{-- <a href="{{ route('user.follow', $users->id) }}"
+                                                    class="btn btn-sm btn-primary white" value="{{$users->id}}">Follow</a> --}}
                                             @endif
                                         </div>
+                                    </form>
                                         <!--end::Label-->
 
                                     </div>

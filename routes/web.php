@@ -14,6 +14,7 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\FollowController;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
+use App\Notifications\NewFollower;
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -326,14 +327,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowCont
 Route::any('/search',function(){
     $q=Request::input('q');
     if($q != ''){
-        $projects = User::
-        orwhere('name','LIKE','%'.$q.'%',function($q){
-            $q->whereDoesntHave('roles')->whereHas('roles', function($q){
-                $q->where('id','!=','1');
-            })
-            ;
-        })->where('id', '!=', auth()->id())
-        ->paginate(8);
+        $projects = User::where('name','!=','admin')->
+        where('name','LIKE','%'.$q.'%')->where('id', '!=', auth()->id())
+        ->paginate(4);
         $projects->appends(array(
             'q' => Request::input('q'),
         ));
@@ -346,6 +342,16 @@ Route::any('/search',function(){
 
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
+// Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/{profileId}/unfollow', [FollowController::class, 'unFollowUser'])->name('user.unfollow');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/{profileId}/unfollow', [FollowController::class, 'unFollowUser'])->name('user.unfollow');
+
+Route::middleware(['auth:sanctum', 'verified'])->post('/follow', [FollowController::class, 'followOrUnfollowuser']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/x',function(){
+    // $user=Auth::user();
+    // $user->notify(new NewFollower(User::findOrFail(2)));die;
+foreach(auth()->user()->unreadnotifications as $notification ){
+    $notification->markAsRead();
+
+}
+});

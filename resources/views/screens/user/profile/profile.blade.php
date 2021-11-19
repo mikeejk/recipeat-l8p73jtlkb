@@ -116,19 +116,26 @@
                                     onclick="makeNotificationAsRead()">
 
                                     <span class="font-weight-bolder font-size-xs text-center"><span
-                                            class="badge text-black">{{ count(auth()->user()->unreadnotifications) }}</span></span>
+                                            class="badge bg-success text-black">{{ count(auth()->user()->unreadnotifications) }}</span></span>
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-expanded="false"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>Notification</span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            $user = App\Models\User::find(1);
+                                        <li >
+                                            {{-- $user = App\Models\User::find(1);
                                             @forelse (auth()->user()->unreadnotifications as $notification)
-                                                @include('Notification.notification_display',$notification)
+                                                @include('Notification.notification_display',$notification) --}}
                                                 {{-- <a href="">{{'notification_'.class_basename($notification->type)}}</a> --}}
-                                            @empty
+                                            {{-- @empty
                                                 <a href="#">No Notification to show</a>
-                                            @endforelse
+                                            @endforelse --}}
+
+                                            @foreach (auth()->user()->unreadnotifications as $notification )
+                                            <div class="border-bottom p-2 bg-success text-white">
+                                            <p class="p-2 ">{{ $notification->data['name'] }} Started Following You.</p>
+                                            <p class="p-2">{{$notification->created_at->diffForHumans()}}</p>
+                                            </div><br>
+                                            @endforeach
 
                                         </li>
 
@@ -415,4 +422,10 @@
         <!--end::Entry-->
     </div>
     <!--end::Content-->
+    <script>
+
+        function makeNotificationAsRead() {
+            $.get('/markAsRead');
+        }
+    </script>
 @endsection

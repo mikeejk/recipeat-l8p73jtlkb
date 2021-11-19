@@ -10,11 +10,13 @@ use Illuminate\Support\Carbon;
 use Spatie\Permission\Models\Role;
 use App\Models\Follower;
 use App\Notifications\NotificationDisplay;
+use App\Notifications\NewFollower;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Support\Facades\Auth;
 
 class FollowController extends Controller
 {
@@ -69,29 +71,29 @@ class FollowController extends Controller
             //         $q->where("name", '!=', "Admin");
             //     })->where('id', '!=', auth()->id())->get();
 
-            $projects_count=User::where([
-                ['name', '!=', Null],
-                [function ($query) use ($request) {
-                    if (($term = $request->term)) {
-                        $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
-                    }
-                }]
-            ])->get();
+            // $projects_count=User::where([
+            //     ['name', '!=', Null],
+            //     [function ($query) use ($request) {
+            //         if (($term = $request->term)) {
+            //             $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
+            //         }
+            //     }]
+            // ])->get();
 
             $projects = User::DoesntHave('roles')
             ->orwhereHas('roles', function($q){
                 $q->whereIn('name', ['Chef','Home-Chef']);
             })
             ->where('id', '!=', auth()->id())
-            ->where([
-                    ['name', '!=', Null],
-                    [function ($query) use ($request) {
+            // ->where([
+            //         ['name', '!=', Null],
+            //         [function ($query) use ($request) {
 
-                        if (($term = $request->term)) {
-                            $query->orWhere('name', 'LIKE', '%' . $term . '%');
-                        }
-                    }]
-                ])
+            //             if (($term = $request->term)) {
+            //                 $query->orWhere('name', 'LIKE', '%' . $term . '%');
+            //             }
+            //         }]
+            //     ])
                 ->orderBy("id", "asc")
                 ->paginate(4);
 
@@ -108,7 +110,7 @@ class FollowController extends Controller
                 //     })->where('id', '!=', auth()->id());
                 // })
 
-            return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
+            return view('screens.user.profile.follower', compact('projects'));
             // $projects = User::where('name', '!=', 'Chef')->where([
             //     ['name', '!=', Null],
             //     [function ($query) use ($request) {
@@ -131,33 +133,63 @@ class FollowController extends Controller
             //     ->paginate(4);
             // return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
         }
+        else{
+            $projects = User::query()
+            ->whereDoesntHave('roles')
+            ->orwhereHas('roles', function($q){
+                $q->whereIn('name', ['Chef','Home-Chef']);
+            })
+            ->where('id', '!=', auth()->id())
+            ->orderBy("id", "asc")
+                ->paginate(4);
+            return view('screens.user.profile.follower', compact('projects'));
+
+        }
     }
 
 
 
-    public function followUser(int $user_id )
-    {
-        $user = User::find($user_id);
-        if (!$user) {
-            return redirect()->back()->with('error', 'User does not exist.');
+    // public function followUser(int $user_id )
+    // {
+    //     $user = User::find($user_id);
+    //     if (!$user) {
+    //         return redirect()->back()->with('error', 'User does not exist.');
+    //     }
+
+    //     $user->followers()->attach(auth()->user()->id);
+    //     auth()->user()->notify(new NotificationDisplay($user));
+
+    //     return redirect()->back();
+    // }
+
+    // public function unFollowUser(int $user_id)
+    // {
+    //     $user = User::find($user_id);
+    //     if (!$user) {
+    //         return redirect()->back()->with('error', 'User does not exist.');
+    //     }
+    //     $user->followers()->detach(auth()->user()->id);
+    //     return redirect()->back();
+    // }
+
+
+    public function followOrUnfollowuser(Request $request){
+
+        if($request->Follow){
+            $user= User::findOrFail($request->user);
+            // Auth::user()->followings()->attach($user->id);
+            $user->followers()->attach(auth()->user()->id);
+            $user->notify(new NewFollower(Auth::user()));die;
+           
+
+        }else{
+            $user= User::findOrFail($request->user);
+            $user->followers()->detach(auth()->user()->id);
+            // Auth::user()->followings()->detach($user->id);
         }
-
-        $user->followers()->attach(auth()->user()->id);
-        auth()->user()->notify(new NotificationDisplay($user));
-
+        // return redirect('/my_follower');
         return redirect()->back();
     }
-
-    public function unFollowUser(int $user_id)
-    {
-        $user = User::find($user_id);
-        if (!$user) {
-            return redirect()->back()->with('error', 'User does not exist.');
-        }
-        $user->followers()->detach(auth()->user()->id);
-        return redirect()->back();
-    }
-
 
     public function show(int $userId)
     {

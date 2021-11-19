@@ -129,7 +129,7 @@
                                                 <a href="#">No Notification to show</a>
                                             @endforelse --}}
 
-                                            @forelse(auth()->user()->unreadnotifications as $notification)
+                                            {{-- @forelse(auth()->user()->unreadnotifications as $notification)
                                             <div class="alert alert-success p-2" role="alert">
                                                 You Follow  {{ $notification->data['name'] }}.
                                             </div>
@@ -139,7 +139,16 @@
                                             There are no new notifications
                                         </div>
 
-                                        @endforelse
+                                        @endforelse --}}
+
+                                        @foreach (auth()->user()->unreadnotifications as $notification )
+                                        {{-- <h5>{{ $notification->data['name'] }} Started Following You.</h5>
+                                        <p>{{$notification->created_at->diffForHumans()}}</p> --}}
+                                          <div class="border-bottom p-2 bg-success text-white">
+                                            <p class="p-2 ">{{ $notification->data['name'] }} Started Following You.</p>
+                                            <p class="p-2">{{$notification->created_at->diffForHumans()}}</p>
+                                            </div><br>
+                                        @endforeach
 
                                         </li>
 
@@ -347,13 +356,7 @@
     </div>
     <!--end::Content-->
     <script>
-        // $(function()
-        // {
-        //     $('#markasRead').click(function(){
-        //         alert('clicked')
 
-        //     })
-        // })
         function makeNotificationAsRead() {
             $.get('/markAsRead');
         }
