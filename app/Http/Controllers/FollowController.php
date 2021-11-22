@@ -179,8 +179,9 @@ class FollowController extends Controller
             $user= User::findOrFail($request->user);
             // Auth::user()->followings()->attach($user->id);
             $user->followers()->attach(auth()->user()->id);
-            $user->notify(new NewFollower(Auth::user()));die;
-           
+            $user->notify(new NewFollower(Auth::user()));
+            return redirect()->back();
+
 
         }else{
             $user= User::findOrFail($request->user);
