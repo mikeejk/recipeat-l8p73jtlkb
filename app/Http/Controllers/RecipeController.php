@@ -74,7 +74,7 @@ class RecipeController extends Controller
 
         // If the role Chef post the recipe Approve
         if ($role) {
-            $recipe->status = 'Chef';
+            $recipe->status = 'Approved';
             // Elseif the role Home-Chef post the recipe Pending
         } elseif ($role1) {
             $recipe->status = 'Pending';
@@ -296,7 +296,7 @@ class RecipeController extends Controller
         $recipes = DB::table('recipes')
             ->where('id', $recipe->id)
             ->where('status', '=', 'Pending')
-            ->update(['status' => 'Home-Chef']);
+            ->update(['status' => 'Approved']);
 
         return redirect()->back();
     }
@@ -356,33 +356,37 @@ class RecipeController extends Controller
   //  Recipe Search
     public function search(Request $request)
     {
+    // { $projects = Recipe::whereHas("user_id", function ($q) {
+    //         $q->where("user_id", '!=', "auth()->id()");
         $recipes = Recipe::when($request->term, function ($query, $term) {
             return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-        })
-            ->when($request->status, function ($query, $creator) {
-                return $query->where('creator', 'LIKE', '%' . $creator . '%');
-            })
+         })->when($request->creator, function ($query, $creator) {
+            return $query->where('creator', 'LIKE', '%' . $creator . '%'); }) 
+            
             ->where('user_id', '!=', auth()->id())
-            ->where('status','!=','Pending')
+            ->where('status','Approved')
+            // ->where('status','!=','Denide')
+            // ->where('creator','!=','User')
             ->paginate(4);
+
             $recipes->appends($request->all());
         return view('welcome', ['recipe' => $recipes]);
   
     }
-    public function search1(Request $request)
-    {  
-        $recipes = Recipe::when($request->term, function ($query, $term) {
-            return $query->where('$ingredient', 'LIKE', '%' . $term . '%');
-        })
+    // public function search1(Request $request)
+    // {  
+    //     $recipes = Recipe::when($request->term, function ($query, $term) {
+    //         return $query->where('$ingredient', 'LIKE', '%' . $term . '%');
+    //     })
 
-        //     ->when($request->status, function ($query, $status) {
-        //         return $query->where('status', 'LIKE', '%' . $status . '%');
-        //     })
-            ->where('user_id', '!=', auth()->id())
-            ->where('status','=','User')
-            ->paginate(4);
-            $recipes->appends($request->all());
-        return view('/search_ingredient', ['recipe' => $recipes]);
+    //     //     ->when($request->status, function ($query, $status) {
+    //     //         return $query->where('status', 'LIKE', '%' . $status . '%');
+    //     //     })
+    //         ->where('user_id', '!=', auth()->id())
+    //         ->where('status','=','User')
+    //         ->paginate(4);
+    //         $recipes->appends($request->all());
+    //     return view('/search_ingredient', ['recipe' => $recipes]);
     //  $data1 = collect(DB::table('roles')->get()->toArray());
     
     // $data2 = collect(DB::table('recipes')->get()->toArray());
@@ -394,7 +398,7 @@ class RecipeController extends Controller
     //   return view('/search_ingredient', ['recipe' => $data2],['ingredient' =>$data1]);
        
     // }
-}
+
 
     // Recipe result view
     public function view_recipe(Recipe $recipe)

@@ -588,7 +588,7 @@
             </a>
                                         </form>
                                     <form action=" /search_ingredient" method="GET">
-                                                <button class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients                                                </button>
+                                                <a href="/search_ingredient" button class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients                                                </button>
                                         </form></div>
                                     </div>
                                 </div>
