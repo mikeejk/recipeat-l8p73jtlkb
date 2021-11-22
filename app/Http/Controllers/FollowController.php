@@ -45,7 +45,7 @@ class FollowController extends Controller
             //     }]
             // ])->get();
 
-                $projects = User::query()
+                $projects = User::query()->where('id', '!=', auth()->id())
                 ->whereDoesntHave('roles')
                 ->orwhereHas('roles', function($q){
                     $q->whereIn('name', ['Chef','Home-Chef']);
@@ -134,12 +134,12 @@ class FollowController extends Controller
             // return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
         }
         else{
-            $projects = User::query()
+            $projects = User::query()->where('id', '!=', auth()->id())
             ->whereDoesntHave('roles')
             ->orwhereHas('roles', function($q){
                 $q->whereIn('name', ['Chef','Home-Chef']);
             })
-            ->where('id', '!=', auth()->id())
+
             ->orderBy("id", "asc")
                 ->paginate(4);
             return view('screens.user.profile.follower', compact('projects'));
