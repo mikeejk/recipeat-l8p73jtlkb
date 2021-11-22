@@ -367,12 +367,37 @@ class RecipeController extends Controller
             ->where('status','Approved')
             // ->where('status','!=','Denide')
             // ->where('creator','!=','User')
-            ->paginate(4);
+            ->orderBy("recipe_name", "asc")->Paginate(4);
 
             $recipes->appends($request->all());
         return view('welcome', ['recipe' => $recipes]);
   
     }
+
+    public function search1(Request $request)
+    {
+    // { $projects = Recipe::whereHas("user_id", function ($q) {
+    //         $q->where("user_id", '!=', "auth()->id()");
+        $recipes = Recipe::when($request->term, function ($query, $term) {
+            return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
+         })->when($request->creator, function ($query, $creator) {
+            return $query->where('creator', 'LIKE', '%' . $creator . '%'); }) 
+            
+            ->where('user_id', '!=', auth()->id())
+            ->where('status','Approved')
+            // ->where('status','!=','Denide')
+            // ->where('creator','!=','User')
+            ->orderBy("recipe_name", "asc")->Paginate(4);
+
+            $recipes->appends($request->all());
+        return view('search_ingredient', ['recipe' => $recipes]);
+  
+    }
+
+
+
+
+
     // public function search1(Request $request)
     // {  
     //     $recipes = Recipe::when($request->term, function ($query, $term) {
