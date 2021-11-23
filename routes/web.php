@@ -13,6 +13,7 @@ use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\FollowController;
 use App\Models\User;
+use App\Models\Recipe;
 use Illuminate\Support\Facades\Request;
 use App\Notifications\NewFollower;
 

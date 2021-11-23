@@ -90,7 +90,7 @@ class RecipeController extends Controller
             $recipe->creator = 'Chef';
             // Elseif the role Home-Chef post the recipe Pending
         } elseif ($home_chef) {
-            $recipe->creator = 'Home-chef';
+            $recipe->creator = 'Home-Chef';
             // Else the role Home-Chef post the recipe User
         } else {
             $recipe->creator = 'User';
@@ -360,8 +360,9 @@ class RecipeController extends Controller
     //         $q->where("user_id", '!=', "auth()->id()");
         $recipes = Recipe::when($request->term, function ($query, $term) {
             return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-         })->when($request->creator, function ($query, $creator) {
-            return $query->where('creator', 'LIKE', '%' . $creator . '%'); }) 
+        //  })->when($request->creator, function ($query, $creator) {
+        //     return $query->where('creator', 'LIKE', '%' . $creator . '%');
+     }) 
             
             ->where('user_id', '!=', auth()->id())
             ->where('status','Approved')
