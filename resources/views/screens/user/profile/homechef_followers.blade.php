@@ -347,7 +347,7 @@
                                         <tr>
                                             <th>Follower</th>
                                             <th>Following From</th>
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
                                         </tr>
                                     </thead>
                                 </table>
@@ -391,12 +391,12 @@
                             orderable: false,
                             searchable: false,
                         },
-                        {
-                            data: 'action',
-                            name: 'action',
-                            orderable: false,
-                            searchable: false,
-                        },
+                        // {
+                        //     data: 'action',
+                        //     name: 'action',
+                        //     orderable: false,
+                        //     searchable: false,
+                        // },
                     ]
                 });
             });
