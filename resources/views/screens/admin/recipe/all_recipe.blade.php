@@ -47,7 +47,8 @@
                                 <th>Recipe Name</th>
                                 <th>Category</th>
                                 <th>Cuisine</th>
-                                <th>Creater</th>
+                                <th>Creator</th>
+                                <th>Role</th>
                             </tr>
                         </thead>
                     </table>
@@ -84,9 +85,16 @@
                     {
                         data: 'name',
                         name: 'name',
+                        orderable: false,
                         searchable: false,
-                        orderable: false
                     },
+                    {
+                        data: 'creator',
+                        name: 'creator',
+                        
+                    },
+                    
+                    
                 ]
             });
         });
