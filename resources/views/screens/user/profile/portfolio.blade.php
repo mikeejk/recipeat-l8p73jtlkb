@@ -112,47 +112,11 @@
                             <!--end: Item-->
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1">
-                                <div class="dropdown d-flex flex-column text-dark-75" id="markasRead"
-                                    onclick="makeNotificationAsRead()">
-
+                                <div class="d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center"><span
                                             class="badge bg-success text-white">{{ count(auth()->user()->unreadnotifications) }}</span></span>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-expanded="false"><span class="font-weight-bolder font-size-sm">
+                                    <a href="/notifications"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>Notification</span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            {{-- @forelse (auth()->user()->unreadnotifications as $notification)
-                                                @include('Notification.notification_display',$notification)
-                                                {{-- <a href="">{{'notification_'.class_basename($notification->type)}}</a> --}}
-                                            {{-- @empty
-                                                <a href="#">No Notification to show</a>
-                                            @endforelse --}}
-
-                                            {{-- @forelse(auth()->user()->unreadnotifications as $notification)
-                                            <div class="alert alert-success p-2" role="alert">
-                                                You Follow  {{ $notification->data['name'] }}.
-                                            </div>
-
-                                        @empty
-                                        <div class="alert alert-success p-2" role="alert">
-                                            There are no new notifications
-                                        </div>
-
-                                        @endforelse --}}
-
-                                        @foreach (auth()->user()->unreadnotifications as $notification )
-                                        {{-- <h5>{{ $notification->data['name'] }} Started Following You.</h5>
-                                        <p>{{$notification->created_at->diffForHumans()}}</p> --}}
-                                          <div class="border-bottom p-2 bg-success text-white">
-                                            <p class="p-2 ">{{ $notification->data['name'] }} Started Following You.</p>
-                                            <p class="p-2">{{$notification->created_at->diffForHumans()}}</p>
-                                            </div><br>
-                                        @endforeach
-
-                                        </li>
-
-                                    </ul>
                                 </div>
                             </div>
                             <!--end: Item-->
@@ -355,10 +319,4 @@
         <!--end::Entry-->
     </div>
     <!--end::Content-->
-    <script>
-
-        function makeNotificationAsRead() {
-            $.get('/markAsRead');
-        }
-    </script>
 @endsection

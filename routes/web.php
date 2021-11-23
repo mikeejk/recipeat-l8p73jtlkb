@@ -22,8 +22,8 @@ use App\Notifications\NewFollower;
 // -------------------------------------------------------------------------------------------------------------------
 
 Route::get('/test', function () {
-    $notifications=auth()->user()->unreadnotifications;
-    foreach($notifications as $notification){
+    $notifications = auth()->user()->unreadnotifications;
+    foreach ($notifications as $notification) {
         dd($notification->data['user']['name']);
     }
 });
@@ -41,24 +41,20 @@ Route::get('/', function () {
 //                                                    Follower FOllowing Routes
 // -------------------------------------------------------------------------------------------------------------------
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower', [FollowController::class, 'index1']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower.data', [FollowController::class, 'anyData1']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower', [FollowController::class, 'getIndex1']);
-
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/following', [FollowController::class, 'index2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/following.data', [FollowController::class, 'anyData2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/following', [FollowController::class, 'getIndex2']);
-
 });
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -115,8 +111,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function (
 });
 
 // RecipeController
-Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-{
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Recipeat Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/approve', [RecipeController::class, 'index1']);
 
@@ -308,12 +303,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 
 // User Questionnaire Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
-   if (auth()->user()->hasRole('Admin')) {
+    if (auth()->user()->hasRole('Admin')) {
         return view('dashboard');
-   }
-   else {
-       return view('screens.user.home.questions');
-   }
+    } else {
+        return view('screens.user.home.questions');
+    }
 })->name('home');
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -324,22 +318,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/my_follower', [FollowCont
     return view('screens.user.profile.follower');
 })->name('projects.index');
 
-Route::any('/search',function(){
-    $q=Request::input('q');
-    if($q != ''){
-        $projects = User::where('name','!=','admin')->
-        where('name','LIKE','%'.$q.'%')->where('id', '!=', auth()->id())
-        ->paginate(4);
+Route::any('/search', function () {
+    $q = Request::input('q');
+    if ($q != '') {
+        $projects = User::where('name', '!=', 'admin')->where('name', 'LIKE', '%' . $q . '%')->where('id', '!=', auth()->id())
+            ->paginate(4);
         $projects->appends(array(
             'q' => Request::input('q'),
         ));
-        if(count($projects)>0){
-            return view('screens.user.profile.follower', compact('projects'));
-        }
-        return view('screens.user.profile.follower');
-
+        return view('screens.user.profile.follower', compact('projects'));
     }
-
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
@@ -347,11 +335,17 @@ Route::any('/search',function(){
 // Route::middleware(['auth:sanctum', 'verified'])->get('/{profileId}/unfollow', [FollowController::class, 'unFollowUser'])->name('user.unfollow');
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/follow', [FollowController::class, 'followOrUnfollowuser']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/x',function(){
+Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
     // $user=Auth::user();
     // $user->notify(new NewFollower(User::findOrFail(2)));die;
-foreach(auth()->user()->unreadnotifications as $notification ){
-    $notification->markAsRead();
-
-}
+    foreach (auth()->user()->unreadnotifications as $notification) {
+        $notification->markAsRead();
+    }
+});
+// Welcome Tab
+Route::get('/notifications', function () {
+    foreach (auth()->user()->unreadnotifications as $notification) {
+        $notification->markAsRead();
+    }
+    return view('screens.user.profile.notifications_screen');
 });
