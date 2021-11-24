@@ -329,6 +329,8 @@ Route::any('/search', function () {
         ));
         return view('screens.user.profile.follower', compact('projects'));
     }
+    return view('screens.user.profile.follower');
+
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
