@@ -68,6 +68,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Mail Id</th>
+                                        <th>Role</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -104,6 +105,13 @@
                 {
                     data: 'email',
                     name: 'email',
+                    searchable: false,
+                    orderable: false
+
+                },
+                {
+                    data: 'role',
+                    name: 'role',
                     searchable: false,
                     orderable: false
 

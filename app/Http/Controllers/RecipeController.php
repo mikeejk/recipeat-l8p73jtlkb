@@ -360,8 +360,8 @@ class RecipeController extends Controller
     //         $q->where("user_id", '!=', "auth()->id()");
         $recipes = Recipe::when($request->term, function ($query, $term) {
             return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-        //  })->when($request->creator, function ($query, $creator) {
-        //     return $query->where('creator', 'LIKE', '%' . $creator . '%');
+         })->when($request->creator, function ($query, $creator) {
+            return $query->where('creator', 'LIKE', '%' . $creator . '%');
      }) 
             
             ->where('user_id', '!=', auth()->id())
