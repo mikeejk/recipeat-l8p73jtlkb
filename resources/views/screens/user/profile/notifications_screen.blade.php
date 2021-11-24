@@ -14,16 +14,32 @@
                             <h3 class="card-title align-items-start flex-column pb-2">
                                 <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Notifications</span>
                                 @if (count(auth()->user()->unreadnotifications) == 0)
-                                    <span
-                                        class="text-danger mt-3 font-weight-bold font-size-lg">{{ count(auth()->user()->unreadnotifications) }}
-                                        New Notifications</span>
+                                <div class="d-flex justify-content-center w-100 ">
+                                <img class="w-50" src="https://www.pngkey.com/png/full/33-335977_no-notifications-illustration.png" alt="logo">
+                                </div>
+                                <div class="d-flex justify-content-center  w-100">
+                                    <h5
+                                        class="text-danger mt-5 font-weight-bold ">{{ count(auth()->user()->unreadnotifications) }}
+                                        New Notifications</h5>
+                                </div>
+                                <div class="d-flex justify-content-center  w-100  card-toolbar">
+                                    <ul class="nav nav-pills nav-pills-sm nav-dark">
+                                        <li class="nav-item bg-success rounded ml-0">
+                                            <a href="{{ url()->previous() }}"
+                                                class="nav-link py-2 px-4 font-weight-bolder text-white font-size-sm">Back</a>
+                                        </li>
+                                    </ul>
+                                </div>
                                 @else
                                     <span
-                                        class="text-success mt-3 font-weight-bold font-size-lg">{{ count(auth()->user()->unreadnotifications) }}
+                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{ count(auth()->user()->unreadnotifications) }}
                                         New Notifications</span>
                                     </span>
                                 @endif
                             </h3>
+                            @if(count(auth()->user()->unreadnotifications) == 0)
+
+                            @else
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark">
                                     <li class="nav-item ml-0">
@@ -33,6 +49,7 @@
 
                                 </ul>
                             </div>
+                            @endif
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
