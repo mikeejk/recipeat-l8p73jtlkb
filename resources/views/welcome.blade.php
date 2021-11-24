@@ -546,8 +546,8 @@
                                                 <div class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
 
                                                     <input type="search" name="term" id="term" placeholder="Search by Recipes" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
-                                                    <select name="creator" class="border-2 rounded-full p-2">
-                                                        <!-- <option>select</option> -->
+                                                    <select name="creator"class="border-2 rounded-full p-2">
+                                                       
                                                         <option value="">All Recipes</option>
                                                         <option value="Chef">Chef</option>
                                                         <option value="Home-Chef">Home-Chef</option>
