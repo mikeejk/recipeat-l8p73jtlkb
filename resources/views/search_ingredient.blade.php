@@ -548,7 +548,7 @@
                                                     <input type="search" name="term" id="term" placeholder="Search by Ingredients" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
                                                     <select name="creator" class="border-2 rounded-full p-2">
                                                         <!-- <option>select</option> -->
-                                                        <option value="User">All Recipes</option>
+                                                        <option value="">All Recipes</option>
                                                         <option value="Chef">Chef</option>
                                                         <option value="Home-Chef">Home-Chef</option>
                                                     </select>
