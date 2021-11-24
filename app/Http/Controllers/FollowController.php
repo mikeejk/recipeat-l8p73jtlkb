@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\User;
-
-
 use Illuminate\Support\Carbon;
 use Spatie\Permission\Models\Role;
 use App\Models\Follower;
@@ -45,10 +42,10 @@ class FollowController extends Controller
             //     }]
             // ])->get();
 
-                $projects = User::query()->where('id', '!=', auth()->id())
+            $projects = User::query()->where('id', '!=', auth()->id())
                 ->whereDoesntHave('roles')
-                ->orwhereHas('roles', function($q){
-                    $q->whereIn('name', ['Chef','Home-Chef']);
+                ->orwhereHas('roles', function ($q) {
+                    $q->whereIn('name', ['Chef', 'Home-Chef']);
                 })
                 ->where('id', '!=', auth()->id())
 
@@ -62,7 +59,7 @@ class FollowController extends Controller
                 //     ])
                 ->orderBy("id", "asc")
                 ->paginate(4);
-            return view('screens.user.profile.follower',compact('projects'));
+            return view('screens.user.profile.follower', compact('projects'));
         }
         //For Chef
         elseif ($role) {
@@ -81,34 +78,34 @@ class FollowController extends Controller
             // ])->get();
 
             $projects = User::DoesntHave('roles')
-            ->orwhereHas('roles', function($q){
-                $q->whereIn('name', ['Chef','Home-Chef']);
-            })
-            ->where('id', '!=', auth()->id())
-            // ->where([
-            //         ['name', '!=', Null],
-            //         [function ($query) use ($request) {
+                ->orwhereHas('roles', function ($q) {
+                    $q->whereIn('name', ['Chef', 'Home-Chef']);
+                })
+                ->where('id', '!=', auth()->id())
+                // ->where([
+                //         ['name', '!=', Null],
+                //         [function ($query) use ($request) {
 
-            //             if (($term = $request->term)) {
-            //                 $query->orWhere('name', 'LIKE', '%' . $term . '%');
-            //             }
-            //         }]
-            //     ])
+                //             if (($term = $request->term)) {
+                //                 $query->orWhere('name', 'LIKE', '%' . $term . '%');
+                //             }
+                //         }]
+                //     ])
                 ->orderBy("id", "asc")
                 ->paginate(4);
 
 
-                // $projects=User::where(function ($query) {
-                //         $query->whereDoesntHave('roles')->whereHas("roles", function ($q) {
-                //             $q->where("id", '!=', "2")->get();
-                //         })->where('id', '!=', auth()->id());
-                //     })->find();
+            // $projects=User::where(function ($query) {
+            //         $query->whereDoesntHave('roles')->whereHas("roles", function ($q) {
+            //             $q->where("id", '!=', "2")->get();
+            //         })->where('id', '!=', auth()->id());
+            //     })->find();
 
-                // ->where(function ($query) {
-                //     $query->whereDoesntHave('roles')->OrwhereHas("role", function ($q) {
-                //         $q->where("name", '!=', "Admin")->get();
-                //     })->where('id', '!=', auth()->id());
-                // })
+            // ->where(function ($query) {
+            //     $query->whereDoesntHave('roles')->OrwhereHas("role", function ($q) {
+            //         $q->where("name", '!=', "Admin")->get();
+            //     })->where('id', '!=', auth()->id());
+            // })
 
             return view('screens.user.profile.follower', compact('projects'));
             // $projects = User::where('name', '!=', 'Chef')->where([
@@ -132,18 +129,15 @@ class FollowController extends Controller
             //     ->orderBy("id", "asc")
             //     ->paginate(4);
             // return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
-        }
-        else{
+        } else {
             $projects = User::query()->where('id', '!=', auth()->id())
-            ->whereDoesntHave('roles')
-            ->orwhereHas('roles', function($q){
-                $q->whereIn('name', ['Chef','Home-Chef']);
-            })
-
-            ->orderBy("id", "asc")
+                ->whereDoesntHave('roles')
+                ->orwhereHas('roles', function ($q) {
+                    $q->whereIn('name', ['Chef', 'Home-Chef']);
+                })
+                ->orderBy("id", "asc")
                 ->paginate(4);
             return view('screens.user.profile.follower', compact('projects'));
-
         }
     }
 
@@ -173,18 +167,17 @@ class FollowController extends Controller
     // }
 
 
-    public function followOrUnfollowuser(Request $request){
+    public function followOrUnfollowuser(Request $request)
+    {
 
-        if($request->Follow){
-            $user= User::findOrFail($request->user);
+        if ($request->Follow) {
+            $user = User::findOrFail($request->user);
             // Auth::user()->followings()->attach($user->id);
             $user->followers()->attach(auth()->user()->id);
             $user->notify(new NewFollower(Auth::user()));
             return redirect()->back();
-
-
-        }else{
-            $user= User::findOrFail($request->user);
+        } else {
+            $user = User::findOrFail($request->user);
             $user->followers()->detach(auth()->user()->id);
             // Auth::user()->followings()->detach($user->id);
         }
