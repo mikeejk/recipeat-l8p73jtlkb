@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Recipeat</title>
+    <!-- multiselect -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -540,28 +549,44 @@
                                                 your palate.
                                             </p>
                                         </div>
+                                        <!-- <form method="post" id="category_form">
+                                            <div class="form-group">
+                                                <label>Select</label>
+                                                <select id="ingredient" name="name[]" multiple class="form-control">
+                                                    <option value="Ginger">Ginger</option>
+                                                    <option value="garlic">garlic</option>
+                                                    <option value="pepper">pepper</option>
+                                                    <option value="salt">salt</option>
+                                                    <option value="Turmeric">Turmeric</option>
+                                                    <option value="egg">egg</option>
+                                                    <option value="chicken">chicken</option>
+                                                    <option value="mutton">mutton</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-info" name="submit" value="Submit" />
+                                            </div>
+                                        </form> 
+
                                         <!-- image search box -->
-                                        <div class="box pt-6">
+                                         <div class="box pt-6">
                                             <div class="box-wrapper w-full mx-auto">
                                                 <div class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
-
-                                                    <input type="search" name="term" id="term" placeholder="Search by Ingredients" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
+                                                    <!-- <select class="js-example-responsive" multiple="multiple" style="width: 75%"></select> -->
+                                                    <input type="search" name="term" id="term" placeholder="Search by Ingredients"value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}" required  class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
                                                     <select name="creator" class="border-2 rounded-full p-2">
-                                                        <!-- <option>select</option> -->
                                                         <option value="">All Recipes</option>
                                                         <option value="1">Chef</option>
                                                         <option value="2">Home-Chef</option>
-                                                    </select>
+                                                    </select> 
 
                                                     <div class="flex space-x-2 ml-2 outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">
-                                                    <button type="submit"> <svg class="w-5 text-white h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
-                                                            </path>
-                                                        </svg></button>
-                                                    </div>
-
-                                                     
-                                                </div>
+                                                        <button type="submit"> <svg class="w-5 text-white h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                                                                </path>
+                                                            </svg></button>
+                                                    </div> 
+                                                 </div>  
 
                                                 <!-- For toggle -->
                                                 <!-- <label for="toogleA" class="flex items-center cursor-pointer">                                              <!-- toggle  -->
@@ -586,15 +611,15 @@
                                     </div>
                                     <!-- Buttons -->
                                     <div class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
-                                        <form action="/welcome" method="GET">
-
-                                            <button class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"">Recipes  
-                                            </button>
+                                        <form>
+                                            <a href="/welcome">
+                                                <button class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Recipes
+                                                </button></a>
                                         </form>
-                                    <form action="/search_ingredient" method="GET">
-                                               <a href="/search_ingredient"> <button class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients </button>
-                                               </a>
-                                            </form>
+                                        <form>
+                                            <button class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients </button>
+
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -666,13 +691,13 @@
                         @endif
                     </div>
                     @endif
-                    <div class="bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white font-extrabold px-2 flex justify-center items-center rounded-lg">{{$recipe->render()}}</div>
+                    
 
+                 </div> 
+                
+                <div class="flex items-center justify-center px-5">
+                {{$recipe->render()}}
                 </div>
-
-                <!-- <div class="block justify-center bg-white px-5">
-                {{ $recipe->links() }}
-                </div> -->
 
 
 
@@ -835,6 +860,11 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
     <script>
+        $(".js-example-basic-multiple-limit").select2({
+            maximumSelectionLength: 2
+        });
+    </script>
+    <!-- <script>
         function myFunction() {
             var search_box = document.getElementById("term");
             var tooglebtn_label = document.getElementById("toggle_label");
@@ -846,7 +876,39 @@
                 tooglebtn_label.style.color = '#808080';
             }
         }
-    </script>
+    </script> -->
+    <script>
+// $(document).ready(function(){
+// $('#ingredient').multiselect({
+// nonSelectedText: 'Select category',
+// enableFiltering: true,
+// enableCaseInsensitiveFiltering: true,
+// buttonWidth:'400px'
+// });
+// $('#category_form').on('submit', function(event){
+// event.preventDefault();
+// var form_data = $(this).serialize();
+// $.ajaxSetup({
+// headers: {
+// 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+// }
+// });
+// $.ajax({
+// url:"{{ url('store') }}",
+// method:"POST",
+// data:form_data,
+// success:function(data)
+// {
+// $('#category option:selected').each(function(){
+// $(this).prop('selected', false);
+// });
+// $('#category').multiselect('refresh');
+// alert(data['success']);
+// }
+// });
+// });
+// });
+// </script>
 </body>
 
 </html>

@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Recipeat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -545,12 +552,12 @@
                                             <div class="box-wrapper w-full mx-auto">
                                                 <div class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
 
-                                                    <input type="search" name="term" id="term" placeholder="Search by Recipes" class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
+                                                    <input type="search" name="term" id="term" placeholder="Search by Recipes"  value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}" required class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
                                                     <select name="creator"class="border-2 rounded-full p-2">
                                                        
-                                                        <option value="">All Recipes</option>
-                                                        <option value="1">Chef</option>
-                                                        <option value="2">Home-Chef</option>
+                                                        <option value="" >All Recipes</option>
+                                                        <option value="1" >Chef</option>
+                                                        <option value="2" >Home-Chef</option>
                                                     </select>
 
                                                     <div class="flex space-x-2 ml-2 outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">
@@ -558,9 +565,7 @@
                                                             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
                                                             </path>
                                                         </svg></button>
-                                                    </div>
-
-                                                     
+            </div>
                                                 </div>
 
                                                 <!-- For toggle -->
@@ -666,9 +671,11 @@
                         @endif
                     </div>
                     @endif
-                    <div class="bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white font-extrabold px-2 flex justify-center items-center rounded-lg">{{$recipe->render()}}</div>
+                    
+                   
 
                 </div>
+                <div class=" text-white font-extrabold px-2 flex justify-center items-center rounded-lg">{{$recipe->render()}}</div>
 
                 <!-- <div class="block justify-center bg-white px-5">
                 {{ $recipe->links() }}
