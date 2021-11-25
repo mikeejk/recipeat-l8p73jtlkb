@@ -573,7 +573,7 @@
                                             <div class="box-wrapper w-full mx-auto">
                                                 <div class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
                                                     <!-- <select class="js-example-responsive" multiple="multiple" style="width: 75%"></select> -->
-                                                    <input type="search" name="term" id="term" placeholder="Search by Ingredients"value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}" required  class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
+                                                    <input type="search" name="term" id="term" placeholder="Search by Ingredients"value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
                                                     <select name="creator" class="border-2 rounded-full p-2">
                                                         <option value="">All Recipes</option>
                                                         <option value="1">Chef</option>
