@@ -87,13 +87,13 @@ class RecipeController extends Controller
         $home_chef = auth()->user()->hasRole('Home-Chef');
 
         if ($chef) {
-            $recipe->creator = 'Chef';
+            $recipe->creator = '1';
             // Elseif the role Home-Chef post the recipe Pending
         } elseif ($home_chef) {
-            $recipe->creator = 'Home-Chef';
+            $recipe->creator = '2';
             // Else the role Home-Chef post the recipe User
         } else {
-            $recipe->creator = 'User';
+            $recipe->creator = '3';
         }
 
         // Save Data

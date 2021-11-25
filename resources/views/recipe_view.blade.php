@@ -31,11 +31,11 @@
             <div class="bg-white rounded-md w-full lg:w-1/3 p-5 rounded-lg order-2 lg:order-first">
                 <div class="flex w-full justify-between">
                     <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1>
-                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow
+                    <!-- <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                           </svg>
-                    </button>
+                    </button> -->
                 </div>
 
                 <p class="text-gray-500 mt-2">{{ $recipe->description }}</p>
@@ -103,7 +103,7 @@
                         alt="" class="h-60 w-full object-cover content-center rounded-t-lg" />
                     <h1 class="text-center font-bold tracking-wider text-gray-700 mt-4">
                         cuisine: {{ $recipe->cuisine->cuisine }}</h1>
-                    <p class="text-gray-500 mt-1 text-center">{{ $recipe->created_at }}</p>
+                    <p class="text-gray-500 mt-1 text-center">{{ $recipe->created_at->diffForHumans() }}</p>
                     <br />
                     <p class="bg-blue-700 py-2 px-4  text-white text-sm font-semibold">
                         {{ $recipe->recipe_name }}
@@ -133,10 +133,10 @@
                     <div class="my-4 flex justify-between gap-5">
                         <div
                             class="border-2 flex flex-col border-blue-400 rounded-lg py-1 w-full text-gray-700 text-center">
-                            Created At<span>{{ $recipe->created_at }} </span></div>
+                            Created At<span>{{ $recipe->created_at->diffForHumans() }} </span></div>
                         <div
                             class="border-2 flex flex-col border-gray-200 rounded-lg py-1 w-full text-gray-700 text-center">
-                            Updated At <span>{{ $recipe->updated_at }}</span></div>
+                            Updated At <span>{{ $recipe->updated_at->diffForHumans() }}</span></div>
                     </div>
                 </div>
             </div>

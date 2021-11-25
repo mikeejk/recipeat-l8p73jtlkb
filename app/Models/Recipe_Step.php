@@ -18,4 +18,9 @@ class Recipe_Step extends Model
         'steps',
 
     ];
+    public function recipe()
+    {
+        // Return (recipe_step model has many data refer from the recipe model)
+        return $this->hasMany(Recipe::class, 'recipe_id');
+    }
 }

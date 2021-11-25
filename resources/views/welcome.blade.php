@@ -549,8 +549,8 @@
                                                     <select name="creator"class="border-2 rounded-full p-2">
                                                        
                                                         <option value="">All Recipes</option>
-                                                        <option value="Chef">Chef</option>
-                                                        <option value="Home-Chef">Home-Chef</option>
+                                                        <option value="1">Chef</option>
+                                                        <option value="2">Home-Chef</option>
                                                     </select>
 
                                                     <div class="flex space-x-2 ml-2 outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">
@@ -638,7 +638,7 @@
                                         </div>
                                         <div class="pt-2 border-t-2  border-yellow-400 text-sm">
                                             <h1>Created at:</h1>
-                                            {{ $recipes->created_at }}
+                                            {{ $recipes->created_at->diffForHumans() }}
                                         </div>
                                     </div>
                                 </div>
