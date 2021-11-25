@@ -38,7 +38,7 @@ class CreateRecipesTable extends Migration
             $table->char('bud_bitter');
             $table->char('bud_astringent');
             $table->string('status');
-            $table->string('creator');
+            $table->integer('creator');
 
 
             // Foreign Keys
