@@ -101,15 +101,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return !!$this->followings()->where('leader_id', $user->id)->count();
     }
+    // public function role()
+    // {
+    //     // Return (role model has many data refer from the the role model)
+    //     return $this->hasMany(Role::class, 'user_id');
+    // }
     public function role()
     {
-        // Return (role model has many data refer from the the role model)
-        return $this->hasMany(Role::class, 'user_id');
+        return $this->belongsToMany(Role::class,'user_id');
     }
-    // public function roles()
-    // {
-    //     return $this->belongsToMany(Role::class,'id');
-    // }
 
 
 }

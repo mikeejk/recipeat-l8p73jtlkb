@@ -38,6 +38,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// Welcome Tab
+Route::get('/login1', function () {
+    return view('auth.login2');
+});
+
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Follower FOllowing Routes
 // -------------------------------------------------------------------------------------------------------------------
@@ -351,4 +356,13 @@ Route::get('/notifications', function () {
         $notification->markAsRead();
     }
     return view('screens.user.profile.notifications_screen');
+});
+
+
+
+// -------------------------------------------------------------
+//                              Test Routes
+// ------------------------------------------------------------
+Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
+    return view('screens.user.profile.login2');
 });
