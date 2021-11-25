@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Carbon;
+
 use Spatie\Permission\Models\Role;
 use App\Models\Follower;
 use App\Notifications\NotificationDisplay;
 use App\Notifications\NewFollower;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use phpDocumentor\Reflection\Types\Null_;
 use Illuminate\Support\Facades\Auth;
+
 
 class FollowController extends Controller
 {
@@ -22,149 +25,93 @@ class FollowController extends Controller
         $role = auth()->user()->hasRole('Chef');
         $role1 = auth()->user()->hasRole('Home-Chef');
 
-
         //For Home-Chef
         if ($role1) {
-            // $students = User::whereHas(
-            //     'roles', function($q){
-            //         $q->where('id', '1');
-
-            //     }
-            // )->first();
-
-
-            // $projects_count = User::where([
-            //     ['name', '!=', Null],
-            //     [function ($query) use ($request) {
-            //         if (($q = $request->q)) {
-            //             $query->orWhere('name', 'LIKE', '%' . $q . '%')->get();
-            //         }
-            //     }]
-            // ])->get();
-
-            $projects = User::query()->where('id', '!=', auth()->id())
-                ->whereDoesntHave('roles')
-                ->orwhereHas('roles', function ($q) {
-                    $q->whereIn('name', ['Chef', 'Home-Chef']);
-                })
-                ->where('id', '!=', auth()->id())
-
-                // ->where([
-                //         ['name', '!=', Null],
-                //         [function ($query) use ($request) {
-                //             if (($term = $request->term)) {
-                //                 $query->Where('name', 'LIKE', '%' . $term . '%');
-                //             }
-                //         }]
-                //     ])
-                ->orderBy("id", "asc")
+            $term = $request->input('q');
+            if ($term != '') {
+                $roleToExclude = 1;
+                $projects = User::query()
+                    ->whereDoesntHave('roles', function ($query) use ($roleToExclude) {
+                        $query->where('id', $roleToExclude);
+                    })->where('id', '!=', auth()->id())
+                    ->where('name', 'LIKE', '%' . $term . '%')
+                    ->paginate(4);
+                $projects->appends(array(
+                    'q' =>  $request->input('q'),
+                ));
+                return view('screens.user.profile.follower', compact('projects'));
+            }
+            $roleToExclude = 1;
+            $projects = User::query()
+                ->whereDoesntHave('roles', function ($query) use ($roleToExclude) {
+                    $query->where('id', $roleToExclude);
+                })->where('id', '!=', auth()->id())
                 ->paginate(4);
+
             return view('screens.user.profile.follower', compact('projects'));
         }
         //For Chef
         elseif ($role) {
-            // $projects_count = User::whereDoesntHave('roles')
-            //     ->orwhereHas("role", function ($q) {
-            //         $q->where("name", '!=', "Admin");
-            //     })->where('id', '!=', auth()->id())->get();
-
-            // $projects_count=User::where([
-            //     ['name', '!=', Null],
-            //     [function ($query) use ($request) {
-            //         if (($term = $request->term)) {
-            //             $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
-            //         }
-            //     }]
-            // ])->get();
-
-            $projects = User::DoesntHave('roles')
-                ->orwhereHas('roles', function ($q) {
-                    $q->whereIn('name', ['Chef', 'Home-Chef']);
-                })
-                ->where('id', '!=', auth()->id())
-                // ->where([
-                //         ['name', '!=', Null],
-                //         [function ($query) use ($request) {
-
-                //             if (($term = $request->term)) {
-                //                 $query->orWhere('name', 'LIKE', '%' . $term . '%');
-                //             }
-                //         }]
-                //     ])
-                ->orderBy("id", "asc")
+            $term = $request->input('q');
+            if ($term != '') {
+                $roleToExclude = 1;
+                $projects = User::query()
+                    ->whereDoesntHave('roles', function ($query) use ($roleToExclude) {
+                        $query->where('id', $roleToExclude);
+                    })->where('id', '!=', auth()->id())
+                    ->where('name', 'LIKE', '%' . $term . '%')
+                    ->paginate(4);
+                $projects->appends(array(
+                    'q' =>  $request->input('q'),
+                ));
+                return view('screens.user.profile.follower', compact('projects'));
+            }
+            $roleToExclude = 1;
+            $projects = User::query()
+                ->whereDoesntHave('roles', function ($query) use ($roleToExclude) {
+                    $query->where('id', $roleToExclude);
+                })->where('id', '!=', auth()->id())
                 ->paginate(4);
 
-
-            // $projects=User::where(function ($query) {
-            //         $query->whereDoesntHave('roles')->whereHas("roles", function ($q) {
-            //             $q->where("id", '!=', "2")->get();
-            //         })->where('id', '!=', auth()->id());
-            //     })->find();
-
-            // ->where(function ($query) {
-            //     $query->whereDoesntHave('roles')->OrwhereHas("role", function ($q) {
-            //         $q->where("name", '!=', "Admin")->get();
-            //     })->where('id', '!=', auth()->id());
-            // })
+            return view('screens.user.profile.follower', compact('projects'));
+        }
+        //For Users
+        else {
+            $term = $request->input('q');
+            if ($term != '') {
+                $roleToExclude = 1;
+                $projects = User::query()
+                    ->whereDoesntHave('roles', function ($query) use ($roleToExclude) {
+                        $query->where('id', $roleToExclude);
+                    })->where('id', '!=', auth()->id())
+                    ->where('name', 'LIKE', '%' . $term . '%')
+                    ->paginate(4);
+                $projects->appends(array(
+                    'q' =>  $request->input('q'),
+                ));
+                return view('screens.user.profile.follower', compact('projects'));
+            }
+            $roleToExclude = 1;
+            $projects = User::query()
+                ->whereDoesntHave('roles', function ($query) use ($roleToExclude) {
+                    $query->where('id', $roleToExclude);
+                })->where('id', '!=', auth()->id())
+                ->paginate(4);
 
             return view('screens.user.profile.follower', compact('projects'));
-            // $projects = User::where('name', '!=', 'Chef')->where([
-            //     ['name', '!=', Null],
-            //     [function ($query) use ($request) {
-            //         if (($term = $request->term)) {
-            //             $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
-            //         }
-            //     }]
-            // ])
-            // $projects = User::whereHas("role", function ($q) {
-            //     $q->where("name", '!=', "Admin");
-            // })->where([
-            //     ['name', '!=', Null],
-            //     [function ($query) use ($request) {
-            //         if (($term = $request->term)) {
-            //             $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
-            //         }
-            //     }]
-            // ])
+
+
+            // $projects = User::query()->where('id', '!=', auth()->id())
+            //     ->whereDoesntHave('roles')
+            //     ->orwhereHas('roles', function ($q) {
+            //         $q->whereIn('name', ['Chef', 'Home-Chef']);
+            //     })
             //     ->orderBy("id", "asc")
             //     ->paginate(4);
-            // return view('screens.user.profile.follower', compact('projects'), compact('projects_count'));
-        } else {
-            $projects = User::query()->where('id', '!=', auth()->id())
-                ->whereDoesntHave('roles')
-                ->orwhereHas('roles', function ($q) {
-                    $q->whereIn('name', ['Chef', 'Home-Chef']);
-                })
-                ->orderBy("id", "asc")
-                ->paginate(4);
-            return view('screens.user.profile.follower', compact('projects'));
+            // return view('screens.user.profile.follower', compact('projects'));
         }
     }
 
-
-
-    // public function followUser(int $user_id )
-    // {
-    //     $user = User::find($user_id);
-    //     if (!$user) {
-    //         return redirect()->back()->with('error', 'User does not exist.');
-    //     }
-
-    //     $user->followers()->attach(auth()->user()->id);
-    //     auth()->user()->notify(new NotificationDisplay($user));
-
-    //     return redirect()->back();
-    // }
-
-    // public function unFollowUser(int $user_id)
-    // {
-    //     $user = User::find($user_id);
-    //     if (!$user) {
-    //         return redirect()->back()->with('error', 'User does not exist.');
-    //     }
-    //     $user->followers()->detach(auth()->user()->id);
-    //     return redirect()->back();
-    // }
 
 
     public function followOrUnfollowuser(Request $request)

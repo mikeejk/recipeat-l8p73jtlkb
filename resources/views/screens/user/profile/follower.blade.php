@@ -18,16 +18,14 @@
                         {{-- <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ count($projects) }} of --}}
                         {{-- {{ count($projects_count) }} --}}
                         </span>
-                        <form class="ml-5" action="/search" method="POST" role="search">
+                        <form class="ml-5" action="/my_follower" method="GET" role="search">
                             {{ csrf_field() }}
                             <div class="input-group input-group-md bg-white border-0 rounded min-w-175px">
                                 <input name="q" type="text" class="form-control bg-white border-0"
-                                    id="kt_subheader_search_form" placeholder="Search..." required />
+                                    id="kt_subheader_search_form" placeholder="Search..." value="{{ isset($_GET['q']) ? $_GET['q'] : '' }}" required />
                                 <button class="border-0 bg-primary rounded w-25 text-white p-1 m-1">Search
                                 </button>
                             </div>
-
-
                         </form>
 
                     </div>
