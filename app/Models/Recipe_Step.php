@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Recipe;
 class Recipe_Step extends Model
 {
     use HasFactory;
@@ -21,6 +21,6 @@ class Recipe_Step extends Model
     public function recipe()
     {
         // Return (recipe_step model has many data refer from the recipe model)
-        return $this->hasMany(Recipe::class, 'recipe_id');
+        return $this->belongsTo(Recipe::class, 'recipe_id');
     }
 }

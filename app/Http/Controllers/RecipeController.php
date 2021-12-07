@@ -13,6 +13,7 @@ use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Recipe_ingredient;
+use App\Models\Recipe_Step;
 
 class RecipeController extends Controller
 {
@@ -81,7 +82,6 @@ class RecipeController extends Controller
             // Else the role Home-Chef post the recipe User
         } else {
             $recipe->status = 'User';
-   
         }
         $chef = auth()->user()->hasRole('Chef');
         $home_chef = auth()->user()->hasRole('Home-Chef');
@@ -158,7 +158,8 @@ class RecipeController extends Controller
                 'bud_salt' => 'required',
                 'bud_spicy' => 'required',
                 'bud_bitter' => 'required',
-                'bud_astringent' => 'required'
+                'bud_astringent' => 'required',
+                'cover'=>'required'
             ]
         );
 
@@ -167,7 +168,7 @@ class RecipeController extends Controller
         }
 
         // Save Data
-        $recipe->upadte($data);
+        $recipe->update($data);
 
         // Declare steps
         $steps = $request->steps;
@@ -265,6 +266,7 @@ class RecipeController extends Controller
                 'bud_spicy'  => 'required',
                 'bud_bitter'  => 'required',
                 'bud_astringent'  => 'required',
+                'cover'  => 'required',
             ]
         );
     }
@@ -353,46 +355,45 @@ class RecipeController extends Controller
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
-  //  Recipe Search
+    //  Recipe Search
     public function search(Request $request)
     {
-    // { $projects = Recipe::whereHas("user_id", function ($q) {
-    //         $q->where("user_id", '!=', "auth()->id()");
+        // { $projects = Recipe::whereHas("user_id", function ($q) {
+        //         $q->where("user_id", '!=', "auth()->id()");
         $recipes = Recipe::when($request->term, function ($query, $term) {
             return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-         })->when($request->creator, function ($query, $creator) {
+        })->when($request->creator, function ($query, $creator) {
             return $query->where('creator', 'LIKE', '%' . $creator . '%');
-     }) 
-            
+        })
+
             ->where('user_id', '!=', auth()->id())
-            ->where('status','Approved')
+            ->where('status', 'Approved')
             // ->where('status','!=','Denide')
             // ->where('creator','!=','User')
             ->orderBy("recipe_name", "asc")->Paginate(4);
 
-            $recipes->appends($request->all());
+        $recipes->appends($request->all());
         return view('welcome', ['recipe' => $recipes]);
-  
     }
 
     public function search1(Request $request)
     {
-    // { $projects = Recipe::whereHas("user_id", function ($q) {
-    //         $q->where("user_id", '!=', "auth()->id()");
+        // { $projects = Recipe::whereHas("user_id", function ($q) {
+        //         $q->where("user_id", '!=', "auth()->id()");
         $recipes = Recipe::when($request->term, function ($query, $term) {
             return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-         })->when($request->creator, function ($query, $creator) {
-            return $query->where('creator', 'LIKE', '%' . $creator . '%'); }) 
-            
+        })->when($request->creator, function ($query, $creator) {
+            return $query->where('creator', 'LIKE', '%' . $creator . '%');
+        })
+
             ->where('user_id', '!=', auth()->id())
-            ->where('status','Approved')
+            ->where('status', 'Approved')
             // ->where('status','!=','Denide')
             // ->where('creator','!=','User')
             ->orderBy("recipe_name", "asc")->Paginate(4);
 
-            $recipes->appends($request->all());
+        $recipes->appends($request->all());
         return view('search_ingredient', ['recipe' => $recipes]);
-  
     }
 
 
@@ -414,7 +415,7 @@ class RecipeController extends Controller
     //         $recipes->appends($request->all());
     //     return view('/search_ingredient', ['recipe' => $recipes]);
     //  $data1 = collect(DB::table('roles')->get()->toArray());
-    
+
     // $data2 = collect(DB::table('recipes')->get()->toArray());
     // $results = $data1->merge($data2);
     // if ($request->ingredient!="") {
@@ -422,21 +423,17 @@ class RecipeController extends Controller
     //     $q->Where('ingredient', request('ingredient'));
     //   });   
     //   return view('/search_ingredient', ['recipe' => $data2],['ingredient' =>$data1]);
-       
+
     // }
 
 
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {
-        return view('recipe_view', compact('recipe'));
+        // writing to DB
+
+        $recipe_step = Recipe_Step::all('steps');
+
+        return view('recipe_view', compact('recipe', 'recipe_step'));
     }
-
-
-
-   
-
-    
-    
-    
 }

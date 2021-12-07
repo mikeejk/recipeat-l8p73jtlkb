@@ -235,7 +235,7 @@
 
                                     <!-- Form-Setps::start -->
                                     <div class="col-lg-8">
-                                        <label>Setps</label>
+                                        <label>Steps</label>
                                         <table id="recipeSteps" class="col-lg-12 table list">
                                             <tbody class="border border-light">
                                                 <tr>

@@ -633,7 +633,10 @@
                                                     </div>
                                         </div>  -->
                             <div class="flex w-full  flex-row relative">
-                                <img alt="gallery" class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg" src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" />
+                            <img alt="gallery" class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg" src="<?php echo asset("storage/$recipes->image")?>" />
+                            <!-- <img alt="gallery" class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg" src="{{ asset($recipes->image) }}" /> -->
+                             <!-- <img alt="gallery" class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg" src="{{  public_path('storage\image') }}" /> -->
+                                <!-- <img alt="gallery" class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg" src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" /> -->
                                 <p class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium"> {{ $recipes->recipe_name }}</p>
                                 <div class="py-1 relative z-10 h-72 w-full border-4 rounded-md border-gray-200 bg-white opacity-0 hover:opacity-100">
                                     <div class="flex flex-col h-full rounded-b-lg w-full p-2 mt-2">

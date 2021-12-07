@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\Recipe_ingredient;
+use App\Models\Recipe_Step;
 
 class Recipe extends Model implements HasMedia
 {
@@ -35,7 +36,8 @@ class Recipe extends Model implements HasMedia
         'bud_bitter',
         'bud_astringent',
         'status',
-        'creator'
+        'creator',
+        'cover'
     ];
 
     // Function - category
@@ -64,6 +66,20 @@ class Recipe extends Model implements HasMedia
     public function Recipe_Ingredient()
     {
         // return (ingredient model is belongs to this recipe model)
-        return $this->belongsTo(Recipe_Ingredient::class, 'recipe_id');
+        return $this->hasMany(Recipe_Ingredient::class, 'recipe_id');
+    }
+    public function Recipe_Step()
+    {
+        // return (ingredient model is belongs to this recipe model)
+        return $this->hasMany(Recipe_Step::class, 'recipe_id');
+    }
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    }
+    public function Ingredient()
+    {
+        // return (ingredient model is belongs to this recipe model)
+        return $this->hasMany(Ingredient::class, 'recipe_id');
     }
 }

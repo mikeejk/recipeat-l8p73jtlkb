@@ -96,7 +96,6 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Role</th>
                                         <th>Mail Id</th>
                                         <th>Status</th>
                                     </tr>
@@ -130,10 +129,6 @@ $(function() {
         columns: [{
                 data: 'name',
                 name: 'name'
-            },
-            {
-                data: 'role',
-                name: 'role',
             },
             {
                 data: 'email',

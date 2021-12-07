@@ -168,7 +168,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
-
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         /*
          * Application Service Providers...
          */

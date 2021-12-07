@@ -47,7 +47,7 @@
                             <h1 class="items-center flex">Steps</h1>
                         </div>
                         <div>
-                            <h1 class="font-bold tracking-wider text-gray-700">{{ $recipe->steps }}</h1>
+                            <h1 class="font-bold tracking-wider text-gray-700">{{ $recipe_step }}</h1>
                             <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
                         </div>
                     </div>
