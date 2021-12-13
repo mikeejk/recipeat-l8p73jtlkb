@@ -655,7 +655,6 @@
                         @endforeach
                         <!-- {!! $recipe->links() !!} -->
                         <!-- {{ $recipe->render()}} -->
-
                         @else
                         <div class="flex w-3/4 mx-auto  text-white justify-center">
                             <div class="flex flex-col  md:w-1/2 w-full border-2 bg-white p-2  rounded-lg">
@@ -671,6 +670,7 @@
 
                             </div>
                         </div>
+
                         @endif
                     </div>
                     @endif

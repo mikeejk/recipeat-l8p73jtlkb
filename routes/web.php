@@ -8,6 +8,7 @@ use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CommentController;
 use App\Http\Livewire\Questionnaire;
 use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
@@ -73,7 +74,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Recipe Search - Result Display Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}', [RecipeController::class, 'view_recipe']);
-
+//Recipe Like
+Route::middleware(['auth:sanctum', 'verified'])->get('like', [RecipeController::class, 'likePost'])->name('like');
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
@@ -309,10 +311,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 
 // User Questionnaire Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
-    if (auth()->user()->hasRole('Admin')) {
-        return view('dashboard');
-    } else {
+    $first_login = 0;
+    if ( (auth()->user()->first_login)) {
+        $first_login = 1;
+        auth()->user()->first_login = 1;
         return view('screens.user.home.questions');
+    }
+    else{
+     return view('dashboard');
     }
 })->name('home');
 
@@ -366,3 +372,11 @@ Route::get('/notifications', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
     return view('screens.user.profile.login2');
 });
+//---------------------------------------------------------------------------
+//                               Comment Route
+//-------------------------------------------------------------------------------
+ Route::middleware(['auth:sanctum', 'verified'])->post('/comment/store', [CommentController::class,'store'])->name('comment.add');
+ Route::middleware(['auth:sanctum', 'verified'])->post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
+// Route::middleware(['auth:sanctum', 'verified'])->post('/comments', [CommentController::class,'store'])->name('comment.store');
+//-------------------------------------------------------------------
+Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');

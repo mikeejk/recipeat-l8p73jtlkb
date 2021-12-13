@@ -36,6 +36,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                           </svg>
                     </button> -->
+                    {{-- <span class="pull-right">
+                                            <span class="like-btn">
+                                                <i id="like{{$recipe->id}}" class="glyphicon glyphicon-thumbs-up {{ auth()->user()->hasLiked($recipe) ? 'like-recipe' : '' }}"></i> <div id="like{{$recipe->id}}-bs3">{{ $recipe->likers()->get()->count() }}</div>
+                                            </span>
+                                        </span> --}}
                 </div>
 
                 <p class="text-gray-500 mt-2">{{ $recipe->description }}</p>
@@ -54,7 +59,7 @@
                     <div></div>
                 </div>
 
-                <h1 class="text-gray-700 font-bold tracking-wider">Taste Bud</h1>
+                <!-- <h1 class="text-gray-700 font-bold tracking-wider">Taste Bud</h1>
                 <div class="my-10">
                     <div class="flex justify-between items-center">
                         <div class="flex justify-items-start gap-5 items-stretch">
@@ -90,11 +95,33 @@
                                 {{ $recipe->bud_sour }}</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Meta Description</h1>
+                <!-- <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Meta Description</h1>
                 <textarea class="w-full outline-none border-2 border-gray-300 py-3  rounded-sm mt-4"> {{ $recipe->meta_description }}
-                    </textarea>
+                    </textarea> -->
+                    <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Comments</h1>
+                    <div class="flex border-2 mt-2">
+                    <div class="p-2">
+                    <div class="card-body">
+                    <h5>Display Comments</h5>
+
+                @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' => $recipe->id])
+
+                <hr />
+               </div>
+               <div class="card-body">
+                <h5>Leave a comment</h5>
+                <form method="post"action="{{ route('comment.add') }}">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="comment" class="form-control p-2 border-6" />
+                        <input type="hidden" name="recipe_id" value="{{ $recipe->id }}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Add Comment" />
+                    </div>
+                </form>
             </div>
             <div class="w-full lg:w-2/5 order-1 lg:order-last flex flex-col justify-start gap-7">
                 <div class="bg-white p-2 rounded-lg text-center">

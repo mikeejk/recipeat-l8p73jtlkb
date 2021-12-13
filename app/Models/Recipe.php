@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\Recipe_ingredient;
 use App\Models\Recipe_Step;
+use App\Models\Comment;
+use overtrue\laravelFollow\Traits\CanBeLiked;
+
 
 class Recipe extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use CanBeLiked;
 
     protected $fillable = [
 

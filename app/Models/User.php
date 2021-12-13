@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Overtrue\LaravelFollow\Traits\CanLike;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -88,12 +88,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function follower()
     {
-        return $this->belongsTo(Follower::class, 'followers','follower_id', 'leader_id');
+        return $this->belongsTo(Follower::class, 'followers', 'follower_id', 'leader_id');
     }
     public function isFollowing($user)
     {
 
-        return $this->following()->where('leader_id',$user->id)->count();
+        return $this->following()->where('leader_id', $user->id)->count();
         // return !!$this->followers()->where('follower_id', $user->id)->count();
     }
 
@@ -108,8 +108,10 @@ class User extends Authenticatable implements MustVerifyEmail
     // }
     public function role()
     {
-        return $this->belongsToMany(Role::class,'user_id');
+        return $this->belongsToMany(Role::class, 'user_id');
     }
-
-
+    // public function comments()
+    // {
+    //     return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    // }
 }
