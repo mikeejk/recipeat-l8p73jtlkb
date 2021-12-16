@@ -31,6 +31,7 @@
             <div class="bg-white rounded-md w-full lg:w-1/3 p-5 rounded-lg order-2 lg:order-first">
                 <div class="flex w-full justify-between">
                     <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1>
+                    @include('like', ['model' => $recipe])
                     <!-- <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -115,7 +116,7 @@
                 <form method="post"action="{{ route('comment.add') }}">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="comment" class="form-control p-2 border-6" />
+                        <input type="text" name="comment" placeholder="enter your comment here.." class="form-control p-2 border-6" />
                         <input type="hidden" name="recipe_id" value="{{ $recipe->id }}" />
                     </div>
                     <div class="form-group">

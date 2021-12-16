@@ -8,6 +8,7 @@ use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Livewire\Questionnaire;
 use App\Http\Livewire\ChefQuestion;
@@ -16,7 +17,6 @@ use App\Http\Controllers\FollowController;
 use App\Models\User;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Request;
-use App\Notifications\NewFollower;
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Recipe Search - Result Display Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}', [RecipeController::class, 'view_recipe']);
 //Recipe Like
-Route::middleware(['auth:sanctum', 'verified'])->get('like', [RecipeController::class, 'likePost'])->name('like');
+// Route::middleware(['auth:sanctum', 'verified'])->get('like', [RecipeController::class, 'likePost'])->name('like');
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
@@ -373,10 +373,42 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
     return view('screens.user.profile.login2');
 });
 //---------------------------------------------------------------------------
-//                               Comment Route
+//                               Comment Routes
 //-------------------------------------------------------------------------------
  Route::middleware(['auth:sanctum', 'verified'])->post('/comment/store', [CommentController::class,'store'])->name('comment.add');
  Route::middleware(['auth:sanctum', 'verified'])->post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
 // Route::middleware(['auth:sanctum', 'verified'])->post('/comments', [CommentController::class,'store'])->name('comment.store');
-//-------------------------------------------------------------------
-Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');
+//-----------------------------------------------------------------------------------------------
+//                                Like Routes
+//--------------------------------------------------------------------------------------------------
+// Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');
+Route::get('/', function (Request $request) {
+    //
+    // This is a demo project. We create & authenticate a random user
+    // so that we don't have to bother with authorization later on.
+    //
+    // DO NOT COPY/PASTE THIS CODE.
+    // DO NOT RUN THIS CODE IN PRODUCTION.
+    //
+    // if (User::count() < 3) {
+    //     User::factory()->count(3)->create();
+    // }
+
+    // if (auth()->guest() && $request->has('login')) {
+    //     auth()->login(User::inRandomOrder()->first());
+    // }
+
+    // if (auth()->check() && $request->has('logout')) {
+    //     auth()->logout();
+    // }
+
+    if (Recipe::count() < 5) {
+        Recipe::factory()->count(5)->create();
+    }
+
+    $posts = Recipe::latest()->with('likes')->take(5)->get();
+
+    return view('recipe_view', compact('recipes'));
+});
+Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class,'like'])->name('like');
+Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class,'unlike'])->name('unlike');
