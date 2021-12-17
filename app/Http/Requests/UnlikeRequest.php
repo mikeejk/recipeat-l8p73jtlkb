@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 use App\Http\Requests\LikeRequest;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class UnlikeRequest extends LikeRequest
 {
     /**

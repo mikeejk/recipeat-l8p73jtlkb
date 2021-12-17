@@ -8,14 +8,18 @@ use Spatie\MediaLibrary\HasMedia;
 use App\Models\Recipe_ingredient;
 use App\Models\Recipe_Step;
 use App\Models\Comment;
-use overtrue\laravelFollow\Traits\CanBeLiked;
+use App\Contracts\Likeable;
+use App\Models\Concerns\Likes;
 
 
-class Recipe extends Model implements HasMedia
+// use Overtrue\LaravelLike\Traits\Likeable;
+
+class Recipe extends Model implements Likeable,HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
-    use CanBeLiked;
+    // use Likeable;
+    use Likes;
 
     protected $fillable = [
 
@@ -40,7 +44,8 @@ class Recipe extends Model implements HasMedia
         'bud_astringent',
         'status',
         'creator',
-        'cover'
+        // 'cover'
+        'image',
     ];
 
     // Function - category
@@ -49,7 +54,6 @@ class Recipe extends Model implements HasMedia
         // return (category model is belongs to this recipe model)
         return $this->belongsTo(Category::class, 'category_id');
     }
-
     // Function - cuisine
     public function cuisine()
     {
@@ -66,15 +70,15 @@ class Recipe extends Model implements HasMedia
         // Return (role model has many data refer from the the role model)
         return $this->hasMany(Role::class, 'role_id');
     }
-    public function Recipe_Ingredient()
+    public function Recipe__Ingredient()
     {
         // return (ingredient model is belongs to this recipe model)
-        return $this->hasMany(Recipe_Ingredient::class, 'recipe_id');
+        return $this->hasMany(Recipe__Ingredient::class, 'recipe_id');
     }
-    public function Recipe_Step()
+    public function Recipe__Step()
     {
         // return (ingredient model is belongs to this recipe model)
-        return $this->hasMany(Recipe_Step::class, 'recipe_id');
+        return $this->hasMany(Recipe__Step::class, 'recipe_id');
     }
     public function comments()
     {

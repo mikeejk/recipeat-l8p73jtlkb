@@ -169,6 +169,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+        // \Overtrue\LaravelLike\Like::class,
         /*
          * Application Service Providers...
          */
