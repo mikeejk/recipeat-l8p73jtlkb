@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -30,4 +30,4 @@ class CreateLikesTable extends Migration
     {
         Schema::dropIfExists('likes');
     }
-}
+} 
