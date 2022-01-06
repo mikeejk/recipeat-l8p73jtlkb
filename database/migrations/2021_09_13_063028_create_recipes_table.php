@@ -25,6 +25,7 @@ class CreateRecipesTable extends Migration
 
             // User Entered - Data Saving
             $table->string('recipe_name');
+            $table->string('recipe_image');
             $table->string('preparing_time');
             $table->string('cooking_time');
             $table->integer('serves_people');
