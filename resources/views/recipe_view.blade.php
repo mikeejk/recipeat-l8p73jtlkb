@@ -48,16 +48,16 @@
 
                 <div
                     class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
-                    <div class="flex flex-col w-full justify-start gap-5 items-center">
+                    <div class="flex flex-col w-full justify-start gap-1 items-center">
                         <div class="w-full h-10 flex justify-center bg-blue-700 text-white rounded-lg">
                             <h1 class="items-center flex">Steps</h1>
                         </div>
-                        <div>
-                            <h1 class="font-bold tracking-wider text-gray-700">{{ $recipe_step }}</h1>
+                        {{-- <div> --}}
+                            {{-- <h1 class="font-bold tracking-wider text-gray-700">{{ $recipe_step }}</h1> --}}
                             <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
-                        </div>
+                        {{-- </div> --}}
                     </div>
-                    <div></div>
+
                 </div>
 
                 <!-- <h1 class="text-gray-700 font-bold tracking-wider">Taste Bud</h1>
@@ -111,7 +111,7 @@
 
                 <hr />
                </div>
-               <div class="card-body">
+               <div class="card-body  overflow-auto">
                 <h5>Leave a comment</h5>
                 <form method="post"action="{{ route('comment.add') }}">
                     @csrf
@@ -124,6 +124,8 @@
                     </div>
                 </form>
             </div>
+        </div>
+        </div></div>
             <div class="w-full lg:w-2/5 order-1 lg:order-last flex flex-col justify-start gap-7">
                 <div class="bg-white p-2 rounded-lg text-center">
 

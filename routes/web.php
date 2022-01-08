@@ -381,34 +381,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
 //-----------------------------------------------------------------------------------------------
 //                                Like Routes
 //--------------------------------------------------------------------------------------------------
-// Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');
-Route::get('/', function (Request $request) {
-    //
-    // This is a demo project. We create & authenticate a random user
-    // so that we don't have to bother with authorization later on.
-    //
-    // DO NOT COPY/PASTE THIS CODE.
-    // DO NOT RUN THIS CODE IN PRODUCTION.
-    //
-    // if (User::count() < 3) {
-    //     User::factory()->count(3)->create();
-    // }
 
-    // if (auth()->guest() && $request->has('login')) {
-    //     auth()->login(User::inRandomOrder()->first());
-    // }
-
-    // if (auth()->check() && $request->has('logout')) {
-    //     auth()->logout();
-    // }
-
-    if (Recipe::count() < 5) {
-        Recipe::factory()->count(5)->create();
-    }
-
-    $posts = Recipe::latest()->with('likes')->take(5)->get();
-
-    return view('recipe_view', compact('recipes'));
-});
 Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class,'like'])->name('like');
 Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class,'unlike'])->name('unlike');
