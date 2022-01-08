@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 use App\Models\Category;
@@ -12,8 +13,8 @@ use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Models\Pinboard;
 use App\Models\Recipe_ingredient;
-use App\Models\Recipe_Step;
 
 class RecipeController extends Controller
 {
@@ -355,85 +356,125 @@ class RecipeController extends Controller
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
-    //  Recipe Search
-    public function search(Request $request)
-    {
-        // { $projects = Recipe::whereHas("user_id", function ($q) {
-        //         $q->where("user_id", '!=', "auth()->id()");
-        $recipes = Recipe::when($request->term, function ($query, $term) {
-            return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-        })->when($request->creator, function ($query, $creator) {
-            return $query->where('creator', 'LIKE', '%' . $creator . '%');
-        })
-
-            ->where('user_id', '!=', auth()->id())
-            ->where('status', 'Approved')
-            // ->where('status','!=','Denide')
-            // ->where('creator','!=','User')
-            ->orderBy("recipe_name", "asc")->Paginate(4);
-
-        $recipes->appends($request->all());
-        return view('welcome', ['recipe' => $recipes]);
-    }
-
-    public function search1(Request $request)
-    {
-        // { $projects = Recipe::whereHas("user_id", function ($q) {
-        //         $q->where("user_id", '!=', "auth()->id()");
-        $recipes = Recipe::when($request->term, function ($query, $term) {
-            return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-        })->when($request->creator, function ($query, $creator) {
-            return $query->where('creator', 'LIKE', '%' . $creator . '%');
-        })
-
-            ->where('user_id', '!=', auth()->id())
-            ->where('status', 'Approved')
-            // ->where('status','!=','Denide')
-            // ->where('creator','!=','User')
-            ->orderBy("recipe_name", "asc")->Paginate(4);
-
-        $recipes->appends($request->all());
-        return view('search_ingredient', ['recipe' => $recipes]);
-    }
-
-
-
-
-
-    // public function search1(Request $request)
-    // {  
+    // //  Recipe Search
+    // public function search(Request $request)
+    // {
+    //     // { $projects = Recipe::whereHas("user_id", function ($q) {
+    //     //         $q->where("user_id", '!=', "auth()->id()");
     //     $recipes = Recipe::when($request->term, function ($query, $term) {
-    //         return $query->where('$ingredient', 'LIKE', '%' . $term . '%');
+    //         return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
+    //     })->when($request->creator, function ($query, $creator) {
+    //         return $query->where('creator', 'LIKE', '%' . $creator . '%');
     //     })
 
-    //     //     ->when($request->status, function ($query, $status) {
-    //     //         return $query->where('status', 'LIKE', '%' . $status . '%');
-    //     //     })
     //         ->where('user_id', '!=', auth()->id())
-    //         ->where('status','=','User')
-    //         ->paginate(4);
-    //         $recipes->appends($request->all());
-    //     return view('/search_ingredient', ['recipe' => $recipes]);
-    //  $data1 = collect(DB::table('roles')->get()->toArray());
+    //         ->where('status', 'Approved')
+    //         // ->where('status','!=','Denide')
+    //         // ->where('creator','!=','User')
+    //         ->orderBy("recipe_name", "asc")->Paginate(4);
 
-    // $data2 = collect(DB::table('recipes')->get()->toArray());
-    // $results = $data1->merge($data2);
-    // if ($request->ingredient!="") {
-    //   $results->when(request('ingredient'), function($q){
-    //     $q->Where('ingredient', request('ingredient'));
-    //   });   
-    //   return view('/search_ingredient', ['recipe' => $data2],['ingredient' =>$data1]);
-
+    //     $recipes->appends($request->all());
+    //     return view('welcome', ['recipe' => $recipes]);
     // }
 
+    // public function search1(Request $request)
+    // {
+    //     // { $projects = Recipe::whereHas("user_id", function ($q) {
+    //     //         $q->where("user_id", '!=', "auth()->id()");
+    //     $recipes = Recipe::when($request->term, function ($query, $term) {
+    //         return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
+    //     })->when($request->creator, function ($query, $creator) {
+    //         return $query->where('creator', 'LIKE', '%' . $creator . '%');
+    //     })
 
-    // Recipe result view
-    public function view_recipe(Recipe $recipe)
-    {
-        // writing to DB
+    //         ->where('user_id', '!=', auth()->id())
+    //         ->where('status', 'Approved')
+    //         // ->where('status','!=','Denide')
+    //         // ->where('creator','!=','User')
+    //         ->orderBy("recipe_name", "asc")->Paginate(4);
 
-        $recipe_step = Recipe_Step::all('steps');
+    //     $recipes->appends($request->all());
+    //     return view('search_ingredient', ['recipe' => $recipes]);
+    // }
+    // // Recipe result view
+     //  Recipe Search
+     public function search(Request $request)
+     {
+     // { $projects = Recipe::whereHas("user_id", function ($q) {
+     //         $q->where("user_id", '!=', "auth()->id()");
+     $term  = $request->get('term');
+     $creator = $request->get('creator');
+     if($term){
+         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
+            ->where('creator', 'LIKE', '%' . $creator . '%')
+             ->where('user_id', '!=', auth()->id())
+             ->where('status','Approved')
+             // ->where('status','!=','Denide')
+             // ->where('creator','!=','User')
+             ->orderBy("recipe_name", "asc")->Paginate(4);
+             $recipe->appends(array(
+               'term' => $request->get('term'),
+           ));
+         return view('welcome',compact('recipe'));
+       }
+         return view('welcome');
 
-        return view('recipe_view', compact('recipe', 'recipe_step'));
-    }
+     }
+
+
+       //  Recipe Search for non login users
+       public function nonLoginUserSearch(Request $request)
+       {
+       // { $projects = Recipe::whereHas("user_id", function ($q) {
+       //         $q->where("user_id", '!=', "auth()->id()");
+       $term  = $request->get('term');
+       $creator = $request->get('creator');
+       if($term){
+           $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
+              ->where('creator', 'LIKE', '%' . $creator . '%')
+               ->where('user_id', '!=', auth()->id())
+               ->where('status','Approved')
+               // ->where('status','!=','Denide')
+               // ->where('creator','!=','User')
+               ->orderBy("recipe_name", "asc")->Paginate(4);
+               $recipe->appends(array(
+                 'term' => $request->get('term'),
+             ));
+
+           return view('welcome_withoutLogin',compact('recipe'));
+         }
+         return view('welcome_withoutLogin');
+       }
+
+     public function search1(Request $request)
+     {
+     // { $projects = Recipe::whereHas("user_id", function ($q) {
+     //         $q->where("user_id", '!=', "auth()->id()");
+         $recipes = Recipe::when($request->term, function ($query, $term) {
+             return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
+          })->when($request->creator, function ($query, $creator) {
+             return $query->where('creator', 'LIKE', '%' . $creator . '%'); })
+
+             ->where('user_id', '!=', auth()->id())
+             ->where('status','Approved')
+             // ->where('status','!=','Denide')
+             // ->where('creator','!=','User')
+             ->orderBy("recipe_name", "asc")->Paginate(4);
+
+             $recipes->appends($request->all());
+         return view('search_ingredient', ['recipe' => $recipes]);
+
+     }
+   // Recipe result view
+   public function view_recipe(Recipe $recipe)
+   {
+       $pinboards=Pinboard::all('id','pin_name');
+        return view('recipe_view', compact('recipe','pinboards'));
+       //  dd($pinboards);
+   }
+
+   public function  nonLoginUser_view_recipe(Recipe $recipe)
+   {
+       return view('recipe_view_withoutLogin', compact('recipe'));
+   }
 }

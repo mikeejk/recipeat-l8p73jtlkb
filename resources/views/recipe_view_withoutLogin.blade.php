@@ -7,15 +7,13 @@
 
     <title>Recipeat</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Fonts -->
@@ -32,390 +30,20 @@
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- end:: Custom Stylesheets -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-        html {
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%
-        }
 
-        body {
-            margin: 0
-        }
-
-        a {
-            background-color: transparent
-        }
-
-        [hidden] {
-            display: none
-        }
-
-        html {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-            line-height: 1.5
-        }
-
-        *,
-        :after,
-        :before {
-            box-sizing: border-box;
-            border: 0 solid #e2e8f0
-        }
-
-        a {
-            color: inherit;
-            text-decoration: inherit
-        }
-
-        svg,
-        video {
-            display: block;
-            vertical-align: middle
-        }
-
-        video {
-            max-width: 100%;
-            height: auto
-        }
-
-        .bg-white {
-            --bg-opacity: 1;
-            background-color: #fff;
-            background-color: rgba(255, 255, 255, var(--bg-opacity))
-        }
-
-        .bg-gray-100 {
-            --bg-opacity: 1;
-            background-color: #f7fafc;
-            background-color: rgba(247, 250, 252, var(--bg-opacity))
-        }
-
-        .border-gray-200 {
-            --border-opacity: 1;
-            border-color: #edf2f7;
-            border-color: rgba(237, 242, 247, var(--border-opacity))
-        }
-
-        .border-t {
-            border-top-width: 1px
-        }
-
-        .flex {
-            display: flex
-        }
-
-        .grid {
-            display: grid
-        }
-
-        .hidden {
-            display: none
-        }
-
-        .items-center {
-            align-items: center
-        }
-
-        .justify-center {
-            justify-content: center
-        }
-
-        .font-semibold {
-            font-weight: 600
-        }
-
-        .h-5 {
-            height: 1.25rem
-        }
-
-        .h-8 {
-            height: 2rem
-        }
-
-        .h-16 {
-            height: 4rem
-        }
-
-        .text-sm {
-            font-size: .875rem
-        }
-
-        .text-lg {
-            font-size: 1.125rem
-        }
-
-        .leading-7 {
-            line-height: 1.75rem
-        }
-
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto
-        }
-
-        .ml-1 {
-            margin-left: .25rem
-        }
-
-        .mt-2 {
-            margin-top: .5rem
-        }
-
-        .mr-2 {
-            margin-right: .5rem
-        }
-
-        .ml-2 {
-            margin-left: .5rem
-        }
-
-        .mt-4 {
-            margin-top: 1rem
-        }
-
-        .ml-4 {
-            margin-left: 1rem
-        }
-
-        .mt-8 {
-            margin-top: 2rem
-        }
-
-        .ml-12 {
-            margin-left: 3rem
-        }
-
-        .-mt-px {
-            margin-top: -1px
-        }
-
-        .max-w-6xl {
-            max-width: 72rem
-        }
-
-        .min-h-screen {
-            min-height: 100vh
-        }
-
-        .overflow-hidden {
-            overflow: hidden
-        }
-
-        .p-6 {
-            padding: 1.5rem
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem
-        }
-
-        .pt-8 {
-            padding-top: 2rem
-        }
-
-        .fixed {
-            position: fixed
-        }
-
-        .relative {
-            position: relative
-        }
-
-        .top-0 {
-            top: 0
-        }
-
-        .right-0 {
-            right: 0
-        }
-
-        .shadow {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)
-        }
-
-        .text-center {
-            text-align: center
-        }
-
-        .text-gray-200 {
-            --text-opacity: 1;
-            color: #edf2f7;
-            color: rgba(237, 242, 247, var(--text-opacity))
-        }
-
-        .text-gray-300 {
-            --text-opacity: 1;
-            color: #e2e8f0;
-            color: rgba(226, 232, 240, var(--text-opacity))
-        }
-
-        .text-gray-400 {
-            --text-opacity: 1;
-            color: #cbd5e0;
-            color: rgba(203, 213, 224, var(--text-opacity))
-        }
-
-        .text-gray-500 {
-            --text-opacity: 1;
-            color: #a0aec0;
-            color: rgba(160, 174, 192, var(--text-opacity))
-        }
-
-        .text-gray-600 {
-            --text-opacity: 1;
-            color: #718096;
-            color: rgba(113, 128, 150, var(--text-opacity))
-        }
-
-        .text-gray-700 {
-            --text-opacity: 1;
-            color: #4a5568;
-            color: rgba(74, 85, 104, var(--text-opacity))
-        }
-
-        .text-gray-900 {
-            --text-opacity: 1;
-            color: #1a202c;
-            color: rgba(26, 32, 44, var(--text-opacity))
-        }
-
-        .underline {
-            text-decoration: underline
-        }
-
-        .antialiased {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
-        }
-
-        .w-5 {
-            width: 1.25rem
-        }
-
-        .w-8 {
-            width: 2rem
-        }
-
-        .w-auto {
-            width: auto
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr))
-        }
-
-        @media (min-width:640px) {
-            .sm\:rounded-lg {
-                border-radius: .5rem
-            }
-
-            .sm\:block {
-                display: block
-            }
-
-            .sm\:items-center {
-                align-items: center
-            }
-
-            .sm\:justify-start {
-                justify-content: flex-start
-            }
-
-            .sm\:justify-between {
-                justify-content: space-between
-            }
-
-            .sm\:h-20 {
-                height: 5rem
-            }
-
-            .sm\:ml-0 {
-                margin-left: 0
-            }
-
-            .sm\:px-6 {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem
-            }
-
-            .sm\:pt-0 {
-                padding-top: 0
-            }
-
-            .sm\:text-left {
-                text-align: left
-            }
-
-            .sm\:text-right {
-                text-align: right
-            }
-        }
-
-        @media (min-width:768px) {
-            .md\:border-t-0 {
-                border-top-width: 0
-            }
-
-            .md\:border-l {
-                border-left-width: 1px
-            }
-
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr))
-            }
-        }
-
-        @media (min-width:1024px) {
-            .lg\:px-8 {
-                padding-left: 2rem;
-                padding-right: 2rem
-            }
-        }
-
-        @media (prefers-color-scheme:dark) {
-            .dark\:bg-gray-800 {
-                --bg-opacity: 1;
-                background-color: #2d3748;
-                background-color: rgba(45, 55, 72, var(--bg-opacity))
-            }
-
-            .dark\:bg-gray-900 {
-                --bg-opacity: 1;
-                background-color: #1a202c;
-                background-color: rgba(26, 32, 44, var(--bg-opacity))
-            }
-
-            .dark\:border-gray-700 {
-                --border-opacity: 1;
-                border-color: #4a5568;
-                border-color: rgba(74, 85, 104, var(--border-opacity))
-            }
-
-            .dark\:text-white {
-                --text-opacity: 1;
-                color: #fff;
-                color: rgba(255, 255, 255, var(--text-opacity))
-            }
-
-            .dark\:text-gray-400 {
-                --text-opacity: 1;
-                color: #cbd5e0;
-                color: rgba(203, 213, 224, var(--text-opacity))
-            }
-        }
-
-    </style>
 
     <style>
         body {
             font-family: 'Nunito', sans-serif;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+
+        .pagination {
+            color: inherit !important;
         }
 
     </style>
@@ -426,113 +54,125 @@
             background-color: #28b3f3;
         }
 
-    </style>
-    <!--Style for Buttons-->
-    <style>
-        /* Nina */
-        .button--nina {
-            -webkit-transition: background-color 0.3s;
-            transition: background-color 0.3s;
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
-        .button--nina>span {
-            display: inline-block;
-            padding: 0;
-            opacity: 0;
-            -webkit-transform: translate3d(0, -10px, 0);
-            transform: translate3d(0, -10px, 0);
-            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-            transition: transform 0.3s, opacity 0.3s;
-            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
-        .button--nina::before {
-            content: attr(data-text);
-            position: absolute;
+        .animate-fadeIn {
+            -webkit-animation: fadeIn 2s ease-in forwards;
+            animation: fadeIn 3s ease-in forwards;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-            transition: transform 0.3s, opacity 0.3s;
-            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
         }
 
-        .button--nina:hover::before {
-            opacity: 0;
-            -webkit-transform: translate3d(0, 100%, 0);
-            transform: translate3d(0, 100%, 0);
+        .sidenav a {
+
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+
+            transition: 0.3s;
         }
 
-        .button--nina:hover>span {
-            opacity: 1;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+        .sidenav a:hover {
+            color: #f1f1f1;
         }
 
-        .button--nina:hover>span:nth-child(1) {
-            -webkit-transition-delay: 0.045s;
-            transition-delay: 0.045s;
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
         }
 
-        .button--nina:hover>span:nth-child(2) {
-            -webkit-transition-delay: 0.09s;
-            transition-delay: 0.09s;
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
         }
 
-        .button--nina:hover>span:nth-child(3) {
-            -webkit-transition-delay: 0.135s;
-            transition-delay: 0.135s;
-        }
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
 
-        .button--nina:hover>span:nth-child(4) {
-            -webkit-transition-delay: 0.18s;
-            transition-delay: 0.18s;
-        }
-
-        .button--nina:hover>span:nth-child(5) {
-            -webkit-transition-delay: 0.225s;
-            transition-delay: 0.225s;
-        }
-
-        .button--nina:hover>span:nth-child(6) {
-            -webkit-transition-delay: 0.27s;
-            transition-delay: 0.27s;
-        }
-
-        .button--nina:hover>span:nth-child(7) {
-            -webkit-transition-delay: 0.315s;
-            transition-delay: 0.315s;
-        }
-
-        .button--nina:hover>span:nth-child(8) {
-            -webkit-transition-delay: 0.36s;
-            transition-delay: 0.36s;
-        }
-
-        .button--nina:hover>span:nth-child(9) {
-            -webkit-transition-delay: 0.405s;
-            transition-delay: 0.405s;
-        }
-
-        .button--nina:hover>span:nth-child(10) {
-            -webkit-transition-delay: 0.45s;
-            transition-delay: 0.45s;
+            .sidenav a {
+                font-size: 18px;
+            }
         }
 
     </style>
+
 </head>
 
 <body class="antialiased">
 
     <section>
         <!-- component -->
-        <div>
-            <div class="md:h-screen md:py-0 py-24 w-full sm:mt-0 flex flex-col justify-center items-center bg-fixed bg-center"
-                style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
+        <div class=" py-10 h-auto  bg-fixed bg-center"
+            style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
+            <div id="mySidenav" class="sidenav text-white">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <div class="bg-white  border text-gray-900 border-gray-200  dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <a href="/login">
+                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full rounded-t-lg inline-flex items-center ">
+                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/login-rounded-right--v1.png"/>
+                        <span class="text-lg ml-2">Login</span>
+                    </button>
+                </a>
+                <a href="/">
+                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full inline-flex items-center dark:border-gray-600 ">
+                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/soup-plate.png"/>
+                        <span class="text-lg ml-2">Recipes</span>
+
+                    </button>
+                </a>
+                <a href="/">
+                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full inline-flex items-center ">
+                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/voice-presentation.png"/>
+                        <span class="text-lg ml-2">Food Hacks</span>
+                    </button>
+                </a>
+                <a href="/contactUs">
+                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium w-full rounded-b-lg inline-flex items-center ">
+                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/add-contact-to-company.png"/>
+                        <span class="text-lg ml-2">Contact Us</span>
+                    </button>
+                </a>
+                </div>
+            </div>
+            <div id="main" class="text-white">
+                <span style="font-size:40px;cursor:pointer" onclick="openNav()">&#9776;</span>
+            </div>
+            <div class=" md:py-16 py-20 w-full sm:mt-0 flex flex-col justify-center items-center">
                 {{-- <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a> --}}
@@ -544,8 +184,8 @@
                         -</span><span class="text-yellow-400 lg:text-5xl md:text-4xl text-3xl"> EAT
                         -</span> REPEAT</p>
                 </p>
-                <p class="text-white text-xl mt-4">Hi ! {{ Auth::user()->name }}</p>
-                <form action="/welcome" method="GET" role="search">
+                <p class="text-white text-xl mt-4"></p>
+                <form action="/" method="GET" role="search">
                     {{ csrf_field() }}
                     <div class="container flex md:w-full w-4/6 justify-center mt-4 ">
                         <div class="flex flex-row border-2 justify-center text-gray-800  mx-auto rounded-xl ">
@@ -560,8 +200,9 @@
                             </button>
                             <input type="search" name="term" id="term"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300"
-                                placeholder="Find a recipe...">
-                            <select name="creator" id="pet-select"
+                                placeholder="Find a recipe..."
+                                value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}">
+                            <select name="creator" id="sort-item"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 <option value="" class="text-gray-500">All</option>
                                 <option value="1">Chef</option>
@@ -577,17 +218,18 @@
 
                     </div>
                     <div class="flex mt-2 w-full mx-auto justify-end ">
-                        <a href="/dashboard"
+                        <a href="/login"
                             class="bg-gray-200 text-gray-700 no-underline flex justify-center rounded-sm mr-2 w-44 py-2 px-2">Advance
                             Search</a>
                     </div>
                 </form>
+
                 <div class="w-3/4 flex flex-row py-5 mx-auto">
                     @if (isset($recipe))
                         <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
-                                    <a href="/recipe_view/{{ $recipes->id }}" name="view"
+                                    <a href="/view_recipe/{{ $recipes->id }}" name="view"
                                         class="flex xl:flex-row no-underline h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
                                         <!-- <div class="flex  flex-col w-full p-2 border-2 rounded-lg">
                                                         <div class="flex items-center  justify-center w-full border-b-2">
@@ -664,6 +306,12 @@
 
                 </div>
 
+
+                <div class="mt-4">
+                    <a href="login" class="py-2 px-4 no-underline font-bold rounded text-lg bg-red-600 text-white">Sign
+                        In / Sign Up
+                    </a>
+                </div>
                 {{-- <a href="/dashboard"><button
                         class="rounded-lg absolute bg-red-600 hover:bg-red-700 text-white p-3 top-0 right-0 mt-3 mr-5">My
                         Recipe's</button>
@@ -822,10 +470,10 @@
                 </div> --}}
                 {{-- <div class=" text-white font-extrabold px-2 flex justify-center items-center rounded-lg">
                     {{ $recipe->render() }}</div> --}}
-                <!--No need>
-                <div class="block justify-center bg-white px-5">
+                <!--No need-->
+                <!-- <div class="block justify-center bg-white px-5">
 
-                </div> -->
+                </div>-->
 
 
                 {{-- <div class="flex w-full items-center justify-center p-5 py-20">
@@ -932,6 +580,132 @@
                     </div>
                 </div> --}}
             </div>
+            <div class="py-24">
+                <div class="p-4">
+                    <div class="h-auto py-20 bg-center bg-no-repeat rounded p-4 my-4 js-show-on-scroll text-white"
+                        style="background-image:linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)), url('') ">
+                        <div
+                            class="flex flex-col text-4xl font-bold w-3/4 mx-auto py-10 border-white items-center text-center justify-center">
+                            <img src="https://www.secondwifekitchen.ca/images/slider/slider-01.png" />
+                            <h1 class="mt-5 animate-bounce">
+                                A RECIPE HAS
+                                NO SOUL<h1>
+                                    <h1 class="mt-2"> YOU MUST <span class="text-yellow-500">BRING SOUL</span>
+                                        TO THE RECIPE!</h1>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <section class="text-white body-font">
+                <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center js-show-on-scroll">
+                    <div
+                        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                        <h1 class="title-font sm:text-6xl text-3xl mb-4 font-extrabold text-white">USER
+
+                        </h1>
+
+                        <div class="  w-full  flex flex-col">
+                            <div id="moka-ix3cs"
+                                class="bg-gray-400 items-center justify-center  shadow-md p-5 h-auto rounded-lg blur-3 bg-opacity-50 flex flex-col col-span-12">
+                                <h4 class="w-56 border-b-4 border-solid border-red-500 h-10  text-2xl "> What user can
+                                    do ?
+                                </h4>
+                                <h4 class="text-orange-300  mt-5 text-xl text-justify">User can search and view recipes
+                                    posted by Chef , Home Chef and other Users.He/she can also post recipes.He/She can
+                                    follow any Chef, Home Chef and other users. </h4>
+
+                                <button value="button"
+                                    class="hover:text-gray-300 bg-red-600 mt-5 text-white hover:bg-black w-68 p-2 text-xl font-bold">Discover
+                                    Your Newsfeed</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" lg:w-2/6 rounded-full md:w-1/2 bg-yellow-800 w-5/6">
+                        <div class="relativebg-gray-200  w-full h-full">
+                            <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
+                                src="assets\welcome_page_user_pic\171-1715523_man-health-club-wellness-center-resort-and-spa.png" alt="user image" />
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="text-white body-font">
+                <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center js-show-on-scroll">
+                    <div class=" lg:w-2/6 rounded-full md:w-1/2 bg-yellow-800 w-5/6">
+                        <div class="relativebg-gray-200  w-full h-full">
+                            <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
+                                src="https://www.pngitem.com/pimgs/m/36-361959_chef-png-image-chef-png-transparent-png.png"
+                                alt="user image" />
+
+                        </div>
+
+                    </div>
+                    <div
+                        class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                        <h1 class="title-font sm:text-6xl text-3xl mb-4 font-extrabold text-white">CHEF
+
+                        </h1>
+
+                        <div class="  w-full  flex flex-col">
+                            <div id="moka-ix3cs"
+                                class="bg-gray-400 items-center justify-center  shadow-md p-5 h-auto rounded-lg blur-3 bg-opacity-50 flex flex-col col-span-12">
+                                <h4 class="w-56 border-b-4 border-solid border-red-500 h-10  text-2xl "> What Chef can
+                                    do ?
+                                </h4>
+                                <h4 class="text-orange-300  mt-5 text-xl text-justify">Chef can search and view recipes
+                                    posted by Another Chef , Home Chef and other Users.He/she can also post
+                                    recipes.He/She can
+                                    follow any Another Chef, Home Chef and other users. </h4>
+
+                                <button value="button"
+                                    class="hover:text-gray-300 bg-red-600 mt-5 text-white hover:bg-black w-68 p-2 text-xl font-bold">Complete
+                                    Your Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="text-white body-font">
+                <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center js-show-on-scroll">
+                    <div
+                        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                        <h1 class="title-font sm:text-6xl text-3xl mb-4 font-extrabold text-white">HOME CHEF
+
+                        </h1>
+
+                        <div class="  w-full  flex flex-col">
+                            <div id="moka-ix3cs"
+                                class="bg-gray-400 items-center justify-center  shadow-md p-5 h-auto rounded-lg blur-3 bg-opacity-50 flex flex-col col-span-12">
+                                <h4 class="w-68 border-b-4 border-solid border-red-500 h-10  text-2xl "> What Home Chef
+                                    can
+                                    do ?
+                                </h4>
+                                <h4 class="text-orange-300  mt-5 text-xl text-justify">Home Chef can search and view
+                                    recipes
+                                    posted by Chef , another Home Chef and other Users.He/she can also post
+                                    recipes.He/She can
+                                    follow any Chef,another Home Chef and other users. </h4>
+
+                                <button value="button"
+                                    class="hover:text-gray-300 bg-red-600 mt-5 text-white hover:bg-black w-68 p-2 text-xl font-bold">
+                                    Add Recipes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" lg:w-2/6 rounded-full md:w-1/2 bg-yellow-800 w-5/6">
+                        <div class="relativebg-gray-200  w-full h-full">
+                            <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
+                                src="https://homechefs.dialameal.in/uploads/users/MealTangob74e08617172ae5c72ee20191216110626.jpg"
+                                alt="user image" />
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
         </div>
 
     </section>
@@ -1014,6 +788,45 @@
                 search_box.placeholder = "Search by Recipes";
                 tooglebtn_label.style.color = '#808080';
             }
+        }
+
+        window.onload = function() {
+            var selItem = sessionStorage.getItem("SelItem");
+            $('#sort-item').val(selItem);
+        }
+        $('#sort-item').change(function() {
+            var selVal = $(this).val();
+            sessionStorage.setItem("SelItem", selVal);
+        });
+
+        const callback = function(entries) {
+            entries.forEach((entry) => {
+                console.log(entry);
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate-fadeIn");
+                } else {
+                    entry.target.classList.remove("animate-fadeIn");
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(callback);
+
+        const targets = document.querySelectorAll(".js-show-on-scroll");
+        targets.forEach(function(target) {
+            target.classList.add("opacity-0");
+            observer.observe(target);
+        });
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
         }
     </script>
 </body>

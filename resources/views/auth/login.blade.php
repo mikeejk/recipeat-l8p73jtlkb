@@ -1,5 +1,4 @@
 @extends('layouts.bootstrap.app')
-
 @section('content')
     <!-- begin::Login -->
     <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid h-100 bg-dark" id="kt_login">
