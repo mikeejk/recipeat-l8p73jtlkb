@@ -106,14 +106,12 @@
                     <div class="p-2">
                     <div class="card-body">
                     <h5>Display Comments</h5>
-
                 @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' => $recipe->id])
-
-                <hr />
+                <hr/>
                </div>
                <div class="card-body">
                 <h5>Leave a comment</h5>
-                <form method="post"action="{{ route('comment.add') }}">
+                <form method="post"action="{{route('comment.add')}}">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="comment" placeholder="enter your comment here.." class="form-control p-2 border-6" />
@@ -126,7 +124,6 @@
             </div>
             <div class="w-full lg:w-2/5 order-1 lg:order-last flex flex-col justify-start gap-7">
                 <div class="bg-white p-2 rounded-lg text-center">
-
                     <img src="https://spicecravings.com/wp-content/uploads/2021/04/Chicken-Biryani-Featured-2-500x375.jpg"
                         alt="" class="h-60 w-full object-cover content-center rounded-t-lg" />
                     <h1 class="text-center font-bold tracking-wider text-gray-700 mt-4">

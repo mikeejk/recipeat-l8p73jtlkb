@@ -65,10 +65,18 @@ class RecipeController extends Controller
         $recipe->bud_spicy = $request->get('bud_spicy');
         $recipe->bud_bitter = $request->get('bud_bitter');
         $recipe->bud_astringent = $request->get('bud_astringent');
-
-        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-            $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+        if($request->hasfile('recipe_image'))
+        {
+            $file=$request->file('recipe_image');
+            $extention=$file->getClientOriginalExtension();
+            $filename=time().'.'.$extention;
+            $file->move('uploads/recipes/',$filename);
+            $recipe->recipe_image=$filename;
         }
+
+        // if ($request->hasFile('file') && $request->file('cover')->isValid()) {
+        //     $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+        // }
 
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
         $role = auth()->user()->hasRole('Chef');
@@ -148,6 +156,7 @@ class RecipeController extends Controller
         $data = request()->validate(
             [
                 'recipe_name' => 'required',
+                'recipe_image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'preparing_time' => 'required',
                 'cooking_time' => 'required',
                 'serves_people' => 'required',
@@ -160,13 +169,13 @@ class RecipeController extends Controller
                 'bud_spicy' => 'required',
                 'bud_bitter' => 'required',
                 'bud_astringent' => 'required',
-                'cover'=>'required'
+
             ]
         );
 
-        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-            $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
-        }
+        // if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
+        //     $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+        // }
 
         // Save Data
         $recipe->update($data);
@@ -254,6 +263,7 @@ class RecipeController extends Controller
         return request()->validate(
             [
                 'recipe_name'  => 'required',
+                'recipe_image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'preparing_time'  => 'required',
                 'cooking_time'  => 'required',
                 'serves_people'  => 'required',
@@ -267,7 +277,7 @@ class RecipeController extends Controller
                 'bud_spicy'  => 'required',
                 'bud_bitter'  => 'required',
                 'bud_astringent'  => 'required',
-                'cover'  => 'required',
+
             ]
         );
     }

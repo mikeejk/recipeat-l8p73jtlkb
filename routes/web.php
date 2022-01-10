@@ -20,19 +20,12 @@ use App\Models\Recipe;
 use Illuminate\Support\Facades\Request;
 use App\Notifications\NewFollower;
 
+
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
 // -------------------------------------------------------------------------------------------------------------------
 
-Route::get('/test', function () {
-    $notifications = auth()->user()->unreadnotifications;
-    foreach ($notifications as $notification) {
-        dd($notification->data['user']['name']);
-    }
-});
-Route::get('/markAsRead', function () {
-    auth()->user()->unreadnotifications->markAsRead();
-});
+
 // Welcome Tab
 Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
 
@@ -44,16 +37,6 @@ Route::get('/login', function () {
 Route::get('/login1', function () {
     return view('auth.login2');
 });
-
-// // Welcome Tab
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
-
-// // Welcome Tab
-// Route::get('/login1', function () {
-//     return view('auth.login2');
-// });
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Follower FOllowing Routes
@@ -76,7 +59,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 // -------------------------------------------------------------------------------------------------------------------
-//                                              dashboard
 // -------------------------------------------------------------------------------------------------------------------
 
 // Dashboard Tab
@@ -96,12 +78,13 @@ Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
+// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome_homechef', [RecipeController::class, 'homechef_search']);
+// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome_all', [RecipeController::class, 'search_all']);
 // Recipeat Customer Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 
 // Recipeat Customer Data Table - Index Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/all_user', [CreateNewUser::class, 'getIndex']);
-
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Admin Routes
@@ -258,7 +241,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Destroy Measurement Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/measurements/{measurement}/delete', [MeasurementController::class, 'destroy']);
-
     // Recipeat Measurement Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/measurement.data', [MeasurementController::class, 'anyData']);
 
@@ -353,7 +335,6 @@ Route::any('/search', function () {
         return view('screens.user.profile.follower', compact('projects'));
     }
     return view('screens.user.profile.follower');
-
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('my_follower/{profileId}/follow', [FollowController::class, 'followUser'])->name('user.follow');
@@ -375,10 +356,13 @@ Route::get('/notifications', function () {
     }
     return view('screens.user.profile.notifications_screen');
 });
+
 //Contact Us
+
 Route::get('/contactUs', function () {
     return view('contactUs');
 });
+
 
 // -------------------------------------------------------------
 //                              Test Routes
@@ -398,12 +382,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
 // Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');
 Route::get('/', function (Request $request) {
     //
-    // This is a demo project. We create & authenticate a random user
-    // so that we don't have to bother with authorization later on.
-    //
-    // DO NOT COPY/PASTE THIS CODE.
-    // DO NOT RUN THIS CODE IN PRODUCTION.
-    //
+
     // if (User::count() < 3) {
     //     User::factory()->count(3)->create();
     // }
@@ -416,11 +395,11 @@ Route::get('/', function (Request $request) {
     //     auth()->logout();
     // }
 
-    if (Recipe::count() < 5) {
-        Recipe::factory()->count(5)->create();
-    }
+    // if (Recipe::count() < 5) {
+    //     Recipe::factory()->count(5)->create();
+    // }
 
-    $posts = Recipe::latest()->with('likes')->take(5)->get();
+    $recipes = Recipe::latest()->with('likes')->take(5)->get();
 
     return view('recipe_view', compact('recipes'));
 });
