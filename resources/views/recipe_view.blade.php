@@ -30,21 +30,20 @@
 
             <div class="bg-white rounded-md w-full lg:w-1/3 p-5 rounded-lg order-2 lg:order-first">
                 <div class="flex w-full justify-between">
-                    <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1>
+                    {{-- <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1> --}}
                     @include('like', ['model' => $recipe])
                     <!-- <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                           </svg>
                     </button> -->
-                    {{-- <span class="pull-right">
-                                            <span class="like-btn">
-                                                <i id="like{{$recipe->id}}" class="glyphicon glyphicon-thumbs-up {{ auth()->user()->hasLiked($recipe) ? 'like-recipe' : '' }}"></i> <div id="like{{$recipe->id}}-bs3">{{ $recipe->likers()->get()->count() }}</div>
-                                            </span>
-                                        </span> --}}
+                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
+                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
+                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
+                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
                 </div>
 
-                <p class="text-gray-500 mt-2">{{ $recipe->description }}</p>
+                {{-- <p class="text-gray-500 mt-2">{{ $recipe->description }}</p> --}}
 
                 <div
                     class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
