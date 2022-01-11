@@ -1,5 +1,4 @@
 @extends('layouts.bootstrap.app')
-
 @section('content')
     <!-- begin::Login -->
     <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid h-100 bg-dark" id="kt_login">
@@ -11,7 +10,8 @@
                 <!--begin::Signin-->
                 <div class="login-form login-signin">
                     <!--begin::Form-->
-                    <form method="POST" action="{{ route('login') }}">
+                    {{-- <form method="POST" action="{{ route('login') }}"> --}}
+                        <form method="POST" action="/login">
                         @csrf
                         <!--begin::Title-->
                         <h1 class="text-xl text-center md:text-2xl font-bold leading-tight mt-12 mb-10 text-gray-600">

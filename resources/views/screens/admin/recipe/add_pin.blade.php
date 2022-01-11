@@ -1,0 +1,192 @@
+@extends('layouts.bootstrap.guest')
+
+@section('content')
+    <!--begin::Content-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <div class="subheader py-4 py-lg-4 subheader-transparent" id="kt_subheader">
+            <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                    <!--begin::Page Heading-->
+                    <div class="d-flex align-items-baseline flex-wrap mr-5">
+                        <!--begin::Breadcrumb-->
+                        <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-0 font-size-sm">
+                            <!-- <li class="breadcrumb-item text-muted">
+                                        <a href="" class="text-muted">Recipe</a>
+                                    </li>
+                                    <li class="breadcrumb-item text-muted">
+                                        <a href="" class="text-muted">My Recipes</a>
+                                    </li>
+                                    <li class="breadcrumb-item text-muted">
+                                        <a href="" class="text-muted">Category</a>
+                                    </li> -->
+                        </ul>
+                        <!--end::Breadcrumb-->
+                    </div>
+                    <!--end::Page Heading-->
+                </div>
+                <!--end::Info-->
+            </div>
+        </div>
+        <!--end::Subheader-->
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Notice-->
+                <div class="pb-6 pb-lg-8">
+                    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                        <!--begin::Info-->
+                        <div class="d-flex w-100 align-items-center flex-wrap">
+                            <!--begin::Page Heading-->
+                            <div class="d-flex w-100 align-items-baseline flex-wrap">
+                                <div class="card-toolbar w-100">
+                                    <!--begin::Button-->
+                                    {{-- <a href="/pins_create" style="margin-bottom: 2px;"
+                                        class="btn btn-primary col-lg-2 col-md-3 col-12 font-weight-bolder">
+                                        <span class="svg-icon svg-icon-md">
+                                            <span class="svg-icon svg-icon-white">
+                                                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/keen/releases/2021-04-21-040700/theme/demo1/dist/../src/media/svg/icons/Cooking/Dinner.svg--><svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <path
+                                                            d="M12.5,19 C8.91014913,19 6,16.0898509 6,12.5 C6,8.91014913 8.91014913,6 12.5,6 C16.0898509,6 19,8.91014913 19,12.5 C19,16.0898509 16.0898509,19 12.5,19 Z M12.5,16.4 C14.6539105,16.4 16.4,14.6539105 16.4,12.5 C16.4,10.3460895 14.6539105,8.6 12.5,8.6 C10.3460895,8.6 8.6,10.3460895 8.6,12.5 C8.6,14.6539105 10.3460895,16.4 12.5,16.4 Z M12.5,15.1 C11.0640597,15.1 9.9,13.9359403 9.9,12.5 C9.9,11.0640597 11.0640597,9.9 12.5,9.9 C13.9359403,9.9 15.1,11.0640597 15.1,12.5 C15.1,13.9359403 13.9359403,15.1 12.5,15.1 Z"
+                                                            fill="#000000" opacity="0.3" />
+                                                        <path
+                                                            d="M22,13.5 L22,13.5 C22.2864451,13.5 22.5288541,13.7115967 22.5675566,13.9954151 L23.0979976,17.8853161 C23.1712756,18.4226878 22.7950533,18.9177172 22.2576815,18.9909952 C22.2137086,18.9969915 22.1693798,19 22.125,19 L22.125,19 C21.5576012,19 21.0976335,18.5400324 21.0976335,17.9726335 C21.0976335,17.9415812 21.0990414,17.9105449 21.1018527,17.8796201 L21.4547321,13.9979466 C21.4803698,13.7159323 21.7168228,13.5 22,13.5 Z"
+                                                            fill="#000000" opacity="0.3" />
+                                                        <path
+                                                            d="M24,5 L24,12 L21,12 L21,8 C21,6.34314575 22.3431458,5 24,5 Z"
+                                                            fill="#000000"
+                                                            transform="translate(22.500000, 8.500000) scale(-1, 1) translate(-22.500000, -8.500000) " />
+                                                        <path
+                                                            d="M0.714285714,5 L1.03696911,8.32873399 C1.05651593,8.5303749 1.22598532,8.68421053 1.42857143,8.68421053 C1.63115754,8.68421053 1.80062692,8.5303749 1.82017375,8.32873399 L2.14285714,5 L2.85714286,5 L3.17982625,8.32873399 C3.19937308,8.5303749 3.36884246,8.68421053 3.57142857,8.68421053 C3.77401468,8.68421053 3.94348407,8.5303749 3.96303089,8.32873399 L4.28571429,5 L5,5 L5,8.39473684 C5,9.77544872 3.88071187,10.8947368 2.5,10.8947368 C1.11928813,10.8947368 -7.19089982e-16,9.77544872 -8.8817842e-16,8.39473684 L0,5 L0.714285714,5 Z"
+                                                            fill="#000000" />
+                                                        <path
+                                                            d="M2.5,12.3684211 L2.5,12.3684211 C2.90055463,12.3684211 3.23115721,12.6816982 3.25269782,13.0816732 L3.51381042,17.9301218 C3.54396441,18.4900338 3.11451066,18.9683769 2.55459863,18.9985309 C2.53641556,18.9995101 2.51820943,19 2.5,19 L2.5,19 C1.93927659,19 1.48472045,18.5454439 1.48472045,17.9847204 C1.48472045,17.966511 1.48521034,17.9483049 1.48618958,17.9301218 L1.74730218,13.0816732 C1.76884279,12.6816982 2.09944537,12.3684211 2.5,12.3684211 Z"
+                                                            fill="#000000" opacity="0.3" />
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </span>PinBoard
+                                    </a> --}}
+                                    <!--end::Button-->
+
+                                    <!--begin::Button-->
+
+                                    <!--end::Button-->
+
+                                    <!--begin::Button-->
+
+                                    <!--end::Button-->
+
+                                </div>
+                            </div>
+                            <!--end::Page Heading-->
+                        </div>
+                        <!--end::Info-->
+                    </div>
+                </div>
+                <!--end::Notice-->
+                <!--begin::Card-->
+                <form class="form" action="/pins" method="post">
+                    @csrf
+                    <div class="form-group bg-white row p-4 m-1">
+                        <div class="col-md-3 col-8 text-md-center text-start">
+                            <label class="col-lg-1 col-form-label ">Pin Name</label>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="las la-sitemap"></i></span></div>
+                                <input type="text" class="form-control @error('pin_name') is-invalid @enderror"
+                                    placeholder="New PinName" name="pin_name" />
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-5 mt-1">
+                            <button type="submit"
+                                class="btn btn-primary w-lg-100 w-100">Save</button>
+                        </div>
+                    </div>
+
+                    {{-- <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-9 col-4 d-lg-block d-none">
+                                <a href="/admin_recipe"><button type="button"
+                                        class="btn btn-secondary mr-2 w-lg-auto w-100">Get Back</button></a>
+                            </div>
+                            <div class="col-md-1 col-5">
+                                <button type="submit" name="action" value="category_save"
+                                    class="btn btn-primary w-lg-100 w-100">Save</button>
+                            </div>
+                            <div class="col-md-2 col-7">
+                                <button type="submit" name="action" value="category_save_next"
+                                    class="btn btn-primary w-lg-auto w-100">Save & Insert Next</button>
+                            </div>
+                        </div>
+                    </div> --}}
+                </form>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Entry-->
+        <!--begin::Data-Table-->
+        <div class="-mt-lg-10 m-1 d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Card-->
+                <div class="card-body bg-white">
+                    <table class="table" id="pinboard-table">
+                        <thead>
+                            <tr>
+                                <th>Pin Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Data-Table-->
+
+    </div>
+    <!--end::Content-->
+
+    @push('scripts')
+        <script>
+            $(function() {
+                $('#pinboard-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: 'pins.data',
+                    columns: [{
+                            data: 'pin_name',
+                            name: 'pin_name',
+                            orderable: false
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            searchable: false,
+                            orderable: false
+                        },
+                    ]
+                });
+            });
+        </script>
+    @endpush
+    <style>
+        .mt {
+            margin-top: -50px !important;
+        }
+
+    </style>
+@endsection
