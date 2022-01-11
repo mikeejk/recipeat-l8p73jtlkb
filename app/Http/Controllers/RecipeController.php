@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 use App\Models\Category;
@@ -366,46 +365,6 @@ class RecipeController extends Controller
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
-    // //  Recipe Search
-    // public function search(Request $request)
-    // {
-    //     // { $projects = Recipe::whereHas("user_id", function ($q) {
-    //     //         $q->where("user_id", '!=', "auth()->id()");
-    //     $recipes = Recipe::when($request->term, function ($query, $term) {
-    //         return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-    //     })->when($request->creator, function ($query, $creator) {
-    //         return $query->where('creator', 'LIKE', '%' . $creator . '%');
-    //     })
-
-    //         ->where('user_id', '!=', auth()->id())
-    //         ->where('status', 'Approved')
-    //         // ->where('status','!=','Denide')
-    //         // ->where('creator','!=','User')
-    //         ->orderBy("recipe_name", "asc")->Paginate(4);
-
-    //     $recipes->appends($request->all());
-    //     return view('welcome', ['recipe' => $recipes]);
-    // }
-
-    // public function search1(Request $request)
-    // {
-    //     // { $projects = Recipe::whereHas("user_id", function ($q) {
-    //     //         $q->where("user_id", '!=', "auth()->id()");
-    //     $recipes = Recipe::when($request->term, function ($query, $term) {
-    //         return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-    //     })->when($request->creator, function ($query, $creator) {
-    //         return $query->where('creator', 'LIKE', '%' . $creator . '%');
-    //     })
-
-    //         ->where('user_id', '!=', auth()->id())
-    //         ->where('status', 'Approved')
-    //         // ->where('status','!=','Denide')
-    //         // ->where('creator','!=','User')
-    //         ->orderBy("recipe_name", "asc")->Paginate(4);
-
-    //     $recipes->appends($request->all());
-    //     return view('search_ingredient', ['recipe' => $recipes]);
-    // }
     // // Recipe result view
      //  Recipe Search
      public function search(Request $request)
@@ -430,13 +389,9 @@ class RecipeController extends Controller
          return view('welcome');
 
      }
-
-
        //  Recipe Search for non login users
        public function nonLoginUserSearch(Request $request)
        {
-       // { $projects = Recipe::whereHas("user_id", function ($q) {
-       //         $q->where("user_id", '!=', "auth()->id()");
        $term  = $request->get('term');
        $creator = $request->get('creator');
        if($term){
@@ -458,8 +413,7 @@ class RecipeController extends Controller
 
      public function search1(Request $request)
      {
-     // { $projects = Recipe::whereHas("user_id", function ($q) {
-     //         $q->where("user_id", '!=', "auth()->id()");
+
          $recipes = Recipe::when($request->term, function ($query, $term) {
              return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
           })->when($request->creator, function ($query, $creator) {
@@ -480,7 +434,7 @@ class RecipeController extends Controller
    {
        $pinboards=Pinboard::all('id','pin_name');
         return view('recipe_view', compact('recipe','pinboards'));
-       //  dd($pinboards);
+      
    }
 
    public function  nonLoginUser_view_recipe(Recipe $recipe)

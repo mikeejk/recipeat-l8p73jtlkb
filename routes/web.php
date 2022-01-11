@@ -8,6 +8,9 @@ use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\PinboardController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 use App\Http\Livewire\Questionnaire;
 use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
@@ -72,7 +75,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/homepage', function () {
 // Recipe Search - Result Display Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_view/{recipe}', [RecipeController::class, 'view_recipe']);
 
+
 Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view_recipe']);
+//Recipe Like
+// Route::middleware(['auth:sanctum', 'verified'])->get('like', [RecipeController::class, 'likePost'])->name('like');
 
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
@@ -356,14 +362,10 @@ Route::get('/notifications', function () {
     }
     return view('screens.user.profile.notifications_screen');
 });
-
 //Contact Us
-
 Route::get('/contactUs', function () {
     return view('contactUs');
 });
-
-
 // -------------------------------------------------------------
 //                              Test Routes
 // ------------------------------------------------------------
@@ -381,8 +383,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
 //--------------------------------------------------------------------------------------------------
 // Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');
 Route::get('/', function (Request $request) {
-    //
-
     // if (User::count() < 3) {
     //     User::factory()->count(3)->create();
     // }
@@ -401,8 +401,6 @@ Route::get('/', function (Request $request) {
 
     $recipes = Recipe::latest()->with('likes')->take(5)->get();
 
-    return view('recipe_view', compact('recipes'));
-});
 Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class,'like'])->name('like');
 Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class,'unlike'])->name('unlike');
 //---------------------------------------------------------------------------------------
