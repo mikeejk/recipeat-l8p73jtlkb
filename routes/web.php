@@ -16,19 +16,15 @@ use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
-use App\Http\Controllers\PinboardController;
 use App\Http\Controllers\PinRecipeController;
 use App\Models\User;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Request;
 use App\Notifications\NewFollower;
 
-
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
 // -------------------------------------------------------------------------------------------------------------------
-
-
 // Welcome Tab
 Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
 
@@ -366,9 +362,9 @@ Route::get('/notifications', function () {
 Route::get('/contactUs', function () {
     return view('contactUs');
 });
-// -------------------------------------------------------------
+// -------------------------------------------------------------------------
 //                              Test Routes
-// ------------------------------------------------------------
+// -------------------------------------------------------------------------
 Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
     return view('screens.user.profile.login2');
 });
@@ -382,7 +378,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
 //                                Like Routes
 //--------------------------------------------------------------------------------------------------
 // Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');
-Route::get('/', function (Request $request) {
+// Route::get('/', function (Request $request) {
     // if (User::count() < 3) {
     //     User::factory()->count(3)->create();
     // }
@@ -399,7 +395,7 @@ Route::get('/', function (Request $request) {
     //     Recipe::factory()->count(5)->create();
     // }
 
-    $recipes = Recipe::latest()->with('likes')->take(5)->get();
+    // $recipes = Recipe::latest()->with('likes')->take(5)->get();});
 
 Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class,'like'])->name('like');
 Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class,'unlike'])->name('unlike');

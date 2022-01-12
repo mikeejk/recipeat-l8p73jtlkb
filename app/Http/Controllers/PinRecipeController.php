@@ -23,7 +23,7 @@ class PinRecipeController extends Controller
 
 
         // PinBoard_id from Pin Baord Model
-        $recipe_pin->pinboard_id = $request->input('pinboard_id');
+        $recipe_pin->pin_id = $request->input('pin_id');
 
         // Recipe-Data Storeing - Foreign Key
         $recipe_pin->user_id = $user_id;
@@ -60,7 +60,7 @@ class PinRecipeController extends Controller
 
     public function anyData()
     {
-        $recipe_pin = Pin_recipe::where('pinboard_id',1)->where('user_id', auth()->user()->id);
+        $recipe_pin = Pin_recipe::where('pin_id',1)->where('user_id', auth()->user()->id);
         return datatables()->of($recipe_pin)
             ->addColumn('action', function ($recipe) {
                 $html = '<a href="/recipes/' . $recipe->recipe_id . '/edit" class="btn btn-sm btn-primary justify-content-end">View</a> ';
@@ -90,7 +90,7 @@ class PinRecipeController extends Controller
 
      public function anyData1()
      {
-         $familyfav = Pin_recipe::where('pinboard_id',2)->where('user_id', auth()->user()->id);
+         $familyfav = Pin_recipe::where('pin_id',2)->where('user_id', auth()->user()->id);
          return datatables()->of($familyfav)
              ->addColumn('action', function ($recipe_pin) {
                  $html = '<a href="/recipes/' . $recipe_pin->recipe_id . '/edit" class="btn btn-sm btn-primary justify-content-end">View</a> ';
@@ -119,7 +119,7 @@ class PinRecipeController extends Controller
 
       public function anyData2()
       {
-          $favdeserts = Pin_recipe::where('pinboard_id',4)->where('user_id', auth()->user()->id);
+          $favdeserts = Pin_recipe::where('pin_id',4)->where('user_id', auth()->user()->id);
           return datatables()->of($favdeserts)
               ->addColumn('action', function ($recipe_pin) {
                   $html = '<a href="/recipes/' . $recipe_pin->recipe_id . '/edit" class="btn btn-sm btn-primary justify-content-end">View</a> ';
@@ -149,7 +149,7 @@ public function getIndex3()
 public function anyData3()
 {
     // $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-    $favdinner = Pin_recipe::where('pinboard_id',3)->where('user_id', auth()->user()->id);
+    $favdinner = Pin_recipe::where('pin_id',3)->where('user_id', auth()->user()->id);
     return datatables()->of($favdinner)
         ->addColumn('action', function ($recipe_pin) {
             $html = '<a href="/recipes/' . $recipe_pin->recipe_id . '/edit" class="btn btn-sm btn-primary justify-content-end">View</a> ';
