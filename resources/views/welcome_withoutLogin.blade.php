@@ -229,7 +229,7 @@
                         <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
-                                    <a href="/recipe_view/{{ $recipes->id }}" name="view"
+                                    <a href="/view_recipe/{{ $recipes->id }}" name="view"
                                         class="flex xl:flex-row no-underline h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
                                         <!-- <div class="flex  flex-col w-full p-2 border-2 rounded-lg">
                                                         <div class="flex items-center  justify-center w-full border-b-2">
@@ -300,7 +300,7 @@
                         </div>
                         <div
                             class="pagination text-white font-extrabold px-2 flex justify-center items-center rounded-lg">
-                            {{ $recipes->render() }}</div>
+                            {{ $recipe->render() }}</div>
                     @endif
 
 

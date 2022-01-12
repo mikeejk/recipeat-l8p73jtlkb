@@ -66,7 +66,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Homepage Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/homepage', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
     return view('screens.user.home.homepage');
 })->name('homepage');
 
@@ -74,7 +74,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/homepage', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_view/{recipe}', [RecipeController::class, 'view_recipe']);
 
 
-Route::get('/recipe_view/{recipe}', [RecipeController::class, 'nonLoginUser_view_recipe']);
+Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view_recipe']);
 //Recipe Like
 // Route::middleware(['auth:sanctum', 'verified'])->get('like', [RecipeController::class, 'likePost'])->name('like');
 
@@ -143,6 +143,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/allrecipe.data', [RecipeController::class, 'anyData2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex2']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'index3']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/allrecipe.data', [RecipeController::class, 'anyData3']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex3']);
 });
 
 // CategoryController
@@ -487,4 +493,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // getndex for favouritedinner
     Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner', [PinRecipeController::class, 'getIndex']);
+});
+Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
+    return view('screens.admin.newsfeed.add_feed');
 });

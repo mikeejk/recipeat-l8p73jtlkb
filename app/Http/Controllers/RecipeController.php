@@ -331,24 +331,25 @@ class RecipeController extends Controller
         return Datatables::of(Recipe::query())->make(true);
     }
 
-    //Function - Index1 for approve
+    //Function - Index1 for all recipes
     public function index2()
     {
         $recipes = Recipe::all();
         return view('screens.admin.recipe.all_recipe', compact('recipes'));
     }
 
-    // Function - getIndex1 for approve
+    // Function - getIndex1 for all recipes
     public function getIndex2(Recipe $recipe)
     {
         return view('screens.admin.recipe.all_recipe');
     }
 
-    //Function - anyData1 for approve
+    //Function - anyData1 for all recipes
     public function anyData2()
     {
         $recipes = Recipe::where('status', 'Approved');
         return datatables()->of($recipes)
+
             ->addColumn('name', function ($user) {
                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
                 return User::find($user->user_id)->name;
@@ -365,12 +366,53 @@ class RecipeController extends Controller
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
+
+
+
+
+     //Function - Index1 for add to feed
+     public function index3()
+     {
+         $recipes = Recipe::all();
+         return view('screens.admin.newsfeed.add_feed', compact('recipes'));
+     }
+
+     // Function - getIndex1 for add to feed
+     public function getIndex3(Recipe $recipe)
+     {
+         return view('screens.admin.newsfeed.add_feed');
+     }
+
+     //Function - anyData1 for all recipes
+     public function anyData3()
+     {
+         $recipes = Recipe::where('status', 'Approved');
+         return datatables()->of($recipes)
+         ->addColumn('checkbox', function ($recipe) {
+             $html ='<input type="checkbox" id="'.$recipe->id.'" name="someCheckbox" />';
+             return $html;
+           })
+             ->addColumn('name', function ($user) {
+                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
+                 return User::find($user->user_id)->name;
+             })
+             // Add Column 'category'
+             ->addColumn('category', function ($category) {
+                 // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
+                 return Category::find($category->category_id)->category;
+             })
+             // Add Column 'cuisine'
+             ->addColumn('cuisine', function ($cuisine) {
+                 // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
+                 return Cuisine::find($cuisine->cuisine_id)->cuisine;
+             })->toJson();
+         return Datatables::of(Recipe::query())->make(true);
+     }
     // // Recipe result view
      //  Recipe Search
      public function search(Request $request)
      {
-     // { $projects = Recipe::whereHas("user_id", function ($q) {
-     //         $q->where("user_id", '!=', "auth()->id()");
+
      $term  = $request->get('term');
      $creator = $request->get('creator');
      if($term){
@@ -434,7 +476,7 @@ class RecipeController extends Controller
    {
        $pinboards=Pinboard::all('id','pin_name');
         return view('recipe_view', compact('recipe','pinboards'));
-      
+
    }
 
    public function  nonLoginUser_view_recipe(Recipe $recipe)

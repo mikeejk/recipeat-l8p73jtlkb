@@ -48,7 +48,8 @@
                                 <th>Category</th>
                                 <th>Cuisine</th>
                                 <th>Creator</th>
-                                <th>Role</th>
+                                <th>AddToFeed</th>
+
                             </tr>
                         </thead>
                     </table>
@@ -60,44 +61,48 @@
     </div>
     <!--end::Data-Table-->
     @push('scripts')
-    <script>
-        $(function() {
-            $('#all_recipe-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: 'allrecipe.data',
-                columns: [{
-                        data: 'recipe_name',
-                        name: 'recipe_name',
-                    },
-                    {
-                        data: 'category',
-                        name: 'category',
-                        orderable: false,
-                        searchable: false,
-                    },
-                    {
-                        data: 'cuisine',
-                        name: 'cuisine',
-                        orderable: false,
-                        searchable: false,
-                    },
-                    {
-                        data: 'name',
-                        name: 'name',
-                        orderable: false,
-                        searchable: false,
-                    },
-                    {
-                        data: 'creator',
-                        name: 'creator',
+        <script>
+            $(function() {
+                $('#all_recipe-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: 'allrecipe.data',
+                    columns: [{
+                            data: 'recipe_name',
+                            name: 'recipe_name',
+                            orderable: false,
+                            searchable: false,
+                        },
+                        {
+                            data: 'category',
+                            name: 'category',
+                            orderable: false,
+                            searchable: false,
+                        },
+                        {
+                            data: 'cuisine',
+                            name: 'cuisine',
+                            orderable: false,
+                            searchable: false,
+                        },
+                        {
+                            data: 'name',
+                            name: 'name',
+                            orderable: false,
+                            searchable: false,
+                        },
+                        {
+                            data: 'checkbox',
+                            name: 'checkbox',
+                            orderable: false,
+                            searchable: false
 
-                    },
+                        },
 
 
-                ]
+                    ]
+                });
             });
-        });
-    </script>
-@endpush
+        </script>
+    @endpush
 @endsection
