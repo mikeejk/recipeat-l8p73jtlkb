@@ -37,11 +37,19 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                           </svg>
                     </button> -->
-                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
-                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
-                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
-                    <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow</button>
-                </div>
+                    <form class="form" action="/recipe_view/{recipe}" method="post">
+                        @csrf
+                <div class="flex w-full justify-between">
+
+                @foreach ($pinboards as $pin)
+                    <input type="hidden" name="recipe_id" id="recipe_id"value="{{ $recipe->id }}"/>
+                    <button type="submit"class="bg-blue-500 flex items-center text-white px-2 py-1 rounded-full" name="pinboard_id"id="pinboard_id"value="{{ $pin->id }} ">
+                        {{ $pin->pin_name }}
+                    </button>
+                @endforeach
+
+            </div> </form>
+
 
                 {{-- <p class="text-gray-500 mt-2">{{ $recipe->description }}</p> --}}
 

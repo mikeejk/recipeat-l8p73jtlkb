@@ -34,7 +34,7 @@
                 <!--begin::Signup-->
                 <div class="login-form login-signup">
                     <!--begin::Form-->
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/register">
                         @csrf
                         <!--begin::Title-->
                         <h1 class="text-xl text-center md:text-2xl font-bold leading-tight mt-12 mb-10 text-gray-600">
