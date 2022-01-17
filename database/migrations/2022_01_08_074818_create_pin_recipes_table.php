@@ -19,7 +19,7 @@ class CreatePinRecipesTable extends Migration
 
               // Foreign Key - Data Saving
               $table->unsignedBigInteger('user_id');
-            //   $table->unsignedBigInteger('recipe_id');
+              $table->unsignedBigInteger('recipe_id');
               $table->unsignedBigInteger('pinboard_id');
 
               //Foreign Key
