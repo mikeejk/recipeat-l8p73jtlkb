@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePinboradsTable extends Migration
+class CreatePinboardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePinboradsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinborads', function (Blueprint $table) {
-            // Auto Genrated - ID
+        Schema::create('pinboards', function (Blueprint $table) {
             $table->id();
 
-            // Foreign Key - Data Saving
             $table->unsignedBigInteger('user_id');
 
             // User Entered - Data Saving
@@ -26,7 +24,6 @@ class CreatePinboradsTable extends Migration
             //Foreign Key
             $table->foreign('user_id')->references('id')->on('users');
 
-            // Time-Stamp Data
             $table->timestamps();
         });
     }
@@ -38,6 +35,6 @@ class CreatePinboradsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinborads');
+        Schema::dropIfExists('pinboards');
     }
 }
