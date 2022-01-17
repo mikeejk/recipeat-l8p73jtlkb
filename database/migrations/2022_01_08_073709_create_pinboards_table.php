@@ -18,7 +18,7 @@ class CreatePinboradsTable extends Migration
             $table->id();
 
             // Foreign Key - Data Saving
-            // $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
 
             // User Entered - Data Saving
             $table->string('pin_name');
