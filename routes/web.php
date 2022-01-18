@@ -9,6 +9,7 @@ use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\PinboardController;
+use App\Http\Controllers\PinRecipeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Livewire\Questionnaire;
@@ -381,32 +382,31 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
 //-------------------------------------------------------------------------------
  Route::middleware(['auth:sanctum', 'verified'])->post('/comment/store', [CommentController::class,'store'])->name('comment.add');
  Route::middleware(['auth:sanctum', 'verified'])->post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
-// Route::middleware(['auth:sanctum', 'verified'])->post('/comments', [CommentController::class,'store'])->name('comment.store');
+
 //-----------------------------------------------------------------------------------------------
 //                                Like Routes
 //--------------------------------------------------------------------------------------------------
-// Route::middleware(['auth:sanctum', 'verified'])->post('like', [RecipeController::class,'like'])->name('like');
-// Route::get('/', function (Request $request) {
-    // if (User::count() < 3) {
-    //     User::factory()->count(3)->create();
-    // }
+//  Route::get('/', function (Request $request) {
+//      if (User::count() < 3) {
+//          User::factory()->count(3)->create();
+//     }
 
-    // if (auth()->guest() && $request->has('login')) {
-    //     auth()->login(User::inRandomOrder()->first());
-    // }
+//      if (auth()->guest() && $request->has('login')) {
+//          auth()->login(User::inRandomOrder()->first());
+//      }
 
-    // if (auth()->check() && $request->has('logout')) {
-    //     auth()->logout();
-    // }
+//      if (auth()->check() && $request->has('logout')) {
+//          auth()->logout();
+//      }
 
-    // if (Recipe::count() < 5) {
-    //     Recipe::factory()->count(5)->create();
-    // }
+//     // if (Recipe::count() < 5) {
+//     //     Recipe::factory()->count(5)->create();
+//     // }
 
-    // $recipes = Recipe::latest()->with('likes')->take(5)->get();
+//      $recipes = Recipe::latest()->with('likes')->take(5)->get();
 
 Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class,'like'])->name('like');
-Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class,'unlike'])->name('unlike');
+ Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class,'unlike'])->name('unlike');
 //---------------------------------------------------------------------------------------
 //                              pinboard-Admin
 //----------------------------------------------------------------------------------------
