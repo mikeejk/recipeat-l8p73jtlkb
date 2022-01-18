@@ -10,8 +10,7 @@
                 <!--begin::Signin-->
                 <div class="login-form login-signin">
                     <!--begin::Form-->
-                    {{-- <form method="POST" action="{{ route('login') }}"> --}}
-                        <form method="POST" action="/login">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <!--begin::Title-->
                         <h1 class="text-xl text-center md:text-2xl font-bold leading-tight mt-12 mb-10 text-gray-600">
