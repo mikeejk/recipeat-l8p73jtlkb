@@ -33,7 +33,7 @@ Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 
 // Welcome Tab
 Route::get('/login1', function () {
@@ -67,7 +67,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Homepage Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/homepage', function () {
     return view('screens.user.home.homepage');
 })->name('homepage');
 
