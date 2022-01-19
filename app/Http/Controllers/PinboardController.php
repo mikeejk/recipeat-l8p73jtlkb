@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\Pinboard;
 use App\Models\Pin_recipe;
 use Illuminate\Http\Request;
@@ -9,12 +11,12 @@ class PinboardController extends Controller
 {
     public function index()
     {
-        $pins =Pinboard::all();
+        $pins = Pinboard::all();
 
 
         $pin_recipe = Pin_recipe::where('user_id', auth()->user()->id)->get()->count();
-        $pin_recipe=Pin_recipe::all();
-        return redirect('/pins', compact('pins','pin_recipe'));
+        $pin_recipe = Pin_recipe::all();
+        return redirect('/pins', compact('pins', 'pin_recipe'));
     }
 
     // Function - Create
@@ -23,7 +25,15 @@ class PinboardController extends Controller
 
         return view('screens.admin.recipe.add_pins');
     }
-
+    public function show()
+    {
+        $pin_recipe=Pin_recipe::all();
+        $myfavourite=Pin_recipe::where('pinboard_id',1)->get()->count();
+        $familyfav=Pin_recipe::where('pinboard_id',2)->get()->count();;
+        $favdesert=Pin_recipe::where('pinboard_id',3)->get()->count();;
+        $favdinner=Pin_recipe::where('pinboard_id',4)->get()->count();;
+        return view('screens.user.profile.pinboard',compact('myfavourite','familyfav','favdesert','favdinner'));
+    }
     // Function - Store
     public function store(Request $request)
     {
@@ -88,8 +98,8 @@ class PinboardController extends Controller
         $pinboards = Pinboard::all();
         return datatables()->of($pinboards)
             ->addColumn('action', function ($pin) {
-                $html = '<a href="/pins_create/'. $pin->id .'/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
-                $html .= '<a href="/pins_create/'. $pin->id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+                $html = '<a href="/pins_create/' . $pin->id . '/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/pins_create/' . $pin->id . '/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                 return $html;
             })->toJson();
 

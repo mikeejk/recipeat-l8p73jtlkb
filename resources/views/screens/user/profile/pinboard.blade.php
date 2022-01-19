@@ -86,7 +86,7 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">2</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $myfavourite }}</span>
                                     <a href="/myfavourite"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>MyFavourite</span></a>
                                 </div>
@@ -95,7 +95,7 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center">3</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $familyfav }}</span>
                                     <a href="/familyfav"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>FamilyFavourite</span></a>
                                 </div>
@@ -104,18 +104,17 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center"></span>6</span>
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $favdesert }}</span>
                                     <a href="/favdesert"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>FavouriteDesert</span></a>
                                 </div>
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
-                            <div class="d-flex align-items-center  mr-1 my-1">
+                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-xs text-center"><span
-                                            class="badge bg-success text-white"></span>2</span>
-                                    <a href="/favdinner"><span class="font-weight-bolder font-size-sm">
+                                    <span class="font-weight-bolder font-size-xs text-center">{{ $favdinner }}</span>
+                                    <a href="/favdesert"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>FavouriteDinner</span></a>
                                 </div>
                             </div>

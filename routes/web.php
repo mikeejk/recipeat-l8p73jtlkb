@@ -441,6 +441,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', function () {
     return view('screens.user.profile.pinboard');
 });
+Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard',[PinboardController::class, 'show']);
 //---------------------------------------------------------------------------------------
 //                              PinRecipe
 //----------------------------------------------------------------------------------------
