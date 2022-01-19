@@ -198,7 +198,7 @@
                                     </path>
                                 </svg>
                             </button>
-                            <input type="search" name="term" id="term"
+                            <input type="search" name="term" id="term" value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300"
                                 placeholder="Find a recipe..."
                                 value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}">

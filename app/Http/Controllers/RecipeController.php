@@ -349,7 +349,6 @@ class RecipeController extends Controller
     {
         $recipes = Recipe::where('status', 'Approved');
         return datatables()->of($recipes)
-
             ->addColumn('name', function ($user) {
                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
                 return User::find($user->user_id)->name;
@@ -366,10 +365,6 @@ class RecipeController extends Controller
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
-
-
-
-
      //Function - Index1 for add to feed
      public function index3()
      {
@@ -412,10 +407,9 @@ class RecipeController extends Controller
      //  Recipe Search
      public function search(Request $request)
      {
-
      $term  = $request->get('term');
      $creator = $request->get('creator');
-     if($term){
+    //  if($term){
          $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
              ->where('user_id', '!=', auth()->id())
@@ -424,11 +418,11 @@ class RecipeController extends Controller
              // ->where('creator','!=','User')
              ->orderBy("recipe_name", "asc")->Paginate(4);
              $recipe->appends(array(
-               'term' => $request->get('term'),
-           ));
+                'term' => $request->get('term'),
+            ));
          return view('welcome',compact('recipe'));
-       }
-         return view('welcome');
+    //    }
+        //  return view('welcome');
 
      }
        //  Recipe Search for non login users
@@ -436,7 +430,7 @@ class RecipeController extends Controller
        {
        $term  = $request->get('term');
        $creator = $request->get('creator');
-       if($term){
+    //    if($term){
            $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
               ->where('creator', 'LIKE', '%' . $creator . '%')
                ->where('user_id', '!=', auth()->id())
@@ -449,8 +443,8 @@ class RecipeController extends Controller
              ));
 
            return view('welcome_withoutLogin',compact('recipe'));
-         }
-         return view('welcome_withoutLogin');
+        //  }
+        //  return view('welcome_withoutLogin');
        }
 
      public function search1(Request $request)
