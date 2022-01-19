@@ -176,7 +176,7 @@
                 {{-- <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a> --}}
-                <a href="/welcome" class="flex w-100 justify-center">
+                <a href="/" class="flex w-100 justify-center">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a>
                 <p class="text-white font-bold lg:text-4xl md:text-3xl text-2xl flex flex-col items-center mb-4">
