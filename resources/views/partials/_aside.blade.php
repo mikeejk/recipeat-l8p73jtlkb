@@ -6,7 +6,7 @@
 
 
         <!--begin::Logo-->
-        <a href="/welcome" class="brand-logo">
+        <a href="#" class="brand-logo">
             <img alt="Logo" src="assets/media/logos/recipeat.svg" class="h-20px" />
         </a>
         <!--end::Logo-->
@@ -98,11 +98,11 @@
                         </a>
                         <div class="menu-submenu">
                             <ul class="menu-subnav">
-                                <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                {{-- <li class="menu-item menu-item-parent" aria-haspopup="true">
                                     <span class="menu-link">
                                         <span class="menu-text">Recipe Meta-Data</span>
                                     </span>
-                                </li>
+                                </li> --}}
                                 <li class="menu-item" aria-haspopup="true">
                                     <a href="/categorys_create" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
@@ -111,30 +111,30 @@
                                         <span class="menu-text">Category</span>
                                     </a>
                                 </li>
-                                <li class="menu-item" aria-haspopup="true">
+                                {{-- <li class="menu-item" aria-haspopup="true">
                                     <a href="/cuisines_create" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </i>
                                         <span class="menu-text">Cuisine</span>
                                     </a>
-                                </li>
-                                <li class="menu-item" aria-haspopup="true">
+                                </li> --}}
+                                {{-- <li class="menu-item" aria-haspopup="true">
                                     <a href="/ingredients_create" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </i>
                                         <span class="menu-text">Ingredient</span>
                                     </a>
-                                </li>
-                                <li class="menu-item" aria-haspopup="true">
+                                </li> --}}
+                                {{-- <li class="menu-item" aria-haspopup="true">
                                     <a href="/measurements_create" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </i>
                                         <span class="menu-text">Measurement</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="menu-item" aria-haspopup="true">
                                     <a href="/all_recipes" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
@@ -143,14 +143,14 @@
                                         <span class="menu-text">Recipes</span>
                                     </a>
                                 </li>
-                                <li class="menu-item" aria-haspopup="true">
+                                {{-- <li class="menu-item" aria-haspopup="true">
                                     <a href="/approve" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </i>
                                         <span class="menu-text">Pending Approvel</span>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </li>

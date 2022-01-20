@@ -145,12 +145,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex2']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'index3']);
+//     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'index3']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/allrecipe.data', [RecipeController::class, 'anyData3']);
+//     Route::middleware(['auth:sanctum', 'verified'])->get('/all.data', [RecipeController::class, 'anyData3']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex3']);
-});
+//     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'getIndex3']);
+ });
 
 // CategoryController
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -435,11 +435,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //---------------------------------------------------------------------------------------
 //                              pinboard
 //----------------------------------------------------------------------------------------
-Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', function () {
-    return view('screens.user.profile.pinboard');
-});
-Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard',[PinboardController::class, 'show']);
-//---------------------------------------------------------------------------------------
+// Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', function () {
+//     return view('screens.user.profile.pinboard');
+// });
+// Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard',[PinboardController::class, 'show']);
+//----------------------------------------------------------------------------------------
 //                              PinRecipe
 //----------------------------------------------------------------------------------------
 // PinRecipeController for my favourite
@@ -448,12 +448,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/myfavourite', [PinRecipeController::class, 'index']);
     // Store Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
-
     // Edit Category Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/recipe/{recipe}/edit', [PinRecipeController::class, 'edit']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/recipe/{recipe}/view', [PinRecipeController::class, 'view']);
     // Destroy Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe/{recipe}/delete', [PinRcipeController::class, 'destroy']);
-
     // Recipeat Category Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_pin.data', [PinRecipeController::class, 'anyData']);
 
@@ -466,7 +464,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'index1']);
     // Anydata  for familyfav Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav.data', [PinRecipeController::class, 'anyData1']);
-
     // getndex for family fav
     Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'getIndex1']);
 });
@@ -492,6 +489,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // getndex for favouritedinner
     Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner', [PinRecipeController::class, 'getIndex3']);
 });
-Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
+ Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
     return view('screens.admin.newsfeed.add_feed');
-});
+ });

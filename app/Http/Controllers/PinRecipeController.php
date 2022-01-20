@@ -34,7 +34,7 @@ class PinRecipeController extends Controller
          return view('/recipes', compact('recipes'));
      }
      public function destroy(Pin_recipe $recipe_pins)
-     {
+     {   $recipes=Recipe::all();
          $recipe_pins->delete();
 
          return redirect('/favourites_create');

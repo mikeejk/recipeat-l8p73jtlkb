@@ -140,7 +140,7 @@
                         </div>
                         <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
                             <label class="font-semibold leading-none">Phone<span class="text-red-400">*</span></label>
-                            <input type="email"
+                            <input type="number"
                                 class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200" />
                         </div>
                     </div>

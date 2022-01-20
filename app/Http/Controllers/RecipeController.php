@@ -175,7 +175,14 @@ class RecipeController extends Controller
         // if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
         //     $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
         // }
-
+        if($request->hasfile('recipe_image'))
+        {
+            $file=$request->file('recipe_image');
+            $extention=$file->getClientOriginalExtension();
+            $filename=time().'.'.$extention;
+            $file->move('uploads/recipes/',$filename);
+            $recipe->recipe_image=$filename;
+        }
         // Save Data
         $recipe->update($data);
 
@@ -366,43 +373,44 @@ class RecipeController extends Controller
         return Datatables::of(Recipe::query())->make(true);
     }
      //Function - Index1 for add to feed
-     public function index3()
-     {
-         $recipes = Recipe::all();
-         return view('screens.admin.newsfeed.add_feed', compact('recipes'));
-     }
+    //  public function index3()
+    //  {
+    //      $recipes = Recipe::all();
+    //      return view('screens.admin.newsfeed.add_feed', compact('recipes'));
+    //  }
 
-     // Function - getIndex1 for add to feed
-     public function getIndex3(Recipe $recipe)
-     {
-         return view('screens.admin.newsfeed.add_feed');
-     }
+    //  // Function - getIndex1 for add to feed
+    //  public function getIndex3(Recipe $recipe)
+    //  {
+    //      return view('screens.admin.newsfeed.add_feed');
+    //  }
 
-     //Function - anyData1 for all recipes
-     public function anyData3()
-     {
-         $recipes = Recipe::where('status', 'Approved');
-         return datatables()->of($recipes)
-         ->addColumn('checkbox', function ($recipe) {
-             $html ='<input type="checkbox" id="'.$recipe->id.'" name="someCheckbox" />';
-             return $html;
-           })
-             ->addColumn('name', function ($user) {
-                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
-                 return User::find($user->user_id)->name;
-             })
-             // Add Column 'category'
-             ->addColumn('category', function ($category) {
-                 // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
-                 return Category::find($category->category_id)->category;
-             })
-             // Add Column 'cuisine'
-             ->addColumn('cuisine', function ($cuisine) {
-                 // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
-                 return Cuisine::find($cuisine->cuisine_id)->cuisine;
-             })->toJson();
-         return Datatables::of(Recipe::query())->make(true);
-     }
+    //  //Function - anyData1 for all recipes
+    //  public function anyData3()
+    //  {
+    //      $recipes = Recipe::where('status', 'Approved');
+    //      return datatables()->of($recipes)
+    //      ->addColumn('checkbox', function ($recipe) {
+    //          $html ='<input type="checkbox" id="'.$recipe->id.'" name="someCheckbox" />';
+    //          return $html;
+    //        })
+    //        ->rawColumns(['checkbox'])
+    //          ->addColumn('name', function ($user) {
+    //              // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
+    //              return User::find($user->user_id)->name;
+    //          })
+    //          // Add Column 'category'
+    //          ->addColumn('category', function ($category) {
+    //              // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
+    //              return Category::find($category->category_id)->category;
+    //          })
+    //          // Add Column 'cuisine'
+    //          ->addColumn('cuisine', function ($cuisine) {
+    //              // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
+    //              return Cuisine::find($cuisine->cuisine_id)->cuisine;
+    //          })->toJson();
+    //      return Datatables::of(Recipe::query())->make(true);
+    //  }
     // // Recipe result view
      //  Recipe Search
      public function search(Request $request)
