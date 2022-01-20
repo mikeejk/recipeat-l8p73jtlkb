@@ -20,16 +20,12 @@ class PinRecipeController extends Controller
 
         // Recipe_id Form Recipe Model
          $recipe_pin->recipe_id = $request->input('recipe_id');
-
-
         // PinBoard_id from Pin Baord Model
         $recipe_pin->pinboard_id = $request->input('pinboard_id');
-
         // Recipe-Data Storeing - Foreign Key
         $recipe_pin->user_id = $user_id;
         // Data Save
          $recipe_pin->save();
-
          return redirect()->back();
     }
      // Function - view
@@ -109,17 +105,15 @@ class PinRecipeController extends Controller
           $recipe=Recipe::all('id','recipe_name');
           $recipe_pin = Pin_recipe::all();
            return view('/favdesert', compact('recipe_pins','recipe'));
-
       }
        // Function - getIndex2 for favdesert
       public function getIndex2()
       {
           return view('screens.user.profile.favdesert');
       }
-
       public function anyData2()
       {
-          $favdeserts = Pin_recipe::where('pinboard_id',4)->where('user_id', auth()->user()->id);
+          $favdeserts = Pin_recipe::where('pinboard_id',3)->where('user_id', auth()->user()->id);
           return datatables()->of($favdeserts)
               ->addColumn('action', function ($recipe_pin) {
                   $html = '<a href="/recipes/' . $recipe_pin->recipe_id . '/edit" class="btn btn-sm btn-primary justify-content-end">View</a> ';
@@ -138,18 +132,16 @@ public function index3()
     $recipe=Recipe::all('id','recipe_name');
     $recipe_pin = Pin_recipe::all();
      return view('/favdinner', compact('recipe_pins','recipe'));
-
 }
  // Function - getIndex3 for favdesert
 public function getIndex3()
 {
     return view('screens.user.profile.favdinner');
 }
-
 public function anyData3()
 {
     // $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-    $favdinner = Pin_recipe::where('pinboard_id',3)->where('user_id', auth()->user()->id);
+    $favdinner = Pin_recipe::where('pinboard_id',4)->where('user_id', auth()->user()->id);
     return datatables()->of($favdinner)
         ->addColumn('action', function ($recipe_pin) {
             $html = '<a href="/recipes/' . $recipe_pin->recipe_id . '/edit" class="btn btn-sm btn-primary justify-content-end">View</a> ';
@@ -159,7 +151,6 @@ public function anyData3()
         ->addColumn('recipe_name', function ($recipe_pin) {
             return Recipe::find($recipe_pin->recipe_id)->recipe_name;
         })->toJson();
-
     return Datatables::of(Pin_recipe::query())->make(true);
 }
 

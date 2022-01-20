@@ -424,10 +424,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/pins/{pin}/edit', [PinboardController::class, 'edit']);
 
     // Update Cuisine Tab
-    Route::middleware(['auth:sanctum', 'verified'])->patch('/pins_create', [PinboardController::class, 'update']);
-
-    // Destroy Cuisine Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/pins/{pin}/delete', [PinboardController::class, 'destroy']);
+    Route::middleware(['auth:sanctum', 'verified'])->patch('/pins_create', [PinboardController::class, 'destroy']);
 
     // Recipeat Cuisine Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/pins.data', [PinboardController::class, 'anyData']);
@@ -466,34 +463,34 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 // PinRecipeController for Familyfavourite
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index familyfav Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'index']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'index1']);
     // Anydata  for familyfav Data Table - Data Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav.data', [PinRecipeController::class, 'anyData']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav.data', [PinRecipeController::class, 'anyData1']);
 
     // getndex for family fav
-    Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'getIndex']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'getIndex1']);
 });
 // PinRecipeController for FavDesert
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index favourite desert Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/favdesert', [PinRecipeController::class, 'index']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/favdesert', [PinRecipeController::class, 'index2']);
 
     // Anydata  for favourite desert Data Table - Data Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/favdesert.data', [PinRecipeController::class, 'anyData']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/favdesert.data', [PinRecipeController::class, 'anyData2']);
 
     // getndex for favourite desert
-    Route::middleware(['auth:sanctum', 'verified'])->get('/favdesert', [PinRecipeController::class, 'getIndex']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/favdesert', [PinRecipeController::class, 'getIndex2']);
 });
 // PinRecipeController for FavDinner
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index favourite dinner Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner', [PinRecipeController::class, 'index']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner', [PinRecipeController::class, 'index3']);
 
     // Anydata  for favourite dinner Data Table - Data Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner.data', [PinRecipeController::class, 'anyData']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner.data', [PinRecipeController::class, 'anyData3']);
 
     // getndex for favouritedinner
-    Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner', [PinRecipeController::class, 'getIndex']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner', [PinRecipeController::class, 'getIndex3']);
 });
 Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
     return view('screens.admin.newsfeed.add_feed');
