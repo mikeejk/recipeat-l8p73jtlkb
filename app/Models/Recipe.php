@@ -30,7 +30,7 @@ class Recipe extends Model implements Likeable,HasMedia
 
         // User Entered - Data Saving
         'recipe_name',
-        'recipe_image',
+        // 'recipe_image',
         'preparing_time',
         'cooking_time',
         'serves_people',
@@ -45,7 +45,7 @@ class Recipe extends Model implements Likeable,HasMedia
         'bud_astringent',
         'status',
         'creator',
-        // 'cover'
+        'cover'
 
     ];
 
