@@ -284,7 +284,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuest
 Route::middleware(['auth:sanctum', 'verified'])->get('/edit_portfolio', [ChefQuestion::class, 'edit']);
 
 // Update Portfolio tab
-Route::middleware(['auth:sanctum', 'verified'])->patch('/update_portfolio', [ChefQuestion::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/update_portfolio', [ChefQuestion::class, 'update'])->name('chef_questions.update');
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes
@@ -435,10 +435,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //---------------------------------------------------------------------------------------
 //                              pinboard
 //----------------------------------------------------------------------------------------
-// Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', function () {
-//     return view('screens.user.profile.pinboard');
-// });
-// Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard',[PinboardController::class, 'show']);
+ Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', function () {
+    return view('screens.user.profile.pinboard');
+ });
+ Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard',[PinboardController::class, 'show']);
 //----------------------------------------------------------------------------------------
 //                              PinRecipe
 //----------------------------------------------------------------------------------------
@@ -449,7 +449,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Store Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
     // Edit Category Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/recipe/{recipe}/view', [PinRecipeController::class, 'view']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/recipes/{recipe}/edit', [PinRecipeController::class, 'view']);
     // Destroy Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe/{recipe}/delete', [PinRcipeController::class, 'destroy']);
     // Recipeat Category Data Table - Data Tab
