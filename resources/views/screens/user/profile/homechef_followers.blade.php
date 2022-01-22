@@ -316,7 +316,37 @@
         <!--end::Entry-->
     </div>
     <!--end::Content--> --}}
-
+    <div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Breadcrumb-->
+                    <div>
+                        <!--begin::Button-->
+                        <a href="/follower" style="margin-bottom: 2px;" class="btn btn-primary font-weight-bolder">
+                            <i class="las la-user-alt"></i>
+                            </span>Followers</a>
+                        <!--end::Button-->
+                    </div>
+                    &nbsp;
+                    <div>
+                        <!--begin::Button-->
+                        <a href="/following" style="margin-bottom: 2px;" class="btn btn-outline-primary font-weight-bolder">
+                            <span class="svg-icon svg-icon-md">
+                                <i class="las la-user-plus"></i>
+                            </span>
+                            </span>Following</a>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
     <!--begin::Wrapper-->
 
     <!--begin::Content-->
