@@ -31,7 +31,7 @@
 
             <div class="bg-white rounded-md w-full lg:w-1/3 p-5 rounded-lg order-2 lg:order-first">
 
-                {{-- <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1> --}}
+
                 <!-- <button class="bg-blue-500 flex items-center text-white px-2 py-1 rounded">Follow
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -49,13 +49,10 @@
                                 {{ $pin->pin_name }}
                             </button>
                         @endforeach
-
-
                     </div>
                 </form>
-
-                {{-- <p class="text-gray-500 mt-2">{{ $recipe->description }}</p> --}}
-
+                <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1>
+                <p class="text-gray-500 mt-2">{{ $recipe->description }}</p>
                 <div
                     class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
                     <div class="flex flex-col w-full justify-start gap-5 items-center">
@@ -63,8 +60,18 @@
                             <h1 class="items-center flex">Steps</h1>
                         </div>
                         <div>
-                            <h1 class="font-bold tracking-wider text-gray-700">{{ $recipe->steps }}</h1>
+
+                            @foreach ($recipe_steps as $steps)
+                            {{-- @for ($i = 1; $i < $count; $i++) --}}
+
+                            {{-- <h1 class="font-bold tracking-wider text-gray-700">Steps{{ $i }}:{{ $steps }}</h1> --}}
+                            <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
+
+                            {{-- @endfor --}}
+                            @endforeach
                             <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
+
+
                         </div>
                     </div>
                     <div></div>
@@ -72,12 +79,12 @@
                 <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Comments</h1>
                 <div class="flex border-2 mt-2 h-56  overflow-y-auto">
                     <div class="p-2 w-full">
-                        <div class="w-full card-body">
+                        {{--  <div class="w-full card-body">
 
                             @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>
                             $recipe->id])
                             <hr />
-                        </div>
+                        </div>  --}}
                         <div class="card-body w-full">
                             <h5 class="mt-2">Leave a comment</h5>
                             <form  method="post" action="{{ route('comment.add') }}">
@@ -92,6 +99,10 @@
                                         style="font-size: 0.8em;" value="Add Comment" />
                                 </div>
                             </form>
+                            <div class="w-full card-body">
+                            @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>$recipe->id])
+                            <hr />
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -135,8 +146,8 @@
                 </div>
 
                 <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Meta Description</h1>
-                <textarea class="w-full outline-none border-2 border-gray-300 py-3  rounded-sm mt-4"> {{ $recipe->meta_description }}
-                    </textarea>
+                <p class="w-full outline-none border-2 border-gray-300 py-3  rounded-sm mt-4"> {{ $recipe->meta_description }}
+                    </p>
             </div>
             <div class="w-full lg:w-2/5 order-1 lg:order-last flex flex-col justify-start gap-7">
                 <div class="bg-white p-2 rounded-lg text-center">

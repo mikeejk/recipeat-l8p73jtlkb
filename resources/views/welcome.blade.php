@@ -560,8 +560,8 @@
                             </button>
                             <input type="search" name="term" id="term" value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300"
-                                placeholder="Find a recipe...">
-                            <select name="creator" id="pet-select"
+                                placeholder="Find a recipe..."value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}">
+                            <select name="creator" id="pet-select"value="{{ isset($_GET['creator']) ? $_GET['creator'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 <option value="" class="text-gray-500">All</option>
                                 <option value="1">Chef</option>
@@ -582,7 +582,7 @@
                             Search</a>
                     </div>
                 </form>
-                <div class="w-3/4 flex flex-row py-5 mx-auto">
+                <div class="w-3/4 flex flex-row py-2 mx-auto">
                     @if (isset($recipe))
                         <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
