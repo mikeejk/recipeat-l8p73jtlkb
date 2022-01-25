@@ -158,16 +158,12 @@ class FollowController extends Controller
     {
         $followers = Follower::where('leader_id', auth()->user()->id)->get();
         return datatables()->of($followers)
-            // ->addColumn('action', function () {
-            //     $html = '<button type="button" onclick="myApproval()" class="btn btn-sm btn-primary justify-content-end mr-2">Follow</button>';
-            //     return $html;
-            // })
-
-
             ->addColumn('follower', function ($follower) {
                 return User::find($follower->follower_id)->name;
             })
-
+            ->addColumn('created_at', function ($row){
+                return $row->created_at->diffForHumans();
+         })
             ->toJson();
         return Datatables::of(Follower::query())->make(true);
     }
@@ -197,6 +193,9 @@ class FollowController extends Controller
             ->addColumn('follower', function ($follower) {
                 return User::find($follower->leader_id)->name;
             })
+            ->addColumn('created_at', function ($row){
+                 return $row->created_at->diffForHumans();;
+          })
             ->toJson();
         return Datatables::of(Follower::query())->make(true);
     }
