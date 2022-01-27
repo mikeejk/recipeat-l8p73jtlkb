@@ -210,9 +210,14 @@
 
                             </select>
                             <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
-                                <label
+                                {{-- <label
                                     class="text-gray-500 flex justify-center items-center text-center mt-1">Vegetarian</label>
-                                <input type="checkbox" class="bg-white px-2 py-2 ml-2">
+                                <input type="checkbox" class="bg-white px-2 py-2 ml-2"> --}}
+                                <select name="category" id="sort-item"value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
+                                class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
+                                <option value="1">Vegetarian</option>
+                                <option value="2">Non-veg</option>
+                            </select>
                             </div>
                         </div>
 

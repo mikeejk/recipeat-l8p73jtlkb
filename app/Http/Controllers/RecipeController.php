@@ -72,11 +72,9 @@ class RecipeController extends Controller
         //     $file->move('uploads/recipes/',$filename);
         //     $recipe->recipe_image=$filename;
         // }
-
-        if ($request->hasFile('file') && $request->file('cover')->isValid()) {
+        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
              $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
          }
-
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
         $role = auth()->user()->hasRole('Chef');
         $role1 = auth()->user()->hasRole('Home-Chef');
@@ -155,7 +153,6 @@ class RecipeController extends Controller
         $data = request()->validate(
             [
                 'recipe_name' => 'required',
-                'recipe_image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'preparing_time' => 'required',
                 'cooking_time' => 'required',
                 'serves_people' => 'required',
@@ -417,9 +414,11 @@ class RecipeController extends Controller
     {
         $term  = $request->get('term');
         $creator = $request->get('creator');
+        $category_id = $request->get('category');
         //  if($term){
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
+            ->where('category_id','LIKE','%' . $category_id .'%')
             ->where('user_id', '!=', auth()->id())
             ->where('status', 'Approved')
             // ->where('status','!=','Denide')
@@ -438,9 +437,13 @@ class RecipeController extends Controller
     {
         $term  = $request->get('term');
         $creator = $request->get('creator');
+        $category_id = $request->get('category');
+
+        // $category=$request->get('category');
         //    if($term){
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
+             ->where('category_id','LIKE','%'. $category_id .'%')
             ->where('user_id', '!=', auth()->id())
             ->where('status', 'Approved')
             // ->where('status','!=','Denide')
