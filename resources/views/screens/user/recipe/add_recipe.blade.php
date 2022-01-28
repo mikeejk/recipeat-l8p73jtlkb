@@ -316,7 +316,7 @@
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
-                                        <input type="file" name="recipe_image" class="form-control">
+                                        <input type="file" name="cover" class="form-control">
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
                                     <!-- Form-Image::end -->
