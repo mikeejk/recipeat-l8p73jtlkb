@@ -6,7 +6,7 @@
 
 
         <!--begin::Logo-->
-        <a href="/welcome" class="brand-logo">
+        <a href="" class="brand-logo">
             <img alt="Logo" src="assets/media/logos/recipeat.svg" class="h-20px" />
         </a>
         <!--end::Logo-->
