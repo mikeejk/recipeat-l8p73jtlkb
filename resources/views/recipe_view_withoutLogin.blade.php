@@ -57,12 +57,13 @@
                     class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
                     <div class="flex flex-col w-full justify-start gap-5 items-center">
                         <div class="w-full h-10 flex justify-center bg-blue-700 text-white rounded-lg">
-                            <a href="/login"> <h1 class="items-center flex">Steps</h1></a>
+                        <h1 class="items-center flex">Steps</h1>
                         </div>
                         <div>
-
-                            <h1 class="font-bold tracking-wider text-gray-700">{{ $recipe->steps }}</h1>
+                            @foreach ($recipe_steps as $steps)
+                            <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
                             <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
+                            @endforeach
                         </div>
                     </div>
 
