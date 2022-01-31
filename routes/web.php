@@ -12,6 +12,7 @@ use App\Http\Controllers\PinboardController;
 use App\Http\Controllers\PinRecipeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FeedController;
 use App\Http\Livewire\Questionnaire;
 use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
@@ -145,12 +146,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex2']);
 
-//     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'index3']);
+    //     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'index3']);
 
-//     Route::middleware(['auth:sanctum', 'verified'])->get('/all.data', [RecipeController::class, 'anyData3']);
+    //     Route::middleware(['auth:sanctum', 'verified'])->get('/all.data', [RecipeController::class, 'anyData3']);
 
-//     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'getIndex3']);
- });
+    //     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'getIndex3']);
+});
 
 // CategoryController
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -380,8 +381,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
 //---------------------------------------------------------------------------
 //                               Comment Routes
 //-------------------------------------------------------------------------------
- Route::middleware(['auth:sanctum', 'verified'])->post('/comment/store', [CommentController::class,'store'])->name('comment.add');
- Route::middleware(['auth:sanctum', 'verified'])->post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
+Route::middleware(['auth:sanctum', 'verified'])->post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
+Route::middleware(['auth:sanctum', 'verified'])->post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 
 //-----------------------------------------------------------------------------------------------
 //                                Like Routes
@@ -405,8 +406,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
 
 //      $recipes = Recipe::latest()->with('likes')->take(5)->get();
 
-Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class,'like'])->name('like');
- Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class,'unlike'])->name('unlike');
+Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class, 'like'])->name('like');
+Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class, 'unlike'])->name('unlike');
 //---------------------------------------------------------------------------------------
 //                              pinboard-Admin
 //----------------------------------------------------------------------------------------
@@ -422,9 +423,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Edit Cuisine Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/pins/{pin}/edit', [PinboardController::class, 'edit']);
-
-    // Update Cuisine Tab
-    Route::middleware(['auth:sanctum', 'verified'])->patch('/pins_create', [PinboardController::class, 'destroy']);
+// Update Category Tab
+Route::middleware(['auth:sanctum', 'verified'])->patch('/pins/{pin}', [PinboardController::class, 'update']);
+    // delete Cuisine Tab
+    Route::middleware(['auth:sanctum', 'verified'])->get('/pins/{pin}/delete', [PinboardController::class, 'destroy']);
 
     // Recipeat Cuisine Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/pins.data', [PinboardController::class, 'anyData']);
@@ -435,10 +437,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //---------------------------------------------------------------------------------------
 //                              pinboard
 //----------------------------------------------------------------------------------------
- Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', function () {
     return view('screens.user.profile.pinboard');
- });
- Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard',[PinboardController::class, 'show']);
+});
+Route::middleware(['auth:sanctum', 'verified'])->get('/pinboard', [PinboardController::class, 'show']);
 //----------------------------------------------------------------------------------------
 //                              PinRecipe
 //----------------------------------------------------------------------------------------
@@ -489,6 +491,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // getndex for favouritedinner
     Route::middleware(['auth:sanctum', 'verified'])->get('/favdinner', [PinRecipeController::class, 'getIndex3']);
 });
- Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
     return view('screens.admin.newsfeed.add_feed');
- });
+});
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'store']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'index']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/addfeed.data', [FeedController::class, 'anydata']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'getIndex']);
+});

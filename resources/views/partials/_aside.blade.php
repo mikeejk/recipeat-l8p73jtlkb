@@ -94,7 +94,7 @@
                                 </svg>
                                 <!--end::Svg Icon-->
                             </span>
-                            <span class="menu-text">Meta Recipe</span>
+                            <span class="menu-text">Recipe</span>
                         </a>
                         <div class="menu-submenu">
                             <ul class="menu-subnav">
@@ -108,7 +108,7 @@
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </i>
-                                        <span class="menu-text">Category</span>
+                                        <span class="menu-text">Meta-Recipe</span>
                                     </a>
                                 </li>
                                 {{-- <li class="menu-item" aria-haspopup="true">
@@ -243,6 +243,7 @@
                                 </ul>
                             </div>
                     </li>
+
                     <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                         <a href="javascript:;" class="menu-link menu-toggle">
                             <span class="svg-icon menu-icon">
@@ -280,7 +281,7 @@
                                 </li>
                             </ul>
                         </div>
-                </li>
+                    </li>
                 @endhasrole
 
                 @unlessrole('Admin')

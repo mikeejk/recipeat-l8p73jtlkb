@@ -560,22 +560,22 @@
                             </button>
                             <input type="search" name="term" id="term" value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300"
-                                placeholder="Find a recipe..."value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}">
-                            <select name="creator" id="pet-select"value="{{ isset($_GET['creator']) ? $_GET['creator'] : '' }}"
+                                placeholder="Find a recipe...">
+                            <select name="creator" id="sort-item"value="{{ isset($_GET['creator']) ? $_GET['creator'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 <option value="" class="text-gray-500">All</option>
                                 <option value="1">Chef</option>
                                 <option value="2">Home Chef</option>
 
                             </select>
-                            <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
+                              <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
                                 <select name="category" id="pet-select"value="{{ isset($_GET['category']) ? $_GET['category'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 {{-- <option value="" class="text-gray-500">All</option> --}}
                                 <option value="1">Vegetarian</option>
                                 <option value="2">Non-veg</option>
                             </select>
-                            </div>
+                              </div>
                         </div>
                     </div>
                     <div class="flex mt-2 w-full mx-auto justify-end ">
@@ -1018,6 +1018,23 @@
                 tooglebtn_label.style.color = '#808080';
             }
         }
+        window.onload = function() {
+            var selItem = sessionStorage.getItem("SelItem");
+            $('#sort-item').val(selItem);
+            $('#sort-item1').val(selItem);
+        }
+        $('#sort-item').change(function() {
+            var selVal = $(this).val();
+            sessionStorage.setItem("SelItem", selVal);
+        });
+        window.onload = function() {
+            var selItem = sessionStorage.getItem("SelItem");
+            $('#sort-item1').val(selItem);
+        }
+        $('#sort-item1').change(function() {
+            var selVal = $(this).val();
+            sessionStorage.setItem("SelItem", selVal);
+        });
     </script>
 </body>
 

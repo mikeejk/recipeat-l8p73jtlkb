@@ -131,7 +131,7 @@
         <div class=" md:w-2/4 mx-auto text-white">
             <div class=" w-full bg-black bg-opacity-50 rounded md:p-8  p-3">
                 <p class="text-3xl text-white  text-center">Contact Us</p>
-                <form action="" method="post">
+                <form action="/contactUs" method="post">
                     <div class="md:flex items-center mt-12">
                         <div class="w-full md:w-1/2 flex flex-col">
                             <label class="font-semibold leading-none">Name<span class="text-red-400">*</span></label>
@@ -148,7 +148,7 @@
                         <div class="w-full flex flex-col">
                             <label class="font-semibold leading-none">E-mail<span
                                     class="text-red-400">*</span></label>
-                            <input type="text"
+                            <input type="email"
                                 class="leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200" />
                         </div>
 
@@ -162,10 +162,10 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center w-full">
-                        <button
+                        <a href="/"
                             class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-red-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                             Send message
-                        </button>
+                        </a>
                     </div>
                 </form>
                 <div class="flex justify-center gap-4">

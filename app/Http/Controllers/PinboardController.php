@@ -61,7 +61,8 @@ class PinboardController extends Controller
     // Function - Edit
     public function edit(Pinboard $pin)
     {
-        return view('screens.admin.recipe.edit_pins', compact('pinboards'));
+        return view('screens.admin.recipe.edit_pin', compact('pin'));
+//    dd($pin);
     }
 
     //Function - Update
@@ -98,8 +99,8 @@ class PinboardController extends Controller
         $pinboards = Pinboard::all();
         return datatables()->of($pinboards)
             ->addColumn('action', function ($pin) {
-                $html = '<a href="/pins_create/' . $pin->id . '/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
-                $html .= '<a href="/pins_create/' . $pin->id . '/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+                $html = '<a href="/pins/' . $pin->id . '/edit" class="btn btn-sm btn-primary justify-content-end">Edit</a> ';
+                $html .= '<a href="/pins/' . $pin->id . '/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                 return $html;
             })->toJson();
 
