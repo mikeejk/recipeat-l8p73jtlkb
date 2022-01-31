@@ -451,7 +451,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Store Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
     // Edit Category Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/recipes/{recipe}/edit', [PinRecipeController::class, 'view']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_view/{recipe_pin}', [PinRecipeController::class, 'view']);
     // Destroy Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe/{recipe}/delete', [PinRcipeController::class, 'destroy']);
     // Recipeat Category Data Table - Data Tab
