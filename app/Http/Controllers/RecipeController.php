@@ -73,8 +73,8 @@ class RecipeController extends Controller
         //     $recipe->recipe_image=$filename;
         // }
         if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
-         }
+            $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+        }
         // Staus ( Home-Chef & User = 0 || Chef = 1 )
         $role = auth()->user()->hasRole('Chef');
         $role1 = auth()->user()->hasRole('Home-Chef');
@@ -169,9 +169,9 @@ class RecipeController extends Controller
             ]
         );
 
-         if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
+        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
-            }
+        }
         // if($request->hasfile('recipe_image'))
         // {
         //     $file=$request->file('recipe_image');
@@ -391,7 +391,7 @@ class RecipeController extends Controller
             ->addColumn('checkbox', function ($recipe) {
                 $html = '<input type="checkbox" id="' . $recipe->id . '" name="someCheckbox" />';
                 return $html;
-            })->rawcolumn('action','checkbox')
+            })->rawcolumn('action', 'checkbox')
             ->addColumn('name', function ($user) {
                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
                 return User::find($user->user_id)->name;
@@ -418,7 +418,7 @@ class RecipeController extends Controller
         //  if($term){
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
-            ->where('category_id','LIKE','%' . $category_id .'%')
+            ->where('category_id', 'LIKE', '%' . $category_id . '%')
             ->where('user_id', '!=', auth()->id())
             ->where('status', 'Approved')
             // ->where('status','!=','Denide')
@@ -443,7 +443,7 @@ class RecipeController extends Controller
         //    if($term){
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
-             ->where('category_id','LIKE','%'. $category_id .'%')
+            ->where('category_id', 'LIKE', '%' . $category_id . '%')
             ->where('user_id', '!=', auth()->id())
             ->where('status', 'Approved')
             // ->where('status','!=','Denide')
@@ -480,15 +480,17 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-         $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
-        $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-          return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count'));
+        $count = Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
+        $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
+        return view('recipe_view', compact('recipe', 'pinboards', 'recipe_steps', 'count'));
         //   dd($count);
     }
 
     public function  nonLoginUser_view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-        return view('recipe_view_withoutLogin', compact('recipe','pinboards'));
+        $count = Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
+        $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
+        return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps', 'count'));
     }
 }
