@@ -27,8 +27,6 @@ use App\Notifications\NewFollower;
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
 // -------------------------------------------------------------------------------------------------------------------
-
-
 // Welcome Tab
 Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
 
@@ -276,7 +274,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', [Questionnai
 Route::middleware(['auth:sanctum', 'verified'])->get('/edit_profile', [Questionnaire::class, 'edit']);
 
 // Upadte User Profile Tab
-Route::middleware(['auth:sanctum', 'verified'])->patch('/update_profile', [Questionnaire::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->patch('/home', [Questionnaire::class, 'update']);
 
 // Porrtfolio tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuestion::class, 'show']);
@@ -424,7 +422,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Edit Cuisine Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/pins/{pin}/edit', [PinboardController::class, 'edit']);
 // Update Category Tab
-Route::middleware(['auth:sanctum', 'verified'])->patch('/pins/{pin}', [PinboardController::class, 'update']);
+    Route::middleware(['auth:sanctum', 'verified'])->patch('/pins/{pin}', [PinboardController::class, 'update']);
     // delete Cuisine Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/pins/{pin}/delete', [PinboardController::class, 'destroy']);
 
@@ -449,14 +447,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index pinrecipe Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/myfavourite', [PinRecipeController::class, 'index']);
     // Store Category Tab
-    Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
+     Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
+    // Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'favouriteOrUnfavourite']);
     // Edit Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_view/{recipe_pin}', [PinRecipeController::class, 'view']);
     // Destroy Category Tab
-    Route::middleware(['auth:sanctum', 'verified'])->get('/recipe/{recipe}/delete', [PinRcipeController::class, 'destroy']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_pin/{recipe}/delete', [PinRecipeController::class, 'destroy']);
     // Recipeat Category Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_pin.data', [PinRecipeController::class, 'anyData']);
-
     // Recipeat Category Data Table - Index Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/myfavourite', [PinRecipeController::class, 'getIndex']);
 });
@@ -495,7 +493,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
     return view('screens.admin.newsfeed.add_feed');
 });
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'store']);
+    Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'confirm']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'index']);
 
