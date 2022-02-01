@@ -21,18 +21,13 @@ class FeedController extends Controller
         $user_id = auth()->user()->id;
 
         // Recipe_id Form Recipe Model
-        // $feed->recipe_id = $request->input('recipe_id');
-        $input = $request->all();
-    	$data = [];
-    	$data['recipe_id'] = json_encode($input['recipe_id']);
-
-    	Feed::create($data);
-
+        //  $feed->recipe_id = $request->input('recipe_id');
         // Recipe-Data Storeing - Foreign Key
         $feed->user_id = $user_id;
         // Data Save
         $feed->save();
-        return redirect()->back();
+        // dd($feed);
+         return redirect()->back();
     }
     //Function - Index1 for myfavourite
     public function index()
@@ -49,11 +44,8 @@ class FeedController extends Controller
         $add_feed = Recipe::where('status', 'Approved');
         return datatables()->of($add_feed)
             ->addColumn('checkbox', function ($recipe) {
-                return '<input type="checkbox" id="' . $recipe->id . '" name="someCheckbox" />';
+                 return '<input type="checkbox" id="' . $recipe->id . '" name="recipes[]" />';
             })
-            // ->rawColumns(['checkbox'])
-            // ->make(true)
-
             ->addColumn('name', function ($user) {
                 // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
                 return User::find($user->user_id)->name;

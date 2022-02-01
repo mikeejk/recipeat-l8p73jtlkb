@@ -36,7 +36,8 @@
         </div>
         <!--end::Subheader-->
         <form action="/add_feed"method="post">
-        <div class="card">
+            @csrf
+        {{-- <div class="card">
             <div class="card-body">
                 <div class="form-group flex flex w-full">
                     <label><strong>Generate News Feed</strong></label>
@@ -49,14 +50,33 @@
                 </div>
 
             </div>
-        </div>
+        </div> --}}
         <!--begin::Data-Table-->
         <div class="m-1 mt-5 d-flex flex-column-fluid">
             <!--begin::Container-->
             <div class="container">
+                {{-- <div class="card"> --}}
+                    {{-- <div class="card-body"> --}}
+
+
+                    {{-- </div> --}}
+                {{-- </div> --}}
                 <!--begin::Card-->
+                <!--begin: Datatable-->
                 <div class="card-body bg-white">
-                    <table class="table" id="all_recipe-table">
+                    <div class="form-group flex breadcrumb breadcrumb-transparent ">
+                        <label><strong>Generate News Feed</strong></label>
+                        <select id='status' class="form-control" style="width: 200px">
+                            <option value="">--Select --</option>
+                            <option value="0">All</option>
+                            <option value="1">Chef</option>
+                            <option value="2">HomeChef</option>
+                        </select>
+                        <div class="bg-blue-500  items-center">
+                            <button type="submit" data="[]" name="store">Confirm</button>
+                        </div>
+                    </div>
+                    <table class="table" id="add_feed-table">
                         <thead>
                             <tr>
                                 <th>Recipe Name</th>
@@ -79,10 +99,10 @@
     @push('scripts')
         <script>
             $(function() {
-                $('#all_recipe-table').DataTable({
+                $('#add_feed-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: 'allrecipe.data',
+                    ajax: 'addfeed.data',
                     columns: [{
                             data: 'recipe_name',
                             name: 'recipe_name',
@@ -111,8 +131,7 @@
                             data: 'checkbox',
                             name: 'checkbox',
                             orderable: false,
-                            searchable: false
-
+                            searchable: false,
                         },
 
 
@@ -120,5 +139,6 @@
                 });
             });
         </script>
+
     @endpush
 @endsection
