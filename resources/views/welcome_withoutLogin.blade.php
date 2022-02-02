@@ -137,8 +137,8 @@
 
     <section>
         <!-- component -->
-        <div class=" h-auto  bg-fixed bg-cover bg-no-repeat"
-            style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('images\Background_Black.jpg')">
+        <div class=" h-auto bg-fixed bg-cover bg-no-repeat"
+            style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('images/Background_Black.jpg');">
             <div id="mySidenav" class="sidenav text-white">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
