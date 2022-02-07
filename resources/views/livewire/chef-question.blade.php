@@ -262,7 +262,7 @@
                     Account
                 </h1>
 
-                <a href="/welcome" class="flex justify-start text-decoration-none">
+                <a href="/dashboard" class="flex justify-start text-decoration-none">
                     <button type="submit"
                         class="xl:ml-0 py-2 bg-red-700 hover:bg-green-400 text-lg text-white font-semibold rounded-lg
                   px-6 py-2 mt-8"

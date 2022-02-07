@@ -100,6 +100,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->following()->where('leader_id', $user->id)->count();
         // return !!$this->followers()->where('follower_id', $user->id)->count();
     }
+    public function isFollowedByname(User $user)
+    {
+        return !!$this->followings()->where('leader_id', $user->id)->name;
+    }
 
     public function isFollowedBy(User $user)
     {
@@ -159,5 +163,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $likeable->likes()
             ->whereHas('user', fn($q) =>  $q->whereId($this->id))
             ->exists();
+    }
+    public function feed()
+    {
+        // Return (Feed model has many data refer from the the User model)
+        return $this->hasMany(Feed::class, 'feed_id');
     }
 }
