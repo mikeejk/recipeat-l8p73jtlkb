@@ -569,7 +569,7 @@
 
                             </select>
                               <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
-                                <select name="category" id="pet-select"value="{{ isset($_GET['category']) ? $_GET['category'] : '' }}"
+                                <select name="category" id="sort-item1"value="{{ isset($_GET['category']) ? $_GET['category'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 {{-- <option value="" class="text-gray-500">All</option> --}}
                                 <option value="1">Vegetarian</option>
@@ -613,8 +613,8 @@
                                         </div>  -->
                                         <div class="flex w-full  flex-row relative">
                                             <img alt="gallery"
-                                                class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
-                                                src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" />
+                                            class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
+                                            src="{{$recipes->getFirstMediaUrl('cover')}}" />
                                             <p
                                                 class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium">
                                                 {{ $recipes->recipe_name }}</p>
@@ -1021,20 +1021,20 @@
         window.onload = function() {
             var selItem = sessionStorage.getItem("SelItem");
             $('#sort-item').val(selItem);
-            $('#sort-item1').val(selItem);
+
         }
         $('#sort-item').change(function() {
             var selVal = $(this).val();
             sessionStorage.setItem("SelItem", selVal);
         });
-        window.onload = function() {
-            var selItem = sessionStorage.getItem("SelItem");
-            $('#sort-item1').val(selItem);
-        }
-        $('#sort-item1').change(function() {
-            var selVal = $(this).val();
-            sessionStorage.setItem("SelItem", selVal);
-        });
+        // window.onload = function() {
+        //     var selItem1 = sessionStorage.getItem1("SelItem1");
+        //     $('#sort-item1').val(selItem1);
+        // }
+        // $('#sort-item1').change(function() {
+        //     var selVal1 = $(this).val();
+        //     sessionStorage.setItem1("SelItem1", selVal1);
+        // });
     </script>
 </body>
 

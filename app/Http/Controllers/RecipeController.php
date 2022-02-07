@@ -14,6 +14,7 @@ use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Pinboard;
 use App\Models\Recipe_Step;
+use App\Models\Recipe_Ingredient;
 
 class RecipeController extends Controller
 {
@@ -64,14 +65,7 @@ class RecipeController extends Controller
         $recipe->bud_spicy = $request->get('bud_spicy');
         $recipe->bud_bitter = $request->get('bud_bitter');
         $recipe->bud_astringent = $request->get('bud_astringent');
-        // if($request->hasfile('recipe_image'))
-        // {
-        //     $file=$request->file('recipe_image');
-        //     $extention=$file->getClientOriginalExtension();
-        //     $filename=time().'.'.$extention;
-        //     $file->move('uploads/recipes/',$filename);
-        //     $recipe->recipe_image=$filename;
-        // }
+
         if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
         }
@@ -428,10 +422,12 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-         $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
+        $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count'));
-        //   dd($pinboards);
+        $ingredients = Ingredient::all(['id', 'ingredient']);
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient_id');
+         return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count','recipe_ingredients'));
+
 
     }
 

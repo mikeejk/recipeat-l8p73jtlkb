@@ -231,7 +231,7 @@
                                 {{-- <label
                                     class="text-gray-500 flex justify-center items-center text-center mt-1">Vegetarian</label>
                                 <input type="checkbox" value= 1 name="category"class="bg-white px-2 py-2 ml-2"> --}}
-                                <select name="category" id="sort-item"
+                                <select name="category" id="sort-item1"
                                     value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
                                     class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                     <option value="1">Vegetarian</option>
@@ -259,8 +259,7 @@
                                         <div class="flex w-full  flex-row relative">
                                             <img alt="gallery"
                                                 class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
-                                                src="{{
-                                                $recipes->getFirstMediaUrl('cover')}}" />
+                                                src="{{$recipes->getFirstMediaUrl('cover')}}" />
                                             <p
                                                 class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium">
                                                 {{ $recipes->recipe_name }}</p>
@@ -697,7 +696,14 @@
             var selVal = $(this).val();
             sessionStorage.setItem("SelItem", selVal);
         });
-
+        // window.onload = function() {
+        //     var selItem1 = sessionStorage.getItem1("SelItem1");
+        //     $('#sort-item1').val(selItem1);
+        // }
+        // $('#sort-item1').change(function() {
+        //     var selVal1 = $(this).val();
+        //     sessionStorage.setItem1("SelItem1", selVal1);
+        // });
 
         const callback = function(entries) {
             entries.forEach((entry) => {

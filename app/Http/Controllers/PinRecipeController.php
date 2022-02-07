@@ -34,11 +34,11 @@ class PinRecipeController extends Controller
         $pinboards=Pinboard::all();
          return view('/recipe_view', compact('recipes','pinboards'));
      }
-     public function destroy(Pin_recipe $recipe_pins)
-     {   $recipes=Recipe::all();
-         $recipe_pins->delete();
+     public function destroy(Pin_recipe $recipe_pin)
+     {
+         $recipe_pin->delete();
 
-         return redirect('/favourites_create');
+         return redirect()->back();
      }
 
     //Function - Index1 for myfavourite
@@ -59,9 +59,9 @@ class PinRecipeController extends Controller
     {
         $recipe_pin = Pin_recipe::where('pinboard_id',1)->where('user_id', auth()->user()->id);
         return datatables()->of($recipe_pin)
-            ->addColumn('action', function ($recipe) {
-                $html = '<a href="/recipe_view/' . $recipe->recipe_id . '" class="btn btn-sm btn-primary justify-content-end">View</a> ';
-                $html .= '<a href="/recipe_pin/'.$recipe->recipe_id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+            ->addColumn('action', function ($recipe_pin) {
+                $html = '<a href="/recipe_view/' . $recipe_pin->recipe_id . '" class="btn btn-sm btn-primary justify-content-end">View</a> ';
+                $html .= '<a href="/recipe_pin/'.$recipe_pin->id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                 return $html;
             })
             ->addColumn('recipe_name', function ($recipe_pin) {
@@ -91,7 +91,7 @@ class PinRecipeController extends Controller
          return datatables()->of($familyfav)
              ->addColumn('action', function ($recipe_pin) {
                  $html = '<a href="/recipe_view/' . $recipe_pin->recipe_id .'" class="btn btn-sm btn-primary justify-content-end">View</a> ';
-                 $html .= '<a href="/familyfav/'.$recipe_pin->recipe_id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+                 $html .= '<a href="/recipe_pin/'.$recipe_pin->id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                  return $html;
              })
              ->addColumn('recipe_name', function ($recipe_pin) {
@@ -118,7 +118,7 @@ class PinRecipeController extends Controller
           return datatables()->of($favdeserts)
               ->addColumn('action', function ($recipe_pin) {
                   $html = '<a href="/recipe_view/' . $recipe_pin->recipe_id . '" class="btn btn-sm btn-primary justify-content-end">View</a> ';
-                  $html .= '<a href="/favdesert/'.$recipe_pin->recipe_id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+                  $html .= '<a href="/recipe_pin/'.$recipe_pin->id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                   return $html;
               })
               ->addColumn('recipe_name', function ($recipe_pin) {
@@ -145,8 +145,8 @@ public function anyData3()
     $favdinner = Pin_recipe::where('pinboard_id',4)->where('user_id', auth()->user()->id);
     return datatables()->of($favdinner)
         ->addColumn('action', function ($recipe_pin) {
-            $html = '<a href="/recipes/' . $recipe_pin->recipe_id . '/edit" class="btn btn-sm btn-primary justify-content-end">View</a> ';
-            $html .= '<a href="/favdinner/'.$recipe_pin->recipe_id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+            $html = '<a href="/recipe_view/' . $recipe_pin->recipe_id . '/" class="btn btn-sm btn-primary justify-content-end">View</a> ';
+            $html .= '<a href="/recipe_pin/'.$recipe_pin->id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
             return $html;
         })
         ->addColumn('recipe_name', function ($recipe_pin) {

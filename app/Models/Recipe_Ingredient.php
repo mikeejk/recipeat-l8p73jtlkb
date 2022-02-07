@@ -19,10 +19,15 @@ class Recipe_Ingredient extends Model
         // User Entered - Data Saving
         'quantity',
     ];
-    
+
     public function recipe()
     {
         // Return (role model has many data refer from the the role model)
         return $this->hasMany(Recipe::class, 'ingredient_id');
+    }
+    public function ingredient()
+    {
+        // Return (role model has many data refer from the the role model)
+        return $this->hasMany(Ingredient::class, 'ingredient_id');
     }
 }
