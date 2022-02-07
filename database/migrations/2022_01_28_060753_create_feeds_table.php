@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePinboardsTable extends Migration
+class CreateFeedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreatePinboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinboards', function (Blueprint $table) {
+        Schema::create('feeds', function (Blueprint $table) {
             $table->id();
-
+            // Foreign Key - Data Saving
             $table->unsignedBigInteger('user_id');
-
-            // User Entered - Data Saving
-            $table->string('pin_name');
-
+            $table->unsignedBigInteger('recipe_id');
+            $table->timestamps();
             //Foreign Key
             $table->foreign('user_id')->references('id')->on('users');
-
-            $table->timestamps();
+            $table->foreign('recipe_id')->references('id')->on('recipes');
         });
     }
 
@@ -35,6 +32,6 @@ class CreatePinboardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinboards');
+        Schema::dropIfExists('feeds');
     }
 }

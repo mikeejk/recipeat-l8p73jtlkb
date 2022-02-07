@@ -14,6 +14,8 @@ use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Pinboard;
 use App\Models\Recipe_Step;
+use App\Models\Pin_recipe;
+
 
 class RecipeController extends Controller
 {
@@ -370,44 +372,44 @@ class RecipeController extends Controller
         return Datatables::of(Recipe::query())->make(true);
     }
     //Function - Index1 for add to feed
-    public function index3()
-    {
-        $recipes = Recipe::all();
-        return view('screens.admin.newsfeed.add_feed', compact('recipes'));
-    }
+    // public function index3()
+    // {
+    //     $recipes = Recipe::all();
+    //     return view('screens.admin.newsfeed.add_feed', compact('recipes'));
+    // }
 
     // Function - getIndex1 for add to feed
-    public function getIndex3(Recipe $recipe)
-    {
-        return view('screens.admin.newsfeed.add_feed');
-    }
+    // public function getIndex3(Recipe $recipe)
+    // {
+    //     return view('screens.admin.newsfeed.add_feed');
+    // }
 
     //Function - anyData1 for all recipes
-    public function anyData3()
-    {
-        $recipes = Recipe::where('status', 'Approved');
-        return datatables()->of($recipes)
+    // public function anyData3()
+    // {
+    //     $recipes = Recipe::where('status', 'Approved');
+    //     return datatables()->of($recipes)
 
-            ->addColumn('checkbox', function ($recipe) {
-                $html = '<input type="checkbox" id="' . $recipe->id . '" name="someCheckbox" />';
-                return $html;
-            })->rawcolumn('action','checkbox')
-            ->addColumn('name', function ($user) {
-                // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
-                return User::find($user->user_id)->name;
-            })
-            // Add Column 'category'
-            ->addColumn('category', function ($category) {
-                // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
-                return Category::find($category->category_id)->category;
-            })
-            // Add Column 'cuisine'
-            ->addColumn('cuisine', function ($cuisine) {
-                // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
-                return Cuisine::find($cuisine->cuisine_id)->cuisine;
-            })->toJson();
-        return Datatables::of(Recipe::query())->make(true);
-    }
+    //         ->addColumn('checkbox', function ($recipe) {
+    //             $html = '<input type="checkbox" id="' . $recipe->id . '" name="someCheckbox" />';
+    //             return $html;
+    //         })->rawcolumn('action','checkbox')
+    //         ->addColumn('name', function ($user) {
+    //             // return to view (What: get the user_id form recipe table and check with user table then display the corresponding name of the user_id)
+    //             return User::find($user->user_id)->name;
+    //         })
+    //         // Add Column 'category'
+    //         ->addColumn('category', function ($category) {
+    //             // return to view (What: get the category_id form recipe table and check with categorys table then display the correspond name of the category_id)
+    //             return Category::find($category->category_id)->category;
+    //         })
+    //         // Add Column 'cuisine'
+    //         ->addColumn('cuisine', function ($cuisine) {
+    //             // return to view (What: get the cuisine_id form recipe table and check with role table then display the correspond name of the cuisine_id)
+    //             return Cuisine::find($cuisine->cuisine_id)->cuisine;
+    //         })->toJson();
+    //     return Datatables::of(Recipe::query())->make(true);
+    // }
     // // Recipe result view
     //  Recipe Search
     public function search(Request $request)
@@ -419,7 +421,7 @@ class RecipeController extends Controller
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
             ->where('category_id','LIKE','%' . $category_id .'%')
-            ->where('user_id', '!=', auth()->id())
+            // ->where('user_id', '!=', auth()->id())
             ->where('status', 'Approved')
             // ->where('status','!=','Denide')
             // ->where('creator','!=','User')
@@ -457,38 +459,45 @@ class RecipeController extends Controller
         //  }
         //  return view('welcome_withoutLogin');
     }
-
     public function search1(Request $request)
     {
-
-        $recipes = Recipe::when($request->term, function ($query, $term) {
-            return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
-        })->when($request->creator, function ($query, $creator) {
-            return $query->where('creator', 'LIKE', '%' . $creator . '%');
-        })
-
-            ->where('user_id', '!=', auth()->id())
-            ->where('status', 'Approved')
-            // ->where('status','!=','Denide')
-            // ->where('creator','!=','User')
-            ->orderBy("recipe_name", "asc")->Paginate(4);
-
-        $recipes->appends($request->all());
-        return view('search_ingredient', ['recipe' => $recipes]);
+        $ingredient=Ingredient::all();
+        return view('search_ingredient', compact('ingredient'));
     }
+
+    // public function search1(Request $request)
+    // { $recipes = Recipe::when($request->term, function ($query, $term) {
+    //         return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
+
+    //     $recipes = Recipe::when($request->term, function ($query, $term) {
+    //         return $query->where('recipe_name', 'LIKE', '%' . $term . '%');
+    //     })->when($request->creator, function ($query, $creator) {
+    //         return $query->where('creator', 'LIKE', '%' . $creator . '%');
+    //     })
+
+    //         ->where('user_id', '!=', auth()->id())
+    //         ->where('status', 'Approved')
+    //         // ->where('status','!=','Denide')
+    //         // ->where('creator','!=','User')
+    //         ->orderBy("recipe_name", "asc")->Paginate(4);
+
+    //     $recipes->appends($request->all());
+    //     return view('search_ingredient', ['recipe' => $recipes]);
+    // }
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
          $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-          return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count'));
-        //   dd($count);
+        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count'));
+        //   dd($pinboards);
     }
 
     public function  nonLoginUser_view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-        return view('recipe_view_withoutLogin', compact('recipe','pinboards'));
+        $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
+        return view('recipe_view_withoutLogin', compact('recipe','pinboards','recipe_steps'));
     }
 }
