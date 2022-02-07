@@ -532,7 +532,7 @@
         <!-- component -->
         <div>
             <div class="md:h-screen md:py-0 py-24 w-full sm:mt-0 flex flex-col justify-center items-center bg-fixed bg-center"
-                style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
+                style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('images/Background_Black.jpg')">
                 {{-- <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a> --}}

@@ -23,7 +23,7 @@
 
 <body class="antialiased">
     <div class="bg-fixed bg-center flex flex-col justify-center items-center"
-        style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('http://recipeat.in/styles/site/default/images/demo/slides/slide-image-01.jpg')">
+        style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://image.shutterstock.com/image-photo/dark-food-background-empty-black-260nw-1682369737.jpg')">
         <div class="flex w-full">
             <a href="{{ url()->previous() }}" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
         </div>

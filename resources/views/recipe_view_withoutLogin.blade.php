@@ -21,8 +21,8 @@
 </head>
 
 <body class="antialiased">
-    <div class="bg-fixed bg-center flex flex-col justify-center items-center"
-        style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('http://recipeat.in/styles/site/default/images/demo/slides/slide-image-01.jpg')">
+    <div class=" h-auto  bg-fixed bg-cover bg-no-repeat"
+        style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://image.shutterstock.com/image-photo/dark-food-background-empty-black-260nw-1682369737.jpg')">
         <div class="flex w-full">
             <a href="\" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
         </div>
@@ -57,12 +57,12 @@
                     class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
                     <div class="flex flex-col w-full justify-start gap-5 items-center">
                         <div class="w-full h-10 flex justify-center bg-blue-700 text-white rounded-lg">
-                        <h1 class="items-center flex">Steps</h1>
+                            <h1 class="items-center flex">Steps</h1>
                         </div>
                         <div>
                             @foreach ($recipe_steps as $steps)
-                            <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
-                            <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
+                                <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
+                                <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
                             @endforeach
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                     <div class="p-2 w-full">
                         <div class="card-body w-full">
                             <h5 class="mt-2">Leave a comment</h5>
-                            <form  method="post" action="/login">
+                            <form method="post" action="/login">
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" name="comment" placeholder="enter your comment here.."
@@ -82,12 +82,12 @@
                                 </div>
                                 <div class="form-group">
                                     <a href="/login" class="px-2 py-1 bg-green-300 mb-2 text-white py-0">Add Comment
-                                   </a>
+                                    </a>
                                 </div>
-                                {{--  <div class="w-full card-body">
+                                {{-- <div class="w-full card-body">
                                     @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>$recipe->id])
                                      <hr />
-                                </div>  --}}
+                                </div> --}}
                             </form>
                         </div>
                     </div>
@@ -131,23 +131,24 @@
                 </div>
 
                 <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Meta Description</h1>
-                <p class="w-full outline-none border-2 border-gray-300 py-3  rounded-sm mt-4"> {{ $recipe->meta_description }}
-                    </p>
+                <p class="w-full outline-none border-2 border-gray-300 py-3  rounded-sm mt-4">
+                    {{ $recipe->meta_description }}
+                </p>
             </div>
             <div class="w-full lg:w-2/5 order-1 lg:order-last flex flex-col justify-start gap-7">
                 <div class="bg-white p-2 rounded-lg text-center">
 
-                    <img src="https://spicecravings.com/wp-content/uploads/2021/04/Chicken-Biryani-Featured-2-500x375.jpg"
-                        alt="" class="h-60 w-full object-cover content-center rounded-t-lg" />
+                    <img src="{{ $recipe->getFirstMediaUrl('cover') }}" alt=""
+                        class="h-60 w-full object-cover content-center rounded-t-lg" />
                     <h1 class="text-center font-bold tracking-wider text-gray-700 mt-4">
                         cuisine: {{ $recipe->cuisine->cuisine }}</h1>
                     <p class="text-gray-500 mt-1 text-center">{{ $recipe->created_at->diffForHumans() }}</p>
                     <br />
                     <a href="/login">
-                     @include('like', ['model' => $recipe])
-                    <p class="bg-blue-700 py-2 px-4  text-white text-sm font-semibold">
-                        {{ $recipe->recipe_name }}
-                    </p>
+                        @include('like', ['model' => $recipe])
+                        <p class="bg-blue-700 py-2 px-4  text-white text-sm font-semibold">
+                            {{ $recipe->recipe_name }}
+                        </p>
                     </a>
                     <div class="mt-5 flex justify-between mx-5 mb-5">
                         <div class="text-left">

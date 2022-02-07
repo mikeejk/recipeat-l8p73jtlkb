@@ -30,8 +30,9 @@
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- end:: Custom Stylesheets -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 
-
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -136,43 +137,51 @@
 
     <section>
         <!-- component -->
-        <div class=" py-10 h-auto  bg-fixed bg-center"
-            style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://recipeat.in/styles/site/default/images/demo/slides/slide-image-02.jpg')">
+        <div class=" h-auto bg-fixed bg-cover bg-no-repeat"
+            style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('images/Background_Black.jpg');">
             <div id="mySidenav" class="sidenav text-white">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-                <div class="bg-white  border text-gray-900 border-gray-200  dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <div
+                    class="bg-white  border text-gray-900 border-gray-200  dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <a href="/login">
-                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full rounded-t-lg inline-flex items-center ">
-                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/login-rounded-right--v1.png"/>
-                        <span class="text-lg ml-2">Login</span>
-                    </button>
-                </a>
-                <a href="/">
-                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full inline-flex items-center dark:border-gray-600 ">
-                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/soup-plate.png"/>
-                        <span class="text-lg ml-2">Recipes</span>
+                        <button type="button"
+                            class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full rounded-t-lg inline-flex items-center ">
+                            <img class="w-8 h-8"
+                                src="https://img.icons8.com/ios/50/000000/login-rounded-right--v1.png" />
+                            <span class="text-lg ml-2">Login</span>
+                        </button>
+                    </a>
+                    <a href="/">
+                        <button type="button"
+                            class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full inline-flex items-center dark:border-gray-600 ">
+                            <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/soup-plate.png" />
+                            <span class="text-lg ml-2">Recipes</span>
 
-                    </button>
-                </a>
-                <a href="/">
-                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full inline-flex items-center ">
-                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/voice-presentation.png"/>
-                        <span class="text-lg ml-2">Food Hacks</span>
-                    </button>
-                </a>
-                <a href="/contactUs">
-                    <button type="button" class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium w-full rounded-b-lg inline-flex items-center ">
-                        <img class="w-8 h-8" src="https://img.icons8.com/ios/50/000000/add-contact-to-company.png"/>
-                        <span class="text-lg ml-2">Contact Us</span>
-                    </button>
-                </a>
+                        </button>
+                    </a>
+                    <a href="/">
+                        <button type="button"
+                            class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium border-b border-gray-200  w-full inline-flex items-center ">
+                            <img class="w-8 h-8"
+                                src="https://img.icons8.com/ios/50/000000/voice-presentation.png" />
+                            <span class="text-lg ml-2">Food Hacks</span>
+                        </button>
+                    </a>
+                    <a href="/contactUs">
+                        <button type="button"
+                            class="px-4 py-4 relative hover:bg-gray-100 hover:text-blue-700 text-sm font-medium w-full rounded-b-lg inline-flex items-center ">
+                            <img class="w-8 h-8"
+                                src="https://img.icons8.com/ios/50/000000/add-contact-to-company.png" />
+                            <span class="text-lg ml-2">Contact Us</span>
+                        </button>
+                    </a>
                 </div>
             </div>
             <div id="main" class="text-white">
                 <span style="font-size:40px;cursor:pointer" onclick="openNav()">&#9776;</span>
             </div>
-            <div class=" md:py-16 py-20 w-full sm:mt-0 flex flex-col justify-center items-center">
+            <div class=" md:py-1 py-20 w-full sm:mt-0 flex flex-col justify-center items-center">
                 {{-- <a href="/welcome" class="absolute top-0 left-0 mt-5 ml-5">
                     <img src="assets/media/logos/logo-5.png" alt="logo" class="h-16" />
                 </a> --}}
@@ -198,10 +207,12 @@
                                     </path>
                                 </svg>
                             </button>
-                            <input type="search" name="term" id="term" value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
+                            <input type="search" name="term" id="term"
+                                value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300"
                                 placeholder="Find a recipe...">
-                            <select name="creator" id="sort-item"class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
+                            <select name="creator" id="sort-item"
+                                class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 <option value="" class="text-gray-500">All</option>
                                 <option value="1">Chef</option>
                                 <option value="2">Home Chef</option>
@@ -210,21 +221,22 @@
                                     <option value="female"  {{ old('name',$name)=='female' ? 'selected' : ''  }}>female</option>
                                 </select> --}}
                             </select>
-                            {{--  <select name="category" id="sort-item"
+                            {{-- <select name="category" id="sort-item"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 <option value="1" >Vegetarian</option>
                                 <option value="2">Non-veg</option>
-                            </select>  --}}
+                            </select> --}}
 
-                              <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
-                                  {{--  <label
+                            <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
+                                {{-- <label
                                     class="text-gray-500 flex justify-center items-center text-center mt-1">Vegetarian</label>
-                                <input type="checkbox" value= 1 name="category"class="bg-white px-2 py-2 ml-2">  --}}
-                                   <select name="category" id="sort-item" value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
-                                class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
-                                <option value="1" >Vegetarian</option>
-                                <option value="2">Non-veg</option>
-                            </select>
+                                <input type="checkbox" value= 1 name="category"class="bg-white px-2 py-2 ml-2"> --}}
+                                <select name="category" id="sort-item"
+                                    value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
+                                    class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
+                                    <option value="1">Vegetarian</option>
+                                    <option value="2">Non-veg</option>
+                                </select>
                             </div>
                         </div>
 
@@ -236,36 +248,19 @@
                     </div>
                 </form>
 
-                <div class="w-3/4 flex flex-row py-5 mx-auto">
+                <div class="w-3/4 flex flex-col py-5 mx-auto">
                     @if (isset($recipe))
                         <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
                                     <a href="/view_recipe/{{ $recipes->id }}" name="view"
-                                        class="flex xl:flex-row no-underline h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
-                                        <!-- <div class="flex  flex-col w-full p-2 border-2 rounded-lg">
-                                                        <div class="flex items-center  justify-center w-full border-b-2">
-                                                            <img class="rounded-t-lg h-40 w-full"
-                                                                src="https://spicecravings.com/wp-content/uploads/2021/04/Chicken-Biryani-Featured-2-500x375.jpg">
-                                                        </div>
-                                                        <div
-                                                            class="flex items-center justify-center bg-yellow-500 text-white hover:text-blue-600 font-bold md:text-xl text-lg w-full border-b-2 py-1 ">
-                                                            {{ $recipes->recipe_name }}
-                                                        </div>
-                                                    <div class="flex flex-col rounded-b-lg w-full p-2 mt-2 ">
-                                                        <h1 class="font-bold md:text-base text-sm text-black flex border-b-2 pb-2 pt-1 mb-2">
-                                                            Description:</h1>
-                                                        <h1 class="mt-1 mb-1 h-10 border-b-2 pb-1 text-sm overflow-hidden">{{ $recipes->description }}</h1>
-                                                        <div class="m-1 text-sm">
-                                                            <h1>Created at:</h1>
-                                                            {{ $recipes->created_at }}
-                                                        </div>
-                                                    </div>
-                                        </div>  -->
+                                        class="flex md:flex-row no-underline h-72 md:flex-col lg:w-1/4 w-1/2  p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
+
                                         <div class="flex w-full  flex-row relative">
                                             <img alt="gallery"
                                                 class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
-                                                src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" />
+                                                src="{{
+                                                $recipes->getFirstMediaUrl('cover')}}" />
                                             <p
                                                 class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium">
                                                 {{ $recipes->recipe_name }}</p>
@@ -311,7 +306,7 @@
                             @endif
                         </div>
                         <div
-                            class="pagination text-white font-extrabold px-2 flex justify-center items-center rounded-lg">
+                            class="pagination text-white font-extrabold px-2 py-4 flex justify-center items-center rounded-lg">
                             {{ $recipe->render() }}</div>
                     @endif
 
@@ -324,275 +319,9 @@
                         In / Sign Up
                     </a>
                 </div>
-                {{-- <a href="/dashboard"><button
-                        class="rounded-lg absolute bg-red-600 hover:bg-red-700 text-white p-3 top-0 right-0 mt-3 mr-5">My
-                        Recipe's</button>
-                </a> --}}
-                {{-- <form>
-                    <div class="space-y-5">
-                        <div class="flex flex-row w-full">
-                            <div class="w-full">
-                                <!-- Search -->
-                                <div class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
-                                    <!-- hero -->
-                                    <div class="hero">
-                                        <!-- hero headline -->
-                                        <div
-                                            class="hero-headline flex flex-col items-center justify-center md:pt-10 pt-20 text-center">
-                                            <p
-                                                class="text-white font-bold lg:text-4xl md:text-3xl text-2xl flex flex-col items-center mb-4">
-                                                <a class="text-white">RECIP<span class="text-red-600">EAT
-                                                        -</span><span
-                                                        class="text-yellow-400 lg:text-5xl md:text-4xl text-3xl"> EAT
-                                                        -</span> REPEAT</a>
-                                            </p>
-                                            <p class="lg:text-xl md:text-lg text-base text-white">Where food speaks with
-                                                your palate.
-                                            </p>
-                                        </div>
-                                        <!-- image search box -->
-                                        <div class="box pt-6">
-                                            <div class="box-wrapper w-full mx-auto">
-                                                <div
-                                                    class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
 
-                                                    <input type="search" name="term" id="term"
-                                                        placeholder="Search by Recipes"
-                                                        value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
-                                                        class="w-full pl-4 pr-2 py-1 text-base outline-none focus:none bg-transparent" />
-                                                    <select name="creator" class="border-2 rounded-full p-2">
-
-                                                        <option value="">All Recipes</option>
-                                                        <option value="1">Chef</option>
-                                                        <option value="2">Home-Chef</option>
-                                                    </select>
-
-                                                    <div
-                                                        class="flex space-x-2 ml-2 outline-none focus:outline-none h-full rounded-full bg-blue-500 p-2">
-                                                        <button type="submit"> <svg class="w-5 text-white h-5"
-                                                                fill="none" stroke-linecap="round"
-                                                                stroke-linejoin="round" stroke-width="2"
-                                                                stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
-                                                                </path>
-                                                            </svg></button>
-                                                    </div>
-                                                </div>
-
-                                                <!-- For toggle -->
-                                                <!-- <label for="toogleA" class="flex items-center cursor-pointer">                                              <!-- toggle  -->
-                                                <!-- <div class="relative">   -->
-                                                <!-- input -->
-                                                <!-- <input onclick="myFunction()" id="toogleA" type="checkbox" class="sr-only" />  -->
-                                                <!-- line -->
-                                                <!-- <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner">
-                                                 </div>  -->
-                                                <!-- dot -->
-                                                <!-- <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition">
-                                                            </div>
-                                                 </div>  -->
-                                                <!-- label -->
-                                                <!-- <div id="toggle_label" class="ml-3 text-gray-700 font-medium">
-                                                            Ingredients
-                                                        </div>
-                                             </label>
-                                             </div>  -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Buttons -->
-                                    <div
-                                        class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
-                                        <form action="/welcome" method="GET">
-
-                                            <button
-                                                class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden"">Recipes
-                                            </button>
-                                        </form>
-                                    <form action=" /search_ingredient" method="GET">
-                                                <a href="/search_ingredient"> <button
-                                                        class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients
-                                                    </button>
-                                                </a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form> --}}
-
-                {{-- <div class="w-3/4 flex flex-row py-5 mx-auto">
-                    @if (isset($recipe))
-                        <div class="w-full flex flex-wrap  md:flex-row flex-col">
-                            @if (count($recipe) > 0)
-                                @foreach ($recipe as $recipes)
-                                    <a href="/recipeview/{{ $recipes->id }}" name="view"
-                                        class="flex xl:flex-row  h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
-
-                                        <div class="flex w-full  flex-row relative">
-                                            <img alt="gallery"
-                                                class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
-                                                src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" />
-                                            <p
-                                                class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium">
-                                                {{ $recipes->recipe_name }}</p>
-                                            <div
-                                                class="py-1 relative z-10 h-72 w-full border-4 rounded-md border-gray-200 bg-white opacity-0 hover:opacity-100">
-                                                <div class="flex flex-col h-full rounded-b-lg w-full p-2 mt-2">
-                                                    <div class="h-52 overflow-hidden">
-                                                        <h1
-                                                            class="font-bold md:text-base text-sm text-black flex border-b-2 border-yellow-400 pb-2  mb-2">
-                                                            Description:</h1>
-                                                        <h1 class="mt-1 mb-1 h-auto  pb-1 text-sm overflow-hidden">
-                                                            {{ $recipes->description }}</h1>
-                                                    </div>
-                                                    <div class="pt-2 border-t-2  border-yellow-400 text-sm">
-                                                        <h1>Created at:</h1>
-                                                        {{ $recipes->created_at->diffForHumans() }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                @endforeach
-
-                            @else
-                                <div class="flex w-3/4 mx-auto  text-white justify-center">
-                                    <div class="flex flex-col  md:w-1/2 w-full border-2 bg-white p-2  rounded-lg">
-                                        <div class="flex items-center justify-center w-full">
-
-                                            <img class="h-14 w-14"
-                                                src="https://img.icons8.com/material-outlined/96/fa314a/box-important--v1.png" />
-                                        </div>
-                                        <h1
-                                            class="flex justify-center md:w-3/4 w-full mx-auto rounded-b-lg mt-2 mb-1 md:text-lg text-base font-medium py-2 text-gray-800">
-                                            No Results Matched your Search!</h1>
-
-
-
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    @endif
-
-
-
-                </div> --}}
-                {{-- <div class=" text-white font-extrabold px-2 flex justify-center items-center rounded-lg">
-                    {{ $recipe->render() }}</div> --}}
-                <!--No need-->
-                <!-- <div class="block justify-center bg-white px-5">
-
-                </div>-->
-
-
-                {{-- <div class="flex w-full items-center justify-center p-5 py-20">
-                    <div class="w-full">
-                        <div class="flex">
-                            <p class="text-yellow-400 font-black lg:text-4xl md:text-3xl text-2xl uppercase">HOW
-                                RECIPEAT WORKS
-                            </p>
-                            <p class="text-xs text-white border-2 p-2 mt-7 ml-3   text-center w-44 mb-3">HOW WE DO IT?
-                            </p>
-                        </div>
-                        <p>HOW WE DO IT?</p>
-                        <div class="flex lg:flex-row flex-col">
-                            <section class="text-white body-font lg:3/4 md:w-full w-full">
-                                <div class="container w-full px-5 py-24 mx-auto">
-                                    <div class="flex flex-wrap w-full -m-4">
-                                        <div
-                                            class="lg:w-1/4 sm:w-1/2 border-2   border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                            <div class="h-full bg-black  rounded-lg overflow-hidden">
-                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                                    src="https://mk0muwucepum99ape3ia.kinstacdn.com/wp-content/uploads/2019/12/%E2%80%94Pngtree%E2%80%94flat-wind-men-s-business_4575829-400x400.png"
-                                                    alt="blog">
-                                                <div class="p-6">
-                                                    <h2
-                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                        Step 1</h2>
-                                                    <h1 class="title-font text-lg font-medium text-white mb-3">CREATE A
-                                                        PROFILE
-                                                    </h1>
-                                                    <p class="leading-relaxed mb-3">Become an INSTANT Recipeat Community
-                                                        Member
-                                                        by
-                                                        signing up for FREE</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class=" lg:w-1/4 sm:w-1/2 border-2  border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                            <div class="h-full bg-black rounded-lg overflow-hidden">
-                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                                    src="https://www.freepnglogos.com/uploads/vegetables-png/fruit-and-vegetables-basket-png-20.png"
-                                                    alt="blog">
-                                                <div class="p-6">
-                                                    <h2
-                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                        Step 2</h2>
-                                                    <h1 class="title-font text-lg font-medium text-white mb-3">WHAT DO
-                                                        YOU HAVE?
-                                                    </h1>
-                                                    <p class="leading-relaxed mb-3">Check for available ingredients in
-                                                        your
-                                                        kitchen
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class=" lg:w-1/4 sm:w-1/2 border-2  border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                            <div class="h-full bg-black rounded-lg overflow-hidden">
-                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                                    src="https://cdn3.iconfinder.com/data/icons/food-delivery-28/128/expand-foodDelivery_2px-14-512.png"
-                                                    alt="blog">
-                                                <div class="p-6">
-                                                    <h2
-                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                        Step 3</h2>
-                                                    <h1 class="title-font text-lg font-medium text-white mb-3">ADD TO
-                                                        YOUR LIST
-                                                    </h1>
-                                                    <p class="leading-relaxed mb-3">Tell us what you have in your
-                                                        kitchen by
-                                                        adding
-                                                        your ingredients to a list</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class=" lg:w-1/4 sm:w-1/2 border-2 border-white rounded-md transition duration-500 ease-in-out   transform hover:-translate-y-1 hover:scale-110">
-                                            <div class="h-full bg-black rounded-lg overflow-hidden">
-                                                <img class="lg:h-48 md:h-36 w-full object-contain object-center"
-                                                    src="https://static.abbottnutrition.com/cms-prod/abbottfamily.com.sg/img/1-Eat_tcm150-144864.png"
-                                                    alt="blog">
-                                                <div class="p-6">
-                                                    <h2
-                                                        class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                                        Step 4</h2>
-                                                    <h1 class="title-font text-lg font-medium text-white mb-3">RECIPEAT
-                                                        IT!</h1>
-                                                    <p class="leading-relaxed mb-3">Begin your Recipeat experience by
-                                                        cooking
-                                                        recipes provided by our trusted homechefs</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                            <div class="lg:flex lg:visible invisible flex-wrap items-center   lg:w-1/4">
-                                <img alt="" class="our-story-card-img"
-                                    src="https://img.pngio.com/png-for-food-transparent-for-foodpng-images-pluspng-small-amount-of-food-png-885_431.png"
-                                    data-uia="our-story-card-img" />
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
-            <div class="py-24">
+            <div class="py-5">
                 <div class="p-4">
                     <div class="h-auto py-20 bg-center bg-no-repeat rounded p-4 my-4 js-show-on-scroll text-white"
                         style="background-image:linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)), url('') ">
@@ -610,7 +339,9 @@
                 </div>
 
             </div>
-            <section class="text-white body-font">
+
+            <!--User Chef Home Chef can do-->
+            {{-- <section class="text-white body-font">
                 <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center js-show-on-scroll">
                     <div
                         class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -637,7 +368,8 @@
                     <div class=" lg:w-2/6 rounded-full md:w-1/2 bg-yellow-800 w-5/6">
                         <div class="relativebg-gray-200  w-full h-full">
                             <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
-                                src="assets\welcome_page_user_pic\171-1715523_man-health-club-wellness-center-resort-and-spa.png" alt="user image" />
+                                src="assets\welcome_page_user_pic\171-1715523_man-health-club-wellness-center-resort-and-spa.png"
+                                alt="user image" />
 
                         </div>
 
@@ -717,8 +449,163 @@
 
                     </div>
                 </div>
-            </section>
+            </section> --}}
+            <!--End User Chef Home Chef can do-->
+
+            <div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
+                <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner relative w-full overflow-hidden">
+                    <div class="carousel-item active relative float-left w-full">
+                        <section class="text-white body-font">
+                            <div
+                                class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center js-show-on-scroll">
+                                <div
+                                    class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                                    <h1 class="title-font sm:text-6xl text-3xl mb-4 font-extrabold text-white">USER
+
+                                    </h1>
+
+                                    <div class="  w-full  flex flex-col">
+                                        <div id="moka-ix3cs"
+                                            class="bg-gray-400 items-center justify-center  shadow-md p-5 h-auto rounded-lg blur-3 bg-opacity-50 flex flex-col col-span-12">
+                                            <h4 class="w-56 border-b-4 border-solid border-red-500 h-10  text-2xl ">
+                                                What user can
+                                                do ?
+                                            </h4>
+                                            <h4 class="text-orange-300  mt-5 text-xl text-justify">User can search and
+                                                view recipes
+                                                posted by Chef , Home Chef and other Users.He/she can also post
+                                                recipes.He/She can
+                                                follow any Chef, Home Chef and other users. </h4>
+
+                                            <button value="button"
+                                                class="hover:text-gray-300 bg-red-600 mt-5 text-white hover:bg-black w-68 p-2 text-xl font-bold">Discover
+                                                Your Newsfeed</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:w-2/6 rounded-full md:w-1/2 bg-yellow-800 w-5/6">
+                                    <div class="relativebg-gray-200  w-full h-full">
+                                        <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
+                                            src="https://www.nicepng.com/png/detail/65-658348_happy-man-i9life-happy-man-png.png"
+                                            alt="user image" />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="carousel-item relative float-left w-full">
+                        <section class="text-white body-font">
+                            <div
+                                class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center js-show-on-scroll">
+                                <div class=" lg:w-2/6 rounded-full md:w-1/2 bg-yellow-800 w-5/6">
+                                    <div class="relativebg-gray-200  w-full h-full">
+                                        <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
+                                            src="https://www.pngitem.com/pimgs/m/36-361959_chef-png-image-chef-png-transparent-png.png"
+                                            alt="user image" />
+
+                                    </div>
+
+                                </div>
+                                <div
+                                    class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                                    <h1 class="title-font sm:text-6xl text-3xl mb-4 font-extrabold text-white">CHEF
+
+                                    </h1>
+
+                                    <div class="  w-full  flex flex-col">
+                                        <div id="moka-ix3cs"
+                                            class="bg-gray-400 items-center justify-center  shadow-md p-5 h-auto rounded-lg blur-3 bg-opacity-50 flex flex-col col-span-12">
+                                            <h4 class="w-56 border-b-4 border-solid border-red-500 h-10  text-2xl ">
+                                                What Chef can
+                                                do ?
+                                            </h4>
+                                            <h4 class="text-orange-300  mt-5 text-xl text-justify">Chef can search and
+                                                view recipes
+                                                posted by Another Chef , Home Chef and other Users.He/she can also post
+                                                recipes.He/She can
+                                                follow any Another Chef, Home Chef and other users. </h4>
+
+                                            <button value="button"
+                                                class="hover:text-gray-300 bg-red-600 mt-5 text-white hover:bg-black w-68 p-2 text-xl font-bold">Complete
+                                                Your Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="carousel-item relative float-left w-full">
+                        <section class="text-white body-font">
+                            <div
+                                class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center js-show-on-scroll">
+                                <div
+                                    class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                                    <h1 class="title-font sm:text-6xl text-3xl mb-4 font-extrabold text-white">HOME
+                                        CHEF
+
+                                    </h1>
+
+                                    <div class="  w-full  flex flex-col">
+                                        <div id="moka-ix3cs"
+                                            class="bg-gray-400 items-center justify-center  shadow-md p-5 h-auto rounded-lg blur-3 bg-opacity-50 flex flex-col col-span-12">
+                                            <h4 class="w-68 border-b-4 border-solid border-red-500 h-10  text-2xl ">
+                                                What Home Chef
+                                                can
+                                                do ?
+                                            </h4>
+                                            <h4 class="text-orange-300  mt-5 text-xl text-justify">Home Chef can search
+                                                and view
+                                                recipes
+                                                posted by Chef , another Home Chef and other Users.He/she can also post
+                                                recipes.He/She can
+                                                follow any Chef,another Home Chef and other users. </h4>
+
+                                            <button value="button"
+                                                class="hover:text-gray-300 bg-red-600 mt-5 text-white hover:bg-black w-68 p-2 text-xl font-bold">
+                                                Add Recipes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:w-2/6 rounded-full md:w-1/2 bg-yellow-800 w-5/6">
+                                    <div class="relativebg-gray-200  w-full h-full">
+                                        <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
+                                            src="https://homechefs.dialameal.in/uploads/users/MealTangob74e08617172ae5c72ee20191216110626.jpg"
+                                            alt="user image" />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <button
+                    class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center  p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                    type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon inline-block bg-no-repeat px-2 bg-red-500" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                    type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon inline-block bg-no-repeat bg-red-500" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
+
+
+
 
     </section>
 
@@ -811,6 +698,7 @@
             sessionStorage.setItem("SelItem", selVal);
         });
 
+
         const callback = function(entries) {
             entries.forEach((entry) => {
                 console.log(entry);
@@ -841,6 +729,7 @@
             document.getElementById("main").style.marginLeft = "0";
         }
     </script>
+
 </body>
 
 </html>
