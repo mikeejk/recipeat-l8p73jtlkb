@@ -8,14 +8,12 @@ use App\Models\Recipe;
 class Recipe_Ingredient extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-
         // Foreign Keys - Data Saving
         'recipe_id',
         'ingredient_id',
+        'ingredient',
         'measurement_id',
-
         // User Entered - Data Saving
         'quantity',
     ];
@@ -28,6 +26,6 @@ class Recipe_Ingredient extends Model
     public function ingredient()
     {
         // Return (role model has many data refer from the the role model)
-        return $this->hasMany(Ingredient::class, 'ingredient_id');
+        return $this->bleongsTo(Ingredient::class, 'ingredient');
     }
 }
