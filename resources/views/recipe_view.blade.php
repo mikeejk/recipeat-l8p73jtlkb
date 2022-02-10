@@ -25,7 +25,7 @@
     <div class="bg-fixed bg-center flex flex-col justify-center items-center"
         style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://image.shutterstock.com/image-photo/dark-food-background-empty-black-260nw-1682369737.jpg')">
         <div class="flex w-full">
-            <a href="{{ url()->previous() }}" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
+            <a href="\welcome" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
         </div>
         <div class="flex flex-col lg:flex-row w-full justify-center gap-5 pt-3">
 
@@ -53,8 +53,7 @@
                 </form>
                 <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1>
                 <p class="text-gray-500 mt-2">{{ $recipe->description }}</p>
-                <div
-                    class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
+                <div class="flex w-full my-5 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
                     <div class="flex flex-col w-full justify-start gap-5 items-center">
                         <div class="w-full h-10 flex justify-center bg-blue-700 text-white rounded-lg">
                             <h1 class="items-center flex">Steps</h1>
@@ -70,13 +69,24 @@
                             {{-- @endfor --}}
                             @endforeach
                             <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
-
-
                         </div>
+
                     </div>
                     <div></div>
                 </div>
-                <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Comments</h1>
+                <div class="flex w-full my-5 border-2 border-green-700 rounded-sm p-1 bg-blue-50 justify-between items-center">
+                    <div class="flex flex-col w-full justify-start gap-5 items-center">
+                        <div class="w-full h-7 flex justify-center bg-green-700 text-white rounded-lg">
+                            <h1 class="items-center flex">Ingredients</h1>
+                        </div>
+                        <div>
+                            @foreach ($recipe_ingredients as $ingredient)
+                                <h1 class="font-bold tracking-wider text-gray-700">{{ $ingredient }}</h1>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <h1 class="uppercase font-bold tracking-widest text-green-600 text-sm">Comments</h1>
                 <div class="flex border-2 mt-2 h-56  overflow-y-auto">
                     <div class="p-2 w-full">
                         {{--  <div class="w-full card-body">
@@ -97,10 +107,11 @@
                                 <div class="form-group">
                                     <input type="submit" class="px-2 py-1 bg-green-300 mb-2 text-white py-0"
                                         style="font-size: 0.8em;" value="Add Comment" />
+                                        @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>$recipe->id])
                                 </div>
                             </form>
                             <div class="w-full card-body">
-                            @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>$recipe->id])
+
                             <hr />
                         </div>
                         </div>
@@ -152,8 +163,8 @@
             <div class="w-full lg:w-2/5 order-1 lg:order-last flex flex-col justify-start gap-7">
                 <div class="bg-white p-2 rounded-lg text-center">
 
-                    <img src="https://spicecravings.com/wp-content/uploads/2021/04/Chicken-Biryani-Featured-2-500x375.jpg"
-                        alt="" class="h-60 w-full object-cover content-center rounded-t-lg" />
+                    <img src="{{ $recipe->getFirstMediaUrl('cover') }}" alt=""
+                        class="h-60 w-full object-cover content-center rounded-t-lg" />
                     <h1 class="text-center font-bold tracking-wider text-gray-700 mt-4">
                         cuisine: {{ $recipe->cuisine->cuisine }}</h1>
                     <p class="text-gray-500 mt-1 text-center">{{ $recipe->created_at->diffForHumans() }}</p>

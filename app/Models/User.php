@@ -10,8 +10,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Models\Role;
-// use Overtrue\LaravelLike\Traits\Likeable;
-// use Overtrue\LaravelLike\Traits\Liker;
 use App\Contracts\Likeable;
 use App\Models\Like;
 

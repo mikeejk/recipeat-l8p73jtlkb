@@ -166,14 +166,7 @@ class RecipeController extends Controller
         if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
         }
-        // if($request->hasfile('recipe_image'))
-        // {
-        //     $file=$request->file('recipe_image');
-        //     $extention=$file->getClientOriginalExtension();
-        //     $filename=time().'.'.$extention;
-        //     $file->move('uploads/recipes/',$filename);
-        //     $recipe->recipe_image=$filename;
-        // }
+
         // Save Data
         $recipe->update($data);
 
@@ -202,6 +195,7 @@ class RecipeController extends Controller
             $dataingredient = [
                 'recipe_id' => $recipe->id,
                 'ingredient_id' => $ingredient[$i],
+                'ingredient'=>$ingredient[$i],
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
             ];
@@ -424,9 +418,8 @@ class RecipeController extends Controller
         $pinboards = Pinboard::all('id', 'pin_name');
         $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        $ingredients = Ingredient::all(['id', 'ingredient']);
-        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient_id');
-         return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count','recipe_ingredients'));
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient');
+        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count','recipe_ingredients'));
 
 
     }
@@ -436,6 +429,7 @@ class RecipeController extends Controller
         $pinboards = Pinboard::all('id', 'pin_name');
         $count = Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps', 'count'));
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient');
+        return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients','count'));
     }
 }

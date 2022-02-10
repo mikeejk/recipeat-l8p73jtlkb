@@ -53,8 +53,7 @@
                 </form>
                 <h1 class="text-gray-700 flex  items-center font-bold tracking-wider">Description</h1>
                 <p class="text-gray-500 mt-2">{{ $recipe->description }}</p>
-                <div
-                    class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
+                <div class="flex w-full my-10 border-2 border-blue-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
                     <div class="flex flex-col w-full justify-start gap-5 items-center">
                         <div class="w-full h-10 flex justify-center bg-blue-700 text-white rounded-lg">
                             <h1 class="items-center flex">Steps</h1>
@@ -66,7 +65,18 @@
                             @endforeach
                         </div>
                     </div>
-
+                </div>
+                <div class="flex w-full my-5 border-2 border-green-700 rounded-sm p-2 bg-blue-50 justify-between items-center">
+                    <div class="flex flex-col w-full justify-start gap-5 items-center">
+                        <div class="w-full h-7 flex justify-center bg-green-700 text-white rounded-lg">
+                            <h1 class="items-center flex">Ingredients</h1>
+                        </div>
+                        <div>
+                            @foreach ($recipe_ingredients as $ingredient)
+                                <h1 class="font-bold tracking-wider text-gray-700">{{ $ingredient }}</h1>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
                 <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Comments</h1>
                 <div class="flex border-2 mt-2 h-56 overflow-y-auto">

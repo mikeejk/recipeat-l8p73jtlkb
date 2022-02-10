@@ -93,6 +93,6 @@ class Recipe extends Model implements Likeable,HasMedia
     public function feed()
     {
         // Return (Feed model has many data refer from the the Recipe model)
-        return $this->hasMany(Feed::class, 'feed_id');
+        return $this->hasMany(Feed::class, 'recipe_id');
     }
 }

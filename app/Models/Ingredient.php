@@ -11,7 +11,8 @@ class Ingredient extends Model
 
     protected $fillable = [
         // User Entered - Data Saving
-        'ingredient'
+        'ingredient',
+        'recipe_id'
     ];
     public function recipe_ingredient()
     {
