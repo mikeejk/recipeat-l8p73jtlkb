@@ -1,5 +1,4 @@
     <div class="bg-black w-full">
-
         <!-- Question 01 -->
         <div class="row w-full flex h-screen setup-content {{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
             <div class="w-full bg-fixed flex flex-col justify-center items-center"

@@ -54,3 +54,4 @@ window.KTLayoutScrolltop = require('../demo1/src/js/layout/extended/scrolltop.js
 window.KTLayoutSearch = window.KTLayoutSearchOffcanvas = require('../demo1/src/js/layout/extended/search.js');
 
 require('../demo1/src/js/layout/initialize.js');
+
