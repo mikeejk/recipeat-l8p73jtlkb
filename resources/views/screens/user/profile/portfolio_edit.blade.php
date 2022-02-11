@@ -85,7 +85,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-venus-double"></i></span></div>
-                                            <input type="date" class="form-control" name="dob" value="{{ $chef_questions->bod }}" />
+                                            <input type="date" class="form-control" name="dob" value="{{ $chef_questions->dob}}" />
                                         </div>
                                         <span class="form-text text-muted">Would you like change your Date of Birth</span>
                                     </div>
