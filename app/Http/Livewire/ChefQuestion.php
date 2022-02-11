@@ -11,7 +11,7 @@ use App\Models\Recipe;
 
 class ChefQuestion extends Component
 {
-    // Deceling the varieable in public
+    // Declaring the variable in public
     public $currentStep = 1;
     public $name;
     public $dob;

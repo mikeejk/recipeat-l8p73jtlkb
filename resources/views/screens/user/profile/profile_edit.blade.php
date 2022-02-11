@@ -35,8 +35,8 @@
         <!--end::Subheader-->
         <!--begin::Entry-->
         <div>
-            <form class="form" action="/update_profile" method="post">
-                @method('PATCH')
+            <form class="form" action="/update" method="post">
+                @method('PUT')
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Card-->

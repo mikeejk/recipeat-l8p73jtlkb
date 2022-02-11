@@ -6,6 +6,9 @@ use Livewire\Component;
 use App\Models\Question;
 use App\Models\Follower;
 use App\Models\Recipe;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Request;
+
 use App\Models\Notifications\NotificationDisplay;
 
 class Questionnaire extends Component
@@ -237,44 +240,76 @@ class Questionnaire extends Component
         $this->currentStep = $step;
     }
 
-    public function show(Question $questions,Follower $followers)
+    public function show(Question $questions, Follower $followers)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
-        $following = Follower::where('follower_id',auth()->user()->id)->get()->count();
+        $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
 
-        return view('screens.user.profile.profile',compact('questions','followers','following','recipes'));
+        return view('screens.user.profile.profile', compact('questions', 'followers', 'following', 'recipes'));
     }
+
+    // public function edit(Question $questions)
+    // {
+    //     $questions = Question::where('user_id', auth()->user()->id)->first();
+    //     return view('screens.user.profile.profile_edit',compact('questions'));
+    // }
 
     public function edit(Question $questions)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
-        return view('screens.user.profile.profile_edit',compact('questions'));
+        return view('screens.user.profile.profile_edit', compact('questions'));
     }
-
-    public function update(Question $questions)
+    public function update(Request $request)
     {
-        $data = request()->validate(
-            [
-                'name' => 'required',
-                'gender' => 'required',
-                'mail' => 'required',
-                'allergies' => 'required',
-                'lifestyle' => 'required',
-                'ingredient' => 'required',
-                'pref_cuisine' => 'required',
-                'goals' => 'required',
-                'serving_time' => 'required',
-                'cho_cook' => 'required',
-                'fav_ingr' => 'required',
-                'level_spici' => 'required',
-                'time_spend' => 'required',
-            ]
-        );
-
-        $questions->update($data);
-
-        return redirect('/my_profile');
+        $questions = Question::where('user_id', auth()->user()->id)->first();
+        $questions->name = Request::input('name');
+        $questions->gender = Request::input('gender');
+        $questions->mail = Request::input('mail');
+        $questions->allergies = Request::input('allergies');
+        $questions->lifestyle = Request::input('lifestyle');
+        $questions->ingredient = Request::input('ingredient');
+        $questions->pref_cuisine = Request::input('pref_cuisine');
+        $questions->goals = Request::input('goals');
+        $questions->serving_time = Request::input('serving_time');
+        $questions->cho_cook = Request::input('cho_cook');
+        $questions->fav_ingr = Request::input('fav_ingr');
+        $questions->level_spici = Request::input('level_spici');
+        $questions->time_spend = Request::input('time_spend');
+        $questions->update();
+        $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
+        $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
+        $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
+        return view('screens.user.profile.profile',compact('questions','followers','following','recipes'))->with('status',"Success");
     }
+
+
+    // public function update(Question $questions)
+    // {
+    //     $data = request()->validate(
+    //         [
+    //             'name' => 'required',
+    //             'gender' => 'required',
+    //             'mail' => 'required',
+    //             'allergies' => 'required',
+    //             'lifestyle' => 'required',
+    //             'ingredient' => 'required',
+    //             'pref_cuisine' => 'required',
+    //             'goals' => 'required',
+    //             'serving_time' => 'required',
+    //             'cho_cook' => 'required',
+    //             'fav_ingr' => 'required',
+    //             'level_spici' => 'required',
+    //             'time_spend' => 'required',
+    //         ]
+    //     );
+
+    //     $questions->update($data);
+
+    //     return redirect('/my_profile');
+    // }
+
+
+   
 }

@@ -265,11 +265,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', functio
 // User profile tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', [Questionnaire::class, 'show']);
 
+
 // Edit User Profile Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/edit_profile', [Questionnaire::class, 'edit']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/edit', [Questionnaire::class, 'edit']);
 
 // Upadte User Profile Tab
-Route::middleware(['auth:sanctum', 'verified'])->patch('/home', [Questionnaire::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->put('/update', [Questionnaire::class, 'update']);
 
 // Porrtfolio tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuestion::class, 'show']);
@@ -319,6 +320,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
         return view('screens.user.home.questions');
     }
 })->name('home');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/indexHome', function () {
+    return view('indexHome');
+});
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Follow Routes
