@@ -18,6 +18,7 @@ use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\ContactController;
 use App\Models\User;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Request;
@@ -143,12 +144,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/allrecipe.data', [RecipeController::class, 'anyData2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex2']);
-
-    //     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'index3']);
-
-    //     Route::middleware(['auth:sanctum', 'verified'])->get('/all.data', [RecipeController::class, 'anyData3']);
-
-    //     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'getIndex3']);
 });
 
 // CategoryController
@@ -281,10 +276,10 @@ Route::middleware(['auth:sanctum', 'verified'])->put('/update', [Questionnaire::
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuestion::class, 'show']);
 
 // Edit Portfolio tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/edit_portfolio', [ChefQuestion::class, 'edit']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/portfolio_edit', [ChefQuestion::class, 'edit']);
 
 // Update Portfolio tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/update_portfolio', [ChefQuestion::class, 'update'])->name('chef_questions.update');
+Route::middleware(['auth:sanctum', 'verified'])->put('/update_portfolio', [ChefQuestion::class, 'update']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes
@@ -317,7 +312,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     Question Routes
 // -------------------------------------------------------------------------------------------------------------------
-
 // User Questionnaire Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
     if (auth()->user()->hasRole('Admin')) {
@@ -376,13 +370,15 @@ Route::get('/notifications', function () {
 Route::get('/contactUs', function () {
     return view('contactUs');
 });
-// -------------------------------------------------------------
+Route::get('/contactUs', [ContactController::class, 'contactUs']);
+Route::post('/contactUs', [ContactController::class, 'store']);
+// -------------------------------------------------------------------------
 //                              Test Routes
-// ------------------------------------------------------------
+// ------------------------------------------------------------------------
 Route::middleware(['auth:sanctum', 'verified'])->get('/login2', function () {
     return view('screens.user.profile.login2');
 });
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 //                               Comment Routes
 //-------------------------------------------------------------------------------
 Route::middleware(['auth:sanctum', 'verified'])->post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
@@ -391,24 +387,6 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/reply/store', [CommentCo
 //-----------------------------------------------------------------------------------------------
 //                                Like Routes
 //--------------------------------------------------------------------------------------------------
-//  Route::get('/', function (Request $request) {
-//      if (User::count() < 3) {
-//          User::factory()->count(3)->create();
-//     }
-
-//      if (auth()->guest() && $request->has('login')) {
-//          auth()->login(User::inRandomOrder()->first());
-//      }
-
-//      if (auth()->check() && $request->has('logout')) {
-//          auth()->logout();
-//      }
-
-//     // if (Recipe::count() < 5) {
-//     //     Recipe::factory()->count(5)->create();
-//     // }
-
-//      $recipes = Recipe::latest()->with('likes')->take(5)->get();
 
 Route::middleware(['auth:sanctum', 'verified'])->post('like', [LikeController::class, 'like'])->name('like');
 Route::middleware(['auth:sanctum', 'verified'])->delete('like', [LikeController::class, 'unlike'])->name('unlike');
@@ -499,6 +477,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
     return view('screens.admin.newsfeed.add_feed');
 });
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
     Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'confirm']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'index']);

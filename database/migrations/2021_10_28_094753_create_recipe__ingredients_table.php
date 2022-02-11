@@ -20,7 +20,6 @@ class CreateRecipeIngredientsTable extends Migration
 
             // Foreign Keys - Data Saving
             $table->unsignedBigInteger('recipe_id')->nullable();
-            $table->unsignedBigInteger('ingredient_id')->nullable();
             $table->unsignedBigInteger('ingredient')->nullable();
             $table->unsignedBigInteger('measurement_id')->nullable();
 
@@ -29,10 +28,9 @@ class CreateRecipeIngredientsTable extends Migration
 
             // Foreign Keys
             $table->foreign('recipe_id')->references('id')->on('recipes');
-            $table->foreign('ingredient_id')->references('id')->on('ingredients');
+            // $table->foreign('ingredient_id')->references('id')->on('ingredients');
             $table->foreign('ingredient')->references('id')->on('ingredients');
             $table->foreign('measurement_id')->references('id')->on('measurements');
-
             // Time-Stamp Data
             $table->timestamps();
         });

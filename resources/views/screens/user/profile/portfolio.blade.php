@@ -68,7 +68,7 @@
                                     <!--begin::User-->
                                     <!--begin::Actions-->
                                     <div class="my-lg-0 my-1">
-                                        <a href="/edit_portfolio" class="btn btn-sm btn-primary font-weight-bolder mr-2"> <i
+                                        <a href="/portfolio_edit" class="btn btn-sm btn-primary font-weight-bolder mr-2"> <i
                                                 class="fas fa-user-edit text-white text-lg"></i>Edit Portfolio</a>
                                     </div>
                                     <!--end::Actions-->

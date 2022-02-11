@@ -254,7 +254,6 @@ class RecipeController extends Controller
         return request()->validate(
             [
                 'recipe_name'  => 'required',
-                // 'recipe_image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'preparing_time'  => 'required',
                 'cooking_time'  => 'required',
                 'serves_people'  => 'required',

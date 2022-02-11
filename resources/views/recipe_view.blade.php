@@ -22,7 +22,7 @@
 </head>
 
 <body class="antialiased">
-    <div class="bg-fixed bg-center flex flex-col justify-center items-center"
+    <div class="bg-fixed bg-cover flex flex-col justify-center items-center bg-no-repeat"
         style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://image.shutterstock.com/image-photo/dark-food-background-empty-black-260nw-1682369737.jpg')">
         <div class="flex w-full">
             <a href="\welcome" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
@@ -59,7 +59,6 @@
                             <h1 class="items-center flex">Steps</h1>
                         </div>
                         <div>
-
                             @foreach ($recipe_steps as $steps)
                             {{-- @for ($i = 1; $i < $count; $i++) --}}
 
@@ -107,11 +106,11 @@
                                 <div class="form-group">
                                     <input type="submit" class="px-2 py-1 bg-green-300 mb-2 text-white py-0"
                                         style="font-size: 0.8em;" value="Add Comment" />
-                                        @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>$recipe->id])
+
                                 </div>
                             </form>
                             <div class="w-full card-body">
-
+                                @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>$recipe->id])
                             <hr />
                         </div>
                         </div>

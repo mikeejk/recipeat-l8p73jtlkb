@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Livewire;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use App\Models\Chef_question;
 use Livewire\Component;
 use App\Models\Follower;
-use App\Models\User;
 use App\Models\Recipe;
 
 class ChefQuestion extends Component
@@ -106,7 +104,7 @@ class ChefQuestion extends Component
     }
 
     // Function - SubmitForm
-    public function submitForm(Request $request)
+    public function submitForm()
     {
         Chef_question::create([
             'name' => $this->name,
@@ -153,23 +151,37 @@ class ChefQuestion extends Component
     }
 
     // Function - Update
-    public function update(Chef_question $chef_questions)
+    public function update(Request $request)
     {
-        $data = request()->validate(
-            [
-                'name' => 'required',
-                'dob' => 'required',
-                'location' => 'required',
-                'status' => 'required',
-                'designation' => 'required',
-                'company' => 'required',
-                'cooking_style' => 'required',
-                'accomplishments' => 'required'
-            ]
-        );
 
-        $chef_questions->update($data);
-
-        return redirect('/my_portfolio');
+        $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
+        $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
+        $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
+        $chef_questions = Chef_Question::where('user_id', auth()->user()->id)->first();
+        $chef_questions->name = Request::input('name');
+        $chef_questions->dob = Request::input('dob');
+        $chef_questions->location = Request::input('location');
+        $chef_questions->status = Request::input('status');
+        $chef_questions->designation = Request::input('designation');
+        $chef_questions->company = Request::input('company');
+        $chef_questions->cooking_style = Request::input('cooking_style');
+        $chef_questions->accomplishments = Request::input('accomplishments');
+        $chef_questions->status = 1;
+        $chef_questions->update();
+        return view('screens.user.profile.portfolio',compact('chef_questions','followers','following','recipes'))->with('status',"Success");
     }
 }
+ //         $data = request()->validate(
+        //             [
+        //         'name' => 'required',
+        //         'dob' => 'required',
+        //         'location' => 'required',
+        //         'status' => 'required',
+        //         'designation' => 'required',
+        //         'company' => 'required',
+        //         'cooking_style' => 'required',
+        //         'accomplishments' => 'required'
+        //     ]
+        // );
+
+        // $chef_questions->update($data);
