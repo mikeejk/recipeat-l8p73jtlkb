@@ -86,14 +86,14 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-venus-double"></i></span></div>
-                                            <select type="text" class="form-control" name="gender" value="{{ $questions->gender }}">
-                                                    <option value="Male">
+                                            <select type="text" class="form-control" name="gender" >
+                                                    <option value="Male"  {{( $questions->gender === 'Male') ? 'Selected' : ''}}>
                                                         Male
                                                     </option>
-                                                    <option value="Fe-Male">
+                                                    <option value="Fe-Male"  {{( $questions->gender === 'Fe-Male') ? 'Selected' : ''}}>
                                                         Fe-Male
                                                     </option>
-                                                    <option value="Other">
+                                                    <option value="Other"  {{( $questions->gender === 'Other') ? 'Selected' : ''}}>
                                                         Other
                                                     </option>
                                             </select>
