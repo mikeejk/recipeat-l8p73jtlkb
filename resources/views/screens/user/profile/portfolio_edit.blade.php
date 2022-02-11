@@ -36,7 +36,7 @@
         <!--begin::Entry-->
         <div>
             <form class="form" action="/update_portfolio" method="post">
-                @method('PATCH')
+                @method('PUT')
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Card-->

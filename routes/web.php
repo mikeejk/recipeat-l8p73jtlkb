@@ -276,10 +276,10 @@ Route::middleware(['auth:sanctum', 'verified'])->put('/update', [Questionnaire::
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuestion::class, 'show']);
 
 // Edit Portfolio tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/edit_portfolio', [ChefQuestion::class, 'edit']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/portfolio_edit', [ChefQuestion::class, 'edit']);
 
 // Update Portfolio tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/update_portfolio', [ChefQuestion::class, 'update'])->name('chef_questions.update');
+Route::middleware(['auth:sanctum', 'verified'])->put('/update_portfolio', [ChefQuestion::class, 'update']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes

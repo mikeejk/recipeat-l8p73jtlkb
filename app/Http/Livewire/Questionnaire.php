@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Livewire;
-
 use Livewire\Component;
 use App\Models\Question;
 use App\Models\Follower;
 use App\Models\Recipe;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Request;
 
 use App\Models\Notifications\NotificationDisplay;
@@ -250,11 +248,7 @@ class Questionnaire extends Component
         return view('screens.user.profile.profile', compact('questions', 'followers', 'following', 'recipes'));
     }
 
-    // public function edit(Question $questions)
-    // {
-    //     $questions = Question::where('user_id', auth()->user()->id)->first();
-    //     return view('screens.user.profile.profile_edit',compact('questions'));
-    // }
+    
 
     public function edit(Question $questions)
     {
@@ -283,33 +277,6 @@ class Questionnaire extends Component
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
         return view('screens.user.profile.profile',compact('questions','followers','following','recipes'))->with('status',"Success");
     }
-
-
-    // public function update(Question $questions)
-    // {
-    //     $data = request()->validate(
-    //         [
-    //             'name' => 'required',
-    //             'gender' => 'required',
-    //             'mail' => 'required',
-    //             'allergies' => 'required',
-    //             'lifestyle' => 'required',
-    //             'ingredient' => 'required',
-    //             'pref_cuisine' => 'required',
-    //             'goals' => 'required',
-    //             'serving_time' => 'required',
-    //             'cho_cook' => 'required',
-    //             'fav_ingr' => 'required',
-    //             'level_spici' => 'required',
-    //             'time_spend' => 'required',
-    //         ]
-    //     );
-
-    //     $questions->update($data);
-
-    //     return redirect('/my_profile');
-    // }
-
-
-   
 }
+
+
