@@ -18,10 +18,11 @@ class CreateFeedsTable extends Migration
             // Foreign Key - Data Saving
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('recipe_id');
-            $table->timestamps();
+
             //Foreign Key
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->timestamps();
         });
     }
 

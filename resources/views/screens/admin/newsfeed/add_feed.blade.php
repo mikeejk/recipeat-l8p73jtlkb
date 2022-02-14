@@ -46,18 +46,18 @@
                 <div class="card-body bg-white">
                     <div class="form-group flex breadcrumb breadcrumb-transparent ">
                         <label><strong>Generate News Feed</strong></label>
-                        <select id='status' class="form-control" style="width: 200px">
-                            <option value="">--Select --</option>
+                        <select name="creator" class="form-control"value="{{ isset($_GET['creator']) ? $_GET['creator'] : '' }}" style="width: 200px">
                             <option value="0">All</option>
                             <option value="1">Chef</option>
                             <option value="2">HomeChef</option>
                         </select>
+
                         <div class="bg-blue-500  items-center">
-                            {{-- <input type="hidden" name="recipe_id" value="{{ $recipe->id }}" /> --}}
-                            <button type="submit" data="recipes[]" name="confirm">Confirm</button>
+                             {{-- <input type="hidden" name="recipe_id" value="{{ $recipe->id }}" />  --}}
+                            <button type="submit"  name="confirm" >Confirm</button>
                         </div>
                     </div>
-                    <table class="table" id="add_feed-table" name="recipes[]"">
+                    <table class="table" id="add_feed-table" >
                         <thead>
                             <tr>
                                 <th>Recipe Name</th>
@@ -65,7 +65,6 @@
                                 <th>Cuisine</th>
                                 <th>Creator</th>
                                 <th>AddToFeed</th>
-
                             </tr>
                         </thead>
                     </table>
@@ -76,7 +75,7 @@
         </div>
     </div>
     <!--end::Data-Table-->
-</form>
+
     @push('scripts')
         <script>
             $(function() {
@@ -97,7 +96,7 @@
                             searchable: false,
                         },
                         {
-                            
+
                             data: 'cuisine',
                             name: 'cuisine',
                             orderable: false,
@@ -120,7 +119,22 @@
                     ]
                 });
             });
+
         </script>
+        </form>
+        {{-- <script type="trxt/javascript">
+            $(document).ready(function(){
+                $('#submit').click(function(){
+                    var id=[];
+                        $('.get_value').each(function(){
+                            if($(this).is(":checked"))
+                            {
+                                languages.push($(this).val());
+                            }
+                         });
+                 });
+            });
+        </script> --}}
 
     @endpush
 @endsection
