@@ -24,7 +24,6 @@ class FeedController extends Controller
         $feed->recipe_id = $request->input('recipe_id');
         // store it as string separated by commas
         // $feed->recipe_id= implode(',', $request->input('recipe_id'));
-
         // Recipe-Data Storeing - Foreign Key
         $feed->user_id = $user_id;
         // Data Save

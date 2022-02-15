@@ -9,31 +9,36 @@ use Illuminate\Support\Facades\Mail;
 class ContactController extends Controller
 {
 
-    public function contactUs()
+    public function index()
     {
+// $contacts = Contact::all();
         return view('contactUs');
     }
-    public function store(Request $request)
+     // Function - Create
+    public function create()
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits:10|numeric',
-            'message' => 'required',
-        ]);
-        $input = $request->all();
+         return view('contactUs');
+    }
+    public function store(Request $request)
+    {   $this->ValidatedData();
+            $contact = new Contact;
+            $contact->name = $request->get('name');
+            $contact->email = $request->get('email');
+            $contact->phone = $request->get('phone');
+            $contact->message = $request->get('message');;
+            $contact->save();
+        // return redirect('/contactUs');
+    }
+    protected function validatedData()
+    {
+        return request()->validate(
+            [
+                    'name'=>'required',
+                    'email'=>'required',
+                    'phone'=>'required',
+                    'message'=>'required',
 
-        Contact::create($input);
-        //  Send mail to admin
-        Mail::send('contactMail', array(
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'phone' => $input['phone'],
-            'message' => $input['message'],
-        ), function($message) use ($request){
-            $message->from($request->email);
-            $message->to('admin@mindzapp.in', 'Admin')->message($request->get('message'));
-        });
-        return view('/');
+             ]
+        );
     }
 }
