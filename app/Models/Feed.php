@@ -23,5 +23,14 @@ class Feed extends Model
             // Return (Recipe model has many data refer from the the Recipe model)
             return $this->hasMany(Recipe::class, 'recipe_id');
         }
+        public function setRecipeAttribute($value)
+    {
+        $this->attributes['recipe_id'] = json_encode($value);
+    }
+
+    public function getRecipeAttribute($value)
+    {
+        return $this->attributes['recipe_id'] = json_decode($value);
+    }
 
 }

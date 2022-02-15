@@ -124,7 +124,7 @@ class RecipeController extends Controller
         for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
-                'ingredient_id' => $ingredient[$i],
+                'ingredient' => $ingredient[$i],
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
             ];
@@ -195,7 +195,6 @@ class RecipeController extends Controller
         for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
-                'ingredient_id' => $ingredient[$i],
                 'ingredient'=>$ingredient[$i],
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
