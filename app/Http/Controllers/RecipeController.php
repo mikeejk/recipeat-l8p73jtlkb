@@ -13,6 +13,7 @@ use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Pinboard;
+use App\Models\Pin_Recipe;
 use App\Models\Recipe_Step;
 use App\Models\Recipe_Ingredient;
 
@@ -415,10 +416,11 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
+        $pinrecipes=Pin_recipe::all();
         $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient');
-        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','count','recipe_ingredients'));
+        // $ingredients=Ingredient::pluck();
+        return view('recipe_view', compact('recipe', 'pinboards','pinrecipes','recipe_steps','count'));
 
 
     }
@@ -428,7 +430,8 @@ class RecipeController extends Controller
         $pinboards = Pinboard::all('id', 'pin_name');
         $count = Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient');
-        return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients','count'));
+        // $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient');
+        // $ingredients=Ingredient::all();
+        return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','count'));
     }
 }

@@ -71,11 +71,11 @@
                         <div class="w-full h-7 flex justify-center bg-green-700 text-white rounded-lg">
                             <h1 class="items-center flex">Ingredients</h1>
                         </div>
-                        <div>
-                            @foreach ($recipe_ingredients as $ingredient)
+                        {{--  <div>
+                            @foreach ($ingredients as $ingredient)
                                 <h1 class="font-bold tracking-wider text-gray-700">{{ $ingredient }}</h1>
                             @endforeach
-                        </div>
+                        </div>  --}}
                     </div>
                 </div>
                 <h1 class="uppercase font-bold tracking-widest text-blue-600 text-sm">Comments</h1>
