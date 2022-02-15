@@ -134,7 +134,7 @@
                     <p class="text-2xl font-medium mt-4 mb-2">We want to better your experience on Recipeat.</p>
                     <p class="text-2xl font-medium ">This part will only take a couple minutes!</p>
                     <div class="flex mt-6 py-10">
-                        <a href="/home" class="px-16 py-4 bg-red-600 rounded text-white xl:text-xl text-lg font-bold">
+                        <a href="/indexHomequestions" class="px-16 py-4 bg-red-600 rounded text-white xl:text-xl text-lg font-bold">
                            Let's do it
                         </a>
                         <a href="" class="px-5 py-3  rounded text-white text-xl">

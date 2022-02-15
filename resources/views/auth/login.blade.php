@@ -29,7 +29,8 @@
                         <div class="form-group">
                             <input id="email" type="email"
                                 class="form-control form-control-solid h-auto p-6 rounded-md bg-white @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email ID">
+                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                                placeholder="Email ID">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
