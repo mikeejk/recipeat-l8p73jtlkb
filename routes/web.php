@@ -316,6 +316,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
     if (auth()->user()->hasRole('Admin')) {
         return view('dashboard');
+
     } else {
         return view('screens.user.home.questions');
     }
@@ -370,8 +371,10 @@ Route::get('/notifications', function () {
 Route::get('/contactUs', function () {
     return view('contactUs');
 });
-Route::get('/contactUs', [ContactController::class, 'contactUs']);
-Route::post('/contactUs', [ContactController::class, 'store']);
+Route::get('/contactUs', [ContactController::class, 'index']);
+Route::get('/contactUs/create', [ContactController::class, 'create']);
+
+Route::post('/contactUs/send', [ContactController::class, 'store']);
 // -------------------------------------------------------------------------
 //                              Test Routes
 // ------------------------------------------------------------------------
@@ -478,7 +481,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
 });
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'confirm']);
+     Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'confirm']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'index']);
 

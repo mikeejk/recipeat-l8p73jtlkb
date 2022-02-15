@@ -16,7 +16,7 @@ class CreatePinRecipesTable extends Migration
         Schema::create('pin_recipes', function (Blueprint $table) {
               // Auto Genrated - ID
               $table->id();
-
+              $table->boolean('status')->default(0);
               // Foreign Key - Data Saving
               $table->unsignedBigInteger('user_id');
               $table->unsignedBigInteger('recipe_id');

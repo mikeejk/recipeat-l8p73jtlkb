@@ -234,8 +234,8 @@
                                 <select name="category" id="item"
                                     value="{{ isset($_GET['category']) ? $_GET['category'] : '' }}"
                                     class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
-                                    <option value="1">Vegetarian</option>
-                                    <option value="2">Non-veg</option>
+                                    <option value="1"{{ old('category','Vegetarian')=='Vegetarian' ? 'selected' : ''  }}>Vegetarian</option>
+                                    <option value="2"{{ old('category','Non-veg')=='Non-veg' ? 'selected' : ''  }}>Non-veg</option>
                                 </select>
                             </div>
                         </div>
