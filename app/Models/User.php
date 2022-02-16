@@ -165,6 +165,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function feed()
     {
         // Return (Feed model has many data refer from the the User model)
-        return $this->hasMany(Feed::class, 'feed_id');
+        return $this->hasMany(Feed::class, 'user_id');
     }
 }

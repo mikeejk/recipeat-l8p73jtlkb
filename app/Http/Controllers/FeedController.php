@@ -8,7 +8,10 @@ use App\Models\Recipe;
 use App\Models\Cuisine;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
+use App\Notifications\FeedRecipeNotification;
+use Illuminate\Notifications\Notifiable;
 
 class FeedController extends Controller
 {
@@ -17,19 +20,33 @@ class FeedController extends Controller
         // Create New Object
         $feed = new Feed();
 
-        // User_id Form User Model
+         $id=1;
          $user_id = auth()->user()->id;
 
+
+        // User_id Form User Model
+        //  $user_id = auth()->user()->id;
         // Recipe_id Form Recipe Model
          $feed->recipe_id = $request->get('recipe_id');
 
         // store it as string separated by commas
-        // $feed->recipe_id= implode(',', $request->input('recipe_id'));
-        // Recipe-Data Storeing - Foreign Key
+        //  $feed->recipe_id= implode(',', $recipe);
 
+        // Recipe-Data Storeing - Foreign Key
         $feed->user_id = $user_id;
+         $user=User::where('id','!=',$feed->user_id)->pluck('name');
+         $recipe=Recipe::where('id','=',$feed->recipe_id)->pluck('recipe_name');
         // Data Save
         $feed->save();
+        // $users = User::all();
+        // $recipe=Recipe::all();
+        // Retrieving all subscribers
+        //  foreach ($users as $user){
+
+        // $user->notify(new FeedRecipeNotification($user,$recipe));
+        $feed->notify(new  FeedRecipeNotification($user,$recipe));
+    //  }
+
 
         // dd($feed);
          return redirect()->back();
