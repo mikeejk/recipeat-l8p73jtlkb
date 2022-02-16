@@ -130,10 +130,8 @@ class RecipeController extends Controller
             ];
             DB::table('recipe__ingredients')->insert($dataingredient);
         }
-
         return redirect('/recipes');
     }
-
     // Function - Edit
     public function edit(Recipe $recipe)
     {
@@ -364,7 +362,7 @@ class RecipeController extends Controller
         $term  = $request->get('term');
         $creator = $request->get('creator');
         $category_id = $request->get('category');
-        //  if($term){
+         if($term){
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
             ->where('category_id', 'LIKE', '%' . $category_id . '%')
@@ -377,9 +375,9 @@ class RecipeController extends Controller
             'term' => $request->get('term'),
         ));
         return view('welcome', compact('recipe'));
-        //    }
-        //  return view('welcome');
-
+          }
+          return view('welcome');
+        // return view('welcome', compact('recipe'));
     }
     //  Recipe Search for non login users
     public function nonLoginUserSearch(Request $request)
@@ -388,8 +386,8 @@ class RecipeController extends Controller
         $creator = $request->get('creator');
         $category_id = $request->get('category');
 
-        // $category=$request->get('category');
-        //    if($term){
+
+    if($term){
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
             ->where('category_id', 'LIKE', '%' . $category_id . '%')
@@ -401,10 +399,9 @@ class RecipeController extends Controller
         $recipe->appends(array(
             'term' => $request->get('term'),
         ));
-
         return view('welcome_withoutLogin', compact('recipe'));
-        //  }
-        //  return view('welcome_withoutLogin');
+      }
+      return view('welcome_withoutLogin');
     }
     public function search1(Request $request)
     {
