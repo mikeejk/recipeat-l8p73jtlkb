@@ -18,6 +18,7 @@ use App\Http\Livewire\ChefQuestion;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileImageController;
 use App\Models\User;
 use App\Models\Recipe;
@@ -381,10 +382,8 @@ Route::get('/notifications', function () {
 Route::get('/contactUs', function () {
     return view('contactUs');
 });
-Route::get('/contactUs', [ContactController::class, 'index']);
-Route::get('/contactUs/create', [ContactController::class, 'create']);
-
-Route::post('/contactUs/send', [ContactController::class, 'store']);
+Route::get('contactUs', [ContactController::class, 'getContact'])->name('contactUs');
+Route::post('contactUs', [ContactController::class, 'storeContact'])->name('contactUs.store');
 // -------------------------------------------------------------------------
 //                              Test Routes
 // ------------------------------------------------------------
