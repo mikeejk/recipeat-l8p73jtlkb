@@ -13,7 +13,7 @@ use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Pinboard;
-use App\Models\Pin_Recipe;
+use App\Models\Pin_recipe;
 use App\Models\Recipe_Step;
 use App\Models\Recipe_Ingredient;
 
