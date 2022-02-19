@@ -371,6 +371,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
         $notification->markAsRead();
     }
 });
+Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
+    // $user=Auth::user();
+    // $user->notify(new NewFollower(User::findOrFail(2)));die;
+    foreach (auth()->user()->unreadnotifications as $notification) {
+        $notification->markAsRead();
+    }
+});
 // Welcome Tab
 Route::get('/notifications', function () {
     foreach (auth()->user()->unreadnotifications as $notification) {

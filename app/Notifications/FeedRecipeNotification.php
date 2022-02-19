@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Notifications;
+use App\Models\Recipe;
 use App\Models\Feed;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,19 +13,18 @@ class FeedRecipeNotification extends Notification
 {
     use Queueable;
     public $user;
-    protected $recipe;
-
+    // public $recipe;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user,$recipe)
+    public function __construct($user)
     {
         $this->user=$user;
-        $this->recipe = $recipe;
-    }
+        // $this->recipe=$recipe;
 
+    }
     /**
      * Get the notification's delivery channels.
      *
@@ -33,7 +33,7 @@ class FeedRecipeNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['database'];
     }
 
     /**
@@ -44,15 +44,13 @@ class FeedRecipeNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        // return (new MailMessage)
-        //             ->line('The introduction to the notification.')
-        //             ->action('Notification Action', url('/'))
-        //             ->line('Thank you for using our application!');
-        return (new MailMessage)
-        ->subject('Feed Recipe')
-        ->line('Admin'.' Suggested a recipe to you..: '.$this->recipe)
-        ->action('checkItOut', url('/recipes'));
 
+        return (new MailMessage)
+        ->subject('Hey user, New Recipe availabe')
+        ->greeting('Hello' , $this->user)
+        ->line('There is a new post , hope you will like it')
+        ->action('Read Post' , url('/'))
+        ->line('Thank you for being with us!');
     }
 
     /**
@@ -65,10 +63,9 @@ class FeedRecipeNotification extends Notification
     {
         return [
 
-             'name' => $this->user,
-                // 'name' => 'Admin',
-
-                'recipe'=>$this->recipe
+              'name' => $this->user->name,
+            //   'email' => $this->user->email,
+            //   'recipe'=>$this->recipe,
 
         ];
     }

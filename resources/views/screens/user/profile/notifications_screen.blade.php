@@ -69,7 +69,7 @@
                                             <div class="d-flex flex-column flex-grow-1">
                                                 <a href="#"
                                                     class="text-dark-75 text-hover-primary font-weight-bolder font-size-lg mb-1">{{ $notification->data['name'] }}
-                                                    Started Following You.</a>
+                                                    Suggested Recipe For You.</a>
                                                 <span
                                                     class="text-muted font-weight-bold">{{ $notification->created_at->diffForHumans() }}</span>
                                             </div>

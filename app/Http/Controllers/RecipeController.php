@@ -406,7 +406,9 @@ class RecipeController extends Controller
     public function search1(Request $request)
     {
         $ingredient=Ingredient::all();
-        return view('search_ingredient', compact('ingredient'));
+        $ingredient_id = $request->get('ingredient_id');
+        $recipe=Recipe_Ingredient::all();
+        return view('search_ingredient', compact('ingredient','recipe'));
     }
     // Recipe result view
     public function view_recipe(Recipe $recipe)

@@ -46,10 +46,10 @@
                 <div class="card-body bg-white">
                     <div class="form-group flex breadcrumb breadcrumb-transparent ">
                         <label><strong>Generate News Feed</strong></label>
-                        <select name="creator" class="form-control"value="{{ isset($_GET['creator']) ? $_GET['creator'] : '' }}" style="width: 200px">
-                            <option value="0">All</option>
-                            <option value="1">Chef</option>
-                            <option value="2">HomeChef</option>
+                        <select  class="form-control"name="role" style="width: 200px">
+                            {{--  <option value="">All</option>  --}}
+                            <option value="2">Chef</option>
+                            <option value="3">HomeChef</option>
                         </select>
 
                         <div class="bg-blue-500  items-center">

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use App\Notifications\FeedRecipeNotification;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class FeedController extends Controller
 {
@@ -19,43 +20,33 @@ class FeedController extends Controller
     {
         // Create New Object
         $feed = new Feed();
-
-         $id=1;
-         $user_id = auth()->user()->id;
-
-
-        // User_id Form User Model
-        //  $user_id = auth()->user()->id;
+         $user_id = $request->input('role');
+         $feed->user_id = $user_id;
         // Recipe_id Form Recipe Model
          $feed->recipe_id = $request->get('recipe_id');
 
-        // store it as string separated by commas
-        //  $feed->recipe_id= implode(',', $recipe);
-
-        // Recipe-Data Storeing - Foreign Key
-        $feed->user_id = $user_id;
-         $user=User::where('id','!=',$feed->user_id)->pluck('name');
-         $recipe=Recipe::where('id','=',$feed->recipe_id)->pluck('recipe_name');
         // Data Save
-        $feed->save();
-        // $users = User::all();
-        // $recipe=Recipe::all();
-        // Retrieving all subscribers
-        //  foreach ($users as $user){
+         $feed->save();
+         $user_id = $request->input('role');
+         $user = User::query()
+         ->whereHas('roles', function ($query) use ($user_id) {
+            $query->where('id',$user_id);
+            })->first();
+            // $recipe=Recipe::whrere('id','=',$feed->recipe_id)->get('recipe_name');
+            // $recipe = Recipe::where('id', '=', $feed->recipe_id)->pluck('recipe_name');
+         $user->notify(new  FeedRecipeNotification(Auth::user()));
 
-        // $user->notify(new FeedRecipeNotification($user,$recipe));
-        $feed->notify(new  FeedRecipeNotification($user,$recipe));
-    //  }
+        //  dd($recipe);
 
-
-        // dd($feed);
-         return redirect()->back();
+     return redirect()->back();
     }
     //Function - Index1 for myfavourite
     public function index()
     {
         $add_feed = Recipe::all();
-        return view('screens.admin.newsfeed.add_feed', compact('add_feed'));
+        $notifications = auth()->user()->unreadNotifications;
+
+        return view('screens.admin.newsfeed.add_feed', compact('add_feed','notifications'));
     }
     public function getIndex()
     {

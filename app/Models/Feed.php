@@ -13,26 +13,26 @@ class Feed extends Model
     protected $fillable = [
         // Foreign Keys - Data Saving
         'user_id',
-         'recipe_id',
-        ];
-        public function user()
-        {
-            // Return (User model has many data refer from the the User model)
-            return $this->hasMany(User::class, 'user_id');
-        }
-        public function recipe()
-        {
-            // Return (Recipe model has many data refer from the the Recipe model)
-            return $this->hasMany(Recipe::class, 'recipe_id');
-        }
-        public function setRecipeAttribute($value)
+        'recipe_id',
+        
+    ];
+    public function user()
     {
-        $this->attributes['recipe_id'] = json_encode($value);
+        // Return (User model has many data refer from the the User model)
+        return $this->belongsToMany(User::class, 'user_id');
     }
-
-    public function getRecipeAttribute($value)
+    public function recipe()
     {
-        return $this->attributes['recipe_id'] = json_decode($value);
+        // Return (Recipe model has many data refer from the the Recipe model)
+        return $this->hasMany(Recipe::class, 'recipe_id');
     }
-
+    // public function role()
+    // {
+    //     return $this->belongsToMany(Role::class, 'user_id');
+    // }
+    public function role()
+    {
+        // Return (role model has many data refer from the the role model)
+        return $this->hasMany(Role::class, 'role_id');
+    }
 }
