@@ -32,14 +32,15 @@ class FeedController extends Controller
          ->whereHas('roles', function ($query) use ($user_id) {
             $query->where('id',$user_id);
             })->first();
-            $role_id=1;
-            $admin= User::query()
-            ->whereHas('roles', function ($query) use ($role_id) {
-               $query->where('id',$role_id);
-               });
-            // $recipe=Recipe::whrere('id','=',$feed->recipe_id)->get('recipe_name');
+            //  $role_id=1;
+            // $admin= User::query()
+            //  ->whereHas('roles', function ($query) use ($role_id) {
+            //     $query->where('id',$role_id);
+            //     });
+             $recipe=Recipe::where('id','=',$feed->recipe_id)->pluck('recipe_name')->first();
             // $recipe = Recipe::where('id', '=', $feed->recipe_id)->pluck('recipe_name');
-         $user->notify(new  FeedRecipeNotification(Auth::user()));
+             $user->notify(new  FeedRecipeNotification(Auth::user(),$recipe));
+        // Notification::send($users,new FeedRecipeNotification($admin));
 
         //  dd($recipe);
 

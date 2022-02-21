@@ -13,16 +13,16 @@ class FeedRecipeNotification extends Notification
 {
     use Queueable;
     public $user;
-    // public $recipe;
+    public $recipe;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user,$recipe)
     {
         $this->user=$user;
-        // $this->recipe=$recipe;
+        $this->recipe=$recipe;
 
     }
     /**
@@ -65,7 +65,7 @@ class FeedRecipeNotification extends Notification
 
               'name' => $this->user->name,
             //   'email' => $this->user->email,
-            //   'recipe'=>$this->recipe,
+              'recipe'=>$this->recipe,
 
         ];
     }

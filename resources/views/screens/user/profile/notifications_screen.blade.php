@@ -65,11 +65,19 @@
                                             <span
                                                 class="bullet bullet-bar bg-light-primary align-self-stretch mr-4 my-1"></span>
                                             <!--end::Bullet-->
+
+                                             {{-- <div class="d-flex flex-column flex-grow-1">
+                                                <a href="#"
+                                                    class="text-dark-75 text-hover-primary font-weight-bolder font-size-lg mb-1">{{ $notification->data['name'] }}
+                                                    Just Started Following  You.</a>
+                                                <span
+                                                    class="text-muted font-weight-bold">{{ $notification->created_at->diffForHumans() }}</span>
+                                            </div> --}}
                                             <!--begin::Text-->
                                             <div class="d-flex flex-column flex-grow-1">
                                                 <a href="#"
                                                     class="text-dark-75 text-hover-primary font-weight-bolder font-size-lg mb-1">{{ $notification->data['name'] }}
-                                                    Suggested Recipe For You.</a>
+                                                    Suggested Recipe {{ $notification->data['recipe'] }} For You.</a>
                                                 <span
                                                     class="text-muted font-weight-bold">{{ $notification->created_at->diffForHumans() }}</span>
                                             </div>
