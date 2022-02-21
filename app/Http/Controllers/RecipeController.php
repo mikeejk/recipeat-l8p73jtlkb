@@ -416,8 +416,8 @@ class RecipeController extends Controller
         $pinboards = Pinboard::all('id', 'pin_name');
         // $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        $recipe_ingredients=Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->pluck('ingredient');
-        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients'));
+        // $recipe_ingredients=Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->pluck('ingredient');
+        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps'));
 
 
     }
