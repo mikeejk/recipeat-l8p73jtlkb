@@ -146,11 +146,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex2']);
 
-    //     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'index3']);
-
-    //     Route::middleware(['auth:sanctum', 'verified'])->get('/all.data', [RecipeController::class, 'anyData3']);
-
-    //     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [RecipeController::class, 'getIndex3']);
 });
 
 // CategoryController
@@ -271,11 +266,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/update_password', functio
 
 // User profile tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_profile', [Questionnaire::class, 'show']);
-
-
-
-
-
 // Edit User Profile Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/edit', [Questionnaire::class, 'edit']);
 
@@ -373,8 +363,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
 });
 Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
-    // $user=Auth::user();
-    // $user->notify(new NewFollower(User::findOrFail(2)));die;
+    
     foreach (auth()->user()->unreadnotifications as $notification) {
         $notification->markAsRead();
     }
