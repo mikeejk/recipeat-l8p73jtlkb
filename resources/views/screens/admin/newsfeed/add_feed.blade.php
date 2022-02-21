@@ -48,8 +48,9 @@
                         <label><strong>Generate News Feed</strong></label>
                         <select  class="form-control"name="role" style="width: 200px">
                             {{--  <option value="">All</option>  --}}
-                            <option value="2">Chef</option>
-                            <option value="3">HomeChef</option>
+                            <option value="Chef">Chef</option>
+                            <option value="Home-Chef">Home-Chef</option>
+
                         </select>
 
                         <div class="bg-blue-500  items-center">

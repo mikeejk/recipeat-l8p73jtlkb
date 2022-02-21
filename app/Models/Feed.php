@@ -13,8 +13,9 @@ class Feed extends Model
     protected $fillable = [
         // Foreign Keys - Data Saving
         'user_id',
+        'role',
         'recipe_id',
-        
+
     ];
     public function user()
     {

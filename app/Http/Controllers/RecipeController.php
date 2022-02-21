@@ -366,7 +366,7 @@ class RecipeController extends Controller
         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
             ->where('creator', 'LIKE', '%' . $creator . '%')
             ->where('category_id', 'LIKE', '%' . $category_id . '%')
-            ->where('user_id', '!=', auth()->id())
+            // ->where('user_id', '!=', auth()->id())
             ->where('status', 'Approved')
             // ->where('status','!=','Denide')
             // ->where('creator','!=','User')
@@ -414,11 +414,10 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-        $pinrecipes=Pin_recipe::all();
-        $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
+        // $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        // $ingredients=Ingredient::pluck();
-        return view('recipe_view', compact('recipe', 'pinboards','pinrecipes','recipe_steps','count'));
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->pluck('ingredient');
+        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients'));
 
 
     }

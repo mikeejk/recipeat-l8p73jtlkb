@@ -18,32 +18,23 @@ class FeedController extends Controller
 {
     public function confirm(Request $request)
     {
-        // Create New Object
         $feed = new Feed();
-         $user_id = $request->input('role');
-         $feed->user_id = $user_id;
-        // Recipe_id Form Recipe Model
-         $feed->recipe_id = $request->get('recipe_id');
-
-        // Data Save
-         $feed->save();
-         $user_id = $request->input('role');
-         $user = User::query()
-         ->whereHas('roles', function ($query) use ($user_id) {
-            $query->where('id',$user_id);
-            })->first();
-            //  $role_id=1;
-            // $admin= User::query()
-            //  ->whereHas('roles', function ($query) use ($role_id) {
-            //     $query->where('id',$role_id);
-            //     });
-             $recipe=Recipe::where('id','=',$feed->recipe_id)->pluck('recipe_name')->first();
-            // $recipe = Recipe::where('id', '=', $feed->recipe_id)->pluck('recipe_name');
-             $user->notify(new  FeedRecipeNotification(Auth::user(),$recipe));
-        // Notification::send($users,new FeedRecipeNotification($admin));
-
-        //  dd($recipe);
-
+        $user_id = auth()->user()->id;
+        $feed->user_id = $user_id;
+        $feed->role =  $request->input('role');
+        $feed->recipe_id = $request->get('recipe_id');
+       // Data Save
+        $feed->save();
+        $role=$feed->role;
+        $users = User::query()
+        ->whereHas('roles', function ($query) use($role) {
+           $query->where('name',$role);
+           })->get();
+            $recipe=Recipe::where('id','=',$feed->recipe_id)->pluck('recipe_name')->first();
+            foreach($users as $user)
+            {
+            $user->notify(new  FeedRecipeNotification(Auth::user(),$recipe));
+            }
      return redirect()->back();
     }
     //Function - Index1 for myfavourite
