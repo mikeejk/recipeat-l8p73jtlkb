@@ -25,6 +25,6 @@ class Recipe_Ingredient extends Model
     public function ingredient()
     {
         // Return (role model has many data refer from the the role model)
-        return $this->bleongsTo(Ingredient::class, 'ingredient');
+        return $this->bleongsTo(Ingredient::class, 'ingredient_id');
     }
 }

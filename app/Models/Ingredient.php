@@ -17,6 +17,6 @@ class Ingredient extends Model
     public function recipe_ingredient()
     {
         // Return (role model has many data refer from the the role model)
-        return $this->hasMany(Recipe_Ingredient::class, 'ingredient_id');
+        return $this->belongsTo(Recipe_Ingredient::class, 'ingredient_id');
     }
 }

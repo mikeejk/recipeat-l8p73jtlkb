@@ -124,7 +124,7 @@ class RecipeController extends Controller
         for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
-                'ingredient' => $ingredient[$i],
+                'ingredient_id' => $ingredient[$i],
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
             ];
@@ -162,9 +162,15 @@ class RecipeController extends Controller
             ]
         );
 
-        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-            $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
-        }
+        // if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
+        //     $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+        // }
+
+            if ($request->hasFile('cover')) {
+                $recipe->clearMediaCollection('cover');
+                $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
+              }
+
 
         // Save Data
         $recipe->update($data);
@@ -193,7 +199,7 @@ class RecipeController extends Controller
         for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
-                'ingredient'=>$ingredient[$i],
+                'ingredient_id'=>$ingredient[$i],
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
             ];
@@ -414,10 +420,11 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
+        $ingredients=Ingredient::all('id','ingredient');
         // $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        // $recipe_ingredients=Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->pluck('ingredient');
-        return view('recipe_view', compact('recipe', 'pinboards','recipe_steps'));
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->pluck('ingredient_id');
+        return view('recipe_view', compact('recipe', 'pinboards','recipe_ingredients','recipe_steps','ingredient'));
 
 
     }
@@ -425,10 +432,11 @@ class RecipeController extends Controller
     public function  nonLoginUser_view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-        $count = Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
+        // $count = Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        // $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient');
-        // $ingredients=Ingredient::all();
-        return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','count'));
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient_id');
+        $ingredients=Ingredient::all('ingredient');
+     return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients','ingredients'));
+        // dd($recipe_ingredients);
     }
 }
