@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\DB;
 use App\Models\Chef_question;
 use Livewire\Component;
 use App\Models\Follower;
@@ -138,7 +140,15 @@ class ChefQuestion extends Component
             $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
             $following = Follower::where('follower_id',auth()->user()->id)->get()->count();
             $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-            return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes'));
+            // $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->first();
+           $user_id=auth()->user()->id;
+           $feednote= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
+           ->where('notifiable_id',$user_id)->count();
+         $feednotifications =DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )->where('notifiable_id',$user_id)->get();
+
+            // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
+           return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes','feednote'));
+            // dd($feednote);
         }
 
     }
@@ -149,7 +159,6 @@ class ChefQuestion extends Component
         $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
         return view('screens.user.profile.portfolio_edit',compact('chef_questions'));
     }
-
     // Function - Update
     public function update(Request $request)
     {

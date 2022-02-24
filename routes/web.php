@@ -19,7 +19,8 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProfileImageController;
+use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\FeedNotificationController;
 use App\Models\User;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Request;
@@ -361,20 +362,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
         $notification->markAsRead();
     }
 });
-Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
-    
-    foreach (auth()->user()->unreadnotifications as $notification) {
-        $notification->markAsRead();
-    }
-});
-// Welcome Tab
 Route::get('/notifications', function () {
     foreach (auth()->user()->unreadnotifications as $notification) {
         $notification->markAsRead();
     }
     return view('screens.user.profile.notifications_screen');
 });
+Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
+
+    foreach (auth()->user()->unreadnotifications as $feednotification) {
+        $feednotification->markAsRead();
+    }
+});
+// Welcome Tab
+Route::get('/feednotifications', function () {
+    foreach (auth()->user()->unreadnotifications as $feednotification) {
+        $feednotification->markAsRead();
+    }
+    return view('screens.user.profile.feednotifications');
+});
+Route::middleware(['auth:sanctum', 'verified'])->get('/feednotifications', [FeedNotificationController::class, 'index']);
 //Contact Us
 Route::get('/contactUs', function () {
     return view('contactUs');
@@ -501,7 +509,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', function () {
 });
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-     Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'confirm']);
     Route::middleware(['auth:sanctum', 'verified'])->post('/add_feed', [FeedController::class, 'confirm']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'index']);
@@ -510,3 +517,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'getIndex']);
 });
+// Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', function () {
+//     return view('screens.user.profile.userimage_upload');
+// });
+Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', function () {
+    return view('screens.user.profile.userimage_upload');});
+//     Route::middleware(['auth:sanctum', 'verified'])->post('/userimage', [ImageUploadController::class, 'store'])->name('userimage');
+
+//     Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'index']);
+
+//     Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'create']);
+
+//     // Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [ImageUploadController::class, 'getIndex']);
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/feednotifications', function () {
+//     return view('screens.user.profile.feednotifications');});

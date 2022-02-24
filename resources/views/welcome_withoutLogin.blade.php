@@ -216,28 +216,25 @@
                                 <option value="" class="text-gray-500">All</option>
                                 <option value="1">Chef</option>
                                 <option value="2">Home Chef</option>
-                                {{-- <select class="form-control" name="gender">
-                                    <option value="male" {{ old('name',$name)=='male' ? 'selected' : ''  }}>male</option>
-                                    <option value="female"  {{ old('name',$name)=='female' ? 'selected' : ''  }}>female</option>
-                                </select> --}}
-                            </select>
-                            {{-- <select name="category" id="sort-item"
-                                class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
-                                <option value="1" >Vegetarian</option>
-                                <option value="2">Non-veg</option>
-                            </select> --}}
 
-                            <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
+                            </select>
+
+                             <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
                                 {{-- <label
                                     class="text-gray-500 flex justify-center items-center text-center mt-1">Vegetarian</label>
                                 <input type="checkbox" value= 1 name="category"class="bg-white px-2 py-2 ml-2"> --}}
-                                <select name="category" id="item"
+                             <select name="category" id="item"
                                     value="{{ isset($_GET['category']) ? $_GET['category'] : '' }}"
                                     class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
-                                    <option value="1"{{ old('category','Vegetarian')=='Vegetarian' ? 'selected' : ''  }}>Vegetarian</option>
-                                    <option value="2"{{ old('category','Non-veg')=='Non-veg' ? 'selected' : ''  }}>Non-veg</option>
+                                    <option value="1"{{ old('category',1)==1 ? 'selected' : ''  }}>Vegetarian</option>
+                                    <option value="2"{{ old('category',2)==2 ? 'selected' : ''  }}>Non-veg</option>
                                 </select>
-                            </div>
+                                {{-- <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
+                                    <label
+                                        class="text-gray-500 flex justify-center items-center text-center mt-1">Vegetarian</label>
+                                    <input type="checkbox" name="category"value="1" @checked(old('category',$category)) class="bg-white px-2 py-2 ml-2">
+                                </div> --}}
+                             </div>
                         </div>
 
                     </div>
