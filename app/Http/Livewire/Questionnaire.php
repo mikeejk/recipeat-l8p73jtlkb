@@ -5,6 +5,8 @@ use Livewire\Component;
 use App\Models\Question;
 use App\Models\Follower;
 use App\Models\Recipe;
+use App\Models\Image_Upload;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 
 use App\Models\Notifications\NotificationDisplay;
@@ -163,7 +165,6 @@ class Questionnaire extends Component
         $validatedData = $this->validate([
             'cho_cook' => 'required',
         ]);
-
         // Next Step
         $this->currentStep = 12;
     }
@@ -187,7 +188,6 @@ class Questionnaire extends Component
         $validatedData = $this->validate([
             'level_spici' => 'required',
         ]);
-
         // Next Step
         $this->currentStep = 14;
     }
@@ -204,7 +204,6 @@ class Questionnaire extends Component
         // Next Step
         $this->currentStep = 15;
     }
-
     // Function - SubmitForm
     public function submitForm()
     {
@@ -238,17 +237,22 @@ class Questionnaire extends Component
         $this->currentStep = $step;
     }
 
-    public function show(Question $questions, Follower $followers)
+    public function show(Question $questions, Follower $followers,Request $request)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
+        $notifications = auth()->user()->notifications->where('type', 'App\Notifications\NewFollower')->all();
+        $user_id=auth()->user()->id;
+        $feednote= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
+        ->where('notifiable_id',$user_id)->count();
+        $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->all();
 
-        return view('screens.user.profile.profile', compact('questions', 'followers', 'following', 'recipes'));
+        return view('screens.user.profile.profile', compact('questions', 'followers' ,'following','notifications','feednotifications' ,'feednote','recipes'));
     }
 
-    
+
 
     public function edit(Question $questions)
     {

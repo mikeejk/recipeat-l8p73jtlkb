@@ -354,35 +354,38 @@ Route::any('/search', function () {
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/{profileId}/unfollow', [FollowController::class, 'unFollowUser'])->name('user.unfollow');
 
-Route::middleware(['auth:sanctum', 'verified'])->post('/follow', [FollowController::class, 'followOrUnfollowuser']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
-    // $user=Auth::user();
-    // $user->notify(new NewFollower(User::findOrFail(2)));die;
-    foreach (auth()->user()->unreadnotifications as $notification) {
+ Route::middleware(['auth:sanctum', 'verified'])->post('/follow', [FollowController::class, 'followOrUnfollowuser']);
+ Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
+//     // $user=Auth::user();
+//     // $user->notify(new NewFollower(User::findOrFail(2)));die;
+   foreach (auth()->user()->unreadnotifications as $notification) {
         $notification->markAsRead();
     }
-});
-Route::get('/notifications', function () {
-    foreach (auth()->user()->unreadnotifications as $notification) {
-        $notification->markAsRead();
-    }
+ });
+ Route::get('/notifications', function () {
+     foreach (auth()->user()->unreadnotifications as $notification) {
+         $notification->markAsRead();
+     }
     return view('screens.user.profile.notifications_screen');
-});
-Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
+ });
+ Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
+ Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
 
-    foreach (auth()->user()->unreadnotifications as $feednotification) {
-        $feednotification->markAsRead();
-    }
-});
+     foreach (auth()->user()->unreadnotifications as $feednotification) {
+       $feednotification->markAsRead();
+     }
+ });
 // Welcome Tab
-Route::get('/feednotifications', function () {
-    foreach (auth()->user()->unreadnotifications as $feednotification) {
-        $feednotification->markAsRead();
-    }
-    return view('screens.user.profile.feednotifications');
-});
-Route::middleware(['auth:sanctum', 'verified'])->get('/feednotifications', [FeedNotificationController::class, 'index']);
+// Route::get('/feednotifications', function () {
+//     foreach (auth()->user()->unreadnotifications as $feednotification) {
+//         $feednotification->markAsRead();
+//     }
+//     return view('screens.user.profile.feednotifications');
+// });
+//  Route::middleware(['auth:sanctum', 'verified'])->get('/feednotifications', [FeedNotificationController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/notifications', [FeedNotificationController::class, 'index1']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/read/notifications', [FeedNotificationController::class,'readNotification']);
+//  Route::middleware(['auth:sanctum', 'verified'])->get('/read/feednotifications', FeedNotificationController::class,'readNotification');
 //Contact Us
 Route::get('/contactUs', function () {
     return view('contactUs');

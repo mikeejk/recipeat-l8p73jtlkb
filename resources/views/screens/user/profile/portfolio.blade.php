@@ -121,14 +121,14 @@
                                 </div>
                             </div>
                             <!--end: Item-->
-                            <div class="d-flex align-items-center  mr-1 my-5 col-lg-2 col-5">
+                            {{--  <div class="d-flex align-items-center  mr-1 my-5 col-lg-2 col-5">
                                 <div class=" d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center">
                                         <span class="badge bg-success text-black">{{ $feednote }}</span></span>
                                     <a href="/feednotifications"><span class="font-weight-bolder font-size-sm">
                                             <span class="text-dark-50 font-weight-bold"></span>Recipefeeds</span></a>
                                 </div>
-                            </div>
+                            </div>  --}}
                             <!--end: Item-->
 
                         </div>

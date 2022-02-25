@@ -57,7 +57,7 @@ class NewFollower extends Notification
     {
         return [
             'name' => $this->user->name,
-            'email' => $this->user->email,
+            // 'email' => $this->user->email,
         ];
     }
 }

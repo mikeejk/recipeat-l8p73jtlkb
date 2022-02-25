@@ -63,7 +63,7 @@ class FeedRecipeNotification extends Notification
     {
         return [
 
-              'name' => $this->user->name,
+            //   'name' => $this->user->name,
             //   'email' => $this->user->email,
               'recipe'=>$this->recipe,
 

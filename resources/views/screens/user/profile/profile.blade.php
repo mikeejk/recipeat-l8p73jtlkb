@@ -33,7 +33,7 @@
                             <div class="flex-shrink-0 mr-7">
                                 <div class="symbol symbol-50 symbol-lg-120">
                                     <img class="rounded-circle" alt="Pic" src="assets/media//users/blank.png" />
-                                    <a href="/userImageUpload"><button class="btn btn-primary text-white mt-2"> Edit Image <i class="fas fa-edit ml-2"></i></button></a>
+                                    <a href="#"><button class="btn btn-primary text-white mt-2"> Edit Image <i class="fas fa-edit ml-2"></i></button></a>
                                 </div>
                             </div>
                             <!--end::Pic-->
@@ -86,7 +86,7 @@
                         <!--begin::Bottom-->
                         <div class="d-flex align-items-center flex-wrap">
                             <!--begin: Item-->
-                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
+                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-5">
                                 <div class="d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center">{{ $followers }}</span>
                                     <a href="/follower"><span class="font-weight-bolder font-size-sm">
@@ -95,7 +95,7 @@
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
-                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
+                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-5">
                                 <div class="d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center">{{ $following }}</span>
                                     <a href="/following"><span class="font-weight-bolder font-size-sm">
@@ -104,7 +104,7 @@
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
-                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-4">
+                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-5">
                                 <div class="d-flex flex-column text-dark-75">
                                     <span class="font-weight-bolder font-size-xs text-center">{{ $recipes }}</span>
                                     <a href="/recipes"><span class="font-weight-bolder font-size-sm">
@@ -113,7 +113,7 @@
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
-                            <div class="d-flex align-items-center  mr-1 my-1">
+                            <div class="d-flex align-items-center  mr-1 my-1 col-lg-2 col-5">
                                 <div class=" d-flex flex-column text-dark-75">
 
                                     <span class="font-weight-bolder font-size-xs text-center"><span
@@ -142,8 +142,17 @@
                                 </div>
                             </div>
                             <!--end: Item-->
+                            {{--  <div class="d-flex align-items-center  mr-1 my-1">
+                                <div class=" d-flex flex-column text-dark-75">  --}}
 
-                        </div>
+                                    {{--  <span class="font-weight-bolder font-size-xs text-center"><span
+                                            class="badge bg-success text-black">{{$feednote }}</span></span>
+                                    <a href="/feednotifications"><span class="font-weight-bolder font-size-sm">
+                                            <span class="text-dark-50 font-weight-bold"></span>RecipeFeeds</span></a>
+                                </div>
+                            </div>
+
+                        </div>  --}}
                         <!--end::Bottom-->
                     </div>
                 </div>

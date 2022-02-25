@@ -144,10 +144,11 @@ class ChefQuestion extends Component
            $user_id=auth()->user()->id;
            $feednote= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
            ->where('notifiable_id',$user_id)->count();
-         $feednotifications =DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )->where('notifiable_id',$user_id)->get();
-
+        //  $feednotifications =DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )->where('notifiable_id',$user_id)->get();
+        $notification= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
+        ->where('notifiable_id',$user_id)->count();
             // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
-           return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes','feednote'));
+           return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes','feednote','notification'));
             // dd($feednote);
         }
 
