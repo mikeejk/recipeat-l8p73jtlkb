@@ -35,7 +35,7 @@
         <!--end::Subheader-->
         <!--begin::Entry-->
         <div>
-            <form class="form" action="/update" method="post">
+            <form class="form" action="/update"  enctype="multipart/form-data" method="post">
                 @method('PUT')
                 <!--begin::Container-->
                 <div class="container">
@@ -108,7 +108,7 @@
                                     <div class="col-lg-4"></div>
                                     <!-- Side Space::end -->
                                     <!-- Form-Name::start -->
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-4">
                                         <label>Mail Id</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
@@ -119,6 +119,18 @@
                                         <span class="form-text text-muted">Would you like change your mail id</span>
                                     </div>
                                     <!-- Form-Name::end -->
+                                    <div class="col-lg-4">
+                                        <label>Upload Your Profile Image</label>
+                                        <div class="input-group">
+                                            {{-- <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-clock"></i></span>
+                                                </div> --}}
+                                            <input type="file" class="form-control" name="profile_image"
+                                                value="{{ $questions->profile_image }}" />
+                                        </div>
+                                        <span class="form-text text-muted">upload your image</span>
+                                    </div>
                                 </div>
 
                             </div>

@@ -124,6 +124,7 @@
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Text::end -->
+                                   
                                     <!-- Form-Category::start -->
                                     <div class="col-lg-4">
                                         <label>Designation</label>
@@ -146,6 +147,16 @@
                                         <span class="form-text text-muted">Would you like change your current Company Name</span>
                                     </div>
                                     <!-- Form-Cuisine::end -->
+                                    <div class="col-lg-4"></div>
+                                    <div class="col-lg-8">
+                                        <label>Upload Your Image</label>
+                                        <div class="input-group">
+                                            {{-- <div class="input-group-prepend"><span class="input-group-text">
+                                                <i class="fas fa-carrot"></i></span></div> --}}
+                                            <input type="file" class="form-control" name="image" value="{{ $chef_questions->image }}" />
+                                        </div>
+                                        <span class="form-text text-muted">Upload Your Image</span>
+                                    </div>
                                 </div>
 
                             </div>

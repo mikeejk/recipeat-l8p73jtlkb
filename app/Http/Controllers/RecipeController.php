@@ -420,23 +420,19 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-        $ingredients=Ingredient::all('id','ingredient');
-        // $count=Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        $recipe_ingredients=Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->pluck('ingredient_id');
-        return view('recipe_view', compact('recipe', 'pinboards','recipe_ingredients','recipe_steps','ingredients'));
-
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->get();
+        return view('recipe_view', compact('recipe', 'pinboards','recipe_ingredients','recipe_steps'));
 
     }
 
     public function  nonLoginUser_view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-        // $count = Recipe_Step::where('recipe_id', '=', $recipe->id)->get()->count();
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
-        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->pluck('ingredient_id');
-        $ingredients=Ingredient::all('ingredient');
-     return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients','ingredients'));
-        // dd($recipe_ingredients);
-    }
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->get();
+        
+        return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients'));
+        
+     }
 }

@@ -13,8 +13,9 @@ class Question extends Model
 
         // Foreign Keys - Data Saving
         'user_id',
-
+    
         // User Entered - Data Saving
+
         'name',
         'gender',
         'mail',
@@ -29,6 +30,7 @@ class Question extends Model
         'fav_ingr',
         'level_spici',
         'time_spend',
+        'profile_image',
         'status'
     ];
 }

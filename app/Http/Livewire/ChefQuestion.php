@@ -136,7 +136,7 @@ class ChefQuestion extends Component
     {
         $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
         $role = auth()->user()->hasRole('Chef');
-        if($role){
+        // if($role){
             $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
             $following = Follower::where('follower_id',auth()->user()->id)->get()->count();
             $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
@@ -148,9 +148,9 @@ class ChefQuestion extends Component
         $notification= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
         ->where('notifiable_id',$user_id)->count();
             // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
-           return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes','feednote','notification'));
-            // dd($feednote);
-        }
+             return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes','feednote','notification'));
+            //  dd($chef_questions);
+        // }
 
     }
 
@@ -176,9 +176,11 @@ class ChefQuestion extends Component
         $chef_questions->company = Request::input('company');
         $chef_questions->cooking_style = Request::input('cooking_style');
         $chef_questions->accomplishments = Request::input('accomplishments');
+        $chef_questions->image=Request::input('image');
         $chef_questions->status = 1;
         $chef_questions->update();
-        return view('screens.user.profile.portfolio',compact('chef_questions','followers','following','recipes'))->with('status',"Success");
+        //   dd($chef_questions);
+         return view('screens.user.profile.portfolio',compact('chef_questions','followers','following','recipes'))->with('status',"Success");
     }
 }
  //         $data = request()->validate(

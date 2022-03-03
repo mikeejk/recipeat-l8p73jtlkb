@@ -60,7 +60,7 @@
                         </div>
                         <div>
                             @foreach ($recipe_steps as $steps)
-                                <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
+                                <h1 class="font-bold tracking-wider text-gray-700"> {{ $steps }}</h1>
                                 <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
                             @endforeach
                         </div>
@@ -72,9 +72,38 @@
                             <h1 class="items-center flex">Ingredients</h1>
                         </div>
                          <div>
-                            @foreach ($recipe_ingredients as $ingredients)
-                                <h1 class="font-bold tracking-wider text-gray-700">{{ $ingredients }}</h1>
-                            @endforeach
+                            <table>
+                                <thead>
+                                    <tr class="unread bggrn">
+                                        <th>Ingredient</th>
+                                        <th>Quantity</th>
+                                        <th>Measurement</th>
+                                
+                                    </tr>
+                                </thead>
+                                <tbody class="capital">
+                                 
+                                     @foreach($recipe_ingredients as $ingredient)
+                                
+                                    <tr class="profile-table">
+                                        
+                                
+                                        <td> {{ $ingredient->ingredient->ingredient }}  </td>
+                                        <td> {{  $ingredient->quantity }} </td>
+                                        <td>{{ $ingredient->measurement->measurement }}</td>
+                                    </tr>
+                                
+                                    @endforeach 
+                                
+                                 </tbody> 
+                            </table>
+
+                             {{-- @foreach ($recipe_ingredients as $ingredient) 
+                                   {{-- @foreach($ingredients as $ingredients)    --}}
+                                 {{-- <h1 class="font-bold tracking-wider text-gray-700">{{$ingredient}}</h1>  --}}
+                                {{-- <h1 class="font-bold tracking-wider text-gray-700"> {{ $ingredients }}</h1> --}}
+                                   {{-- @endforeach    --}}
+                             {{-- @endforeach  --}} 
                         </div>
                     </div>
                 </div>

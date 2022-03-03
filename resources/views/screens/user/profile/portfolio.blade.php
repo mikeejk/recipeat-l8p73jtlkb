@@ -32,7 +32,8 @@
                             <!--begin::Pic-->
                             <div class="flex-shrink-0 mr-7">
                                 <div class="symbol symbol-50 symbol-lg-120">
-                                    <img alt="Pic" src="assets/media//users/blank.png" />
+                                    {{-- <img alt="Pic" src="assets/media//users/blank.png" /> --}}
+                                    <img class="rounded-circle" alt="Pic" src="{{ asset('/storage/app/public/'.$chef_questions->image) }}" />
                                 </div>
                             </div>
                             <!--end::Pic-->
@@ -69,7 +70,7 @@
                                     <!--begin::User-->
                                     <!--begin::Actions-->
                                     <div class="my-lg-0 my-1">
-                                        <a href="/portfolio_edit" class="btn btn-sm btn-primary font-weight-bolder mr-2"> <i
+                                        <a href="/edit_portfolio" class="btn btn-sm btn-primary font-weight-bolder mr-2"> <i
                                                 class="fas fa-user-edit text-white text-lg"></i>Edit Portfolio</a>
                                     </div>
                                     <!--end::Actions-->

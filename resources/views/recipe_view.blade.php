@@ -79,9 +79,34 @@
                             <h1 class="items-center flex">Ingredients</h1>
                         </div>
                         <div>
-                            @foreach ($recipe_ingredients as $ingredient)
-                                <h1 class="font-bold tracking-wider text-gray-700">{{ $ingredient }}</h1>
-                            @endforeach
+                            <table>
+                                <thead>
+                                    <tr class="unread bggrn">
+                                        <th>Ingredient</th>
+                                        <th>Quantity</th>
+                                        <th>Measurement</th>
+                                
+                                    </tr>
+                                </thead>
+                                <tbody class="capital">
+                                 
+                                     @foreach($recipe_ingredients as $ingredient)
+                                
+                                    <tr class="profile-table">
+                                        
+                                
+                                        <td> {{ $ingredient->ingredient->ingredient }}  </td>
+                                        <td> {{  $ingredient->quantity }} </td>
+                                        <td>{{ $ingredient->measurement->measurement }}</td>
+                                    </tr>
+                                
+                                    @endforeach 
+                                
+                                 </tbody> 
+                            </table>
+                            {{-- @foreach ($recipe_ingredients as $ingredient)
+                                <h1 class="font-bold tracking-wider text-gray-700">{{ $ingredient->ingredient()->ingredient}}</h1>
+                            @endforeach --}}
                         </div>  
                     </div>
                 </div>

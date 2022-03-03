@@ -324,7 +324,7 @@
                                         <label>Meta-Description</label>
                                         <input type="text" class="form-control" name="meta_description" value="{{ $recipe->meta_description }}"/>
                                         <span class="form-text text-muted">If you want to add some special description
-                                            for thsi recipe (ADD HEAR)</span>
+                                            for this recipe (ADD HEAR)</span>
                                     </div>
                                     <!-- Form-Description::end -->
 

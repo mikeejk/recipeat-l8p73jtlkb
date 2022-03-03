@@ -239,17 +239,20 @@ class Questionnaire extends Component
 
     public function show(Question $questions, Follower $followers,Request $request)
     {
+        $user_id=auth()->user()->id;
+         $user_image=Image_Upload::where('user_id', auth()->user()->id)->get();
+        // $user_image=Image_Upload::all();
         $questions = Question::where('user_id', auth()->user()->id)->first();
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
         $notifications = auth()->user()->notifications->where('type', 'App\Notifications\NewFollower')->all();
-        $user_id=auth()->user()->id;
+        // $user_id=auth()->user()->id;
         $feednote= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
         ->where('notifiable_id',$user_id)->count();
         $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->all();
-
-        return view('screens.user.profile.profile', compact('questions', 'followers' ,'following','notifications','feednotifications' ,'feednote','recipes'));
+//  dd($user_image);
+        return view('screens.user.profile.profile', compact('questions', 'followers' ,'following','notifications','feednotifications' ,'feednote','recipes','user_image'));
     }
 
 
@@ -275,11 +278,13 @@ class Questionnaire extends Component
         $questions->fav_ingr = Request::input('fav_ingr');
         $questions->level_spici = Request::input('level_spici');
         $questions->time_spend = Request::input('time_spend');
+        $questions->profile_image=Request::input('profile_image');
         $questions->update();
+        dd($questions);
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-        return view('screens.user.profile.profile',compact('questions','followers','following','recipes'))->with('status',"Success");
+        // return view('screens.user.profile.profile',compact('questions','followers','following','recipes'))->with('status',"Success");
     }
 }
 

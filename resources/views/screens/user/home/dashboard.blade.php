@@ -169,15 +169,17 @@
                                             <div class=" d-flex flex-wrap row w-100 p-2">
                                                 <ul
                                                     class="list-style-none w-100 list-icons d-flex flex-column flex-wrap flex-item text-center pt-2">
-                                                    @foreach ($followers as $follower)
+                                                    {{-- @foreach ($followers as $follower) --}}
+                                                    @foreach (Auth::user()->followers as $follower)
                                                         <li class="w-100 d-flex w-75  p-1">
                                                             <a class="d-flex flex-row w-50 justify-content-center " href=""
                                                                 data-toggle="tooltip" title=""
                                                                 data-original-title="Shaina Chhatraliya">
                                                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png"
                                                                     alt="user" class="rounded-circle" width="40" />
+                                                                    
                                                                 <span
-                                                                    class="p-2 ml-5  d-flex align-items-center">{{ $follower->follower_id }}</span>
+                                                                    class="p-2 ml-5  d-flex align-items-center">{{ $follower->name}}</span>
 
                                                             </a>
                                                         </li>
@@ -212,7 +214,7 @@
                                             <div class=" d-flex flex-wrap row w-100 p-2">
                                                 <ul
                                                     class="list-style-none w-100 list-icons d-flex flex-column flex-wrap flex-item text-center pt-2">
-                                                    @foreach ($following as $followings)
+                                                    @foreach (Auth::user()->followings as $following)
                                                         <li class="w-100 d-flex w-75  p-1">
                                                             <a class="d-flex flex-row w-50 justify-content-center " href=""
                                                                 data-toggle="tooltip" title=""
@@ -220,7 +222,7 @@
                                                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png"
                                                                     alt="user" class="rounded-circle" width="40" />
                                                                 <span
-                                                                    class="p-2 ml-5  d-flex align-items-center">{{ $followings->leader_id }}</span>
+                                                                    class="p-2 ml-5  d-flex align-items-center">{{ $following->name }}</span>
 
                                                             </a>
                                                         </li>
@@ -393,12 +395,12 @@
                             <div class=" d-flex  flex-wrap justify-content-center row p-2">
 
                                 <ul class="list-style-none list-icons d-flex flex-wrap flex-item text-center pt-2">
-                                    @foreach ($followers as $follower)
+                                    @foreach (Auth::user()->followers as $follower)
                                         <li class="col px-2 p-1">
                                             <a href="" data-toggle="tooltip" title=""
                                                 data-original-title="Shaina Chhatraliya">
                                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user"
-                                                    class="rounded-circle" width="60" />{{ $follower->follower_id }}
+                                                    class="rounded-circle" width="60" />{{ $follower->name}}
                                             </a>
                                         </li>
                                     @endforeach
@@ -417,13 +419,13 @@
                             <h4><b>Following</b></h4>
                             <div class=" d-flex  flex-wrap justify-content-center row p-2">
                                 <ul class="list-style-none list-icons d-flex flex-wrap flex-item text-center">
-                                    @foreach ($following as $followings)
+                                    @foreach (Auth::user()->followings as $following)
                                         <li class="col px-2 p-1 d-flex">
                                             <a class="d-flex flex-column" href="" data-toggle="tooltip" title=""
                                                 data-original-title="Shaina Chhatraliya">
                                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user"
                                                     class="rounded-circle"
-                                                    width="60" /><span>{{ $followings->leader_id }}</span>
+                                                    width="60" /><span>{{ $following->name }}</span>
                                             </a>
                                         </li>
                                     @endforeach

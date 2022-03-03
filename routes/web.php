@@ -118,7 +118,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/customers', [InviteContro
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     Admin-Recipe Routes
 // -------------------------------------------------------------------------------------------------------------------
-
 //Admin_recipe
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin_recipe', function () {
     return view('screens.admin.recipe.admin_recipe');
@@ -280,7 +279,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuest
 Route::middleware(['auth:sanctum', 'verified'])->get('/edit_portfolio', [ChefQuestion::class, 'edit']);
 
 // Update Portfolio tab
-Route::middleware(['auth:sanctum', 'verified'])->post('/update_portfolio', [ChefQuestion::class, 'update'])->name('chef_questions.update');
+Route::middleware(['auth:sanctum', 'verified'])->put('/update_portfolio', [ChefQuestion::class, 'update']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes
@@ -375,6 +374,7 @@ Route::any('/search', function () {
        $feednotification->markAsRead();
      }
  });
+
 // Welcome Tab
 // Route::get('/feednotifications', function () {
 //     foreach (auth()->user()->unreadnotifications as $feednotification) {
@@ -524,14 +524,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //     return view('screens.user.profile.userimage_upload');
 // });
 Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', function () {
-    return view('screens.user.profile.userimage_upload');});
-//     Route::middleware(['auth:sanctum', 'verified'])->post('/userimage', [ImageUploadController::class, 'store'])->name('userimage');
+    return view('screens.user.profile.userimage_upload');
+});
+   Route::middleware(['auth:sanctum', 'verified'])->post('/userimage_upload',[ImageUploadController::class, 'store']);
 
-//     Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'index']);
+     Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'index']);
 
-//     Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'create']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'create']);
 
-//     // Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [ImageUploadController::class, 'getIndex']);
+    // Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [ImageUploadController::class, 'getIndex']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/feednotifications', function () {
 //     return view('screens.user.profile.feednotifications');});
