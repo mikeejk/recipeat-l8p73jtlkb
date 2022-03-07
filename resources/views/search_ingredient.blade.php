@@ -607,10 +607,10 @@
                                                     <div class="container flex md:w-full w-4/6 justify-center mt-4 ">
                                                         <div class="flex flex-row border-2 justify-center text-white-800  mx-auto rounded-xl ">
                                                            <div>
-                                                            <select id='myselect'name="ingredient_id" multiple>
+                                                            <select id='myselect' name="ingredient" multiple>
                                                                 <option value="">Select An Option</option>
-                                                                @foreach ($ingredient as $tag)
-                                                                    <option value="{{ $tag->id }} ">{{ $tag->ingredient }}
+                                                                @foreach ($recipe_ingredients as $tag)
+                                                                    <option value="{{ $tag->ingredient_id }} ">{{ $tag->ingredient->ingredient}}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -659,7 +659,7 @@
                         <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
-                                    <a href="/recipeview/{{ $recipes->id }}" name="view"
+                                    <a href="/recipeview/{{ $recipes->recipe_id}}" name="view"
                                         class="flex xl:flex-row  h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
                                         <!-- <div class="flex  flex-col w-full p-2 border-2 rounded-lg">
                                                         <div class="flex items-center  justify-center w-full border-b-2">
@@ -668,25 +668,29 @@
                                                         </div>
                                                         <div
                                                             class="flex items-center justify-center bg-yellow-500 text-white hover:text-blue-600 font-bold md:text-xl text-lg w-full border-b-2 py-1 ">
-                                                            {{ $recipes->recipe_name }}
+                                                            {{-- {{ $recipe->recipe_name }} --}}
                                                         </div>
                                                     <div class="flex flex-col rounded-b-lg w-full p-2 mt-2 ">
                                                         <h1 class="font-bold md:text-base text-sm text-black flex border-b-2 pb-2 pt-1 mb-2">
                                                             Description:</h1>
-                                                        <h1 class="mt-1 mb-1 h-10 border-b-2 pb-1 text-sm overflow-hidden">{{ $recipes->description }}</h1>
+                                                        {{-- <h1 class="mt-1 mb-1 h-10 border-b-2 pb-1 text-sm overflow-hidden">{{ $recipes->description }}</h1> --}}
                                                         <div class="m-1 text-sm">
                                                             <h1>Created at:</h1>
-                                                            {{ $recipes->created_at }}
+                                                            {{-- {{ $recipes->created_at }} --}}
                                                         </div>
                                                     </div>
                                         </div>  -->
                                         <div class="flex w-full  flex-row relative">
-                                            <img alt="gallery"
+                                              {{-- <img alt="gallery"
                                                 class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
-                                                src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" />
-                                            <p
+                                                 src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" /> --}}
+
+                                              <img alt="gallery"
+                                                class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
+                                                src="{{$recipes->recipe->getFirstMediaUrl('cover')}}" />
+                                                  <p
                                                 class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium">
-                                                {{ $recipes->recipe_name }}</p>
+                                                {{ $recipes->recipe->recipe_name }}</p>
                                             <div
                                                 class="py-1 relative z-10 h-72 w-full border-4 rounded-md border-gray-200 bg-white opacity-0 hover:opacity-100">
                                                 <div class="flex flex-col h-full rounded-b-lg w-full p-2 mt-2">
@@ -695,19 +699,19 @@
                                                             class="font-bold md:text-base text-sm text-black flex border-b-2 border-yellow-400 pb-2  mb-2">
                                                             Description:</h1>
                                                         <h1 class="mt-1 mb-1 h-auto  pb-1 text-sm overflow-hidden">
-                                                            {{ $recipes->description }}</h1>
+                                                            {{ $recipes->recipe->description }}</h1>
                                                     </div>
                                                     <div class="pt-2 border-t-2  border-yellow-400 text-sm">
                                                         <h1>Created at:</h1>
-                                                        {{ $recipes->created_at }}
+                                                        {{ $recipes->recipe->created_at }}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
                                 @endforeach
-                                <!-- {!! $recipe->links() !!} -->
-                                <!-- {{ $recipe->render() }} -->
+                                {{-- {!! $recipe->links() !!}  --}}
+                                 {{-- {{ $recipe->render() }} --}}
 
                             @else
                                 <div class="flex w-3/4 mx-auto  text-white justify-center">
@@ -734,7 +738,7 @@
                 </div>
 
                 <div class="flex items-center justify-center px-5">
-                    {{ $recipe->render() }}
+                     {{-- {{ $recipe->render() }} --}}
                 </div>
                 @endif
 

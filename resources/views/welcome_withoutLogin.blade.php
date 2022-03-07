@@ -239,7 +239,7 @@
 
                     </div>
                     <div class="flex mt-2 w-full mx-auto justify-end ">
-                        <a href="/login"
+                        <a href="/search_ingredient"
                             class="bg-gray-200 text-gray-700 no-underline flex justify-center rounded-sm mr-2 w-44 py-2 px-2">Advance
                             Search</a>
                     </div>
