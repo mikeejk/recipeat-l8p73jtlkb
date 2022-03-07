@@ -63,6 +63,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 // -------------------------------------------------------------------------------------------------------------------
+
 // -------------------------------------------------------------------------------------------------------------------
 
 // Dashboard Tab
@@ -75,6 +76,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/homepage', function () {
 
 // Recipe Search - Result Display Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_view/{recipe}', [RecipeController::class, 'view_recipe']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipes->recipe_id}', [RecipeController::class, 'recipeview']);
 
 
 Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view_recipe']);

@@ -71,10 +71,10 @@ class Recipe extends Model implements Likeable,HasMedia
         // Return (role model has many data refer from the the role model)
         return $this->hasMany(Role::class, 'role_id');
     }
-    public function Recipe__Ingredient()
+    public function Recipe_Ingredient()
     {
         // return (ingredient model is belongs to this recipe model)
-        return $this->hasMany(Recipe__Ingredient::class, 'recipe_id');
+        return $this->hasMany(Recipe_Ingredient::class, 'recipe_id');
     }
     public function Recipe__Step()
     {

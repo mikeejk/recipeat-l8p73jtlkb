@@ -410,11 +410,32 @@ class RecipeController extends Controller
       return view('welcome_withoutLogin');
     }
     public function search1(Request $request)
-    {
+     {
+        //  $recipe=Recipe::all();
         $ingredient=Ingredient::all();
         $ingredient_id = $request->get('ingredient_id');
-        $recipe=Recipe_Ingredient::all();
-        return view('search_ingredient', compact('ingredient','recipe'));
+        $recipe_ingredients=Recipe_Ingredient::all();
+        $ingredient = $request->get('ingredient');
+
+
+        if($ingredient){
+            $recipe = Recipe_ingredient::where('ingredient_id', 'LIKE', '%' . $ingredient . '%')
+            ->get();
+            //   ->orderBy("recipe_id", "asc");
+            //   $recipe->appends(array(
+            //     'ingredient' => $request->get('ingredient')
+            //   ));
+            //   return view('search_ingredient', compact('ingredient','recipe_ingredients','recipe','recipes'));
+
+          }
+        //   if(count($recipe)>0)
+        //   {
+        //   $recipes=Recipe::where('id',$recipe)->get();
+            // dd(count($recipe));
+           return view('search_ingredient', compact('ingredient','recipe_ingredients','recipe'));
+        // }
+         return view('search_ingredient', compact('ingredient','recipe_ingredients','recipe'));
+        // return view('search_ingredient', compact('ingredient','recipe_ingredients'));
     }
     // Recipe result view
     public function view_recipe(Recipe $recipe)
@@ -431,8 +452,17 @@ class RecipeController extends Controller
         $pinboards = Pinboard::all('id', 'pin_name');
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
         $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->get();
-        
+
         return view('recipe_view_withoutLogin', compact('recipe', 'pinboards','recipe_steps','recipe_ingredients'));
-        
+
      }
+     public function recipeview(Recipe $recipe)
+    {
+        $pinboards = Pinboard::all('id', 'pin_name');
+        $recipe_steps=Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
+        $recipe_ingredients=Recipe_Ingredient::where('recipe_id','=',$recipe->id)->get();
+        dd($recipe);
+    //   return view('recipeview', compact('recipe', 'pinboards','recipe_ingredients','recipe_steps'));
+
+    }
 }
