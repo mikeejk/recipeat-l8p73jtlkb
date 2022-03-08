@@ -25,7 +25,7 @@
     <div class="bg-fixed bg-cover flex flex-col justify-center items-center bg-no-repeat"
         style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://image.shutterstock.com/image-photo/dark-food-background-empty-black-260nw-1682369737.jpg')">
         <div class="flex w-full">
-            <a href="\welcome" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
+            <a href="\search_ingredient" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
         </div>
         <div class="flex flex-col lg:flex-row w-full justify-center gap-5 pt-3">
 
@@ -37,7 +37,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                           </svg>
                     </button> -->
-                <form class="form" action="/recipeview/{recipes->recipe->recipe_id}" method="post">
+                <form class="form" action="/recipeview/{recipes->recipe}" method="post">
                     @csrf
                     <div class="flex w-full justify-between">
 
@@ -94,7 +94,6 @@
 
                                     <tr class="profile-table">
 
-
                                         <td> {{ $ingredient->ingredient->ingredient }}  </td>
                                         <td> {{  $ingredient->quantity }} </td>
                                         <td>{{ $ingredient->measurement->measurement }}</td>
@@ -136,8 +135,8 @@
                             </form>
                             <div class="w-full card-body">
                                 @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>$recipe->id])
-                            <hr />
-                        </div>
+                                <hr />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -22,9 +22,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\FeedNotificationController;
 use App\Models\User;
-use App\Models\Recipe;
 use Illuminate\Support\Facades\Request;
-use App\Notifications\NewFollower;
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -76,9 +74,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/homepage', function () {
 
 // Recipe Search - Result Display Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_view/{recipe}', [RecipeController::class, 'view_recipe']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipes->recipe_id}', [RecipeController::class, 'recipeview']);
-
-
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}', [RecipeController::class, 'recipeview']);
 Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view_recipe']);
 //Recipe Like
 // Route::middleware(['auth:sanctum', 'verified'])->get('like', [RecipeController::class, 'likePost'])->name('like');
@@ -87,8 +83,7 @@ Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
-// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome_homechef', [RecipeController::class, 'homechef_search']);
-// Route::middleware(['auth:sanctum', 'verified'])->get('/welcome_all', [RecipeController::class, 'search_all']);
+
 // Recipeat Customer Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 
