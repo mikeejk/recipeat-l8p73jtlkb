@@ -239,7 +239,13 @@
                                         <table id="recipeSteps" class="col-lg-12 table list">
                                             <tbody class="border border-light">
                                                 <tr>
+                                                    @foreach($recipe_steps as $step)
+                                                    <tr>
+                                                         <td><input type="textarea" name="steps[]" class="form-control" value={{ $step->steps}}></td>
+                                                         {{-- <td class="col-lg-1"><input type="button" class="btnDel btn btn-sm btn-danger" value="Delete"></td> --}}
 
+                                                    </tr>
+                                                    @endforeach
                                                 </tr>
                                             </tbody>
                                             <tfoot>
@@ -248,6 +254,7 @@
                                                         <input type="button" class="btn btn-bg-primary w-20 text-white btn-sm  "
                                                             id="addSteps" value="Add Steps" />
                                                     </td>
+
                                                 </tr>
                                                 <tr>
                                                 </tr>
@@ -283,11 +290,14 @@
                                             </tr>
                                         </thead>
                                         <tbody class="border border-light">
+                                            @foreach($recipe_ingredients as $ingredient)
                                             <tr>
-                                                {{-- <td>{{ $recipe_ingredients->ingredient_id }}</td> --}}
-                                                {{-- <td>{{ $recipe_ingredients->quantity }}</td> --}}
-                                                {{-- <td>{{ $recipe_ingredients->measurement_id }}</td> --}}
-                                            </tr>
+                                                 <td><input type="text" name="ingredient_id"class="form-control" value={{ $ingredient->ingredient->ingredient }}></td>
+                                                 <td><input type="text" name="quantity"class="form-control" value={{ $ingredient->quantity }}></td>
+                                                 <td><input type="text" name="measurement"class="form-control" value={{ $ingredient->measurement->measurement }}></td>
+                                                 {{-- <td class="col-lg-1"><input type="button" class="ibtnDel btn btn-sm btn-danger" value="Delete"></td> --}}
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>

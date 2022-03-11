@@ -33,7 +33,7 @@
                             <div class="flex-shrink-0 mr-7">
                                 <div class="symbol symbol-50 symbol-lg-120">
                                       {{-- <img class="rounded-circle" alt="Pic" src="assets/media//users/blank.png" />     --}}
-                                      <img class="rounded-circle" alt="Pic" src="{{ asset('/storage/app/public/'.$questions->profile_image) }}" />
+                                      <img class="rounded-circle" alt="Pic" src="{{ asset('/storage/app/public/'.$questions->image) }}" />
                                        {{-- http://127.0.0.1:8000/public/storage/app/public/depositphotos_13647537-stock-photo-close-up-portrait-of-a.jpg --}}
                                        {{-- /public/storage/app/public/depositphotos_13647537-stock-photo-close-up-portrait-of-a.jpg --}}
                                        {{-- <img class="rounded-circle"  src="storage/app/public/image/{{ $questions->image }}" />  --}}

@@ -35,7 +35,7 @@
         <!--end::Subheader-->
         <!--begin::Entry-->
         <div>
-            <form class="form" action="/update"  enctype="multipart/form-data" method="post">
+            <form class="form" action="/update" method="post">
                 @method('PUT')
                 <!--begin::Container-->
                 <div class="container">
@@ -126,8 +126,8 @@
                                                 <span class="input-group-text">
                                                     <i class="fas fa-clock"></i></span>
                                                 </div> --}}
-                                            <input type="file" class="form-control" name="profile_image"
-                                                value="{{ $questions->profile_image }}" />
+                                            <input type="file" class="form-control" name ="image"
+                                                value="{{ $questions->image }}" />
                                         </div>
                                         <span class="form-text text-muted">upload your image</span>
                                     </div>

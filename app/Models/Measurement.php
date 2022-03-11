@@ -15,12 +15,17 @@ class Measurement extends Model
     ];
     public function ingredient()
     {
-        // Return (role model has many data refer from the the role model)
+        // Return (ingredient model has many data refer from the the role model)
         return $this->belongsTo(Ingredient::class, 'ingredient_id');
     }
     public function recipe_ingredient()
     {
-        // Return (role model has many data refer from the the role model)
+        // Return (recipe_ingredient model has many data refer from the the role model)
         return $this->hasMany(Recipe_Ingredient::class, 'measurement_id');
+    }
+    public function recipe()
+    {
+        // Return (recipe model has many data refer from the the role model)
+        return $this->belongsTo(Recipe::class, 'recipe_id');
     }
 }

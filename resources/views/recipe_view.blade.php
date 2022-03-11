@@ -60,9 +60,7 @@
                         </div>
                         <div>
                             @foreach ($recipe_steps as $steps)
-                            {{-- @for ($i = 1; $i < $count; $i++) --}}
-
-                            {{-- <h1 class="font-bold tracking-wider text-gray-700">Steps{{ $i }}:{{ $steps }}</h1> --}}
+                           
                             <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
 
                             {{-- @endfor --}}
@@ -85,29 +83,29 @@
                                         <th>Ingredient</th>
                                         <th>Quantity</th>
                                         <th>Measurement</th>
-                                
+
                                     </tr>
                                 </thead>
                                 <tbody class="capital">
-                                 
+
                                      @foreach($recipe_ingredients as $ingredient)
-                                
+
                                     <tr class="profile-table">
-                                        
-                                
+
+
                                         <td> {{ $ingredient->ingredient->ingredient }}  </td>
                                         <td> {{  $ingredient->quantity }} </td>
                                         <td>{{ $ingredient->measurement->measurement }}</td>
                                     </tr>
-                                
-                                    @endforeach 
-                                
-                                 </tbody> 
+
+                                    @endforeach
+
+                                 </tbody>
                             </table>
                             {{-- @foreach ($recipe_ingredients as $ingredient)
                                 <h1 class="font-bold tracking-wider text-gray-700">{{ $ingredient->ingredient()->ingredient}}</h1>
                             @endforeach --}}
-                        </div>  
+                        </div>
                     </div>
                 </div>
                 <h1 class="uppercase font-bold tracking-widest text-green-600 text-sm">Comments</h1>
