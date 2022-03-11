@@ -136,7 +136,10 @@ class RecipeController extends Controller
     {
         $measurements = Measurement::all(['id', 'measurement']);
         $ingredients = Ingredient::all(['id', 'ingredient']);
-        return view('screens.user.recipe.edit_recipe', compact('recipe', 'measurements', 'ingredients'));
+        $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->get();
+        $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
+        //    dd($recipe_steps);
+          return view('screens.user.recipe.edit_recipe', compact('recipe', 'measurements', 'ingredients', 'recipe_steps','recipe_ingredients'));
     }
 
     // Function - Update
@@ -188,7 +191,7 @@ class RecipeController extends Controller
                 'steps' => $steps[$i],
             ];
             // writing to DB
-            DB::table('recipe__steps')->insert($datastep);
+            DB::table('recipe__steps')->updateOrInsert($datastep);
         }
 
         $ingredient = $request->ingredient;
@@ -202,7 +205,7 @@ class RecipeController extends Controller
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
             ];
-            DB::table('recipe__ingredients')->insert($dataingredient);
+            DB::table('recipe__ingredients')->updateOrInsert($dataingredient);
         }
 
         $recipe->update($data);
@@ -211,12 +214,42 @@ class RecipeController extends Controller
     }
 
     // Function - Destroy
-    public function destroy(Recipe $recipe)
+    public function destroy(Recipe $recipe,Request $request)
     {
         DB::table('recipe__steps')->where('recipe_id', '=', $recipe->id)->delete();
         DB::table('recipe__ingredients')->where('recipe_id', '=', $recipe->id)->delete();
         $recipe->delete();
         return redirect('/recipes');
+        // $steps = $request->steps;
+
+        // // for lopping steps
+        // for ($i = 0; $i < count($steps); $i--) {
+        //     $datastep = [
+
+        //         // Foreign Keys - Data Saving
+        //         'recipe_id' => $recipe->id,
+
+        //         // User Data - Enterd
+        //         'steps' => $steps[$i],
+        //     ];
+        //     // writing to DB
+        //     DB::table('recipe__steps')->delete($datastep);
+        // }
+
+        // $ingredient = $request->ingredient;
+        // $quantity = $request->quantity;
+        // $measurement = $request->measurement;
+
+        // for ($i = 0; $i < count($ingredient); $i--) {
+        //     $dataingredient = [
+        //         'recipe_id' => $recipe->id,
+        //         'ingredient_id' => $ingredient[$i],
+        //         'quantity' => $quantity[$i],
+        //         'measurement_id' => $measurement[$i]
+        //     ];
+        //     DB::table('recipe__ingredients')->delete($dataingredient);
+        // }
+        // return redirect('/recipes');
     }
 
     // Function - getIndex
@@ -419,8 +452,8 @@ class RecipeController extends Controller
             $recipe = Recipe_ingredient::where('ingredient_id', 'LIKE', '%' . $ingredient . '%')
                 ->get();
 
-        return view('search_ingredient', compact('ingredient', 'recipe_ingredients','recipe'));
-    }
+            return view('search_ingredient', compact('ingredient', 'recipe_ingredients', 'recipe'));
+        }
 
         return view('search_ingredient', compact('ingredient', 'recipe_ingredients'));
     }
@@ -428,9 +461,10 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
+        $pinrecipes =Pin_recipe::all('pinboard_id','status');
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
         $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
-        return view('recipe_view', compact('recipe', 'pinboards', 'recipe_ingredients', 'recipe_steps'));
+        return view('recipe_view', compact('recipe', 'pinboards', 'recipe_ingredients', 'recipe_steps','pinrecipes'));
     }
     public function  nonLoginUser_view_recipe(Recipe $recipe)
     {
@@ -445,8 +479,7 @@ class RecipeController extends Controller
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
         $ingredient = Ingredient::all();
         $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
-    //   dd($ingredient);
-        return view('recipeview', compact('recipe','pinboards','recipe_ingredients','ingredient','recipe_steps'));
-
+        //   dd($ingredient);
+        return view('recipeview', compact('recipe', 'pinboards', 'recipe_ingredients', 'ingredient', 'recipe_steps'));
     }
 }
