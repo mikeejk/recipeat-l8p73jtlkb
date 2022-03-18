@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Follower;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,4 +25,9 @@ class Chef_question extends Model
         'accomplishments',
         'status',
     ];
+
+    public function follower()
+    {
+        return $this->belongsTo(Follower::class, 'user_id');
+    }
 }

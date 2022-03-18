@@ -170,8 +170,9 @@
                                                 <a href="#"
                                                     class="text-dark-75 text-hover-primary font-weight-bolder font-size-lg mb-1">Admin
                                                     Suggested Recipe {{ $notification->data }} For You.</a>
-                                                {{--  <span
-                                                    class="text-muted font-weight-bold">{{ $notification->created_at->diffForHumans() }}</span>  --}}
+                                                    <button >MarkAsRead</button>
+                                                  {{-- <span --}}
+                                                    {{-- class="text-muted font-weight-bold">{{ $notification->created_at->diffForHumans() }}</span> --}}
                                             </div>
                                             <!--end::Text-->
                                             <!--begin::Dropdown-->

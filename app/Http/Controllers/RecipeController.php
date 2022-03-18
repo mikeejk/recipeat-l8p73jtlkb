@@ -222,34 +222,7 @@ class RecipeController extends Controller
         return redirect('/recipes');
         // $steps = $request->steps;
 
-        // // for lopping steps
-        // for ($i = 0; $i < count($steps); $i--) {
-        //     $datastep = [
 
-        //         // Foreign Keys - Data Saving
-        //         'recipe_id' => $recipe->id,
-
-        //         // User Data - Enterd
-        //         'steps' => $steps[$i],
-        //     ];
-        //     // writing to DB
-        //     DB::table('recipe__steps')->delete($datastep);
-        // }
-
-        // $ingredient = $request->ingredient;
-        // $quantity = $request->quantity;
-        // $measurement = $request->measurement;
-
-        // for ($i = 0; $i < count($ingredient); $i--) {
-        //     $dataingredient = [
-        //         'recipe_id' => $recipe->id,
-        //         'ingredient_id' => $ingredient[$i],
-        //         'quantity' => $quantity[$i],
-        //         'measurement_id' => $measurement[$i]
-        //     ];
-        //     DB::table('recipe__ingredients')->delete($dataingredient);
-        // }
-        // return redirect('/recipes');
     }
 
     // Function - getIndex
@@ -423,8 +396,6 @@ class RecipeController extends Controller
         $term  = $request->get('term');
         $creator = $request->get('creator');
         $category_id = $request->get('category');
-
-
         if ($term) {
             $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
                 ->where('creator', 'LIKE', '%' . $creator . '%')
@@ -481,5 +452,26 @@ class RecipeController extends Controller
         $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
         //   dd($ingredient);
         return view('recipeview', compact('recipe', 'pinboards', 'recipe_ingredients', 'ingredient', 'recipe_steps'));
+    }
+    public function show_count(Request $request)
+    {
+        $recipe_count=Recipe::where('status','Approved')->count();
+        $recipe=Recipe::all();
+        // $term  = $request->get('term');
+        // $cuisine_id = $request->get('cuisine');
+        // $category_id = $request->get('category');
+        // if ($term) {
+        //     $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
+        //         ->where('cuisine_id', 'LIKE', '%' . $cuisine_id . '%')
+        //         ->where('user_id', '!=', auth()->id())
+        //         ->where('status', 'Approved')
+        //         ->orderBy("recipe_name", "asc")->Paginate(4);
+        //     $recipe->appends(array(
+        //         'term' => $request->get('term'),
+        //     ));
+        //     return view('mainDashboard',compact('recipe'));
+        // }
+        // dd($recipe_count);
+        return view('mainDashboard',compact('recipe_count','recipe'));
     }
 }

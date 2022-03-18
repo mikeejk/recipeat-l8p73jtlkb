@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Pinboard;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +30,6 @@ class Pin_recipe extends Model
     public function pinboard()
     {
         // Return (User model has many data refer from the the User model)
-        return $this->hasMany(Pinboard::class, 'pinboard_id');
+        return $this->belongsTo(Pinboard::class, 'pinboard_id');
     }
 }

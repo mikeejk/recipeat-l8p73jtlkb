@@ -561,7 +561,7 @@
                             <input type="search" name="term" id="term" value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300"
                                 placeholder="Find a recipe...">
-                            <select name="creator" id="sort-item"value="{{ isset($_GET['creator']) ? $_GET['creator'] : '' }}"
+                            <select name="creator" id="sort-item" value="{{ isset($_GET['creator']) ? $_GET['creator'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
                                 <option value="" class="text-gray-500">All</option>
                                 <option value="1">Chef</option>

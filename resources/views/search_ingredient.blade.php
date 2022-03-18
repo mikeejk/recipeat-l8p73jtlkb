@@ -568,29 +568,9 @@
                                                 your palate.
                                             </p>
                                         </div>
-                                        {{-- <form method="post" id="category_form">
-                                            <div class="form-group">
-                                                <label>Select</label>
-                                                <select id="ingredient" name="name[]" multiple class="form-control">
-                                                    <option value="Ginger">Ginger</option>
-                                                    <option value="garlic">garlic</option>
-                                                    <option value="pepper">pepper</option>
-                                                    <option value="salt">salt</option>
-                                                    <option value="Turmeric">Turmeric</option>
-                                                    <option value="egg">egg</option>
-                                                    <option value="chicken">chicken</option>
-                                                    <option value="mutton">mutton</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="submit" class="btn btn-info" name="submit" value="Submit" />
-                                            </div>
-                                        </form> --}}
-
                                         <!-- image search box -->
                                         <div class="box pt-6">
                                             <div class="box-wrapper w-full mx-auto">
-
                                                 {{-- <div class="bg-white rounded-full flex items-center w-full focus:outline-none p-3 shadow-sm border border-gray-200">
                                                     <form action="\search_ingredient" method="POST">
                                                         @csrf
@@ -605,16 +585,20 @@
                                                 <form action="/search_ingredient" method="GET" role="search">
                                                     {{ csrf_field() }}
                                                     <div class="container flex md:w-full w-4/6 justify-center mt-4 ">
-                                                        <div class="flex flex-row border-2 justify-center text-white-800  mx-auto rounded-xl ">
-                                                           <div>
-                                                            <select id='myselect' name="ingredient" multiple>
-                                                                <option value="">Select An Option</option>
-                                                                @foreach ($recipe_ingredients as $tag)
-                                                                    <option value="{{ $tag->ingredient_id }} ">{{ $tag->ingredient->ingredient}}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                           </div>
+                                                        <div
+                                                            class="flex flex-row border-2 justify-center text-white-800  mx-auto rounded-xl ">
+                                                            <div>
+                                                                <select id='myselect' name="ingredient"
+                                                                    value="{{ isset($_GET['ingredient']) ? $_GET['ingredient'] : '' }}"
+                                                                    multiple>
+                                                                    <option value="">Select An Option</option>
+                                                                    @foreach ($recipe_ingredients as $tag)
+                                                                        <option value="{{ $tag->ingredient_id }} ">
+                                                                            {{ $tag->ingredient->ingredient }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
                                                             <button type="submit"
                                                                 class="flex items-center justify-center bg-white px-4 py-3 rounded-l-md">
                                                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor"
@@ -632,26 +616,26 @@
                                                 </form>
                                             </div>
                                         </div>
-                                            <!-- Buttons -->
-                                            <div
-                                                class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
-                                                <form>
-                                                    <a href="/welcome">
-                                                        <button
-                                                            class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Recipes
-                                                        </button></a>
-                                                </form>
-                                                <form>
-                                                    <button
-                                                        class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients
-                                                    </button>
+                                        <!-- Buttons -->
+                                        <div
+                                            class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
+                                            
+                                                <a href="/welcome"
+                                                    
+                                                        class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Recipes
+                                                    </a>
+                                                <button
+                                                    class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients
+                                                </button>
 
-                                                </form>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
                 </form>
 
                 <div class="w-3/4 flex flex-row py-5 mx-auto">
@@ -659,7 +643,7 @@
                         <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
-                                    <a href="/recipeview/{{ $recipes->recipe_id}}" name="view"
+                                    <a href="/recipeview/{{ $recipes->recipe_id }}" name="view"
                                         class="flex xl:flex-row  h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
                                         <!-- <div class="flex  flex-col w-full p-2 border-2 rounded-lg">
                                                         <div class="flex items-center  justify-center w-full border-b-2">
@@ -681,14 +665,14 @@
                                                     </div>
                                         </div>  -->
                                         <div class="flex w-full  flex-row relative">
-                                              {{-- <img alt="gallery"
+                                            {{-- <img alt="gallery"
                                                 class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
                                                  src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" /> --}}
 
-                                              <img alt="gallery"
+                                            <img alt="gallery"
                                                 class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
-                                                src="{{$recipes->recipe->getFirstMediaUrl('cover')}}" />
-                                                  <p
+                                                src="{{ $recipes->recipe->getFirstMediaUrl('cover') }}" />
+                                            <p
                                                 class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium">
                                                 {{ $recipes->recipe->recipe_name }}</p>
                                             <div
@@ -710,9 +694,8 @@
                                         </div>
                                     </a>
                                 @endforeach
-                                {{-- {!! $recipe->links() !!}  --}}
-                                 {{-- {{ $recipe->render() }} --}}
-
+                                {{-- {!! $recipe->links() !!} --}}
+                                {{-- {{ $recipe->render() }} --}}
                             @else
                                 <div class="flex w-3/4 mx-auto  text-white justify-center">
                                     <div class="flex flex-col  md:w-1/2 w-full border-2 bg-white p-2  rounded-lg">
@@ -732,13 +715,10 @@
                                 </div>
                             @endif
                         </div>
-
-
-
                 </div>
 
                 <div class="flex items-center justify-center px-5">
-                     {{-- {{ $recipe->render() }} --}}
+                    {{-- {{ $recipe->render() }} --}}
                 </div>
                 @endif
 
@@ -749,6 +729,7 @@
                             <p class="text-yellow-400 font-black lg:text-4xl md:text-3xl text-2xl uppercase">HOW
                                 RECIPEAT WORKS
                             </p>
+
                             <p class="text-xs text-white border-2 p-2 mt-7 ml-3   text-center w-44 mb-3">HOW WE DO IT?
                             </p>
                         </div>
@@ -933,7 +914,7 @@
     <script>
         $('#myselect').select2({
             width: '100%',
-            placeholder: "Select an Option",
+            placeholder: "Select an Ingredient",
             allowClear: true
         });
     </script>

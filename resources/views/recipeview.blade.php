@@ -25,7 +25,7 @@
     <div class="bg-fixed bg-cover flex flex-col justify-center items-center bg-no-repeat"
         style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url('https://image.shutterstock.com/image-photo/dark-food-background-empty-black-260nw-1682369737.jpg')">
         <div class="flex w-full">
-            <a href="\search_ingredient" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
+            <a href="{{ url()->previous() }}" class="px-5 m-3 py-2 rounded-md bg-blue-400 text-white">Back</a>
         </div>
         <div class="flex flex-col lg:flex-row w-full justify-center gap-5 pt-3">
 

@@ -22,6 +22,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\FeedNotificationController;
 use App\Models\User;
+use App\Models\Question;
+use App\Models\Chef_question;
 use Illuminate\Support\Facades\Request;
 
 
@@ -89,6 +91,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [Reci
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/mainDashboard', [RecipeController::class, 'show_count']);
+
 // Recipeat Customer Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 
@@ -147,7 +151,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/allrecipe.data', [RecipeController::class, 'anyData2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/all_recipes', [RecipeController::class, 'getIndex2']);
-
 });
 
 // CategoryController
@@ -319,17 +322,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
     if (auth()->user()->hasRole('Admin')) {
         return view('dashboard');
-
-    } else {
-        return view('indexHome');
     }
-})->name('home');
+    else{
+            if(auth()->user()->hasRole('Home-Chef'))
+             {
+                     $q = Question::where('user_id', auth()->user()->id)->first();
 
+                        if ($q == "") { return view('indexHome'); }
+                        else { return redirect('/dashboard'); }
+             }
+             else
+             {
+                $cq = Chef_question::where('user_id', auth()->user()->id)->first();
 
+                if ($cq == "") { return view('indexHome'); }
+                else { return redirect('/dashboard'); }
+             }
+        }
+});
 Route::middleware(['auth:sanctum', 'verified'])->get('/indexHomequestions', function () {
     return view('screens.user.home.questions');
 });
-
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Follow Routes
 // -------------------------------------------------------------------------------------------------------------------
@@ -355,27 +368,27 @@ Route::any('/search', function () {
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/{profileId}/unfollow', [FollowController::class, 'unFollowUser'])->name('user.unfollow');
 
- Route::middleware(['auth:sanctum', 'verified'])->post('/follow', [FollowController::class, 'followOrUnfollowuser']);
- Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
-//     // $user=Auth::user();
-//     // $user->notify(new NewFollower(User::findOrFail(2)));die;
-   foreach (auth()->user()->unreadnotifications as $notification) {
+Route::middleware(['auth:sanctum', 'verified'])->post('/follow', [FollowController::class, 'followOrUnfollowuser']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
+    //     // $user=Auth::user();
+    //     // $user->notify(new NewFollower(User::findOrFail(2)));die;
+    foreach (auth()->user()->unreadnotifications as $notification) {
         $notification->markAsRead();
     }
- });
- Route::get('/notifications', function () {
-     foreach (auth()->user()->unreadnotifications as $notification) {
-         $notification->markAsRead();
-     }
+});
+Route::get('/notifications', function () {
+    foreach (auth()->user()->unreadnotifications as $notification) {
+        $notification->markAsRead();
+    }
     return view('screens.user.profile.notifications_screen');
- });
- Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
- Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
+});
+Route::middleware(['auth:sanctum', 'verified'])->post('/feed', [FeedController::class, 'confirm']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/x', function () {
 
-     foreach (auth()->user()->unreadnotifications as $feednotification) {
-       $feednotification->markAsRead();
-     }
- });
+    foreach (auth()->user()->unreadnotifications as $feednotification) {
+        $feednotification->markAsRead();
+    }
+});
 
 // Welcome Tab
 // Route::get('/feednotifications', function () {
@@ -386,7 +399,7 @@ Route::any('/search', function () {
 // });
 //  Route::middleware(['auth:sanctum', 'verified'])->get('/feednotifications', [FeedNotificationController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/notifications', [FeedNotificationController::class, 'index1']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/read/notifications', [FeedNotificationController::class,'readNotification']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/read/notifications', [FeedNotificationController::class, 'readNotification']);
 //  Route::middleware(['auth:sanctum', 'verified'])->get('/read/feednotifications', FeedNotificationController::class,'readNotification');
 //Contact Us
 Route::get('/contactUs', function () {
@@ -525,14 +538,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 // Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', function () {
 //     return view('screens.user.profile.userimage_upload');
 // });
-Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', function () {
-    return view('screens.user.profile.userimage_upload');
-});
-   Route::middleware(['auth:sanctum', 'verified'])->post('/userimage_upload',[ImageUploadController::class, 'store']);
-
-     Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'index']);
-
-    Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', [ImageUploadController::class, 'create']);
 
     // Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [ImageUploadController::class, 'getIndex']);
 

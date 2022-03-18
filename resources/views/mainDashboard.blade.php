@@ -175,7 +175,7 @@
             <a href="" class="uppercase"> <img src="assets/media/logos/logo-5.png" alt="logo"
                     class="h-28 w-28" /></a>
             <a href="" class="uppercase">About</a>
-            <a href="" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
+            <a href="/login" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
         </nav>
 
         <div class="pt-20 w-full mx-auto  flex flex-col items-center justify-center" x-data="{
@@ -276,8 +276,10 @@
                         of
                         recipes, chefs, ingredients and everything related to food</p>
                     <div class="w-3/4 mx-auto py-16 space-y-4 flex flex-col justify-center items-center">
-                        <h1 class="text-4xl text-white font-bold">+ <span id="count1" class=" display-4"></span>
-                        </h1>
+                        {{-- <h1 class="text-4xl text-white font-bold">+{{ $recipe_count }}<span id="count1" class=" display-4"></span>
+                        </h1> --}}
+                        <h1 class="text-4xl text-white font-bold counter">+ <span id="value"
+                            class="count">{{ $recipe_count }}</span>
                         <h3 class="text-xs text-white tracking-wide leading-loose uppercase">Recipes , Chefs & Foodies
                         </h3>
 
@@ -699,7 +701,7 @@
                             <a href="" class="text-white text-base font-normal">About Us</a>
                             <a href="" class="text-white text-base font-normal">Explore</a>
                             <a href="" class="text-white text-base font-normal">FAQ</a>
-                            <a href="" class="text-white text-base font-normal">Contact Us</a>
+                            <a href="/contactUs" class="text-white text-base font-normal">Contact Us</a>
                         </nav>
                         <div class="flex flex-col">
                             <h3 class="text-xs text-white mb-3">FOLLOW RECIPEAT</h3>
@@ -769,24 +771,89 @@
         </section>
     </section> --}}
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            function counter(id, start, end, duration) {
-                let obj = document.getElementById(id),
-                    current = start,
-                    range = end - start,
-                    increment = end > start ? 1 : -1,
-                    step = Math.abs(Math.floor(duration / range)),
-                    timer = setInterval(() => {
-                        current += increment;
-                        obj.textContent = current;
-                        if (current == end) {
-                            clearInterval(timer);
-                        }
-                    }, step);
-            }
-            counter("count1", 0, 400, 3000);
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     function counter(id, start, end, duration) {
+        //         var count = count($recipe);
+        //         let obj = document.getElementById(id),
+        //             current = start,
+        //             range = end - start,
+        //             end = count,
+        //             // end = $recipe_count,
+        //             increment = end > start ? 1 : -1,
+        //             step = Math.abs(Math.floor(duration / range)),
+        //             timer = setInterval(() => {
+        //                 current += increment;
+        //                 obj.textContent = current;
+        //                 if (current == end) {
+        //                     clearInterval(timer);
+        //                 }
+        //             }, step);
+        //     }
+        //     counter("count1", 0, 6 , 3000);
 
-        });
+        // });
+        // const counters = document.querySelectorAll(".count");
+        // const speed = 200;
+
+        // counters.forEach((counter) => {
+        //     const updateCount = () => {
+        //         const target = parseInt(+counter.getAttribute("data-target"));
+        //         const count = parseInt(+counter.innerText);
+        //         const increment = Math.trunc(target / speed);
+        //         console.log(increment);
+
+        //         if (count < target) {
+        //             counter.innerText = count + increment;
+        //             setTimeout(updateCount, 1);
+        //         } else {
+        //             count.innerText = target;
+        //         }
+        //     };
+        //     updateCount();
+        // });
+
+        function animateValue(obj, start = 0, end = null, duration = 3000) {
+            if (obj) {
+
+                // save starting text for later (and as a fallback text if JS not running and/or google)
+                var textStarting = obj.innerHTML;
+
+                // remove non-numeric from starting text if not specified
+                end = end || parseInt(textStarting.replace(/\D/g, ""));
+
+                var range = end - start;
+
+                // no timer shorter than 50ms (not really visible any way)
+                var minTimer = 50;
+
+                // calc step time to show all interediate values
+                var stepTime = Math.abs(Math.floor(duration / range));
+
+                // never go below minTimer
+                stepTime = Math.max(stepTime, minTimer);
+
+                // get current time and calculate desired end time
+                var startTime = new Date().getTime();
+                var endTime = startTime + duration;
+                var timer;
+
+                function run() {
+                    var now = new Date().getTime();
+                    var remaining = Math.max((endTime - now) / duration, 0);
+                    var value = Math.round(end - (remaining * range));
+                    // replace numeric digits only in the original string
+                    obj.innerHTML = textStarting.replace(/([0-9]+)/g, value);
+                    if (value == end) {
+                        clearInterval(timer);
+                    }
+                }
+
+                timer = setInterval(run, stepTime);
+                run();
+            }
+        }
+
+        animateValue(document.getElementById('value'));
     </script>
 
 </body>
