@@ -57,25 +57,23 @@
 
         .backSVG {
             position: ;
-
             background-position: left top 35%;
-
 
             /* background: linear-gradient(127.92deg, #343438 2.3%, rgba(30, 30, 33, 0.76) 103.43%); */
 
         }
 
-        .img {
+        /* .img {
             position: absolute;
             ;
             width: 286px;
             height: 238px;
             left: 65%;
-        }
+        } */
 
         #section2 {
             background-image: linear-gradient(170.96deg, #000000 0.64%, rgba(0, 0, 0, 0.56) 400.12%), url('images/Vector 1 (4).png'), url('images/Group 11 (2).png'), url('images/Vector 1 (3).png');
-            background-position: 0% 0%, right bottom 27%, left top -20%, right top -10%;
+            background-position: 0% 0%, right 0.5% bottom 26%, left top -35%, right top -10%;
             background-size: cover, 300px, 510px, 160px;
         }
 
@@ -175,7 +173,7 @@
             <a href="" class="uppercase"> <img src="assets/media/logos/logo-5.png" alt="logo"
                     class="h-28 w-28" /></a>
             <a href="" class="uppercase">About</a>
-            <a href="" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
+            <a href="/login" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
         </nav>
 
         <div class="pt-20 w-full mx-auto  flex flex-col items-center justify-center" x-data="{
@@ -276,7 +274,8 @@
                         of
                         recipes, chefs, ingredients and everything related to food</p>
                     <div class="w-3/4 mx-auto py-16 space-y-4 flex flex-col justify-center items-center">
-                        <h1 class="text-4xl text-white font-bold">+ <span id="count1" class=" display-4"></span>
+                        <h1 class="text-4xl text-white font-bold counter">+ <span id="value"
+                                class="count">300</span>
                         </h1>
                         <h3 class="text-xs text-white tracking-wide leading-loose uppercase">Recipes , Chefs & Foodies
                         </h3>
@@ -381,33 +380,31 @@
                 </ul>
                 <div class="content  px-4 py-20">
                     <div x-show="tab == 'tab1'">
-                        <div class="w-full mx-auto flex items-center justify-center ">
-                            <div class="w-1/2 flex flex-col justify-start ">
-                                <h2 class="text-2xl text-white mb-2 text-left">Foster an audience and</h2>
-                                <h1 class="text-red-600 text-4xl font-semibold mb-2">Grow your brand</h1>
-                                <p class="text-gray-400 mb-4 text-base">As a home chef, Recipeat is the perfect platform
-                                    for you
-                                    to grow your own personal food brand. Create exclusive content that caters to a
-                                    large audience of food lovers! Expand your circle by finding partnerships and
-                                    collaborating with others</p>
-
-                                <a href=""
-                                    class="flex  w-32 rounded-md text-base items-center justify-center px-2 py-2 text-white bg-red-600">Join
-                                    Recipeat</a>
-
-                            </div>
-                            <div class="w-1/2 flex justify-end items-center">
-                                <div class=" lg:w-5/6 flex justify-end -mr-12 rounded-full md:w-1/2 bg-white w-5/6">
-                                    <div class="mt-2 ml-1 w-full h-full">
-                                        <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
-                                            src="images\homechefImage.png" alt="user image" />
+                        <div class="w-full mx-auto flex items-start justify-center ">
+                            <div class="w-1/2 flex justify-start items-center">
+                                <div class=" lg:w-5/6 flex justify-start  md:w-1/2 w-5/6">
+                                    <div class="w-full h-full">
+                                        <img class="md:w-80 md:h-80 " src="images\Group 4.png" alt="user image" />
                                     </div>
                                 </div>
                             </div>
+                            <div class="w-1/2 flex flex-col justify-center ">
+                                <h2 class="text-3xl text-white mb-2 text-left">Discover the Culinary world</h2>
+                                <h1 class="text-red-600 text-4xl font-semibold mb-2">with Recipeat</h1>
+                                <p class="text-gray-400 mb-4 text-lg">You can search for people, food content, and
+                                    ingredients with our explore feature. Saving those hidden restaurant gems in your
+                                    locality by taking a picture and adding it to your Recipeat profile</p>
+
+                                <a href=""
+                                    class="flex  w-32 rounded-md text-base items-center justify-center px-2 py-2 text-white bg-red-600">Join
+                                    Recipeat</a>
+
+                            </div>
+
                         </div>
                     </div>
                     <div x-show="tab == 'tab2'">
-                        <div class="w-full mx-auto flex items-center justify-center ">
+                        <div class="w-full mx-auto flex items-start justify-center ">
                             <div class="w-1/2 flex flex-col justify-start ">
                                 <h2 class="text-2xl text-white mb-2 text-left">Foster an audience and</h2>
                                 <h1 class="text-red-600 text-4xl font-semibold mb-2">Grow your brand</h1>
@@ -422,41 +419,35 @@
                                     Recipeat</a>
 
                             </div>
-                            <div class="w-1/2 flex justify-end items-center">
-                                <div class=" lg:w-5/6 flex justify-end -mr-12 rounded-full md:w-1/2 bg-white w-5/6">
-                                    <div class="mt-2 ml-1 w-full h-full">
-                                        <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
-                                            src="images\homechefImage.png" alt="user image" />
+                            <div class="w-1/2 flex justify-end items-end">
+                                <div class=" lg:w-5/6 flex justify-end md:w-1/2 w-5/6">
+                                    <div class="w-full h-full flex justify-end">
+                                        <img class="md:w-80 md:h-80" src="images\Group 8.png" alt="user image" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div x-show="tab == 'tab3'">
-                        <div class="w-full mx-auto flex items-center justify-center ">
-                            <div class="w-1/2 flex flex-col justify-start ">
-                                <h2 class="text-2xl text-white mb-2 text-left">Foster an audience and</h2>
-                                <h1 class="text-red-600 text-4xl font-semibold mb-2">Grow your brand</h1>
-                                <p class="text-gray-400 mb-4 text-base">As a home chef, Recipeat is the perfect platform
-                                    for you
-                                    to grow your own personal food brand. Create exclusive content that caters to a
-                                    large audience of food lovers! Expand your circle by finding partnerships and
-                                    collaborating with others</p>
-
-                                <a href=""
-                                    class="flex  w-32 rounded-md text-base items-center justify-center px-2 py-2 text-white bg-red-600">Join
-                                    Recipeat</a>
-
-                            </div>
-                            <div class="w-1/2 flex justify-end items-center">
-                                <div class=" lg:w-5/6 flex justify-end -mr-12 rounded-full md:w-1/2 bg-white w-5/6">
-                                    <div class="mt-2 ml-1 w-full h-full">
-                                        <img class="rounded-full w-96 h-96 border border-gray-100 shadow-sm object-fill"
-                                            src="images\homechefImage.png" alt="user image" />
+                        <div class="w-full mx-auto flex items-start justify-center ">
+                            <div class="w-1/2 flex justify-start items-center">
+                                <div class=" lg:w-5/6 flex justify-start  md:w-1/2 w-5/6">
+                                    <div class=" w-full h-full">
+                                        <img class="md:w-80 md:h-80" src="images\Group 2.png" alt="user image" />
                                     </div>
                                 </div>
                             </div>
+                            <div class="w-1/2 flex flex-col justify-center ">
+                                <h2 class="text-2xl text-white mb-2 text-left">Network with chefs and create</h2>
+                                <h1 class="text-red-600 text-4xl font-semibold mb-2">your dream portfolio</h1>
+                                <p class="text-gray-400 mb-4 text-base">As a chef the problems you face in this
+                                    industry's landscape is the opportunity to share your skills with others and grow
+                                    your network. Recipeat helps chefs create a professional digital portfolio to share
+                                    with others, as well as connect with other chefs globally</p>
 
+                                <a href=""
+                                    class="flex  w-32 rounded-md text-base items-center justify-center px-2 py-2 text-white bg-red-600">Join Invite list</a>
+                            </div>
                         </div>
                     </div>
 
@@ -599,7 +590,7 @@
             <div class="w-3/4 mx-auto py-20">
                 <h1 class="text-red-600 text-4xl font-semibold mb-5 ">Recipeat <span
                         class="text-black">resources</span></h1>
-                <div class="flex w-full py-10">
+                <div class="flex justify-start items-start w-full py-10">
                     <div class="w-5/12 flex flex-col -mt-16 space-y-4">
                         <div class="w-full bg-fill  bg-no-repeat lg:h-60 -mx-7  rounded-b-lg"
                             style="background-image: url(images/card1.png)">
@@ -641,30 +632,29 @@
 
                         </div>
                     </div>
-                    <div class="w-7/12 flex -mt-11">
-                        <div class="w-full bg-contain bg-no-repeat rounded-lg mb-14"
+                    <div class="w-7/12 flex  justify-start items-center -mt-10">
+                        <div class="w-full bg-contain bg-no-repeat rounded-xl"
                             style="background: linear-gradient(130.96deg, #1F1F24 24.64%, rgba(31, 31, 36, 0.56) 234.12%);">
-                            <div class="flex flex-col justify-center items-start py-10 px-5">
-                                <img src="images\foodPacket.png" class="img mt-24" alt="image" />
+                            <div class="flex flex-col justify-center items-start pt-5  px-5">
                                 <div class="w-full flex justify-end mb-4">
                                     <a href=""
                                         class="w-24 flex justify-center items-center bg-red-600 text-white px-2 py-2 mb-2 rounded-md">Featured</a>
                                 </div>
                                 <h3 class="uppercase text-xs text-white mb-3">SPECIAL FEATURES</h3>
-                                <h1 class="text-3xl text-white font-semibold leading-10 tracking-wider mb-10 mr-4">
+                                <h1 class="text-3xl text-white font-semibold leading-10 tracking-wider  mr-4">
                                     Explore
                                     the
                                     idea of <br>
                                     Pinboards, collections
                                     & Tastebuds</h1>
-                                <div class="flex justify-start items-end w-full py-10">
+                                <div class="flex justify-between items-center h-40 w-full">
                                     <svg width="73" height="24" viewBox="0 0 73 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M72.0607 13.0607C72.6464 12.4749 72.6464 11.5251 72.0607 10.9393L62.5147 1.39339C61.9289 0.807606 60.9792 0.807606 60.3934 1.39339C59.8076 1.97918 59.8076 2.92893 60.3934 3.51471L68.8787 12L60.3934 20.4853C59.8076 21.0711 59.8076 22.0208 60.3934 22.6066C60.9792 23.1924 61.9289 23.1924 62.5147 22.6066L72.0607 13.0607ZM1.31134e-07 13.5L71 13.5L71 10.5L-1.31134e-07 10.5L1.31134e-07 13.5Z"
                                             fill="#F9FBFC" />
                                     </svg>
-
+                                    <img src="images\foodPacket.png" class="h-40 w-40  flex items-start" alt="image" />
                                 </div>
                             </div>
                         </div>
@@ -748,45 +738,50 @@
             </div>
         </div>
     </section>
-    {{-- <section>
-        <section class="bg-dark text-white py-5 min-vh-100">
-            <div class="container">
-                <div class="row justify-content-center text-center">
-                    <div class="col-12">
-                        <h1 class="pb-3">Number counter animation in pure JavaScript</h1>
-                    </div>
-                    <div class="col-md-4">
-                        <span id="count1" class="display-4"></span>
-                    </div>
-                    <div class="col-md-4">
-                        <span id="count2" class="display-4"></span>
-                    </div>
-                    <div class="col-md-4">
-                        <span id="count3" class="display-4"></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section> --}}
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            function counter(id, start, end, duration) {
-                let obj = document.getElementById(id),
-                    current = start,
-                    range = end - start,
-                    increment = end > start ? 1 : -1,
-                    step = Math.abs(Math.floor(duration / range)),
-                    timer = setInterval(() => {
-                        current += increment;
-                        obj.textContent = current;
-                        if (current == end) {
-                            clearInterval(timer);
-                        }
-                    }, step);
-            }
-            counter("count1", 0, 400, 3000);
 
-        });
+    <script>
+        function animateValue(obj, start = 0, end = null, duration = 3000) {
+            if (obj) {
+
+                // save starting text for later (and as a fallback text if JS not running and/or google)
+                var textStarting = obj.innerHTML;
+
+                // remove non-numeric from starting text if not specified
+                end = end || parseInt(textStarting.replace(/\D/g, ""));
+
+                var range = end - start;
+
+                // no timer shorter than 50ms (not really visible any way)
+                var minTimer = 50;
+
+                // calc step time to show all interediate values
+                var stepTime = Math.abs(Math.floor(duration / range));
+
+                // never go below minTimer
+                stepTime = Math.max(stepTime, minTimer);
+
+                // get current time and calculate desired end time
+                var startTime = new Date().getTime();
+                var endTime = startTime + duration;
+                var timer;
+
+                function run() {
+                    var now = new Date().getTime();
+                    var remaining = Math.max((endTime - now) / duration, 0);
+                    var value = Math.round(end - (remaining * range));
+                    // replace numeric digits only in the original string
+                    obj.innerHTML = textStarting.replace(/([0-9]+)/g, value);
+                    if (value == end) {
+                        clearInterval(timer);
+                    }
+                }
+
+                timer = setInterval(run, stepTime);
+                run();
+            }
+        }
+
+        animateValue(document.getElementById('value'));
     </script>
 
 </body>

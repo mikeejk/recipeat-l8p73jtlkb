@@ -22,7 +22,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
         integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -433,103 +433,7 @@
         }
 
     </style>
-    <!--Style for Buttons-->
-    <style>
-        /* Nina */
-        .button--nina {
-            -webkit-transition: background-color 0.3s;
-            transition: background-color 0.3s;
-        }
 
-        .button--nina>span {
-            display: inline-block;
-            padding: 0;
-            opacity: 0;
-            -webkit-transform: translate3d(0, -10px, 0);
-            transform: translate3d(0, -10px, 0);
-            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-            transition: transform 0.3s, opacity 0.3s;
-            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-        }
-
-        .button--nina::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-            transition: transform 0.3s, opacity 0.3s;
-            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-        }
-
-        .button--nina:hover::before {
-            opacity: 0;
-            -webkit-transform: translate3d(0, 100%, 0);
-            transform: translate3d(0, 100%, 0);
-        }
-
-        .button--nina:hover>span {
-            opacity: 1;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-
-        .button--nina:hover>span:nth-child(1) {
-            -webkit-transition-delay: 0.045s;
-            transition-delay: 0.045s;
-        }
-
-        .button--nina:hover>span:nth-child(2) {
-            -webkit-transition-delay: 0.09s;
-            transition-delay: 0.09s;
-        }
-
-        .button--nina:hover>span:nth-child(3) {
-            -webkit-transition-delay: 0.135s;
-            transition-delay: 0.135s;
-        }
-
-        .button--nina:hover>span:nth-child(4) {
-            -webkit-transition-delay: 0.18s;
-            transition-delay: 0.18s;
-        }
-
-        .button--nina:hover>span:nth-child(5) {
-            -webkit-transition-delay: 0.225s;
-            transition-delay: 0.225s;
-        }
-
-        .button--nina:hover>span:nth-child(6) {
-            -webkit-transition-delay: 0.27s;
-            transition-delay: 0.27s;
-        }
-
-        .button--nina:hover>span:nth-child(7) {
-            -webkit-transition-delay: 0.315s;
-            transition-delay: 0.315s;
-        }
-
-        .button--nina:hover>span:nth-child(8) {
-            -webkit-transition-delay: 0.36s;
-            transition-delay: 0.36s;
-        }
-
-        .button--nina:hover>span:nth-child(9) {
-            -webkit-transition-delay: 0.405s;
-            transition-delay: 0.405s;
-        }
-
-        .button--nina:hover>span:nth-child(10) {
-            -webkit-transition-delay: 0.45s;
-            transition-delay: 0.45s;
-        }
-
-    </style>
 </head>
 
 <body class="antialiased">
@@ -605,16 +509,18 @@
                                                 <form action="/search_ingredient" method="GET" role="search">
                                                     {{ csrf_field() }}
                                                     <div class="container flex md:w-full w-4/6 justify-center mt-4 ">
-                                                        <div class="flex flex-row border-2 justify-center text-white-800  mx-auto rounded-xl ">
-                                                           <div>
-                                                            <select id='myselect' name="ingredient" multiple>
-                                                                <option value="">Select An Option</option>
-                                                                @foreach ($recipe_ingredients as $tag)
-                                                                    <option value="{{ $tag->ingredient_id }} ">{{ $tag->ingredient->ingredient}}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                           </div>
+                                                        <div
+                                                            class="flex flex-row border-2 justify-center text-white-800  mx-auto rounded-xl ">
+                                                            <div>
+                                                                <select id='myselect' name="ingredient" multiple>
+                                                                    <option value="">Select An Option</option>
+                                                                    @foreach ($recipe_ingredients as $tag)
+                                                                        <option value="{{ $tag->ingredient_id }} ">
+                                                                            {{ $tag->ingredient->ingredient }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
                                                             <button type="submit"
                                                                 class="flex items-center justify-center bg-white px-4 py-3 rounded-l-md">
                                                                 <svg class="w-6 h-6 text-gray-600" fill="currentColor"
@@ -632,26 +538,26 @@
                                                 </form>
                                             </div>
                                         </div>
-                                            <!-- Buttons -->
-                                            <div
-                                                class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
-                                                <form>
-                                                    <a href="/welcome">
-                                                        <button
-                                                            class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Recipes
-                                                        </button></a>
-                                                </form>
-                                                <form>
+                                        <!-- Buttons -->
+                                        <div
+                                            class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
+                                            <form>
+                                                <a href="/welcome">
                                                     <button
-                                                        class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients
-                                                    </button>
+                                                        class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Recipes
+                                                    </button></a>
+                                            </form>
+                                            <form>
+                                                <button
+                                                    class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients
+                                                </button>
 
-                                                </form>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                 </form>
 
                 <div class="w-3/4 flex flex-row py-5 mx-auto">
@@ -659,7 +565,7 @@
                         <div class="w-full flex flex-wrap  md:flex-row flex-col">
                             @if (count($recipe) > 0)
                                 @foreach ($recipe as $recipes)
-                                    <a href="/recipeview/{{ $recipes->recipe_id}}" name="view"
+                                    <a href="/recipeview/{{ $recipes->recipe_id }}" name="view"
                                         class="flex xl:flex-row  h-72 md:flex-col lg:w-1/4 md:w-1/2 w-full p-2 transition duration-500 ease-in transform hover:-translate-y-2 hover:scale-100">
                                         <!-- <div class="flex  flex-col w-full p-2 border-2 rounded-lg">
                                                         <div class="flex items-center  justify-center w-full border-b-2">
@@ -681,14 +587,14 @@
                                                     </div>
                                         </div>  -->
                                         <div class="flex w-full  flex-row relative">
-                                              {{-- <img alt="gallery"
+                                            {{-- <img alt="gallery"
                                                 class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
                                                  src="https://1.bp.blogspot.com/-OcFmW26l1rA/W7TtTcL35sI/AAAAAAAAIz8/6u2ANNXZnBAjXHXT-cjcu-6f-PBPG0jgwCLcBGAs/s1600/Chicken%2BBiryani%2B4.jpg" /> --}}
 
-                                              <img alt="gallery"
+                                            <img alt="gallery"
                                                 class="absolute mt-2 inset-0 w-full h-full object-cover border-black border-2 object-center rounded-b-lg"
-                                                src="{{$recipes->recipe->getFirstMediaUrl('cover')}}" />
-                                                  <p
+                                                src="{{ $recipes->recipe->getFirstMediaUrl('cover') }}" />
+                                            <p
                                                 class="absolute flex justify-center p-3 rounded-t-lg border-b-2 bg-gradient-to-tr from-yellow-400 to-yellow-700 text-white w-full text-lg font-medium">
                                                 {{ $recipes->recipe->recipe_name }}</p>
                                             <div
@@ -710,9 +616,8 @@
                                         </div>
                                     </a>
                                 @endforeach
-                                {{-- {!! $recipe->links() !!}  --}}
-                                 {{-- {{ $recipe->render() }} --}}
-
+                                {{-- {!! $recipe->links() !!} --}}
+                                {{-- {{ $recipe->render() }} --}}
                             @else
                                 <div class="flex w-3/4 mx-auto  text-white justify-center">
                                     <div class="flex flex-col  md:w-1/2 w-full border-2 bg-white p-2  rounded-lg">
@@ -738,7 +643,7 @@
                 </div>
 
                 <div class="flex items-center justify-center px-5">
-                     {{-- {{ $recipe->render() }} --}}
+                    {{-- {{ $recipe->render() }} --}}
                 </div>
                 @endif
 
