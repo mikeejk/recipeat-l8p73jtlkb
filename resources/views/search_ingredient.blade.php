@@ -22,7 +22,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
         integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -433,103 +433,7 @@
         }
 
     </style>
-    <!--Style for Buttons-->
-    <style>
-        /* Nina */
-        .button--nina {
-            -webkit-transition: background-color 0.3s;
-            transition: background-color 0.3s;
-        }
 
-        .button--nina>span {
-            display: inline-block;
-            padding: 0;
-            opacity: 0;
-            -webkit-transform: translate3d(0, -10px, 0);
-            transform: translate3d(0, -10px, 0);
-            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-            transition: transform 0.3s, opacity 0.3s;
-            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-        }
-
-        .button--nina::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-            transition: transform 0.3s, opacity 0.3s;
-            -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-            transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-        }
-
-        .button--nina:hover::before {
-            opacity: 0;
-            -webkit-transform: translate3d(0, 100%, 0);
-            transform: translate3d(0, 100%, 0);
-        }
-
-        .button--nina:hover>span {
-            opacity: 1;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-
-        .button--nina:hover>span:nth-child(1) {
-            -webkit-transition-delay: 0.045s;
-            transition-delay: 0.045s;
-        }
-
-        .button--nina:hover>span:nth-child(2) {
-            -webkit-transition-delay: 0.09s;
-            transition-delay: 0.09s;
-        }
-
-        .button--nina:hover>span:nth-child(3) {
-            -webkit-transition-delay: 0.135s;
-            transition-delay: 0.135s;
-        }
-
-        .button--nina:hover>span:nth-child(4) {
-            -webkit-transition-delay: 0.18s;
-            transition-delay: 0.18s;
-        }
-
-        .button--nina:hover>span:nth-child(5) {
-            -webkit-transition-delay: 0.225s;
-            transition-delay: 0.225s;
-        }
-
-        .button--nina:hover>span:nth-child(6) {
-            -webkit-transition-delay: 0.27s;
-            transition-delay: 0.27s;
-        }
-
-        .button--nina:hover>span:nth-child(7) {
-            -webkit-transition-delay: 0.315s;
-            transition-delay: 0.315s;
-        }
-
-        .button--nina:hover>span:nth-child(8) {
-            -webkit-transition-delay: 0.36s;
-            transition-delay: 0.36s;
-        }
-
-        .button--nina:hover>span:nth-child(9) {
-            -webkit-transition-delay: 0.405s;
-            transition-delay: 0.405s;
-        }
-
-        .button--nina:hover>span:nth-child(10) {
-            -webkit-transition-delay: 0.45s;
-            transition-delay: 0.45s;
-        }
-
-    </style>
 </head>
 
 <body class="antialiased">
@@ -588,9 +492,7 @@
                                                         <div
                                                             class="flex flex-row border-2 justify-center text-white-800  mx-auto rounded-xl ">
                                                             <div>
-                                                                <select id='myselect' name="ingredient"
-                                                                    value="{{ isset($_GET['ingredient']) ? $_GET['ingredient'] : '' }}"
-                                                                    multiple>
+                                                                <select id='myselect' name="ingredient" multiple>
                                                                     <option value="">Select An Option</option>
                                                                     @foreach ($recipe_ingredients as $tag)
                                                                         <option value="{{ $tag->ingredient_id }} ">
@@ -619,16 +521,15 @@
                                         <!-- Buttons -->
                                         <div
                                             class="flex flex-wrap justify-center md:space-x-10 space-x-2 md:space-y-0 space-y-2 py-3 my-3">
-                                            
+
                                                 <a href="/welcome"
-                                                    
+
                                                         class="button button--nina md:px-8 px-4 py-0 text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Recipes
                                                     </a>
                                                 <button
                                                     class="button button--nina md:px-8  py-0  text-gray-300 hover:text-white relative block focus:outline-none border-b-2 border-solid rounded-md text-sm text-center font-semibold uppercase tracking-widest overflow-hidden">Ingredients
                                                 </button>
 
-                                            
                                         </div>
                                     </div>
                                 </div>
