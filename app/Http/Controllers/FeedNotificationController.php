@@ -27,11 +27,16 @@ class FeedNotificationController extends Controller
             ->where('notifiable_id', $user_id)->count();
         $notifications = DB::table('notifications')->where('type', 'App\Notifications\NewFollower')
             ->where('notifiable_id', $user_id)->get('data');
-            $feednote = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
+        $feednote = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
             ->where('notifiable_id', $user_id)->count();
         $feednotifications = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
             ->where('notifiable_id', $user_id)->get('data');
-         return view('screens.user.profile.notifications_screen', compact('notifications','note_count','feednote','feednotifications'));
+        $comment_count = DB::table('notifications')->where('type', 'App\Notifications\CommentNotification')
+        ->where('notifiable_id', $user_id)->count();
+        $commentnotifications = DB::table('notifications')->where('type', 'App\Notifications\CommentNotification')
+            ->where('notifiable_id', $user_id)->get('data');
+
+         return view('screens.user.profile.notifications_screen', compact('notifications','note_count','feednote','comment_count','commentnotifications','feednotifications'));
         //  dd($feednotifications);
     }
 

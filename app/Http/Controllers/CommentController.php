@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\CommentNotification;
-
+use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function store(Request $request, Recipe $recipe)
@@ -32,10 +32,13 @@ class CommentController extends Controller
         $recipe->comments()->save($comment);
         // Notification::send($users, new CommentNotification($recipe,auth()->user()));
         $recipe =  Recipe::where('id',$request->recipe_id)->pluck('recipe_name')->first();
-        $users = User::where('id', $comment->user_id)->get();
-        foreach ($users as $user) {
+        $rec_user = Recipe::where('id',$request->recipe_id)->pluck('user_id');
+      $user=User::where('id',$rec_user)->get();
+    //    Notification::send($user, new CommentNotification($recipe,auth()->user()));
+         foreach ($user as $user) {
             $user->notify(new CommentNotification(auth()->user(), $recipe));
-        }
+         }
+        // dd($user);
         return back();
         // $comment = new Comment(['comment' => request('comment')]);
         // $comment->user_id = auth()->user()->id;
