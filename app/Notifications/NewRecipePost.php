@@ -32,10 +32,6 @@ class NewRecipePost extends Notification
      * @return array
      */
     public function via($notifiable)
-
-
-
-
     {
         return ['mail'];
     }
@@ -50,13 +46,11 @@ class NewRecipePost extends Notification
     {
         return (new MailMessage)
                     ->subject('Create Recipe')
-                    ->line($this->user->name.'Just created a New Recipe: '.$this->recipe->name)
+                    ->line($this->user.'Just created a New Recipe: '.$this->recipe->name)
                     ->action('Read Post' , url('/'))
                     ->line('Thank you for being with us!');
 
     }
-
-
     /**
      * Get the array representation of the notification.
      *
@@ -67,7 +61,7 @@ class NewRecipePost extends Notification
     {
         return [
 
-            'name' => $this->recipeuser->name,
+            'name' => $this->user->name,
             // 'recipe_id' =>$this->recipe->id,
             'message'=>'created new recipe',
         ];

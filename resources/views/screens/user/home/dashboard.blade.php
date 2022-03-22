@@ -16,17 +16,17 @@
                                     </button>
                                 @else
                                     <button class="btn btn-secondary btn2"> <img class="rounded-circle"
-                                    src="{{ asset('/storage/app/public/' . $chef_questions->image) }}"
-                                    height="100" width="100" />
-                            </button> 
-                                    <span class="name mt-3">{{ $user->name }}</span>
-                                    <span class="idd">
-                                        @if ($user->hasrole('Home-Chef') || $user->hasrole('Chef') || $user->hasrole('Admin'))
-                                            {{ $user->getRoleNames()->first() }}
-                                        @else
-                                            User
-                                        @endif
-                                    </span>
+                                            src="{{ asset('/storage/app/public/' . $chef_questions->image) }}"
+                                            height="100" width="100" /></button>
+                                @endif
+                                <span class="name mt-3">{{ $user->name }}</span>
+                                <span class="idd">
+                                    @if ($user->hasrole('Home-Chef') || $user->hasrole('Chef') || $user->hasrole('Admin'))
+                                        {{ $user->getRoleNames()->first() }}
+                                    @else
+                                        User
+                                    @endif
+                                </span>
                             </div>
                             <div class="d-flex justify-content-between p-3  text-secondary">
                                 <div class="p-2 ">
