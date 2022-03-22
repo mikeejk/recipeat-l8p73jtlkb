@@ -11,14 +11,17 @@ class CommentNotification extends Notification
 {
     use Queueable;
     public $user;
+    public $recipe;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user,$recipe)
     {
         $this->user=$user;
+        $this->recipe=$recipe;
     }
 
     /**
@@ -29,7 +32,7 @@ class CommentNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database','mail'];
     }
 
     /**
@@ -41,9 +44,10 @@ class CommentNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        ->subject('Comment Recipe')
+        ->line($this->user.'Just commentted your Recipe: '.$this->recipe)
+        ->action('Read Post' , url('/'))
+        ->line('Thank you for being with us!');
     }
 
     /**
@@ -55,8 +59,10 @@ class CommentNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'name' => $this->user->name,'commented on your recipe',
+            'name' => $this->user->name,
             // 'email' => $this->user->email,
+            'recipe'=>$this->recipe,
+            // 'message'=>'commentted Your recipe',
         ];
     }
 }

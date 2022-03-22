@@ -12,7 +12,6 @@ use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
-use App\Models\Follower;
 use App\Models\Pinboard;
 use App\Models\Pin_recipe;
 use App\Models\Recipe_Step;
@@ -105,7 +104,6 @@ class RecipeController extends Controller
         }
         // Declare steps
         $steps = $request->steps;
-
         // for lopping steps
         for ($i = 0; $i < count($steps); $i++) {
             $datastep = [
