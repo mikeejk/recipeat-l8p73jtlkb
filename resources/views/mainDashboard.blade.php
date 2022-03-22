@@ -275,7 +275,7 @@
                         recipes, chefs, ingredients and everything related to food</p>
                     <div class="w-3/4 mx-auto py-16 space-y-4 flex flex-col justify-center items-center">
                         <h1 class="text-4xl text-white font-bold counter">+ <span id="value"
-                                class="count">300</span>
+                                class="count">{{ $recipe_count }}</span>
                         </h1>
                         <h3 class="text-xs text-white tracking-wide leading-loose uppercase">Recipes , Chefs & Foodies
                         </h3>

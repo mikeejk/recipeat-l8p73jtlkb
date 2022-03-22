@@ -36,8 +36,7 @@ class CreateQuestionsTable extends Migration
             $table->string('fav_ingr');
             $table->string('level_spici');
             $table->string('time_spend');
-            $table->integer('status')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
 
             // Foreign Keys
             $table->foreign('user_id')->references('id')->on('users');

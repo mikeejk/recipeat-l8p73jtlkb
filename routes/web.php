@@ -19,7 +19,6 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\FeedNotificationController;
 use App\Models\User;
 use App\Models\Question;
@@ -330,18 +329,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
         return view('dashboard');
     }
     else{
-            if(auth()->user()->hasRole('Home-Chef'))
-             {
-                     $q = Question::where('user_id', auth()->user()->id)->first();
-
-                        if ($q == "") { return view('indexHome'); }
-                        else { return redirect('/dashboard'); }
-             }
-             else
+            if(auth()->user()->hasRole('Chef'))
              {
                 $cq = Chef_question::where('user_id', auth()->user()->id)->first();
 
                 if ($cq == "") { return view('indexHome'); }
+                else { return redirect('/dashboard'); }
+
+             }
+             else
+             {
+                $q = Question::where('user_id', auth()->user()->id)->first();
+
+                if ($q == "") { return view('indexHome'); }
                 else { return redirect('/dashboard'); }
              }
         }

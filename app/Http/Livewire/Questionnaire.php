@@ -5,9 +5,10 @@ use Livewire\Component;
 use App\Models\Question;
 use App\Models\Follower;
 use App\Models\Recipe;
-use App\Models\Image_Upload;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
+// use Illuminate\Support\Facades\Request;
+
 
 use App\Models\Notifications\NotificationDisplay;
 
@@ -29,7 +30,8 @@ class Questionnaire extends Component
     public $fav_ingr;
     public $level_spici;
     public $time_spend;
-    public $status = 1;
+    public $image;
+
 
     // Function - Render
     public function render()
@@ -198,7 +200,7 @@ class Questionnaire extends Component
         // Data - Save
         $validatedData = $this->validate([
             'time_spend' => 'required',
-            'status' => 'required',
+            // 'status' => 'required',
         ]);
 
         // Next Step
@@ -222,7 +224,6 @@ class Questionnaire extends Component
             'fav_ingr' => $this->fav_ingr,
             'level_spici' => $this->level_spici,
             'time_spend' => $this->time_spend,
-            'status' => $this->status,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -240,8 +241,6 @@ class Questionnaire extends Component
     public function show(Question $questions, Follower $followers,Request $request)
     {
         $user_id=auth()->user()->id;
-         $user_image=Image_Upload::where('user_id', auth()->user()->id)->get();
-        // $user_image=Image_Upload::all();
         $questions = Question::where('user_id', auth()->user()->id)->first();
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
@@ -251,8 +250,7 @@ class Questionnaire extends Component
         $feednote= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
         ->where('notifiable_id',$user_id)->count();
         $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->all();
-//  dd($user_image);
-        return view('screens.user.profile.profile', compact('questions', 'followers' ,'following','notifications','feednotifications' ,'feednote','recipes','user_image'));
+        return view('screens.user.profile.profile', compact('questions', 'followers' ,'following','notifications','feednotifications' ,'feednote','recipes'));
     }
 
 
@@ -265,26 +263,50 @@ class Questionnaire extends Component
     public function update(Request $request)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
-        $questions->name = Request::input('name');
-        $questions->gender = Request::input('gender');
-        $questions->mail = Request::input('mail');
-        $questions->allergies = Request::input('allergies');
-        $questions->lifestyle = Request::input('lifestyle');
-        $questions->ingredient = Request::input('ingredient');
-        $questions->pref_cuisine = Request::input('pref_cuisine');
-        $questions->goals = Request::input('goals');
-        $questions->serving_time = Request::input('serving_time');
-        $questions->cho_cook = Request::input('cho_cook');
-        $questions->fav_ingr = Request::input('fav_ingr');
-        $questions->level_spici = Request::input('level_spici');
-        $questions->time_spend = Request::input('time_spend');
-        $questions->profile_image=Request::input('profile_image');
+        // $questions->name = Request::input('name');
+        // $questions->gender = Request::input('gender');
+        // $questions->mail = Request::input('mail');
+        // $questions->allergies = Request::input('allergies');
+        // $questions->lifestyle = Request::input('lifestyle');
+        // $questions->ingredient = Request::input('ingredient');
+        // $questions->pref_cuisine = Request::input('pref_cuisine');
+        // $questions->goals = Request::input('goals');
+        // $questions->serving_time = Request::input('serving_time');
+        // $questions->cho_cook = Request::input('cho_cook');
+        // $questions->fav_ingr = Request::input('fav_ingr');
+        // $questions->level_spici = Request::input('level_spici');
+        // $questions->time_spend = Request::input('time_spend');
+        // $questions->image=Request::input('image');
+
+        $questions->name = $request->get('name');
+        $questions->gender =  $request->get('gender');
+        $questions->mail = $request->get('mail');
+        $questions->cookinglevel =  $request->get('cookinglevel');
+        $questions->allergies =  $request->get('allergies');
+        $questions->lifestyle =  $request->get('lifestyle');
+        $questions->ingredient = $request->get('ingredient');
+        $questions->pref_cuisine = $request->get('pref_cuisine');
+        $questions->goals = $request->get('goals');
+        $questions->serving_time = $request->get('serving_time');
+        $questions->cho_cook = $request->get('cho_cook');
+        $questions->fav_ingr = $request->get('fav_ingr');
+        $questions->level_spici = $request->get('level_spici');
+        $questions->time_spend = $request->get('time_spend');
+        $questions->image = $request->get('image');
+
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+        $name = $file->getClientOriginalName();
+            $filename =  $name;
+            $file->move('storage/app/public', $filename);
+            $questions->image = $filename;
+        }
         $questions->update();
-        dd($questions);
+        // dd($questions);
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-        // return view('screens.user.profile.profile',compact('questions','followers','following','recipes'))->with('status',"Success");
+         return view('screens.user.profile.profile',compact('questions','followers','following','recipes'))->with('status',"Success");
     }
 }
 

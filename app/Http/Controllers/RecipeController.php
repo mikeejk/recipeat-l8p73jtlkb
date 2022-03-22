@@ -16,6 +16,8 @@ use App\Models\Pinboard;
 use App\Models\Pin_recipe;
 use App\Models\Recipe_Step;
 use App\Models\Recipe_Ingredient;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewRecipePost;
 
 class RecipeController extends Controller
 {
@@ -45,7 +47,7 @@ class RecipeController extends Controller
 
         // User_id Form User Model
         $user_id = auth()->user()->id;
-
+        $users = User::all();
         // Recipe-Data Storeing - Foreign Keys
         $recipe->user_id = $user_id;
         $recipe->category_id = $request->get('category');
@@ -95,13 +97,13 @@ class RecipeController extends Controller
         } else {
             $recipe->creator = '3';
         }
-
         // Save Data
         $recipe->save();
-
+        foreach ($users as $user) {
+            $user->notify(new  NewRecipePost(auth()->user()->name, $recipe));
+        }
         // Declare steps
         $steps = $request->steps;
-
         // for lopping steps
         for ($i = 0; $i < count($steps); $i++) {
             $datastep = [
@@ -139,7 +141,7 @@ class RecipeController extends Controller
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->get();
         $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
         //    dd($recipe_steps);
-          return view('screens.user.recipe.edit_recipe', compact('recipe', 'measurements', 'ingredients', 'recipe_steps','recipe_ingredients'));
+        return view('screens.user.recipe.edit_recipe', compact('recipe', 'measurements', 'ingredients', 'recipe_steps', 'recipe_ingredients'));
     }
 
     // Function - Update
@@ -214,7 +216,7 @@ class RecipeController extends Controller
     }
 
     // Function - Destroy
-    public function destroy(Recipe $recipe,Request $request)
+    public function destroy(Recipe $recipe, Request $request)
     {
         DB::table('recipe__steps')->where('recipe_id', '=', $recipe->id)->delete();
         DB::table('recipe__ingredients')->where('recipe_id', '=', $recipe->id)->delete();
@@ -432,10 +434,10 @@ class RecipeController extends Controller
     public function view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
-        $pinrecipes =Pin_recipe::all('pinboard_id','status');
+        $pinrecipes = Pin_recipe::all('pinboard_id');
         $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
         $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
-        return view('recipe_view', compact('recipe', 'pinboards', 'recipe_ingredients', 'recipe_steps','pinrecipes'));
+        return view('recipe_view', compact('recipe', 'pinboards', 'recipe_ingredients', 'recipe_steps', 'pinrecipes'));
     }
     public function  nonLoginUser_view_recipe(Recipe $recipe)
     {
@@ -455,8 +457,8 @@ class RecipeController extends Controller
     }
     public function show_count(Request $request)
     {
-        $recipe_count=Recipe::where('status','Approved')->count();
-        $recipe=Recipe::all();
+        $recipe_count = Recipe::where('status', 'Approved')->count();
+        $recipe = Recipe::all();
         // $term  = $request->get('term');
         // $cuisine_id = $request->get('cuisine');
         // $category_id = $request->get('category');
@@ -472,6 +474,6 @@ class RecipeController extends Controller
         //     return view('mainDashboard',compact('recipe'));
         // }
         // dd($recipe_count);
-        return view('mainDashboard',compact('recipe_count','recipe'));
+        return view('mainDashboard', compact('recipe_count', 'recipe'));
     }
 }

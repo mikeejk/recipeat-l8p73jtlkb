@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Livewire;
-use Illuminate\Support\Facades\Request;
+
+use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\DB;
 use App\Models\Chef_question;
@@ -21,8 +23,7 @@ class ChefQuestion extends Component
     public $company;
     public $cooking_style;
     public $accomplishments;
-    public $status = 1;
-
+    public $image;
     // Function - Render
     public function render()
     {
@@ -98,7 +99,7 @@ class ChefQuestion extends Component
         // Data - Save
         $validatedData = $this->validate([
             'accomplishments' => 'required',
-            'status' => 'required',
+            'image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Next Step
@@ -117,7 +118,7 @@ class ChefQuestion extends Component
             'company' => $this->company,
             'cooking_style' => $this->cooking_style,
             'accomplishments' => $this->accomplishments,
-            'status' => $this->status,
+            'image' =>$this->image,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -137,19 +138,19 @@ class ChefQuestion extends Component
         $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
         $role = auth()->user()->hasRole('Chef');
         // if($role){
-            $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
-            $following = Follower::where('follower_id',auth()->user()->id)->get()->count();
-            $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-            // $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->first();
-           $user_id=auth()->user()->id;
-           $feednote= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
-           ->where('notifiable_id',$user_id)->count();
+        $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
+        $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
+        $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
+        // $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->first();
+        $user_id = auth()->user()->id;
+        $feednote = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
+            ->where('notifiable_id', $user_id)->count();
         //  $feednotifications =DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )->where('notifiable_id',$user_id)->get();
-        $notification= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
-        ->where('notifiable_id',$user_id)->count();
-            // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
-             return view('screens.user.profile.portfolio',compact('chef_questions', 'followers','following','recipes','feednote','notification'));
-            //  dd($chef_questions);
+        $notification = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
+            ->where('notifiable_id', $user_id)->count();
+        // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
+        return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes', 'feednote', 'notification'));
+        //  dd($chef_questions);
         // }
 
     }
@@ -158,7 +159,7 @@ class ChefQuestion extends Component
     public function edit(Chef_question $chef_questions)
     {
         $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
-        return view('screens.user.profile.portfolio_edit',compact('chef_questions'));
+        return view('screens.user.profile.portfolio_edit', compact('chef_questions'));
     }
     // Function - Update
     public function update(Request $request)
@@ -167,20 +168,36 @@ class ChefQuestion extends Component
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
+        // $chef_questions = Chef_Question::where('user_id', auth()->user()->id)->first();
+        // $chef_questions->name = Request::input('name');
+        // $chef_questions->dob = Request::input('dob');
+        // $chef_questions->location = Request::input('location');
+        // $chef_questions->designation = Request::input('designation');
+        // $chef_questions->company = Request::input('company');
+        // $chef_questions->cooking_style = Request::input('cooking_style');
+        // $chef_questions->accomplishments = Request::input('accomplishments');
+        // $chef_questions->image = Request::input('image');
+
         $chef_questions = Chef_Question::where('user_id', auth()->user()->id)->first();
-        $chef_questions->name = Request::input('name');
-        $chef_questions->dob = Request::input('dob');
-        $chef_questions->location = Request::input('location');
-        $chef_questions->status = Request::input('status');
-        $chef_questions->designation = Request::input('designation');
-        $chef_questions->company = Request::input('company');
-        $chef_questions->cooking_style = Request::input('cooking_style');
-        $chef_questions->accomplishments = Request::input('accomplishments');
-        $chef_questions->image=Request::input('image');
-        $chef_questions->status = 1;
+        $chef_questions->name = $request->get('name');
+        $chef_questions->dob =  $request->get('dob');
+        $chef_questions->location = $request->get('location');
+        $chef_questions->designation =  $request->get('designation');
+        $chef_questions->company =  $request->get('company');
+        $chef_questions->cooking_style =  $request->get('cooking_style');
+        $chef_questions->accomplishments = $request->get('accomplishments');
+         $chef_questions->image = $request->get('image');
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $name = $file->getClientOriginalName();
+            $filename =  $name;
+            $file->store('storage/app/public', $filename);
+            $chef_questions->image = $filename;
+        }
+       
         $chef_questions->update();
-        //   dd($chef_questions);
-         return view('screens.user.profile.portfolio',compact('chef_questions','followers','following','recipes'))->with('status',"Success");
+        //    dd($chef_questions);
+        return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes'))->with('status', "Success");
     }
 }
  //         $data = request()->validate(

@@ -31,6 +31,6 @@ class Question extends Model
         'level_spici',
         'time_spend',
         'image',
-        'status'
+        
     ];
 }

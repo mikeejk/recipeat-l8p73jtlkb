@@ -32,8 +32,11 @@
                             <!--begin::Pic-->
                             <div class="flex-shrink-0 mr-7">
                                 <div class="symbol symbol-50 symbol-lg-120">
-                                    {{-- <img alt="Pic" src="assets/media//users/blank.png" /> --}}
-                                    <img class="rounded-circle" alt="Pic" src="{{ asset('/storage/app/public/'.$chef_questions->image) }}" />
+                                    @if($chef_questions->image == "NULL")
+                                    <img alt="Pic" src="assets/media//users/blank.png" />
+                                    @else
+                                    <img class="rounded-circle" alt="Pic" src="{{ asset('storage/images'. $chef_questions->image) }}" />
+                                    @endif
                                 </div>
                             </div>
                             <!--end::Pic-->

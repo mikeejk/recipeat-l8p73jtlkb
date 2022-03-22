@@ -30,10 +30,8 @@ class CreateChefQuestionsTable extends Migration
             $table->string('company');
             $table->string('cooking_style');
             $table->string('accomplishments');
-
+            $table->string('image')->nullable();
             //default value
-            $table->integer('status');
-
             // Foreign Keys
             $table->foreign('user_id')->references('id')->on('users');
 
