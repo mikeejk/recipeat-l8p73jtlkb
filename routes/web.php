@@ -42,6 +42,12 @@ Route::get('/login1', function () {
     return view('auth.login2');
 });
 
+// Register Tab
+Route::get('/register1', function () {
+    return view('auth.register1');
+});
+
+
 // Welcome Tab
 Route::get('/mainDashboard', function () {
     return view('mainDashboard');
