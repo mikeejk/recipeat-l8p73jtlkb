@@ -56,7 +56,7 @@ class CommentNotification extends Notification
     {
         return [
             'name' => $this->user->name,'commented on your recipe',
-            'email' => $this->user->email,
+            // 'email' => $this->user->email,
         ];
     }
 }

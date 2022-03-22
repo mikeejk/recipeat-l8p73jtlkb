@@ -14,7 +14,7 @@ class Pin_recipe extends Model
      'user_id',
       'recipe_id',
      'pinboard_id',
-     'status',
+     
 
     ];
     public function user()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\ChefQuestion;
 use App\Models\dashboard;
 use Illuminate\Http\Request;
 use App\Models\Follower;
@@ -100,4 +101,11 @@ class DashboardController extends Controller
     {
         //
     }
+    // public function indexhome(Request $request)
+    // {
+    //     $users=User::all();
+    //     $cuser=ChefQuestion::where('status',1)->pluck('user_id');
+    //     $hcuser=Question::where('status',1)->pluck('user_id');
+    //     return view('IndexHome',compact('users','cuser','hcuser'));
+    // }
 }

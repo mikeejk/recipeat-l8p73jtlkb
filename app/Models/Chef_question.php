@@ -23,7 +23,7 @@ class Chef_question extends Model
         'company',
         'cooking_style',
         'accomplishments',
-        'status',
+        // 'status',
     ];
 
     public function follower()

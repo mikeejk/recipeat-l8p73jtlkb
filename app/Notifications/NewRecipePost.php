@@ -12,17 +12,17 @@ use Illuminate\Notifications\Notification;
 class NewRecipePost extends Notification
 {
     use Queueable;
-    protected $following;
+    protected $user;
     protected $recipe;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Recipe $recipe)
+    public function __construct($user,$recipe)
     {
-        $this->recipe = $recipe;
-        $this->recipeuser=$recipe->user;
+        $this->user=$user;
+        $this->recipe=$recipe;
     }
 
     /**
@@ -32,8 +32,12 @@ class NewRecipePost extends Notification
      * @return array
      */
     public function via($notifiable)
+
+
+
+
     {
-        return ['database','mail'];
+        return ['mail'];
     }
 
     /**
@@ -46,8 +50,9 @@ class NewRecipePost extends Notification
     {
         return (new MailMessage)
                     ->subject('Create Recipe')
-                    ->line($this->recipeuser->name.'Just created a New Recipe: '.$this->recipe->name)
-                    ->action('checkItOut', url('/'));
+                    ->line($this->user->name.'Just created a New Recipe: '.$this->recipe->name)
+                    ->action('Read Post' , url('/'))
+                    ->line('Thank you for being with us!');
 
     }
 
