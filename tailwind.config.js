@@ -20,6 +20,7 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
                 'montserrat': ['Montserrat'],
+                'manrope':['Manrope'],
             },
             colors: {
                 sky: colors.sky,
