@@ -35,7 +35,7 @@
         <!--end::Subheader-->
         <!--begin::Entry-->
         <div>
-            <form class="form" action="/update" method="post">
+            <form class="form" action="/update" enctype="multipart/form-data" method="post">
                 @method('PUT')
                 <!--begin::Container-->
                 <div class="container">

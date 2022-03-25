@@ -266,7 +266,7 @@
                                         <img class="rounded-circle"
                                             src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116__480.jpg" height="100" width="100" />
                                     @else
-                                        <img class="rounded-circle" src="{{ asset('/storage/app/public/'.$question->image) }}" height="100" width="100" />
+                                        <img class="rounded-circle" src="{{ asset('/storage/public/'.$question->image) }}" height="100" width="100" />
                                     @endif
                                 </button>
                                 <span class="name mt-3">{{ $user->name }}</span>
@@ -326,7 +326,7 @@
                                     @if ($question->image == "NULL")
                                     <img  alt="Pic" src="https://bootdey.com/img/Content/user_3.jpg"/>
                                  @else
-                                 <img src="{{ asset('/storage/app/public/'.$question->image) }}"  alt=""/>
+                                 <img src="{{ asset('/storage/public/'.$question->image) }}"  alt=""/>
 
                                  @endif
                                     {{-- <img src="{{ asset('/public/storage/'. $question->image) }}"> --}}
