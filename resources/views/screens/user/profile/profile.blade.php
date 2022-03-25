@@ -38,9 +38,7 @@
                                          <img class="rounded-circle" alt="Pic"
                                             src="{{ asset('/storage/public/'.$questions->image) }}" />
                                      @endif
-                                    {{-- <img class="rounded-circle"  src="storage/app/public/image/{{ $questions->image }}" /> --}}
-                                    {{-- <img class="rounded-circle"  src="storage/app/public/image/{{ $questions->profile_image }}"" /> --}}
-                                    {{-- <a href="/userimage_upload"><button class="btn btn-primary text-white mt-2"> Edit Image <i class="fas fa-edit ml-2"></i></button></a> --}}
+                                   
                                 </div>
                             </div>
                             <!--end::Pic-->

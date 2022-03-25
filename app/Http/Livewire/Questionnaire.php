@@ -33,7 +33,6 @@ class Questionnaire extends Component
     public $time_spend;
     public $image;
 
-
     // Function - Render
     public function render()
     {
@@ -52,7 +51,6 @@ class Questionnaire extends Component
         // Next Step
         $this->currentStep = 2;
     }
-
     // Function - SecondStepSubmit
     public function secondStepSubmit()
     {
@@ -64,7 +62,6 @@ class Questionnaire extends Component
         // Next Step
         $this->currentStep = 3;
     }
-
     // Function - ThirdStepSubmit
     public function thirdStepSubmit()
     {
@@ -264,21 +261,6 @@ class Questionnaire extends Component
     public function update(Request $request)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
-        // $questions->name = Request::input('name');
-        // $questions->gender = Request::input('gender');
-        // $questions->mail = Request::input('mail');
-        // $questions->allergies = Request::input('allergies');
-        // $questions->lifestyle = Request::input('lifestyle');
-        // $questions->ingredient = Request::input('ingredient');
-        // $questions->pref_cuisine = Request::input('pref_cuisine');
-        // $questions->goals = Request::input('goals');
-        // $questions->serving_time = Request::input('serving_time');
-        // $questions->cho_cook = Request::input('cho_cook');
-        // $questions->fav_ingr = Request::input('fav_ingr');
-        // $questions->level_spici = Request::input('level_spici');
-        // $questions->time_spend = Request::input('time_spend');
-        // $questions->image=Request::input('image');
-
         $questions->name = $request->get('name');
         $questions->gender =  $request->get('gender');
         $questions->mail = $request->get('mail');
@@ -300,12 +282,8 @@ class Questionnaire extends Component
             $name = $file->getClientOriginalName();
             $filename =  $name;
              $file->move('storage/public', $filename);
-            // $file->move('storage/app/public', $filename);
             $questions->image = $filename;
         }
-        // $image = $request->file('image')->getClientOriginalName();
-        // $request->file('image')->storeAs('public/images', $image);
-        // $questions->image = $image;
          $questions->update();
     //  dd($questions->image);
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
