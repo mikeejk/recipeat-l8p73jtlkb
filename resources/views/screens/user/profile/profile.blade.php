@@ -365,8 +365,8 @@
                                             <div class="d-flex flex-column flex-grow-1 mr-2">
                                                 <p href="#"
                                                     class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">
-                                                    Level for Cooking</p>
-                                                <span class="text-muted font-weight-bold">{{ $questions->goals }}</span>
+                                                    Cooking Goal</p>
+                                                <span class="text-muted font-weight-bold">{{ $questions->goals}}</span>
                                             </div>
                                             <!--end::Title-->
                                         </div>

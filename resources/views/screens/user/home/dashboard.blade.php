@@ -261,11 +261,13 @@
                     <div class="container mt-4 mb-4 d-flex justify-content-center">
                         <div class="card">
                             <div class="image d-flex flex-column justify-content-center align-items-center">
-                                <button class="btn btn-secondary btn2"> <img class="rounded-circle"
-                                        src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116__480.jpg"
-                                        {{-- src="{{ asset('storage/app/public/'.$question->image) }}"
-
-                                        {{-- src="{{ asset('$question->image') }}" --}} {{-- src="{{ 'recipeat-l8p73jtlkb/storage/app/'.$question->image }}" --}} height="100" width="100" />
+                                <button class="btn btn-secondary btn2">
+                                     @if ($question->image == "NULL")
+                                        <img class="rounded-circle"
+                                            src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116__480.jpg" height="100" width="100" />
+                                    @else
+                                        <img class="rounded-circle" src="{{ asset('/storage/app/public/'.$question->image) }}" height="100" width="100" />
+                                    @endif
                                 </button>
                                 <span class="name mt-3">{{ $user->name }}</span>
                                 <span class="idd">
@@ -321,8 +323,13 @@
                         <div class="panel widget">
                             <div class="panel-body text-center">
                                 <div class="radial-bar radial-bar-40 radial-bar radial-bar-danger m0">
-                                    {{-- <img src="https://bootdey.com/img/Content/user_3.jpg" alt=""> --}}
-                                    <img src="{{ asset('/public/storage/' . $question->image) }}">
+                                    @if ($question->image == "NULL")
+                                    <img  alt="Pic" src="https://bootdey.com/img/Content/user_3.jpg"/>
+                                 @else
+                                 <img src="{{ asset('/storage/app/public/'.$question->image) }}"  alt=""/>
+
+                                 @endif
+                                    {{-- <img src="{{ asset('/public/storage/'. $question->image) }}"> --}}
                                 </div>
                                 <p>
                                     <strong>40%</strong>

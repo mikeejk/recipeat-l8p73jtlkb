@@ -131,6 +131,18 @@
                                         </div>
                                         <span class="form-text text-muted">upload your image</span>
                                     </div>
+                                    <div class="col-lg-4"></div>
+                                    <div class="col-lg-4">
+                                        <label>Level for Cooking</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                                        class="fas fa-concierge-bell"></i></span></div>
+                                            <input type="text" class="form-control" name="cookinglevel"
+                                                value="{{ $questions->cookinglevel }}" />
+                                        </div>
+                                        <span class="form-text text-muted">Would you like change your level of
+                                            cooking</span>
+                                    </div>
                                 </div>
 
                             </div>
@@ -210,15 +222,14 @@
                                     <!-- Side Space::end -->
                                     <!-- Form-Level for Cooking::start -->
                                     <div class="col-lg-4">
-                                        <label>Level for Cooking</label>
+                                        <label>Goal for Cooking</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="fas fa-concierge-bell"></i></span></div>
                                             <input type="text" class="form-control" name="goals"
                                                 value="{{ $questions->goals }}" />
                                         </div>
-                                        <span class="form-text text-muted">Would you like change your level of
-                                            cooking</span>
+                                        <span class="form-text text-muted">Would you like change your goals</span>
                                     </div>
                                     <!-- Form-Level for Cooking::end -->
                                     <!-- Form-Serving Size::start -->
@@ -290,7 +301,7 @@
                                             <input type="text" class="form-control" name="time_spend"
                                                 value="{{ $questions->time_spend }}" />
                                         </div>
-                                        <span class="form-text text-muted">Would you like change your speare time of
+                                        <span class="form-text text-muted">Would you like change your spare time of
                                             cook</span>
                                     </div>
                                     <!-- Form-Spare time for cook::end -->
