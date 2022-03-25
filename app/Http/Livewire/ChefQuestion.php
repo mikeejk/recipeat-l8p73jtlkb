@@ -190,17 +190,4 @@ class ChefQuestion extends Component
         return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes'))->with('status', "Success");
     }
 }
- //         $data = request()->validate(
-        //             [
-        //         'name' => 'required',
-        //         'dob' => 'required',
-        //         'location' => 'required',
-        //         'status' => 'required',
-        //         'designation' => 'required',
-        //         'company' => 'required',
-        //         'cooking_style' => 'required',
-        //         'accomplishments' => 'required'
-        //     ]
-        // );
-
-        // $chef_questions->update($data);
+ 
