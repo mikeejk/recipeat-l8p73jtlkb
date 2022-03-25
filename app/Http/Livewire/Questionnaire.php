@@ -250,9 +250,6 @@ class Questionnaire extends Component
         $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->all();
         return view('screens.user.profile.profile', compact('questions', 'followers', 'following', 'notifications', 'feednotifications', 'feednote', 'recipes'));
     }
-
-
-
     public function edit(Question $questions)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
