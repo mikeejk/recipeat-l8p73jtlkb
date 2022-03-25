@@ -264,7 +264,7 @@
                                 <button class="btn btn-secondary btn2">
                                      @if ($question->image == "NULL")
                                         <img class="rounded-circle"
-                                            src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116__480.jpg" height="100" width="100" />
+                                            src="assets/media//users/blank.png" height="100" width="100" />
                                     @else
                                         <img class="rounded-circle" src="{{ asset('/storage/public/'.$question->image) }}" height="100" width="100" />
                                     @endif

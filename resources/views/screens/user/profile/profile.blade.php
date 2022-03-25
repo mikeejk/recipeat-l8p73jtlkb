@@ -32,7 +32,7 @@
                             <!--begin::Pic-->
                             <div class="flex-shrink-0 mr-7">
                                 <div class="symbol symbol-50 symbol-lg-120">
-                                     @if ($questions->image == "")
+                                     @if ($questions->image == "NULL")
                                         <img class="rounded-circle" alt="Pic" src="assets/media//users/blank.png" />
                                      @else
                                          <img class="rounded-circle" alt="Pic"
