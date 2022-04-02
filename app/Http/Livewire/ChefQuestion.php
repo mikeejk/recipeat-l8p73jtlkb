@@ -99,7 +99,6 @@ class ChefQuestion extends Component
         // Data - Save
         $validatedData = $this->validate([
             'accomplishments' => 'required',
-            'image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Next Step
@@ -118,7 +117,6 @@ class ChefQuestion extends Component
             'company' => $this->company,
             'cooking_style' => $this->cooking_style,
             'accomplishments' => $this->accomplishments,
-            'image' =>$this->image,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -190,4 +188,3 @@ class ChefQuestion extends Component
         return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes'))->with('status', "Success");
     }
 }
- 

@@ -9,7 +9,7 @@
                     <div class="container mt-2 mb-4 d-flex justify-content-center">
                         <div class="card">
                             <div class="image d-flex flex-column justify-content-center align-items-center">
-                                @if ($chef_questions->image == "NULL")
+                                @if ($chef_questions->image =="")
                                     <buttton class="btn btn-secondary btn2"> <img class="rounded-circle"
                                             src="assets/media//users/blank.png"
                                             height="100" width="100" />
@@ -73,7 +73,7 @@
                         <div class="panel widget">
                             <div class="panel-body text-center">
                                 <div class="radial-bar radial-bar-40 radial-bar radial-bar-danger m0">
-                                    @if ($chef_questions->image == "NULL")
+                                    @if ($chef_questions->image == "")
                                         <img alt="Pic" src="assets/media//users/blank.png" />
                                     @else
                                         <img src="{{ asset('/storage/public/' . $chef_questions->image) }}" alt="" />
