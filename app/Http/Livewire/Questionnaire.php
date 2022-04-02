@@ -290,9 +290,4 @@ class Questionnaire extends Component
     }
 }
 
-// C:\laragon\www\recipeat-l8p73jtlkb\public\public\images\butter-garlic-sauce-recipe-1.jpg
-// C:\laragon\www\recipeat-l8p73jtlkb\public\storage
-// C:\laragon\www\recipeat-l8p73jtlkb\public\public\storage\samosa-dipping-sauce-1.jpg
 
-// C:\laragon\www\recipeat-l8p73jtlkb\storage\app\public\app\public\fbug1.png
-// C:\laragon\www\recipeat-l8p73jtlkb\public\storage\public\edit delete.png
