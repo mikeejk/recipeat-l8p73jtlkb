@@ -10,10 +10,10 @@
                         <div class="card">
                             <div class="image d-flex flex-column justify-content-center align-items-center">
                                 @if ($chef_questions->image =="")
-                                    <buttton class="btn btn-secondary btn2"> <img class="rounded-circle"
+                                    <button class="btn btn-secondary btn2"> <img class="rounded-circle"
                                             src="assets/media//users/blank.png"
                                             height="100" width="100" />
-                                    </buttton>
+                                    </button>
                                 @else
                                     <button class="btn btn-secondary btn2"> <img class="rounded-circle"
                                             src="{{ asset('storage/public/'. $chef_questions->image) }}"
