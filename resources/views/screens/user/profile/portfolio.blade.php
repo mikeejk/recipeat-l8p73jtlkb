@@ -35,7 +35,7 @@
                                     @if($chef_questions->image == "NULL")
                                     <img alt="Pic" src="assets/media//users/blank.png" />
                                     @else
-                                    <img class="rounded-circle" alt="Pic" src="{{ asset('storage/images'. $chef_questions->image) }}" />
+                                    <img class="rounded-circle" alt="Pic" src="{{ asset('storage/public/'. $chef_questions->image) }}" />
                                     @endif
                                 </div>
                             </div>

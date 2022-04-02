@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire;
+
 use Livewire\Component;
 use App\Models\Question;
 use App\Models\Follower;
@@ -32,7 +33,6 @@ class Questionnaire extends Component
     public $time_spend;
     public $image;
 
-
     // Function - Render
     public function render()
     {
@@ -51,7 +51,6 @@ class Questionnaire extends Component
         // Next Step
         $this->currentStep = 2;
     }
-
     // Function - SecondStepSubmit
     public function secondStepSubmit()
     {
@@ -63,7 +62,6 @@ class Questionnaire extends Component
         // Next Step
         $this->currentStep = 3;
     }
-
     // Function - ThirdStepSubmit
     public function thirdStepSubmit()
     {
@@ -238,23 +236,20 @@ class Questionnaire extends Component
         $this->currentStep = $step;
     }
 
-    public function show(Question $questions, Follower $followers,Request $request)
+    public function show(Question $questions, Follower $followers, Request $request)
     {
-        $user_id=auth()->user()->id;
+        $user_id = auth()->user()->id;
         $questions = Question::where('user_id', auth()->user()->id)->first();
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
         $notifications = auth()->user()->notifications->where('type', 'App\Notifications\NewFollower')->all();
         // $user_id=auth()->user()->id;
-        $feednote= DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )
-        ->where('notifiable_id',$user_id)->count();
+        $feednote = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
+            ->where('notifiable_id', $user_id)->count();
         $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->all();
-        return view('screens.user.profile.profile', compact('questions', 'followers' ,'following','notifications','feednotifications' ,'feednote','recipes'));
+        return view('screens.user.profile.profile', compact('questions', 'followers', 'following', 'notifications', 'feednotifications', 'feednote', 'recipes'));
     }
-
-
-
     public function edit(Question $questions)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
@@ -263,21 +258,6 @@ class Questionnaire extends Component
     public function update(Request $request)
     {
         $questions = Question::where('user_id', auth()->user()->id)->first();
-        // $questions->name = Request::input('name');
-        // $questions->gender = Request::input('gender');
-        // $questions->mail = Request::input('mail');
-        // $questions->allergies = Request::input('allergies');
-        // $questions->lifestyle = Request::input('lifestyle');
-        // $questions->ingredient = Request::input('ingredient');
-        // $questions->pref_cuisine = Request::input('pref_cuisine');
-        // $questions->goals = Request::input('goals');
-        // $questions->serving_time = Request::input('serving_time');
-        // $questions->cho_cook = Request::input('cho_cook');
-        // $questions->fav_ingr = Request::input('fav_ingr');
-        // $questions->level_spici = Request::input('level_spici');
-        // $questions->time_spend = Request::input('time_spend');
-        // $questions->image=Request::input('image');
-
         $questions->name = $request->get('name');
         $questions->gender =  $request->get('gender');
         $questions->mail = $request->get('mail');
@@ -296,18 +276,23 @@ class Questionnaire extends Component
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');
-        $name = $file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
             $filename =  $name;
-            $file->move('storage/app/public', $filename);
+             $file->move('storage/public', $filename);
             $questions->image = $filename;
         }
-        $questions->update();
-        // dd($questions);
+         $questions->update();
+    //  dd($questions->image);
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-         return view('screens.user.profile.profile',compact('questions','followers','following','recipes'))->with('status',"Success");
+         return view('screens.user.profile.profile', compact('questions', 'followers', 'following', 'recipes'))->with('status', "Success");
     }
 }
 
+// C:\laragon\www\recipeat-l8p73jtlkb\public\public\images\butter-garlic-sauce-recipe-1.jpg
+// C:\laragon\www\recipeat-l8p73jtlkb\public\storage
+// C:\laragon\www\recipeat-l8p73jtlkb\public\public\storage\samosa-dipping-sauce-1.jpg
 
+// C:\laragon\www\recipeat-l8p73jtlkb\storage\app\public\app\public\fbug1.png
+// C:\laragon\www\recipeat-l8p73jtlkb\public\storage\public\edit delete.png

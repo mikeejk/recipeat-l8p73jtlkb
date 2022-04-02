@@ -99,7 +99,6 @@ class ChefQuestion extends Component
         // Data - Save
         $validatedData = $this->validate([
             'accomplishments' => 'required',
-            'image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Next Step
@@ -118,7 +117,6 @@ class ChefQuestion extends Component
             'company' => $this->company,
             'cooking_style' => $this->cooking_style,
             'accomplishments' => $this->accomplishments,
-            'image' =>$this->image,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -168,16 +166,6 @@ class ChefQuestion extends Component
         $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
         $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
-        // $chef_questions = Chef_Question::where('user_id', auth()->user()->id)->first();
-        // $chef_questions->name = Request::input('name');
-        // $chef_questions->dob = Request::input('dob');
-        // $chef_questions->location = Request::input('location');
-        // $chef_questions->designation = Request::input('designation');
-        // $chef_questions->company = Request::input('company');
-        // $chef_questions->cooking_style = Request::input('cooking_style');
-        // $chef_questions->accomplishments = Request::input('accomplishments');
-        // $chef_questions->image = Request::input('image');
-
         $chef_questions = Chef_Question::where('user_id', auth()->user()->id)->first();
         $chef_questions->name = $request->get('name');
         $chef_questions->dob =  $request->get('dob');
@@ -186,31 +174,17 @@ class ChefQuestion extends Component
         $chef_questions->company =  $request->get('company');
         $chef_questions->cooking_style =  $request->get('cooking_style');
         $chef_questions->accomplishments = $request->get('accomplishments');
-         $chef_questions->image = $request->get('image');
+        $chef_questions->image = $request->get('image');
+
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
             $filename =  $name;
-            $file->store('storage/app/public', $filename);
+            $file->move('storage/public', $filename);
             $chef_questions->image = $filename;
         }
-       
         $chef_questions->update();
         //    dd($chef_questions);
         return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes'))->with('status', "Success");
     }
 }
- //         $data = request()->validate(
-        //             [
-        //         'name' => 'required',
-        //         'dob' => 'required',
-        //         'location' => 'required',
-        //         'status' => 'required',
-        //         'designation' => 'required',
-        //         'company' => 'required',
-        //         'cooking_style' => 'required',
-        //         'accomplishments' => 'required'
-        //     ]
-        // );
-
-        // $chef_questions->update($data);

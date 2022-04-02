@@ -36,11 +36,9 @@
                                         <img class="rounded-circle" alt="Pic" src="assets/media//users/blank.png" />
                                      @else
                                          <img class="rounded-circle" alt="Pic"
-                                            src="{{ asset('/storage/app/public/'.$questions->image) }}" />
+                                            src="{{ asset('/storage/public/'.$questions->image) }}" />
                                      @endif
-                                    {{-- <img class="rounded-circle"  src="storage/app/public/image/{{ $questions->image }}" /> --}}
-                                    {{-- <img class="rounded-circle"  src="storage/app/public/image/{{ $questions->profile_image }}"" /> --}}
-                                    {{-- <a href="/userimage_upload"><button class="btn btn-primary text-white mt-2"> Edit Image <i class="fas fa-edit ml-2"></i></button></a> --}}
+                                   
                                 </div>
                             </div>
                             <!--end::Pic-->
@@ -365,8 +363,8 @@
                                             <div class="d-flex flex-column flex-grow-1 mr-2">
                                                 <p href="#"
                                                     class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">
-                                                    Level for Cooking</p>
-                                                <span class="text-muted font-weight-bold">{{ $questions->goals }}</span>
+                                                    Cooking Goal</p>
+                                                <span class="text-muted font-weight-bold">{{ $questions->goals}}</span>
                                             </div>
                                             <!--end::Title-->
                                         </div>

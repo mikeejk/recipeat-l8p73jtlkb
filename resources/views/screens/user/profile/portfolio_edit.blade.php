@@ -35,7 +35,7 @@
         <!--end::Subheader-->
         <!--begin::Entry-->
         <div>
-            <form class="form" action="/update_portfolio" method="post">
+            <form class="form" action="/update_portfolio" enctype="multipart/form-data" method="post">
                 @method('PUT')
                 <!--begin::Container-->
                 <div class="container">
@@ -124,7 +124,7 @@
                                     <!-- Side Text::start -->
                                     <div class="col-lg-4"></div>
                                     <!-- Side Text::end -->
-                                   
+
                                     <!-- Form-Category::start -->
                                     <div class="col-lg-4">
                                         <label>Designation</label>
