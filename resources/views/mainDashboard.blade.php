@@ -173,7 +173,7 @@
             <a href="" class="uppercase"> <img src="assets/media/logos/logo-5.png" alt="logo"
                     class="h-28 w-28" /></a>
             <a href="" class="uppercase">About</a>
-            <a href="/login" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
+            <a href="/login1" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
         </nav>
 
         <div class="pt-20 w-full mx-auto  flex flex-col items-center justify-center" x-data="{

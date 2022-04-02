@@ -99,6 +99,7 @@ class RecipeController extends Controller
         }
         // Save Data
         $recipe->save();
+        
         foreach ($users as $user) {
             $user->notify(new  NewRecipePost(auth()->user()->name, $recipe));
         }

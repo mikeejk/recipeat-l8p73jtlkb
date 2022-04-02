@@ -28,7 +28,7 @@
                 @csrf
                 <div>
                     <button type="submit" class="px-5 py-3 bg-blue-700 text-white font-bold text-base rounded-xl">
-                        {{ __('Resend Email') }}
+                        {{ __('Send Email') }}
                     </button>
                 </div>
             </form>
