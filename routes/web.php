@@ -24,6 +24,7 @@ use App\Models\User;
 use App\Models\Question;
 use App\Models\Chef_question;
 use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\UserController;
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ use Illuminate\Support\Facades\Request;
 Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
 
 Route::get('/login', function () {
-    return view('auth.login');
+    return view('auth.login2');
 })->name('login');
 
 // Welcome Tab
@@ -42,9 +43,46 @@ Route::get('/login1', function () {
 });
 
 // Register Tab
-Route::get('/register1', function () {
-    return view('auth.register1');
+// Route::get('/register1', function () {
+//     return view('auth.register1');
+// });
+// Route::post('/storeUser',[UserController::class, 'step1']);
+
+
+
+
+Route::get('/register1', [UserController::class, 'createstep1']);
+Route::post('/storeUser', [UserController::class, 'poststep1']);
+
+
+Route::get('/register2', [UserController::class, 'createstep2']);
+Route::post('/storeUser2', [UserController::class, 'poststep2']);
+
+Route::get('/register3', [UserController::class, 'createstep3']);
+Route::post('/storeUser3', [UserController::class, 'poststep3']);
+
+Route::get('/register4', [UserController::class, 'createstep4']);
+Route::post('/storeUser4', [UserController::class, 'registerData']);
+
+
+
+// Register2 Tab
+Route::get('/register2', function () {
+    return view('auth.register2');
 });
+
+
+
+// Register3 Tab
+Route::get('/register3', function () {
+    return view('auth.register3');
+});
+Route::post('/storeUserGender', [UserController::class, 'step3']);
+// Register4 Tab
+Route::get('/register4', function () {
+    return view('auth.register4');
+});
+
 
 
 // Welcome Tab
@@ -327,25 +365,28 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
     if (auth()->user()->hasRole('Admin')) {
         return view('dashboard');
-    }
-    else{
-            if(auth()->user()->hasRole('Chef'))
-             {
-                $cq = Chef_question::where('user_id', auth()->user()->id)->first();
+    } else {
+        if (auth()->user()->hasRole('Chef')) {
+            $cq = Chef_question::where('user_id', auth()->user()->id)->first();
 
-                if ($cq == "") { return view('indexHome'); }
-                else { return redirect('/dashboard'); }
+            if ($cq == "") {
+                return view('indexHome');
+            } else {
+                return redirect('/dashboard');
+            }
+        } else {
+            $q = Question::where('user_id', auth()->user()->id)->first();
 
-             }
-             else
-             {
-                $q = Question::where('user_id', auth()->user()->id)->first();
-
-                if ($q == "") { return view('indexHome'); }
-                else { return redirect('/dashboard'); }
-             }
+            if ($q == "") {
+                return view('indexHome');
+            } else {
+                return redirect('/dashboard');
+            }
         }
+    }
+
 });
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/indexHomequestions', function () {
     return view('screens.user.home.questions');
 });

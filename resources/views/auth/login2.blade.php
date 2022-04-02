@@ -43,24 +43,31 @@
 
         <div class="w-3/4 mx-auto  py-10">
             <div class="w-3/4  mx-auto">
-                <div class="text-gray-100 font-semibold">
+                <a href="/mainDashboard" class="text-gray-100 font-semibold">
                     <i class="fas fa-angle-left text-white font-bold"></i>Back Home
-                </div>
+                </a>
 
                 <div class="flex flex-col items-center py-5" >
                     <h1 class="text-4xl text-white font-bold" style="font-family: 'Manrope', sans-serif;">Log in to your</h1>
                     <h1 class="text-4xl text-white font-bold mt-2" style="font-family: 'Manrope', sans-serif;"><span class="text-red-600">Recipeat</span> account
                     </h1>
 
-                    <form class="py-10" method="" action="">
-                        <input type="text"
-                            class="form-control bg-white  px-3 py-2 border-black text-gray-800 w-96 h-12 rounded-md"
+                    <form class="py-10" method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <input type="email"  name="email" value="{{ old('email') }}"
+                            class="form-control bg-white  px-3 py-2 border-black text-gray-800 w-96 h-12 rounded-md @error('email') is-invalid @enderror"
                             placeholder="Email *" required autocomplete="off" style="font-family: 'Manrope', sans-serif;">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         <div class="py-2 mt-8" x-data="{ show: true }">
 
                             <div class="relative">
-                                <input placeholder="Password *" :type="show ? 'password' : 'text'"
-                                    class="form-control bg-white  px-3 py-2 border-black text-gray-800 w-96 h-12 rounded-md" style="font-family: 'Manrope', sans-serif;">
+                                <input id="password" name="password" placeholder="Password *" :type="show ? 'password' : 'text'"
+                                    class="form-control bg-white  px-3 py-2 border-black text-gray-800 w-96 h-12 rounded-md @error('password') is-invalid @enderror" style="font-family: 'Manrope', sans-serif;">
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
 
                                     <svg class="h-6 text-gray-700" fill="none" @click="show = !show"
@@ -97,7 +104,7 @@
                                 </a>
                             </label>
                         </div>
-                        <button
+                        <button type="submit"
                             class="flex justify-center py-3 bg-red-600 text-white text-xl mt-4 rounded-md w-full font-bold">Log
                             In</button>
                         <div class="flex justify-between py-8">
@@ -107,7 +114,7 @@
                                     class="mr-2" src="images\FBLogo.png">Facebook Login</button>
                         </div>
                         <h1 class="flex justify-center text-white">Don’t have an account?<a
-                                class="ml-2 underline font-semibold" href="">Create Account</a></h1>
+                                class="ml-2 underline font-semibold" href="/register1">Create Account</a></h1>
                     </form>
                 </div>
             </div>

@@ -82,7 +82,7 @@
                             {{-- <button type="submit"
                                 class="rounded-full flex items-center justify-center w-10 h-10 border-2 border-gray-100 hover:bg-gray-200 text-white hover:text-gray-700 font-medium "><i
                                     style="font-size:24px" class="fa hover:text-gray-700 ">&#xf053;</i></button> --}}
-                            <p class="text-xl text-gray-100 mt-4">Step 1 / 14</p>
+                            <p class="text-xl text-gray-100 mt-4">Step 1 / 6</p>
                             <h1 class="mt-2 text-3xl font-bold text-gray-100">How should we
                                 call you ?</h1>
                             <div class="h-1 mt-4 w-full bg-gray-500 rounded-full">
@@ -92,7 +92,8 @@
                                 <input type="text" wire:model="name" placeholder="Your good name"
                                     class="w-1/2 py-3 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none text-center"
                                     autocomplete required />
-                                @error('name') <span class="error text-red-500 text-base pl-1 py-2 font-bold"><i
+                                @error('name')
+                                    <span class="error text-red-500 text-base pl-1 py-2 font-bold"><i
                                             class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                         Required</span>
                                 @enderror
@@ -170,7 +171,7 @@
                             <button type="submit" wire:click="back(1)"
                                 class="rounded-full flex items-center justify-center w-10 h-10 border-2 border-gray-100 hover:bg-gray-200 text-white hover:text-gray-700 font-medium "><i
                                     style="font-size:24px" class="fa hover:text-gray-700 ">&#xf053;</i></button>
-                            <p class="text-xl text-gray-100 mt-4">Step 2 / 14</p>
+                            <p class="text-xl text-gray-100 mt-4">Step 2 / 6</p>
                             <h1 class="mt-2 text-3xl font-bold text-gray-100">What is your
                                 Date of
                                 Birth?</h1>
@@ -181,7 +182,8 @@
                                 <input type="date" wire:model="dob"
                                     class="w-3/4 py-3 px-4 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none"
                                     autocomplete required />
-                                @error('dob') <span class="error text-red-500 text-base pl-1 py-2 font-bold"><i
+                                @error('dob')
+                                    <span class="error text-red-500 text-base pl-1 py-2 font-bold"><i
                                             class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                         Required</span>
                                 @enderror
@@ -294,7 +296,7 @@
                             <button type="submit" wire:click="back(2)"
                                 class="rounded-full flex items-center justify-center w-10 h-10 border-2 border-gray-100 hover:bg-gray-200 text-white hover:text-gray-700 font-medium "><i
                                     style="font-size:24px" class="fa hover:text-gray-700 ">&#xf053;</i></button>
-                            <p class="text-xl text-gray-100 mt-4">Step 3 / 14</p>
+                            <p class="text-xl text-gray-100 mt-4">Step 3 / 6</p>
                             <h1 class="mt-2 text-3xl font-bold text-gray-100">Which Location &
                                 State do you reside in?</h1>
                             <div class="h-1 mt-4 w-full bg-gray-500 rounded-full">
@@ -305,7 +307,8 @@
                                     <input type="text" wire:model="location" Placeholder="Location"
                                         class="w-3/4 py-3 px-4 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none"
                                         autocomplete required />
-                                    @error('location') <span
+                                    @error('location')
+                                        <span
                                             class="error w-3/4 py-3 px-4 mx-auto text-red-500 text-base py-2 pl-1 font-bold"><i
                                                 class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                             Required</span>
@@ -315,7 +318,8 @@
                                     <input type="text" wire:model="state" placeholder="State"
                                         class="w-3/4 py-3 px-4 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none"
                                         autocomplete required />
-                                    @error('state') <span
+                                    @error('state')
+                                        <span
                                             class="error w-3/4 py-3 px-4 mx-auto text-red-500 text-base py-2 pl-1 font-bold"><i
                                                 class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                             Required</span>
@@ -440,7 +444,7 @@
                             <button type="submit" wire:click="back(3)"
                                 class="rounded-full flex items-center justify-center w-10 h-10 border-2 border-gray-100 hover:bg-gray-200 text-white hover:text-gray-700 font-medium "><i
                                     style="font-size:24px" class="fa hover:text-gray-700 ">&#xf053;</i></button>
-                            <p class="text-xl text-gray-100 mt-4">Step 4 / 14</p>
+                            <p class="text-xl text-gray-100 mt-4">Step 4 / 6</p>
                             <h1 class="mt-2 text-3xl font-bold text-gray-100">What is your
                                 current line of work?</h1>
                             <div class="h-1 mt-4 w-full bg-gray-500 rounded-full">
@@ -451,7 +455,8 @@
                                     <input type="text" wire:model="designation" Placeholder="Designation"
                                         class="w-3/4 py-3 px-4 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none"
                                         autocomplete required />
-                                    @error('designation') <span
+                                    @error('designation')
+                                        <span
                                             class="error w-3/4 py-3 px-4 mx-auto text-red-500 text-base py-2 pl-1 font-bold"><i
                                                 class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                             Required</span>
@@ -461,7 +466,8 @@
                                     <input type="text" wire:model="company" placeholder="Company"
                                         class="w-3/4 py-3 px-4 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none"
                                         autocomplete required />
-                                    @error('company')<span
+                                    @error('company')
+                                        <span
                                             class="error w-3/4 py-3 px-4 mx-auto text-red-500 text-base py-2 pl-1 font-bold"><i
                                                 class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                             Required</span>
@@ -599,8 +605,8 @@
                                 <input type="text" wire:model="cooking_style" placeholder="Your style of cooking"
                                     class="w-1/2 py-3 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none text-center"
                                     autocomplete required />
-                                @error('cooking_style') <span
-                                        class="error text-red-500 text-base pl-1 py-2 font-bold"><i
+                                @error('cooking_style')
+                                    <span class="error text-red-500 text-base pl-1 py-2 font-bold"><i
                                             class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                         Required</span>
                                 @enderror
@@ -728,8 +734,8 @@
                                     Placeholder="My additional accomplishments"
                                     class="w-1/2 py-3 mx-auto border-b-2 rounded text-gray-600 border-gray-800 bg-gray-200 focus:outline-none text-center"
                                     autocomplete required />
-                                @error('accomplishments') <span
-                                        class="error text-red-500 text-base pl-1 py-2 font-bold"><i
+                                @error('accomplishments')
+                                    <span class="error text-red-500 text-base pl-1 py-2 font-bold"><i
                                             class="las la-exclamation-circle text-red-500 text-xs pl-1 font-bold"></i>
                                         Required</span>
                                 @enderror
