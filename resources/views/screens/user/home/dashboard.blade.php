@@ -258,7 +258,7 @@
                         <div class="card">
                             <div class="image d-flex flex-column justify-content-center align-items-center">
                                 <button class="btn btn-secondary btn2">
-                                    @if ($question->image == 'NULL')
+                                    @if ($question->image == "")
                                         <img class="rounded-circle" src="assets/media//users/blank.png" height="100"
                                             width="100" />
                                     @else
@@ -321,8 +321,8 @@
                         <div class="panel widget">
                             <div class="panel-body text-center">
                                 <div class="radial-bar radial-bar-40 radial-bar radial-bar-danger m0">
-                                    @if ($question->image == 'NULL')
-                                        <img alt="Pic" src="https://bootdey.com/img/Content/user_3.jpg" />
+                                    @if ($question->image == "")
+                                        <img alt="Pic" src="assets/media//users/blank.png" />
                                     @else
                                         <img src="{{ asset('/storage/public/' . $question->image) }}" alt="" />
                                     @endif
@@ -461,11 +461,17 @@
                     <div class="container mt-4 mb-4 d-flex justify-content-center">
                         <div class="card">
                             <div class="image d-flex flex-column justify-content-center align-items-center">
-                                <button class="btn btn-secondary btn2"> <img class="rounded-circle" {{-- src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116__480.jpg" --}}
-                                        src="{{ asset('/storage/app/public/' . $question->image) }}" height="100"
-                                        width="100" />
-                                </button>
+                                <button class="btn btn-secondary btn2">
+                                    @if ($question->image == "")
+                                        <img class="rounded-circle" src="assets/media//users/blank.png" height="100"
+                                            width="100" />
+                                    @else
+                                        <img class="rounded-circle"
+                                            src="{{ asset('/storage/public/' . $question->image) }}" height="100"
+                                            width="100" />
+                                    @endif
                                 <span class="name mt-3">{{ $user->name }}</span>
+
                                 <span class="idd">
                                     @if ($user->hasrole('Home-Chef') || $user->hasrole('Chef') || $user->hasrole('Admin'))
                                         {{ $user->getRoleNames()->first() }}
@@ -519,8 +525,11 @@
                         <div class="panel widget">
                             <div class="panel-body text-center">
                                 <div class="radial-bar radial-bar-40 radial-bar radial-bar-danger m0">
-                                    {{-- <img src="https://bootdey.com/img/Content/user_3.jpg" alt=""> --}}
-                                    <img src="{{ asset('/storage/app/public/' . $question->image) }}">
+                                    @if ($question->image == "")
+                                        <img alt="Pic" src="https://bootdey.com/img/Content/user_3.jpg" />
+                                    @else
+                                        <img src="{{ asset('/storage/public/' . $question->image) }}" alt="" />
+                                    @endif
                                 </div>
                                 <p>
                                     <strong>40%</strong>
