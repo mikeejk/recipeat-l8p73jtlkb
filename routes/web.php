@@ -25,6 +25,7 @@ use App\Models\Question;
 use App\Models\Chef_question;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -41,6 +42,34 @@ Route::get('/login', function () {
 Route::get('/login1', function () {
     return view('auth.login2');
 });
+
+
+// Explore Tab
+Route::get('/explore', function () {
+    return view('explore');
+});
+
+// Home Tab
+Route::get('/HomePage', function () {
+    return view('home');
+});
+
+
+// Search result Tab
+Route::get('/searchResult', function () {
+    return view('searchResults');
+});
+
+
+
+
+// Google login
+Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
+// Facebook login
+Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
 
 // Register Tab
 // Route::get('/register1', function () {
