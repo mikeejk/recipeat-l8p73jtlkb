@@ -61,7 +61,7 @@ class NewRecipePost extends Notification
     {
         return [
 
-            'name' => $this->user->name,
+            // 'name' => $this->user->name,
             // 'recipe_id' =>$this->recipe->id,
             'message'=>'created new recipe',
         ];

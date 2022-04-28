@@ -22,7 +22,7 @@ class CreateRecipeStepsTable extends Migration
             $table->unsignedBigInteger('recipe_id');
 
             // User Entered - Data Saving
-            $table->string('steps');
+            $table->text('steps');
 
             // Foreign Keys
             $table->foreign('recipe_id')->references('id')->on('recipes');
