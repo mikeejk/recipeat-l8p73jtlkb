@@ -26,6 +26,7 @@ use App\Models\Chef_question;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ExlporeController;
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -45,9 +46,9 @@ Route::get('/login1', function () {
 
 
 // Explore Tab
-Route::get('/explore', function () {
-    return view('explore');
-});
+Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeController::class, 'index']);
+
+
 
 // Home Tab
 Route::get('/HomePage', function () {
@@ -413,7 +414,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
             }
         }
     }
-
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/indexHomequestions', function () {

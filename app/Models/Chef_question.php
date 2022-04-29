@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\Follower;
+use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,5 +30,10 @@ class Chef_question extends Model
     public function follower()
     {
         return $this->belongsTo(Follower::class, 'user_id');
+    }
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class,'user_id');
     }
 }

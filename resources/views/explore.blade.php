@@ -21,7 +21,7 @@
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 
-<body class="antialiased">
+<body class="antialiased bg-black ">
 
     <header class="flex justify-evenly py-7 bg-black items-center">
 
@@ -158,93 +158,116 @@
 
     <!--Main Content-->
     <section class="px-10 bg-black py-10">
-        <div class="flex space-x-2 justify-evenly">
-            <div class="w-1/4 h-full flex flex-col rounded-md px-2" style="background-color: #141414">
-                <div class="py-2 flex space-x-2">
-                    <img src="https://assets.bizjournals.com/static/img/potm/marketing/team-success-img.jpg"
-                        class="h-12 w-12 rounded-full">
-                    <div class="flex flex-col  justify-center text-white">
-                        <p class="font-semibold">Nitin Chaudhary</p>
-                        <h5 class="text-sm text-gray-400">Executive Chef, D’Italia</h5>
-                    </div>
-                </div>
-                <div class="py-2">
-                    <img class="h-auto rounded-md" src="images\explore_Recipe_image.png">
-                </div>
-                <div class="flex justify-evenly py-2">
-                    <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
-                        <svg width="20" height="20" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.45833 11.5876C3.89733 11.5876 1.81531 9.50552 1.81531 6.94453C1.81531 4.38354 3.89733 2.30151 6.45833 2.30151C9.01932 2.30151 11.1013 4.38354 11.1013 6.94453C11.1013 9.50552 9.01932 11.5876 6.45833 11.5876ZM6.45833 3.03462C4.30299 3.03462 2.54842 4.78919 2.54842 6.94453C2.54842 9.09987 4.30299 10.8544 6.45833 10.8544C8.61366 10.8544 10.3682 9.09987 10.3682 6.94453C10.3682 4.78919 8.61366 3.03462 6.45833 3.03462Z"
-                                fill="white" />
-                            <path
-                                d="M6.45835 7.18901C6.25797 7.18901 6.0918 7.02284 6.0918 6.82245V4.37876C6.0918 4.17838 6.25797 4.01221 6.45835 4.01221C6.65873 4.01221 6.8249 4.17838 6.8249 4.37876V6.82245C6.8249 7.02284 6.65873 7.18901 6.45835 7.18901Z"
-                                fill="white" />
-                            <path
-                                d="M7.9246 1.8127H4.99216C4.79178 1.8127 4.62561 1.64653 4.62561 1.44614C4.62561 1.24576 4.79178 1.07959 4.99216 1.07959H7.9246C8.12498 1.07959 8.29115 1.24576 8.29115 1.44614C8.29115 1.64653 8.12498 1.8127 7.9246 1.8127Z"
-                                fill="white" />
-                        </svg>
-                        <h1 class="text-xs text-white">20 mins</h1>
-                    </div>
-                    <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
+        <div class="grid-cols-4 grid gap-4 justify-start">
+            @if (count($recipe) > 0)
+                @foreach ($recipe as $recipes)
+                    <div class="w-full h-auto flex flex-col rounded-md px-2 mr-2" style="background-color: #141414">
+                        <div class="py-2 flex space-x-2">
+                            <img src="https://assets.bizjournals.com/static/img/potm/marketing/team-success-img.jpg"
+                                class="h-12 w-12 rounded-full">
+                            <div class="flex flex-col  justify-center text-white">
+                                <p class="font-semibold">{{ $recipes->user->name }}
+                                    {{-- {{ dd($recipes->chef_questions()) }} --}}
+                                </p>
 
-                        <h1 class="text-xs text-white">8 Ingredients</h1>
-                    </div>
-                    <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
-                        <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
-                    </div>
-                </div>
-                <div class="flex py-2 justify-between px-2">
-                    <div class="flex space-x-4">
-                        <div class="flex items-center space-x-2">
-                            <svg width="21" height="19" viewBox="0 0 21 19" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M14.8452 0.867432C13.076 0.867432 11.4925 1.72761 10.5052 3.04721C9.51799 1.72761 7.93448 0.867432 6.16524 0.867432C3.16439 0.867432 0.730469 3.31113 0.730469 6.33153C0.730469 7.49473 0.916189 8.56995 1.23876 9.56698C2.78317 14.4544 7.54349 17.377 9.89921 18.1786C10.2315 18.2959 10.7789 18.2959 11.1113 18.1786C13.467 17.377 18.2273 14.4544 19.7717 9.56698C20.0943 8.56995 20.28 7.49473 20.28 6.33153C20.28 3.31113 17.8461 0.867432 14.8452 0.867432Z"
-                                    fill="#ED1A3D" />
-                            </svg>
-                            <h2 class="font-normal text-sm" style="color:#ED1A3D;">383</h2>
+                                @if ($recipes->user->hasrole('Chef'))
+                                {{ DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('designation')->first() }}
+
+                                @elseif ($recipes->user->hasrole('Home-Chef'))
+                                {{ DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('mail')->first() }}
+                                @else
+                                    <h5 class="text-sm text-gray-400">User</h5>
+                                @endif
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16.0469 11.8339H9.20454C8.80378 11.8339 8.47144 11.5015 8.47144 11.1008C8.47144 10.7 8.80378 10.3677 9.20454 10.3677H16.0469C16.4477 10.3677 16.78 10.7 16.78 11.1008C16.78 11.5015 16.4477 11.8339 16.0469 11.8339Z"
-                                    fill="#292D32" />
-                                <path
-                                    d="M16.5356 22.6546C16.2032 22.6546 15.8709 22.5569 15.5874 22.3712L11.4234 19.5951H7.73829C4.37577 19.5951 2.1178 17.3371 2.1178 13.9746V8.10975C2.1178 4.74723 4.37577 2.48926 7.73829 2.48926H17.5131C20.8756 2.48926 23.1336 4.74723 23.1336 8.10975V13.9746C23.1336 17.083 21.1982 19.253 18.2462 19.556V20.944C18.2462 21.5794 17.904 22.1561 17.3469 22.4493C17.0927 22.5862 16.8093 22.6546 16.5356 22.6546ZM7.73829 3.94569C5.2164 3.94569 3.58401 5.57808 3.58401 8.09997V13.9648C3.58401 16.4867 5.2164 18.1191 7.73829 18.1191H11.6482C11.7948 18.1191 11.9317 18.1582 12.0588 18.2462L16.4085 21.1395C16.516 21.208 16.6138 21.1787 16.6627 21.1493C16.7115 21.12 16.7897 21.0613 16.7897 20.9343V18.8522C16.7897 18.4515 17.1221 18.1191 17.5229 18.1191C20.0447 18.1191 21.6771 16.4867 21.6771 13.9648V8.09997C21.6771 5.57808 20.0447 3.94569 17.5229 3.94569H7.73829Z"
-                                    fill="#292D32" />
-                            </svg>
+                        <div class="py-2">
+                            <img class="h-56 rounded-md" src="{{ $recipes->getFirstMediaUrl('cover') }}"
+                                alt="image">
+                        </div>
+                        <div class="flex justify-evenly py-2">
+                            <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
+                                <svg width="20" height="20" viewBox="0 0 13 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.45833 11.5876C3.89733 11.5876 1.81531 9.50552 1.81531 6.94453C1.81531 4.38354 3.89733 2.30151 6.45833 2.30151C9.01932 2.30151 11.1013 4.38354 11.1013 6.94453C11.1013 9.50552 9.01932 11.5876 6.45833 11.5876ZM6.45833 3.03462C4.30299 3.03462 2.54842 4.78919 2.54842 6.94453C2.54842 9.09987 4.30299 10.8544 6.45833 10.8544C8.61366 10.8544 10.3682 9.09987 10.3682 6.94453C10.3682 4.78919 8.61366 3.03462 6.45833 3.03462Z"
+                                        fill="white" />
+                                    <path
+                                        d="M6.45835 7.18901C6.25797 7.18901 6.0918 7.02284 6.0918 6.82245V4.37876C6.0918 4.17838 6.25797 4.01221 6.45835 4.01221C6.65873 4.01221 6.8249 4.17838 6.8249 4.37876V6.82245C6.8249 7.02284 6.65873 7.18901 6.45835 7.18901Z"
+                                        fill="white" />
+                                    <path
+                                        d="M7.9246 1.8127H4.99216C4.79178 1.8127 4.62561 1.64653 4.62561 1.44614C4.62561 1.24576 4.79178 1.07959 4.99216 1.07959H7.9246C8.12498 1.07959 8.29115 1.24576 8.29115 1.44614C8.29115 1.64653 8.12498 1.8127 7.9246 1.8127Z"
+                                        fill="white" />
+                                </svg>
+                                <h1 class="text-xs text-white">{{ $recipes->cooking_time }} mins</h1>
+                            </div>
+                            <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
 
-                            <h2 class="font-normal text-sm" style="color:#292D32;">53</h2>
+                                <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient) }} Ingredients
+                                </h1>
+                            </div>
+                            <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
+                                <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
+                            </div>
+                        </div>
+                        <div class="flex py-2 justify-between px-2">
+                            <div class="flex space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <svg width="21" height="19" viewBox="0 0 21 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M14.8452 0.867432C13.076 0.867432 11.4925 1.72761 10.5052 3.04721C9.51799 1.72761 7.93448 0.867432 6.16524 0.867432C3.16439 0.867432 0.730469 3.31113 0.730469 6.33153C0.730469 7.49473 0.916189 8.56995 1.23876 9.56698C2.78317 14.4544 7.54349 17.377 9.89921 18.1786C10.2315 18.2959 10.7789 18.2959 11.1113 18.1786C13.467 17.377 18.2273 14.4544 19.7717 9.56698C20.0943 8.56995 20.28 7.49473 20.28 6.33153C20.28 3.31113 17.8461 0.867432 14.8452 0.867432Z"
+                                            fill="#ED1A3D" />
+                                    </svg>
+                                    <h2 class="font-normal text-sm" style="color:#ED1A3D;">
+                                        {{ count($recipes->comments) }}</h2>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16.0469 11.8339H9.20454C8.80378 11.8339 8.47144 11.5015 8.47144 11.1008C8.47144 10.7 8.80378 10.3677 9.20454 10.3677H16.0469C16.4477 10.3677 16.78 10.7 16.78 11.1008C16.78 11.5015 16.4477 11.8339 16.0469 11.8339Z"
+                                            fill="#292D32" />
+                                        <path
+                                            d="M16.5356 22.6546C16.2032 22.6546 15.8709 22.5569 15.5874 22.3712L11.4234 19.5951H7.73829C4.37577 19.5951 2.1178 17.3371 2.1178 13.9746V8.10975C2.1178 4.74723 4.37577 2.48926 7.73829 2.48926H17.5131C20.8756 2.48926 23.1336 4.74723 23.1336 8.10975V13.9746C23.1336 17.083 21.1982 19.253 18.2462 19.556V20.944C18.2462 21.5794 17.904 22.1561 17.3469 22.4493C17.0927 22.5862 16.8093 22.6546 16.5356 22.6546ZM7.73829 3.94569C5.2164 3.94569 3.58401 5.57808 3.58401 8.09997V13.9648C3.58401 16.4867 5.2164 18.1191 7.73829 18.1191H11.6482C11.7948 18.1191 11.9317 18.1582 12.0588 18.2462L16.4085 21.1395C16.516 21.208 16.6138 21.1787 16.6627 21.1493C16.7115 21.12 16.7897 21.0613 16.7897 20.9343V18.8522C16.7897 18.4515 17.1221 18.1191 17.5229 18.1191C20.0447 18.1191 21.6771 16.4867 21.6771 13.9648V8.09997C21.6771 5.57808 20.0447 3.94569 17.5229 3.94569H7.73829Z"
+                                            fill="#292D32" />
+                                    </svg>
+
+                                    <h2 class="font-normal text-sm" style="color:#292D32;">
+                                        {{ count($recipes->comments) }}</h2>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-1">
+                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
+                                        fill="#292D32" />
+                                    <path
+                                        d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
+                                        fill="#292D32" />
+                                    <path
+                                        d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
+                                        fill="#292D32" />
+                                </svg>
+                                <h2 class="font-normal text-sm" style="color:#292D32;">Add to Collection</h2>
+                            </div>
+
+
+
+                        </div>
+                        <div class="py-2 px-2">
+                            <p class="text-white">{{ $recipes->recipe_name }}</p>
+                            <h3 class="text-sm" style="color: #76777E;">
+                                {{ $recipes->created_at->format('l, d M Y') }}</h3>
                         </div>
                     </div>
+                @endforeach
+            @else
+                <h1 class="text-white">No recipes Found</h1>
+            @endif
 
-                    <div class="flex items-center space-x-1">
-                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
-                                fill="#292D32" />
-                            <path
-                                d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
-                                fill="#292D32" />
-                            <path
-                                d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
-                                fill="#292D32" />
-                        </svg>
-                        <h2 class="font-normal text-sm" style="color:#292D32;">Add to Collection</h2>
-                    </div>
-
-
-
-                </div>
-                <div class="py-2 px-2">
-                    <p class="text-white  ">My Autumn special Blueberry banana Toast..</p>
-                    <h3 class="text-sm" style="color: #76777E;">Mon, 15 Aug 2022</h3>
-                </div>
-            </div>
-
-            <div class="w-1/4 h-full flex flex-col rounded-md px-2" style="background-color: #141414">
+            {{-- <div class="w-1/4 h-full flex flex-col rounded-md px-2" style="background-color: #141414">
                 <div class="py-2 flex space-x-2">
                     <img src="https://www.meatable.com/wp-content/uploads/2019/12/d186bb35b1fe8caebb0815685c8c1321.jpg"
                         class="h-12 w-12 rounded-full">
@@ -325,9 +348,9 @@
                     <p class="text-white">Mediterranean tuna pasta ..</p>
                     <h3 class="text-sm" style="color: #76777E;">Mon, 15 Aug 2022</h3>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="w-1/4 h-full flex flex-col rounded-md px-2" style="background-color: #141414">
+            {{--<div class="w-1/4 h-full flex flex-col rounded-md px-2" style="background-color: #141414">
                 <div class="py-2 flex space-x-2">
                     <img src="https://assets.bizjournals.com/static/img/potm/marketing/team-success-img.jpg"
                         class="h-12 w-12 rounded-full">
@@ -495,7 +518,7 @@
                     <p class="text-white">My Autumn special Blueberry banana Toast..</p>
                     <h3 class="text-sm" style="color: #76777E;">Mon, 15 Aug 2022</h3>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
     </section>

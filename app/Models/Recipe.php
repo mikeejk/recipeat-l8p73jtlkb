@@ -10,6 +10,7 @@ use App\Models\Recipe_Step;
 use App\Models\Comment;
 use App\Contracts\Likeable;
 use App\Models\Concerns\Likes;
+use App\Models\Chef_question;
 
 
 // use Overtrue\LaravelLike\Traits\Likeable;
@@ -94,5 +95,11 @@ class Recipe extends Model implements Likeable,HasMedia
     {
         // Return (Feed model has many data refer from the the Recipe model)
         return $this->hasMany(Feed::class, 'recipe_id');
+    }
+
+    public function chef_questions()
+    {
+        // return (ingredient model is belongs to this recipe model)
+        return $this->hasMany(Chef_question::class,'user_id');
     }
 }

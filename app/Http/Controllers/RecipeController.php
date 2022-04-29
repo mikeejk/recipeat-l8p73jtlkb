@@ -99,7 +99,7 @@ class RecipeController extends Controller
         }
         // Save Data
         $recipe->save();
-        
+
         foreach ($users as $user) {
             $user->notify(new  NewRecipePost(auth()->user()->name, $recipe));
         }
@@ -126,7 +126,7 @@ class RecipeController extends Controller
         for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
-                'ingredient_id' => $ingredient[$i],
+                'ingredient' => $ingredient[$i],
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
             ];
