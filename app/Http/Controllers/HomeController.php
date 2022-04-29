@@ -19,11 +19,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewRecipePost;
 use App\Models\Chef_question;
 
-class ExlporeController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
         $recipe = Recipe::where('status', 'Approved')->get();
-        return view('explore', compact('recipe'));
+
+
+        return view('home', compact('recipe'));
     }
 }
