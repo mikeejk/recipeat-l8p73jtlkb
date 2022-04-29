@@ -9,7 +9,7 @@
                     <div class="container mt-2 mb-4 d-flex justify-content-center">
                         <div class="card">
                             <div class="image d-flex flex-column justify-content-center align-items-center">
-                                {{-- @empty($chef_questions->image)
+                                @empty($chef_questions->image)
                                     <button class="btn btn-secondary btn2"> <img class="rounded-circle"
                                             src="assets/media//users/blank.png"
                                             height="100" width="100" />
@@ -18,7 +18,7 @@
                                     <button class="btn btn-secondary btn2"> <img class="rounded-circle"
                                             src="{{ asset('storage/public/'. $chef_questions->image) }}"
                                             height="100" width="100" /> </button>
-                                @endempty --}}
+                                @endempty
                                 <span class="name mt-3">{{ $user->name }}</span>
                                 <span class="idd">
                                     @if ($user->hasrole('Home-Chef') || $user->hasrole('Chef') || $user->hasrole('Admin'))
