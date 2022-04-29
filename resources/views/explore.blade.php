@@ -165,9 +165,8 @@
                         <div class="py-2 flex space-x-2">
                             @if ($recipes->user->hasrole('Chef'))
                                 @if (!empty(
-    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
-                                    )
+    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()))
+
                                     <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
                                 @else
@@ -178,8 +177,7 @@
                                 @if (!empty(
     DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
 ))
-                                    )
-                                    )
+                                  
                                     <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
                                 @else
