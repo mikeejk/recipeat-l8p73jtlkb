@@ -108,10 +108,13 @@
                             class="flex justify-center py-3 bg-red-600 text-white text-xl mt-4 rounded-md w-full font-bold">Log
                             In</button>
                         <div class="flex justify-between py-8">
-                            <button class="text-white flex items-center  border rounded-md px-6 py-2"><img
-                                    class="mr-2" src="images\GoogleLogo.png">Google Login</button>
-                            <button class="text-white flex items-center  border rounded-md px-4 py-2"><img
-                                    class="mr-2" src="images\FBLogo.png">Facebook Login</button>
+
+                            <a href="{{route('login.google')}}" class="text-white flex items-center  border rounded-md px-6 py-2"><img
+                                    class="mr-2" src="images\GoogleLogo.png">Google Login</a>
+                            <a
+                            href="{{route('login.facebook')}}"
+                             class="text-white flex items-center  border rounded-md px-4 py-2"><img
+                                    class="mr-2" src="images\FBLogo.png">Facebook Login</a>
                         </div>
                         <h1 class="flex justify-center text-white">Don’t have an account?<a
                                 class="ml-2 underline font-semibold" href="/register1">Create Account</a></h1>

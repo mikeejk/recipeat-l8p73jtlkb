@@ -24,6 +24,9 @@ module.exports = {
                 'montserrat': ['Montserrat'],
                 'manrope':['Manrope'],
             },
+            fontSize: {
+                'xxs': '0.2rem',
+            },
             colors: {
                 sky: colors.sky,
                 cyan: colors.cyan,
