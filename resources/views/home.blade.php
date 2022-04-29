@@ -148,9 +148,23 @@
         <section class="w-1/5  ">
             <div class="w-full py-5 rounded-xl mb-4" style="background: rgba(20, 20, 20, 1)">
                 <div class="px-4 mb-4">
-                    <div class="flex justify-center items-center py-2">
-                        <img src="https://piximus.net/media/29044/these-computer-generated-people-look-so-real-14.jpg"
-                            class="h-14 w-14 rounded-full" alt="Profile Pic" />
+                    <div class="flex justify-center items-center py-2 rounded-full">
+                        @hasrole('Chef')
+                            @if ($chef_questions->image == '')
+                                <img class="rounded-full" src="assets/media//users/blank.png" height="100" width="100" />
+                            @else
+                                <img class="rounded-full" src="{{ asset('/storage/public/' . $chef_questions->image) }}"
+                                    height="100" width="100" />
+                            @endif
+                        @endhasrole
+                        @hasrole('Home-Chef|User')
+                            @if ($question->image == '')
+                                <img class="rounded-full" src="assets/media//users/blank.png" height="100" width="100" />
+                            @else
+                                <img class="rounded-full" src="{{ asset('/storage/public/' . $question->image) }}"
+                                    height="100" width="100" />
+                            @endif
+                        @endhasrole
                     </div>
                     <h1 class="text-center text-white font-montserrat font-semibold">{{ Auth::user()->name }}</h1>
                     <h3 class="text-center text-sm text-gray-500 font-montserrat font-semibold mb-2">
@@ -325,24 +339,50 @@
                 @if (count($recipe) > 0)
                     @foreach ($recipe as $recipes)
                         <div class="flex space-x-4 items-center">
-                            <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B1582-Edit.jpg"
-                                class="rounded-full h-14 w-14" alt="user">
+                            <div class="rounded-full h-14 w-14" alt="user">
+                                @if ($recipes->user->hasrole('Chef'))
+                                    @if (!empty(
+    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+))
+                                        <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
+                                            class="h-12 w-12 rounded-full">
+                                    @else
+                                        <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                                            class="h-12 w-12 rounded-full">
+                                    @endif
+                                @else
+                                    @if (!empty(
+    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+))
+                                        <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
+                                            class="h-12 w-12 rounded-full">
+                                    @else
+                                        <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                                            class="h-12 w-12 rounded-full">
+                                    @endif
+
+                                    {{-- <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
+                                    class="h-12 w-12 rounded-full"> --}}
+                                @endif
+                            </div>
                             <div>
                                 <h1 class="text-white font-semibold break-words ">{{ $recipes->user->name }}</h1>
-                                <h3 class="text-gray-500 text-sm break-words">@if ($recipes->user->hasrole('Chef'))
-                                    {{ DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('designation')->first() }}
-
+                                <h3 class="text-gray-500 text-sm break-words">
+                                    @if ($recipes->user->hasrole('Chef'))
+                                        {{ DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('designation')->first() }}
                                     @elseif ($recipes->user->hasrole('Home-Chef'))
-                                    {{ DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('mail')->first() }}
+                                        {{ DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('mail')->first() }}
                                     @else
                                         <h5 class="text-sm text-gray-400">User</h5>
-                                    @endif</h3>
+                                    @endif
+                                </h3>
                             </div>
                         </div>
 
                         <div class="pl-12 mt-4 ">
                             <div class="relative w-full h-full rounded-md">
-                                <img src="{{ $recipes->getFirstMediaUrl('cover') }}" class="w-full h-full flex object-cover">
+                                <img src="{{ $recipes->getFirstMediaUrl('cover') }}"
+                                    class="w-full h-full flex object-cover">
                                 <div class="absolute w-11/12 mx-4 py-2.5 bottom-4 inset-x-2 flex justify-between px-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
                                     <h1 class="text-white font-semibold">{{ $recipes->recipe_name }}</h1>
@@ -378,7 +418,8 @@
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
 
-                                    <h1 class="text-xs text-white px-2">{{ count($recipes->Recipe_Ingredient) }} Ingredients</h1>
+                                    <h1 class="text-xs text-white px-2">{{ count($recipes->Recipe_Ingredient) }}
+                                        Ingredients</h1>
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
@@ -395,7 +436,9 @@
                                                 d="M14.8452 0.867432C13.076 0.867432 11.4925 1.72761 10.5052 3.04721C9.51799 1.72761 7.93448 0.867432 6.16524 0.867432C3.16439 0.867432 0.730469 3.31113 0.730469 6.33153C0.730469 7.49473 0.916189 8.56995 1.23876 9.56698C2.78317 14.4544 7.54349 17.377 9.89921 18.1786C10.2315 18.2959 10.7789 18.2959 11.1113 18.1786C13.467 17.377 18.2273 14.4544 19.7717 9.56698C20.0943 8.56995 20.28 7.49473 20.28 6.33153C20.28 3.31113 17.8461 0.867432 14.8452 0.867432Z"
                                                 fill="#ED1A3D" />
                                         </svg>
-                                        <h2 class="font-normal text-sm" style="color:#ED1A3D;">383</h2>
+                                        <h2 class="font-normal text-sm" style="color:#ED1A3D;">
+                                            {{ DB::table('likes')->join('recipes', 'recipes.id', '=', 'likes.likeable_id')->where('recipes.id', $recipes->id)->count() }}
+                                        </h2>
                                     </div>
                                     <div class="flex items-center space-x-2">
                                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
@@ -408,7 +451,9 @@
                                                 fill="#292D32" />
                                         </svg>
 
-                                        <h2 class="font-normal text-sm" style="color:#292D32;">{{ count($recipes->comments) }}</h2>
+                                        <h2 class="font-normal text-sm" style="color:#292D32;">
+                                            {{ DB::table('comments')->join('recipes', 'recipes.id', '=', 'comments.commentable_id')->where('recipes.id', $recipes->id)->count() }}
+                                        </h2>
                                     </div>
                                 </div>
 
@@ -432,7 +477,8 @@
 
                             <div class="py-2 px-2">
                                 <p class="text-white">{{ $recipes->description }}</p>
-                                <h3 class="text-sm py-1" style="color: #76777E;">{{ $recipes->created_at->format('l, d M Y') }}</h3>
+                                <h3 class="text-sm py-1" style="color: #76777E;">
+                                    {{ $recipes->created_at->format('l, d M Y') }}</h3>
                             </div>
 
                             <div class="flex justify-between items-center py-2 space-x-2">
@@ -485,59 +531,32 @@
                         </h1>
                     </div>
 
-                    <div class="flex justify-between space-x-2 items-center py-5">
-                        <div class="py-2 px-2 rounded-lg w-1/3 border border-gray-700"
-                            style="background-color: #202020">
-                            <div class="flex justify-center -mt-5 mb-2">
-                                <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
-                                    class="h-16 w-16 rounded-full" alt="recipe">
-                            </div>
+                    @if (count($collections) > 0)
+                        <div class="flex justify-between space-x-2 items-center py-5">
+                            @foreach ($collections as $collection)
+                                <div class="py-2 px-2 rounded-lg w-1/3 border border-gray-700"
+                                    style="background-color: #202020">
+                                    <div class="flex justify-center -mt-5 mb-2">
+                                        <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
+                                            class="h-16 w-16 rounded-full" alt="recipe">
+                                    </div>
 
-                            <h1 class="text-white font-semibold flex justify-center">Oriental</h1>
-                            <h1 class="text-gray-500 flex text-sm justify-center items-center">3 Recipes
-                                <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                        fill="#454545" />
-                                </svg>
-                            </h1>
+                                    <h1 class="text-white font-semibold flex justify-center">
+                                        {{ $collection->pin_name }}</h1>
+                                    <h1 class="text-gray-500 flex text-sm justify-center items-center">3 Recipes
+                                        <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
+                                                fill="#454545" />
+                                        </svg>
+                                    </h1>
+                                </div>
+                            @endforeach
                         </div>
-
-                        <div class="py-2 px-2 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                            <div class="flex justify-center -mt-5 mb-2">
-                                <img src="https://img-global.cpcdn.com/recipes/c5fc07a2fc2d25eb/1200x630cq70/photo.jpg"
-                                    class="h-16 w-16 rounded-full" alt="recipe">
-                            </div>
-
-                            <p class="text-white font-semibold flex justify-center text-ellipsis">Breakfasts</p>
-                            <h1 class="text-gray-500 flex text-sm justify-center items-center">5 Recipes
-                                <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                        fill="#454545" />
-                                </svg>
-                            </h1>
-                        </div>
-
-                        <div class="py-2 px-2 rounded-lg w-1/3  border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                            <div class="flex justify-center -mt-5 mb-2">
-                                <img src="https://media.istockphoto.com/photos/delicious-panna-cotta-with-berries-picture-id182026106?k=20&m=182026106&s=612x612&w=0&h=-12CnyO0be_A88616ir0fAWV4Y6ay0WDzquv2crWSNU="
-                                    class="h-16 w-16 rounded-full" alt="recipe">
-                            </div>
-
-                            <h1 class="text-white font-semibold flex justify-center">Desserts</h1>
-                            <h1 class="text-gray-500 flex text-sm justify-center items-center">7 Recipes
-                                <svg class="mt-1 text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                        fill="#454545" />
-                                </svg>
-                            </h1>
-                        </div>
-                    </div>
+                    @else
+                        <h1 class="text-white">No Collection Found</h1>
+                    @endif
 
                     <div class="flex justify-between mb-4">
                         <h1 class="text-white font-semibold">My Tastebuds</h1>
