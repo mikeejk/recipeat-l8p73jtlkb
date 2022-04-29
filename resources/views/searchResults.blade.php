@@ -74,7 +74,6 @@
 
                 <img src="images\explore_search_filter.png" class="my-2 mx-2 flex justify-end" />
             </div>
-
         </div>
 
         <div class="flex space-x-2 items-center justify-center">

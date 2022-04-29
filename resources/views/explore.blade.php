@@ -23,17 +23,18 @@
 
 <body class="antialiased bg-black ">
 
-    <header class="flex justify-evenly py-7 bg-black items-center">
+    <header class="flex justify-evenly py-7 items-center" style="background-color: rgba(20, 20, 20, 1)">
 
         <div class="flex space-x-4">
-            <i class="fas fa-bars text-white text-3xl"></i>
+            <a href="/welcome"><i class="fas fa-bars text-white text-3xl"></i></a>
             <img src="images\explore_header_logo.png" alt="logo" class="">
         </div>
 
 
         <!-- Search Bar -->
         <div class="pt-2 w-1/3 text-gray-600">
-            <div class="bg-gray-800 w-full rounded-lg flex">
+            <div class=" w-full rounded-lg flex" style="background-color:
+        rgba(37, 37, 37, 1)">
                 <button type="submit" class=" right-0 top-0 pl-4 ">
                     <svg class="text-gray-700 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -43,15 +44,14 @@
                             d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
                     </svg>
                 </button>
-                <input class=" bg-gray-800 h-10 px-5 w-96 rounded-lg text-sm focus:outline-none" type="search"
-                    name="search" placeholder="Search for recipes, chefs and more">
+                <input class="h-10 px-5 w-96 rounded-lg text-sm focus:outline-none" style="background-color:
+            rgba(37, 37, 37, 1)" type="search" name="search" placeholder="Search for recipes, chefs and more">
 
                 <img src="images\explore_search_filter.png" class="my-2 mx-2 flex justify-end" />
             </div>
-
         </div>
 
-        <div class="flex space-x-2 items-center">
+        <a href="/HomePage" class="flex space-x-2 items-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M14.0799 18.0482H5.11988C3.66388 18.0482 2.33588 16.9282 2.09588 15.4882L1.03188 9.12018C0.863882 8.12818 1.34389 6.85619 2.13589 6.22419L7.67989 1.78415C8.75189 0.920147 10.4399 0.928155 11.5199 1.79215L17.0639 6.22419C17.8479 6.85619 18.3279 8.12818 18.1679 9.12018L17.1039 15.4882C16.8639 16.9042 15.5119 18.0482 14.0799 18.0482ZM9.59189 2.35216C9.16789 2.35216 8.74388 2.48014 8.43188 2.72814L2.88789 7.16818C2.43189 7.53618 2.11989 8.35214 2.21589 8.92814L3.27989 15.2962C3.42389 16.1362 4.26388 16.8482 5.11988 16.8482H14.0799C14.9359 16.8482 15.7759 16.1362 15.9199 15.2881L16.9839 8.92018C17.0799 8.34418 16.7599 7.52017 16.3119 7.16017L10.7679 2.72814C10.4479 2.48014 10.0239 2.35216 9.59189 2.35216Z"
@@ -61,9 +61,9 @@
                     fill="white" />
             </svg>
             <h1 class="text-white">Home</h1>
-        </div>
+        </a>
 
-        <div class="flex space-x-2 items-center">
+        <a href="/exploreRecipe" class="flex space-x-2 items-center">
             <svg width="24" height="31" viewBox="0 0 24 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.15 12.83L14.42 13.41C13.94 13.57 13.57 13.94 13.41 14.42L12.83 16.15C12.34 17.64 10.24 17.61 9.78 16.12L7.83 9.84C7.45 8.59 8.6 7.44 9.83 7.82L16.12 9.77C17.61 10.24 17.63 12.34 16.15 12.83Z"
@@ -71,7 +71,7 @@
                 <circle cx="12.7" cy="29" r="2" fill="white" />
             </svg>
             <h1 class="text-white font-semibold">Explore</h1>
-        </div>
+        </a>
 
         <div class="flex space-x-2 items-center">
             <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="flex space-x-2 items-center">
+        <a href="/notifications" class="flex space-x-2 items-center">
             <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M9.41488 15.2752C7.68125 15.2752 5.94762 14.9999 4.30327 14.4493C3.67827 14.2335 3.20208 13.7946 2.99375 13.2216C2.77798 12.6487 2.85238 12.0163 3.19464 11.4508L4.0503 10.0297C4.22887 9.73206 4.39256 9.13682 4.39256 8.78712V6.63682C4.39256 3.86897 6.64702 1.6145 9.41488 1.6145C12.1827 1.6145 14.4372 3.86897 14.4372 6.63682V8.78712C14.4372 9.12938 14.6009 9.73206 14.7795 10.0371L15.6277 11.4508C15.9476 11.9865 16.0071 12.6338 15.7914 13.2216C15.5756 13.8094 15.1068 14.2559 14.519 14.4493C12.8821 14.9999 11.1485 15.2752 9.41488 15.2752ZM9.41488 2.73057C7.26458 2.73057 5.50863 4.47908 5.50863 6.63682V8.78712C5.50863 9.33028 5.28542 10.1338 5.01012 10.6026L4.15446 12.0237C3.99077 12.299 3.94613 12.5892 4.04286 12.8347C4.13214 13.0877 4.35536 13.2812 4.66042 13.3853C7.77054 14.427 11.0667 14.427 14.1768 13.3853C14.4446 13.296 14.653 13.0952 14.7497 12.8273C14.8464 12.5594 14.8241 12.2693 14.6753 12.0237L13.8196 10.6026C13.5369 10.119 13.3211 9.32283 13.3211 8.77968V6.63682C13.3211 4.47908 11.5726 2.73057 9.41488 2.73057Z"
@@ -106,12 +106,12 @@
             </svg>
             <h1 class="text-white">Notifications</h1>
             <div class="bg-red-500 text-white flex items-center justify-center rounded-full h-4 w-4">
-                <h6 class="text-sm">3</h6>
+                <h6 class="text-sm text-center">{{ count(auth()->user()->unreadnotifications) }}</h6>
             </div>
-        </div>
+        </a>
     </header>
 
-    <section class="bg-gray-800 flex">
+    <section class="flex" style="background:rgba(255, 255, 255, 0.1);">
         <div class="w-3/12 py-1  px-10 font-montserrat">
             <h2 class="text-white ">Showing you</h2>
             <h1 class="text-white font-semibold text-lg">Trending recipes</h1>
@@ -119,35 +119,43 @@
         <div class="w-9/12  py-5">
             <div class="flex justify-evenly">
                 <h1 class="text-white">Sort by</h1>
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class="flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">Easy to cook</h1>
                 </div>
 
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class="flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">Low cooking time</h1>
                 </div>
 
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class="flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">Fewer Ingredients</h1>
                 </div>
 
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class="flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">From Top Chefs</h1>
                 </div>
 
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class="flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">Sweet</h1>
                 </div>
 
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class="flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">Spicy</h1>
                 </div>
 
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">Sour</h1>
                 </div>
 
-                <div class="bg-gray-900 flex items-center justify-center text-sm  mr-1 rounded py-1 px-4">
+                <div class="flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
                     <h1 class="text-white">Bitter</h1>
                 </div>
             </div>
@@ -237,7 +245,7 @@
 
                         <div class="flex py-2 justify-between px-2">
                             <div class="flex space-x-4">
-                                <div class="flex items-center space-x-2">
+                                {{-- <div class="flex items-center space-x-2">
                                     <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -248,6 +256,9 @@
                                     <h2 class="font-normal text-sm" style="color:#292D32;">
                                         {{ DB::table('likes')->join('recipes', 'recipes.id', '=', 'likes.likeable_id')->where('recipes.id', $recipes->id)->count() }}
                                     </h2>
+                                </div> --}}
+                                <div class="flex items-center space-x-2">
+                                    @include('like', ['model' => $recipes])
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
@@ -265,6 +276,8 @@
                                     </h2>
                                 </div>
                             </div>
+
+
 
                             <div class="flex items-center space-x-1">
                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
