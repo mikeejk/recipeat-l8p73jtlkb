@@ -25,10 +25,11 @@ class HomeController extends Controller
     public function index()
     {
         $recipe = Recipe::where('status', 'Approved')->get();
-        $user= User::where('id',auth()->user()->id)->first();
+        $user = User::where('id',auth()->user()->id)->first();
         $chef_questions= Chef_question::where('user_id',auth()->user()->id)->first();
         $question = Question::where('user_id',auth()->user()->id)->first();
         $collections = Pinboard::all();
-        return view('home', compact('recipe','user','question','chef_questions', 'collections'));
+        $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
+        return view('home', compact('recipe','user','question','chef_questions', 'collections', 'recipes'));
     }
 }

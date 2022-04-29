@@ -203,7 +203,7 @@
 
                         <div class="flex justify-evenly">
                             <div class="flex flex-col justify-center items-center">
-                                <h1 class="text-white fonr-semibold text-lg">43</h1>
+                                <h1 class="text-white fonr-semibold text-lg">{{ $recipes }}</h1>
                                 <h3 class="text-gray-500 text-sm">Recipes</h3>
                             </div>
                             <div class="flex flex-col justify-center items-center">
@@ -259,19 +259,8 @@
                 </div>
                 <div class="flex flex-wrap justify-start items-center mt-5" style="font-family: 'Manrope', sans-serif;">
                     <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">NORTH
-                        INDIAN</button>
-                    <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">SEAFOOD</button>
-                    <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">TANDOORI</button>
-                    <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">MARATHI</button>
-                    <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">CHINESE</button>
-                    <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">SOUTH
-                        INDIAN</button>
+                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">
+                        {{ Auth::user()->cusinies }}</button>
                 </div>
             </div>
 
@@ -280,7 +269,7 @@
                     <h1 class="text-white font-semibold">Diet Preferences </h1>
                 </div>
                 <div class="flex justify-between items-center mt-2">
-                    <h1 class="text-white ">Vegan Diet</h1>
+                        <h1 class="text-white ">{{ Auth::user()->diets }}</h1>
 
                     <div class="flex justify-between space-x-2">
                         <h1 class="text-gray-500 text-xs">Private</h1>
@@ -430,15 +419,24 @@
                             <div class="flex py-2 justify-between px-2">
                                 <div class="flex space-x-4">
                                     <div class="flex items-center space-x-2">
-                                        <svg width="21" height="19" viewBox="0 0 21 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M14.8452 0.867432C13.076 0.867432 11.4925 1.72761 10.5052 3.04721C9.51799 1.72761 7.93448 0.867432 6.16524 0.867432C3.16439 0.867432 0.730469 3.31113 0.730469 6.33153C0.730469 7.49473 0.916189 8.56995 1.23876 9.56698C2.78317 14.4544 7.54349 17.377 9.89921 18.1786C10.2315 18.2959 10.7789 18.2959 11.1113 18.1786C13.467 17.377 18.2273 14.4544 19.7717 9.56698C20.0943 8.56995 20.28 7.49473 20.28 6.33153C20.28 3.31113 17.8461 0.867432 14.8452 0.867432Z"
-                                                fill="#ED1A3D" />
-                                        </svg>
-                                        <h2 class="font-normal text-sm" style="color:#ED1A3D;">
-                                            {{ DB::table('likes')->join('recipes', 'recipes.id', '=', 'likes.likeable_id')->where('recipes.id', $recipes->id)->count() }}
-                                        </h2>
+                                        <div class="flex items-center space-x-2">
+                                            @include('like', ['model' => $recipes])
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16.0469 11.8339H9.20454C8.80378 11.8339 8.47144 11.5015 8.47144 11.1008C8.47144 10.7 8.80378 10.3677 9.20454 10.3677H16.0469C16.4477 10.3677 16.78 10.7 16.78 11.1008C16.78 11.5015 16.4477 11.8339 16.0469 11.8339Z"
+                                                    fill="#292D32" />
+                                                <path
+                                                    d="M16.5356 22.6546C16.2032 22.6546 15.8709 22.5569 15.5874 22.3712L11.4234 19.5951H7.73829C4.37577 19.5951 2.1178 17.3371 2.1178 13.9746V8.10975C2.1178 4.74723 4.37577 2.48926 7.73829 2.48926H17.5131C20.8756 2.48926 23.1336 4.74723 23.1336 8.10975V13.9746C23.1336 17.083 21.1982 19.253 18.2462 19.556V20.944C18.2462 21.5794 17.904 22.1561 17.3469 22.4493C17.0927 22.5862 16.8093 22.6546 16.5356 22.6546ZM7.73829 3.94569C5.2164 3.94569 3.58401 5.57808 3.58401 8.09997V13.9648C3.58401 16.4867 5.2164 18.1191 7.73829 18.1191H11.6482C11.7948 18.1191 11.9317 18.1582 12.0588 18.2462L16.4085 21.1395C16.516 21.208 16.6138 21.1787 16.6627 21.1493C16.7115 21.12 16.7897 21.0613 16.7897 20.9343V18.8522C16.7897 18.4515 17.1221 18.1191 17.5229 18.1191C20.0447 18.1191 21.6771 16.4867 21.6771 13.9648V8.09997C21.6771 5.57808 20.0447 3.94569 17.5229 3.94569H7.73829Z"
+                                                    fill="#292D32" />
+                                            </svg>
+        
+                                            <h2 class="font-normal text-sm" style="color:#292D32;">
+                                                {{ DB::table('comments')->join('recipes', 'recipes.id', '=', 'comments.commentable_id')->where('recipes.id', $recipes->id)->count() }}
+                                            </h2>
+                                        </div>
                                     </div>
                                     <div class="flex items-center space-x-2">
                                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
