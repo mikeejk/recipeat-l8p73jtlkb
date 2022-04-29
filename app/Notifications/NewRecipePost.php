@@ -64,6 +64,7 @@ class NewRecipePost extends Notification
             'name' => $this->user,
             'recipe' => $this->recipe,
             'message' => 'posted new recipe',
+
         ];
     }
 }
