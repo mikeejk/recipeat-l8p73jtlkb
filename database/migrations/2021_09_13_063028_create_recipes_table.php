@@ -25,13 +25,12 @@ class CreateRecipesTable extends Migration
 
             // User Entered - Data Saving
             $table->string('recipe_name');
-            $table->string('recipe_image');
             $table->string('preparing_time');
             $table->string('cooking_time');
             $table->integer('serves_people');
             $table->integer('calories_in');
-            $table->string('description');
-            $table->string('meta_description');
+            $table->text('description');
+            $table->string('meta_description')->nullable();
             $table->char('bud_sweet');
             $table->char('bud_sour');
             $table->char('bud_salt');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Notifications;
+
 use App\Models\Recipe;
 use App\Modelds\User;
 use App\Models\Follower;
@@ -19,10 +20,10 @@ class NewRecipePost extends Notification
      *
      * @return void
      */
-    public function __construct($user,$recipe)
+    public function __construct($user, $recipe)
     {
-        $this->user=$user;
-        $this->recipe=$recipe;
+        $this->user = $user;
+        $this->recipe = $recipe;
     }
 
     /**
@@ -33,7 +34,7 @@ class NewRecipePost extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['mail'];
     }
 
     /**
@@ -45,11 +46,10 @@ class NewRecipePost extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Create Recipe')
-                    ->line($this->user.'Just created a New Recipe: '.$this->recipe->name)
-                    ->action('Read Post' , url('/'))
-                    ->line('Thank you for being with us!');
-
+            ->subject('Create Recipe')
+            ->line($this->user . 'Just created a New Recipe: ' . $this->recipe)
+            ->action('Read Post', url('/'))
+            ->line('Thank you for being with us!');
     }
     /**
      * Get the array representation of the notification.
@@ -61,9 +61,10 @@ class NewRecipePost extends Notification
     {
         return [
 
-            'name' => $this->user->name,
-            // 'recipe_id' =>$this->recipe->id,
-            'message'=>'created new recipe',
+            'name' => $this->user,
+            'recipe' => $this->recipe,
+            'message' => 'posted new recipe',
+
         ];
     }
 }

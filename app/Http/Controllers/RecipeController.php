@@ -101,7 +101,7 @@ class RecipeController extends Controller
         $recipe->save();
 
         foreach ($users as $user) {
-            $user->notify(new  NewRecipePost(auth()->user()->name, $recipe));
+            $user->notify(new  NewRecipePost(auth()->user()->name, $recipe->recipe_name));
         }
         // Declare steps
         $steps = $request->steps;

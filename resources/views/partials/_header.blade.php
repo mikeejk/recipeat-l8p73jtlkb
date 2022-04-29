@@ -757,9 +757,14 @@
 
             <!--begin::User-->
             <div class="topbar-item ml-4">
-                <div class="btn btn-icon btn-light-primary h-40px w-40px pb-1 p-0" id="kt_quick_user_toggle">
-                    <img src="assets/media/svg/avatars/004-boy-1.png" class="h-30px align-self-end" alt="" />
-                </div>
+                <form method="POST" action="{{ route('logout') }}"
+                        class="font-white btn btn-sm btn-light-primary font-weight-bolder py-3 px-6">
+                        @csrf
+                        <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Sign Out') }}
+                        </x-jet-dropdown-link>
+                    </form>
 
                 {{-- <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2"
                     id="kt_quick_user_toggle">
