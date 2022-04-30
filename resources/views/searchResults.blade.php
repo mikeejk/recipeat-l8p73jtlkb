@@ -302,6 +302,11 @@
                                 </div>
                             </div>
                         @endforeach
+                        @else
+                        <div class="w-full">
+                            <img src="https://www.masho.com/commonincludes/images/icons/floatfoot/nosearch.svg" class="w-full h-full">
+                            <h1 class="mt-4 text-center text-xl font-bold text-white">No Results Found</h1>
+                        </div>
                     @endif
 
                     {{-- <div class="w-1/2 h-auto flex flex-col rounded-md px-2 py-2">
