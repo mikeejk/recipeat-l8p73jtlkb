@@ -212,8 +212,8 @@
                             </div>
                             <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
 
-                                <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient) }} Ingredients
-                                </h1>
+                                {{-- <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient) }} Ingredients
+                                </h1> --}}
                             </div>
                             <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
                                 <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
