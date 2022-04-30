@@ -324,15 +324,15 @@
                 </button>
             </div>
 
-            <main class="py-4">
+            <main class="py-4 overflow-y-scroll h-96">
                 @if (count($recipe) > 0)
                     @foreach ($recipe as $recipes)
                         <div class="flex space-x-4 items-center">
                             <div class="rounded-full h-14 w-14" alt="user">
                                 @if ($recipes->user->hasrole('Chef'))
                                     @if (!empty(
-    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                            DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                        ))
                                         <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
                                     @else
@@ -341,8 +341,8 @@
                                     @endif
                                 @else
                                     @if (!empty(
-    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                            DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                        ))
                                         <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
                                     @else
@@ -432,7 +432,7 @@
                                                     d="M16.5356 22.6546C16.2032 22.6546 15.8709 22.5569 15.5874 22.3712L11.4234 19.5951H7.73829C4.37577 19.5951 2.1178 17.3371 2.1178 13.9746V8.10975C2.1178 4.74723 4.37577 2.48926 7.73829 2.48926H17.5131C20.8756 2.48926 23.1336 4.74723 23.1336 8.10975V13.9746C23.1336 17.083 21.1982 19.253 18.2462 19.556V20.944C18.2462 21.5794 17.904 22.1561 17.3469 22.4493C17.0927 22.5862 16.8093 22.6546 16.5356 22.6546ZM7.73829 3.94569C5.2164 3.94569 3.58401 5.57808 3.58401 8.09997V13.9648C3.58401 16.4867 5.2164 18.1191 7.73829 18.1191H11.6482C11.7948 18.1191 11.9317 18.1582 12.0588 18.2462L16.4085 21.1395C16.516 21.208 16.6138 21.1787 16.6627 21.1493C16.7115 21.12 16.7897 21.0613 16.7897 20.9343V18.8522C16.7897 18.4515 17.1221 18.1191 17.5229 18.1191C20.0447 18.1191 21.6771 16.4867 21.6771 13.9648V8.09997C21.6771 5.57808 20.0447 3.94569 17.5229 3.94569H7.73829Z"
                                                     fill="#292D32" />
                                             </svg>
-        
+
                                             <h2 class="font-normal text-sm" style="color:#292D32;">
                                                 {{ DB::table('comments')->join('recipes', 'recipes.id', '=', 'comments.commentable_id')->where('recipes.id', $recipes->id)->count() }}
                                             </h2>
@@ -507,9 +507,6 @@
                 @else
                     <h1 class="text-white">No recipes Found</h1>
                 @endif
-
-
-
             </main>
 
         </section>
