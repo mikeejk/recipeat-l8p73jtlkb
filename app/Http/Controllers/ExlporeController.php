@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewRecipePost;
 use App\Models\Chef_question;
 
+
 class ExlporeController extends Controller
 {
     public function index()
