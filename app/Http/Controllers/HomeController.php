@@ -19,12 +19,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewRecipePost;
 use App\Models\Chef_question;
 use App\Models\Question;
+use App\Models\Follower;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $recipe = Recipe::where('status', 'Approved')->get();
+        $follow = Follower::where('follower_id', auth()->user()->id)->pluck('leader_id');
+        $recipe = Recipe::where('user_id', '!=', auth()->user()->id )->where('status', 'User')->orWhere('status', 'Approved')->where('user_id', $follow)->get();
         $user = User::where('id',auth()->user()->id)->first();
         $chef_questions= Chef_question::where('user_id',auth()->user()->id)->first();
         $question = Question::where('user_id',auth()->user()->id)->first();
