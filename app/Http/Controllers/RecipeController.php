@@ -170,16 +170,12 @@ class RecipeController extends Controller
         // if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
         //     $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
         // }
-
         if ($request->hasFile('cover')) {
             $recipe->clearMediaCollection('cover');
             $recipe->addMediaFromRequest('cover')->toMediaCollection('cover');
         }
-
-
         // Save Data
         $recipe->update($data);
-
         // Declare steps
         $steps = $request->steps;
 
@@ -369,28 +365,48 @@ class RecipeController extends Controller
         return Datatables::of(Recipe::query())->make(true);
     }
 
-    // // Recipe result view
+    // // Recipe result
+    //  public function search_result(Request $request)
+    // {
+    //     $term  = $request->get('term');
+
+    //     if ($term) {
+    //         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
+
+    //             ->where('user_id', '!=', auth()->id())
+    //             ->where('status', 'Approved')
+    //             ->orderBy("recipe_name", "asc")->Paginate(4);
+    //         $recipe->appends(array(
+    //             'term' => $request->get('term'),
+    //         ));
+
+    //         return view('searchResults', compact('recipe'));
+    //     }
+    //     dd();
+    //     return view('searchResults',compact('recipe'));
+
+    // }
     //  Recipe Search
     public function search(Request $request)
     {
         $term  = $request->get('term');
-        $creator = $request->get('creator');
-        $category_id = $request->get('category');
+        // $creator = $request->get('creator');
+        // $category_id = $request->get('category');
+        //  dd($term);
         if ($term) {
             $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
-                ->where('creator', 'LIKE', '%' . $creator . '%')
-                ->where('category_id', 'LIKE', '%' . $category_id . '%')
-                // ->where('user_id', '!=', auth()->id())
-                ->where('status', 'Approved')
-                // ->where('status','!=','Denide')
-                // ->where('creator','!=','User')
-                ->orderBy("recipe_name", "asc")->Paginate(4);
-            $recipe->appends(array(
-                'term' => $request->get('term'),
-            ));
-            return view('welcome', compact('recipe'));
+
+                ->where('user_id', '!=', auth()->id())
+                ->where('status', 'Approved')->get();
+
+            //      ->orderBy("recipe_name", "asc")->Paginate(4);
+            //  $recipe->appends(array(
+            //  'term' => $request->get('term'),
+            // ));
+            //  dd($recipe);
+             return view('searchResults', compact('recipe'));
         }
-        return view('welcome');
+         return view('searchResults',compact('recipe'));
         // return view('welcome', compact('recipe'));
     }
 
