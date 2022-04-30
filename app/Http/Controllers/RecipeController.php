@@ -390,32 +390,29 @@ class RecipeController extends Controller
     public function search(Request $request)
     {
         $term  = $request->get('term');
-        // $creator = $request->get('creator');
-        // $category_id = $request->get('category');
-        //  dd($term);
+        $creator = $request->get('creator');
+        $category_id = $request->get('category');
         if ($term) {
             $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
-
                 ->where('user_id', '!=', auth()->id())
-                ->where('status', 'Approved')->get();
-
-            //      ->orderBy("recipe_name", "asc")->Paginate(4);
-            //  $recipe->appends(array(
-            //  'term' => $request->get('term'),
-            // ));
-            //  dd($recipe);
-             return view('searchResults', compact('recipe'));
+                ->where('status', 'Approved')
+                ->orderBy("recipe_name", "asc")->Paginate(4);
+            $recipe->appends(array(
+                'term' => $request->get('term'),
+            ));
+            return view('welcome', compact('recipe'));
         }
-         return view('searchResults',compact('recipe'));
-        // return view('welcome', compact('recipe'));
+        return view('welcome', compact('recipe'));
     }
 
-    //commom search
+    //common search
     public function searchResult(Request $request)
     {
         $term  = $request->get('term');
+        $t = $term;
         $creator = $request->get('creator');
         $category_id = $request->get('category');
+        // dd($term);
         if ($term) {
             $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
                 ->where('creator', 'LIKE', '%' . $creator . '%')
@@ -428,14 +425,16 @@ class RecipeController extends Controller
             $recipe->appends(array(
                 'term' => $request->get('term'),
             ));
-            return view('searchResults', compact('recipe'));
+            // dd($term);
+            return view('searchResults', compact('recipe', 't'));
         }
-        return view('/searchResults');
+        return view('/searchResults', compact('t'));
         // return view('welcome', compact('recipe'));
     }
 
     //  Recipe Search for non login users
     public function nonLoginUserSearch(Request $request)
+
     {
         $term  = $request->get('term');
         $creator = $request->get('creator');

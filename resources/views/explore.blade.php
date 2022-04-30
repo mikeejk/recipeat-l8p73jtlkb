@@ -96,7 +96,7 @@
     <section class="flex" style="background:rgba(255, 255, 255, 0.1);">
         <div class="w-3/12 py-1  px-10 font-montserrat">
             <h2 class="text-white ">Showing you</h2>
-            <h1 class="text-white font-semibold text-lg">Trending recipes</h1>
+            <h1 class="text-white font-semibold text-lg"></h1>
         </div>
         <div class="w-9/12  py-5">
             <div class="flex justify-evenly">
@@ -254,9 +254,6 @@
                                     </h2>
                                 </div>
                             </div>
-
-
-
                             <div class="flex items-center space-x-1">
                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -272,9 +269,6 @@
                                 </svg>
                                 <h2 class="font-normal text-sm" style="color:#292D32;">Add to Collection</h2>
                             </div>
-
-
-
                         </div>
 
                         <div class="py-2 px-2">

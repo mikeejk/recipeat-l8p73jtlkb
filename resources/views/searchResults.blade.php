@@ -60,6 +60,7 @@
         @include('searchBar')
 
         <div class="flex space-x-2 items-center justify-center">
+            <a href="/HomePage" class="flex" >
             <div class="flex flex-col items-center">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -71,10 +72,12 @@
                 </svg>
             </div>
 
-            <h1 class="text-white">Home</h1>
+            <h1 class=" text-white">Home</h1>
+            </a>
         </div>
 
         <div class="flex space-x-2 items-center">
+            <a href="/exploreRecipe" class="flex" >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M9.24789 14.3999C9.23989 14.3999 9.23989 14.3999 9.23189 14.3999C8.39989 14.3919 7.69589 13.8719 7.44789 13.0799L5.88789 8.05588C5.67989 7.37588 5.85589 6.64788 6.35989 6.15188C6.85589 5.65588 7.57589 5.47986 8.24789 5.68786L13.2799 7.24787C14.0799 7.49587 14.5999 8.19988 14.6079 9.03188C14.6159 9.86388 14.1119 10.5679 13.3199 10.8319L11.9439 11.2959C11.7359 11.3679 11.5839 11.5199 11.5119 11.7199L11.0399 13.1039C10.7759 13.8959 10.0719 14.3999 9.24789 14.3999ZM7.67189 6.79988C7.43189 6.79988 7.27189 6.92788 7.19989 6.99988C7.01589 7.18388 6.95189 7.44787 7.03189 7.69587L8.5919 12.7199C8.7279 13.1599 9.1199 13.1999 9.2399 13.1999C9.3359 13.1919 9.74389 13.1679 9.88789 12.7279L10.3599 11.3439C10.5439 10.7919 10.9919 10.3439 11.5439 10.1599L12.9199 9.69587C12.9199 9.69587 12.9199 9.69587 12.9279 9.69587C13.3679 9.55187 13.3999 9.15987 13.3999 9.04787C13.3999 8.92787 13.3599 8.53588 12.9199 8.39988L7.88789 6.83987C7.80789 6.80787 7.73589 6.79988 7.67189 6.79988Z"
@@ -84,6 +87,7 @@
                     fill="#FAFAFA" />
             </svg>
             <h1 class="text-white">Explore</h1>
+        </a>
         </div>
 
         <div class="flex space-x-2 items-center">
@@ -136,7 +140,7 @@
             </svg>
             <div class="">
                 <h2 class="text-gray-400 text-sm">You Searced for </h2>
-                <h1 class="text-white font-semibold text-lg">Birthday Cakes</h1>
+                <h1 class="text-white font-semibold text-lg">{{ $t }}</h1>
             </div>
 
         </div>
@@ -245,7 +249,7 @@
                                 </div>
                                 <div class="flex justify-between items-center backdrop-blur-lg py-2 px-4 w-full"
                                     style="background:rgba(255, 255, 255, 0.1);">
-                                    <p class="text-white">{{$recipes->recipe_name}}</p>
+                                    <p class="text-white">{{ $recipes->recipe_name }}</p>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -278,7 +282,8 @@
                                         <div class="py-1 rounded-md flex items-center justify-center px-1 "
                                             style="background: rgba(255, 255, 255, 0.2);">
 
-                                            <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient) }} Ingredients</h1>
+                                            <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient) }}
+                                                Ingredients</h1>
                                         </div>
                                         <div class="py-1 rounded-md flex items-center justify-center px-1 "
                                             style="background: rgba(255, 255, 255, 0.2);">
@@ -302,9 +307,10 @@
                                 </div>
                             </div>
                         @endforeach
-                        @else
+                    @else
                         <div class="w-full">
-                            <img src="https://www.masho.com/commonincludes/images/icons/floatfoot/nosearch.svg" class="w-full h-full">
+                            <img src="https://www.masho.com/commonincludes/images/icons/floatfoot/nosearch.svg"
+                                class="w-full h-full">
                             <h1 class="mt-4 text-center text-xl font-bold text-white">No Results Found</h1>
                         </div>
                     @endif
@@ -521,6 +527,12 @@
                         </div>
                     </div>
                 </div> --}}
+                </div>
+            @else
+                <div class="w-full">
+                    <img src="https://www.masho.com/commonincludes/images/icons/floatfoot/nosearch.svg"
+                        class="w-full h-full">
+                    <h1 class="mt-4 text-center text-xl font-bold text-white">No Results Found</h1>
                 </div>
             @endif
         </section>
