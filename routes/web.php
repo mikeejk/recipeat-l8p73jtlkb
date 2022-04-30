@@ -52,14 +52,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeC
 // Home Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/HomePage', [HomeController::class, 'index']);
 
+// Search Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'searchResult']);
+
 // Search result Tab
-Route::get('/searchResult', function () {
-    return view('searchResults');
-});
-
-
-
-
+// Route::get('/searchResult', function () {
+//     return view('searchResults');
+// });
+// Route::middleware(['auth:sanctum', 'verified'])->get('/searchResult', [RecipeController::class, 'search_result']);
 // Google login
 Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
@@ -97,8 +97,6 @@ Route::get('/register2', function () {
     return view('auth.register2');
 });
 
-
-
 // Register3 Tab
 Route::get('/register3', function () {
     return view('auth.register3');
@@ -108,9 +106,6 @@ Route::post('/storeUserGender', [UserController::class, 'step3']);
 Route::get('/register4', function () {
     return view('auth.register4');
 });
-
-
-
 // Welcome Tab
 Route::get('/mainDashboard', function () {
     return view('mainDashboard');
@@ -158,7 +153,9 @@ Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
+ Route::middleware(['auth:sanctum', 'verified'])->get('/searchResult', [RecipeController::class, 'search']);
+
+//  Route::middleware(['auth:sanctum', 'verified'])->get('/searchResult', [RecipeController::class, 'search_result']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/mainDashboard', [RecipeController::class, 'show_count']);
 
