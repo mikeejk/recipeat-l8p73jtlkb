@@ -11,7 +11,7 @@ class Recipe_Ingredient extends Model
     protected $fillable = [
         // Foreign Keys - Data Saving
         'recipe_id',
-        'ingredient_id',
+        'ingredient',
         'measurement_id',
         // User Entered - Data Saving
         'quantity',
