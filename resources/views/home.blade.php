@@ -392,7 +392,7 @@
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
 
-                                    <h1 class="text-xs text-white px-2">{{ count($recipes->Recipe_Ingredient) }}
+                                    <h1 class="text-xs text-white px-2">0
                                         Ingredients</h1>
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
