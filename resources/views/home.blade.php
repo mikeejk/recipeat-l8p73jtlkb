@@ -324,7 +324,7 @@
                 </button>
             </div>
 
-            <main class="py-4 overflow-y-scroll h-96">
+            <main class="py-4 overflow-y-scroll h-screen">
                 @if (count($recipe) > 0)
                     @foreach ($recipe as $recipes)
                         <div class="flex space-x-4 items-center">
