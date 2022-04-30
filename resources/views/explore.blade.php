@@ -30,7 +30,6 @@
             <img src="images\explore_header_logo.png" alt="logo" class="">
         </div>
 
-        <!-- Search Bar -->
         @include('searchBar')
 
         <a href="/HomePage" class="flex space-x-2 items-center">

@@ -60,7 +60,7 @@
                         </div>
                         <div>
                             @foreach ($recipe_steps as $steps)
-                           
+
                             <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
 
                             {{-- @endfor --}}
@@ -90,13 +90,13 @@
 
                                      @foreach($recipe_ingredients as $ingredient)
 
-                                    <tr class="profile-table">
+                                    {{-- <tr class="profile-table">
 
 
                                         <td> {{ $ingredient->ingredient->ingredient }}  </td>
                                         <td> {{  $ingredient->quantity }} </td>
                                         <td>{{ $ingredient->measurement->measurement }}</td>
-                                    </tr>
+                                    </tr> --}}
 
                                     @endforeach
 
