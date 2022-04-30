@@ -392,7 +392,7 @@
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
                                     @if(count($recipes->Recipe_Ingredient)>0)
-                                    <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient) }} Ingredients
+                                    <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient->recipe_id) }} Ingredients
                                 </h1>
                                     
                                     @else
