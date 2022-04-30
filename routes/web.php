@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ExlporeController;
+use App\Http\Controllers\HomeController;
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -48,13 +49,8 @@ Route::get('/login1', function () {
 // Explore Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeController::class, 'index']);
 
-
-
 // Home Tab
-Route::get('/HomePage', function () {
-    return view('home');
-});
-
+Route::middleware(['auth:sanctum', 'verified'])->get('/HomePage', [HomeController::class, 'index']);
 
 // Search result Tab
 // Route::get('/searchResult', function () {
