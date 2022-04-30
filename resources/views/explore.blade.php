@@ -30,11 +30,8 @@
             <img src="images\explore_header_logo.png" alt="logo" class="">
         </div>
 
-
         <!-- Search Bar -->
-               <!-- Search Bar -->
-               @include('searchBar')
-
+        @include('searchBar')
 
         <a href="/HomePage" class="flex space-x-2 items-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -157,9 +154,7 @@
                     <div class="w-full h-auto flex flex-col rounded-md px-2 mr-2" style="background-color: #141414">
                         <div class="py-2 flex space-x-2">
                             @if ($recipes->user->hasrole('Chef'))
-                                @if (!empty(
-    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                @if (!empty(DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()))
                                     <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
                                 @else
@@ -167,9 +162,7 @@
                                         class="h-12 w-12 rounded-full">
                                 @endif
                             @else
-                                @if (!empty(
-    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                @if (!empty(DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()))
                                     <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
                                 @else

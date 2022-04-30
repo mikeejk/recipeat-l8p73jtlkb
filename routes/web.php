@@ -52,6 +52,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeC
 // Home Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/HomePage', [HomeController::class, 'index']);
 
+// Search Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'searchResult']);
+
 // Search result Tab
 Route::get('/searchResult', function () {
     return view('searchResults');

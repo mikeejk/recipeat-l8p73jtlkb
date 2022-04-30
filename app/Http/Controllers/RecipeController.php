@@ -393,6 +393,31 @@ class RecipeController extends Controller
         return view('welcome');
         // return view('welcome', compact('recipe'));
     }
+
+    //commom search
+    public function searchResult(Request $request)
+    {
+        $term  = $request->get('term');
+        $creator = $request->get('creator');
+        $category_id = $request->get('category');
+        if ($term) {
+            $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
+                ->where('creator', 'LIKE', '%' . $creator . '%')
+                ->where('category_id', 'LIKE', '%' . $category_id . '%')
+                // ->where('user_id', '!=', auth()->id())
+                ->where('status', 'Approved')
+                // ->where('status','!=','Denide')
+                // ->where('creator','!=','User')
+                ->orderBy("recipe_name", "asc")->Paginate(4);
+            $recipe->appends(array(
+                'term' => $request->get('term'),
+            ));
+            return view('searchResults', compact('recipe'));
+        }
+        return view('/searchResults');
+        // return view('welcome', compact('recipe'));
+    }
+
     //  Recipe Search for non login users
     public function nonLoginUserSearch(Request $request)
     {
