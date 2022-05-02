@@ -131,18 +131,16 @@
                     <div class="flex justify-center items-center py-2 rounded-full">
                         @hasrole('Chef')
                             @if ($chef_questions->image == '')
-                                <img class="rounded-full" src="assets/media//users/blank.png" height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
                             @else
-                                <img class="rounded-full" src="{{ asset('/storage/public/' . $chef_questions->image) }}"
-                                    height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $chef_questions->image) }}"/>
                             @endif
                         @endhasrole
                         @hasrole('Home-Chef|User')
                             @if ($question->image == '')
-                                <img class="rounded-full" src="assets/media//users/blank.png" height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
                             @else
-                                <img class="rounded-full" src="{{ asset('/storage/public/' . $question->image) }}"
-                                    height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $question->image) }}"/>
                             @endif
                         @endhasrole
                     </div>
@@ -463,10 +461,10 @@
                                 <div class="border-b w-10/12 text-white flex justify-between">
                                     <form method="post" action="{{ route('comment.add') }}">
                                         @csrf
+                                        <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
-                                            placeholder="Add a Comment">
-                                        <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
+                                            placeholder="Add a Comment" />
                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
