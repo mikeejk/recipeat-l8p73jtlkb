@@ -47,7 +47,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' =>'recipeat-dev.mindzapp.in\storage\app\public',
+            'url' =>'\storage\app\public',
             'visibility' => 'public',
         ],
 
