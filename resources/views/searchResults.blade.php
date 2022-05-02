@@ -60,34 +60,34 @@
         @include('searchBar')
 
         <div class="flex space-x-2 items-center justify-center">
-            <a href="/HomePage" class="flex" >
-            <div class="flex flex-col items-center">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M14.0799 18.0482H5.11988C3.66388 18.0482 2.33588 16.9282 2.09588 15.4882L1.03188 9.12018C0.863882 8.12818 1.34389 6.85619 2.13589 6.22419L7.67989 1.78415C8.75189 0.920147 10.4399 0.928155 11.5199 1.79215L17.0639 6.22419C17.8479 6.85619 18.3279 8.12818 18.1679 9.12018L17.1039 15.4882C16.8639 16.9042 15.5119 18.0482 14.0799 18.0482ZM9.59189 2.35216C9.16789 2.35216 8.74388 2.48014 8.43188 2.72814L2.88789 7.16818C2.43189 7.53618 2.11989 8.35214 2.21589 8.92814L3.27989 15.2962C3.42389 16.1362 4.26388 16.8482 5.11988 16.8482H14.0799C14.9359 16.8482 15.7759 16.1362 15.9199 15.2881L16.9839 8.92018C17.0799 8.34418 16.7599 7.52017 16.3119 7.16017L10.7679 2.72814C10.4479 2.48014 10.0239 2.35216 9.59189 2.35216Z"
-                        fill="white" />
-                    <path
-                        d="M9.6 13C8.168 13 7 11.832 7 10.4C7 8.96805 8.168 7.80005 9.6 7.80005C11.032 7.80005 12.2 8.96805 12.2 10.4C12.2 11.832 11.032 13 9.6 13ZM9.6 9.00005C8.832 9.00005 8.2 9.63205 8.2 10.4C8.2 11.168 8.832 11.8 9.6 11.8C10.368 11.8 11 11.168 11 10.4C11 9.63205 10.368 9.00005 9.6 9.00005Z"
-                        fill="white" />
-                </svg>
-            </div>
+            <a href="/HomePage" class="flex">
+                <div class="flex flex-col items-center">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.0799 18.0482H5.11988C3.66388 18.0482 2.33588 16.9282 2.09588 15.4882L1.03188 9.12018C0.863882 8.12818 1.34389 6.85619 2.13589 6.22419L7.67989 1.78415C8.75189 0.920147 10.4399 0.928155 11.5199 1.79215L17.0639 6.22419C17.8479 6.85619 18.3279 8.12818 18.1679 9.12018L17.1039 15.4882C16.8639 16.9042 15.5119 18.0482 14.0799 18.0482ZM9.59189 2.35216C9.16789 2.35216 8.74388 2.48014 8.43188 2.72814L2.88789 7.16818C2.43189 7.53618 2.11989 8.35214 2.21589 8.92814L3.27989 15.2962C3.42389 16.1362 4.26388 16.8482 5.11988 16.8482H14.0799C14.9359 16.8482 15.7759 16.1362 15.9199 15.2881L16.9839 8.92018C17.0799 8.34418 16.7599 7.52017 16.3119 7.16017L10.7679 2.72814C10.4479 2.48014 10.0239 2.35216 9.59189 2.35216Z"
+                            fill="white" />
+                        <path
+                            d="M9.6 13C8.168 13 7 11.832 7 10.4C7 8.96805 8.168 7.80005 9.6 7.80005C11.032 7.80005 12.2 8.96805 12.2 10.4C12.2 11.832 11.032 13 9.6 13ZM9.6 9.00005C8.832 9.00005 8.2 9.63205 8.2 10.4C8.2 11.168 8.832 11.8 9.6 11.8C10.368 11.8 11 11.168 11 10.4C11 9.63205 10.368 9.00005 9.6 9.00005Z"
+                            fill="white" />
+                    </svg>
+                </div>
 
-            <h1 class=" text-white">Home</h1>
+                <h1 class=" text-white">Home</h1>
             </a>
         </div>
 
         <div class="flex space-x-2 items-center">
-            <a href="/exploreRecipe" class="flex" >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M9.24789 14.3999C9.23989 14.3999 9.23989 14.3999 9.23189 14.3999C8.39989 14.3919 7.69589 13.8719 7.44789 13.0799L5.88789 8.05588C5.67989 7.37588 5.85589 6.64788 6.35989 6.15188C6.85589 5.65588 7.57589 5.47986 8.24789 5.68786L13.2799 7.24787C14.0799 7.49587 14.5999 8.19988 14.6079 9.03188C14.6159 9.86388 14.1119 10.5679 13.3199 10.8319L11.9439 11.2959C11.7359 11.3679 11.5839 11.5199 11.5119 11.7199L11.0399 13.1039C10.7759 13.8959 10.0719 14.3999 9.24789 14.3999ZM7.67189 6.79988C7.43189 6.79988 7.27189 6.92788 7.19989 6.99988C7.01589 7.18388 6.95189 7.44787 7.03189 7.69587L8.5919 12.7199C8.7279 13.1599 9.1199 13.1999 9.2399 13.1999C9.3359 13.1919 9.74389 13.1679 9.88789 12.7279L10.3599 11.3439C10.5439 10.7919 10.9919 10.3439 11.5439 10.1599L12.9199 9.69587C12.9199 9.69587 12.9199 9.69587 12.9279 9.69587C13.3679 9.55187 13.3999 9.15987 13.3999 9.04787C13.3999 8.92787 13.3599 8.53588 12.9199 8.39988L7.88789 6.83987C7.80789 6.80787 7.73589 6.79988 7.67189 6.79988Z"
-                    fill="#FAFAFA" />
-                <path
-                    d="M9.79995 18.2C5.05595 18.2 1.19995 14.344 1.19995 9.6C1.19995 4.856 5.05595 1 9.79995 1C14.544 1 18.4 4.856 18.4 9.6C18.4 14.344 14.544 18.2 9.79995 18.2ZM9.79995 2.2C5.71995 2.2 2.39995 5.52 2.39995 9.6C2.39995 13.68 5.71995 17 9.79995 17C13.88 17 17.2 13.68 17.2 9.6C17.2 5.52 13.88 2.2 9.79995 2.2Z"
-                    fill="#FAFAFA" />
-            </svg>
-            <h1 class="text-white">Explore</h1>
-        </a>
+            <a href="/exploreRecipe" class="flex">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.24789 14.3999C9.23989 14.3999 9.23989 14.3999 9.23189 14.3999C8.39989 14.3919 7.69589 13.8719 7.44789 13.0799L5.88789 8.05588C5.67989 7.37588 5.85589 6.64788 6.35989 6.15188C6.85589 5.65588 7.57589 5.47986 8.24789 5.68786L13.2799 7.24787C14.0799 7.49587 14.5999 8.19988 14.6079 9.03188C14.6159 9.86388 14.1119 10.5679 13.3199 10.8319L11.9439 11.2959C11.7359 11.3679 11.5839 11.5199 11.5119 11.7199L11.0399 13.1039C10.7759 13.8959 10.0719 14.3999 9.24789 14.3999ZM7.67189 6.79988C7.43189 6.79988 7.27189 6.92788 7.19989 6.99988C7.01589 7.18388 6.95189 7.44787 7.03189 7.69587L8.5919 12.7199C8.7279 13.1599 9.1199 13.1999 9.2399 13.1999C9.3359 13.1919 9.74389 13.1679 9.88789 12.7279L10.3599 11.3439C10.5439 10.7919 10.9919 10.3439 11.5439 10.1599L12.9199 9.69587C12.9199 9.69587 12.9199 9.69587 12.9279 9.69587C13.3679 9.55187 13.3999 9.15987 13.3999 9.04787C13.3999 8.92787 13.3599 8.53588 12.9199 8.39988L7.88789 6.83987C7.80789 6.80787 7.73589 6.79988 7.67189 6.79988Z"
+                        fill="#FAFAFA" />
+                    <path
+                        d="M9.79995 18.2C5.05595 18.2 1.19995 14.344 1.19995 9.6C1.19995 4.856 5.05595 1 9.79995 1C14.544 1 18.4 4.856 18.4 9.6C18.4 14.344 14.544 18.2 9.79995 18.2ZM9.79995 2.2C5.71995 2.2 2.39995 5.52 2.39995 9.6C2.39995 13.68 5.71995 17 9.79995 17C13.88 17 17.2 13.68 17.2 9.6C17.2 5.52 13.88 2.2 9.79995 2.2Z"
+                        fill="#FAFAFA" />
+                </svg>
+                <h1 class="text-white">Explore</h1>
+            </a>
         </div>
 
         <div class="flex space-x-2 items-center">
@@ -147,45 +147,45 @@
         <div class="w-9/12  py-5">
             <div class="flex justify-evenly">
                 <h1 class="text-white">Sort by</h1>
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: white;">
                     <h1 class="text-gray-800">Easy to cook</h1>
-                </div>
+                </button>
 
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: #141414;">
                     <h1 class="text-white">Low cooking time</h1>
-                </div>
+                </button>
 
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: #141414;">
                     <h1 class="text-white">Fewer Ingredients</h1>
-                </div>
+                </button>
 
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button value="chef" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: #141414;">
                     <h1 class="text-white">From Top Chefs</h1>
-                </div>
+                </button>
 
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: #141414;">
                     <h1 class="text-white">Sweet</h1>
-                </div>
+                </button>
 
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button value="high" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: #141414;">
                     <h1 class="text-white">Spicy</h1>
-                </div>
+                </button>
 
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: #141414;">
                     <h1 class="text-white">Sour</h1>
-                </div>
+                </button>
 
-                <div class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: #141414;">
                     <h1 class="text-white">Bitter</h1>
-                </div>
+                </button>
             </div>
         </div>
 
@@ -279,12 +279,17 @@
                                             </svg>
                                             <h1 class="text-xs text-white">{{ $recipes->cooking_time }} mins</h1>
                                         </div>
-                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                            style="background: rgba(255, 255, 255, 0.2);">
-
-                                            <h1 class="text-xs text-white">0
+                                        {{-- @foreach ($recipe_ingredients as $ingredient) --}}
+                                            <div class="py-1 rounded-md flex items-center justify-center px-1 "
+                                                style="background: rgba(255, 255, 255, 0.2);">
+                                                {{-- @if ($recipe->id == $ingredient->recipe_id)
+                                                    <h1 class="text-xs text-white">{{ $recipes->ingredient }}
+                                                        Ingredients</h1>
+                                                @endif --}}
+                                                 <h1 class="text-xs text-white">{{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
                                                 Ingredients</h1>
-                                        </div>
+                                            </div>
+                                        {{-- @endforeach --}}
                                         <div class="py-1 rounded-md flex items-center justify-center px-1 "
                                             style="background: rgba(255, 255, 255, 0.2);">
                                             <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
@@ -549,26 +554,33 @@
                 </h1>
             </div>
 
-            <div class="flex justify-between space-x-4 items-center py-5">
-                <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700" style="background-color: #202020">
-                    <div class="flex justify-center -mt-5 mb-2">
-                        <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
-                            class="h-16 w-16 rounded-full" alt="recipe">
-                    </div>
+            @if (count($collections) > 0)
+                <div class="flex justify-between space-x-4 items-center py-5">
+                    @foreach ($collections as $collection)
+                        <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                            <div class="flex justify-center -mt-5 mb-2">
+                                <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
+                                    class="h-16 w-16 rounded-full" alt="recipe">
+                            </div>
 
-                    <h1 class="text-white font-semibold flex justify-center">Oriental</h1>
-                    <h1 class="text-gray-500 flex text-sm justify-center items-center">3 Recipes
-                        <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                fill="#454545" />
-                        </svg>
-                    </h1>
-                    <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
-                </div>
+                            <h1 class="text-white font-semibold flex justify-center"> {{ $collection->pin_name }}
+                            </h1>
+                            <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                                <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
+                                        fill="#454545" />
+                                </svg>
+                            </h1>
+                            {{-- <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
+                        </div>
+                    @endforeach
+                @else
+                    <h1 class="text-white">No Collection Found</h1>
+            @endif
 
-                <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+            {{-- <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
                     <div class="flex justify-center -mt-5 mb-2">
                         <img src="https://img-global.cpcdn.com/recipes/c5fc07a2fc2d25eb/1200x630cq70/photo.jpg"
                             class="h-16 w-16 rounded-full" alt="recipe">
@@ -584,9 +596,9 @@
                         </svg>
                     </h1>
                     <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
-                </div>
+                </div> --}}
 
-                <div class="py-2 px-1 rounded-lg w-1/3  border border-gray-700 hover:bg-gray-700 bg-slate-900">
+            {{-- <div class="py-2 px-1 rounded-lg w-1/3  border border-gray-700 hover:bg-gray-700 bg-slate-900">
                     <div class="flex justify-center -mt-5 mb-2">
                         <img src="https://media.istockphoto.com/photos/delicious-panna-cotta-with-berries-picture-id182026106?k=20&m=182026106&s=612x612&w=0&h=-12CnyO0be_A88616ir0fAWV4Y6ay0WDzquv2crWSNU="
                             class="h-16 w-16 rounded-full" alt="recipe">
@@ -601,10 +613,10 @@
                                 fill="#454545" />
                         </svg>
                     </h1>
-                    <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
-                </div>
+                    <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
+            {{-- </div> --}}
 
-                <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700" style="background-color: #202020">
+            {{-- <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
                     <div class="flex justify-center -mt-5 mb-2">
                         <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
                             class="h-16 w-16 rounded-full" alt="recipe">
@@ -620,7 +632,7 @@
                         </svg>
                     </h1>
                     <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
-                </div>
+                </div> --}}
             </div>
 
             <div class="py-4">
