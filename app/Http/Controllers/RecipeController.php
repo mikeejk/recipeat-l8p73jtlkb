@@ -407,9 +407,10 @@ class RecipeController extends Controller
 
     //common search
     public function searchResult(Request $request)
-    {
+    { $collections=Pinboard::all('id','pin_name');
         $term  = $request->get('term');
         $t = $term;
+
         $creator = $request->get('creator');
         $category_id = $request->get('category');
         // dd($term);
@@ -426,9 +427,9 @@ class RecipeController extends Controller
                 'term' => $request->get('term'),
             ));
             // dd($term);
-            return view('searchResults', compact('recipe', 't'));
+            return view('searchResults', compact('recipe', 't','collections'));
         }
-        return view('/searchResults', compact('t'));
+        return view('/searchResults', compact('t','collections'));
         // return view('welcome', compact('recipe'));
     }
 

@@ -571,7 +571,7 @@
                                <div class="flex justify-center items-center w-44 bg-white rounded-r-lg">
                                 <select name="category" id="sort-item1"value="{{ isset($_GET['category']) ? $_GET['category'] : '' }}"
                                 class="px-4 py-2 w-52 border-r-2 focus:outline-none focus:ring-0 focus:border-blue-300">
-                                 <option value="" class="text-gray-500">All</option> --}}
+                                 <option value="" class="text-gray-500">All</option> 
                                  <option  value="1">Vegetarian</option>
                                 <option value="2">Non-veg</option>
                             </select>
