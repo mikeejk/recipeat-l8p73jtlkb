@@ -119,14 +119,14 @@ class RecipeController extends Controller
             DB::table('recipe__steps')->insert($datastep);
         }
 
-        $ingredient = $request->ingredient;
+        $ingredient = $request->ingredient_id;
         $quantity = $request->quantity;
         $measurement = $request->measurement;
 
         for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
                 'recipe_id' => $recipe->id,
-                'ingredient' => $ingredient[$i],
+                'ingredient_id' => $ingredient[$i],
                 'quantity' => $quantity[$i],
                 'measurement_id' => $measurement[$i]
             ];

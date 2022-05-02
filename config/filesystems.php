@@ -36,20 +36,20 @@ return [
         ],
 
         // local
-        // 'public' => [
-        //     'driver' => 'local',
-        //     'root' => storage_path('app/public'),
-        //     'url' => env('APP_URL').'\recipeat-l8p73jtlkb\storage\app\public',
-        //     'visibility' => 'public',
-        // ],
-
-       // Live
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' =>'recipeat-dev.mindzapp.in\storage\app\public',
+            'url' => env('APP_URL').'\recipeat-l8p73jtlkb\storage\app\public',
             'visibility' => 'public',
         ],
+
+       // Live
+        // 'public' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public'),
+        //     'url' =>'storage\app\public',
+        //     'visibility' => 'public',
+        // ],
 
         's3' => [
             'driver' => 's3',

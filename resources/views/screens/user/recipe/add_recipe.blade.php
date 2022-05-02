@@ -554,7 +554,7 @@
                 var cols = "";
 
                 cols +=
-                    '<td class="col-lg-4"><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient[]' +
+                    '<td class="col-lg-4"><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient_id[]' +
                     counter +
                     '" > @foreach ($ingredients as $ingredient) <option value="{{ $ingredient->id }} "> {{ $ingredient->ingredient }}</option>@endforeach </select> <span class = "form-text text-muted" > Add the Ingredient for this recipe </span></td > '
 

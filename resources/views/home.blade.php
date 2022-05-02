@@ -136,10 +136,10 @@
                     <div class="flex justify-center items-center py-2 rounded-full">
                         @hasrole('Chef')
                             @if ($chef_questions->image == '')
-                                <img class="rounded-full" src="assets/media//users/blank.png" height="100" width="100" />
+                                <img class="rounded-full h-28 w-28" src="assets/media//users/blank.png" />
                             @else
-                                <img class="rounded-full" src="{{ asset('/storage/public/' . $chef_questions->image) }}"
-                                    height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $chef_questions->image) }}"
+                                   />
                             @endif
                         @endhasrole
                         @hasrole('Home-Chef|User')
@@ -391,7 +391,7 @@
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
-                                 
+
 
 
 
