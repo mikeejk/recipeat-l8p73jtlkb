@@ -46,7 +46,7 @@ return [
        // Live
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('/public_html/storage/app/public'),
+            'root' => storage_path(app/public'),
             'url' => '/public_html/storage/app/public/',
             'visibility' => 'public',
         ],
