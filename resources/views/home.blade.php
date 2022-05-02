@@ -65,20 +65,14 @@
                         d="M19.86 6.37009L12.93 0.830093C11.86 -0.0299066 10.13 -0.0299066 9.07002 0.820093L2.14002 6.37009C1.36002 6.99009 0.860021 8.30009 1.03002 9.28009L2.36002 17.2401C2.60002 18.6601 3.96002 19.8101 5.40002 19.8101H16.6C18.03 19.8101 19.4 18.6501 19.64 17.2401L20.97 9.28009C21.13 8.30009 20.63 6.99009 19.86 6.37009ZM11 13.5001C9.62002 13.5001 8.50002 12.3801 8.50002 11.0001C8.50002 9.62009 9.62002 8.50009 11 8.50009C12.38 8.50009 13.5 9.62009 13.5 11.0001C13.5 12.3801 12.38 13.5001 11 13.5001Z"
                         fill="white" />
                 </svg>
-
                 <svg class="mt-1" width="4" height="4" viewBox="0 0 4 4" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <circle cx="2" cy="2" r="2" fill="white" />
                 </svg>
             </div>
-
             <h1 class="text-white font-semibold">Home</h1>
+        </a>
 
-
-        </div>
-
-        <div class="flex space-x-2 items-center">
-            <a href="/exploreRecipe" class="flex" >
         <a href="/exploreRecipe" class="flex space-x-2 items-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -90,6 +84,7 @@
             </svg>
             <h1 class="text-white">Explore</h1>
         </a>
+
 
         <div class="flex space-x-2 items-center">
             <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -136,18 +131,16 @@
                     <div class="flex justify-center items-center py-2 rounded-full">
                         @hasrole('Chef')
                             @if ($chef_questions->image == '')
-                                <img class="rounded-full" src="assets/media//users/blank.png" height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
                             @else
-                                <img class="rounded-full" src="{{ asset('/storage/public/' . $chef_questions->image) }}"
-                                    height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $chef_questions->image) }}"/>
                             @endif
                         @endhasrole
                         @hasrole('Home-Chef|User')
                             @if ($question->image == '')
-                                <img class="rounded-full" src="assets/media//users/blank.png" height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
                             @else
-                                <img class="rounded-full" src="{{ asset('/storage/public/' . $question->image) }}"
-                                    height="100" width="100" />
+                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $question->image) }}"/>
                             @endif
                         @endhasrole
                     </div>
@@ -316,8 +309,8 @@
                             <div class="rounded-full h-14 w-14" alt="user">
                                 @if ($recipes->user->hasrole('Chef'))
                                     @if (!empty(
-    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                        DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                    ))
                                         <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
                                     @else
@@ -326,8 +319,8 @@
                                     @endif
                                 @else
                                     @if (!empty(
-    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                        DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                    ))
                                         <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
                                     @else
@@ -391,17 +384,8 @@
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
-                                 
-
-
-
-
-
-
-
-
-
-                                    <h1 class="text-xs text-white px-2">0
+                                    <h1 class="text-xs text-white px-2">
+                                        {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
                                         Ingredients</h1>
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
@@ -431,21 +415,6 @@
                                                 {{ DB::table('comments')->join('recipes', 'recipes.id', '=', 'comments.commentable_id')->where('recipes.id', $recipes->id)->count() }}
                                             </h2>
                                         </div>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.0469 11.8339H9.20454C8.80378 11.8339 8.47144 11.5015 8.47144 11.1008C8.47144 10.7 8.80378 10.3677 9.20454 10.3677H16.0469C16.4477 10.3677 16.78 10.7 16.78 11.1008C16.78 11.5015 16.4477 11.8339 16.0469 11.8339Z"
-                                                fill="#292D32" />
-                                            <path
-                                                d="M16.5356 22.6546C16.2032 22.6546 15.8709 22.5569 15.5874 22.3712L11.4234 19.5951H7.73829C4.37577 19.5951 2.1178 17.3371 2.1178 13.9746V8.10975C2.1178 4.74723 4.37577 2.48926 7.73829 2.48926H17.5131C20.8756 2.48926 23.1336 4.74723 23.1336 8.10975V13.9746C23.1336 17.083 21.1982 19.253 18.2462 19.556V20.944C18.2462 21.5794 17.904 22.1561 17.3469 22.4493C17.0927 22.5862 16.8093 22.6546 16.5356 22.6546ZM7.73829 3.94569C5.2164 3.94569 3.58401 5.57808 3.58401 8.09997V13.9648C3.58401 16.4867 5.2164 18.1191 7.73829 18.1191H11.6482C11.7948 18.1191 11.9317 18.1582 12.0588 18.2462L16.4085 21.1395C16.516 21.208 16.6138 21.1787 16.6627 21.1493C16.7115 21.12 16.7897 21.0613 16.7897 20.9343V18.8522C16.7897 18.4515 17.1221 18.1191 17.5229 18.1191C20.0447 18.1191 21.6771 16.4867 21.6771 13.9648V8.09997C21.6771 5.57808 20.0447 3.94569 17.5229 3.94569H7.73829Z"
-                                                fill="#292D32" />
-                                        </svg>
-
-                                        <h2 class="font-normal text-sm" style="color:#292D32;">
-                                            {{ DB::table('comments')->join('recipes', 'recipes.id', '=', 'comments.commentable_id')->where('recipes.id', $recipes->id)->count() }}
-                                        </h2>
                                     </div>
                                 </div>
 
@@ -477,11 +446,11 @@
                                 <div class="border-b w-10/12 text-white flex justify-between">
                                     <form method="post" action="{{ route('comment.add') }}">
                                         @csrf
+                                        <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
-                                            placeholder="Add a Comment">
-                                        <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            placeholder="Add a Comment" >
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="text-white"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M9.00004 17.0399C6.99754 17.0399 4.98754 16.3199 3.46504 14.8724C1.86754 13.3574 0.967544 11.3174 0.937544 9.12738C0.907544 6.92988 1.74754 4.86738 3.30004 3.31488C6.44254 0.172383 11.5575 0.172383 14.7 3.31488C16.2525 4.86738 17.0925 6.92988 17.0625 9.12738C17.0325 11.3249 16.1325 13.3649 14.535 14.8724C13.0125 16.3199 11.0025 17.0399 9.00004 17.0399ZM9.00004 2.08492C7.22254 2.08492 5.44504 2.75988 4.09504 4.10988C2.76004 5.44488 2.04004 7.22241 2.06254 9.11241C2.08504 11.0024 2.85754 12.7574 4.23754 14.0549C6.86254 16.5449 11.1375 16.5374 13.7625 14.0549C15.135 12.7574 15.9075 10.9949 15.9375 9.11241C15.9675 7.22991 15.24 5.44488 13.905 4.10988C12.555 2.75988 10.7775 2.08492 9.00004 2.08492Z"
@@ -495,8 +464,8 @@
 
                                 </div>
                                 <input type="submit" class="flex justify-center items-center px-4 py-2 rounded-md"
-                                    style="background-color:#202020;color: #FAFAFA;" value="Comment"/>
-                            </form>
+                                    style="background-color:#202020;color: #FAFAFA;" value="Comment" />
+                                </form>
                             </div>
 
                         </div>
