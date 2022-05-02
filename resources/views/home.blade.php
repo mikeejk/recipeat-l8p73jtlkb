@@ -56,28 +56,9 @@
             <img src="images\explore_header_logo.png" alt="logo" class="">
         </div>
 
-        <!-- Search Bar -->
-        <div class="pt-2 w-1/3 text-gray-600">
-            <div class=" w-full rounded-lg flex" style="background-color:
-            rgba(37, 37, 37, 1)">
-                <button type="submit" class=" right-0 top-0 pl-4 ">
-                    <svg class="text-gray-700 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                        viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                        xml:space="preserve" width="512px" height="512px">
-                        <path
-                            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                    </svg>
-                </button>
-                <input class="h-10 px-5 w-96 rounded-lg text-sm focus:outline-none" style="background-color:
-                rgba(37, 37, 37, 1)" type="search" name="search" placeholder="Search for recipes, chefs and more">
+        @include('searchBar')
 
-                <img src="images\explore_search_filter.png" class="my-2 mx-2 flex justify-end" />
-            </div>
-
-        </div>
-
-        <div class="flex space-x-2 items-center justify-center">
+        <a href="/HomePage" class="flex space-x-2 items-center justify-center">
             <div class="flex flex-col items-center">
                 <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -92,9 +73,13 @@
             </div>
 
             <h1 class="text-white font-semibold">Home</h1>
+
+
         </div>
 
         <div class="flex space-x-2 items-center">
+            <a href="/exploreRecipe" class="flex" >
+        <a href="/exploreRecipe" class="flex space-x-2 items-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M9.24789 14.3999C9.23989 14.3999 9.23989 14.3999 9.23189 14.3999C8.39989 14.3919 7.69589 13.8719 7.44789 13.0799L5.88789 8.05588C5.67989 7.37588 5.85589 6.64788 6.35989 6.15188C6.85589 5.65588 7.57589 5.47986 8.24789 5.68786L13.2799 7.24787C14.0799 7.49587 14.5999 8.19988 14.6079 9.03188C14.6159 9.86388 14.1119 10.5679 13.3199 10.8319L11.9439 11.2959C11.7359 11.3679 11.5839 11.5199 11.5119 11.7199L11.0399 13.1039C10.7759 13.8959 10.0719 14.3999 9.24789 14.3999ZM7.67189 6.79988C7.43189 6.79988 7.27189 6.92788 7.19989 6.99988C7.01589 7.18388 6.95189 7.44787 7.03189 7.69587L8.5919 12.7199C8.7279 13.1599 9.1199 13.1999 9.2399 13.1999C9.3359 13.1919 9.74389 13.1679 9.88789 12.7279L10.3599 11.3439C10.5439 10.7919 10.9919 10.3439 11.5439 10.1599L12.9199 9.69587C12.9199 9.69587 12.9199 9.69587 12.9279 9.69587C13.3679 9.55187 13.3999 9.15987 13.3999 9.04787C13.3999 8.92787 13.3599 8.53588 12.9199 8.39988L7.88789 6.83987C7.80789 6.80787 7.73589 6.79988 7.67189 6.79988Z"
@@ -104,7 +89,7 @@
                     fill="#FAFAFA" />
             </svg>
             <h1 class="text-white">Explore</h1>
-        </div>
+        </a>
 
         <div class="flex space-x-2 items-center">
             <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -269,7 +254,7 @@
                     <h1 class="text-white font-semibold">Diet Preferences </h1>
                 </div>
                 <div class="flex justify-between items-center mt-2">
-                        <h1 class="text-white ">{{ Auth::user()->diets }}</h1>
+                    <h1 class="text-white ">{{ Auth::user()->diets }}</h1>
 
                     <div class="flex justify-between space-x-2">
                         <h1 class="text-gray-500 text-xs">Private</h1>
@@ -324,7 +309,7 @@
                 </button>
             </div>
 
-            <main class="py-4">
+            <main class="py-4 overflow-y-scroll h-screen">
                 @if (count($recipe) > 0)
                     @foreach ($recipe as $recipes)
                         <div class="flex space-x-4 items-center">
@@ -406,8 +391,17 @@
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
+                                 
 
-                                    <h1 class="text-xs text-white px-2">{{ count($recipes->Recipe_Ingredient) }}
+
+
+
+
+
+
+
+
+                                    <h1 class="text-xs text-white px-2">0
                                         Ingredients</h1>
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
@@ -432,7 +426,7 @@
                                                     d="M16.5356 22.6546C16.2032 22.6546 15.8709 22.5569 15.5874 22.3712L11.4234 19.5951H7.73829C4.37577 19.5951 2.1178 17.3371 2.1178 13.9746V8.10975C2.1178 4.74723 4.37577 2.48926 7.73829 2.48926H17.5131C20.8756 2.48926 23.1336 4.74723 23.1336 8.10975V13.9746C23.1336 17.083 21.1982 19.253 18.2462 19.556V20.944C18.2462 21.5794 17.904 22.1561 17.3469 22.4493C17.0927 22.5862 16.8093 22.6546 16.5356 22.6546ZM7.73829 3.94569C5.2164 3.94569 3.58401 5.57808 3.58401 8.09997V13.9648C3.58401 16.4867 5.2164 18.1191 7.73829 18.1191H11.6482C11.7948 18.1191 11.9317 18.1582 12.0588 18.2462L16.4085 21.1395C16.516 21.208 16.6138 21.1787 16.6627 21.1493C16.7115 21.12 16.7897 21.0613 16.7897 20.9343V18.8522C16.7897 18.4515 17.1221 18.1191 17.5229 18.1191C20.0447 18.1191 21.6771 16.4867 21.6771 13.9648V8.09997C21.6771 5.57808 20.0447 3.94569 17.5229 3.94569H7.73829Z"
                                                     fill="#292D32" />
                                             </svg>
-        
+
                                             <h2 class="font-normal text-sm" style="color:#292D32;">
                                                 {{ DB::table('comments')->join('recipes', 'recipes.id', '=', 'comments.commentable_id')->where('recipes.id', $recipes->id)->count() }}
                                             </h2>
@@ -481,25 +475,28 @@
 
                             <div class="flex justify-between items-center py-2 space-x-2">
                                 <div class="border-b w-10/12 text-white flex justify-between">
-                                    <input type="text" name=""
-                                        class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
-                                        placeholder="Add a Comment">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.00004 17.0399C6.99754 17.0399 4.98754 16.3199 3.46504 14.8724C1.86754 13.3574 0.967544 11.3174 0.937544 9.12738C0.907544 6.92988 1.74754 4.86738 3.30004 3.31488C6.44254 0.172383 11.5575 0.172383 14.7 3.31488C16.2525 4.86738 17.0925 6.92988 17.0625 9.12738C17.0325 11.3249 16.1325 13.3649 14.535 14.8724C13.0125 16.3199 11.0025 17.0399 9.00004 17.0399ZM9.00004 2.08492C7.22254 2.08492 5.44504 2.75988 4.09504 4.10988C2.76004 5.44488 2.04004 7.22241 2.06254 9.11241C2.08504 11.0024 2.85754 12.7574 4.23754 14.0549C6.86254 16.5449 11.1375 16.5374 13.7625 14.0549C15.135 12.7574 15.9075 10.9949 15.9375 9.11241C15.9675 7.22991 15.24 5.44488 13.905 4.10988C12.555 2.75988 10.7775 2.08492 9.00004 2.08492Z"
-                                            fill="#292A2C" />
-                                        <path
-                                            d="M8.99982 13.7399C7.81482 13.7399 6.63731 13.3124 5.73731 12.4649C5.51231 12.2474 5.50481 11.8949 5.71481 11.6699C5.93231 11.4449 6.28481 11.4374 6.50981 11.6474C7.88231 12.9449 10.1173 12.9449 11.4898 11.6474C11.7148 11.4374 12.0748 11.4449 12.2848 11.6699C12.4948 11.8949 12.4873 12.2549 12.2623 12.4649C11.3623 13.3124 10.1848 13.7399 8.99982 13.7399Z"
-                                            fill="#292A2C" />
-                                        <circle cx="6" cy="6.75" r="0.75" fill="#292A2C" />
-                                        <circle cx="12" cy="6.75" r="0.75" fill="#292A2C" />
-                                    </svg>
-                                </div>
-                                <button class="flex justify-center items-center px-4 py-2 rounded-md"
-                                    style="background-color:#202020;color: #FAFAFA;">Comment
-                                </button>
+                                    <form method="post" action="{{ route('comment.add') }}">
+                                        @csrf
+                                        <input type="text" name="comment"
+                                            class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
+                                            placeholder="Add a Comment">
+                                        <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.00004 17.0399C6.99754 17.0399 4.98754 16.3199 3.46504 14.8724C1.86754 13.3574 0.967544 11.3174 0.937544 9.12738C0.907544 6.92988 1.74754 4.86738 3.30004 3.31488C6.44254 0.172383 11.5575 0.172383 14.7 3.31488C16.2525 4.86738 17.0925 6.92988 17.0625 9.12738C17.0325 11.3249 16.1325 13.3649 14.535 14.8724C13.0125 16.3199 11.0025 17.0399 9.00004 17.0399ZM9.00004 2.08492C7.22254 2.08492 5.44504 2.75988 4.09504 4.10988C2.76004 5.44488 2.04004 7.22241 2.06254 9.11241C2.08504 11.0024 2.85754 12.7574 4.23754 14.0549C6.86254 16.5449 11.1375 16.5374 13.7625 14.0549C15.135 12.7574 15.9075 10.9949 15.9375 9.11241C15.9675 7.22991 15.24 5.44488 13.905 4.10988C12.555 2.75988 10.7775 2.08492 9.00004 2.08492Z"
+                                                fill="#292A2C" />
+                                            <path
+                                                d="M8.99982 13.7399C7.81482 13.7399 6.63731 13.3124 5.73731 12.4649C5.51231 12.2474 5.50481 11.8949 5.71481 11.6699C5.93231 11.4449 6.28481 11.4374 6.50981 11.6474C7.88231 12.9449 10.1173 12.9449 11.4898 11.6474C11.7148 11.4374 12.0748 11.4449 12.2848 11.6699C12.4948 11.8949 12.4873 12.2549 12.2623 12.4649C11.3623 13.3124 10.1848 13.7399 8.99982 13.7399Z"
+                                                fill="#292A2C" />
+                                            <circle cx="6" cy="6.75" r="0.75" fill="#292A2C" />
+                                            <circle cx="12" cy="6.75" r="0.75" fill="#292A2C" />
+                                        </svg>
 
+                                </div>
+                                <input type="submit" class="flex justify-center items-center px-4 py-2 rounded-md"
+                                    style="background-color:#202020;color: #FAFAFA;" value="Comment"/>
+                            </form>
                             </div>
 
                         </div>
@@ -507,9 +504,6 @@
                 @else
                     <h1 class="text-white">No recipes Found</h1>
                 @endif
-
-
-
             </main>
 
         </section>
