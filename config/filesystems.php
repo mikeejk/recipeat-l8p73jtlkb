@@ -44,12 +44,12 @@ return [
         // ],
 
        // Live
-//         'public' => [
-//             'driver' => 'local',
-//             'root' => storage_path('app/public'),
-//             'url' =>'\storage\app\public',
-//             'visibility' => 'public',
-//         ],
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' =>'\storage\app\public',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',
