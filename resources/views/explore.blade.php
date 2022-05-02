@@ -190,7 +190,9 @@
 
                         </div>
 
-                        <div class="py-2">
+                        <div class="py-2 relative overflow-hidden">
+                            <div class="absolute flex w-full items-center justify-end rounded-md inset-x-0 text-white text-center leading-4">
+                                <h1 class="bg-lime-50 py-1.5 px-2 rounded-md mt-1 text-xs font-semibold" style="background-color: #84cc16 ">{{$recipes->category->category}}</h1></div>
                             <img class="h-56 w-full rounded-md" src="{{ $recipes->getFirstMediaUrl('cover', 'thumb') }}" alt="image">
                         </div>
 
