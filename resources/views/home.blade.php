@@ -65,20 +65,14 @@
                         d="M19.86 6.37009L12.93 0.830093C11.86 -0.0299066 10.13 -0.0299066 9.07002 0.820093L2.14002 6.37009C1.36002 6.99009 0.860021 8.30009 1.03002 9.28009L2.36002 17.2401C2.60002 18.6601 3.96002 19.8101 5.40002 19.8101H16.6C18.03 19.8101 19.4 18.6501 19.64 17.2401L20.97 9.28009C21.13 8.30009 20.63 6.99009 19.86 6.37009ZM11 13.5001C9.62002 13.5001 8.50002 12.3801 8.50002 11.0001C8.50002 9.62009 9.62002 8.50009 11 8.50009C12.38 8.50009 13.5 9.62009 13.5 11.0001C13.5 12.3801 12.38 13.5001 11 13.5001Z"
                         fill="white" />
                 </svg>
-
                 <svg class="mt-1" width="4" height="4" viewBox="0 0 4 4" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <circle cx="2" cy="2" r="2" fill="white" />
                 </svg>
             </div>
-
             <h1 class="text-white font-semibold">Home</h1>
+        </a>
 
-
-        </div>
-
-        <div class="flex space-x-2 items-center">
-            <a href="/exploreRecipe" class="flex" >
         <a href="/exploreRecipe" class="flex space-x-2 items-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -90,6 +84,7 @@
             </svg>
             <h1 class="text-white">Explore</h1>
         </a>
+
 
         <div class="flex space-x-2 items-center">
             <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -316,8 +311,8 @@
                             <div class="rounded-full h-14 w-14" alt="user">
                                 @if ($recipes->user->hasrole('Chef'))
                                     @if (!empty(
-    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                        DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                    ))
                                         <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
                                     @else
@@ -326,8 +321,8 @@
                                     @endif
                                 @else
                                     @if (!empty(
-    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                        DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                    ))
                                         <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
                                     @else
@@ -391,17 +386,8 @@
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
-                                 
-
-
-
-
-
-
-
-
-
-                                    <h1 class="text-xs text-white px-2">0
+                                    <h1 class="text-xs text-white px-2">
+                                        {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
                                         Ingredients</h1>
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
@@ -495,8 +481,8 @@
 
                                 </div>
                                 <input type="submit" class="flex justify-center items-center px-4 py-2 rounded-md"
-                                    style="background-color:#202020;color: #FAFAFA;" value="Comment"/>
-                            </form>
+                                    style="background-color:#202020;color: #FAFAFA;" value="Comment" />
+                                </form>
                             </div>
 
                         </div>
