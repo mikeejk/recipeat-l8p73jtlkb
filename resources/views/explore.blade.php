@@ -192,7 +192,7 @@
                         </div>
 
                         <div class="py-2">
-                            <img class="h-56 rounded-md" src="{{ $recipes->getFirstMediaUrl('cover') }}" alt="image">
+                            <img class="h-56 w-full rounded-md" src="{{ $recipes->getFirstMediaUrl('cover') }}" alt="image">
                         </div>
 
                         <div class="flex justify-evenly py-2">
@@ -212,8 +212,7 @@
                                 <h1 class="text-xs text-white">{{ $recipes->cooking_time }} mins</h1>
                             </div>
                             <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
-
-                                <h1 class="text-xs text-white">{{ count($recipes->Recipe_Ingredient) }} Ingredients
+                                <h1 class="text-xs text-white"> {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }} Ingredients
                                 </h1>
                             </div>
                             <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">

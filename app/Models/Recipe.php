@@ -47,7 +47,6 @@ class Recipe extends Model implements Likeable,HasMedia
         'status',
         'creator',
         'cover'
-
     ];
 
     // Function - category
