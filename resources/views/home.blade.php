@@ -384,22 +384,8 @@
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-                                    <h1 class="text-xs text-white px-2">0
-=======
                                     <h1 class="text-xs text-white px-2">
                                         {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
->>>>>>> 9180d061a8895d5b800b00cf164cbfdffdf63382
                                         Ingredients</h1>
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
