@@ -241,7 +241,7 @@
                                                 <tr>
                                                     @foreach($recipe_steps as $step)
                                                     <tr>
-                                                         <td><input type="textarea" name="steps[]" class="form-control" value={{ $step->steps}}></td>
+                                                         <td><input type="textarea" name="steps[]" class="form-control" value="{{ $step->steps}}"></td>
                                                          {{-- <td class="col-lg-1"><input type="button" class="btnDel btn btn-sm btn-danger" value="Delete"></td> --}}
 
                                                     </tr>
@@ -292,9 +292,9 @@
                                         <tbody class="border border-light">
                                             @foreach($recipe_ingredients as $ingredient)
                                             <tr>
-                                                 <td><input type="text" name="ingredient_id"class="form-control" value={{ $ingredient->ingredient->ingredient }}></td>
-                                                 <td><input type="text" name="quantity"class="form-control" value={{ $ingredient->quantity }}></td>
-                                                 <td><input type="text" name="measurement"class="form-control" value={{ $ingredient->measurement->measurement }}></td>
+                                                 <td><input type="text" name="ingredient_id" class="form-control" value="{{ $ingredient->ingredient->ingredient }}"></td>
+                                                 <td><input type="text" name="quantity" class="form-control" value="{{ $ingredient->quantity }}"></td>
+                                                 <td><input type="text" name="measurement" class="form-control" value="{{ $ingredient->measurement->measurement }}"></td>
                                                  {{-- <td class="col-lg-1"><input type="button" class="ibtnDel btn btn-sm btn-danger" value="Delete"></td> --}}
                                                 </tr>
                                             @endforeach
@@ -348,7 +348,8 @@
                                     <!-- Form-Image::start -->
                                     <div class="col-lg-8">
                                         <label>Image</label>
-                                        <input type="file" name="cover" class="form-control" value="{{ $recipe->cover }}">
+                                        <input type="file" name="cover" class="form-control" value="">
+                                        <img class="col-lg-4" src="{{$recipe->getFirstMediaUrl('cover')}}" alt="recipe" />
                                         <span class="form-text text-muted">Add some Image of your recipe</span>
                                     </div>
                                     <!-- Form-Image::end -->
@@ -374,17 +375,17 @@
                                         <label>Sweet - <span class="text-success">{{ $recipe->bud_sweet }}</span></label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_sweet" value="Low" />
+                                                <input type="radio" name="bud_sweet" value="Low" {{ ($recipe->bud_sweet=="Low")? "checked": ""}}/>
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_sweet" value="Medium" />
+                                                <input type="radio" name="bud_sweet" value="Medium" {{ ($recipe->bud_sweet=="Medium")? "checked": ""}}/>
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_sweet" value="High" />
+                                                <input type="radio" name="bud_sweet" value="High" {{ ($recipe->bud_sweet=="High")? "checked": ""}}/>
                                                 <span></span>
                                                 High
                                             </label>
@@ -399,17 +400,17 @@
                                         <label>Sour - <span class="text-success">{{ $recipe->bud_sour }}</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_sour" value="Low" />
+                                                <input type="radio" name="bud_sour" value="Low" {{ ($recipe->bud_sour=="Low")? "checked": ""}}/>
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_sour" value="Medium" />
+                                                <input type="radio" name="bud_sour" value="Medium" {{ ($recipe->bud_sour=="Medium")? "checked": ""}}/>
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_sour" value="High" />
+                                                <input type="radio" name="bud_sour" value="High" {{ ($recipe->bud_sour=="High")? "checked": ""}}/>
                                                 <span></span>
                                                 High
                                             </label>
@@ -431,17 +432,17 @@
                                         <label>Salty - <span class="text-success">{{ $recipe->bud_salt }}</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_salt" value="Low" />
+                                                <input type="radio" name="bud_salt" value="Low" {{ ($recipe->bud_salt=="Low")? "checked": ""}}/>
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_salt" value="Medium" />
+                                                <input type="radio" name="bud_salt" value="Medium" {{ ($recipe->bud_salt=="Medium")? "checked": ""}}/>
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_salt" value="High" />
+                                                <input type="radio" name="bud_salt" value="High" {{ ($recipe->bud_salt=="High")? "checked": ""}}/>
                                                 <span></span>
                                                 High
                                             </label>
@@ -456,17 +457,17 @@
                                         <label>Pungent - <span class="text-success">{{ $recipe->bud_spicy }}</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_spicy" value="Low" />
+                                                <input type="radio" name="bud_spicy" value="Low" {{ ($recipe->bud_spicy=="Low")? "checked": ""}}/>
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_spicy" value="Medium" />
+                                                <input type="radio" name="bud_spicy" value="Medium" {{ ($recipe->bud_spicy=="Medium")? "checked": ""}}/>
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_spicy" value="High" />
+                                                <input type="radio" name="bud_spicy" value="High" {{ ($recipe->bud_spicy=="High")? "checked": ""}}/>
                                                 <span></span>
                                                 High
                                             </label>
@@ -488,17 +489,17 @@
                                         <label>Bitter - <span class="text-success">{{ $recipe->bud_bitter }}</label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_bitter" value="Low" />
+                                                <input type="radio" name="bud_bitter" value="Low" {{ ($recipe->bud_bitter=="Low")? "checked": ""}}/>
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_bitter" value="Medium" />
+                                                <input type="radio" name="bud_bitter" value="Medium" {{ ($recipe->bud_bitter=="Medium")? "checked": ""}}/>
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_bitter" value="High" />
+                                                <input type="radio" name="bud_bitter" value="High" {{ ($recipe->bud_bitter=="High")? "checked": ""}}/>
                                                 <span></span>
                                                 High
                                             </label>
@@ -513,17 +514,17 @@
                                         <label>Astringent - <span class="text-success">{{ $recipe->bud_astringent }}</span></label>
                                         <div class="radio-inline">
                                             <label class="radio radio-outline radio-success">
-                                                <input type="radio" name="bud_astringent" value="Low" />
+                                                <input type="radio" name="bud_astringent" value="Low" {{ ($recipe->bud_astringent=="Low")? "checked": ""}}/>
                                                 <span></span>
                                                 Low
                                             </label>
                                             <label class="radio radio-outline radio-warning">
-                                                <input type="radio" name="bud_astringent" value="medium" />
+                                                <input type="radio" name="bud_astringent" value="medium" {{ ($recipe->bud_astringent=="medium")? "checked": ""}}/>
                                                 <span></span>
                                                 Medium
                                             </label>
                                             <label class="radio radio-outline radio-danger">
-                                                <input type="radio" name="bud_astringent" value="High" />
+                                                <input type="radio" name="bud_astringent" value="High" {{ ($recipe->bud_astringent=="High")? "checked": ""}}/>
                                                 <span></span>
                                                 High
                                             </label>
@@ -579,7 +580,7 @@
                 var cols = "";
 
                 cols +=
-                    '<td class="col-lg-4"><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient[]' +
+                    '<td class="col-lg-4"><select class = "custom-select form-control @error('ingredient') is-invalid @enderror" name = "ingredient_id[]' +
                     counter +
                     '" > @foreach ($ingredients as $ingredient) <option value="{{ $ingredient->id }} "> {{ $ingredient->ingredient }}</option>@endforeach </select> <span class = "form-text text-muted" > Add the Ingredient for this recipe </span></td > '
 

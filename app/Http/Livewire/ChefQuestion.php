@@ -153,6 +153,31 @@ class ChefQuestion extends Component
 
     }
 
+
+    public function chefProfileShow(Request $request)
+    {
+        $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
+        $role = auth()->user()->hasRole('Chef');
+        // if($role){
+        $followers = Follower::where('leader_id', auth()->user()->id)->get()->count();
+        $following = Follower::where('follower_id', auth()->user()->id)->get()->count();
+        $recipes = Recipe::where('user_id', auth()->user()->id)->get();
+        // $feednotifications = auth()->user()->notifications->where('type', 'App\Notifications\FeedRecipeNotification')->first();
+        $user_id = auth()->user()->id;
+        $feednote = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
+            ->where('notifiable_id', $user_id)->count();
+        //  $feednotifications =DB::table('notifications')->where('type','App\Notifications\FeedRecipeNotification' )->where('notifiable_id',$user_id)->get();
+        $notification = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
+            ->where('notifiable_id', $user_id)->count();
+        // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
+        return view('screens.user.profile.chef_profile', compact('chef_questions', 'followers', 'following', 'recipes', 'feednote', 'notification'));
+        //  dd($chef_questions);
+        // }
+
+    }
+
+
+
     // Function - edit
     public function edit(Chef_question $chef_questions)
     {
