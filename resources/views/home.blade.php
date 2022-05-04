@@ -131,16 +131,18 @@
                     <div class="flex justify-center items-center py-2 rounded-full">
                         @hasrole('Chef')
                             @if ($chef_questions->image == '')
-                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png" />
                             @else
-                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $chef_questions->image) }}"/>
+                                <img class="rounded-full h-24 w-24"
+                                    src="{{ asset('/storage/public/' . $chef_questions->image) }}" />
                             @endif
                         @endhasrole
                         @hasrole('Home-Chef|User')
                             @if ($question->image == '')
-                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png" />
                             @else
-                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $question->image) }}"/>
+                                <img class="rounded-full h-24 w-24"
+                                    src="{{ asset('/storage/public/' . $question->image) }}" />
                             @endif
                         @endhasrole
                     </div>
@@ -390,7 +392,21 @@
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
-                                    <h1 class=" text-xs text-white px-2">For Sweet tastebuds</h1>
+                                    <h1 class=" text-xs text-white px-2">
+                                        @if ($recipes->bud_sweet == 'High')
+                                            For Sweet tastebuds
+                                        @elseif($recipes->bud_sour == 'High')
+                                            For Sour tastebuds
+                                        @elseif($recipes->bud_salt == 'High')
+                                            For salty tastebuds
+                                        @elseif($recipes->bud_spicy == 'High')
+                                            For Spicy tastebuds
+                                        @elseif($recipes->bud_astringent == 'High')
+                                            For astringent tastebuds
+                                        @else($recipes->bud_bitter =="High")
+                                            For bitter tastebuds
+                                        @endif
+                                    </h1>
                                 </div>
                             </div>
 
@@ -417,8 +433,10 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <form action="/searchResults/{recipes->id}" method="post">
+                                    @csrf
                                 <div class="flex items-center space-x-1">
+                                    <button type="submit">
                                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -431,8 +449,18 @@
                                             d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
                                             fill="#292D32" />
                                     </svg>
-                                    <h2 class="font-normal text-sm" style="color:rgba(41, 45, 50, 1);">Add to
-                                        Collection</h2>
+                                </button>
+                                    <h2 class="font-normal text-sm" style="color:rgba(41, 45, 50, 1);">
+                                        <input type="hidden" name="recipe_id" id="recipe_id"
+                                        value="{{ $recipes->id }}" />
+                                    <select name="pinboard_id" id="pinboard_id"
+                                        value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} ">
+                                        <option value="1">Add To Collection</option>
+                                        <option value="1">MyFavourite</option>
+                                        <option value="2">FamilyFav</option>
+                                        <option value="3">FavDesert</option>
+                                        <option value="4">FavDinner</option>
+                                    </select> </h2>
                                 </div>
                             </div>
 
@@ -449,19 +477,7 @@
                                         <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
-                                            placeholder="Add a Comment" >
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="text-white"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00004 17.0399C6.99754 17.0399 4.98754 16.3199 3.46504 14.8724C1.86754 13.3574 0.967544 11.3174 0.937544 9.12738C0.907544 6.92988 1.74754 4.86738 3.30004 3.31488C6.44254 0.172383 11.5575 0.172383 14.7 3.31488C16.2525 4.86738 17.0925 6.92988 17.0625 9.12738C17.0325 11.3249 16.1325 13.3649 14.535 14.8724C13.0125 16.3199 11.0025 17.0399 9.00004 17.0399ZM9.00004 2.08492C7.22254 2.08492 5.44504 2.75988 4.09504 4.10988C2.76004 5.44488 2.04004 7.22241 2.06254 9.11241C2.08504 11.0024 2.85754 12.7574 4.23754 14.0549C6.86254 16.5449 11.1375 16.5374 13.7625 14.0549C15.135 12.7574 15.9075 10.9949 15.9375 9.11241C15.9675 7.22991 15.24 5.44488 13.905 4.10988C12.555 2.75988 10.7775 2.08492 9.00004 2.08492Z"
-                                                fill="#292A2C" />
-                                            <path
-                                                d="M8.99982 13.7399C7.81482 13.7399 6.63731 13.3124 5.73731 12.4649C5.51231 12.2474 5.50481 11.8949 5.71481 11.6699C5.93231 11.4449 6.28481 11.4374 6.50981 11.6474C7.88231 12.9449 10.1173 12.9449 11.4898 11.6474C11.7148 11.4374 12.0748 11.4449 12.2848 11.6699C12.4948 11.8949 12.4873 12.2549 12.2623 12.4649C11.3623 13.3124 10.1848 13.7399 8.99982 13.7399Z"
-                                                fill="#292A2C" />
-                                            <circle cx="6" cy="6.75" r="0.75" fill="#292A2C" />
-                                            <circle cx="12" cy="6.75" r="0.75" fill="#292A2C" />
-                                        </svg>
-
+                                            placeholder="Add a Comment" /><i class="fa-regular fa-face-smile"></i>
                                 </div>
                                 <input type="submit" class="flex justify-center items-center px-4 py-2 rounded-md"
                                     style="background-color:#202020;color: #FAFAFA;" value="Comment" />

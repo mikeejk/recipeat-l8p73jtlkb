@@ -365,28 +365,6 @@ use App\Notifications\NewRecipePost;
             })->toJson();
         return Datatables::of(Recipe::query())->make(true);
     }
-
-    // // Recipe result
-    //  public function search_result(Request $request)
-    // {
-    //     $term  = $request->get('term');
-
-    //     if ($term) {
-    //         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
-
-    //             ->where('user_id', '!=', auth()->id())
-    //             ->where('status', 'Approved')
-    //             ->orderBy("recipe_name", "asc")->Paginate(4);
-    //         $recipe->appends(array(
-    //             'term' => $request->get('term'),
-    //         ));
-
-    //         return view('searchResults', compact('recipe'));
-    //     }
-    //     dd();
-    //     return view('searchResults',compact('recipe'));
-
-    // }
     //  Recipe Search
     public function search(Request $request)
     {
@@ -405,16 +383,21 @@ use App\Notifications\NewRecipePost;
         }
         return view('welcome');
     }
-
     //common search
     public function searchResult(Request $request)
-    { $collections=Pinboard::all('id','pin_name');
+    {
+        // easyToCook();
+        // function easyToCook()
+        // {
+        //     $preparing_time = Recipe::pluck('preparing_time')->min();
+        // $cooking_time = Recipe::pluck('cooking_time')->min();
+        // $recipe = Recipe::where('preparing_time', $preparing_time)->where('cooking_time', $cooking_time)->get();
+        // return view('searchResults', compact('recipe'));
+        // }
         $term  = $request->get('term');
         $t = $term;
-
         $creator = $request->get('creator');
         $category_id = $request->get('category');
-        // dd($term);
         if ($term) {
             $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
                 ->where('creator', 'LIKE', '%' . $creator . '%')
@@ -423,17 +406,18 @@ use App\Notifications\NewRecipePost;
                 ->where('status', 'Approved')
                 // ->where('status','!=','Denide')
                 // ->where('creator','!=','User')
-                ->orderBy("recipe_name", "asc")->Paginate(4);
+                ->orderBy("recipe_name", "asc")->paginate(4);
             $recipe->appends(array(
                 'term' => $request->get('term'),
             ));
-            // dd($term);
-            return view('searchResults', compact('recipe', 't','collections'));
-        }
-        return view('/searchResults', compact('t','collections'));
-        // return view('welcome', compact('recipe'));
-    }
 
+            // return view('searchResults', compact('recipe', 't'));
+        }
+        $pinrecipes = Pin_recipe::all();
+        $collections = Pinboard::all('id', 'pin_name');
+        // dd($pinrecipes);
+        return view('/searchResults', compact('recipe', 't', 'collections', 'pinrecipes'));
+    }
     //  Recipe Search for non login users
     public function nonLoginUserSearch(Request $request)
 
@@ -502,21 +486,14 @@ use App\Notifications\NewRecipePost;
     {
         $recipe_count = Recipe::where('status', 'Approved')->count();
         $recipe = Recipe::all();
-        // $term  = $request->get('term');
-        // $cuisine_id = $request->get('cuisine');
-        // $category_id = $request->get('category');
-        // if ($term) {
-        //     $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
-        //         ->where('cuisine_id', 'LIKE', '%' . $cuisine_id . '%')
-        //         ->where('user_id', '!=', auth()->id())
-        //         ->where('status', 'Approved')
-        //         ->orderBy("recipe_name", "asc")->Paginate(4);
-        //     $recipe->appends(array(
-        //         'term' => $request->get('term'),
-        //     ));
-        //     return view('mainDashboard',compact('recipe'));
-        // }
-        // dd($recipe_count);
         return view('mainDashboard', compact('recipe_count', 'recipe'));
     }
+    // public function easyToCook()
+    // {
+    //     $preparing_time = Recipe::pluck('preparing_time')->min();
+    //     $cooking_time = Recipe::pluck('cooking_time')->min();
+    //     $recipe = Recipe::where('preparing_time', $preparing_time)->where('cooking_time', $cooking_time)->get();
+    //     // dd($recipe);
+    //      return view('searchResults', compact('recipe'));
+    // }
 }

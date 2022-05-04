@@ -15,7 +15,6 @@ class Pin_recipe extends Model
       'recipe_id',
      'pinboard_id',
      
-
     ];
     public function user()
     {
@@ -25,11 +24,12 @@ class Pin_recipe extends Model
     public function recipe()
     {
         // Return (Recipe model has many data refer from the the Recipe model)
-        return $this->hasMany(Recipe::class, 'recipe_id');
+        return $this->belongsTo(Recipe::class, 'recipe_id');
     }
     public function pinboard()
     {
         // Return (User model has many data refer from the the User model)
         return $this->belongsTo(Pinboard::class, 'pinboard_id');
     }
+   
 }

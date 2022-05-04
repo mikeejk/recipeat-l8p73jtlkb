@@ -28,5 +28,11 @@ class Pinboard extends Model
         // Return (user model has many data refer from the the user model)
         return $this->hasMany(Pin_recipe::class, 'pinboard_id');
     }
+    public function recipe()
+    {
+        // Return (user model has many data refer from the the user model)
+        return $this->hasMany(Recipe::class, 'pinboard_id');
+    }
+
 
 }
