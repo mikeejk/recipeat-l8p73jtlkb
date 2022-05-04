@@ -131,16 +131,18 @@
                     <div class="flex justify-center items-center py-2 rounded-full">
                         @hasrole('Chef')
                             @if ($chef_questions->image == '')
-                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png" />
                             @else
-                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $chef_questions->image) }}"/>
+                                <img class="rounded-full h-24 w-24"
+                                    src="{{ asset('/storage/public/' . $chef_questions->image) }}" />
                             @endif
                         @endhasrole
                         @hasrole('Home-Chef|User')
                             @if ($question->image == '')
-                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png"/>
+                                <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png" />
                             @else
-                                <img class="rounded-full h-24 w-24" src="{{ asset('/storage/public/' . $question->image) }}"/>
+                                <img class="rounded-full h-24 w-24"
+                                    src="{{ asset('/storage/public/' . $question->image) }}" />
                             @endif
                         @endhasrole
                     </div>
@@ -449,19 +451,7 @@
                                         <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
-                                            placeholder="Add a Comment" >
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="text-white"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00004 17.0399C6.99754 17.0399 4.98754 16.3199 3.46504 14.8724C1.86754 13.3574 0.967544 11.3174 0.937544 9.12738C0.907544 6.92988 1.74754 4.86738 3.30004 3.31488C6.44254 0.172383 11.5575 0.172383 14.7 3.31488C16.2525 4.86738 17.0925 6.92988 17.0625 9.12738C17.0325 11.3249 16.1325 13.3649 14.535 14.8724C13.0125 16.3199 11.0025 17.0399 9.00004 17.0399ZM9.00004 2.08492C7.22254 2.08492 5.44504 2.75988 4.09504 4.10988C2.76004 5.44488 2.04004 7.22241 2.06254 9.11241C2.08504 11.0024 2.85754 12.7574 4.23754 14.0549C6.86254 16.5449 11.1375 16.5374 13.7625 14.0549C15.135 12.7574 15.9075 10.9949 15.9375 9.11241C15.9675 7.22991 15.24 5.44488 13.905 4.10988C12.555 2.75988 10.7775 2.08492 9.00004 2.08492Z"
-                                                fill="#292A2C" />
-                                            <path
-                                                d="M8.99982 13.7399C7.81482 13.7399 6.63731 13.3124 5.73731 12.4649C5.51231 12.2474 5.50481 11.8949 5.71481 11.6699C5.93231 11.4449 6.28481 11.4374 6.50981 11.6474C7.88231 12.9449 10.1173 12.9449 11.4898 11.6474C11.7148 11.4374 12.0748 11.4449 12.2848 11.6699C12.4948 11.8949 12.4873 12.2549 12.2623 12.4649C11.3623 13.3124 10.1848 13.7399 8.99982 13.7399Z"
-                                                fill="#292A2C" />
-                                            <circle cx="6" cy="6.75" r="0.75" fill="#292A2C" />
-                                            <circle cx="12" cy="6.75" r="0.75" fill="#292A2C" />
-                                        </svg>
-
+                                            placeholder="Add a Comment"  /><i class="fa-regular fa-face-smile"></i>
                                 </div>
                                 <input type="submit" class="flex justify-center items-center px-4 py-2 rounded-md"
                                     style="background-color:#202020;color: #FAFAFA;" value="Comment" />
