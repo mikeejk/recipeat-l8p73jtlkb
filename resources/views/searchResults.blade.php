@@ -127,7 +127,6 @@
             </div>
         </div>
     </header>
-
     <section class="flex" style="background:rgba(255, 255, 255, 0.1);">
         <div class="w-3/12 flex justify-start items-center space-x-8 py-1 px-10 font-montserrat">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,9 +144,10 @@
 
         </div>
         <div class="w-9/12  py-5">
+            <form action="/searchResults" method="post">
             <div class="flex justify-evenly">
                 <h1 class="text-white">Sort by</h1>
-                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                <button type="radio" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
                     style="background: white;">
                     <h1 class="text-gray-800">Easy to cook</h1>
                 </button>
@@ -187,6 +187,7 @@
                     <h1 class="text-white">Bitter</h1>
                 </button>
             </div>
+        </form>
         </div>
 
     </section>
@@ -205,8 +206,8 @@
                                 <div class="py-2 flex space-x-2">
                                     @if ($recipes->user->hasrole('Chef'))
                                         @if (!empty(
-    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                            DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                        ))
                                             <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                                 class="h-12 w-12 rounded-full">
                                         @else
@@ -215,8 +216,8 @@
                                         @endif
                                     @else
                                         @if (!empty(
-    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
-))
+                                            DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                        ))
                                             <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                                 class="h-12 w-12 rounded-full">
                                         @else
@@ -279,36 +280,65 @@
                                             </svg>
                                             <h1 class="text-xs text-white">{{ $recipes->cooking_time }} mins</h1>
                                         </div>
-                                        {{-- @foreach ($recipe_ingredients as $ingredient) --}}
-                                            <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                                style="background: rgba(255, 255, 255, 0.2);">
-                                                {{-- @if ($recipe->id == $ingredient->recipe_id)
-                                                    <h1 class="text-xs text-white">{{ $recipes->ingredient }}
-                                                        Ingredients</h1>
-                                                @endif --}}
-                                                 <h1 class="text-xs text-white">{{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
-                                                Ingredients</h1>
-                                            </div>
-                                        {{-- @endforeach --}}
+
                                         <div class="py-1 rounded-md flex items-center justify-center px-1 "
                                             style="background: rgba(255, 255, 255, 0.2);">
-                                            <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
+
+                                            <h1 class="text-xs text-white">
+                                                {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
+                                                Ingredients</h1>
+                                        </div>
+
+                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
+                                            style="background: rgba(255, 255, 255, 0.2);">
+                                            <h1 class=" text-xs text-white">
+                                                @if ($recipes->bud_sweet == 'High')
+                                                    For
+                                                    Sweet tastebuds
+                                                @elseif($recipes->bud_sour == 'High')
+                                                    For Sour tastebuds
+                                                @elseif($recipes->bud_salt == 'High')
+                                                    For salty tastebuds
+                                                @elseif($recipes->bud_spicy == 'High')
+                                                    For Spicy tastebuds
+                                                @elseif($recipes->bud_astringent == 'High')
+                                                    For astringent tastebuds
+                                                @else($recipes->bud_bitter =="High")
+                                                    For bitter tastebuds
+                                                @endif
+
+                                            </h1>
                                         </div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
-                                                fill="#292D32" />
-                                            <path
-                                                d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
-                                                fill="#292D32" />
-                                            <path
-                                                d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
-                                                fill="#292D32" />
-                                        </svg>
-                                    </div>
+                                    <form action="/searchResults/{recipes->id}" method="post">
+                                        @csrf
+                                        <div class=" flex items-center text-xs bg-black">
+                                            <button type="submit">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
+                                                        fill="#292D32" />
+                                                    <path "M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
+                                                        fill="#292D32" />
+                                                    <path
+                                                        d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
+                                                        fill="#292D32" />
+                                                </svg>
+                                            </button>
+                                            <input type="hidden" name="recipe_id" id="recipe_id"
+                                                value="{{ $recipes->id }}" />
+                                            <select name="pinboard_id" id="pinboard_id"
+                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} ">
+                                                <option value="1">Add To Collection</option>
+                                                <option value="1">MyFavourite</option>
+                                                <option value="2">FamilyFav</option>
+                                                <option value="3">FavDesert</option>
+                                                <option value="4">FavDinner</option>
+                                            </select>
+                                        </div>
+                                        dd();
+                                    </form>
                                 </div>
                             </div>
                         @endforeach

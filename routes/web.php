@@ -54,7 +54,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/HomePage', [HomeControlle
 // Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'searchResult']);
 //collections searchResult
-// Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'collections']);
+//  Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'easyToCook']);
 
 //Chef Profile Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/chefProfile', function(){
@@ -559,7 +559,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Index pinrecipe Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/myfavourite', [PinRecipeController::class, 'index']);
     // Store Category Tab
-    Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
+    Route::middleware(['auth:sanctum', 'verified'])->post('/searchResults/{recipe}', [PinRecipeController::class, 'store']);
 
     // cipeat Category Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_pin.data', [PinRecipeController::class, 'anyData']);

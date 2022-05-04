@@ -101,4 +101,14 @@ class Recipe extends Model implements Likeable,HasMedia
         // return (ingredient model is belongs to this recipe model)
         return $this->hasMany(Chef_question::class,'user_id');
     }
+    public function pinrecipes()
+    {
+        // return (ingredient model is belongs to this recipe model)
+        return $this->hasMany(Pin_recipe::class,'recipe_id');
+    }
+    public function pinboard()
+    {
+        // return (ingredient model is belongs to this recipe model)
+        return $this->hasMany(Pin_recipe::class,'recipe_id');
+    }
 }
