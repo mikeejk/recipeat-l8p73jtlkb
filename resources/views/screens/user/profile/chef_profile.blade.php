@@ -107,15 +107,21 @@
                 <div class="flex py-4 w-4/12 rounded-lg px-2" style="background:#141414">
                     <div class="w-11/12 px-3">
                         <div class="flex space-x-4 items-center">
-                            <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
-                                class="rounded-lg h-14 w-14" alt="user">
+
+                            @if ($chef_questions->image == '')
+                                <img alt="Pic" src="assets/media//users/blank.png" />
+                            @else
+                                <img class="rounded-lg h-14 w-14" alt="Pic"
+                                    src="{{ asset('storage/public/' . $chef_questions->image) }}" />
+                            @endif
+
                             <div>
-                                <h1 class="text-white font-semibold break-words">David Morris</h1>
-                                <h3 class="text-gray-500 text-sm break-words">@wdmorrisjr</h3>
+                                <h1 class="text-white font-semibold break-words">{{ $chef_questions->name }}</h1>
+                                <h3 class="text-gray-500 text-sm break-words">{{ Auth::user()->email }}</h3>
                             </div>
                         </div>
-                        <h1 class="text-base text-white mt-2">Senior Executive Chef,</h1>
-                        <h3 class="text-sm" style="color:#76777E">D’Italia Chain of Restaurants</h3>
+                        <h1 class="text-base text-white mt-2">{{ $chef_questions->designation }}</h1>
+                        <h3 class="text-sm" style="color:#76777E">{{ $chef_questions->company }}</h3>
                         <div class="flex items-center space-x-4 py-2">
                             <div class="py-1.5 px-2 w-28 text-xs text-center rounded-md"
                                 style="background:#202020;color:#76777E">Entrepreneur</div>
@@ -165,7 +171,7 @@
                                         fill="white" />
                                 </svg>
                                 <div class="flex space-x-2 text-white items-center">
-                                    <h1 class="text-lg font-semibold">16</h1>
+                                    <h1 class="text-lg font-semibold">{{ count($recipes) }}</h1>
                                     <div class="opacity-50 text-xs">
                                         <h2>Times Featured</h2>
                                     </div>
@@ -215,7 +221,7 @@
                                 </svg>
 
                                 <div class="flex space-x-2 text-white items-center">
-                                    <h1 class="text-lg font-semibold">4.3K</h1>
+                                    <h1 class="text-lg font-semibold">{{ $followers }}</h1>
                                     <div class="opacity-50 text-xs">
                                         <h2>Followers</h2>
                                     </div>
@@ -225,7 +231,7 @@
                         </div>
 
                         <div class="w-1/4 flex flex-col justify-center">
-                            <div class="flex items-center w-full space-x-2">
+                            <a href="/edit_portfolio" class="flex items-center w-full space-x-2">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -239,7 +245,7 @@
                                         fill="white" />
                                 </svg>
                                 <h1 class="font-semibold text-sm text-white tracking-wider">Edit Profile</h1>
-                            </div>
+                            </a>
 
                             <div class="flex items-center w-full space-x-2 mt-3">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -269,142 +275,102 @@
                     <!-- Tabs -->
                     <ul id="tabs" class="inline-flex justify-between pt-2 px-1 w-full">
                         <li class="bg-tab px-4 w-1/3 text-center font-semibold py-2 rounded-md -mb-px">
-                            <a id="default-tab" href="#first" class="text-white">Recipes</a>
+                            <a id="default-tab" href="#first" class="text-white flex justify-center items-center">Recipes <div class="h-4 w-4 ml-2 rounded-full text-white bg-red-500 text-xs flex items-center justify-center"> {{ count($recipes) }}</div></a>
                         </li>
-                        <li class="px-4 text-white w-1/3 text-center font-semibold py-2 rounded-md"><a href="#second">Posts</a></li>
-                        <li class="px-4 text-white w-1/3 text-center font-semibold py-2 rounded-md"><a href="#third">Collections</a></li>
+                        <li class="px-4 text-white w-1/3 text-center font-semibold py-2 rounded-md"><a
+                                href="#second">Posts</a></li>
+                        <li class="px-4 text-white w-1/3 text-center font-semibold py-2 rounded-md"><a
+                                href="#third">Collections</a></li>
                     </ul>
 
                     <!-- Tab Contents -->
                     <div id="tab-contents">
                         <div id="first" class=" flex">
-                            <div class="w-1/3 h-auto flex flex-col rounded-md px-2 py-2">
+                            @if (count($recipes) > 0)
+                                <div class="grid grid-cols-3 gap-4 rounded-lg py-4">
+                                    @foreach ($recipes as $recipe)
+                                        <div class="relative w-full h-full rounded-md">
+                                            <img src="{{ $recipe->getFirstMediaUrl('cover') }}"
+                                                class="w-full h-full flex object-cover rounded-md">
+                                            <div class="absolute w-full py-2.5 bottom-0 inset-x-0  px-2 rounded-md"
+                                                style="background: linear-gradient(180.2deg, rgba(45, 45, 45, 0) 25.71%, #141414 99.83%);">
+                                                <div class="flex justify-between items-center w-full">
+                                                    <h1 class="text-white text-lg font-bold flex flex-wrap">
+                                                        {{ $recipe->recipe_name }}</h1>
+                                                    <a href="/recipes/{{ $recipe->id }}/edit">
+                                                        <svg class="font-bold h-6 w-6" width="16" height="16"
+                                                            viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.99992 15.1666H5.99992C2.37992 15.1666 0.833252 13.6199 0.833252 9.99992V5.99992C0.833252 2.37992 2.37992 0.833252 5.99992 0.833252H7.33325C7.60659 0.833252 7.83325 1.05992 7.83325 1.33325C7.83325 1.60659 7.60659 1.83325 7.33325 1.83325H5.99992C2.92659 1.83325 1.83325 2.92659 1.83325 5.99992V9.99992C1.83325 13.0733 2.92659 14.1666 5.99992 14.1666H9.99992C13.0733 14.1666 14.1666 13.0733 14.1666 9.99992V8.66659C14.1666 8.39325 14.3933 8.16659 14.6666 8.16659C14.9399 8.16659 15.1666 8.39325 15.1666 8.66659V9.99992C15.1666 13.6199 13.6199 15.1666 9.99992 15.1666Z"
+                                                                fill="white" />
+                                                            <path
+                                                                d="M5.66664 11.7934C5.25997 11.7934 4.88664 11.6467 4.61331 11.38C4.28664 11.0534 4.14664 10.58 4.21997 10.08L4.50664 8.07337C4.55997 7.68671 4.81331 7.18671 5.08664 6.91337L10.34 1.66004C11.6666 0.333372 13.0133 0.333372 14.34 1.66004C15.0666 2.38671 15.3933 3.12671 15.3266 3.86671C15.2666 4.46671 14.9466 5.05337 14.34 5.65337L9.08664 10.9067C8.8133 11.18 8.3133 11.4334 7.92664 11.4867L5.91997 11.7734C5.83331 11.7934 5.74664 11.7934 5.66664 11.7934ZM11.0466 2.36671L5.7933 7.62004C5.66664 7.74671 5.51997 8.04004 5.4933 8.21337L5.20664 10.22C5.17997 10.4134 5.21997 10.5734 5.31997 10.6734C5.41997 10.7734 5.57997 10.8134 5.7733 10.7867L7.77997 10.5C7.9533 10.4734 8.2533 10.3267 8.3733 10.2L13.6266 4.94671C14.06 4.51337 14.2866 4.12671 14.32 3.76671C14.36 3.33337 14.1333 2.87337 13.6266 2.36004C12.56 1.29337 11.8266 1.59337 11.0466 2.36671Z"
+                                                                fill="white" />
+                                                            <path
+                                                                d="M13.2333 6.55343C13.1866 6.55343 13.14 6.54677 13.1 6.53343C11.3466 6.0401 9.95329 4.64677 9.45996 2.89343C9.38662 2.62677 9.53996 2.35343 9.80662 2.27343C10.0733 2.2001 10.3466 2.35343 10.42 2.6201C10.82 4.0401 11.9466 5.16677 13.3666 5.56677C13.6333 5.6401 13.7866 5.9201 13.7133 6.18677C13.6533 6.41343 13.4533 6.55343 13.2333 6.55343Z"
+                                                                fill="white" />
+                                                        </svg></a>
+                                                </div>
 
-                                <div class="mt-4">
-                                    <img class="h-72 rounded-md w-full"
-                                        src="https://www.wholesomeyum.com/wp-content/uploads/2020/09/wholesomeyum-keto-flan-recipe-33.jpg">
-                                </div>
-                                <div class="flex justify-between items-center backdrop-blur-lg py-2 px-4 w-full"
-                                    style="background:rgba(255, 255, 255, 0.1);">
-                                    <p class="text-white">Keto flan recipe</p>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M14.43 18.8201C14.24 18.8201 14.05 18.7501 13.9 18.6001C13.61 18.3101 13.61 17.8301 13.9 17.5401L19.44 12.0001L13.9 6.46012C13.61 6.17012 13.61 5.69012 13.9 5.40012C14.19 5.11012 14.67 5.11012 14.96 5.40012L21.03 11.4701C21.32 11.7601 21.32 12.2401 21.03 12.5301L14.96 18.6001C14.81 18.7501 14.62 18.8201 14.43 18.8201Z"
-                                            fill="white" />
-                                        <path
-                                            d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
-                                            fill="white" />
-                                    </svg>
-
-                                </div>
-                                <div class="flex justify-between space-x-2">
-                                    <div class="flex justify-start space-x-1 py-2">
-                                        <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-1"
-                                            style="background: rgba(255, 255, 255, 0.2);">
-                                            <svg width="20" height="20" viewBox="0 0 13 13" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M6.45833 11.5876C3.89733 11.5876 1.81531 9.50552 1.81531 6.94453C1.81531 4.38354 3.89733 2.30151 6.45833 2.30151C9.01932 2.30151 11.1013 4.38354 11.1013 6.94453C11.1013 9.50552 9.01932 11.5876 6.45833 11.5876ZM6.45833 3.03462C4.30299 3.03462 2.54842 4.78919 2.54842 6.94453C2.54842 9.09987 4.30299 10.8544 6.45833 10.8544C8.61366 10.8544 10.3682 9.09987 10.3682 6.94453C10.3682 4.78919 8.61366 3.03462 6.45833 3.03462Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M6.45835 7.18901C6.25797 7.18901 6.0918 7.02284 6.0918 6.82245V4.37876C6.0918 4.17838 6.25797 4.01221 6.45835 4.01221C6.65873 4.01221 6.8249 4.17838 6.8249 4.37876V6.82245C6.8249 7.02284 6.65873 7.18901 6.45835 7.18901Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M7.9246 1.8127H4.99216C4.79178 1.8127 4.62561 1.64653 4.62561 1.44614C4.62561 1.24576 4.79178 1.07959 4.99216 1.07959H7.9246C8.12498 1.07959 8.29115 1.24576 8.29115 1.44614C8.29115 1.64653 8.12498 1.8127 7.9246 1.8127Z"
-                                                    fill="white" />
-                                            </svg>
-                                            <h1 class="text-xs text-white">20 mins</h1>
+                                                <div class="flex justify-between space-x-2">
+                                                    <div class="flex justify-start space-x-1 py-2">
+                                                        <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-1"
+                                                            style="background: rgba(255, 255, 255, 0.2);">
+                                                            <svg width="20" height="20" viewBox="0 0 13 13" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M6.45833 11.5876C3.89733 11.5876 1.81531 9.50552 1.81531 6.94453C1.81531 4.38354 3.89733 2.30151 6.45833 2.30151C9.01932 2.30151 11.1013 4.38354 11.1013 6.94453C11.1013 9.50552 9.01932 11.5876 6.45833 11.5876ZM6.45833 3.03462C4.30299 3.03462 2.54842 4.78919 2.54842 6.94453C2.54842 9.09987 4.30299 10.8544 6.45833 10.8544C8.61366 10.8544 10.3682 9.09987 10.3682 6.94453C10.3682 4.78919 8.61366 3.03462 6.45833 3.03462Z"
+                                                                    fill="white" />
+                                                                <path
+                                                                    d="M6.45835 7.18901C6.25797 7.18901 6.0918 7.02284 6.0918 6.82245V4.37876C6.0918 4.17838 6.25797 4.01221 6.45835 4.01221C6.65873 4.01221 6.8249 4.17838 6.8249 4.37876V6.82245C6.8249 7.02284 6.65873 7.18901 6.45835 7.18901Z"
+                                                                    fill="white" />
+                                                                <path
+                                                                    d="M7.9246 1.8127H4.99216C4.79178 1.8127 4.62561 1.64653 4.62561 1.44614C4.62561 1.24576 4.79178 1.07959 4.99216 1.07959H7.9246C8.12498 1.07959 8.29115 1.24576 8.29115 1.44614C8.29115 1.64653 8.12498 1.8127 7.9246 1.8127Z"
+                                                                    fill="white" />
+                                                            </svg>
+                                                            <h1 class="text-xs text-white">{{ $recipe->cooking_time }}
+                                                                mins</h1>
+                                                        </div>
+                                                        {{-- @foreach ($recipe_ingredients as $ingredient) --}}
+                                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
+                                                            style="background: rgba(255, 255, 255, 0.2);">
+                                                            {{-- @if ($recipe->id == $ingredient->recipe_id)
+                                                                    <h1 class="text-xs text-white">{{ $recipes->ingredient }}
+                                                                        Ingredients</h1>
+                                                                @endif --}}
+                                                            <h1 class="text-xs text-white">
+                                                                {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipe->id)->count() }}
+                                                                Ingredients</h1>
+                                                        </div>
+                                                        {{-- @endforeach --}}
+                                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
+                                                            style="background: rgba(255, 255, 255, 0.2);">
+                                                            <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center">
+                                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
+                                                                fill="#292D32" />
+                                                            <path
+                                                                d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
+                                                                fill="#292D32" />
+                                                            <path
+                                                                d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
+                                                                fill="#292D32" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                            style="background: rgba(255, 255, 255, 0.2);">
-
-                                            <h1 class="text-xs text-white">8 Ingredients</h1>
-                                        </div>
-                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                            style="background: rgba(255, 255, 255, 0.2);">
-                                            <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
-                                                fill="#292D32" />
-                                            <path
-                                                d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
-                                                fill="#292D32" />
-                                            <path
-                                                d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
-                                                fill="#292D32" />
-                                        </svg>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            </div>
-
-                            <div class="w-1/3 h-auto flex flex-col rounded-md px-2 py-2">
-
-                                <div class="mt-4">
-                                    <img class="h-72 rounded-md w-full"
-                                        src="https://lh3.googleusercontent.com/5HKWdQBqIedWousrI6w13XYPYZhCX5suhjvD7_TQF-Ywnw0qR50YCgD13S3qKghciWrYKXwpSK_ysvSWU-DSJA=w1280-h1280-c-rj-v1-e365">
-                                </div>
-                                <div class="flex justify-between items-center backdrop-blur-lg py-2 px-4 w-full"
-                                    style="background:rgba(255, 255, 255, 0.1);">
-                                    <p class="text-white">Carrot Velvet Cake</p>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M14.43 18.8201C14.24 18.8201 14.05 18.7501 13.9 18.6001C13.61 18.3101 13.61 17.8301 13.9 17.5401L19.44 12.0001L13.9 6.46012C13.61 6.17012 13.61 5.69012 13.9 5.40012C14.19 5.11012 14.67 5.11012 14.96 5.40012L21.03 11.4701C21.32 11.7601 21.32 12.2401 21.03 12.5301L14.96 18.6001C14.81 18.7501 14.62 18.8201 14.43 18.8201Z"
-                                            fill="white" />
-                                        <path
-                                            d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
-                                            fill="white" />
-                                    </svg>
-
-                                </div>
-                                <div class="flex justify-between space-x-2">
-                                    <div class="flex justify-start space-x-1 py-2">
-                                        <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-1"
-                                            style="background: rgba(255, 255, 255, 0.2);">
-                                            <svg width="20" height="20" viewBox="0 0 13 13" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M6.45833 11.5876C3.89733 11.5876 1.81531 9.50552 1.81531 6.94453C1.81531 4.38354 3.89733 2.30151 6.45833 2.30151C9.01932 2.30151 11.1013 4.38354 11.1013 6.94453C11.1013 9.50552 9.01932 11.5876 6.45833 11.5876ZM6.45833 3.03462C4.30299 3.03462 2.54842 4.78919 2.54842 6.94453C2.54842 9.09987 4.30299 10.8544 6.45833 10.8544C8.61366 10.8544 10.3682 9.09987 10.3682 6.94453C10.3682 4.78919 8.61366 3.03462 6.45833 3.03462Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M6.45835 7.18901C6.25797 7.18901 6.0918 7.02284 6.0918 6.82245V4.37876C6.0918 4.17838 6.25797 4.01221 6.45835 4.01221C6.65873 4.01221 6.8249 4.17838 6.8249 4.37876V6.82245C6.8249 7.02284 6.65873 7.18901 6.45835 7.18901Z"
-                                                    fill="white" />
-                                                <path
-                                                    d="M7.9246 1.8127H4.99216C4.79178 1.8127 4.62561 1.64653 4.62561 1.44614C4.62561 1.24576 4.79178 1.07959 4.99216 1.07959H7.9246C8.12498 1.07959 8.29115 1.24576 8.29115 1.44614C8.29115 1.64653 8.12498 1.8127 7.9246 1.8127Z"
-                                                    fill="white" />
-                                            </svg>
-                                            <h1 class="text-xs text-white">20 mins</h1>
-                                        </div>
-                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                            style="background: rgba(255, 255, 255, 0.2);">
-
-                                            <h1 class="text-xs text-white">8 Ingredients</h1>
-                                        </div>
-                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                            style="background: rgba(255, 255, 255, 0.2);">
-                                            <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
-                                                fill="#292D32" />
-                                            <path
-                                                d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
-                                                fill="#292D32" />
-                                            <path
-                                                d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
-                                                fill="#292D32" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
+                            @else
+                                <h1 class="text-white flex justify-center py-5 items-center text-lg">No Recipes Found !</h1>
+                            @endif
 
                         </div>
                         <div id="second" class="hidden p-4">

@@ -19,7 +19,7 @@ use App\Models\Recipe_Ingredient;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewRecipePost;
 
-class RecipeController extends Controller
+ class RecipeController extends Controller
 {
     // Function - Index
     public function index()
@@ -193,9 +193,10 @@ class RecipeController extends Controller
             DB::table('recipe__steps')->updateOrInsert($datastep);
         }
 
-        $ingredient = $request->ingredient;
+        $ingredient = $request->ingredient_id;
         $quantity = $request->quantity;
         $measurement = $request->measurement;
+        // dd( $ingredient);
 
         for ($i = 0; $i < count($ingredient); $i++) {
             $dataingredient = [
