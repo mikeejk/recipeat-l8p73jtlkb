@@ -157,7 +157,7 @@ Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 
- Route::middleware(['auth:sanctum', 'verified'])->get('/searchResult', [RecipeController::class, 'search']);
+ Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
 
 
 
