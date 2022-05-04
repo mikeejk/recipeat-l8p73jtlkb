@@ -45,7 +45,6 @@ Route::get('/login1', function () {
     return view('auth.login2');
 });
 
-
 // Explore Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeController::class, 'index']);
 
@@ -54,6 +53,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/HomePage', [HomeControlle
 
 // Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'searchResult']);
+//collections searchResult
+// Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'collections']);
+
+//Chef Profile Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/chefProfile', [ChefQuestion::class, 'chefProfileShow']);
 
 // Search result Tab
 // Route::get('/searchResult', function () {
@@ -155,7 +159,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [Reci
 
  Route::middleware(['auth:sanctum', 'verified'])->get('/searchResult', [RecipeController::class, 'search']);
 
-//  Route::middleware(['auth:sanctum', 'verified'])->get('/searchResult', [RecipeController::class, 'search_result']);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/mainDashboard', [RecipeController::class, 'show_count']);
 
