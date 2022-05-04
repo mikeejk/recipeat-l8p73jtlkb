@@ -403,7 +403,7 @@ use App\Notifications\NewRecipePost;
             ));
             return view('welcome', compact('recipe'));
         }
-        return view('welcome', compact('recipe'));
+        return view('welcome');
     }
 
     //common search

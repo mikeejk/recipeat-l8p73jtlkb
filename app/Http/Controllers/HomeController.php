@@ -31,7 +31,7 @@ class HomeController extends Controller
         $user = User::where('id',auth()->user()->id)->first();
         $chef_questions= Chef_question::where('user_id',auth()->user()->id)->first();
         $question = Question::where('user_id',auth()->user()->id)->first();
-        $collections = Pinboard::all();
+        $collections = Pinboard::latest()->take(3)->get();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
         return view('home', compact('recipe','user','question','chef_questions', 'collections', 'recipes'));
     }
