@@ -392,7 +392,21 @@
                                 </div>
                                 <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
-                                    <h1 class=" text-xs text-white px-2">For Sweet tastebuds</h1>
+                                    <h1 class=" text-xs text-white px-2">
+                                        @if ($recipes->bud_sweet == 'High')
+                                            For Sweet tastebuds
+                                        @elseif($recipes->bud_sour == 'High')
+                                            For Sour tastebuds
+                                        @elseif($recipes->bud_salt == 'High')
+                                            For salty tastebuds
+                                        @elseif($recipes->bud_spicy == 'High')
+                                            For Spicy tastebuds
+                                        @elseif($recipes->bud_astringent == 'High')
+                                            For astringent tastebuds
+                                        @else($recipes->bud_bitter =="High")
+                                            For bitter tastebuds
+                                        @endif
+                                    </h1>
                                 </div>
                             </div>
 
@@ -419,8 +433,10 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <form action="/searchResults/{recipes->id}" method="post">
+                                    @csrf
                                 <div class="flex items-center space-x-1">
+                                    <button type="submit">
                                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -433,8 +449,18 @@
                                             d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
                                             fill="#292D32" />
                                     </svg>
-                                    <h2 class="font-normal text-sm" style="color:rgba(41, 45, 50, 1);">Add to
-                                        Collection</h2>
+                                </button>
+                                    <h2 class="font-normal text-sm" style="color:rgba(41, 45, 50, 1);">
+                                        <input type="hidden" name="recipe_id" id="recipe_id"
+                                        value="{{ $recipes->id }}" />
+                                    <select name="pinboard_id" id="pinboard_id"
+                                        value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} ">
+                                        <option value="1">Add To Collection</option>
+                                        <option value="1">MyFavourite</option>
+                                        <option value="2">FamilyFav</option>
+                                        <option value="3">FavDesert</option>
+                                        <option value="4">FavDinner</option>
+                                    </select> </h2>
                                 </div>
                             </div>
 
@@ -451,7 +477,7 @@
                                         <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
-                                            placeholder="Add a Comment"  /><i class="fa-regular fa-face-smile"></i>
+                                            placeholder="Add a Comment" /><i class="fa-regular fa-face-smile"></i>
                                 </div>
                                 <input type="submit" class="flex justify-center items-center px-4 py-2 rounded-md"
                                     style="background-color:#202020;color: #FAFAFA;" value="Comment" />
