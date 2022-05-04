@@ -346,7 +346,23 @@
                                                         {{-- @endforeach --}}
                                                         <div class="py-1 rounded-md flex items-center justify-center px-1 "
                                                             style="background: rgba(255, 255, 255, 0.2);">
-                                                            <h1 class=" text-xs text-white">For Sweet tastebuds</h1>
+                                                            <h1 class=" text-xs text-white">
+                                                                @if ($recipe->bud_sweet == 'High')
+                                                                For
+                                                                Sweet tastebuds
+                                                            @elseif($recipe->bud_sour == 'High')
+                                                                For Sour tastebuds
+                                                            @elseif($recipe->bud_salt == 'High')
+                                                                For salty tastebuds
+                                                            @elseif($recipe->bud_spicy == 'High')
+                                                                For Spicy tastebuds
+                                                            @elseif($recipe->bud_astringent == 'High')
+                                                                For astringent tastebuds
+                                                            @else($recipe->bud_bitter =="High")
+                                                                For bitter tastebuds
+                                                            @endif
+
+                                                            </h1>
                                                         </div>
                                                     </div>
                                                     <div class="flex items-center">
