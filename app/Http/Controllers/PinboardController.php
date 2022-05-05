@@ -29,9 +29,9 @@ class PinboardController extends Controller
     {
         $pin_recipe=Pin_recipe::all();
         $myfavourite=Pin_recipe::where('pinboard_id',1)->where('user_id',auth()->user()->id)->get()->count();
-        $familyfav=Pin_recipe::where('pinboard_id',2)->where('user_id',auth()->user()->id)->get()->count();;
-        $favdesert=Pin_recipe::where('pinboard_id',3)->where('user_id',auth()->user()->id)->get()->count();;
-        $favdinner=Pin_recipe::where('pinboard_id',4)->where('user_id',auth()->user()->id)->get()->count();;
+        $familyfav=Pin_recipe::where('pinboard_id',2)->where('user_id',auth()->user()->id)->get()->count();
+        $favdesert=Pin_recipe::where('pinboard_id',3)->where('user_id',auth()->user()->id)->get()->count();
+        $favdinner=Pin_recipe::where('pinboard_id',4)->where('user_id',auth()->user()->id)->get()->count();
         return view('screens.user.profile.pinboard',compact('myfavourite','familyfav','favdesert','favdinner'));
     }
     // Function - Store

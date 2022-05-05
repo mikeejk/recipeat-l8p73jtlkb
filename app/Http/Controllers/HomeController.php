@@ -27,11 +27,11 @@ class HomeController extends Controller
     {
         // $follow = Follower::where('follower_id', auth()->user()->id)->pluck('leader_id');
         // $recipe = Recipe::where('user_id', '!=', auth()->user()->id )->where('status', 'Approved')->where('user_id', $follow)->get();
-        $recipe = Recipe::where('creator', '=', '1')->get();
+        $recipe = Recipe::where('creator', '=', '1')->latest()->get();
         $user = User::where('id',auth()->user()->id)->first();
         $chef_questions= Chef_question::where('user_id',auth()->user()->id)->first();
         $question = Question::where('user_id',auth()->user()->id)->first();
-        $collections = Pinboard::all();
+        $collections = Pinboard::latest()->take(3)->get();
         $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
         return view('home', compact('recipe','user','question','chef_questions', 'collections', 'recipes'));
     }

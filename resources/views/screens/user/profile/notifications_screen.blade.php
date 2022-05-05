@@ -13,14 +13,14 @@
                         <div class="card-header border-0 pt-7" id="markasRead" onclick="makeNotificationAsRead()">
                             <h3 class="card-title align-items-start flex-column pb-2">
                                 <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Notifications</span>
-                                @if ($note_count == 0)
+                                @if (count($notifications) == 0)
                                     <div class="d-flex justify-content-center w-100 ">
                                         <img class="w-50"
                                             src="https://www.pngkey.com/png/full/33-335977_no-notifications-illustration.png"
                                             alt="logo">
                                     </div>
                                     <div class="d-flex justify-content-center  w-100">
-                                        <h5 class="text-danger mt-5 font-weight-bold ">{{ $note_count }}
+                                        <h5 class="text-danger mt-5 font-weight-bold ">{{ count($notifications) }}
                                             New Notifications</h5>
                                     </div>
                                     <div class="d-flex justify-content-center  w-100  card-toolbar">
@@ -33,12 +33,12 @@
                                     </div>
                                 @else
                                     <span
-                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{ $note_count }}
+                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{ count($notifications)}}
                                          Notifications</span>
                                     </span>
                                 @endif
                             </h3>
-                            @if ($note_count == 0)
+                            @if (count($notifications) == 0)
                             @else
                                 <div class="card-toolbar">
                                     <ul class="nav nav-pills nav-pills-sm nav-dark">
@@ -115,14 +115,14 @@
                         <div class="card-header border-0 pt-7" id="markasRead" onclick="makeNotificationAsRead()">
                             <h3 class="card-title align-items-start flex-column pb-2">
                                 <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Comment Notifications</span>
-                                @if ($comment_count == 0)
+                                @if (count($commentnotifications) == 0)
                                     <div class="d-flex justify-content-center w-100 ">
                                         <img class="w-50"
                                             src="https://www.pngkey.com/png/full/33-335977_no-notifications-illustration.png"
                                             alt="logo">
                                     </div>
                                     <div class="d-flex justify-content-center  w-100">
-                                        <h5 class="text-danger mt-5 font-weight-bold ">{{ $comment_count }}
+                                        <h5 class="text-danger mt-5 font-weight-bold ">{{ count($commentnotifications) }}
                                             New Comment Notifications</h5>
                                     </div>
                                     <div class="d-flex justify-content-center  w-100  card-toolbar">
@@ -135,12 +135,13 @@
                                     </div>
                                 @else
                                     <span
-                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{ $comment_count }}
+                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{ count($commentnotifications) }}
                                          Comment Notifications</span>
                                     </span>
                                 @endif
                             </h3>
-                            @if ($comment_count == 0)
+                            {{-- @if ($comment_count == 0) --}}
+                            @if (count($commentnotifications) == 0)
                             @else
                                 <div class="card-toolbar">
                                     {{--  <ul class="nav nav-pills nav-pills-sm nav-dark">
@@ -168,7 +169,7 @@
                                             <!--begin::Text-->
                                             <div class="d-flex flex-column flex-grow-1">
                                                 <a href="#"
-                                                    class="text-dark-75 text-hover-primary font-weight-bolder font-size-lg mb-1">User
+                                                    class="text-dark-75 text-hover-primary font-weight-bolder font-size-lg mb-1">
                                                     commented your Recipe {{ $notify->data }} </a>
                                                     {{-- <button >MarkAsRead</button> --}}
                                                   {{-- <span --}}
@@ -207,14 +208,14 @@
                         <div class="card-header border-0 pt-7" id="markasRead" onclick="makeNotificationAsRead()">
                             <h3 class="card-title align-items-start flex-column pb-2">
                                 <span class="card-label font-weight-bolder font-size-h4 text-dark-75">RecipeFeeds</span>
-                                @if ($feednote == 0)
+                                @if (count($feednotifications) == 0)
                                     <div class="d-flex justify-content-center w-100 ">
                                         <img class="w-50"
                                             src="https://www.pngkey.com/png/full/33-335977_no-notifications-illustration.png"
                                             alt="logo">
                                     </div>
                                     <div class="d-flex justify-content-center  w-100">
-                                        <h5 class="text-danger mt-5 font-weight-bold ">{{ $feednote }}
+                                        <h5 class="text-danger mt-5 font-weight-bold ">{{ count($feednotifications) }}
                                             New RecipeFeeds</h5>
                                     </div>
                                     <div class="d-flex justify-content-center  w-100  card-toolbar">
@@ -227,12 +228,12 @@
                                     </div>
                                 @else
                                     <span
-                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{ $feednote }}
+                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{  $count($feednotifications)}}
                                          RecipeFeeds</span>
                                     </span>
                                 @endif
                             </h3>
-                            @if ($feednote == 0)
+                            @if (count($feednotifications) == 0)
                             @else
                                 <div class="card-toolbar">
                                     {{--  <ul class="nav nav-pills nav-pills-sm nav-dark">
@@ -262,7 +263,7 @@
                                                 <a href="#"
                                                     class="text-dark-75 text-hover-primary font-weight-bolder font-size-lg mb-1">Admin
                                                     Suggested Recipe {{ $notification->data }} For You.</a>
-                                                    <button >MarkAsRead</button>
+
                                                   {{-- <span --}}
                                                     {{-- class="text-muted font-weight-bold">{{ $notification->created_at->diffForHumans() }}</span> --}}
                                             </div>
@@ -308,7 +309,7 @@
     <!--end::Entry-->
     <script>
         function makeNotificationAsRead() {
-            $.get('/markAsRead');
+            $.get('/x');
         }
     </script>
 @endsection
