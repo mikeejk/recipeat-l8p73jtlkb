@@ -104,7 +104,7 @@
     <section class="flex" style="background:rgba(255, 255, 255, 0.1);">
         <div class="w-3/12 py-1  px-10 font-montserrat">
             <h2 class="text-white ">Showing you</h2>
-            <h1 class="text-white font-semibold text-lg"></h1>
+            <h1 class="text-white font-semibold text-lg">Trending Recipes</h1>
         </div>
         <div class="w-9/12  py-5">
             <div class="flex justify-evenly">
