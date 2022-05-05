@@ -238,9 +238,13 @@
                     </svg>
                 </div>
                 <div class="flex flex-wrap justify-start items-center mt-5" style="font-family: 'Manrope', sans-serif;">
-                    <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">
-                        {{ Auth::user()->cusinies }}</button>
+                    @foreach (explode(',', Auth::user()->cusinies) as $cusinie)
+                        <button
+                            class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
+                            style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">
+                            {{ $cusinie }}</button>
+                    @endforeach
+
                 </div>
             </div>
 
@@ -477,7 +481,6 @@
                                     <div class="border-b w-10/12 text-white flex justify-between">
 
                                         @csrf
-                                        <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
                                             placeholder="Add a Comment" /><i class="fa-regular fa-face-smile"></i>
@@ -488,7 +491,6 @@
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     @endforeach
                 @else
