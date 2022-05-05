@@ -238,9 +238,13 @@
                     </svg>
                 </div>
                 <div class="flex flex-wrap justify-start items-center mt-5" style="font-family: 'Manrope', sans-serif;">
-                    <button class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
-                        style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">
-                        {{ Auth::user()->cusinies }}</button>
+                    @foreach (explode(',', Auth::user()->cusinies) as $cusinie)
+                        <button
+                            class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
+                            style="background-color: rgba(63, 64, 68, 1);font-family: 'Manrope', sans-serif;">
+                            {{ $cusinie }}</button>
+                    @endforeach
+
                 </div>
             </div>
 
