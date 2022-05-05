@@ -90,13 +90,11 @@
 
                                      @foreach($recipe_ingredients as $ingredient)
 
-                                    {{-- <tr class="profile-table">
-
-
+                                    <tr class="profile-table">
                                         <td> {{ $ingredient->ingredient->ingredient }}  </td>
                                         <td> {{  $ingredient->quantity }} </td>
                                         <td>{{ $ingredient->measurement->measurement }}</td>
-                                    </tr> --}}
+                                    </tr>
 
                                     @endforeach
 

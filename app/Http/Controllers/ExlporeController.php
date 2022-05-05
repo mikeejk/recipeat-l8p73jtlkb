@@ -24,7 +24,7 @@ class ExlporeController extends Controller
 {
     public function index()
     {
-        $recipe = Recipe::where('status', 'Approved')->get();
+        $recipe = Recipe::where('status', 'Approved')->paginate(4);
         return view('explore', compact('recipe'));
     }
 }

@@ -9,6 +9,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 
@@ -19,6 +20,14 @@
     <!-- icon8 - line-awesome -->
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <style>
+        .pagination li {
+            display: inline;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+        }
+
+    </style>
 </head>
 
 <body class="antialiased bg-black ">
@@ -147,13 +156,15 @@
 
     <!--Main Content-->
     <section class="px-10 bg-black py-10">
-        <div class="grid-cols-4 grid gap-4 justify-start">
-            @if (count($recipe) > 0)
+        @if (count($recipe) > 0)
+            <div class="grid-cols-4 grid gap-4 justify-start">
                 @foreach ($recipe as $recipes)
                     <div class="w-full h-auto flex flex-col rounded-md px-2 mr-2" style="background-color: #141414">
                         <div class="py-2 flex space-x-2">
                             @if ($recipes->user->hasrole('Chef'))
-                                @if (!empty(DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()))
+                                @if (!empty(
+                                    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                ))
                                     <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
                                 @else
@@ -161,7 +172,9 @@
                                         class="h-12 w-12 rounded-full">
                                 @endif
                             @else
-                                @if (!empty(DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()))
+                                @if (!empty(
+                                    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                ))
                                     <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
                                 @else
@@ -191,9 +204,13 @@
                         </div>
 
                         <div class="py-2 relative overflow-hidden">
-                            <div class="absolute flex w-full items-center justify-end rounded-md inset-x-0 text-white text-center leading-4">
-                                <h1 class="bg-lime-50 py-1.5 px-2 rounded-md mt-1 text-xs font-semibold" style="background-color: #84cc16 ">{{$recipes->category->category}}</h1></div>
-                            <img class="h-56 w-full rounded-md" src="{{ $recipes->getFirstMediaUrl('cover', 'thumb') }}" alt="image">
+                            <div
+                                class="absolute flex w-full items-center justify-end rounded-md inset-x-0 text-white text-center leading-4">
+                                <h1 class="bg-lime-50 py-1.5 px-2 rounded-md mt-1 text-xs font-semibold"
+                                    style="background-color: #84cc16 ">{{ $recipes->category->category }}</h1>
+                            </div>
+                            <img class="h-56 w-full rounded-md"
+                                src="{{ $recipes->getFirstMediaUrl('cover', 'thumb') }}" alt="image">
                         </div>
 
                         <div class="flex justify-evenly py-2">
@@ -213,7 +230,9 @@
                                 <h1 class="text-xs text-white">{{ $recipes->cooking_time }} mins</h1>
                             </div>
                             <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
-                                <h1 class="text-xs text-white"> {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }} Ingredients
+                                <h1 class="text-xs text-white">
+                                    {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
+                                    Ingredients
                                 </h1>
                             </div>
                             <div class="bg-gray-600 py-1 rounded-md flex items-center justify-center px-1 space-x-2">
@@ -279,12 +298,15 @@
 
                     </div>
                 @endforeach
-            @else
-                <h1 class="text-white">No recipes Found</h1>
-            @endif
-        </div>
+            </div>
+            <div class=" font-extrabold px-2 flex justify-center items-center rounded-lg text-white py-4 space-x-2">
+                {{ $recipe->render('pagination::tailwind') }}</div>
+        @else
+            <h1 class="text-white">No recipes Found</h1>
+        @endif
+
         {{-- <div class=" text-white font-extrabold px-2 flex flex-row justify-center items-center rounded-lg">{{$recipe->links()}}</div> --}}
-    </div>
+        </div>
     </section>
 
 </body>
