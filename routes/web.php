@@ -157,15 +157,14 @@ Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view
 // Recipe Search Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 
- Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
+//  Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
 
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/mainDashboard', [RecipeController::class, 'show_count']);
-
 // Recipeat Customer Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
-
 // Recipeat Customer Data Table - Index Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/all_user', [CreateNewUser::class, 'getIndex']);
 
@@ -181,7 +180,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/invite', [InviteControlle
 
 // User Invite Process Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/invite', [InviteController::class, 'process']);
-
 // User Invite Aceept Tab
 Route::get('accept/{token}', [InviteController::class, 'accept']);
 
@@ -559,13 +557,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Store Category Tab
     Route::middleware(['auth:sanctum', 'verified'])->post('/searchResults/{recipe}', [PinRecipeController::class, 'store']);
 
+    Route::middleware(['auth:sanctum', 'verified'])->get('/{pinboard->pin_name}', [PinRecipeController::class, 'show']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
     // cipeat Category Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_pin.data', [PinRecipeController::class, 'anyData']);
     // Recipeat Category Data Table - Index Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/myfavourite', [PinRecipeController::class, 'getIndex']);
+    Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_pin/{recipe}/delete', [PinRecipeController::class, 'destroy']);
 });
 // PinRecipeController for Familyfavourite
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'index1']);
     // Index familyfav Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/familyfav', [PinRecipeController::class, 'index1']);
     // Anydata  for familyfav Data Table - Data Tab
@@ -608,10 +611,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [FeedController::class, 'getIndex']);
 });
+
 // Route::middleware(['auth:sanctum', 'verified'])->get('/userimage_upload', function () {
 //     return view('screens.user.profile.userimage_upload');
 // });
-
     // Route::middleware(['auth:sanctum', 'verified'])->get('/add_feed', [ImageUploadController::class, 'getIndex']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/feednotifications', function () {

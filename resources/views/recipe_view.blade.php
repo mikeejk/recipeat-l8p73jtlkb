@@ -63,7 +63,6 @@
 
                             <h1 class="font-bold tracking-wider text-gray-700">{{ $steps }}</h1>
 
-                            {{-- @endfor --}}
                             @endforeach
                             <!-- <span class="tracking-wider uppercase text-xs text-blue-700 font-bold">change plan</span> -->
                         </div>
@@ -110,7 +109,6 @@
                 <div class="flex border-2 mt-2 h-56  overflow-y-auto">
                     <div class="p-2 w-full">
                         {{--  <div class="w-full card-body">
-
                             @include('partials.recipes.replies', ['comments' => $recipe->comments, 'recipe_id' =>
                             $recipe->id])
                             <hr />

@@ -40,7 +40,6 @@ class PinRecipeController extends Controller
 
          return redirect()->back();
      }
-
     //Function - Index1 for myfavourite
     public function index()
     {
@@ -49,12 +48,18 @@ class PinRecipeController extends Controller
          return view('/myfavourite', compact('recipe_pin','recipe'));
 
     }
+    public function show()
+    {
+        $recipe=Recipe::all('id','recipe_name');
+        $recipe_pin = Pin_recipe::all();
+        $pinboard=Pinboard::pluck('id');
+         return view('/myfavourite' ,compact('recipe_pin','recipe','pinboard'));
+    }
      // Function - getIndex1 for myfavourite
     public function getIndex()
     {
         return view('screens.user.profile.myfavourite');
     }
-
     public function anyData()
     {
         $recipe_pin = Pin_recipe::where('pinboard_id',1)->where('user_id', auth()->user()->id);
@@ -91,7 +96,7 @@ class PinRecipeController extends Controller
          return datatables()->of($familyfav)
              ->addColumn('action', function ($recipe_pin) {
                  $html = '<a href="/recipe_view/' . $recipe_pin->recipe_id .'" class="btn btn-sm btn-primary justify-content-end">View</a> ';
-                 $html .= '<a href="/recipe_pin/'.$recipe_pin->id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
+                 $html .= '<a href="/recipe_pin/'.$recipe_pin->recipe_id .'/delete" class="btn btn-sm btn-danger justify-content-end">Delete</a>';
                  return $html;
              })
              ->addColumn('recipe_name', function ($recipe_pin) {

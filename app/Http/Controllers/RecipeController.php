@@ -381,7 +381,7 @@ use App\Notifications\NewRecipePost;
             ));
             return view('welcome', compact('recipe'));
         }
-        return view('welcome');
+         return view('welcome');
     }
     //common search
     public function searchResult(Request $request)
@@ -415,12 +415,14 @@ use App\Notifications\NewRecipePost;
         }
         $pinrecipes = Pin_recipe::all();
         $collections = Pinboard::all('id', 'pin_name');
-        // dd($pinrecipes);
-        return view('/searchResults', compact('recipe', 't', 'collections', 'pinrecipes'));
+        foreach($pinrecipes as $pin){
+        $count=Pin_recipe::where('user_id',auth()->user()->id)->where('pinboard_id',$pin->pinboard_id)->get()->count();
+        }
+        //  dd($count);
+         return view('/searchResults', compact('recipe', 't', 'collections', 'pinrecipes','count'));
     }
     //  Recipe Search for non login users
     public function nonLoginUserSearch(Request $request)
-
     {
         $term  = $request->get('term');
         $creator = $request->get('creator');
