@@ -313,9 +313,9 @@
                                             </h1>
                                         </div>
                                     </div>
-                                    <form action="/searchResults/{recipes->id}" method="post">
+                                    <form action="/searchResults/{recipes->id}" method="post" class="flex items-center">
                                         @csrf
-                                        <div class=" flex items-center text-xs bg-black">
+                                        <div class="flex items-center text-xs bg-black">
                                             <button type="submit">
                                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -333,8 +333,8 @@
                                             <input type="hidden" name="recipe_id" id="recipe_id"
                                                 value="{{ $recipes->id }}" />
                                             <select name="pinboard_id" id="pinboard_id"
-                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} ">
-                                                <option value="">Add To Collection</option>
+                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} " class="bg-black text-white">
+                                                <option disabled selected value="">Add To Collection</option>
                                                 <option value="1">MyFavourite</option>
                                                 <option value="2">FamilyFav</option>
                                                 <option value="3">FavDesert</option>

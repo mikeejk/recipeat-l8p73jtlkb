@@ -271,7 +271,6 @@
         </section>
 
         <section class="w-1/2 py-5 ">
-
             <div class="flex justify-center items-center">
                 <button
                     class="flex items-center justify-center px-4 py-4 w-1/2 text-white text-lg font-semibold mb-2 space-x-2"
@@ -478,7 +477,7 @@
 
                             <div class="flex justify-between items-center py-2 space-x-2">
                                 <div class="border-b w-10/12 text-white flex justify-between">
-                                    <form method="post" action="{{ route('comment.add') }}">
+                                    <form method="post" action="{{ route('comment.add') }}" class="flex justify-between w-full">
                                         @csrf
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
