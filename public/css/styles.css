@@ -50,3 +50,13 @@
 .wait {cursor: wait;}
 .zoom-in {cursor: zoom-in;}
 .zoom-out {cursor: zoom-out;}
+
+.text-manrope{
+    font-family: 'Manrope';
+}
+.text-montserrat{
+    font-family: 'Montserrat';
+}
+.fadedgray{
+    background: #202020;
+}

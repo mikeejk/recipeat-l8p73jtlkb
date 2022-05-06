@@ -59,6 +59,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeCo
 //Chef Profile Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/chefProfile', [ChefQuestion::class, 'chefProfileShow']);
 
+//Settings Profile Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/settings', [ChefQuestion::class, 'settings']);
+
 // Search result Tab
 // Route::get('/searchResult', function () {
 //     return view('searchResults');

@@ -177,6 +177,12 @@ class ChefQuestion extends Component
     }
 
 
+    public function settings()
+    {
+        return view('settings');
+    }
+
+
 
     // Function - edit
     public function edit(Chef_question $chef_questions)
