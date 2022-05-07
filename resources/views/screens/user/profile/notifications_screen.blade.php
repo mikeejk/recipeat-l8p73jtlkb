@@ -228,7 +228,7 @@
                                     </div>
                                 @else
                                     <span
-                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{  $count($feednotifications)}}
+                                        class="d-flex justify-content-center text-success mt-3 font-weight-bold font-size-lg">{{  count($feednotifications)}}
                                          RecipeFeeds</span>
                                     </span>
                                 @endif
