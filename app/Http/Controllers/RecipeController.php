@@ -459,6 +459,33 @@ use App\Notifications\NewRecipePost;
 
         return view('search_ingredient', compact('ingredient', 'recipe_ingredients'));
     }
+    // public function nonLoginUserSearch(Request $request)
+    // {
+    //     $term  = $request->get('term');
+    //      $creator = $request->get('creator');
+    //      $category_id = $request->get('category');
+    //     if ($term) {
+    //         $recipe=Recipe::join('users','users.id','=','recipes.user_id')
+    //         ->join('media','media.model_id','=','recipes.id')
+
+    //         ->where('recipe_name', 'LIKE', '%' . $term . '%')
+    //           ->orWhere('users.name','LIKE','%'.$term . '%')
+    //              ->where('creator', 'LIKE', '%' . $creator . '%')
+    //             ->where('category_id', 'LIKE', '%' . $category_id . '%')
+    //             // ->where('user_id', '!=', auth()->id())
+    //             ->where('status', 'Approved')
+    //             // ->where('status','!=','Denide')
+    //             // ->where('creator','!=','User')
+    //             //  ->get();
+    //         ->orderBy("recipe_name", "asc")->Paginate(4);
+    //          $recipe->appends(array(
+    //             'term' => $request->get('term'),
+    //          ));
+    //         return view('welcome_withoutLogin', compact('recipe'));
+    //      }
+    //     return view('welcome_withoutLogin');
+    // }
+
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {

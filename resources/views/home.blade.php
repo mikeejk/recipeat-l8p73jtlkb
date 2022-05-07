@@ -117,9 +117,9 @@
                     d="M9.41488 16.9716C8.67827 16.9716 7.96399 16.674 7.44315 16.1531C6.92232 15.6323 6.6247 14.918 6.6247 14.1814H7.74077C7.74077 14.6204 7.91935 15.0519 8.23185 15.3644C8.54434 15.6769 8.97589 15.8555 9.41488 15.8555C10.3375 15.8555 11.089 15.104 11.089 14.1814H12.2051C12.2051 15.7216 10.9551 16.9716 9.41488 16.9716Z"
                     fill="white" />
             </svg>
-            <h1 class="text-white">Notifications</h1>
+            <a href="/notifications" class="text-white">Notifications</a>
             <div class="bg-red-500 text-white flex items-center justify-center rounded-full h-4 w-4">
-                <h6 class="text-sm">3</h6>
+                <h6 class="text-sm">{{ count(auth()->user()->unreadnotifications) }}</h6>
             </div>
         </div>
     </header>
@@ -527,25 +527,40 @@
                     @if (count($collections) > 0)
                         <div class="flex justify-between space-x-2 items-center py-5">
                             @foreach ($collections as $collection)
-                                <div class="py-2 px-2 rounded-lg w-1/3 border border-gray-700"
-                                    style="background-color: #202020">
-                                    <div class="flex justify-center -mt-5 mb-2">
-                                        <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
-                                            class="h-16 w-16 rounded-full" alt="recipe">
-                                    </div>
+                            @if ($collection->id == 1)
+                                <a href="/myfavourite"
+                                    class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                                @elseif($collection->id == 2)
+                                    <a href="/familyfav"
+                                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                                    @elseif($collection->id == 3)
+                                        <a href="/favdesert"
+                                            class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                                        @else
+                                            <a href="/favdinner"
+                                                class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                            @endif
 
-                                    <h1 class="text-white font-semibold flex justify-center">
-                                        {{ $collection->pin_name }}</h1>
-                                    <h1 class="text-gray-500 flex text-sm justify-center items-center">3 Recipes
-                                        <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                                fill="#454545" />
-                                        </svg>
-                                    </h1>
-                                </div>
-                            @endforeach
+                            <div class="flex justify-center -mt-5 mb-2">
+                                <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
+                                    class="h-16 w-16 rounded-full" alt="recipe">
+                            </div>
+                            <h1 class="text-white font-semibold flex justify-center"> {{ $collection->pin_name }}
+                            </h1>
+                            <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                                {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
+                                <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                                    Recipes
+                                    <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
+                                            fill="#454545" />
+                                    </svg>
+                                </h1>
+                                {{-- <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
+                                </a>
+                        @endforeach
                         </div>
                     @else
                         <h1 class="text-white">No Collection Found</h1>

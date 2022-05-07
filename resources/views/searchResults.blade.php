@@ -145,48 +145,48 @@
         </div>
         <div class="w-9/12  py-5">
             {{-- <form action="/searchResults" method="post"> --}}
-                <div class="flex justify-evenly">
-                    <h1 class="text-white">Sort by</h1>
-                    <button type="radio" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: white;">
-                        <h1 class="text-gray-800">Easy to cook</h1>
-                    </button>
+            <div class="flex justify-evenly">
+                <h1 class="text-white">Sort by</h1>
+                <button type="radio" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: white;">
+                    <h1 class="text-gray-800">Easy to cook</h1>
+                </button>
 
-                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: #141414;">
-                        <h1 class="text-white">Low cooking time</h1>
-                    </button>
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
+                    <h1 class="text-white">Low cooking time</h1>
+                </button>
 
-                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: #141414;">
-                        <h1 class="text-white">Fewer Ingredients</h1>
-                    </button>
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
+                    <h1 class="text-white">Fewer Ingredients</h1>
+                </button>
 
-                    <button value="chef" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: #141414;">
-                        <h1 class="text-white">From Top Chefs</h1>
-                    </button>
+                <button value="chef" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
+                    <h1 class="text-white">From Top Chefs</h1>
+                </button>
 
-                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: #141414;">
-                        <h1 class="text-white">Sweet</h1>
-                    </button>
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
+                    <h1 class="text-white">Sweet</h1>
+                </button>
 
-                    <button value="high" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: #141414;">
-                        <h1 class="text-white">Spicy</h1>
-                    </button>
+                <button value="high" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
+                    <h1 class="text-white">Spicy</h1>
+                </button>
 
-                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: #141414;">
-                        <h1 class="text-white">Sour</h1>
-                    </button>
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
+                    <h1 class="text-white">Sour</h1>
+                </button>
 
-                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                        style="background: #141414;">
-                        <h1 class="text-white">Bitter</h1>
-                    </button>
-                </div>
+                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                    style="background: #141414;">
+                    <h1 class="text-white">Bitter</h1>
+                </button>
+            </div>
             {{-- </form> --}}
         </div>
 
@@ -289,7 +289,6 @@
                                                 Ingredients</h1>
                                             {{-- SELECT PINBOARD_ID,COUNT(PINBOARD_ID) FROM PIN_RECIPES LEFT JOIN PINBOARDS ON PIN_RECIPES.PINBOARD_ID=PINBOARDS.ID WHERE PIN_RECIPES.USER_ID= 3  GROUP BY PIN_RECIPES.PINBOARD_ID --}}
 
-
                                         </div>
 
                                         <div class="py-1 rounded-md flex items-center justify-center px-1 "
@@ -333,7 +332,8 @@
                                             <input type="hidden" name="recipe_id" id="recipe_id"
                                                 value="{{ $recipes->id }}" />
                                             <select name="pinboard_id" id="pinboard_id"
-                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} " class="bg-black text-white">
+                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} "
+                                                class="bg-black text-white">
                                                 <option disabled selected value="">Add To Collection</option>
                                                 <option value="1">MyFavourite</option>
                                                 <option value="2">FamilyFav</option>
@@ -590,8 +590,8 @@
 
             @if (count($collections) > 0)
                 <div class="flex justify-between space-x-4 items-center py-5">
-                     @foreach ($collections as $collection)
-                         @if ($collection->id == 1)
+                    @foreach ($collections as $collection)
+                        @if ($collection->id == 1)
                             <a href="/myfavourite"
                                 class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
                             @elseif($collection->id == 2)
@@ -604,47 +604,29 @@
                                         <a href="/favdinner"
                                             class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
                         @endif
-                    {{-- @switch($collection->id)
-                        @case(1)
-                        <a href="/myfavourite"
-                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                        @break
 
-                        @case(2)
-                        <a href="/familyfav"
-                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                        @break
-                        @case(3)
-                        <a href="/favdesert"
-                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                        @case(3)
-                        <a href="/favdinner"
-                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                        @default
-                            InActive
-                    @endswitch --}}
-                     <div class="flex justify-center -mt-5 mb-2">
-                        <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
-                            class="h-16 w-16 rounded-full" alt="recipe">
-                    </div>
-                    <h1 class="text-white font-semibold flex justify-center"> {{ $collection->pin_name }}
-                    </h1>
-                    <h1 class="text-gray-500 flex text-sm justify-center items-center">
-                        {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
-                        <h1 class="text-gray-500 flex text-sm justify-center items-center">
-                            Recipes
-                            <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                    fill="#454545" />
-                            </svg>
+                        <div class="flex justify-center -mt-5 mb-2">
+                            <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
+                                class="h-16 w-16 rounded-full" alt="recipe">
+                        </div>
+                        <h1 class="text-white font-semibold flex justify-center"> {{ $collection->pin_name }}
                         </h1>
-                        <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
-                        </a>
-            @endforeach
-        @else
-            <h1 class="text-white">No Collection Found</h1>
+                        <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                            {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
+                            <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                                Recipes
+                                <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
+                                        fill="#454545" />
+                                </svg>
+                            </h1>
+                            {{-- <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
+                            </a>
+                    @endforeach
+                @else
+                    <h1 class="text-white">No Collection Found</h1>
             @endif
 
             {{-- <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
@@ -735,7 +717,7 @@
                         Profile</button>
                 </div>
 
-                <div class="flex justify-between items-center py-4">
+                {{-- <div class="flex justify-between items-center py-4">
                     <div class="flex space-x-4 items-center">
                         <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
                             class="rounded-lg h-14 w-14" alt="user">
@@ -761,9 +743,9 @@
 
                     <button class="border text-gray-200 py-2 text-center w-20 rounded-md text-xs font-semibold">View
                         Profile</button>
-                </div>
+                </div> --}}
 
-                <div class="flex justify-between items-center py-4">
+                {{-- <div class="flex justify-between items-center py-4">
                     <div class="flex space-x-4 items-center">
                         <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
                             class="rounded-lg h-14 w-14" alt="user">
@@ -789,9 +771,9 @@
 
                     <button class="border text-gray-200 py-2 text-center w-20 rounded-md text-xs font-semibold">View
                         Profile</button>
-                </div>
+                </div> --}}
 
-                <div class="flex justify-between items-center py-4">
+                {{-- <div class="flex justify-between items-center py-4">
                     <div class="flex space-x-4 items-center">
                         <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
                             class="rounded-lg h-14 w-14" alt="user">
@@ -817,7 +799,7 @@
 
                     <button class="border text-gray-200 py-2 text-center w-20 rounded-md text-xs font-semibold">View
                         Profile</button>
-                </div>
+                </div> --}}
             </div>
 
 
