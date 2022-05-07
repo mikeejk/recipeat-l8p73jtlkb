@@ -332,9 +332,9 @@
             </section>
         </div>
         <div class="w-2/6 py-2 top-0">
-            <section class="text-gray-600 body-font">
+            <section class="px-3">
                 <div class="pt-2 rounded" style="background-color: #1F1F24;">
-                    <div class="rounded-b-xl" style="background-color: #303030;">
+                    <section class="rounded-b-xl" style="background-color: #303030;">
                         <div class="border-t-4 border-cyan-400 px-6 py-4">
                             <h1 class="text-montserrat flex text-sm text-white font-light mt-3">
                                 EDUCATION
@@ -395,7 +395,56 @@
                                 </h1>
                             </div>
                         </div>
-                    </div>
+                    </section>
+                    <section class="px-6 py-4" style="background-color: #1F1F24;">
+                        <p class="text-montserrat text-white text-xs">
+                            The most important hard skill chefs need is an ability to cook, as well as knowledge of the
+                            kitchen. This broad skill includes a variety of smaller skills,
+                        </p>
+                        <p class="text-montserrat text-white text-xs pt-4">
+                            The most important hard skill chefs need is an ability to cook, as well as knowledge of the
+                            kitchen. This broad skill includes a variety of smaller skills,
+                        </p>
+                        <div class="text-gray-600 body-font mt-2">
+                            <div class="py-2 rounded-md" style="background-color: #1F1F24;">
+                                <h1 class="text monrope contant-center text-white text-base font-medium">Skills Learned</h1>
+                                <div class="flex items-center space-x-4 py-2">
+                                    <div class="py-1.5 px-2 w-auto text-xs text-center rounded text-white tracking-widest"
+                                        style="background:#303030; font-family: 'Manrope', sans-serif;">
+                                        NUTRITION</div>
+                                    <div class="py-1.5 px-2 w-auto text-xs text-center rounded text-white tracking-widest"
+                                        style="background:#303030; font-family: 'Manrope', sans-serif;">MENU CREATION</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-gray-600 body-font">
+                            <div class="pt-2 rounded-md">
+                                <h1 class="text monrope contant-center text-white text-base font-medium">Recommendations</h1>
+                                <div class="flex mb-5 -space-x-4 mt-2">
+                                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="images\people-1.png" alt="">
+                                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="images\people-2.png" alt="">
+                                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="images\people-3.png" alt="">
+                                    <p class="flex text-montserrat text-white text-xs pl-8 pt-4">+15 More</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-gray-600 body-font">
+                            <div class=" rounded-md">
+                                <h1 class="text monrope contant-center text-white text-base font-medium">Gallery</h1>
+                                <div class="flex max-w-sm rounded-lg pt-4">
+                                    <a href="#">
+                                        <img class="flex rounded-t-lg pr-4" src="images\im-p-1.png" alt="" />
+                                    </a>
+                                    <a href="#">
+                                        <img class="flex rounded-t-lg pr-4" src="images\im-p-2.png" alt="" />
+                                    </a>
+                                    <a href="#">
+                                        <img class="flex rounded-t-lg" src="images\im-p-3.png" alt="" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </section>
         </div>
