@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\FeedRecipeNotification;
 use Illuminate\Support\Facades\Notification;
+
 class FeedNotificationController extends Controller
 {   //recipe feed notifications
     // public function index()
@@ -23,23 +24,31 @@ class FeedNotificationController extends Controller
     public function index1()
     {
         $user_id = auth()->user()->id;
-        $note_count = DB::table('notifications')->where('type', 'App\Notifications\NewFollower')
-            ->where('notifiable_id', $user_id)->count();
         $notifications = DB::table('notifications')->where('type', 'App\Notifications\NewFollower')
-            ->where('notifiable_id', $user_id)->get('data');
-        $feednote = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
-            ->where('notifiable_id', $user_id)->count();
+            ->where('notifiable_id', $user_id)
+            ->where(
+                function ($query) {
+                    $query->orWhereNull('read_at');
+                }
+            )->get('data');
         $feednotifications = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
-            ->where('notifiable_id', $user_id)->get('data');
-        $comment_count = DB::table('notifications')->where('type', 'App\Notifications\CommentNotification')
-        ->where('notifiable_id', $user_id)->count();
+            ->where('notifiable_id', $user_id)
+            ->where(
+                function ($query) {
+                    $query->orWhereNull('read_at');
+                }
+            )->get('data');
+
         $commentnotifications = DB::table('notifications')->where('type', 'App\Notifications\CommentNotification')
-            ->where('notifiable_id', $user_id)->get('data');
+            ->where('notifiable_id', $user_id)
+            ->where(
+                function ($query) {
+                    $query->orWhereNull('read_at');
+                }
+            )->get('data');
 
-         return view('screens.user.profile.notifications_screen', compact('notifications','note_count','feednote','comment_count','commentnotifications','feednotifications'));
-        //  dd($feednotifications);
+        return view('screens.user.profile.notifications_screen', compact('notifications', 'commentnotifications', 'feednotifications'));
     }
-
     public function readNotification()
     {
         $user = auth()->user()->id;

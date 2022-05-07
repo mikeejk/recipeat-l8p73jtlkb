@@ -506,9 +506,6 @@
         .bg-tab {
             background: #252525;
         }
-
-        ;
-
     </style>
     <script>
         let tabsContainer = document.querySelector("#tabs");

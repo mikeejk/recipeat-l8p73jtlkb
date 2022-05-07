@@ -36,20 +36,20 @@ return [
         ],
 
         // local
-        'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'\recipeat-l8p73jtlkb\storage\app\public',
-            'visibility' => 'public',
-        ],
-
-       // Live
         // 'public' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public'),
-        //     'url' =>'public_index/storage/app/public',
+        //     'url' => env('APP_URL').'\recipeat-l8p73jtlkb\public\storage',
         //     'visibility' => 'public',
         // ],
+
+       //Live
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' =>'\storage',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',
@@ -76,7 +76,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('/public_html/storage') => storage_path('app/public'),
     ],
 
 ];

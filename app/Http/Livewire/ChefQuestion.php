@@ -198,6 +198,12 @@ class ChefQuestion extends Component
     }
 
 
+    public function settings()
+    {
+        return view('settings');
+    }
+
+
 
 
     // Function - edit

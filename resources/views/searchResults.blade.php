@@ -121,9 +121,9 @@
                     d="M9.41488 16.9716C8.67827 16.9716 7.96399 16.674 7.44315 16.1531C6.92232 15.6323 6.6247 14.918 6.6247 14.1814H7.74077C7.74077 14.6204 7.91935 15.0519 8.23185 15.3644C8.54434 15.6769 8.97589 15.8555 9.41488 15.8555C10.3375 15.8555 11.089 15.104 11.089 14.1814H12.2051C12.2051 15.7216 10.9551 16.9716 9.41488 16.9716Z"
                     fill="white" />
             </svg>
-            <h1 class="text-white">Notifications</h1>
+            <a href="/notifications" class="text-white">Notifications</a>
             <div class="bg-red-500 text-white flex items-center justify-center rounded-full h-4 w-4">
-                <h6 class="text-sm">3</h6>
+                <h6 class="text-sm">{{ count(auth()->user()->unreadnotifications) }}</h6>
             </div>
         </div>
     </header>
@@ -144,50 +144,50 @@
 
         </div>
         <div class="w-9/12  py-5">
-            <form action="/searchResults" method="post">
-            <div class="flex justify-evenly">
-                <h1 class="text-white">Sort by</h1>
-                <button type="radio" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: white;">
-                    <h1 class="text-gray-800">Easy to cook</h1>
-                </button>
+            {{-- <form action="/searchResults" method="post"> --}}
+                <div class="flex justify-evenly">
+                    <h1 class="text-white">Sort by</h1>
+                    <button type="radio" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: white;">
+                        <h1 class="text-gray-800">Easy to cook</h1>
+                    </button>
 
-                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: #141414;">
-                    <h1 class="text-white">Low cooking time</h1>
-                </button>
+                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: #141414;">
+                        <h1 class="text-white">Low cooking time</h1>
+                    </button>
 
-                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: #141414;">
-                    <h1 class="text-white">Fewer Ingredients</h1>
-                </button>
+                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: #141414;">
+                        <h1 class="text-white">Fewer Ingredients</h1>
+                    </button>
 
-                <button value="chef" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: #141414;">
-                    <h1 class="text-white">From Top Chefs</h1>
-                </button>
+                    <button value="chef" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: #141414;">
+                        <h1 class="text-white">From Top Chefs</h1>
+                    </button>
 
-                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: #141414;">
-                    <h1 class="text-white">Sweet</h1>
-                </button>
+                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: #141414;">
+                        <h1 class="text-white">Sweet</h1>
+                    </button>
 
-                <button value="high" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: #141414;">
-                    <h1 class="text-white">Spicy</h1>
-                </button>
+                    <button value="high" class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: #141414;">
+                        <h1 class="text-white">Spicy</h1>
+                    </button>
 
-                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: #141414;">
-                    <h1 class="text-white">Sour</h1>
-                </button>
+                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: #141414;">
+                        <h1 class="text-white">Sour</h1>
+                    </button>
 
-                <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
-                    style="background: #141414;">
-                    <h1 class="text-white">Bitter</h1>
-                </button>
-            </div>
-        </form>
+                    <button class=" flex items-center justify-center text-sm  mr-1 rounded py-1 px-4"
+                        style="background: #141414;">
+                        <h1 class="text-white">Bitter</h1>
+                    </button>
+                </div>
+            {{-- </form> --}}
         </div>
 
     </section>
@@ -287,6 +287,9 @@
                                             <h1 class="text-xs text-white">
                                                 {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $recipes->id)->count() }}
                                                 Ingredients</h1>
+                                            {{-- SELECT PINBOARD_ID,COUNT(PINBOARD_ID) FROM PIN_RECIPES LEFT JOIN PINBOARDS ON PIN_RECIPES.PINBOARD_ID=PINBOARDS.ID WHERE PIN_RECIPES.USER_ID= 3  GROUP BY PIN_RECIPES.PINBOARD_ID --}}
+
+
                                         </div>
 
                                         <div class="py-1 rounded-md flex items-center justify-center px-1 "
@@ -310,35 +313,35 @@
                                             </h1>
                                         </div>
                                     </div>
-                                    <form action="/searchResults/{recipes->id}" method="post">
+                                    <form action="/searchResults/{recipes->id}" method="post" class="flex items-center">
                                         @csrf
-                                        <div class=" flex items-center text-xs bg-black">
+                                        <div class="flex items-center text-xs bg-black">
                                             <button type="submit">
                                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
-                                            fill="#292D32" />
-                                        <path
-                                            d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
-                                            fill="#292D32" />
-                                        <path
-                                            d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
-                                            fill="#292D32" />
-                                    </svg>
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
+                                                        fill="#292D32" />
+                                                    <path
+                                                        d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
+                                                        fill="#292D32" />
+                                                    <path
+                                                        d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
+                                                        fill="#292D32" />
+                                                </svg>
                                             </button>
                                             <input type="hidden" name="recipe_id" id="recipe_id"
                                                 value="{{ $recipes->id }}" />
                                             <select name="pinboard_id" id="pinboard_id"
-                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} ">
-                                                <option value="1">Add To Collection</option>
+                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} " class="bg-black text-white">
+                                                <option disabled selected value="">Add To Collection</option>
                                                 <option value="1">MyFavourite</option>
                                                 <option value="2">FamilyFav</option>
                                                 <option value="3">FavDesert</option>
                                                 <option value="4">FavDinner</option>
                                             </select>
                                         </div>
-                                        
+
                                     </form>
                                 </div>
                             </div>
@@ -587,28 +590,61 @@
 
             @if (count($collections) > 0)
                 <div class="flex justify-between space-x-4 items-center py-5">
-                    @foreach ($collections as $collection)
-                        <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                            <div class="flex justify-center -mt-5 mb-2">
-                                <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
-                                    class="h-16 w-16 rounded-full" alt="recipe">
-                            </div>
+                     @foreach ($collections as $collection)
+                         @if ($collection->id == 1)
+                            <a href="/myfavourite"
+                                class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                            @elseif($collection->id == 2)
+                                <a href="/familyfav"
+                                    class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                                @elseif($collection->id == 3)
+                                    <a href="/favdesert"
+                                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                                    @else
+                                        <a href="/favdinner"
+                                            class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                        @endif
+                    {{-- @switch($collection->id)
+                        @case(1)
+                        <a href="/myfavourite"
+                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                        @break
 
-                            <h1 class="text-white font-semibold flex justify-center"> {{ $collection->pin_name }}
-                            </h1>
-                            <h1 class="text-gray-500 flex text-sm justify-center items-center">
-                                <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                        fill="#454545" />
-                                </svg>
-                            </h1>
-                            {{-- <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
-                        </div>
-                    @endforeach
-                @else
-                    <h1 class="text-white">No Collection Found</h1>
+                        @case(2)
+                        <a href="/familyfav"
+                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                        @break
+                        @case(3)
+                        <a href="/favdesert"
+                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                        @case(3)
+                        <a href="/favdinner"
+                        class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                        @default
+                            InActive
+                    @endswitch --}}
+                     <div class="flex justify-center -mt-5 mb-2">
+                        <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
+                            class="h-16 w-16 rounded-full" alt="recipe">
+                    </div>
+                    <h1 class="text-white font-semibold flex justify-center"> {{ $collection->pin_name }}
+                    </h1>
+                    <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                        {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
+                        <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                            Recipes
+                            <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
+                                    fill="#454545" />
+                            </svg>
+                        </h1>
+                        <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
+                        </a>
+            @endforeach
+        @else
+            <h1 class="text-white">No Collection Found</h1>
             @endif
 
             {{-- <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
