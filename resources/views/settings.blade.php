@@ -90,7 +90,7 @@
         <div class="w-5/12 py-4">
             <div class="mb-4">
                 <h1 class="text-white text-manrope text-lg">Account Settings</h1>
-                <a href="" class="py-2.5 fadedgray mt-4 mx-2 px-4 rounded-md flex justify-between items-center">
+                <a href="{{route('password.request')}}" class="py-2.5 fadedgray mt-4 mx-2 px-4 rounded-md flex justify-between items-center">
                     <h1 class="text-manrope text-sm text-white">Change Password</h1>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -98,7 +98,7 @@
                             fill="#F9FBFC" />
                     </svg>
                 </a>
-
+                @if (Route::has('password.request'))
                 <a href="" class="py-2.5 fadedgray mt-4 mx-2 px-4 rounded-md flex justify-between items-center">
                     <h1 class="text-manrope text-sm text-white">Forgot Password</h1>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,6 +107,7 @@
                             fill="#F9FBFC" />
                     </svg>
                 </a>
+                @endif
 
                 <a href=""class="py-2.5 fadedgray mt-4 mx-2 px-4 rounded-md flex justify-between items-center">
                     <h1 class="text-manrope text-sm text-white">Change Email ID</h1>

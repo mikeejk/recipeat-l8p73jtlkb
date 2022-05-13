@@ -25,7 +25,7 @@ class CreateRecipeStepsTable extends Migration
             $table->text('steps');
 
             // Foreign Keys
-            $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
 
             // Time-Stamp Data
             $table->timestamps();

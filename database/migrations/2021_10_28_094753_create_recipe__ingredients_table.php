@@ -27,10 +27,10 @@ class CreateRecipeIngredientsTable extends Migration
             $table->string('quantity');
 
             // Foreign Keys
-            $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
             // $table->foreign('ingredient_id')->references('id')->on('ingredients');
-            $table->foreign('ingredient')->references('id')->on('ingredients');
-            $table->foreign('measurement_id')->references('id')->on('measurements');
+            $table->foreign('ingredient')->references('id')->on('ingredients')->onDelete('cascade');
+            $table->foreign('measurement_id')->references('id')->on('measurements')->onDelete('cascade');
             // Time-Stamp Data
             $table->timestamps();
         });

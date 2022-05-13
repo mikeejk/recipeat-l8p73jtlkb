@@ -22,9 +22,9 @@ class CreatePinRecipesTable extends Migration
               $table->unsignedBigInteger('pinboard_id');
 
               //Foreign Key
-              $table->foreign('user_id')->references('id')->on('users');
-              $table->foreign('recipe_id')->references('id')->on('recipes');
-              $table->foreign('pinboard_id')->references('id')->on('pinboards');
+              $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+              $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
+              $table->foreign('pinboard_id')->references('id')->on('pinboards')->onDelete('cascade');
 
               // Time-Stamp Data
               $table->timestamps();

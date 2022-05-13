@@ -333,12 +333,15 @@
                                             <input type="hidden" name="recipe_id" id="recipe_id"
                                                 value="{{ $recipes->id }}" />
                                             <select name="pinboard_id" id="pinboard_id"
-                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} " class="bg-black text-white">
+                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} " class="bg-black text-white appearance-none py-1 px-1">
                                                 <option disabled selected value="">Add To Collection</option>
-                                                <option value="1">MyFavourite</option>
+                                                @foreach ($collections as $collection)
+                                                <option value="{{$collection->id}}">{{$collection->pin_name}}</option>
+                                                @endforeach
+                                                {{-- <option value="{{$collection->id}}">MyFavourite</option>
                                                 <option value="2">FamilyFav</option>
                                                 <option value="3">FavDesert</option>
-                                                <option value="4">FavDinner</option>
+                                                <option value="4">FavDinner</option> --}}
                                             </select>
                                         </div>
 
@@ -347,10 +350,10 @@
                             </div>
                         @endforeach
                     @else
-                        <div class="w-full">
-                            <img src="https://www.masho.com/commonincludes/images/icons/floatfoot/nosearch.svg"
-                                class="w-full h-full">
-                            <h1 class="mt-4 text-center text-xl font-bold text-white">No Results Found</h1>
+                        <div class="w-full flex flex-col items-center">
+                            <img src="images\no_results_found.png"
+                                class="w-96 h-96">
+                            <h1 class="text-center text-xl font-bold text-white">No Results Found</h1>
                         </div>
                     @endif
 

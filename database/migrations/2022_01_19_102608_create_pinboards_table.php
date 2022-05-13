@@ -24,7 +24,7 @@ class CreatePinboardsTable extends Migration
             $table->string('pin_name');
 
             //Foreign Key
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             // Time-Stamp Data
             $table->timestamps();

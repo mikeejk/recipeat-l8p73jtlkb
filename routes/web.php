@@ -34,7 +34,7 @@ use App\Http\Controllers\HomeController;
 //                                                    Other Routes
 // -------------------------------------------------------------------------------------------------------------------
 // Welcome Tab
-Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
+// Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
 
 Route::get('/login', function () {
     return view('auth.login2');
@@ -42,8 +42,16 @@ Route::get('/login', function () {
 
 // Welcome Tab
 Route::get('/login1', function () {
-    return view('auth.login2');
+    return view('auth.login');
 });
+
+// LandingPage Tab
+Route::get('/landingPage', function () {
+    return view('landingPage');
+});
+
+// Welcome Tab
+Route::get('/skills', [ExlporeController::class, 'tryfun']);
 
 // Explore Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeController::class, 'index']);
@@ -115,9 +123,7 @@ Route::get('/register4', function () {
     return view('auth.register4');
 });
 // Welcome Tab
-Route::get('/mainDashboard', function () {
-    return view('mainDashboard');
-});
+Route::get('/',[RecipeController::class, 'show_count']);
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Follower FOllowing Routes

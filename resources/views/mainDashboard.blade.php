@@ -169,16 +169,16 @@
 
         <nav class="flex space-x-20 justify-around items-center py-3 text-white font-montserrat text-white text-base">
             <a href="" class="uppercase">Home</a>
-            <a href="" class="uppercase">Explore</a>
+            <a href="exploreRecipe" class="uppercase">Explore</a>
             <a href="" class="uppercase"> <img src="assets/media/logos/logo-5.png" alt="logo"
                     class="h-28 w-28" /></a>
             <a href="" class="uppercase">About</a>
-            <a href="/login1" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
+            <a href="/login" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
         </nav>
 
         <div class="pt-20 w-full mx-auto  flex flex-col items-center justify-center" x-data="{
             text: '',
-            textArray : ['Chef?', ' Recipes?', 'Ingredients?','Cuisines?','Something new?'],
+            textArray: ['Chef?', ' Recipes?', 'Ingredients?', 'Cuisines?', 'Something new?'],
             textIndex: 0,
             charIndex: 0,
             pauseEnd: 1500,
@@ -186,50 +186,51 @@
             pauseStart: 20,
             typeSpeed: 110,
             direction: 'forward'
-         }" x-init="(() => {
+        }"
+            x-init="(() => {
 
-            let typingInterval = setInterval(startTyping, $data.typeSpeed);
+                let typingInterval = setInterval(startTyping, $data.typeSpeed);
 
-         function startTyping(){
-            let current = $data.textArray[ $data.textIndex ];
-            if($data.charIndex > current.length){
-                 $data.direction = 'backward';
-                 clearInterval(typingInterval);
-                 setTimeout(function(){
-                    typingInterval = setInterval(startTyping, $data.typeSpeed);
-                 }, $data.pauseEnd);
-            }
+                function startTyping() {
+                    let current = $data.textArray[$data.textIndex];
+                    if ($data.charIndex > current.length) {
+                        $data.direction = 'backward';
+                        clearInterval(typingInterval);
+                        setTimeout(function() {
+                            typingInterval = setInterval(startTyping, $data.typeSpeed);
+                        }, $data.pauseEnd);
+                    }
 
-            $data.text = current.substring(0, $data.charIndex);
-            if($data.direction == 'forward'){
-                $data.charIndex += 1;
-             } else {
-                if($data.charIndex == 0){
-                    $data.direction = 'forward';
-                    clearInterval(typingInterval);
-                    setTimeout(function(){
+                    $data.text = current.substring(0, $data.charIndex);
+                    if ($data.direction == 'forward') {
+                        $data.charIndex += 1;
+                    } else {
+                        if ($data.charIndex == 0) {
+                            $data.direction = 'forward';
+                            clearInterval(typingInterval);
+                            setTimeout(function() {
 
-                        $data.textIndex += 1;
-                        if($data.textIndex >= $data.textArray.length){
-                            $data.textIndex = 0;
+                                $data.textIndex += 1;
+                                if ($data.textIndex >= $data.textArray.length) {
+                                    $data.textIndex = 0;
+                                }
+
+                                typingInterval = setInterval(startTyping, $data.typeSpeed);
+                            }, $data.pauseStart);
                         }
+                        $data.charIndex -= 1;
+                    }
 
-                        typingInterval = setInterval(startTyping, $data.typeSpeed);
-                    }, $data.pauseStart);
                 }
-                $data.charIndex -= 1;
-             }
 
-         }
-
-         setInterval(function(){
-            if($refs.cursor.classList.contains('hidden')){
-                $refs.cursor.classList.remove('hidden');
-            } else {
-                $refs.cursor.classList.add('hidden');
-            }
-         }, $data.cursorSpeed);
-     })()">
+                setInterval(function() {
+                    if ($refs.cursor.classList.contains('hidden')) {
+                        $refs.cursor.classList.remove('hidden');
+                    } else {
+                        $refs.cursor.classList.add('hidden');
+                    }
+                }, $data.cursorSpeed);
+            })()">
             <h1 class="text-5xl font-bold text-white">Are you searching for <span class="text-red-600 "
                     x-text="text"></span></h1>
             <div class="flex justify-center py-5 w-full mx-auto">
@@ -247,7 +248,7 @@
                             </svg>
                         </button>
                         <input type="search"
-                            class="form-control relative flex-auto min-w-0 block w-full px-3 py-8 text-base font-normal text-gray-700 bg-white border-0 m-0 "
+                            class="form-control relative flex-auto min-w-0 block w-full px-3 py-8 text-base font-normal text-gray-700 bg-white border-0 m-0 focus:outline-none focus:ring-0 "
                             placeholder='" Chicken Tikka Masala "' aria-label="Search" aria-describedby="button-addon2">
                         <a href="" class="bg-white rounded-r-md px-4 text-gray-600 flex items-center justify-center">
                             <button
@@ -288,7 +289,8 @@
 
     <section id="section2" class="bg-no-repeat py-10 ">
         <div class="w-3/4 mx-auto flex items-center justify-center">
-            <div class="w-1/2 py-5 mx-2 ">
+            <div class="w-1/2 py-5 mx-2 radial"
+                style="background: radial-gradient(47.58% 50% at 50% 50%, rgba(222, 222, 222, 0.25) 0%, rgba(222, 222, 222, 0) 100%);">
                 <h1 class="text-5xl text-white font-bold leading-tight mb-4">
                     Bringing
                     <br>the world <br> <span class="text-red-600">to your table</span>
@@ -364,17 +366,17 @@
                 <ul class="flex justify-around shadow-2xl py-3 mt-6 mb-4" style="background: #1F1F23;">
                     <li class="-mb-px mr-1">
                         <a class="inline-block rounded-md py-2 px-4 text-white font-medium " href="#"
-                            :class="{ 'bg-gray-600 text-black': tab == 'tab1'}" @click.prevent="tab = 'tab1'">For
+                            :class="{ 'bg-gray-600 text-black': tab == 'tab1' }" @click.prevent="tab = 'tab1'">For
                             Wishful Chefs</a>
                     </li>
                     <li class="-mb-px mr-1">
                         <a class="inline-block rounded-md py-2 px-4 text-white font-medium" href="#"
-                            :class="{ 'bg-gray-600 text-black': tab == 'tab2'}" @click.prevent="tab = 'tab2'">For Home
+                            :class="{ 'bg-gray-600 text-black': tab == 'tab2' }" @click.prevent="tab = 'tab2'">For Home
                             Chefs</a>
                     </li>
                     <li class="-mb-px mr-1">
                         <a class="inline-block rounded-md py-2 px-4 text-white font-medium" href="#"
-                            :class="{ 'bg-gray-600 text-black ': tab == 'tab3'}" @click.prevent="tab = 'tab3'">For Pro
+                            :class="{ 'bg-gray-600 text-black ': tab == 'tab3' }" @click.prevent="tab = 'tab3'">For Pro
                             Chefs</a>
                     </li>
                 </ul>
@@ -446,7 +448,8 @@
                                     with others, as well as connect with other chefs globally</p>
 
                                 <a href=""
-                                    class="flex  w-32 rounded-md text-base items-center justify-center px-2 py-2 text-white bg-red-600">Join Invite list</a>
+                                    class="flex  w-32 rounded-md text-base items-center justify-center px-2 py-2 text-white bg-red-600">Join
+                                    Invite list</a>
                             </div>
                         </div>
                     </div>
@@ -468,7 +471,7 @@
             </div>
             <div class="w-7/12 h-full flex justify-center">
                 <div class="h-fit">
-                    <div class=" w-full mx-auto " x-data="{selected:null}">
+                    <div class=" w-full mx-auto " x-data="{ selected: null }">
                         <ul class="shadow-box">
                             <li class="relative border-b border-gray-200">
                                 <button type="button" class="w-full  py-3 text-left"
