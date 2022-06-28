@@ -2,7 +2,7 @@
 @section('content')
     <div class="py-2 ml-4 mr-4 mt-4 flex justify-evenly items-start space-x-6">
         <div class="w-1/6 py-10 text-white rounded-lg pl-8 pr-2" style="background-color: #1F1F24;">
-            <a href="" class="opacity-50 tracking-wider flex space-x-4 items-center py-3 no-underline">
+            <a href="/chefProfile" class="opacity-50 tracking-wider flex space-x-4 items-center py-3 no-underline">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"

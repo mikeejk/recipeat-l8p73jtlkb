@@ -10,6 +10,8 @@ use App\Models\Chef_question;
 use Livewire\Component;
 use App\Models\Follower;
 use App\Models\Recipe;
+use App\Models\Pin_recipe;
+use App\Models\Pinboard;
 
 class ChefQuestion extends Component
 {
@@ -48,7 +50,9 @@ class ChefQuestion extends Component
     {
         // Data - Save
         $validatedData = $this->validate([
-            'dob' => 'required'
+            'designation' => 'required',
+            'company' => 'required',
+            
         ]);
 
         // Next Step
@@ -147,6 +151,8 @@ class ChefQuestion extends Component
         $notification = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
             ->where('notifiable_id', $user_id)->count();
         // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
+
+
         return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes', 'feednote', 'notification'));
         //  dd($chef_questions);
         // }
@@ -170,7 +176,12 @@ class ChefQuestion extends Component
         $notification = DB::table('notifications')->where('type', 'App\Notifications\FeedRecipeNotification')
             ->where('notifiable_id', $user_id)->count();
         // $feednotifications->where('type','App\Notifications\FeedRecipeNotification')->all();
-        return view('screens.user.profile.chef_profile', compact('chef_questions', 'followers', 'following', 'recipes', 'feednote', 'notification'));
+        $pinrecipes = Pin_recipe::all();
+        $collections = Pinboard::all('id', 'pin_name');
+        foreach($pinrecipes as $pin){
+        $count=Pin_recipe::where('user_id',auth()->user()->id)->where('pinboard_id',$pin->pinboard_id)->get()->count();
+        }
+        return view('screens.user.profile.chef_profile', compact('chef_questions', 'followers', 'following', 'recipes', 'feednote', 'notification','collections','pinrecipes','count'));
         //  dd($chef_questions);
         // }
     }

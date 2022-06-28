@@ -1,5 +1,5 @@
 
-@extends('layouts.tailwind.guest')
+@extends('layouts.tailwind.app')
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

@@ -96,10 +96,16 @@
                         </div>
 
                         <div class="flex justify-between">
-                            <label class="flex justify-center items-center text-gray-500 font-normal my-4 space-x-2">
-                                <input type="checkbox" class="h-5 w-5 accent-pink-500">
-                                <span class=" text-xs text-white leading-snug">Keep me logged in
-                                    Me </span>
+                           <label class="flex justify-center items-center text-gray-500 font-normal my-4 space-x-2">
+
+                                {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                {{ old('remember') ? 'checked' : '' }}>
+
+                            <label class="form-check-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>  --}}
+                                <input type="checkbox" name="remember" id="remember" class="h-5 w-5 accent-pink-500"  {{ old('remember') ? 'checked' : '' }}>
+                                <label for="remember" class=" text-xs text-white leading-snug">{{ __('Keep me logged in Me') }} </label>
                             </label>
                             <label class="text-base text-gray-100 font-normal my-4">
                                 @if (Route::has('password.request'))
@@ -108,7 +114,7 @@
                                         <span>{{ __('Forgot Password ?') }}</span>
                                     </a>
                                 @endif
-                               
+
                             </label>
                         </div>
                         <button type="submit"

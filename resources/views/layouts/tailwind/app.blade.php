@@ -16,8 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <!-- Styles -->
-    {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap"> --}}
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('question.css') }}" rel="stylesheet" id="bootstrap">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
@@ -32,6 +31,20 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {}
+
+        input[type=radio]:checked+label {
+            border: 1px solid indigo;
+            background-color: white;
+            color: black;
+        }
+
+        input[type=radio]:checked+label>span.icon {
+            display: inline-block;
+        }
+
+    </style>
 </head>
 
 <body class="bg-black">

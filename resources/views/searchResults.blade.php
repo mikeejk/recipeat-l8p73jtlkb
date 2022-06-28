@@ -332,10 +332,12 @@
                                             <input type="hidden" name="recipe_id" id="recipe_id"
                                                 value="{{ $recipes->id }}" />
                                             <select name="pinboard_id" id="pinboard_id"
-                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} " class="bg-black text-white appearance-none py-1 px-1">
+                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} "
+                                                class="bg-black text-white appearance-none py-1 px-1">
                                                 <option disabled selected value="">Add To Collection</option>
                                                 @foreach ($collections as $collection)
-                                                <option value="{{$collection->id}}">{{$collection->pin_name}}</option>
+                                                    <option value="{{ $collection->id }}">{{ $collection->pin_name }}
+                                                    </option>
                                                 @endforeach
                                                 {{-- <option value="{{$collection->id}}">MyFavourite</option>
                                                 <option value="2">FamilyFav</option>
@@ -350,8 +352,7 @@
                         @endforeach
                     @else
                         <div class="w-full flex flex-col items-center">
-                            <img src="images\no_results_found.png"
-                                class="w-96 h-96">
+                            <img src="images\no_results_found.png" class="w-96 h-96">
                             <h1 class="text-center text-xl font-bold text-white">No Results Found</h1>
                         </div>
                     @endif
@@ -631,59 +632,8 @@
                     <h1 class="text-white">No Collection Found</h1>
             @endif
 
-            {{-- <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                    <div class="flex justify-center -mt-5 mb-2">
-                        <img src="https://img-global.cpcdn.com/recipes/c5fc07a2fc2d25eb/1200x630cq70/photo.jpg"
-                            class="h-16 w-16 rounded-full" alt="recipe">
-                    </div>
 
-                    <p class="text-white font-semibold flex justify-center text-ellipsis">Breakfasts</p>
-                    <h1 class="text-gray-500 flex text-sm justify-center items-center">5 Recipes
-                        <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                fill="#454545" />
-                        </svg>
-                    </h1>
-                    <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
-                </div> --}}
 
-            {{-- <div class="py-2 px-1 rounded-lg w-1/3  border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                    <div class="flex justify-center -mt-5 mb-2">
-                        <img src="https://media.istockphoto.com/photos/delicious-panna-cotta-with-berries-picture-id182026106?k=20&m=182026106&s=612x612&w=0&h=-12CnyO0be_A88616ir0fAWV4Y6ay0WDzquv2crWSNU="
-                            class="h-16 w-16 rounded-full" alt="recipe">
-                    </div>
-
-                    <h1 class="text-white font-semibold flex justify-center">Desserts</h1>
-                    <h1 class="text-gray-500 flex text-sm justify-center items-center">7 Recipes
-                        <svg class="mt-1 text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                fill="#454545" />
-                        </svg>
-                    </h1>
-                    <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
-            {{-- </div> --}}
-
-            {{-- <div class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                    <div class="flex justify-center -mt-5 mb-2">
-                        <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
-                            class="h-16 w-16 rounded-full" alt="recipe">
-                    </div>
-
-                    <h1 class="text-white font-semibold flex justify-center">Oriental</h1>
-                    <h1 class="text-gray-500 flex text-sm justify-center items-center">3 Recipes
-                        <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                fill="#454545" />
-                        </svg>
-                    </h1>
-                    <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1>
-                </div> --}}
             </div>
 
             <div class="py-4">

@@ -33,66 +33,22 @@ use App\Http\Controllers\HomeController;
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Other Routes
 // -------------------------------------------------------------------------------------------------------------------
-// Welcome Tab
-// Route::get('/', [RecipeController::class, 'nonLoginUserSearch']);
 
+// Welcome Tab
+Route::get('/',[RecipeController::class, 'show_count']);
+
+// Login Tab
 Route::get('/login', function () {
     return view('auth.login2');
 })->name('login');
 
-// Welcome Tab
+// Login Tab
 Route::get('/login1', function () {
     return view('auth.login');
 });
 
-// LandingPage Tab
-Route::get('/landingPage', function () {
-    return view('landingPage');
-});
 
-// Welcome Tab
-Route::get('/skills', [ExlporeController::class, 'tryfun']);
-
-// Explore Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeController::class, 'index']);
-
-// Home Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/HomePage', [HomeController::class, 'index']);
-
-// Search Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'searchResult']);
-//collections searchResult
-//  Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'easyToCook']);
-
-//Chef Profile Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/chefProfile', [ChefQuestion::class, 'chefProfileShow']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/digitalportfolio', [ChefQuestion::class, 'digitalportfolio']);
-
-//Settings Profile Tab
-Route::middleware(['auth:sanctum', 'verified'])->get('/settings', [ChefQuestion::class, 'settings']);
-
-// Search result Tab
-// Route::get('/searchResult', function () {
-//     return view('searchResults');
-// });
-// Route::middleware(['auth:sanctum', 'verified'])->get('/searchResult', [RecipeController::class, 'search_result']);
-// Google login
-Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
-Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
-
-// Facebook login
-Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
-Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
-
-// Register Tab
-// Route::get('/register1', function () {
-//     return view('auth.register1');
-// });
-// Route::post('/storeUser',[UserController::class, 'step1']);
-
-
-
-
+//User Register Tab
 Route::get('/register1', [UserController::class, 'createstep1']);
 Route::post('/storeUser', [UserController::class, 'poststep1']);
 
@@ -107,23 +63,38 @@ Route::get('/register4', [UserController::class, 'createstep4']);
 Route::post('/storeUser4', [UserController::class, 'registerData']);
 
 
-
-// Register2 Tab
-Route::get('/register2', function () {
-    return view('auth.register2');
+// LandingPage Tab
+Route::get('/landingPage', function () {
+    return view('landingPage');
 });
 
-// Register3 Tab
-Route::get('/register3', function () {
-    return view('auth.register3');
-});
-Route::post('/storeUserGender', [UserController::class, 'step3']);
-// Register4 Tab
-Route::get('/register4', function () {
-    return view('auth.register4');
-});
-// Welcome Tab
-Route::get('/',[RecipeController::class, 'show_count']);
+// Skills Tab
+Route::get('/skills', [ExlporeController::class, 'tryfun']);
+
+// Explore Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/exploreRecipe', [ExlporeController::class, 'index']);
+
+// Home Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/HomePage', [HomeController::class, 'index']);
+
+// Search Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/searchResults', [RecipeController::class, 'searchResult']);
+
+//Chef Profile Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/chefProfile', [ChefQuestion::class, 'chefProfileShow']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/digitalportfolio', [ChefQuestion::class, 'digitalportfolio']);
+
+//Settings Profile Tab
+Route::middleware(['auth:sanctum', 'verified'])->get('/settings', [ChefQuestion::class, 'settings']);
+
+// Google login
+Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
+// Facebook login
+Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
+
 
 // -------------------------------------------------------------------------------------------------------------------
 //                                                    Follower FOllowing Routes
@@ -168,9 +139,6 @@ Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
-//  Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/mainDashboard', [RecipeController::class, 'show_count']);
 // Recipeat Customer Data Table - Data Tab
@@ -407,7 +375,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
             if ($cq == "") {
                 return view('indexHome');
             } else {
-                return redirect('/dashboard');
+                return redirect('/HomePage');
             }
         } else {
             $q = Question::where('user_id', auth()->user()->id)->first();
@@ -415,7 +383,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('home', function () {
             if ($q == "") {
                 return view('indexHome');
             } else {
-                return redirect('/dashboard');
+                return redirect('/HomePage');
             }
         }
     }

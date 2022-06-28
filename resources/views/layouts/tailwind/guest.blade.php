@@ -17,7 +17,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <!-- Styles -->
-    {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap"> --}}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('question.css') }}" rel="stylesheet" id="bootstrap">
@@ -36,7 +36,7 @@
 </head>
 
 <body class="bg-black">
-    <header class="flex justify-evenly py-7 items-center" style="background-color: rgba(20, 20, 20, 1)">
+    {{-- <header class="flex justify-evenly py-7 items-center" style="background-color: rgba(20, 20, 20, 1)">
 
         <div class="flex space-x-4">
             <a href="/welcome"><i class="fas fa-bars text-white text-3xl"></i></a>
@@ -106,7 +106,7 @@
                 <h6 class="text-sm text-center">{{ count(auth()->user()->unreadnotifications) }}</h6>
             </div>
         </a>
-    </header>
+    </header> --}}
 
     <div class="">
         <!--Content area here-->

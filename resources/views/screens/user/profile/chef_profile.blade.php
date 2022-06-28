@@ -14,7 +14,7 @@
                 <h1 class="font-semibold text-lg">Profile</h1>
             </a>
 
-            <a href="" class="opacity-50 tracking-wider flex space-x-4 items-center py-3 no-underline">
+            <a href="/digitalportfolio" class="opacity-50 tracking-wider flex space-x-4 items-center py-3 no-underline">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.5">
                         <path
@@ -394,107 +394,61 @@
 
                         </div>
                         <div id="second" class="hidden p-4">
-                            Second tab
+
                         </div>
                         <div id="third" class="hidden p-4">
-                                {{--<div class="grid grid-cols-3 gap-4 rounded-lg py-4">
-                                    @foreach ($pinRecipe as $pinRecipes)
-                                        <div class="relative w-full h-full rounded-md">
-                                            <img src="{{ $pinRecipes->getFirstMediaUrl('cover') }}"
-                                                class="w-full h-full flex object-cover rounded-md">
-                                            <div class="absolute w-full py-2.5 bottom-0 inset-x-0  px-2 rounded-md"
-                                                style="background: linear-gradient(180.2deg, rgba(45, 45, 45, 0) 25.71%, #141414 99.83%);">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <h1 class="text-white text-lg font-bold flex flex-wrap">
-                                                        {{ $pinRecipes->recipe_name }}</h1>
-                                                    <a href="/recipes/{{ $pinRecipes->id }}/edit">
-                                                        <svg class="font-bold h-6 w-6" width="16" height="16"
-                                                            viewBox="0 0 16 16" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M9.99992 15.1666H5.99992C2.37992 15.1666 0.833252 13.6199 0.833252 9.99992V5.99992C0.833252 2.37992 2.37992 0.833252 5.99992 0.833252H7.33325C7.60659 0.833252 7.83325 1.05992 7.83325 1.33325C7.83325 1.60659 7.60659 1.83325 7.33325 1.83325H5.99992C2.92659 1.83325 1.83325 2.92659 1.83325 5.99992V9.99992C1.83325 13.0733 2.92659 14.1666 5.99992 14.1666H9.99992C13.0733 14.1666 14.1666 13.0733 14.1666 9.99992V8.66659C14.1666 8.39325 14.3933 8.16659 14.6666 8.16659C14.9399 8.16659 15.1666 8.39325 15.1666 8.66659V9.99992C15.1666 13.6199 13.6199 15.1666 9.99992 15.1666Z"
-                                                                fill="white" />
-                                                            <path
-                                                                d="M5.66664 11.7934C5.25997 11.7934 4.88664 11.6467 4.61331 11.38C4.28664 11.0534 4.14664 10.58 4.21997 10.08L4.50664 8.07337C4.55997 7.68671 4.81331 7.18671 5.08664 6.91337L10.34 1.66004C11.6666 0.333372 13.0133 0.333372 14.34 1.66004C15.0666 2.38671 15.3933 3.12671 15.3266 3.86671C15.2666 4.46671 14.9466 5.05337 14.34 5.65337L9.08664 10.9067C8.8133 11.18 8.3133 11.4334 7.92664 11.4867L5.91997 11.7734C5.83331 11.7934 5.74664 11.7934 5.66664 11.7934ZM11.0466 2.36671L5.7933 7.62004C5.66664 7.74671 5.51997 8.04004 5.4933 8.21337L5.20664 10.22C5.17997 10.4134 5.21997 10.5734 5.31997 10.6734C5.41997 10.7734 5.57997 10.8134 5.7733 10.7867L7.77997 10.5C7.9533 10.4734 8.2533 10.3267 8.3733 10.2L13.6266 4.94671C14.06 4.51337 14.2866 4.12671 14.32 3.76671C14.36 3.33337 14.1333 2.87337 13.6266 2.36004C12.56 1.29337 11.8266 1.59337 11.0466 2.36671Z"
-                                                                fill="white" />
-                                                            <path
-                                                                d="M13.2333 6.55343C13.1866 6.55343 13.14 6.54677 13.1 6.53343C11.3466 6.0401 9.95329 4.64677 9.45996 2.89343C9.38662 2.62677 9.53996 2.35343 9.80662 2.27343C10.0733 2.2001 10.3466 2.35343 10.42 2.6201C10.82 4.0401 11.9466 5.16677 13.3666 5.56677C13.6333 5.6401 13.7866 5.9201 13.7133 6.18677C13.6533 6.41343 13.4533 6.55343 13.2333 6.55343Z"
-                                                                fill="white" />
-                                                        </svg></a>
-                                                </div>
 
-                                                <div class="flex justify-between space-x-2">
-                                                    <div class="flex justify-start space-x-1 py-2">
-                                                        <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-1"
-                                                            style="background: rgba(255, 255, 255, 0.2);">
-                                                            <svg width="20" height="20" viewBox="0 0 13 13" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M6.45833 11.5876C3.89733 11.5876 1.81531 9.50552 1.81531 6.94453C1.81531 4.38354 3.89733 2.30151 6.45833 2.30151C9.01932 2.30151 11.1013 4.38354 11.1013 6.94453C11.1013 9.50552 9.01932 11.5876 6.45833 11.5876ZM6.45833 3.03462C4.30299 3.03462 2.54842 4.78919 2.54842 6.94453C2.54842 9.09987 4.30299 10.8544 6.45833 10.8544C8.61366 10.8544 10.3682 9.09987 10.3682 6.94453C10.3682 4.78919 8.61366 3.03462 6.45833 3.03462Z"
-                                                                    fill="white" />
-                                                                <path
-                                                                    d="M6.45835 7.18901C6.25797 7.18901 6.0918 7.02284 6.0918 6.82245V4.37876C6.0918 4.17838 6.25797 4.01221 6.45835 4.01221C6.65873 4.01221 6.8249 4.17838 6.8249 4.37876V6.82245C6.8249 7.02284 6.65873 7.18901 6.45835 7.18901Z"
-                                                                    fill="white" />
-                                                                <path
-                                                                    d="M7.9246 1.8127H4.99216C4.79178 1.8127 4.62561 1.64653 4.62561 1.44614C4.62561 1.24576 4.79178 1.07959 4.99216 1.07959H7.9246C8.12498 1.07959 8.29115 1.24576 8.29115 1.44614C8.29115 1.64653 8.12498 1.8127 7.9246 1.8127Z"
-                                                                    fill="white" />
-                                                            </svg>
-                                                            <h1 class="text-xs text-white">
-                                                                {{ $pinRecipes->cooking_time }}
-                                                                mins</h1>
-                                                        </div>
-
-                                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                                            style="background: rgba(255, 255, 255, 0.2);">
-
-                                                            <h1 class="text-xs text-white">
-                                                                {{ DB::table('recipe__ingredients')->join('recipes', 'recipes.id', '=', 'recipe__ingredients.recipe_id')->where('recipes.id', $pinRecipes->id)->count() }}
-                                                                Ingredients</h1>
-                                                        </div>
-
-                                                        <div class="py-1 rounded-md flex items-center justify-center px-1 "
-                                                            style="background: rgba(255, 255, 255, 0.2);">
-                                                            <h1 class=" text-xs text-white">
-                                                                @if ($pinRecipes->bud_sweet == 'High')
-                                                                    For
-                                                                    Sweet tastebuds
-                                                                @elseif($pinRecipes->bud_sour == 'High')
-                                                                    For Sour tastebuds
-                                                                @elseif($pinRecipes->bud_salt == 'High')
-                                                                    For salty tastebuds
-                                                                @elseif($pinRecipes->bud_spicy == 'High')
-                                                                    For Spicy tastebuds
-                                                                @elseif($pinRecipes->bud_astringent == 'High')
-                                                                    For astringent tastebuds
-                                                                @else
-                                                                    For bitter tastebuds
-                                                                @endif
-
-                                                            </h1>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex items-center">
-                                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
-                                                                fill="#292D32" />
-                                                            <path
-                                                                d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
-                                                                fill="#292D32" />
-                                                            <path
-                                                                d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
-                                                                fill="#292D32" />
-                                                        </svg>
-                                                    </div>
-                                                </div>
+                            @if (count($collections) > 0)
+                                <div class="flex justify-between space-x-8 items-center py-5 ">
+                                    @foreach ($collections as $collection)
+                                        {{-- @if ($collection->id == 1)
+                                            <a href="/myfavourite"
+                                                class="py-2 px-1 rounded-lg w-1/4 border border-gray-700 hover:bg-gray-700 bg-gray202020">
+                                            @elseif($collection->id == 2)
+                                                <a href="/familyfav"
+                                                    class="py-2 px-1 rounded-lg w-1/4 border border-gray-700 hover:bg-gray-700 bg-gray202020">
+                                                @elseif($collection->id == 3)
+                                                    <a href="/favdesert"
+                                                        class="py-2 px-1 rounded-lg w-1/4 border border-gray-700 hover:bg-gray-700 bg-gray202020">
+                                                    @else
+                                                        <a href="/favdinner"
+                                                            class="py-2 px-1 rounded-lg w-1/4 border border-gray-700 hover:bg-gray-700 bg-gray202020">
+                                        @endif --}}
+                                        <a href=""
+                                            class="py-2 px-1 rounded-lg w-1/6 border border-gray-700 hover:bg-gray-700 bg-gray202020">
+                                            <div class="flex justify-center -mt-5 mb-2">
+                                                <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
+                                                    class="h-16 w-16 rounded-full" alt="recipe">
                                             </div>
-                                        </div>
+                                            <h1 class="text-white font-semibold flex justify-center">
+                                                {{ $collection->pin_name }}
+                                            </h1>
+                                            <div>
+                                                <h1 class="text-gray-500 flex text-sm justify-center items-center mt-2">
+                                                    {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }} Recipes
+                                                    <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
+                                                            fill="#454545" />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex justify-center space-x-2 text-white text-montserrat items-center">
+                                                <svg class="mt-4 mb-5 " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.0002 15.1666H6.00016C2.38016 15.1666 0.833496 13.6199 0.833496 9.99992V5.99992C0.833496 2.37992 2.38016 0.833252 6.00016 0.833252H7.3335C7.60683 0.833252 7.8335 1.05992 7.8335 1.33325C7.8335 1.60659 7.60683 1.83325 7.3335 1.83325H6.00016C2.92683 1.83325 1.8335 2.92659 1.8335 5.99992V9.99992C1.8335 13.0733 2.92683 14.1666 6.00016 14.1666H10.0002C13.0735 14.1666 14.1668 13.0733 14.1668 9.99992V8.66659C14.1668 8.39325 14.3935 8.16659 14.6668 8.16659C14.9402 8.16659 15.1668 8.39325 15.1668 8.66659V9.99992C15.1668 13.6199 13.6202 15.1666 10.0002 15.1666Z" fill="white"/>
+                                                    <path d="M5.66688 11.7934C5.26022 11.7934 4.88688 11.6467 4.61355 11.38C4.28688 11.0534 4.14688 10.58 4.22022 10.08L4.50688 8.07337C4.56022 7.68671 4.81355 7.18671 5.08688 6.91337L10.3402 1.66004C11.6669 0.333372 13.0135 0.333372 14.3402 1.66004C15.0669 2.38671 15.3935 3.12671 15.3269 3.86671C15.2669 4.46671 14.9469 5.05337 14.3402 5.65337L9.08688 10.9067C8.81355 11.18 8.31355 11.4334 7.92688 11.4867L5.92022 11.7734C5.83355 11.7934 5.74688 11.7934 5.66688 11.7934ZM11.0469 2.36671L5.79355 7.62004C5.66688 7.74671 5.52022 8.04004 5.49355 8.21337L5.20688 10.22C5.18022 10.4134 5.22022 10.5734 5.32022 10.6734C5.42022 10.7734 5.58022 10.8134 5.77355 10.7867L7.78022 10.5C7.95355 10.4734 8.25355 10.3267 8.37355 10.2L13.6269 4.94671C14.0602 4.51337 14.2869 4.12671 14.3202 3.76671C14.3602 3.33337 14.1335 2.87337 13.6269 2.36004C12.5602 1.29337 11.8269 1.59337 11.0469 2.36671Z" fill="white"/>
+                                                    <path d="M13.2335 6.55343C13.1869 6.55343 13.1402 6.54677 13.1002 6.53343C11.3469 6.0401 9.95353 4.64677 9.4602 2.89343C9.38687 2.62677 9.5402 2.35343 9.80687 2.27343C10.0735 2.2001 10.3469 2.35343 10.4202 2.6201C10.8202 4.0401 11.9469 5.16677 13.3669 5.56677C13.6335 5.6401 13.7869 5.9201 13.7135 6.18677C13.6535 6.41343 13.4535 6.55343 13.2335 6.55343Z" fill="white"/>
+                                                    </svg>
+
+                                                    <h2 class="text-xs">Edit</h2>
+                                                </div>
+                                        </a>
                                     @endforeach
-                                {{-- </div> --}}
-                              {{-- @else
-                                <h1 class="text-white flex justify-center py-5 items-center text-lg">No Recipes Found !</h1>
-                            @endif --}}
+                                @else
+                                    <h1 class="text-white">No Collection Found</h1>
+                            @endif
+
+
                         </div>
 
                     </div>
@@ -506,6 +460,7 @@
         .bg-tab {
             background: #252525;
         }
+
     </style>
     <script>
         let tabsContainer = document.querySelector("#tabs");

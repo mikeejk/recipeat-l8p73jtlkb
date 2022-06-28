@@ -8,7 +8,6 @@
     <title>Recipeat</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 
@@ -19,32 +18,32 @@
     <!-- icon8 - line-awesome -->
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
-    <style>
-        input:before {
-            content: '';
-            position: absolute;
-            width: 1.25rem;
-            height: 1.25rem;
-            border-radius: 50%;
-            top: 0;
-            left: 0;
-            transform: scale(1.1);
-            box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
-            background-color: #3F4044;
-            transition: .2s ease-in-out;
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <style type="text/css">
+        .dropdown-toggle {
+            height: 39px;
+            background-color: black;
+            border: 2px solid black;
         }
 
-        input:checked {
-            @apply: bg-gray-400;
-            background-color: #000000;
-        }
-
-        input:checked:before {
-            left: 1.25rem;
+        a {
+            text-decoration: none !important;
         }
 
     </style>
+
+    <!-- Initialize the plugin: -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select').selectpicker();
+        });
+    </script>
+
 </head>
 
 <body class="antialiased bg-black">
@@ -125,7 +124,7 @@
     </header>
 
     <main class="flex py-10 mx-10  justify-between">
-        <section class="w-1/5  ">
+        <section class="w-1/5">
             <div class="w-full py-5 rounded-xl mb-4" style="background: rgba(20, 20, 20, 1)">
                 <div class="px-4 mb-4">
                     <div class="flex justify-center items-center py-2 rounded-full">
@@ -133,7 +132,7 @@
                             @if ($chef_questions->image == '')
                                 <img class="rounded-full h-24 w-24" src="assets/media//users/blank.png" />
                             @else
-                                <img class="rounded-full h-24 w-24"
+                                <img class="rounded-full h-24 w-24 object-cover hover:object-contain"
                                     src="{{ asset('/storage/public/' . $chef_questions->image) }}" />
                             @endif
                         @endhasrole
@@ -187,7 +186,7 @@
                                 <h3 class="text-gray-500 text-sm">Recipes</h3>
                             </div>
                             <div class="flex flex-col justify-center items-center">
-                                <h1 class="text-white fonr-semibold text-lg">3.5k</h1>
+                                <h1 class="text-white fonr-semibold text-lg">{{ $total_like_count }}</h1>
                                 <h3 class="text-gray-500 text-sm">Likes</h3>
                             </div>
                             <div class="flex flex-col justify-center items-center">
@@ -217,7 +216,8 @@
                 </div>
 
                 <div class="flex justify-center items-center py-2 mt-4">
-                    <a href="" class="w-28 flex justify-center items-center text-white rounded-md py-1.5 px-2"
+                    <a href="/chefProfile"
+                        class="w-28 flex justify-center items-center text-white rounded-md py-1.5 px-2"
                         style="background-color: rgba(32, 32, 32, 1)">View Profile</a>
                 </div>
             </div>
@@ -270,7 +270,7 @@
             </div>
         </section>
 
-        <section class="w-1/2 py-5 ">
+        <section class="w-1/2">
             <div class="flex justify-center items-center">
                 <button
                     class="flex items-center justify-center px-4 py-4 w-1/2 text-white text-lg font-semibold mb-2 space-x-2"
@@ -288,8 +288,8 @@
                     </svg>
                     <span> Post an Update</span>
                 </button>
-                <button
-                    class="flex items-center justify-center px-4 py-4 w-1/2 text-white text-lg font-semibold  mb-2 space-x-2"
+                <a href="/recipes_create"
+                    class="flex items-center justify-center px-4 py-4 w-1/2 text-white text-lg font-semibold  mb-2 space-x-2 no-underline"
                     style="background: rgba(37, 37, 37, 1);">
                     <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -304,7 +304,7 @@
                     </svg>
 
                     <span>Create a Recipe</span>
-                </button>
+                </a>
             </div>
 
             <main class="py-4 overflow-y-scroll h-screen">
@@ -413,7 +413,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex py-2 justify-between px-2">
+                            <div class="flex py-2 justify-between px-2 ">
                                 <div class="flex space-x-4">
                                     <div class="flex items-center space-x-2">
                                         <div class="flex items-center space-x-2">
@@ -438,7 +438,7 @@
                                 </div>
                                 <form action="/searchResults/{recipes->id}" method="post">
                                     @csrf
-                                    <div class="flex items-center space-x-1">
+                                    <div class="flex items-center ">
                                         <button type="submit">
                                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -453,16 +453,33 @@
                                                     fill="#292D32" />
                                             </svg>
                                         </button>
-                                        <h2 class="font-normal text-sm" style="color:rgba(41, 45, 50, 1);">
+                                        <h2 class="font-normal text-sm bg-black flex items-center "
+                                            style="color:rgba(41, 45, 50, 1);">
                                             <input type="hidden" name="recipe_id" id="recipe_id"
                                                 value="{{ $recipes->id }}" />
-                                            <select name="pinboard_id" id="pinboard_id"
+                                            {{-- <select class="bg-black text-white" name="pinboard_id" id="pinboard_id"
                                                 value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} ">
-                                                <option value="1">Add To Collection</option>
+                                                <option value="" disabled selected>Add To Collection</option>
                                                 <option value="1">MyFavourite</option>
                                                 <option value="2">FamilyFav</option>
                                                 <option value="3">FavDesert</option>
                                                 <option value="4">FavDinner</option>
+                                            </select> --}}
+
+                                            <select class="selectpicker bg-black text-white" multiple
+                                                name="pinboard_id[]" id="pinboard_id" required>
+                                                <option value="" disabled selected style="color:#292D32;">Add to
+                                                    Collection</option>
+                                                @foreach ($CollectionName as $col)
+                                                    <option value="{{ $col->id }}"
+                                                        {{ in_array($col->id, old('pinboard_id') ?: []) ? 'selected' : '' }}>
+                                                        {{ $col->pin_name }}
+                                                    </option>
+                                                @endforeach
+                                                {{-- <option value="1">MyFavourite</option>
+                                                <option value="2">FamilyFav</option>
+                                                <option value="3">FavDesert</option>
+                                                <option value="4">FavDinner</option> --}}
                                             </select>
                                         </h2>
                                     </div>
@@ -477,11 +494,12 @@
 
                             <div class="flex justify-between items-center py-2 space-x-2">
                                 <div class="border-b w-10/12 text-white flex justify-between">
-                                    <form method="post" action="{{ route('comment.add') }}" class="flex justify-between w-full">
+                                    <form method="post" action="{{ route('comment.add') }}"
+                                        class="flex justify-between w-full">
                                         @csrf
                                         <input type="text" name="comment"
                                             class="border-0 w-10/12 focus:outline-none bg-transparent px-1 placeholder-gray-500"
-                                            placeholder="Add a Comment">
+                                            placeholder="Add a Comment" required>
                                         <input type="hidden" name="recipe_id" value="{{ $recipes->id }}" />
                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -509,12 +527,12 @@
 
         </section>
 
-        <section class="w-1/4  ">
-            <div class="rounded-xl " style="background: rgba(20, 20, 20, 1)">
+        <section class="w-1/4">
+            <div class="rounded-xl" style="background: rgba(20, 20, 20, 1)">
                 <div class="mx-4 py-5">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between ">
                         <h1 class="text-white font-semibold">My Collections</h1>
-                        <h1 class="text-gray-500 text-xs items-center flex">View All
+                        <h1 class="text-gray-100 text-xs items-center flex">View All
                             <svg class="ml-1 text-xl" width="14" height="14" viewBox="0 0 4 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -525,42 +543,43 @@
                     </div>
 
                     @if (count($collections) > 0)
-                        <div class="flex justify-between space-x-2 items-center py-5">
+                        <div class="flex justify-between space-x-1 items-center py-5 px-2">
                             @foreach ($collections as $collection)
-                            @if ($collection->id == 1)
-                                <a href="/myfavourite"
-                                    class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                                @elseif($collection->id == 2)
-                                    <a href="/familyfav"
+                                @if ($collection->id == 1)
+                                    <a href="/myfavourite"
                                         class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                                    @elseif($collection->id == 3)
-                                        <a href="/favdesert"
+                                    @elseif($collection->id == 2)
+                                        <a href="/familyfav"
                                             class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                                        @else
-                                            <a href="/favdinner"
+                                        @elseif($collection->id == 3)
+                                            <a href="/favdesert"
                                                 class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
-                            @endif
+                                            @else
+                                                <a href="/favdinner"
+                                                    class="py-2 px-1 rounded-lg w-1/3 border border-gray-700 hover:bg-gray-700 bg-slate-900">
+                                @endif
 
-                            <div class="flex justify-center -mt-5 mb-2">
-                                <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
-                                    class="h-16 w-16 rounded-full" alt="recipe">
-                            </div>
-                            <h1 class="text-white font-semibold flex justify-center"> {{ $collection->pin_name }}
-                            </h1>
-                            <h1 class="text-gray-500 flex text-sm justify-center items-center">
-                                {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
-                                <h1 class="text-gray-500 flex text-sm justify-center items-center">
-                                    Recipes
-                                    <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
-                                            fill="#454545" />
-                                    </svg>
+                                <div class="flex justify-center -mt-5 mb-2">
+                                    <img src="https://www.thespruceeats.com/thmb/cO72JFFH0TCAufENSxUfqE8TmKw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/vegan-tofu-tikka-masala-recipe-3378484-hero-01-d676687a7b0a4640a55be669cba73095.jpg"
+                                        class="h-16 w-16 rounded-full" alt="recipe">
+                                </div>
+                                <h1 class="text-white font-semibold text-xs text-ellipsis px-4 flex justify-center">
+                                    {{ $collection->pin_name }}
                                 </h1>
-                                {{-- <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
-                                </a>
-                        @endforeach
+                                <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                                    {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
+                                    <h1 class="text-gray-500 flex text-sm justify-center items-center">
+                                        Recipes
+                                        <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
+                                                fill="#454545" />
+                                        </svg>
+                                    </h1>
+                                    {{-- <h1 class="text-white  flex justify-center mt-2 text-xs">By @wdmorrisjr</h1> --}}
+                                    </a>
+                            @endforeach
                         </div>
                     @else
                         <h1 class="text-white">No Collection Found</h1>
@@ -626,48 +645,57 @@
                         </h1>
                     </div>
 
-                    <div class="flex justify-between items-center py-4">
-                        <div class="flex space-x-4 items-center">
-                            <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
-                                class="rounded-lg h-14 w-14" alt="user">
-                            <div>
-                                <h1 class="text-white font-semibold break-words">David Morris</h1>
-                                <h3 class="text-gray-500 text-sm break-words">@wdmorrisjr</h3>
-                            </div>
-                        </div>
-                        <button
-                            class="bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold">Follow</button>
-                    </div>
+                    @if (count($suggestions) > 0)
+                        @foreach ($suggestions as $follower_suggestions)
+                            <div class="flex justify-between items-center py-2">
+                                <div class="flex space-x-4 items-center">
+                                    {{-- @if ($follower_suggestions->id)
+                                            <img src="{{ asset('storage/public/' . $profile_image)}}"
+                                                class="rounded-lg h-14 w-14">
+                                    @endif --}}
 
-                    <div class="flex justify-between items-center py-4">
-                        <div class="flex space-x-4 items-center">
-                            <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B1582-Edit.jpg"
-                                class="rounded-lg h-14 w-14" alt="user">
-                            <div>
-                                <h1 class="text-white font-semibold break-words ">Rajamurugan</h1>
-                                <h3 class="text-gray-500 text-sm break-words">@rajamurugan</h3>
-                            </div>
-                        </div>
-                        <button
-                            class="bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold">Follow</button>
-                    </div>
+                                    <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                                        class="rounded-lg h-14 w-14" alt="user">
+                                    <div>
+                                        <h1 class="text-white font-semibold break-words w-32">
+                                            {{ $follower_suggestions->name }}</h1>
+                                        <h3 class="text-gray-500 text-xs break-words w-28 ">
+                                            {{ $follower_suggestions->email }}</h3>
+                                    </div>
+                                </div>
 
-                    <div class="flex justify-between items-center py-4">
-                        <div class="flex space-x-4 items-center">
-                            <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
-                                class="rounded-lg h-14 w-14" alt="user">
-                            <div>
-                                <h1 class="text-white font-semibold break-words">David Morris</h1>
-                                <h3 class="text-gray-500 text-sm break-words">@wdmorrisjr</h3>
+                                <!--begin::Label-->
+                                <form action="/follow" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="user" value="{{ $follower_suggestions->id }}">
+                                    <div class="button mt-2 d-flex flex-row justify-content-center align-items-center">
+
+                                        @if (Auth::user()->isFollowedBy($follower_suggestions))
+                                            <input class="btn btn-danger" value="UnFollow" type="submit"
+                                                name="UnFollow">
+                                        @else
+                                            <input
+                                                class="btn bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold "
+                                                value="Follow" type="submit" name="Follow">
+                                        @endif
+                                    </div>
+                                </form>
+                                <!--end::Label-->
+                                {{-- <button
+                                    class="bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold">Follow</button> --}}
                             </div>
-                        </div>
-                        <button
-                            class="bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold">Follow</button>
-                    </div>
+                        @endforeach
+                    @else
+                        <h1 class="text-white text-base text-montserrat">No Follower Suggestions</h1>
+
+                    @endif
+
                 </div>
             </div>
         </section>
 
     </main>
+
+
 
 </body>

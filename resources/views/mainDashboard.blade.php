@@ -686,9 +686,9 @@
                     </div>
                     <div class="flex justify-between mt-4">
                         <nav class="flex items-end space-x-10 ">
-                            <a href="" class="text-white text-base font-normal">Home</a>
+                            <a href="/HomePage" class="text-white text-base font-normal">Home</a>
                             <a href="" class="text-white text-base font-normal">About Us</a>
-                            <a href="" class="text-white text-base font-normal">Explore</a>
+                            <a href="/exploreRecipe" class="text-white text-base font-normal">Explore</a>
                             <a href="" class="text-white text-base font-normal">FAQ</a>
                             <a href="/contactUs" class="text-white text-base font-normal">Contact Us</a>
                         </nav>
@@ -741,46 +741,6 @@
     </section>
 
     <script>
-        // document.addEventListener("DOMContentLoaded", () => {
-        //     function counter(id, start, end, duration) {
-        //         var count = count($recipe);
-        //         let obj = document.getElementById(id),
-        //             current = start,
-        //             range = end - start,
-        //             end = count,
-        //             // end = $recipe_count,
-        //             increment = end > start ? 1 : -1,
-        //             step = Math.abs(Math.floor(duration / range)),
-        //             timer = setInterval(() => {
-        //                 current += increment;
-        //                 obj.textContent = current;
-        //                 if (current == end) {
-        //                     clearInterval(timer);
-        //                 }
-        //             }, step);
-        //     }
-        //     counter("count1", 0, 6 , 3000);
-
-        // });
-        // const counters = document.querySelectorAll(".count");
-        // const speed = 200;
-
-        // counters.forEach((counter) => {
-        //     const updateCount = () => {
-        //         const target = parseInt(+counter.getAttribute("data-target"));
-        //         const count = parseInt(+counter.innerText);
-        //         const increment = Math.trunc(target / speed);
-        //         console.log(increment);
-
-        //         if (count < target) {
-        //             counter.innerText = count + increment;
-        //             setTimeout(updateCount, 1);
-        //         } else {
-        //             count.innerText = target;
-        //         }
-        //     };
-        //     updateCount();
-        // });
 
         function animateValue(obj, start = 0, end = null, duration = 3000) {
             if (obj) {

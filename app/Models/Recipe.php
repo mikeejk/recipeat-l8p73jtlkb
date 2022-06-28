@@ -111,4 +111,5 @@ class Recipe extends Model implements Likeable,HasMedia
         // return (ingredient model is belongs to this recipe model)
         return $this->hasMany(Pin_recipe::class,'recipe_id');
     }
+
 }

@@ -63,9 +63,21 @@ class DashboardController extends Controller
      * @param  \App\Models\dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function show(dashboard $dashboard)
+    public function show(Follower $followers)
     {
-        //
+        $followers = Follower::where('leader_id', auth()->user()->id)->get()->take(5);
+
+        $following = Follower::where('follower_id',auth()->user()->id)->get()->take(5);
+
+        $recipes = Recipe::where('user_id', auth()->user()->id)->get()->count();
+
+        $user= User::where('id',auth()->user()->id)->first();
+
+        $chef_questions= Chef_question::where('user_id',auth()->user()->id)->first();
+
+        $question = Question::where('user_id',auth()->user()->id)->first();
+
+        return view('home',compact('followers','following','recipes','user','question','chef_questions'));
     }
 
     /**
