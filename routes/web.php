@@ -67,7 +67,6 @@ Route::post('/storeUser4', [UserController::class, 'registerData']);
 Route::get('/landingPage', function () {
     return view('landingPage');
 });
-
 // Skills Tab
 Route::get('/skills', [ExlporeController::class, 'tryfun']);
 
@@ -323,7 +322,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/edit', [Questionnaire::cl
 // Upadte User Profile Tab
 Route::middleware(['auth:sanctum', 'verified'])->put('/update', [Questionnaire::class, 'update']);
 
-// Porrtfolio tab
+// Portfolio tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/my_portfolio', [ChefQuestion::class, 'show']);
 
 // Edit Portfolio tab
@@ -342,6 +341,22 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes', [RecipeControll
 // Create Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', [RecipeController::class, 'create']);
 
+//create_recipe1
+Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe1', [RecipeController::class, 'create_recipe1']);
+//post_recipe1
+Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe1', [RecipeController::class, 'post_recipe1']);
+//create_recipe2
+Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe2', [RecipeController::class, 'create_recipe2']);
+//post_recipe2
+Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe2', [RecipeController::class, 'post_recipe2']);
+//create_recipe3
+Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe3', [RecipeController::class, 'create_recipe3']);
+//post_recipe3
+Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe3', [RecipeController::class, 'post_recipe3']);
+//create_recipe4
+Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe4', [RecipeController::class, 'create_recipe4']);
+//post_recipe4
+Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe2', [RecipeController::class, 'post_recipe4']);
 // Store Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/recipes', [RecipeController::class, 'store']);
 
@@ -537,7 +552,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/{pinboard->pin_name}', [PinRecipeController::class, 'show']);
 
-    Route::middleware(['auth:sanctum', 'verified'])->post('/recipe_view/{recipe}', [PinRecipeController::class, 'store']);
+    Route::middleware(['auth:sanctum', 'verified'])->post('/home/{recipe}', [PinRecipeController::class, 'store']);
     // cipeat Category Data Table - Data Tab
     Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_pin.data', [PinRecipeController::class, 'anyData']);
     // Recipeat Category Data Table - Index Tab

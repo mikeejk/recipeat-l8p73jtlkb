@@ -29,13 +29,78 @@ use App\Notifications\NewRecipePost;
     }
 
     // Function - Create
-    public function create()
+    // public function create()
+    // {
+    //     $categories = Category::all(['id', 'category']);
+    //     $cuisines = Cuisine::all(['id', 'cuisine']);
+    //     $measurements = Measurement::all(['id', 'measurement']);
+    //     $ingredients = Ingredient::all(['id', 'ingredient']);
+    //     return view('screens.user.recipe.add_recipe', compact('categories', 'cuisines', 'measurements', 'ingredients'));
+    // }
+    //Function - Create_recipe
+    public function create_recipe1(Request $request)
+    {
+        $recipe = $request->session()->get('recipe');
+        return view('screens.user.recipe.create_recipe1',compact('recipe')); 
+    }
+    public function post_recipe1(Request $request)
+    { 
+        $validatedData = $request->validate([
+        'recipe_name' => 'required',
+        'preparing_time' => 'required',
+        'cooking_time' => 'required',
+        'cuisine' => 'required',
+        'category' => 'required',
+        'description' => 'required',
+    ]);
+    if (empty($request->session()->get('recipe'))) {
+        $recipe = new Recipe();
+        $recipe->fill($validatedData);
+        $request->session()->put('user', $recipe);
+    } else {
+        $recipe = $request->session()->get('recipe');
+        $recipe->fill($validatedData);
+        $request->session()->put('user', $recipe);
+    }
+        return redirect("/create_recipe2");
+    }
+    public function create_recipe2(Request $request)
+    {
+        $recipe = $request->session()->get('request');
+        $ingredients = Ingredient::all();
+        $measurements = Measurement::all();
+        return view('screens.user.recipe.create_recipe2', compact('recipe','ingredients','measurements'));
+    }
+    public function post_recipe2(Request $request)
+    {
+        $validatedData = $request->validate([
+            '' => 'nullable',
+            '' => 'nullable',
+        ]);
+        $user = $request->session()->get('user');
+        $user->fill($validatedData);
+        $request->session()->put('user', $user);
+        return redirect("/create_recipe3");
+    }
+    public function create_recipe3()
     {
         $categories = Category::all(['id', 'category']);
         $cuisines = Cuisine::all(['id', 'cuisine']);
         $measurements = Measurement::all(['id', 'measurement']);
         $ingredients = Ingredient::all(['id', 'ingredient']);
-        return view('screens.user.recipe.add_recipe', compact('categories', 'cuisines', 'measurements', 'ingredients'));
+        return view('screens.user.recipe.create_recipe3', compact('categories', 'cuisines', 'measurements', 'ingredients'));
+    }
+    public function post_recipe3()
+    {
+        return redirect("/create_recipe4");
+    }
+    public function create_recipe4()
+    {
+        $categories = Category::all(['id', 'category']);
+        $cuisines = Cuisine::all(['id', 'cuisine']);
+        $measurements = Measurement::all(['id', 'measurement']);
+        $ingredients = Ingredient::all(['id', 'ingredient']);
+        return view('screens.user.recipe.create_recipe4', compact('categories', 'cuisines', 'measurements', 'ingredients'));
     }
     // Function - Store
     public function store(Request $request)
@@ -100,9 +165,9 @@ use App\Notifications\NewRecipePost;
         // Save Data
         $recipe->save();
 
-        foreach ($users as $user) {
-            $user->notify(new  NewRecipePost(auth()->user()->name, $recipe->recipe_name));
-        }
+        // foreach ($users as $user) {
+        //     $user->notify(new  NewRecipePost(auth()->user()->name, $recipe->recipe_name));
+        // }
         // Declare steps
         $steps = $request->steps;
         // for lopping steps
@@ -485,7 +550,7 @@ use App\Notifications\NewRecipePost;
     //      }
     //     return view('welcome_withoutLogin');
     // }
-
+    
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {

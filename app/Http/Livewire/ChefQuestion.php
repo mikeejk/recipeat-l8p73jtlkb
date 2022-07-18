@@ -23,6 +23,9 @@ class ChefQuestion extends Component
     public $state;
     public $designation;
     public $company;
+    public $culinary_skills;
+    public $diets;
+    public $cuisines;
     public $cooking_style;
     public $accomplishments;
     public $image;
@@ -64,8 +67,7 @@ class ChefQuestion extends Component
     {
         // Data - Save
         $validatedData = $this->validate([
-            'location' => 'required',
-            'state' => 'required',
+            'culinary_skills' => 'required',
         ]);
 
         // Next Step
@@ -76,10 +78,14 @@ class ChefQuestion extends Component
     public function fourthStepSubmit()
     {
         // Data - Save
-        $validatedData = $this->validate([
-            'designation' => 'required',
-            'company' => 'required',
-        ]);
+        $validateData = $this->validate([
+            'diets' => 'required',
+         'cuisines' => 'required']);
+
+        // $validatedData = $this->validate([
+        //     'designation' => 'required',
+        //     'company' => 'required',
+        // ]);
 
         // Next Step
         $this->currentStep = 5;
@@ -158,8 +164,6 @@ class ChefQuestion extends Component
         // }
 
     }
-
-
     public function chefProfileShow(Request $request)
     {
         $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
@@ -207,15 +211,10 @@ class ChefQuestion extends Component
         // }
 
     }
-
-
     public function settings()
     {
         return view('settings');
     }
-
-
-
 
     // Function - edit
     public function edit(Chef_question $chef_questions)

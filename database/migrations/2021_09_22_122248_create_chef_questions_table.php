@@ -28,6 +28,9 @@ class CreateChefQuestionsTable extends Migration
             $table->string('state');
             $table->string('designation');
             $table->string('company');
+            $table->string('culinary_skills');
+            $table->string('diets');
+            $table->string('cuisines');
             $table->string('cooking_style');
             $table->string('accomplishments');
             $table->string('image')->nullable();
