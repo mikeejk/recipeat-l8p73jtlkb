@@ -25,6 +25,11 @@ class ExlporeController extends Controller
     public function index()
     {
         $recipe = Recipe::where('status', 'Approved')->paginate(4);
-        return view('explore', compact('recipe'));
+        $collection = Pinboard::all('id','pin_name');
+        return view('explore', compact('recipe','collection'));
+    }
+    public function tryfun()
+    {
+    return view('/skills');
     }
 }

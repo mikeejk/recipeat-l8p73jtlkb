@@ -29,21 +29,24 @@ use App\Notifications\NewRecipePost;
     }
 
     // Function - Create
-    // public function create()
-    // {
-    //     $categories = Category::all(['id', 'category']);
-    //     $cuisines = Cuisine::all(['id', 'cuisine']);
-    //     $measurements = Measurement::all(['id', 'measurement']);
-    //     $ingredients = Ingredient::all(['id', 'ingredient']);
-    //     return view('screens.user.recipe.add_recipe', compact('categories', 'cuisines', 'measurements', 'ingredients'));
-    // }
+    public function create()
+    { 
+        $categories = Category::all(['id', 'category']);
+        $cuisines = Cuisine::all(['id', 'cuisine']);
+        $measurements = Measurement::all(['id', 'measurement']);
+        $ingredients = Ingredient::all(['id', 'ingredient']);
+        return view('screens.user.recipe.add_recipe', compact('categories', 'cuisines', 'measurements', 'ingredients'));
+    }
     //Function - Create_recipe
     public function create_recipe1(Request $request)
     {
         $recipe = $request->session()->get('recipe');
+        $categories = Category::all(['id', 'category']);
+        $cuisines = Cuisine::all(['id', 'cuisine']);
+        // dd($recipe);
         return view('screens.user.recipe.create_recipe1',compact('recipe')); 
     }
-    public function post_recipe1(Request $request)
+    public function store_recipe1(Request $request)
     { 
         $validatedData = $request->validate([
         'recipe_name' => 'required',
@@ -51,6 +54,7 @@ use App\Notifications\NewRecipePost;
         'cooking_time' => 'required',
         'cuisine' => 'required',
         'category' => 'required',
+        'cuisine' => 'required',
         'description' => 'required',
     ]);
     if (empty($request->session()->get('recipe'))) {
@@ -62,6 +66,8 @@ use App\Notifications\NewRecipePost;
         $recipe->fill($validatedData);
         $request->session()->put('user', $recipe);
     }
+    $categories = Category::all(['id', 'category']);
+    $cuisines = Cuisine::all(['id', 'cuisine']);
         return redirect("/create_recipe2");
     }
     public function create_recipe2(Request $request)
@@ -71,7 +77,7 @@ use App\Notifications\NewRecipePost;
         $measurements = Measurement::all();
         return view('screens.user.recipe.create_recipe2', compact('recipe','ingredients','measurements'));
     }
-    public function post_recipe2(Request $request)
+    public function store_recipe2(Request $request)
     {
         $validatedData = $request->validate([
             '' => 'nullable',
@@ -90,7 +96,7 @@ use App\Notifications\NewRecipePost;
         $ingredients = Ingredient::all(['id', 'ingredient']);
         return view('screens.user.recipe.create_recipe3', compact('categories', 'cuisines', 'measurements', 'ingredients'));
     }
-    public function post_recipe3()
+    public function store_recipe3()
     {
         return redirect("/create_recipe4");
     }
@@ -165,9 +171,9 @@ use App\Notifications\NewRecipePost;
         // Save Data
         $recipe->save();
 
-        // foreach ($users as $user) {
-        //     $user->notify(new  NewRecipePost(auth()->user()->name, $recipe->recipe_name));
-        // }
+        foreach ($users as $user) {
+            $user->notify(new  NewRecipePost(auth()->user()->name, $recipe->recipe_name));
+        }
         // Declare steps
         $steps = $request->steps;
         // for lopping steps
@@ -286,7 +292,6 @@ use App\Notifications\NewRecipePost;
         $recipe->delete();
         return redirect('/recipes');
         // $steps = $request->steps;
-
 
     }
 
@@ -483,9 +488,54 @@ use App\Notifications\NewRecipePost;
         foreach($pinrecipes as $pin){
         $count=Pin_recipe::where('user_id',auth()->user()->id)->where('pinboard_id',$pin->pinboard_id)->get()->count();
         }
+        // $user
         //  dd($count);
          return view('/searchResults', compact('recipe', 't', 'collections', 'pinrecipes','count'));
     }
+    //  Recipe Search for non login users
+    // public function nonLoginUserSearch(Request $request)
+    // {
+    //     $term  = $request->get('term');
+    //     $creator = $request->get('creator');
+    //     $category_id = $request->get('category');
+    //     if ($term) {
+    //         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
+    //             ->where('creator', 'LIKE', '%' . $creator . '%')
+    //             ->where('category_id', 'LIKE', '%' . $category_id . '%')
+    //             ->where('user_id', '!=', auth()->id())
+    //             ->where('status', 'Approved')
+    //             // ->where('status','!=','Denide')
+    //             // ->where('creator','!=','User')
+    //             ->orderBy("recipe_name", "asc")->Paginate(4);
+    //         $recipe->appends(array(
+    //             'term' => $request->get('term'),
+    //         ));
+    //         return view('welcome_withoutLogin', compact('recipe'));
+    //     }
+    //     return view('welcome_withoutLogin');
+    // }
+    //  Recipe Search for non login users
+    // public function nonLoginUserSearch(Request $request)
+    // {
+    //     $term  = $request->get('term');
+    //     $creator = $request->get('creator');
+    //     $category_id = $request->get('category');
+    //     if ($term) {
+    //         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
+    //             ->where('creator', 'LIKE', '%' . $creator . '%')
+    //             ->where('category_id', 'LIKE', '%' . $category_id . '%')
+    //             ->where('user_id', '!=', auth()->id())
+    //             ->where('status', 'Approved')
+    //             // ->where('status','!=','Denide')
+    //             // ->where('creator','!=','User')
+    //             ->orderBy("recipe_name", "asc")->Paginate(4);
+    //         $recipe->appends(array(
+    //             'term' => $request->get('term'),
+    //         ));
+    //         return view('welcome_withoutLogin', compact('recipe'));
+    //     }
+    //     return view('welcome_withoutLogin');
+    // }
     //  Recipe Search for non login users
     public function nonLoginUserSearch(Request $request)
     {
@@ -508,6 +558,8 @@ use App\Notifications\NewRecipePost;
         }
         return view('welcome_withoutLogin');
     }
+    
+
     public function search1(Request $request)
     {
         // $recipes=Recipe::all();
@@ -524,19 +576,19 @@ use App\Notifications\NewRecipePost;
 
         return view('search_ingredient', compact('ingredient', 'recipe_ingredients'));
     }
-    // public function nonLoginUserSearch(Request $request)
+    // public function mainDashboardSearch(Request $request)
     // {
     //     $term  = $request->get('term');
-    //      $creator = $request->get('creator');
-    //      $category_id = $request->get('category');
-    //     if ($term) {
+    //     //  $creator = $request->get('creator');
+    //     //  $category_id = $request->get('category');
+    //      if ($term) {
     //         $recipe=Recipe::join('users','users.id','=','recipes.user_id')
     //         ->join('media','media.model_id','=','recipes.id')
 
     //         ->where('recipe_name', 'LIKE', '%' . $term . '%')
     //           ->orWhere('users.name','LIKE','%'.$term . '%')
-    //              ->where('creator', 'LIKE', '%' . $creator . '%')
-    //             ->where('category_id', 'LIKE', '%' . $category_id . '%')
+    //             //  ->where('creator', 'LIKE', '%' . $creator . '%')
+    //             // ->where('category_id', 'LIKE', '%' . $category_id . '%')
     //             // ->where('user_id', '!=', auth()->id())
     //             ->where('status', 'Approved')
     //             // ->where('status','!=','Denide')
@@ -546,9 +598,9 @@ use App\Notifications\NewRecipePost;
     //          $recipe->appends(array(
     //             'term' => $request->get('term'),
     //          ));
-    //         return view('welcome_withoutLogin', compact('recipe'));
+    //         return view('mainDashboard', compact('recipe'));
     //      }
-    //     return view('welcome_withoutLogin');
+    //     return view('mainDashboard');
     // }
     
     // Recipe result view

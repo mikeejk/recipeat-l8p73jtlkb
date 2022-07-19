@@ -22,7 +22,7 @@
                         </div>
                         <h1 class="mt-2 text-base text-manrope text-gray-300">We would like to improve your cooking experience. This will take less than a minute</h1>
                         <div class="mt-4 w-full flex flex-col justify-center items-center py-2 form-group">
-                            <input type="text" wire:model="recipe_name" placeholder="What’s your Name?"
+                            <input type="text" wire:model="name" placeholder="What’s your Name?"
                                 class="cw-3/4 py-3 mx-auto border-b-2 text-2xl font-semibold text-gray-100 placeholder:text-gray-400 text-Manrope  border-gray-600 bg-transparent focus:outline-none text-center"
                                 autocomplete required />
                             @error('name')

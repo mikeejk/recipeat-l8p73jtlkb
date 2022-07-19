@@ -314,7 +314,7 @@
                                     </div>
                                     <form action="/searchResults/{recipes->id}" method="post" class="flex items-center">
                                         @csrf
-                                        <div class="flex items-center text-xs bg-black">
+                                        <div class="flex items-center space-x-1">
                                             <button type="submit">
                                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -339,10 +339,6 @@
                                                     <option value="{{ $collection->id }}">{{ $collection->pin_name }}
                                                     </option>
                                                 @endforeach
-                                                {{-- <option value="{{$collection->id}}">MyFavourite</option>
-                                                <option value="2">FamilyFav</option>
-                                                <option value="3">FavDesert</option>
-                                                <option value="4">FavDinner</option> --}}
                                             </select>
                                         </div>
 
