@@ -9,7 +9,7 @@
             <div class="w-full py-4">
                 <input type="text"
                     class="py-4 border-b-2 bg-transparent w-full text-center justify-center placeholder:text-4xl placeholder:text-center text-white"
-                    placeholder="What are you cooking?">
+                    wire:model="recipe_name" placeholder="What are you cooking?">
                 <h1 class="text-base text-gray-400 py-3">Give Your recipe a tasty title</h1>
             </div>
             <div class="flex justify-between w-full">
@@ -20,7 +20,7 @@
                             <button
                                 class="w-12 space-y-2 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">
                             </button>
-                            <input type="text" name="serves_people" class="w-24 rounded-md text-white bg-gray-500 items-center py-2" />
+                            <input type="text" wire:model="serves_people" class="w-24 rounded-md text-white bg-gray-500 items-center py-2" />
                             <button
                                 class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">+</button>
                         </div>
@@ -30,7 +30,7 @@
                         <div class="flex space-x-2">
                             <button
                                 class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">-</button>
-                            <input type="text" name="cooking_time" class="w-24 rounded-md text-white bg-gray-600 py-2 items-center" />
+                            <input type="text" wire:model="cooking_time" class="w-24 rounded-md text-white bg-gray-600 py-2 items-center" />
                             <button
                                 class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">+</button>
                         </div>
@@ -40,20 +40,26 @@
                         <div class="flex space-x-2">
                             <button
                                 class="w-12 rounded-lg  border border-gray-500 px-4 py-2 text-gray-300">-</button>
-                            <input type="text" name="preparing_time" class="w-24 rounded-md text-white bg-gray-600 py-2 items-center" />
+                            <input type="text" wire:model="preparing_time" class="w-24 rounded-md text-white bg-gray-600 py-2 items-center" />
                             <button
                                 class="w-12 rounded-lg  border border-gray-500 px-4 py-2 text-gray-300">+</button>
                         </div>
                     </div>
                     <div class=" w-full  items-center justify-between">
                         <h1 class="text-base text-white py-3">Recipe Cusine/Category</h1>
-                        <input type="text"
+                        <select  wire:model="selectedCategory">
+                            {{-- class="w-full rounded-md bg-gray-600 py-2 px-2 text-white placeholder:text-m placeholder:text-center" --}}
+                             @foreach($category as $category)
+                            <option value = {{$category->id}}>{{$category}} </option>
+                            @endforeach
+                    </select>
+                            <input type="text" wire:model="cuisine_id"
                             class="w-full rounded-md bg-gray-600 py-2 px-2 text-white placeholder:text-m placeholder:text-center"
-                            placeholder="Eg:Chinese or Dessert" />
+                            placeholder="Eg: Dessert or sweet" />
                     </div>
                     <div class=" w-full  items-center  justify-between">
                         <h1 class="text-base text-white py-3">Add Recipe Description</h1>
-                        <textarea class="bg-black placeholder:text-m text-white w-full placeholder:text-start" placeholder="Max 700 characters"></textarea>
+                        <textarea class="bg-black placeholder:text-m text-white w-full placeholder:text-start"wire:model="description" placeholder="Max 700 characters"></textarea>
                     </div>
                 </section>
                 <section class="w-1/2 bg-black flex justify-center items-center">
@@ -122,12 +128,12 @@
         <button class="bg-gray-400 w-40 border px-4 py-1.5 rounded-lg text-white">Save to Drafts</button>
     </div> --}}
         <div class="w-full flex flex-row justify-end py-5 space-x-4">
-            <a href="HomePage"
+            <a href="/HomePage"
                 class="bg-transparent text-white rounded lg:text-lg text-base focus:outline-none">
                 <i class="fas fa-angle-left text-white mt-1 mr-1"></i>Previous</a>
-                <a href="create_recipe2"
+                <button
                     class="bg-red-600 text-white w-30 py-2 flex justify-center item-center rounded-md" wire:click="firstStepSubmit">Next,Ingredients
-                    <i class="fas fa-angle-right text-white mt-1 ml-1"></i></a>
+                    <i class="fas fa-angle-right text-white mt-1 ml-1"></i></button>
         </div>
 </div>
 <!--End Question 01 -->
@@ -175,14 +181,14 @@
                             <h1 class="text-white py-4 text-lg">Years of Experience</h1>
                             <div class="flex space-x-6 text-white text-montserrat justify-between">
 
-                                <input class="hidden" id="lessThanOneYear" name="experience" value="Less than 1 year" type="radio" checked />
+                                <input class="hidden" id="lessThanOneYear"  wire:model="experience" value="Less than 1 year" type="radio" checked />
                                 <label class="flex justify-center items-center   border rounded-md p-2 " for="lessThanOneYear">
                                     <span class='hidden icon bg-white'><i
                                             class="fas fa-check border border-gray-600 bg-white text-black rounded-full text-xs font-semibold p-1 mr-2 "></i></span>
 
                                     <span class="text-uzs text-base font-Rubik font-semibold">Less than 1 year</span>
                                 </label>
-                                <input class="hidden" id="oneToThreeYear" name="experience" value="1-3 years"  type="radio" />
+                                <input class="hidden" id="oneToThreeYear"  wire:model="experience" value="1-3 years"  type="radio" />
                                 <label class="flex justify-center items-center   border rounded-md p-2 " for="oneToThreeYear">
                                     <span class='hidden icon bg-white'><i
                                             class="fas fa-check border border-gray-600 bg-white text-black rounded-full text-xs font-semibold p-1 mr-2"></i></span>
@@ -190,7 +196,7 @@
                                     <span class="text-uzs text-base font-Rubik font-semibold">1-3 years</span>
                                 </label>
 
-                                <input class="hidden" id="threeToFiveYear" name="experience" value="3-5 years"  type="radio" />
+                                <input class="hidden" id="threeToFiveYear"  wire:model="experience" value="3-5 years"  type="radio" />
                                 <label class="flex justify-center items-center px-2  border rounded-md p-2 " for="threeToFiveYear">
                                     <span class='hidden icon bg-white'><i
                                             class="fas fa-check border border-gray-600 bg-white text-black rounded-full text-xs font-semibold p-1 mr-2"></i></span>
@@ -198,7 +204,7 @@
                                     <span class="text-uzs text-base font-Rubik font-semibold">3-5 years</span>
                                 </label>
 
-                                <input class="hidden" id="fiveToSevenYear" name="experience" value="5-7 years"  type="radio" />
+                                <input class="hidden" id="fiveToSevenYear"  wire:model="experience" value="5-7 years"  type="radio" />
                                 <label class="flex justify-center items-center  border rounded-md p-2 " for="fiveToSevenYear">
                                     <span class='hidden icon bg-white'><i
                                             class="fas fa-check border border-gray-600 bg-white text-black rounded-full text-xs font-semibold p-1 mr-2"></i></span>
@@ -206,7 +212,7 @@
                                     <span class="text-uzs text-base font-Rubik font-semibold">5-7 years</span>
                                 </label>
 
-                                <input class="hidden" id="sevenPulseYear" name="experience" value="7+ Years" type="radio" />
+                                <input class="hidden" id="sevenPulseYear"  wire:model="experience" value="7+ Years" type="radio" />
                                 <label class="flex justify-center items-center px-2  border rounded-md p-2 " for="sevenPulseYear">
                                     <span class='hidden icon bg-white'><i
                                             class="fas fa-check border border-gray-600 bg-white text-black rounded-full text-xs font-semibold p-1 mr-2"></i></span>
@@ -229,8 +235,7 @@
                                 wire:click="secondStepSubmit">Next, Skills <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.42504 17.225C7.26671 17.225 7.10837 17.1667 6.98337 17.0417C6.74171 16.8 6.74171 16.4 6.98337 16.1583L12.4167 10.725C12.8167 10.325 12.8167 9.67502 12.4167 9.27502L6.98337 3.84168C6.74171 3.60002 6.74171 3.20002 6.98337 2.95835C7.22504 2.71668 7.62504 2.71668 7.86671 2.95835L13.3 8.39168C13.725 8.81668 13.9667 9.39168 13.9667 10C13.9667 10.6084 13.7334 11.1834 13.3 11.6084L7.86671 17.0417C7.74171 17.1584 7.58337 17.225 7.42504 17.225Z" fill="#F9FBFC"/>
                                     </svg>
-                                    
-
+                                
                             </button>
                         </div>
                 </div>
@@ -256,7 +261,7 @@
                         <div class="mt-4 w-full flex flex justify-center items-center py-2 space-x-6 form-group">
                             <div class="w-1/2 flex flex-col justify-center ">
                                 <label class="text-gray-100 text-manrope mb-2">Select your specialized culinary skills</label>
-                                <select wire:model="culinary_skills" name="culinary_skills"
+                                <select wire:model="culinary_skills" ="culinary_skills"
                                 placeholder="Eg.Baking"
                                 class="w-full py-2.5 mx-auto border-2 rounded-xl bg-white text-xl text-gray-600 placeholder:text-gray-400 placeholder:text-base text-Manrope  border-gray-400  focus:outline-none px-4"
                                 autocomplete required >

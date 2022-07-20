@@ -161,11 +161,11 @@
                                 class="w-full rounded-md bg-gray-600 py-2 px-2 text-white placeholder:text-m placeholder:text-center"
                                 placeholder="Eg:Chinese " /> --}}
                                     <select class="w-full rounded-md bg-gray-600 py-2 px-2 text-white"name="category">
-                                        @foreach ($categories as $categorie)
-                                            <option value="{{ $categorie->id }} ">
-                                                {{ $categorie->category }}
+                                        {{-- @foreach ($categories as $categorie)
+                                            <option value="{{ $categorie->id}} ">
+                                                {{ $categorie->category}}
                                             </option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                 </div>
                                 <div class=" w-full  items-center justify-between">
@@ -173,14 +173,13 @@
                                 class="w-full rounded-md bg-gray-600 py-2 px-2 text-white placeholder:text-m placeholder:text-center"
                                 placeholder="Eg: Dessert" /> --}}
                                     <select class="w-full rounded-md bg-gray-600 py-2 px-2 text-white"name="cuisine">
-                                        @foreach ($cuisines as $cuisine)
+                                        {{-- @foreach ($cuisines as $cuisine)
                                             <option value="{{ $cuisine->id }} ">
                                                 {{ $cuisine->cuisine }}
                                             </option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                 </div>
-
                                 <div class=" w-full  items-center  justify-between">
                                     <h1 class="text-base text-white py-3">Add Recipe Description</h1>
                                     <textarea class="bg-black placeholder:text-m text-white w-full placeholder:text-start"name="description"

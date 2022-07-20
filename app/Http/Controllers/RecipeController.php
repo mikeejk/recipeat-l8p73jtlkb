@@ -12,6 +12,7 @@ use App\Models\Measurement;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Models\Like;
 use App\Models\Pinboard;
 use App\Models\Pin_recipe;
 use App\Models\Recipe_Step;
@@ -481,61 +482,38 @@ use App\Notifications\NewRecipePost;
                 'term' => $request->get('term'),
             ));
 
-            // return view('searchResults', compact('recipe', 't'));
+           
         }
         $pinrecipes = Pin_recipe::all();
         $collections = Pinboard::all('id', 'pin_name');
         foreach($pinrecipes as $pin){
         $count=Pin_recipe::where('user_id',auth()->user()->id)->where('pinboard_id',$pin->pinboard_id)->get()->count();
         }
-        // $user
-        //  dd($count);
-         return view('/searchResults', compact('recipe', 't', 'collections', 'pinrecipes','count'));
+        
+        $posts = Recipe::whereUserId(auth()->user()->id)->get(['id']);
+        $total_like_count = '0';
+        foreach ($posts as $post) {
+            $post = Like::wherelikeable_id($post->id)->count();
+            $total_like_count = $post + $total_like_count;
+        }
+        $role = 2;
+        $id = auth()->user()->id;
+        $suggestions = User::whereHas('roles', function ($query) use ($role) {
+            $query->where('id', $role);
+        })->where('id', '!=', $id)->where('name', '!=', '0')->whereNotIn('id', function ($query) use ($id) {
+            $query->select('leader_id')
+                ->from('followers')
+                ->where('follower_id', $id)
+                ->where('leader_id',$id);
+        })->get()->take(3);
+
+        foreach ($suggestions as $suggestion) {
+                $profile_image = DB::table('chef_questions')->select('*')->join('users', 'users.id', '=', 'chef_questions.user_id')->where('chef_questions.user_id', $suggestion->id)->get('image');
+        } 
+        //    dd($role);
+     return view('/searchResults', compact('recipe', 't', 'collections','suggestions','profile_image','pinrecipes','count','total_like_count'));
     }
-    //  Recipe Search for non login users
-    // public function nonLoginUserSearch(Request $request)
-    // {
-    //     $term  = $request->get('term');
-    //     $creator = $request->get('creator');
-    //     $category_id = $request->get('category');
-    //     if ($term) {
-    //         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
-    //             ->where('creator', 'LIKE', '%' . $creator . '%')
-    //             ->where('category_id', 'LIKE', '%' . $category_id . '%')
-    //             ->where('user_id', '!=', auth()->id())
-    //             ->where('status', 'Approved')
-    //             // ->where('status','!=','Denide')
-    //             // ->where('creator','!=','User')
-    //             ->orderBy("recipe_name", "asc")->Paginate(4);
-    //         $recipe->appends(array(
-    //             'term' => $request->get('term'),
-    //         ));
-    //         return view('welcome_withoutLogin', compact('recipe'));
-    //     }
-    //     return view('welcome_withoutLogin');
-    // }
-    //  Recipe Search for non login users
-    // public function nonLoginUserSearch(Request $request)
-    // {
-    //     $term  = $request->get('term');
-    //     $creator = $request->get('creator');
-    //     $category_id = $request->get('category');
-    //     if ($term) {
-    //         $recipe = Recipe::where('recipe_name', 'LIKE', '%' . $term . '%')
-    //             ->where('creator', 'LIKE', '%' . $creator . '%')
-    //             ->where('category_id', 'LIKE', '%' . $category_id . '%')
-    //             ->where('user_id', '!=', auth()->id())
-    //             ->where('status', 'Approved')
-    //             // ->where('status','!=','Denide')
-    //             // ->where('creator','!=','User')
-    //             ->orderBy("recipe_name", "asc")->Paginate(4);
-    //         $recipe->appends(array(
-    //             'term' => $request->get('term'),
-    //         ));
-    //         return view('welcome_withoutLogin', compact('recipe'));
-    //     }
-    //     return view('welcome_withoutLogin');
-    // }
+
     //  Recipe Search for non login users
     public function nonLoginUserSearch(Request $request)
     {

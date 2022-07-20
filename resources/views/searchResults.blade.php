@@ -43,7 +43,6 @@
         input:checked:before {
             left: 1.25rem;
         }
-
     </style>
 </head>
 
@@ -62,7 +61,8 @@
         <div class="flex space-x-2 items-center justify-center">
             <a href="/HomePage" class="flex">
                 <div class="flex flex-col items-center">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M14.0799 18.0482H5.11988C3.66388 18.0482 2.33588 16.9282 2.09588 15.4882L1.03188 9.12018C0.863882 8.12818 1.34389 6.85619 2.13589 6.22419L7.67989 1.78415C8.75189 0.920147 10.4399 0.928155 11.5199 1.79215L17.0639 6.22419C17.8479 6.85619 18.3279 8.12818 18.1679 9.12018L17.1039 15.4882C16.8639 16.9042 15.5119 18.0482 14.0799 18.0482ZM9.59189 2.35216C9.16789 2.35216 8.74388 2.48014 8.43188 2.72814L2.88789 7.16818C2.43189 7.53618 2.11989 8.35214 2.21589 8.92814L3.27989 15.2962C3.42389 16.1362 4.26388 16.8482 5.11988 16.8482H14.0799C14.9359 16.8482 15.7759 16.1362 15.9199 15.2881L16.9839 8.92018C17.0799 8.34418 16.7599 7.52017 16.3119 7.16017L10.7679 2.72814C10.4479 2.48014 10.0239 2.35216 9.59189 2.35216Z"
                             fill="white" />
@@ -78,7 +78,8 @@
 
         <div class="flex space-x-2 items-center">
             <a href="/exploreRecipe" class="flex">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M9.24789 14.3999C9.23989 14.3999 9.23989 14.3999 9.23189 14.3999C8.39989 14.3919 7.69589 13.8719 7.44789 13.0799L5.88789 8.05588C5.67989 7.37588 5.85589 6.64788 6.35989 6.15188C6.85589 5.65588 7.57589 5.47986 8.24789 5.68786L13.2799 7.24787C14.0799 7.49587 14.5999 8.19988 14.6079 9.03188C14.6159 9.86388 14.1119 10.5679 13.3199 10.8319L11.9439 11.2959C11.7359 11.3679 11.5839 11.5199 11.5119 11.7199L11.0399 13.1039C10.7759 13.8959 10.0719 14.3999 9.24789 14.3999ZM7.67189 6.79988C7.43189 6.79988 7.27189 6.92788 7.19989 6.99988C7.01589 7.18388 6.95189 7.44787 7.03189 7.69587L8.5919 12.7199C8.7279 13.1599 9.1199 13.1999 9.2399 13.1999C9.3359 13.1919 9.74389 13.1679 9.88789 12.7279L10.3599 11.3439C10.5439 10.7919 10.9919 10.3439 11.5439 10.1599L12.9199 9.69587C12.9199 9.69587 12.9199 9.69587 12.9279 9.69587C13.3679 9.55187 13.3999 9.15987 13.3999 9.04787C13.3999 8.92787 13.3599 8.53588 12.9199 8.39988L7.88789 6.83987C7.80789 6.80787 7.73589 6.79988 7.67189 6.79988Z"
                         fill="#FAFAFA" />
@@ -205,8 +206,7 @@
                             <div class="w-1/2 h-auto flex flex-col rounded-md px-2 py-2">
                                 <div class="py-2 flex space-x-2">
                                     @if ($recipes->user->hasrole('Chef'))
-                                        @if (!empty(
-                                            DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                        @if (!empty(DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
                                         ))
                                             <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                                 class="h-12 w-12 rounded-full">
@@ -215,8 +215,7 @@
                                                 class="h-12 w-12 rounded-full">
                                         @endif
                                     @else
-                                        @if (!empty(
-                                            DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                        @if (!empty(DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
                                         ))
                                             <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                                 class="h-12 w-12 rounded-full">
@@ -312,12 +311,13 @@
                                             </h1>
                                         </div>
                                     </div>
-                                    <form action="/searchResults/{recipes->id}" method="post" class="flex items-center">
+                                    <form action="/searchResults/{recipes->id}" method="post"
+                                        class="flex items-center">
                                         @csrf
                                         <div class="flex items-center space-x-1">
                                             <button type="submit">
-                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="24" height="25" viewBox="0 0 24 25"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
                                                         fill="#292D32" />
@@ -336,7 +336,8 @@
                                                 class="bg-black text-white appearance-none py-1 px-1">
                                                 <option disabled selected value="">Add To Collection</option>
                                                 @foreach ($collections as $collection)
-                                                    <option value="{{ $collection->id }}">{{ $collection->pin_name }}
+                                                    <option value="{{ $collection->id }}">
+                                                        {{ $collection->pin_name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -614,8 +615,8 @@
                             {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
                             <h1 class="text-gray-500 flex text-sm justify-center items-center">
                                 Recipes
-                                <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
                                         fill="#454545" />
@@ -627,44 +628,71 @@
                 @else
                     <h1 class="text-white">No Collection Found</h1>
             @endif
-
-
-
             </div>
 
             <div class="py-4">
                 <div class="flex justify-between mb-4">
                     <h1 class="text-white font-semibold text-lg">Related Chefs</h1>
                 </div>
+                @if (count($suggestions) > 0)
+                    @foreach ($suggestions as $follower_suggestions)
+                        <div class="flex justify-between items-center py-4">
+                            <div class="flex space-x-4 items-center">
 
-                <div class="flex justify-between items-center py-4">
-                    <div class="flex space-x-4 items-center">
-                        <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
-                            class="rounded-lg h-14 w-14" alt="user">
-                        <div>
-                            <h1 class="text-white font-semibold break-words">David Morris</h1>
-                            <h3 class="text-gray-500 text-sm break-words">@wdmorrisjr</h3>
+                                {{-- @if ($follower_suggestions->id)
+                                    <img src="{{ asset('storage/public/' . $image) }}"
+                                        class="rounded-lg h-14 w-14">
+                                @else --}}
+                                    <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
+                                        class="rounded-lg h-14 w-14" alt="user">
+                                {{-- @endif --}}
+                                <div>
+                                    <h1 class="text-white font-semibold break-words">
+                                        {{ $follower_suggestions->name }}</h1>
+                                    <h3 class="text-gray-500 text-sm break-words">{{ $follower_suggestions->email }}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div>
+                                <h1 class="text-white font-semibold break-words text-center">{{ count(array($follower_suggestions->recipe_name))}}</h1>
+                                <h3 class="text-gray-500 text-xs break-words text-center">Recipes</h3>
+                            </div>
+                            <div>
+                                <h1 class="text-white font-semibold break-words text-center">{{ $total_like_count }}
+                                </h1>
+                                <h3 class="text-gray-500 text-xs break-words text-center">Likes</h3>
+                            </div>
+                            <div>
+                                <h1 class="text-white font-semibold break-words text-center">16</h1>
+                                <h3 class="text-gray-500 text-xs break-words text-center">Featured</h3>
+                            </div>
+                            <!--begin::Label-->
+                            <form action="/follow" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user" value="{{ $follower_suggestions->id }}">
+                                <div class="button mt-2 d-flex flex-row justify-content-center align-items-center">
+                                    @if (Auth::user()->isFollowedBy($follower_suggestions))
+                                        <input class="btn bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold " value="UnFollow" type="submit"
+                                            name="UnFollow">
+                                    @else
+                                        <input
+                                            class="btn bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold "
+                                            value="Follow" type="submit" name="Follow">
+                                    @endif
+                                </div>
+                            </form>
+                            <!--end::Label-->
+                            {{-- <button
+                                class="bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold">Follow</button> --}}
+
+                            <a href="/chefProfile/{{$follower_suggestions->id}}"
+                                class="border text-gray-200 py-2 text-center w-20 rounded-md text-xs font-semibold">View
+                                Profile</a>
                         </div>
-                    </div>
-                    <div>
-                        <h1 class="text-white font-semibold break-words text-center">43</h1>
-                        <h3 class="text-gray-500 text-xs break-words text-center">Recipes</h3>
-                    </div>
-                    <div>
-                        <h1 class="text-white font-semibold break-words text-center">3.5K</h1>
-                        <h3 class="text-gray-500 text-xs break-words text-center">Likes</h3>
-                    </div>
-                    <div>
-                        <h1 class="text-white font-semibold break-words text-center">16</h1>
-                        <h3 class="text-gray-500 text-xs break-words text-center">Featured</h3>
-                    </div>
-                    <button
-                        class="bg-gray-100 text-gray-800 py-1.5 px-4 text-center w-20 rounded-md text-sm font-semibold">Follow</button>
-
-                    <button class="border text-gray-200 py-2 text-center w-20 rounded-md text-xs font-semibold">View
-                        Profile</button>
-                </div>
-
+                    @endforeach
+                @else
+                    <h1 class="text-white text-base text-montserrat">No Related chef's available</h1>
+                @endif
                 {{-- <div class="flex justify-between items-center py-4">
                     <div class="flex space-x-4 items-center">
                         <img src="https://www.joancanto.com/wp-content/uploads/2017/04/H10B2913.jpg"
@@ -749,9 +777,6 @@
                         Profile</button>
                 </div> --}}
             </div>
-
-
-
         </section>
 
     </main>

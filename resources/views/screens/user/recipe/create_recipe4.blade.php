@@ -157,7 +157,7 @@
                 <a href="create_recipe1"
                     class="bg-transparent text-white rounded lg:text-lg text-base focus:outline-none">
                     <i class="fas fa-angle-left text-white mt-1 mr-1"></i>Previous</a>
-                <a href="create_recipe3"
+                <a href="/recipes"
                     class="bg-red-600 text-white w-28 py-2 flex justify-center item-center rounded-md">Next,Details
                     <i class="fas fa-angle-right text-white mt-1 ml-1"></i></a>
             </div>

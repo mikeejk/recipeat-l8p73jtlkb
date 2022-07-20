@@ -98,7 +98,6 @@
 
                 <h1 class="font-semibold text-lg">Tastebuds</h1>
             </a>
-
         </div>
         <div class="w-3/4 py-2 top-0">
             <div class="bg-fill h-56 w-full" style="background-image: url(images/chef_profile_banner.png)"></div>
@@ -135,18 +134,18 @@
                                 d="M10.8333 0H4.16667C1.86548 0 0 1.86548 0 4.16667V10.8333C0 13.1345 1.86548 15 4.16667 15H10.8333C13.1345 15 15 13.1345 15 10.8333V4.16667C15 1.86548 13.1345 0 10.8333 0ZM13.5417 10.8333C13.5371 12.3272 12.3272 13.5371 10.8333 13.5417H4.16667C2.67279 13.5371 1.46291 12.3272 1.45833 10.8333V4.16667C1.46291 2.67279 2.67279 1.46291 4.16667 1.45833H10.8333C12.3272 1.46291 13.5371 2.67279 13.5417 4.16667V10.8333ZM11.4583 4.375C11.9186 4.375 12.2917 4.0019 12.2917 3.54167C12.2917 3.08143 11.9186 2.70833 11.4583 2.70833C10.9981 2.70833 10.625 3.08143 10.625 3.54167C10.625 4.0019 10.9981 4.375 11.4583 4.375ZM7.5 3.75C5.42893 3.75 3.75 5.42893 3.75 7.5C3.75 9.57108 5.42893 11.25 7.5 11.25C9.57108 11.25 11.25 9.57108 11.25 7.5C11.2522 6.50475 10.8578 5.54964 10.1541 4.8459C9.45033 4.14216 8.49525 3.74778 7.5 3.75ZM5.20833 7.5C5.20833 8.76567 6.23433 9.79167 7.5 9.79167C8.76567 9.79167 9.79167 8.76567 9.79167 7.5C9.79167 6.23433 8.76567 5.20833 7.5 5.20833C6.23433 5.20833 5.20833 6.23433 5.20833 7.5Z"
                                 fill="#FAFAFA" />
                         </svg>
-                        <svg class="opacity-50 h-5 w-5" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="opacity-50 h-5 w-5" viewBox="0 0 7 13" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M6.3125 2.75H4.4375C4.09231 2.75 3.8125 3.02982 3.8125 3.375V5.25H6.3125C6.38356 5.24843 6.451 5.2815 6.49325 5.33869C6.5355 5.39587 6.54738 5.47 6.525 5.5375L6.0625 6.9125C6.01988 7.03869 5.90194 7.124 5.76875 7.125H3.8125V11.8125C3.8125 11.9851 3.67256 12.125 3.5 12.125H1.9375C1.76491 12.125 1.625 11.9851 1.625 11.8125V7.125H0.6875C0.514913 7.125 0.375 6.98506 0.375 6.8125V5.5625C0.375 5.38994 0.514913 5.25 0.6875 5.25H1.625V3.375C1.625 1.99429 2.74431 0.875 4.125 0.875H6.3125C6.48506 0.875 6.625 1.01491 6.625 1.1875V2.4375C6.625 2.61009 6.48506 2.75 6.3125 2.75Z"
                                 fill="#FAFAFA" />
                         </svg>
-                        <svg class="opacity-50 h-5 w-5" width="13" height="11" viewBox="0 0 13 11" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="opacity-50 h-5 w-5" width="13" height="11" viewBox="0 0 13 11"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12.108 2.19838C11.8178 2.58558 11.4669 2.92333 11.069 3.1986C11.069 3.29975 11.069 3.40089 11.069 3.50766C11.0722 5.34444 10.3385 7.10569 9.03242 8.39656C7.7263 9.68744 5.95705 10.3999 4.12133 10.3743C3.06004 10.3779 2.01234 10.1356 1.06031 9.66631C1.00897 9.64388 0.975866 9.59313 0.976059 9.53706V9.47525C0.976059 9.39456 1.04144 9.32919 1.12209 9.32919C2.16531 9.29475 3.17131 8.93306 3.99776 8.29525C3.0535 8.27619 2.20392 7.71681 1.81292 6.85669C1.79318 6.80975 1.79932 6.75581 1.82915 6.7145C1.85898 6.67319 1.90817 6.65044 1.95895 6.65444C2.24593 6.68325 2.53578 6.65656 2.81267 6.57575C1.77029 6.35938 0.987053 5.494 0.87496 4.43481C0.870978 4.384 0.893747 4.33481 0.935047 4.30494C0.976341 4.27513 1.0302 4.26894 1.07716 4.28875C1.35688 4.41219 1.65885 4.47719 1.96457 4.47975C1.0512 3.88029 0.656678 2.74003 1.00414 1.70389C1.04001 1.60321 1.12618 1.52883 1.23098 1.50809C1.33578 1.48734 1.44377 1.5233 1.51525 1.60275C2.74779 2.91453 4.44132 3.69623 6.23873 3.783C6.19273 3.59928 6.17011 3.41048 6.17136 3.22108C6.18817 2.22795 6.80267 1.34326 7.72717 0.98117C8.65161 0.619089 9.70311 0.85127 10.3894 1.56903C10.8572 1.47991 11.3094 1.32278 11.7317 1.10263C11.7627 1.08332 11.8019 1.08332 11.8329 1.10263C11.8522 1.13358 11.8522 1.17283 11.8329 1.20378C11.6283 1.6722 11.2827 2.06508 10.8444 2.32762C11.2282 2.2831 11.6054 2.19255 11.9677 2.0579C11.9982 2.03714 12.0382 2.03714 12.0687 2.0579C12.0943 2.06959 12.1134 2.09194 12.121 2.11901C12.1285 2.14608 12.1238 2.17511 12.108 2.19838Z"
                                 fill="#FAFAFA" />
                         </svg>
-
 
                     </div>
                 </div>
@@ -191,13 +190,13 @@
                                         fill="white" />
                                 </svg>
 
-                                <div class="flex space-x-2 text-white items-center">
+                                {{-- <div class="flex space-x-2 text-white items-center">
                                     <h1 class="text-lg font-semibold">156</h1>
                                     <div class="opacity-50 text-xs">
                                         <h2>Toasts
                                             Earned</h2>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -227,10 +226,9 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
-                        <div class="w-1/4 flex flex-col justify-center">
+                        {{-- <div class="w-1/4 flex flex-col justify-center">
                             <a href="/edit_portfolio" class="flex items-center w-full space-x-2">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -248,6 +246,7 @@
                             </a>
 
                             <div class="flex items-center w-full space-x-2 mt-3">
+                                <div class="mt-6" x-data="{ open: false }">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -261,7 +260,102 @@
                                         fill="white" />
                                 </svg>
 
-                                <h1 class="font-semibold text-sm text-white tracking-wider">Share</h1>
+                                <button class="class="font-semibold text-sm text-white tracking-wider" @click="open = true">Edit Profile</button>
+                            </div>
+                        </div> --}}
+                        <div class="mt-6"style="background:#141414" x-data="{ open: false }">
+
+                            <!-- Button (blue), duh! -->
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.99992 15.1666H5.99992C2.37992 15.1666 0.833252 13.6199 0.833252 9.99992V5.99992C0.833252 2.37992 2.37992 0.833252 5.99992 0.833252H7.33325C7.60659 0.833252 7.83325 1.05992 7.83325 1.33325C7.83325 1.60659 7.60659 1.83325 7.33325 1.83325H5.99992C2.92659 1.83325 1.83325 2.92659 1.83325 5.99992V9.99992C1.83325 13.0733 2.92659 14.1666 5.99992 14.1666H9.99992C13.0733 14.1666 14.1666 13.0733 14.1666 9.99992V8.66659C14.1666 8.39325 14.3933 8.16659 14.6666 8.16659C14.9399 8.16659 15.1666 8.39325 15.1666 8.66659V9.99992C15.1666 13.6199 13.6199 15.1666 9.99992 15.1666Z"
+                                    fill="white" />
+                                <path
+                                    d="M5.66664 11.7934C5.25997 11.7934 4.88664 11.6467 4.61331 11.38C4.28664 11.0534 4.14664 10.58 4.21997 10.08L4.50664 8.07337C4.55997 7.68671 4.81331 7.18671 5.08664 6.91337L10.34 1.66004C11.6666 0.333372 13.0133 0.333372 14.34 1.66004C15.0666 2.38671 15.3933 3.12671 15.3266 3.86671C15.2666 4.46671 14.9466 5.05337 14.34 5.65337L9.08664 10.9067C8.8133 11.18 8.3133 11.4334 7.92664 11.4867L5.91997 11.7734C5.83331 11.7934 5.74664 11.7934 5.66664 11.7934ZM11.0466 2.36671L5.7933 7.62004C5.66664 7.74671 5.51997 8.04004 5.4933 8.21337L5.20664 10.22C5.17997 10.4134 5.21997 10.5734 5.31997 10.6734C5.41997 10.7734 5.57997 10.8134 5.7733 10.7867L7.77997 10.5C7.9533 10.4734 8.2533 10.3267 8.3733 10.2L13.6266 4.94671C14.06 4.51337 14.2866 4.12671 14.32 3.76671C14.36 3.33337 14.1333 2.87337 13.6266 2.36004C12.56 1.29337 11.8266 1.59337 11.0466 2.36671Z"
+                                    fill="white" />
+                                <path
+                                    d="M13.2333 6.55343C13.1866 6.55343 13.14 6.54677 13.1 6.53343C11.3466 6.0401 9.95329 4.64677 9.45996 2.89343C9.38662 2.62677 9.53996 2.35343 9.80662 2.27343C10.0733 2.2001 10.3466 2.35343 10.42 2.6201C10.82 4.0401 11.9466 5.16677 13.3666 5.56677C13.6333 5.6401 13.7866 5.9201 13.7133 6.18677C13.6533 6.41343 13.4533 6.55343 13.2333 6.55343Z"
+                                    fill="white" />
+                            </svg>
+                            <button class="text-sm text-white tracking-wider" @click="open = true">Edit Profile</button>
+                            <!-- Dialog (full screen) -->
+                            <div class="absolute bg-gray top-0 left-0 flex items-center justify-center w-full h-full"
+                                x-show="open">
+                                <!-- A basic modal dialog with title, body and one button to close -->
+                                <div class="h-auto p-4 mx-2 w-full text-left rounded shadow-xl md:max-w-xl md:p-6 lg:p-8 md:mx-0"
+                                    style="background:#141414" @click.away="open = false">
+                                    {{-- <div class="mt-1 text-center sm:mt-0 sm:ml-4 sm:text-left"> --}}
+                                    <div class="text-md w-full  text-white  text-left font-medium ">
+                                        Edit My Profile
+                                    </div>
+                                    <form class="form"  enctype="multipart/form-data" >
+                                        {{-- @method('PUT') --}}
+                                        <div class="w-full flex ">
+                                            <div class="mt-2 w-1/2 flex  flex-col">
+                                                <label for="name" class="text-white">Profile_Name</label>
+                                                <input type="text"class="bg-gray-500 rounded-lg" name="name"
+                                                    value="{{ $chef_questions->name }}" />
+                                                <label for="User Name"class="text-white">User Name</label>
+                                                <input type="text" class="bg-gray-500 rounded-lg" name="dob"
+                                                    value="{{ $chef_questions->dob }}" />
+                                            </div>
+                                            <div class="w-1/2 mt-2 ml-4 flex ">
+                                                <div class="flex flex-row w-1/2">
+                                                    <img class="rounded-square" alt="Pic"
+                                                        src="{{ asset('storage/public/'. $chef_questions->image) }}" />
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <div class="ml-2 ">
+                                                        <label
+                                                            for="form-file"class="bg-white w-full mt-2 py-2 px-2 text-sm text-black-500 rounded-lg">Change
+                                                            Picture</label>
+                                                        <input type="file" name="file" id="form-file"
+                                                            class="hidden" />
+                                                    </div>
+                                                    <div class="flex ml-2 ">
+                                                        <label
+                                                            for="form-file"class="bg-black-500 w-full mt-2 py-2 px-2 text-sm text-white rounded-lg">Remove
+                                                            Picture</label>
+                                                        {{-- <input type="file" name="file" id="form-file"
+                                                        class="hidden" /> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- </div> --}}
+                                            {{-- <div> --}}
+                                        </div>
+                                        <div class="w-full">
+                                            <input type="checkbox" name="student"class="border" value="student">
+                                            <label for="student" class="text-white text-sm"> I am a Student</label>
+                                            <input type="checkbox" name="Entrepreneur" value="student">
+                                            <label for="Entrepreneur" class="text-white text-sm"> I am an
+                                                Entrepreneur</label>
+                                            {{-- </div> --}}
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <label for="designation"class="text-white">Designation</label>
+                                            <input type="text"
+                                                name="designation"value="{{ $chef_questions->designation }}"
+                                                class="text-white bg-gray-500 rounded-lg p-2"
+                                                placeholder="Senior Executive Chef" />
+                                        </div>
+                                        {{-- </div> --}}
+
+                                        <!-- One big close button.--->
+                                        <div class="mt-2 sm:mt-6">
+                                            <span class="flex w-2/12 justify-center rounded-md shadow-sm">
+                                                 <button @click="open = false"
+                                                class="inline-flex justify-center items-center w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
+                                                Update
+                                            </button> 
+                                                {{-- <button @click="open = false" class="inline-flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
+                                            Close this modal!
+                                            </button> --}}
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
 
@@ -275,7 +369,8 @@
                     <!-- Tabs -->
                     <ul id="tabs" class="inline-flex justify-between pt-2 px-1 w-full">
                         <li class="bg-tab px-4 w-1/3 text-center font-semibold py-2 rounded-md -mb-px">
-                            <a id="default-tab" href="#first" class="text-white flex justify-center items-center">Recipes
+                            <a id="default-tab" href="#first"
+                                class="text-white flex justify-center items-center">Recipes
                                 <div
                                     class="h-4 w-4 ml-2 rounded-full text-white bg-red-500 text-xs flex items-center justify-center">
                                     {{ count($recipes) }}</div>
@@ -321,8 +416,8 @@
                                                     <div class="flex justify-start space-x-1 py-2">
                                                         <div class="py-1 rounded-md flex items-center justify-center px-1 space-x-1"
                                                             style="background: rgba(255, 255, 255, 0.2);">
-                                                            <svg width="20" height="20" viewBox="0 0 13 13" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
+                                                            <svg width="20" height="20" viewBox="0 0 13 13"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path
                                                                     d="M6.45833 11.5876C3.89733 11.5876 1.81531 9.50552 1.81531 6.94453C1.81531 4.38354 3.89733 2.30151 6.45833 2.30151C9.01932 2.30151 11.1013 4.38354 11.1013 6.94453C11.1013 9.50552 9.01932 11.5876 6.45833 11.5876ZM6.45833 3.03462C4.30299 3.03462 2.54842 4.78919 2.54842 6.94453C2.54842 9.09987 4.30299 10.8544 6.45833 10.8544C8.61366 10.8544 10.3682 9.09987 10.3682 6.94453C10.3682 4.78919 8.61366 3.03462 6.45833 3.03462Z"
                                                                     fill="white" />
@@ -370,8 +465,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex items-center">
-                                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="24" height="25" viewBox="0 0 24 25"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path
                                                                 d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
                                                                 fill="#292D32" />
@@ -389,7 +484,8 @@
                                     @endforeach
                                 </div>
                             @else
-                                <h1 class="text-white flex justify-center py-5 items-center text-lg">No Recipes Found !</h1>
+                                <h1 class="text-white flex justify-center py-5 items-center text-lg">No Recipes Found !
+                                </h1>
                             @endif
 
                         </div>
@@ -425,23 +521,34 @@
                                             </h1>
                                             <div>
                                                 <h1 class="text-gray-500 flex text-sm justify-center items-center mt-2">
-                                                    {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }} Recipes
-                                                    <svg class="mt-1  text-xl" width="12" height="12" viewBox="0 0 4 8"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    {{ DB::table('pin_recipes')->join('pinboards', 'pinboards.id', '=', 'pin_recipes.pinboard_id')->where('pinboards.id', $collection->id)->where('pin_recipes.user_id', auth()->user()->id)->count() }}
+                                                    Recipes
+                                                    <svg class="mt-1  text-xl" width="12" height="12"
+                                                        viewBox="0 0 4 8" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                                             d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
                                                             fill="#454545" />
                                                     </svg>
-                                                </div>
-                                                <div class="flex justify-center space-x-2 text-white text-montserrat items-center">
-                                                <svg class="mt-4 mb-5 " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M10.0002 15.1666H6.00016C2.38016 15.1666 0.833496 13.6199 0.833496 9.99992V5.99992C0.833496 2.37992 2.38016 0.833252 6.00016 0.833252H7.3335C7.60683 0.833252 7.8335 1.05992 7.8335 1.33325C7.8335 1.60659 7.60683 1.83325 7.3335 1.83325H6.00016C2.92683 1.83325 1.8335 2.92659 1.8335 5.99992V9.99992C1.8335 13.0733 2.92683 14.1666 6.00016 14.1666H10.0002C13.0735 14.1666 14.1668 13.0733 14.1668 9.99992V8.66659C14.1668 8.39325 14.3935 8.16659 14.6668 8.16659C14.9402 8.16659 15.1668 8.39325 15.1668 8.66659V9.99992C15.1668 13.6199 13.6202 15.1666 10.0002 15.1666Z" fill="white"/>
-                                                    <path d="M5.66688 11.7934C5.26022 11.7934 4.88688 11.6467 4.61355 11.38C4.28688 11.0534 4.14688 10.58 4.22022 10.08L4.50688 8.07337C4.56022 7.68671 4.81355 7.18671 5.08688 6.91337L10.3402 1.66004C11.6669 0.333372 13.0135 0.333372 14.3402 1.66004C15.0669 2.38671 15.3935 3.12671 15.3269 3.86671C15.2669 4.46671 14.9469 5.05337 14.3402 5.65337L9.08688 10.9067C8.81355 11.18 8.31355 11.4334 7.92688 11.4867L5.92022 11.7734C5.83355 11.7934 5.74688 11.7934 5.66688 11.7934ZM11.0469 2.36671L5.79355 7.62004C5.66688 7.74671 5.52022 8.04004 5.49355 8.21337L5.20688 10.22C5.18022 10.4134 5.22022 10.5734 5.32022 10.6734C5.42022 10.7734 5.58022 10.8134 5.77355 10.7867L7.78022 10.5C7.95355 10.4734 8.25355 10.3267 8.37355 10.2L13.6269 4.94671C14.0602 4.51337 14.2869 4.12671 14.3202 3.76671C14.3602 3.33337 14.1335 2.87337 13.6269 2.36004C12.5602 1.29337 11.8269 1.59337 11.0469 2.36671Z" fill="white"/>
-                                                    <path d="M13.2335 6.55343C13.1869 6.55343 13.1402 6.54677 13.1002 6.53343C11.3469 6.0401 9.95353 4.64677 9.4602 2.89343C9.38687 2.62677 9.5402 2.35343 9.80687 2.27343C10.0735 2.2001 10.3469 2.35343 10.4202 2.6201C10.8202 4.0401 11.9469 5.16677 13.3669 5.56677C13.6335 5.6401 13.7869 5.9201 13.7135 6.18677C13.6535 6.41343 13.4535 6.55343 13.2335 6.55343Z" fill="white"/>
-                                                    </svg>
+                                            </div>
+                                            <div
+                                                class="flex justify-center space-x-2 text-white text-montserrat items-center">
+                                                <svg class="mt-4 mb-5 " width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M10.0002 15.1666H6.00016C2.38016 15.1666 0.833496 13.6199 0.833496 9.99992V5.99992C0.833496 2.37992 2.38016 0.833252 6.00016 0.833252H7.3335C7.60683 0.833252 7.8335 1.05992 7.8335 1.33325C7.8335 1.60659 7.60683 1.83325 7.3335 1.83325H6.00016C2.92683 1.83325 1.8335 2.92659 1.8335 5.99992V9.99992C1.8335 13.0733 2.92683 14.1666 6.00016 14.1666H10.0002C13.0735 14.1666 14.1668 13.0733 14.1668 9.99992V8.66659C14.1668 8.39325 14.3935 8.16659 14.6668 8.16659C14.9402 8.16659 15.1668 8.39325 15.1668 8.66659V9.99992C15.1668 13.6199 13.6202 15.1666 10.0002 15.1666Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.66688 11.7934C5.26022 11.7934 4.88688 11.6467 4.61355 11.38C4.28688 11.0534 4.14688 10.58 4.22022 10.08L4.50688 8.07337C4.56022 7.68671 4.81355 7.18671 5.08688 6.91337L10.3402 1.66004C11.6669 0.333372 13.0135 0.333372 14.3402 1.66004C15.0669 2.38671 15.3935 3.12671 15.3269 3.86671C15.2669 4.46671 14.9469 5.05337 14.3402 5.65337L9.08688 10.9067C8.81355 11.18 8.31355 11.4334 7.92688 11.4867L5.92022 11.7734C5.83355 11.7934 5.74688 11.7934 5.66688 11.7934ZM11.0469 2.36671L5.79355 7.62004C5.66688 7.74671 5.52022 8.04004 5.49355 8.21337L5.20688 10.22C5.18022 10.4134 5.22022 10.5734 5.32022 10.6734C5.42022 10.7734 5.58022 10.8134 5.77355 10.7867L7.78022 10.5C7.95355 10.4734 8.25355 10.3267 8.37355 10.2L13.6269 4.94671C14.0602 4.51337 14.2869 4.12671 14.3202 3.76671C14.3602 3.33337 14.1335 2.87337 13.6269 2.36004C12.5602 1.29337 11.8269 1.59337 11.0469 2.36671Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M13.2335 6.55343C13.1869 6.55343 13.1402 6.54677 13.1002 6.53343C11.3469 6.0401 9.95353 4.64677 9.4602 2.89343C9.38687 2.62677 9.5402 2.35343 9.80687 2.27343C10.0735 2.2001 10.3469 2.35343 10.4202 2.6201C10.8202 4.0401 11.9469 5.16677 13.3669 5.56677C13.6335 5.6401 13.7869 5.9201 13.7135 6.18677C13.6535 6.41343 13.4535 6.55343 13.2335 6.55343Z"
+                                                        fill="white" />
+                                                </svg>
 
-                                                    <h2 class="text-xs">Edit</h2>
-                                                </div>
+                                                <h2 class="text-xs">Edit</h2>
+                                            </div>
                                         </a>
                                     @endforeach
                                 @else
@@ -460,7 +567,6 @@
         .bg-tab {
             background: #252525;
         }
-
     </style>
     <script>
         let tabsContainer = document.querySelector("#tabs");

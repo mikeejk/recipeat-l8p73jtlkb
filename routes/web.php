@@ -100,6 +100,7 @@ Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController
 // -------------------------------------------------------------------------------------------------------------------
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower', [FollowController::class, 'index1']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower.data', [FollowController::class, 'anyData1']);
@@ -108,6 +109,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
     Route::middleware(['auth:sanctum', 'verified'])->get('/following', [FollowController::class, 'index2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/following.data', [FollowController::class, 'anyData2']);
@@ -332,7 +334,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/edit_portfolio', [ChefQue
 
 // Update Portfolio tab
 Route::middleware(['auth:sanctum', 'verified'])->put('/update_portfolio', [ChefQuestion::class, 'update']);
-
+// Route::middleware(['auth:sanctum', 'verified'])->get('/recipe', [Recipe::class, 'show']);
+Route::get('/recipe', function () {
+    return view('livewire_recipe');
+});
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes
 // -------------------------------------------------------------------------------------------------------------------
