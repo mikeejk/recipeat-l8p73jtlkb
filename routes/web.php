@@ -65,7 +65,7 @@ Route::post('/storeUser4', [UserController::class, 'registerData']);
 
 // LandingPage Tab
 Route::get('/landingPage', function () {
-    return view('landingPage');
+    return view('landingPage'); 
 });
 // Skills Tab
 Route::get('/skills', [ExlporeController::class, 'tryfun']);
@@ -100,6 +100,7 @@ Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController
 // -------------------------------------------------------------------------------------------------------------------
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower', [FollowController::class, 'index1']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/follower.data', [FollowController::class, 'anyData1']);
@@ -108,6 +109,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
     Route::middleware(['auth:sanctum', 'verified'])->get('/following', [FollowController::class, 'index2']);
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/following.data', [FollowController::class, 'anyData2']);
@@ -142,8 +144,10 @@ Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view
 Route::middleware(['auth:sanctum', 'verified'])->get('/search_ingredient', [RecipeController::class, 'search1']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', [RecipeController::class, 'search']);
-
+// RecipeCount
 Route::middleware(['auth:sanctum', 'verified'])->get('/mainDashboard', [RecipeController::class, 'show_count']);
+// RecipeCount
+// Route::middleware(['auth:sanctum', 'verified'])->get('/mainDashboard', [RecipeController::class, 'mainDashboardSearch']);
 // Recipeat Customer Data Table - Data Tab
 Route::middleware(['auth:sanctum', 'verified'])->get('/users.data', [CreateNewUser::class, 'anyData']);
 // Recipeat Customer Data Table - Index Tab
@@ -334,7 +338,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/edit_portfolio', [ChefQue
 
 // Update Portfolio tab
 Route::middleware(['auth:sanctum', 'verified'])->put('/update_portfolio', [ChefQuestion::class, 'update']);
-
+// Route::middleware(['auth:sanctum', 'verified'])->get('/recipe', [Recipe::class, 'show']);
+Route::get('/recipe', function () {
+    return view('livewire_recipe');
+});
 // -------------------------------------------------------------------------------------------------------------------
 //                                                     User-Recipe Routes
 // -------------------------------------------------------------------------------------------------------------------
@@ -348,19 +355,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/recipes_create', [RecipeC
 //create_recipe1
 Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe1', [RecipeController::class, 'create_recipe1']);
 //post_recipe1
-Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe1', [RecipeController::class, 'post_recipe1']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/store_recipe1', [RecipeController::class, 'post_recipe1']);
 //create_recipe2
 Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe2', [RecipeController::class, 'create_recipe2']);
 //post_recipe2
-Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe2', [RecipeController::class, 'post_recipe2']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/store_recipe2', [RecipeController::class, 'post_recipe2']);
 //create_recipe3
 Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe3', [RecipeController::class, 'create_recipe3']);
 //post_recipe3
-Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe3', [RecipeController::class, 'post_recipe3']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/store_recipe3', [RecipeController::class, 'post_recipe3']);
 //create_recipe4
 Route::middleware(['auth:sanctum', 'verified'])->get('/create_recipe4', [RecipeController::class, 'create_recipe4']);
 //post_recipe4
-Route::middleware(['auth:sanctum', 'verified'])->get('/post_recipe2', [RecipeController::class, 'post_recipe4']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/store_recipe4', [RecipeController::class, 'post_recipe4']);
 // Store Recipe Tab
 Route::middleware(['auth:sanctum', 'verified'])->post('/recipes', [RecipeController::class, 'store']);
 

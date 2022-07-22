@@ -99,9 +99,9 @@
             </svg>
 
             <h1 class="text-white">Inbox</h1>
-            <div class="bg-red-500 text-white flex items-center justify-center rounded-full h-4 w-4">
-                <h6 class="text-sm">3</h6>
-            </div>
+            {{-- <div class="bg-red-500 text-white flex items-center justify-center rounded-full h-4 w-4">
+                <h6 class="text-sm"></h6> --}}
+            {{-- </div> --}}
         </div>
 
         <div class="flex space-x-2 items-center">
@@ -465,15 +465,6 @@
                                             style="color:rgba(41, 45, 50, 1);">
                                             <input type="hidden" name="recipe_id" id="recipe_id"
                                                 value="{{ $recipes->id }}" />
-                                            {{-- <select class="bg-black text-white" name="pinboard_id" id="pinboard_id"
-                                                value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} ">
-                                                <option value="" disabled selected>Add To Collection</option>
-                                                <option value="1">MyFavourite</option>
-                                                <option value="2">FamilyFav</option>
-                                                <option value="3">FavDesert</option>
-                                                <option value="4">FavDinner</option>
-                                            </select> --}}
-
                                             <select class="selectpicker bg-black text-white" multiple
                                                 name="pinboard_id[]" id="pinboard_id" required>
                                                 <option value="" disabled selected style="color:#292D32;">Add to
@@ -484,10 +475,6 @@
                                                         {{ $col->pin_name }}
                                                     </option>
                                                 @endforeach
-                                                {{-- <option value="1">MyFavourite</option>
-                                                <option value="2">FamilyFav</option>
-                                                <option value="3">FavDesert</option>
-                                                <option value="4">FavDinner</option> --}}
                                             </select>
                                         </h2>
                                     </div>
@@ -657,14 +644,15 @@
                         @foreach ($suggestions as $follower_suggestions)
                             <div class="flex justify-between items-center py-2">
                                 <div class="flex space-x-4 items-center">
-                                    {{-- @if ($follower_suggestions->id)
+                                     @if ($follower_suggestions->id)
                                             <img src="{{ asset('storage/public/' . $profile_image)}}"
                                                 class="rounded-lg h-14 w-14">
-                                    @endif --}}
+                                    @else
 
                                     <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
                                         class="rounded-lg h-14 w-14" alt="user">
-                                    <div>
+                                    @endif 
+                                        <div>
                                         <h1 class="text-white font-semibold break-words w-32">
                                             {{ $follower_suggestions->name }}</h1>
                                         <h3 class="text-gray-500 text-xs break-words w-28 ">

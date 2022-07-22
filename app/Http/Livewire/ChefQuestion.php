@@ -220,7 +220,8 @@ class ChefQuestion extends Component
     public function edit(Chef_question $chef_questions)
     {
         $chef_questions = Chef_question::where('user_id', auth()->user()->id)->first();
-        return view('screens.user.profile.portfolio_edit', compact('chef_questions'));
+        return view('screens.user.profile.chef_profile', compact('chef_questions'));
+        // return view('screens.user.profile.portfolio_edit', compact('chef_questions'));
     }
     // Function - Update
     public function update(Request $request)
@@ -248,6 +249,7 @@ class ChefQuestion extends Component
         }
         $chef_questions->update();
         //    dd($chef_questions);
-        return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes'))->with('status', "Success");
+        // return view('screens.user.profile.portfolio', compact('chef_questions', 'followers', 'following', 'recipes'))->with('status', "Success");
+        return view('screens.user.profile.chef_profile', compact('chef_questions', 'followers', 'following', 'recipes', 'feednote', 'notification','collections','pinrecipes','count'));
     }
 }

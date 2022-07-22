@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Cuisine;
@@ -10,6 +11,7 @@ use App\Models\Pinboard;
 use App\Models\Pin_recipe;
 use App\Models\Recipe_Step;
 use App\Models\Recipe_Ingredient;
+use Illuminate\Http\Request;
 
 use Livewire\Component;
 
@@ -32,9 +34,15 @@ class Recipe extends Component
      public $status;
      public $creator;
      public $cover;
+     public $selectedCategory = NULL;
     public function render()
     {
         return view('livewire.recipe');
+    }
+    public function mount()
+    {
+        $this->category = Category::all('id','category');
+        $this->Cuisine = Cuisine::all('id','cuisine');
     }
     public function firstStepSubmit()
     {
@@ -59,8 +67,7 @@ class Recipe extends Component
           $validatedData = $this->validate([
               'ingredients' => 'required',
               'quantity' => 'required',
-              'units' => 'required',
-              
+              'units' => 'required',   
           ]);
   
           // Next Step
@@ -85,7 +92,8 @@ class Recipe extends Component
         $validateData = $this->validate([
             'bud_sweet ' => 'required',
             'bud_sour' =>'required',
-            'bud_spicy' =>'required',]);
+            'bud_spicy' =>'required',
+        ]);
            
         // Next Step
         $this->currentStep = 5;
@@ -105,12 +113,21 @@ class Recipe extends Component
             //   'steps' => $this->steps,
             //   'user_id' => auth()->user()->id,
           ]);
-          Ingredient::create([
+          Recipe_Ingredient::create([
             'ingredients' => $this->ingredients,
           ]);
-  
+          Recipe_Step::create([
+            'steps' => $this->steps,
+          ]);
           $this->currentStep = 8;
       }
+      // Function - show
+    public function show(Request $request)
+    {
+        
+            return view('/recipes');
+    
+    }
   
   
 }

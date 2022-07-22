@@ -186,7 +186,7 @@
                                 <option value="7">Option 7</option>
                                 <option value="8">Option 8</option>
                               </select>
-                              
+
                               <div x-data="dropdown()" x-init="loadOptions()" class="w-full md:w-full  flex flex-col items-center h-auto mx-auto">
                                 <input name="values" type="hidden" x-bind:value="selectedValues()">
                                 <div class="inline-block relative w-full">
@@ -204,7 +204,7 @@
                                                                          c-0.469-0.469-0.469-1.229,0-1.697l2.758-3.15L5.651,6.849c-0.469-0.469-0.469-1.228,0-1.697s1.228-0.469,1.697,0L10,8.183
                                                                          l2.651-3.031c0.469-0.469,1.228-0.469,1.697,0s0.469,1.229,0,1.697l-2.758,3.152l2.758,3.15
                                                                          C14.817,13.62,14.817,14.38,14.348,14.849z" />
-                                                  </svg>                              
+                                                  </svg>
                                                 </div>
                                               </div>
                                             </div>
@@ -213,13 +213,13 @@
                                             <input placeholder="Eg.Baking" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()">
                                           </div>
                                         </div>
-                                        <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">                              
+                                        <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
                                           <button type="button" x-show="isOpen() === true" x-on:click="open" class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
                                             <svg version="1.1" class="fill-current h-4 w-4" viewBox="0 0 20 20">
                                               <path d="M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0s0.271,0.701,0,0.969l-7.908,7.83
                                   c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25
                                   L17.418,6.109z" />
-                                            </svg>   
+                                            </svg>
                                           </button>
                                           <button type="button" x-show="isOpen() === false" @click="close" class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
                                             <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
@@ -227,7 +227,7 @@
                                   c0.27-0.268,0.707-0.268,0.979,0l7.908,7.83c0.27,0.268,0.27,0.701,0,0.969c-0.271,0.268-0.709,0.268-0.978,0L10,6.75L2.582,13.891z
                                   " />
                                             </svg>
-                              
+
                                           </button>
                                         </div>
                                       </div>
@@ -257,7 +257,7 @@
                                   </div>
                                 </div>
                               </div>
-    
+
                             <div class="w-full mx-auto flex justify-end py-3 mt-10 space-x-10">
                                 <button class="text-gray-100 flex items-center text-lg focus:outline-none focus:ring-0" wire:click="back(2)">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -289,7 +289,7 @@
     <!--Start Question 04 -->
     <div class=" w-full flex h-full setup-content {{ $currentStep != 4 ? 'display-none' : '' }}" id="step-4">
         <div class="w-full py-5">
-            <div class="flex w-full justify-center">                
+            <div class="flex w-full justify-center">
                 <img src="images\recipeatLOGO.png" alt="logo" class="w-60 h-52">
             </div>
             <div class="w-full mx-auto py-4">
@@ -360,7 +360,7 @@
                                 </div>
                             </div>
 
-                            
+
                 <div class="w-full mx-auto py-3  border-gray-500">
                     <h1 class="text-white  text-manrope">Cuisines</h1>
                     <div class="overflow-auto container border-r" id="items-container">

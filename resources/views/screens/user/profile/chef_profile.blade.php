@@ -413,7 +413,7 @@
                                     <div class="grid grid-cols-3 gap-4 rounded-lg py-4">
                                         @foreach ($recipes as $recipe)
                                             <div class="relative w-full h-full rounded-md" x-data="{ 'showModal': false }"
-                                                @keydown.escape="showModal = false"  x-cloak>
+                                                @keydown.escape="showModal = false" x-cloak>
                                                 <div @click="showModal = true">
                                                     <img src="{{ $recipe->getFirstMediaUrl('cover') }}"
                                                         class="w-full h-full flex object-fill rounded-md">
@@ -571,24 +571,32 @@
                                                             </div>
                                                             <div class="w-1/2 px-5 py-4 h-full">
                                                                 <h1 class="text-montserrat font-bold text-white">Comments
-                                                                    <span class="pl-4">{{count($recipe->comments)}}</span></h1>
-                                                                <div class="w-full py-4 card-body h-96 overflow-y-scroll no-scrollbar">
+                                                                    <span
+                                                                        class="pl-4">{{ count($recipe->comments) }}</span>
+                                                                </h1>
+                                                                <div
+                                                                    class="w-full py-4 card-body h-96 overflow-y-scroll no-scrollbar">
                                                                     @include('partials.recipes.reply', [
                                                                         'comments' => $recipe->comments,
                                                                         'recipe_id' => $recipe->id,
                                                                     ])
                                                                 </div>
-                                                                <form  method="post" action="{{ route('comment.add') }}" class="w-full flex space-x-2 items-center">
+                                                                <form method="post" action="{{ route('comment.add') }}"
+                                                                    class="w-full flex space-x-2 items-center">
                                                                     @csrf
                                                                     <div class="text-white text-montserrat w-11/12">
-                                                                        <input type="text" name="comment" placeholder="Add a Comment"
+                                                                        <input type="text" name="comment"
+                                                                            placeholder="Add a Comment"
                                                                             class="p-2 w-full border-b-2 border-gray-600 placeholder:text-gray-400 bg-transparent focus:outline-none  focus:ring-0" />
-                                                                        <input type="hidden" name="recipe_id" value="{{ $recipe->id }}" />
+                                                                        <input type="hidden" name="recipe_id"
+                                                                            value="{{ $recipe->id }}" />
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <input type="submit" class="px-2 py-1.5 text-white py-0 opacity-50"
-                                                                            style="font-size: 0.8em;background-color:#202020;" value="Comment" />
-                                    
+                                                                        <input type="submit"
+                                                                            class="px-2 py-1.5 text-white py-0 opacity-50"
+                                                                            style="font-size: 0.8em;background-color:#202020;"
+                                                                            value="Comment" />
+
                                                                     </div>
                                                                 </form>
 

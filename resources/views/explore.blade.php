@@ -26,7 +26,6 @@
             margin-left: 0.5em;
             margin-right: 0.5em;
         }
-
     </style>
 </head>
 
@@ -162,8 +161,7 @@
                     <div class="w-full h-auto flex flex-col rounded-md px-2 mr-2" style="background-color: #141414">
                         <div class="py-2 flex space-x-2">
                             @if ($recipes->user->hasrole('Chef'))
-                                @if (!empty(
-                                    DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                @if (!empty(DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
                                 ))
                                     <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
@@ -172,8 +170,7 @@
                                         class="h-12 w-12 rounded-full">
                                 @endif
                             @else
-                                @if (!empty(
-                                    DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                @if (!empty(DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
                                 ))
                                     <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                         class="h-12 w-12 rounded-full">
@@ -273,21 +270,38 @@
                                     </h2>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-1">
-                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
-                                        fill="#292D32" />
-                                    <path
-                                        d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
-                                        fill="#292D32" />
-                                    <path
-                                        d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
-                                        fill="#292D32" />
-                                </svg>
-                                <h2 class="font-normal text-sm" style="color:#292D32;">Add to Collection</h2>
-                            </div>
+                            <form action="/searchResults/{recipes->id}" method="post" class="flex items-center">
+                                @csrf
+                                <div class="flex items-center space-x-1">
+                                    <button type="submit">
+                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.0139 13.3H8.19411C7.79334 13.3 7.461 12.9676 7.461 12.5668C7.461 12.1661 7.79334 11.8337 8.19411 11.8337H16.0139C16.4147 11.8337 16.747 12.1661 16.747 12.5668C16.747 12.9676 16.4147 13.3 16.0139 13.3Z"
+                                                fill="#292D32" />
+                                            <path
+                                                d="M12.104 17.2099C11.7033 17.2099 11.3709 16.8775 11.3709 16.4768V8.65694C11.3709 8.25617 11.7033 7.92383 12.104 7.92383C12.5048 7.92383 12.8371 8.25617 12.8371 8.65694V16.4768C12.8371 16.8775 12.5048 17.2099 12.104 17.2099Z"
+                                                fill="#292D32" />
+                                            <path
+                                                d="M15.0364 23.0748H9.17158C3.86388 23.0748 1.59613 20.8071 1.59613 15.4994V9.63453C1.59613 4.32683 3.86388 2.05908 9.17158 2.05908H15.0364C20.3441 2.05908 22.6119 4.32683 22.6119 9.63453V15.4994C22.6119 20.8071 20.3441 23.0748 15.0364 23.0748ZM9.17158 3.5253C4.66541 3.5253 3.06235 5.12836 3.06235 9.63453V15.4994C3.06235 20.0056 4.66541 21.6086 9.17158 21.6086H15.0364C19.5426 21.6086 21.1457 20.0056 21.1457 15.4994V9.63453C21.1457 5.12836 19.5426 3.5253 15.0364 3.5253H9.17158Z"
+                                                fill="#292D32" />
+                                        </svg>
+                                    </button>
+                                    {{-- <h2 class="font-normal text-sm" style="color:#292D32;">Add to Collection</h2> --}}
+                                    <input type="hidden" name="recipe_id" id="recipe_id"
+                                        value="{{ $recipes->id }}" />
+                                    <select name="pinboard_id" id="pinboard_id"
+                                        value="{{ isset($_GET['pinboard_id']) ? $_GET['pinboard_id'] : '' }} "
+                                        class="bg-black text-white appearance-none py-1 px-1">
+                                        <option disabled selected value="">Add To Collection</option>
+                                        @foreach ($collection as $col)
+                                            <option value="{{ $col->id }}">{{ $col->pin_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </form>
+
                         </div>
 
                         <div class="py-2 px-2">

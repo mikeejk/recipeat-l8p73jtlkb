@@ -74,7 +74,6 @@
             background-position: 0% 0%, right 0.5% bottom 26%, left top -35%, right top -10%;
             background-size: cover, 300px, 510px, 160px;
         }
-
     </style>
     <!--Style For -->
     <style>
@@ -156,7 +155,6 @@
                 font-size: 18px;
             }
         }
-
     </style>
 
 </head>
@@ -171,7 +169,8 @@
             <a href="" class="uppercase"> <img src="assets/media/logos/logo-5.png" alt="logo"
                     class="h-28 w-28" /></a>
             <a href="" class="uppercase">About</a>
-            <a href="/login" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign Up</a>
+            <a href="/login" class="px-2 py-2 bg-red-600 flex justify-center items-center rounded-md">Login / Sign
+                Up</a>
         </nav>
 
         <div class="pt-20 w-full mx-auto  flex flex-col items-center justify-center" x-data="{
@@ -186,9 +185,9 @@
             direction: 'forward'
         }"
             x-init="(() => {
-
+            
                 let typingInterval = setInterval(startTyping, $data.typeSpeed);
-
+            
                 function startTyping() {
                     let current = $data.textArray[$data.textIndex];
                     if ($data.charIndex > current.length) {
@@ -198,7 +197,7 @@
                             typingInterval = setInterval(startTyping, $data.typeSpeed);
                         }, $data.pauseEnd);
                     }
-
+            
                     $data.text = current.substring(0, $data.charIndex);
                     if ($data.direction == 'forward') {
                         $data.charIndex += 1;
@@ -207,20 +206,20 @@
                             $data.direction = 'forward';
                             clearInterval(typingInterval);
                             setTimeout(function() {
-
+            
                                 $data.textIndex += 1;
                                 if ($data.textIndex >= $data.textArray.length) {
                                     $data.textIndex = 0;
                                 }
-
+            
                                 typingInterval = setInterval(startTyping, $data.typeSpeed);
                             }, $data.pauseStart);
                         }
                         $data.charIndex -= 1;
                     }
-
+            
                 }
-
+            
                 setInterval(function() {
                     if ($refs.cursor.classList.contains('hidden')) {
                         $refs.cursor.classList.remove('hidden');
@@ -231,57 +230,67 @@
             })()">
             <h1 class="text-5xl font-bold text-white">Are you searching for <span class="text-red-600 "
                     x-text="text"></span></h1>
-            <div class="flex justify-center py-5 w-full mx-auto">
-                <div class=" md:w-3/4">
-                    <div class="input-group relative flex flex-wrap items-stretch w-8/12 mx-auto py-2 mb-2">
-                        <button
-                            class="btn inline-block px-6 py-2.5 bg-white text-white font-medium text-xs rounded-l-md flex items-center"
-                            type="button" id="button-addon2">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
-                                class="w-6 text-gray-500" role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 512 512">
-                                <path fill="currentColor"
-                                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
-                                </path>
-                            </svg>
-                        </button>
-                        <input type="search"
-                            class="form-control relative flex-auto min-w-0 block w-full px-3 py-8 text-base font-normal text-gray-700 bg-white border-0 m-0 focus:outline-none focus:ring-0 "
-                            placeholder='" Chicken Tikka Masala "' aria-label="Search" aria-describedby="button-addon2">
-                        <a href="" class="bg-white rounded-r-md px-4 text-gray-600 flex items-center justify-center">
-                            <button
-                                class="bg-gray-100 text-gray-500  px-2 py-2 rounded-md flex justify-between items-center">
-                                <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                    width="20" height="20" viewBox="0 0 172 172" style=" fill:#ffffff;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
-                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
-                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                        <path d="M0,172v-172h172v172z" fill="none"></path>
-                                        <g fill="#95a5a6">
-                                            <path
-                                                d="M86,24.08c-6.36937,0 -11.7175,4.42094 -13.26281,10.32h-62.41719c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h62.41719c1.54531,5.89906 6.89344,10.32 13.26281,10.32c6.36938,0 11.7175,-4.42094 13.26281,-10.32h62.41719c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-62.41719c-1.54531,-5.89906 -6.89344,-10.32 -13.26281,-10.32zM86,30.96c3.73563,0 6.67844,2.87563 6.83969,6.57094c-0.01344,0.20156 -0.01344,0.41656 0,0.63156c-0.16125,3.68188 -3.10406,6.5575 -6.83969,6.5575c-3.73562,0 -6.67844,-2.87562 -6.83969,-6.57094c0.01344,-0.20156 0.01344,-0.41656 0,-0.63156c0.16125,-3.68187 3.10406,-6.5575 6.83969,-6.5575zM134.16,72.24c-6.36937,0 -11.7175,4.42094 -13.26281,10.32h-110.57719c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h110.57719c1.54531,5.89906 6.89344,10.32 13.26281,10.32c6.36938,0 11.7175,-4.42094 13.26281,-10.32h14.25719c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-14.25719c-1.54531,-5.89906 -6.89344,-10.32 -13.26281,-10.32zM134.16,79.12c3.73563,0 6.67844,2.87563 6.83969,6.57094c-0.01344,0.20156 -0.01344,0.41656 0,0.63156c-0.16125,3.68188 -3.10406,6.5575 -6.83969,6.5575c-3.73562,0 -6.67844,-2.87562 -6.83969,-6.57094c0.01344,-0.20156 0.01344,-0.41656 0,-0.63156c0.16125,-3.68187 3.10406,-6.5575 6.83969,-6.5575zM48.16,120.4c-6.36937,0 -11.7175,4.42094 -13.26281,10.32h-24.57719c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h24.57719c1.54531,5.89906 6.89344,10.32 13.26281,10.32c6.36938,0 11.7175,-4.42094 13.26281,-10.32h100.25719c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-100.25719c-1.54531,-5.89906 -6.89344,-10.32 -13.26281,-10.32zM48.16,127.28c3.73563,0 6.67844,2.87563 6.83969,6.57094c-0.01344,0.20156 -0.01344,0.41656 0,0.63156c-0.16125,3.68188 -3.10406,6.5575 -6.83969,6.5575c-3.73562,0 -6.67844,-2.87562 -6.83969,-6.57094c0.01344,-0.20156 0.01344,-0.41656 0,-0.63156c0.16125,-3.68187 3.10406,-6.5575 6.83969,-6.5575z">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </svg>
-                                Filter
-                            </button>
-                        </a>
-                    </div>
-                    <p class="w-3/4 mx-auto text-white text-lg text-center leading-relaxed mb-4">An endless repository
-                        of
-                        recipes, chefs, ingredients and everything related to food</p>
-                    <div class="w-3/4 mx-auto py-16 space-y-4 flex flex-col justify-center items-center">
-                        <h1 class="text-4xl text-white font-bold counter">+ <span id="value"
-                                class="count">{{ $recipe_count }}</span>
-                        </h1>
-                        <h3 class="text-xs text-white tracking-wide leading-loose uppercase">Recipes , Chefs & Foodies
-                        </h3>
+             <form action="/mainDashboard"class="w-full" method="GET" role="search">
+                {{ csrf_field() }} 
+                <div class="flex justify-center py-5 w-full mx-auto">
 
+                    <div class=" md:w-3/4">
+                        <div class="input-group relative flex flex-wrap items-stretch w-8/12 mx-auto py-2 mb-2">
+                            <button
+                                class="btn inline-block px-6 py-2.5 bg-white text-white font-medium text-xs rounded-l-md flex items-center"
+                                type="submit"id="button-addon2">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
+                                    class="w-6 text-gray-500" role="img" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512">
+                                    <path fill="currentColor"
+                                        d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <input type="search" name="term" id="term"
+                                value="{{ isset($_GET['term']) ? $_GET['term'] : '' }}"
+                                class="form-control relative flex-auto min-w-0 block w-full px-3 py-8 text-base font-normal text-gray-700 bg-white border-0 m-0 focus:outline-none focus:ring-0 "
+                                placeholder='" Chicken Tikka Masala "' aria-label="Search"
+                                aria-describedby="button-addon2">
+                            <a href=""
+                                class="bg-white rounded-r-md px-4 text-gray-600 flex items-center justify-center">
+                                <button
+                                    class="bg-gray-100 text-gray-500  px-2 py-2 rounded-md flex justify-between items-center">
+                                    <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                        width="20" height="20" viewBox="0 0 172 172" style=" fill:#ffffff;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                            stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                            stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+                                            font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g fill="#95a5a6">
+                                                <path
+                                                    d="M86,24.08c-6.36937,0 -11.7175,4.42094 -13.26281,10.32h-62.41719c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h62.41719c1.54531,5.89906 6.89344,10.32 13.26281,10.32c6.36938,0 11.7175,-4.42094 13.26281,-10.32h62.41719c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-62.41719c-1.54531,-5.89906 -6.89344,-10.32 -13.26281,-10.32zM86,30.96c3.73563,0 6.67844,2.87563 6.83969,6.57094c-0.01344,0.20156 -0.01344,0.41656 0,0.63156c-0.16125,3.68188 -3.10406,6.5575 -6.83969,6.5575c-3.73562,0 -6.67844,-2.87562 -6.83969,-6.57094c0.01344,-0.20156 0.01344,-0.41656 0,-0.63156c0.16125,-3.68187 3.10406,-6.5575 6.83969,-6.5575zM134.16,72.24c-6.36937,0 -11.7175,4.42094 -13.26281,10.32h-110.57719c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h110.57719c1.54531,5.89906 6.89344,10.32 13.26281,10.32c6.36938,0 11.7175,-4.42094 13.26281,-10.32h14.25719c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-14.25719c-1.54531,-5.89906 -6.89344,-10.32 -13.26281,-10.32zM134.16,79.12c3.73563,0 6.67844,2.87563 6.83969,6.57094c-0.01344,0.20156 -0.01344,0.41656 0,0.63156c-0.16125,3.68188 -3.10406,6.5575 -6.83969,6.5575c-3.73562,0 -6.67844,-2.87562 -6.83969,-6.57094c0.01344,-0.20156 0.01344,-0.41656 0,-0.63156c0.16125,-3.68187 3.10406,-6.5575 6.83969,-6.5575zM48.16,120.4c-6.36937,0 -11.7175,4.42094 -13.26281,10.32h-24.57719c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h24.57719c1.54531,5.89906 6.89344,10.32 13.26281,10.32c6.36938,0 11.7175,-4.42094 13.26281,-10.32h100.25719c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-100.25719c-1.54531,-5.89906 -6.89344,-10.32 -13.26281,-10.32zM48.16,127.28c3.73563,0 6.67844,2.87563 6.83969,6.57094c-0.01344,0.20156 -0.01344,0.41656 0,0.63156c-0.16125,3.68188 -3.10406,6.5575 -6.83969,6.5575c-3.73562,0 -6.67844,-2.87562 -6.83969,-6.57094c0.01344,-0.20156 0.01344,-0.41656 0,-0.63156c0.16125,-3.68187 3.10406,-6.5575 6.83969,-6.5575z">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    Filter
+                                </button>
+                            </a>
+                        </div>
+                        <p class="w-3/4 mx-auto text-white text-lg text-center leading-relaxed mb-4">An endless
+                            repository
+                            of
+                            recipes, chefs, ingredients and everything related to food</p>
+                        <div class="w-3/4 mx-auto py-16 space-y-4 flex flex-col justify-center items-center">
+                            <h1 class="text-4xl text-white font-bold counter">+ <span id="value"
+                                    class="count">{{ $recipe_count }}</span>
+                            </h1>
+                            <h3 class="text-xs text-white tracking-wide leading-loose uppercase">Recipes , Chefs &
+                                Foodies
+                            </h3>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+             </form> 
         </div>
     </section>
 
@@ -295,7 +304,8 @@
                 </h1>
                 <p class="text-lg text-white font-medium mb-4">Recipeat is a community platform that brings together
                     ingredients, recipes, and chefs.</p>
-                <p class="text-base text-gray-300 font-normal mb-4">With Recipeat, you can browse quality recipe content
+                <p class="text-base text-gray-300 font-normal mb-4">With Recipeat, you can browse quality recipe
+                    content
                     tailored to your diet
                     and tastebuds. Connect with friends, food bloggers, chefs and home chefs to gain access to their
                     personalised content</p>
@@ -408,7 +418,8 @@
                             <div class="w-1/2 flex flex-col justify-start ">
                                 <h2 class="text-2xl text-white mb-2 text-left">Foster an audience and</h2>
                                 <h1 class="text-red-600 text-4xl font-semibold mb-2">Grow your brand</h1>
-                                <p class="text-gray-400 mb-4 text-base">As a home chef, Recipeat is the perfect platform
+                                <p class="text-gray-400 mb-4 text-base">As a home chef, Recipeat is the perfect
+                                    platform
                                     for you
                                     to grow your own personal food brand. Create exclusive content that caters to a
                                     large audience of food lovers! Expand your circle by finding partnerships and
@@ -655,7 +666,8 @@
                                             d="M72.0607 13.0607C72.6464 12.4749 72.6464 11.5251 72.0607 10.9393L62.5147 1.39339C61.9289 0.807606 60.9792 0.807606 60.3934 1.39339C59.8076 1.97918 59.8076 2.92893 60.3934 3.51471L68.8787 12L60.3934 20.4853C59.8076 21.0711 59.8076 22.0208 60.3934 22.6066C60.9792 23.1924 61.9289 23.1924 62.5147 22.6066L72.0607 13.0607ZM1.31134e-07 13.5L71 13.5L71 10.5L-1.31134e-07 10.5L1.31134e-07 13.5Z"
                                             fill="#F9FBFC" />
                                     </svg>
-                                    <img src="images\foodPacket.png" class="h-40 w-40  flex items-start" alt="image" />
+                                    <img src="images\foodPacket.png" class="h-40 w-40  flex items-start"
+                                        alt="image" />
                                 </div>
                             </div>
                         </div>
@@ -728,8 +740,10 @@
                             <a href="/"
                                 class="text-sm text-white font-normal underline decoration-solid border-b">Privacy
                                 Policy</a>
-                            <a href="" class="text-sm text-white font-normal underline border-b">Terms of Service</a>
-                            <a href="" class="text-sm text-white font-normal underline border-b">Cookies Settings</a>
+                            <a href="" class="text-sm text-white font-normal underline border-b">Terms of
+                                Service</a>
+                            <a href="" class="text-sm text-white font-normal underline border-b">Cookies
+                                Settings</a>
                         </nav>
                         <h3 class="text-sm text-white font-normal">2022 Recipeat. All right reserved.</h3>
 
@@ -741,7 +755,6 @@
     </section>
 
     <script>
-
         function animateValue(obj, start = 0, end = null, duration = 3000) {
             if (obj) {
 

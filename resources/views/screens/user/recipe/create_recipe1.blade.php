@@ -108,115 +108,171 @@
         <h1 class="text-white py-4">Basic Information</h1>
         <section class="bg-black">
             <main class="mx-auto w-11/12 bg-black py-2 justify-start">
-                <div class="w-full py-4">
-                    <input type="text"
-                        class="py-4 border-b-2 bg-transparent w-full text-center justify-center placeholder:text-4xl placeholder:text-center text-white"
-                        placeholder="What are you cooking?">
-                    <h1 class="text-base text-gray-400 py-3">Give Your recipe a tasty title</h1>
-                </div>
-                <div class="flex justify-between w-full">
-                    <section class="w-1/2 space-y-4 py-4">
-                        <div class=" flex w-full pr-4 items-center justify-between">
-                            <h1 class=" text-white">Servings</h1>
-                            <div class="flex space-x-2">
-                                <button
-                                    class="w-12 space-y-2 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">-
-                                
-                                </button>
-                                <input type="text" name="serves_people" class="w-24 rounded-md text-white bg-gray-500 items-center py-2" />
-                                <button
-                                    class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">+</button>
-                            </div>
+                {{-- <form method="POST" action="/store_recipe1"> --}}
+                <div>
+                    <form class="form" action="/store_recipe1" enctype="multipart/form-data" method="post">
+                        @csrf
+                        <div class="w-full py-4">
+                            <input type="text" name="recipe_name"
+                                class="py-4 border-b-2 bg-transparent w-full text-center justify-center placeholder:text-4xl placeholder:text-center text-white"
+                                placeholder="What are you cooking?">
+                            <h1 class="text-base text-gray-400 py-3">Give Your recipe a tasty title</h1>
                         </div>
-                        <div class=" flex w-full items-center pr-4 justify-between ">
-                            <h1 class=" text-white">Cook Time</h1>
-                            <div class="flex space-x-2">
-                                <button
-                                    class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">-</button>
-                                <input type="text" name="cooking_time" class="w-24 rounded-md text-white bg-gray-600 py-2 items-center" />
-                                <button
-                                    class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">+</button>
-                            </div>
-                        </div>
-                        <div class="flex w-full pr-4 items-center justify-between">
-                            <h1 class="text-white">Prep Time</h1>
-                            <div class="flex space-x-2">
-                                <button
-                                    class="w-12 rounded-lg  border border-gray-500 px-4 py-2 text-gray-300">-</button>
-                                <input type="text" name="preparing_time" class="w-24 rounded-md text-white bg-gray-600 py-2 items-center" />
-                                <button
-                                    class="w-12 rounded-lg  border border-gray-500 px-4 py-2 text-gray-300">+</button>
-                            </div>
-                        </div>
-                        <div class=" w-full  items-center justify-between">
-                            <h1 class="text-base text-white py-3">Recipe Cusine/Category</h1>
-                            <input type="text"
+                        <div class="flex justify-between w-full">
+                            <section class="w-1/2 space-y-4 py-4">
+                                <div class=" flex w-full pr-4 items-center justify-between">
+                                    <h1 class=" text-white">Servings</h1>
+                                    <div class="flex space-x-2">
+                                        <button
+                                            class="w-12 space-y-2 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">-
+
+                                        </button>
+                                        <input name="serves_people" type="Number"
+                                            class="w-24 rounded-md text-white bg-gray-500 items-center text-center py-2" />
+                                        <button
+                                            class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">+</button>
+                                    </div>
+                                </div>
+                                <div class=" flex w-full items-center pr-4 justify-between ">
+                                    <h1 class=" text-white">Cook Time</h1>
+                                    <div class="flex space-x-2">
+                                        <button
+                                            class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">-</button>
+                                        <input  name="cooking_time" type="Number"
+                                            class="w-24 rounded-md text-white bg-gray-600 py-2 text-center items-center" />
+                                        <button
+                                            class="w-12 rounded-lg border border-gray-500 px-4 py-2 text-gray-300">+</button>
+                                    </div>
+                                </div>
+                                <div class="flex w-full pr-4 items-center justify-between">
+                                    <h1 class="text-white">Prep Time</h1>
+                                    <div class="flex space-x-2">
+                                        <button
+                                            class="w-12 rounded-lg  border border-gray-500 px-4 py-2 text-gray-300">-</button>
+                                        <input type="text" name="preparing_time" type="Number"
+                                            class="w-24 rounded-md text-white bg-gray-600 py-2 text-center items-center" />
+                                        <button
+                                            class="w-12 rounded-lg  border border-gray-500 px-4 py-2 text-gray-300">+</button>
+                                    </div>
+                                </div>
+                                <div class=" w-full  items-center justify-between">
+                                    <h1 class="text-base text-white py-3">Recipe Cusine/Category</h1>
+                                    {{-- <input type="text" name="category"
                                 class="w-full rounded-md bg-gray-600 py-2 px-2 text-white placeholder:text-m placeholder:text-center"
-                                placeholder="Eg:Chinese or Dessert" />
+                                placeholder="Eg:Chinese " /> --}}
+                                    <select class="w-full rounded-md bg-gray-600 py-2 px-2 text-white"name="category">
+                                        {{-- @foreach ($categories as $categorie)
+                                            <option value="{{ $categorie->id}} ">
+                                                {{ $categorie->category}}
+                                            </option>
+                                        @endforeach --}}
+                                    </select>
+                                </div>
+                                <div class=" w-full  items-center justify-between">
+                                    {{-- <input type="text"
+                                class="w-full rounded-md bg-gray-600 py-2 px-2 text-white placeholder:text-m placeholder:text-center"
+                                placeholder="Eg: Dessert" /> --}}
+                                    <select class="w-full rounded-md bg-gray-600 py-2 px-2 text-white"name="cuisine">
+                                        {{-- @foreach ($cuisines as $cuisine)
+                                            <option value="{{ $cuisine->id }} ">
+                                                {{ $cuisine->cuisine }}
+                                            </option>
+                                        @endforeach --}}
+                                    </select>
+                                </div>
+                                <div class=" w-full  items-center  justify-between">
+                                    <h1 class="text-base text-white py-3">Add Recipe Description</h1>
+                                    <textarea class="bg-black placeholder:text-m text-white w-full placeholder:text-start"name="description"
+                                        placeholder="Max 700 characters"></textarea>
+                                </div>
+                            </section>
+                            <section class="w-1/2 bg-black flex justify-center items-center">
+                                {{-- <div class=""> --}}
+                                {{-- {{-- <div class="max-w-2xl rounded-lg "> --}}
+                                <div class="ml-8 mb-8 mr-8">
+                                    <h1 class=" text-white">Add Pictures</h1>
+                                    <label class="mb-2 text-gray-500">Min resolution 1080*1080 </label>
+                                    <main class="grid w-3/4 grid-cols-2 gap-2">
+                                        <div class="flex  items-center justify-center">
+                                            <label
+                                                class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100"
+                                                style="background-color:#252525">
+                                                <div class="flex flex-col items-center justify-center pt-7">
+                                                    <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z"
+                                                            fill="#515050" />
+                                                        <path
+                                                            d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z"
+                                                            fill="#515050" />
+                                                    </svg>
+                                                </div>
+                                                <input type="file" name="cover"class="opacity-0" />
+                                            </label>
+                                        </div>
+                                        <div class="flex w-full items-center justify-center">
+                                            <label
+                                                class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100"
+                                                style="background-color:#252525">
+                                                <div class="flex flex-col items-center justify-center pt-7">
+                                                    <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z"
+                                                            fill="#515050" />
+                                                        <path
+                                                            d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z"
+                                                            fill="#515050" />
+                                                    </svg>
+                                                </div>
+                                                <input type="file" class="opacity-0" />
+                                            </label>
+                                        </div>
+                                        <div class="flex w-full items-center justify-center">
+                                            <label
+                                                class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100"
+                                                style="background-color:#252525">
+                                                <div class="flex flex-col items-center justify-center pt-7">
+                                                    <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z"
+                                                            fill="#515050" />
+                                                        <path
+                                                            d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z"
+                                                            fill="#515050" />
+                                                    </svg>
+                                                </div>
+                                                <input type="file" class="opacity-0" />
+                                            </label>
+                                        </div>
+                                        <div class="flex w-full items-center justify-center">
+                                            <label
+                                                class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100"
+                                                style="background-color:#252525">
+                                                <div class="flex flex-col items-center justify-center pt-7">
+                                                    <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z"
+                                                            fill="#515050" />
+                                                        <path
+                                                            d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z"
+                                                            fill="#515050" />
+                                                    </svg>
+                                                </div>
+                                                <input type="file" class="opacity-0" />
+                                            </label>
+                                        </div>
+                                    </main>
+                                </div>
+                                {{-- </div> --}}
+                                {{-- </div> --}}
+
+                            </section>
                         </div>
-                        <div class=" w-full  items-center  justify-between">
-                            <h1 class="text-base text-white py-3">Add Recipe Description</h1>
-                            <textarea class="bg-black placeholder:text-m text-white w-full placeholder:text-start" placeholder="Max 700 characters"></textarea>
-                        </div>
-                    </section>
-                    <section class="w-1/2 bg-black flex justify-center items-center">
-                        {{-- <div class=""> --}}
-                            {{-- {{-- <div class="max-w-2xl rounded-lg "> --}}
-                              <div class="ml-8 mb-8 mr-8">  
-                                <h1 class=" text-white">Add Pictures</h1>
-                                <label class="mb-2 text-gray-500">Min resolution 1080*1080 </label>
-                                <main class="grid w-3/4 grid-cols-2 gap-2">
-                                  <div class="flex  items-center justify-center">
-                                    <label class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100" style="background-color:#252525">
-                                      <div class="flex flex-col items-center justify-center pt-7">
-                                        <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z" fill="#515050" />
-                                          <path d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z" fill="#515050" />
-                                        </svg>
-                                      </div>
-                                      <input type="file" class="opacity-0" />
-                                    </label>
-                                  </div>
-                                  <div class="flex w-full items-center justify-center">
-                                    <label class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100" style="background-color:#252525">
-                                      <div class="flex flex-col items-center justify-center pt-7">
-                                        <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z" fill="#515050" />
-                                          <path d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z" fill="#515050" />
-                                        </svg>
-                                      </div>
-                                      <input type="file" class="opacity-0" />
-                                    </label>
-                                  </div>
-                                  <div class="flex w-full items-center justify-center">
-                                    <label class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100" style="background-color:#252525">
-                                      <div class="flex flex-col items-center justify-center pt-7">
-                                        <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z" fill="#515050" />
-                                          <path d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z" fill="#515050" />
-                                        </svg>
-                                      </div>
-                                      <input type="file" class="opacity-0" />
-                                    </label>
-                                  </div>
-                                  <div class="flex w-full items-center justify-center">
-                                    <label class="flex h-32 w-full flex-col items-center justify-center rounded-xl hover:bg-gray-100" style="background-color:#252525">
-                                      <div class="flex flex-col items-center justify-center pt-7">
-                                        <svg class="h-8 w-8 text-gray-300" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M14.4319 9.10585H1.31916C0.647134 9.10585 0.0898438 8.54856 0.0898438 7.87653C0.0898438 7.20451 0.647134 6.64722 1.31916 6.64722H14.4319C15.1039 6.64722 15.6612 7.20451 15.6612 7.87653C15.6612 8.54856 15.1039 9.10585 14.4319 9.10585Z" fill="#515050" />
-                                          <path d="M7.87531 15.6612C7.20329 15.6612 6.646 15.1039 6.646 14.4319V1.31916C6.646 0.647134 7.20329 0.0898438 7.87531 0.0898438C8.54734 0.0898438 9.10463 0.647134 9.10463 1.31916V14.4319C9.10463 15.1039 8.54734 15.6612 7.87531 15.6612Z" fill="#515050" />
-                                        </svg>
-                                      </div>
-                                      <input type="file" class="opacity-0" />
-                                    </label>
-                                  </div>
-                                </main>
-                                </div> 
-                            {{-- </div>  --}}
-                          {{-- </div> --}}
-                          
-                    </section> 
-                </div>
+                    </form>
             </main>
         </section>
     </main>
@@ -224,13 +280,12 @@
         {{-- <div class="flex items-center">
             <button class="bg-gray-400 w-40 border px-4 py-1.5 rounded-lg text-white">Save to Drafts</button>
         </div> --}}
-            <div class="w-full flex flex-row justify-end py-5 space-x-4">
-                <a href="HomePage"
-                    class="bg-transparent text-white rounded lg:text-lg text-base focus:outline-none">
-                    <i class="fas fa-angle-left text-white mt-1 mr-1"></i>Previous</a>
-                    <a href="create_recipe2"
-                        class="bg-red-600 text-white w-30 py-2 flex justify-center item-center rounded-md">Next,Ingredients
-                        <i class="fas fa-angle-right text-white mt-1 ml-1"></i></a>
-            </div>
+        <div class="w-full flex flex-row justify-end py-5 space-x-4">
+            <a href="HomePage" class="bg-transparent text-white rounded lg:text-lg text-base focus:outline-none">
+                <i class="fas fa-angle-left text-white mt-1 mr-1"></i>Previous</a>
+            <a href="create_recipe2"
+                class="bg-red-600 text-white w-30 py-2 flex justify-center item-center rounded-md">Next,Ingredients
+                <i class="fas fa-angle-right text-white mt-1 ml-1"></i></a>
+        </div>
     </div>
 </body>
