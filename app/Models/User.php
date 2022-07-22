@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Models\Role;
 use App\Contracts\Likeable;
 use App\Models\Like;
+use App\Models\Recipe;
 
 class User extends Authenticatable implements MustVerifyEmail
 {

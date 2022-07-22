@@ -11,6 +11,7 @@ use App\Models\Comment;
 use App\Contracts\Likeable;
 use App\Models\Concerns\Likes;
 use App\Models\Chef_question;
+use App\Models\User;
 
 
 // use Overtrue\LaravelLike\Traits\Likeable;

@@ -14,57 +14,217 @@
     background: #555;
 }
 
-.alias {cursor: alias;}
-.all-scroll {cursor: all-scroll;}
-.auto {cursor: auto;}
-.cell {cursor: cell;}
-.context-menu {cursor: context-menu;}
-.col-resize {cursor: col-resize;}
-.copy {cursor: copy;}
-.crosshair {cursor: crosshair;}
-.default {cursor: default;}
-.e-resize {cursor: e-resize;}
-.ew-resize {cursor: ew-resize;}
-.grab {cursor: -webkit-grab; cursor: grab;}
-.grabbing {cursor: -webkit-grabbing; cursor: grabbing;}
-.help {cursor: help;}
-.move {cursor: move;}
-.n-resize {cursor: n-resize;}
-.ne-resize {cursor: ne-resize;}
-.nesw-resize {cursor: nesw-resize;}
-.ns-resize {cursor: ns-resize;}
-.nw-resize {cursor: nw-resize;}
-.nwse-resize {cursor: nwse-resize;}
-.no-drop {cursor: no-drop;}
-.none {cursor: none;}
-.not-allowed {cursor: not-allowed;}
-.pointer {cursor: pointer;}
-.progress {cursor: progress;}
-.row-resize {cursor: row-resize;}
-.s-resize {cursor: s-resize;}
-.se-resize {cursor: se-resize;}
-.sw-resize {cursor: sw-resize;}
-.text {cursor: text;}
-.url {cursor: url(myBall.cur),auto;}
-.w-resize {cursor: w-resize;}
-.wait {cursor: wait;}
-.zoom-in {cursor: zoom-in;}
-.zoom-out {cursor: zoom-out;}
+.alias {
+    cursor: alias;
+}
 
-.text-manrope{
+.all-scroll {
+    cursor: all-scroll;
+}
+
+.auto {
+    cursor: auto;
+}
+
+.cell {
+    cursor: cell;
+}
+
+.context-menu {
+    cursor: context-menu;
+}
+
+.col-resize {
+    cursor: col-resize;
+}
+
+.copy {
+    cursor: copy;
+}
+
+.crosshair {
+    cursor: crosshair;
+}
+
+.default {
+    cursor: default;
+}
+
+.e-resize {
+    cursor: e-resize;
+}
+
+.ew-resize {
+    cursor: ew-resize;
+}
+
+.grab {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.grabbing {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
+.help {
+    cursor: help;
+}
+
+.move {
+    cursor: move;
+}
+
+.n-resize {
+    cursor: n-resize;
+}
+
+.ne-resize {
+    cursor: ne-resize;
+}
+
+.nesw-resize {
+    cursor: nesw-resize;
+}
+
+.ns-resize {
+    cursor: ns-resize;
+}
+
+.nw-resize {
+    cursor: nw-resize;
+}
+
+.nwse-resize {
+    cursor: nwse-resize;
+}
+
+.no-drop {
+    cursor: no-drop;
+}
+
+.none {
+    cursor: none;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.progress {
+    cursor: progress;
+}
+
+.row-resize {
+    cursor: row-resize;
+}
+
+.s-resize {
+    cursor: s-resize;
+}
+
+.se-resize {
+    cursor: se-resize;
+}
+
+.sw-resize {
+    cursor: sw-resize;
+}
+
+.text {
+    cursor: text;
+}
+
+.url {
+    cursor: url(myBall.cur), auto;
+}
+
+.w-resize {
+    cursor: w-resize;
+}
+
+.wait {
+    cursor: wait;
+}
+
+.zoom-in {
+    cursor: zoom-in;
+}
+
+.zoom-out {
+    cursor: zoom-out;
+}
+
+.text-manrope {
     font-family: 'Manrope';
-    }
+}
 
-.text-montserrat{
+.text-montserrat {
     font-family: 'Montserrat';
-    }
+}
 
-.fadedgray{
+.fadedgray {
     background: #202020;
 }
-.text-gray-landinpage{
+
+.text-gray-landinpage {
     color: #838383;
 }
-.bg-gray202020{
+
+.bg-gray202020 {
     background: #202020;
+}
+
+.bg-gray252525 {
+    background: #252525;
+}
+
+.bg-gray555555 {
+    background: #555555;
+}
+
+.bg-green88FD41 {
+    background: #88FD41;
+}
+
+.bg-gray3B3939 {
+    background: #3B3939;
+}
+
+.bg-gray161616 {
+    background: #161616;
+}
+.bg-gray303030{
+    background:#303030;
+}
+.bg-gray39393A{
+    background:#39393A;
+}
+.bordergray353535{
+    border-color:#353535 ;
+  
+}
+
+.text626262 {
+    color: #626262;
+}
+.textB7B7B7{
+    color:#B7B7B7;
+}
+
+.bg-gray_rgba_255_255_255_02 {
+    background: rgba(255, 255, 255, 0.2)
+}
+
+.roundedGradient {
+    background: linear-gradient(145.18deg, #E4182A 17.1%, rgba(231, 70, 70, 0) 76.3%);
+}
+
+.buttonRed{
+    background: linear-gradient(91.26deg, #F7162D 47.78%, #E4182A 74.08%);
 }

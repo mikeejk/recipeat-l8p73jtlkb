@@ -72,7 +72,7 @@ class UserController extends Controller
 
     public function createstep4(Request $request)
     {
-        $product = $request->session()->get('user');
+        $user = $request->session()->get('user');
 
         return view('auth.register4', compact('user'));
     }

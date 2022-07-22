@@ -34,7 +34,6 @@
         a {
             text-decoration: none !important;
         }
-
     </style>
 
     <!-- Initialize the plugin: -->
@@ -59,7 +58,8 @@
 
         <a href="/HomePage" class="flex space-x-2 items-center justify-center">
             <div class="flex flex-col items-center">
-                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M19.86 6.37009L12.93 0.830093C11.86 -0.0299066 10.13 -0.0299066 9.07002 0.820093L2.14002 6.37009C1.36002 6.99009 0.860021 8.30009 1.03002 9.28009L2.36002 17.2401C2.60002 18.6601 3.96002 19.8101 5.40002 19.8101H16.6C18.03 19.8101 19.4 18.6501 19.64 17.2401L20.97 9.28009C21.13 8.30009 20.63 6.99009 19.86 6.37009ZM11 13.5001C9.62002 13.5001 8.50002 12.3801 8.50002 11.0001C8.50002 9.62009 9.62002 8.50009 11 8.50009C12.38 8.50009 13.5 9.62009 13.5 11.0001C13.5 12.3801 12.38 13.5001 11 13.5001Z"
                         fill="white" />
@@ -153,7 +153,8 @@
                         <div class="flex justify-center space-x-2 mb-4">
                             <svg width="16" height="16" viewBox="0 0 14 14" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="7" cy="7" r="7" fill="url(#paint0_linear_849_1421)" />
+                                <circle cx="7" cy="7" r="7"
+                                    fill="url(#paint0_linear_849_1421)" />
                                 <path
                                     d="M7.33667 10.5001C7.13667 10.5001 6.82668 10.4034 6.53001 9.91676L5.94334 8.96676C5.88668 8.87342 5.71334 8.78342 5.60667 8.79009L4.49333 8.84676C3.82666 8.88009 3.59335 8.60342 3.51001 8.43676C3.42668 8.27009 3.35333 7.91343 3.78667 7.40676L4.44668 6.6401C4.51335 6.5601 4.55 6.38675 4.52 6.28675L4.18333 5.21009C4.01333 4.67009 4.20333 4.3801 4.33 4.25343C4.45667 4.12676 4.75 3.94342 5.29 4.12342L6.27334 4.44676C6.36334 4.47676 6.53001 4.45009 6.60667 4.39676L7.63334 3.65676C8.10334 3.31676 8.44333 3.40676 8.6 3.49009C8.75667 3.57343 9.02333 3.8001 9.01333 4.3801L8.98999 5.64342C8.98666 5.73676 9.06333 5.89009 9.13666 5.94676L9.96334 6.57343C10.4133 6.91676 10.43 7.26009 10.4 7.43676C10.37 7.61342 10.2367 7.93342 9.69668 8.10009L8.62 8.43676C8.52 8.46676 8.39667 8.59676 8.37 8.69676L8.11335 9.67676C7.94335 10.3201 7.61001 10.4634 7.42334 10.4901C7.40001 10.4968 7.37001 10.5001 7.33667 10.5001ZM5.61666 8.29009C5.90333 8.29009 6.22 8.46342 6.36666 8.70342L6.95333 9.65342C7.12 9.92676 7.27 10.0101 7.35 9.99676C7.42667 9.98676 7.54667 9.86009 7.63001 9.55343L7.88666 8.57343C7.95666 8.30676 8.20666 8.04343 8.46999 7.96343L9.54668 7.62676C9.75334 7.56343 9.88666 7.46009 9.90666 7.35342C9.92666 7.24676 9.83333 7.10676 9.66 6.97343L8.83334 6.34676C8.63 6.19343 8.48334 5.88676 8.48668 5.63342L8.51001 4.37009C8.51335 4.14675 8.46001 3.98009 8.36335 3.93009C8.26668 3.88009 8.10334 3.93009 7.92001 4.06009L6.89333 4.80009C6.69 4.94676 6.35334 5.0001 6.11001 4.92009L5.12667 4.59676C4.92001 4.53009 4.75335 4.53342 4.67668 4.61009C4.60001 4.68675 4.59333 4.85342 4.65666 5.06009L4.99333 6.13676C5.07666 6.40009 5.00333 6.75676 4.82333 6.96343L4.16333 7.73009C3.95333 7.97343 3.92 8.14343 3.95667 8.21343C3.99 8.28343 4.15001 8.36009 4.46668 8.34342L5.58 8.28675C5.59333 8.29009 5.60666 8.29009 5.61666 8.29009Z"
                                     fill="white" />
@@ -161,14 +162,15 @@
                                     d="M10.3034 10.5834C10.24 10.5834 10.1767 10.5601 10.1267 10.5101L9.11669 9.50005C9.02002 9.40338 9.02002 9.24339 9.11669 9.14672C9.21336 9.05005 9.37336 9.05005 9.47002 9.14672L10.48 10.1567C10.5767 10.2534 10.5767 10.4134 10.48 10.5101C10.43 10.5601 10.3667 10.5834 10.3034 10.5834Z"
                                     fill="white" />
                                 <defs>
-                                    <linearGradient id="paint0_linear_849_1421" x1="6.71467" y1="5.52113" x2="10.476"
-                                        y2="5.60412" gradientUnits="userSpaceOnUse">
+                                    <linearGradient id="paint0_linear_849_1421" x1="6.71467" y1="5.52113"
+                                        x2="10.476" y2="5.60412" gradientUnits="userSpaceOnUse">
                                         <stop stop-color="#F7162D" />
                                         <stop offset="1" stop-color="#E4182A" />
                                     </linearGradient>
                                 </defs>
                             </svg>
-                            <h1 class="text-white text-xs" style="font-family: 'Manrope', sans-serif;">NOVICE RECIPEATER
+                            <h1 class="text-white text-xs" style="font-family: 'Manrope', sans-serif;">NOVICE
+                                RECIPEATER
                             </h1>
                         </div>
 
@@ -199,13 +201,15 @@
                     </div>
                 </div>
 
-                <div class="py-2 px-4 flex justify-between items-center" style="background-color: rgba(32, 32, 32, 1)">
+                <div class="py-2 px-4 flex justify-between items-center"
+                    style="background-color: rgba(32, 32, 32, 1)">
                     <div>
                         <h1 class=" font-semibold text-white">Improve your profile </h1>
                         <h3 class=" font-normal text-gray-500">Get more visibility</h3>
                     </div>
 
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M15 22.75H9C3.57 22.75 1.25 20.43 1.25 15V9C1.25 3.57 3.57 1.25 9 1.25H15C20.43 1.25 22.75 3.57 22.75 9V15C22.75 20.43 20.43 22.75 15 22.75ZM9 2.75C4.39 2.75 2.75 4.39 2.75 9V15C2.75 19.61 4.39 21.25 9 21.25H15C19.61 21.25 21.25 19.61 21.25 15V9C21.25 4.39 19.61 2.75 15 2.75H9Z"
                             fill="white" />
@@ -225,7 +229,8 @@
             <div class="w-full py-5 px-4 rounded-xl mb-4" style="background: rgba(20, 20, 20, 1)">
                 <div class="flex justify-between items-center">
                     <h1 class="text-white font-semibold">Interested Topics </h1>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M9.99992 15.1666H5.99992C2.37992 15.1666 0.833252 13.6199 0.833252 9.99992V5.99992C0.833252 2.37992 2.37992 0.833252 5.99992 0.833252H7.33325C7.60659 0.833252 7.83325 1.05992 7.83325 1.33325C7.83325 1.60659 7.60659 1.83325 7.33325 1.83325H5.99992C2.92659 1.83325 1.83325 2.92659 1.83325 5.99992V9.99992C1.83325 13.0733 2.92659 14.1666 5.99992 14.1666H9.99992C13.0733 14.1666 14.1666 13.0733 14.1666 9.99992V8.66659C14.1666 8.39325 14.3933 8.16659 14.6666 8.16659C14.9399 8.16659 15.1666 8.39325 15.1666 8.66659V9.99992C15.1666 13.6199 13.6199 15.1666 9.99992 15.1666Z"
                             fill="#3F4044" />
@@ -237,7 +242,8 @@
                             fill="#3F4044" />
                     </svg>
                 </div>
-                <div class="flex flex-wrap justify-start items-center mt-5" style="font-family: 'Manrope', sans-serif;">
+                <div class="flex flex-wrap justify-start items-center mt-5"
+                    style="font-family: 'Manrope', sans-serif;">
                     @foreach (explode(',', Auth::user()->cusinies) as $cusinie)
                         <button
                             class="flex items-center justify-center px-1 py-1 text-white text-xs rounded-md mb-2 mr-1"
@@ -275,7 +281,8 @@
                 <button
                     class="flex items-center justify-center px-4 py-4 w-1/2 text-white text-lg font-semibold mb-2 space-x-2"
                     style="background-color: rgba(20, 20, 20, 1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M15.6397 22.2377H2.93251C1.99413 22.2377 1.22192 21.4655 1.22192 20.5271V7.8199C1.22192 3.49945 3.49945 1.22192 7.8199 1.22192H15.6397C19.9602 1.22192 22.2377 3.49945 22.2377 7.8199V15.6397C22.2377 19.9602 19.9602 22.2377 15.6397 22.2377ZM7.8199 2.68814C4.32053 2.68814 2.68814 4.32053 2.68814 7.8199V20.5271C2.68814 20.664 2.79566 20.7715 2.93251 20.7715H15.6397C19.1391 20.7715 20.7715 19.1391 20.7715 15.6397V7.8199C20.7715 4.32053 19.1391 2.68814 15.6397 2.68814H7.8199Z"
                             fill="#FAFAFA" />
@@ -291,7 +298,8 @@
                 <a href="/recipes_create"
                     class="flex items-center justify-center px-4 py-4 w-1/2 text-white text-lg font-semibold  mb-2 space-x-2 no-underline"
                     style="background: rgba(37, 37, 37, 1);">
-                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M15.288 12.182H7.64433C7.25259 12.182 6.92773 11.8571 6.92773 11.4654C6.92773 11.0736 7.25259 10.7488 7.64433 10.7488H15.288C15.6798 10.7488 16.0046 11.0736 16.0046 11.4654C16.0046 11.8571 15.6798 12.182 15.288 12.182Z"
                             fill="#FAFAFA" />
@@ -313,8 +321,7 @@
                         <div class="flex space-x-4 items-center">
                             <div class="rounded-full h-14 w-14" alt="user">
                                 @if ($recipes->user->hasrole('Chef'))
-                                    @if (!empty(
-                                        DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                    @if (!empty(DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
                                     ))
                                         <img src="{{ asset('storage/public/' .DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
@@ -323,8 +330,7 @@
                                             class="h-12 w-12 rounded-full">
                                     @endif
                                 @else
-                                    @if (!empty(
-                                        DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
+                                    @if (!empty(DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()
                                     ))
                                         <img src="{{ asset('storage/public/' .DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipes->user_id)->pluck('image')->first()) }}"
                                             class="h-12 w-12 rounded-full">
@@ -358,15 +364,17 @@
                                 <div class="absolute w-11/12 mx-4 py-2.5 bottom-4 inset-x-2 flex justify-between px-2"
                                     style="background: rgba(255, 255, 255, 0.3)">
                                     <h1 class="text-white font-semibold">{{ $recipes->recipe_name }}</h1>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M14.43 18.8201C14.24 18.8201 14.05 18.7501 13.9 18.6001C13.61 18.3101 13.61 17.8301 13.9 17.5401L19.44 12.0001L13.9 6.46012C13.61 6.17012 13.61 5.69012 13.9 5.40012C14.19 5.11012 14.67 5.11012 14.96 5.40012L21.03 11.4701C21.32 11.7601 21.32 12.2401 21.03 12.5301L14.96 18.6001C14.81 18.7501 14.62 18.8201 14.43 18.8201Z"
-                                            fill="white" />
-                                        <path
-                                            d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
-                                            fill="white" />
-                                    </svg>
+                                    <a href="/recipeView/{{ $recipes->id }}">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M14.43 18.8201C14.24 18.8201 14.05 18.7501 13.9 18.6001C13.61 18.3101 13.61 17.8301 13.9 17.5401L19.44 12.0001L13.9 6.46012C13.61 6.17012 13.61 5.69012 13.9 5.40012C14.19 5.11012 14.67 5.11012 14.96 5.40012L21.03 11.4701C21.32 11.7601 21.32 12.2401 21.03 12.5301L14.96 18.6001C14.81 18.7501 14.62 18.8201 14.43 18.8201Z"
+                                                fill="white" />
+                                            <path
+                                                d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
+                                                fill="white" />
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
 
@@ -533,8 +541,8 @@
                     <div class="flex justify-between ">
                         <h1 class="text-white font-semibold">My Collections</h1>
                         <h1 class="text-gray-100 text-xs items-center flex">View All
-                            <svg class="ml-1 text-xl" width="14" height="14" viewBox="0 0 4 8" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="ml-1 text-xl" width="14" height="14" viewBox="0 0 4 8"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
                                     fill="#454545" />
@@ -588,8 +596,8 @@
                     <div class="flex justify-between mb-4">
                         <h1 class="text-white font-semibold">My Tastebuds</h1>
                         <h1 class="text-gray-500 text-xs items-center flex">See More
-                            <svg class="ml-1 mt-1 text-xl" width="14" height="14" viewBox="0 0 4 8" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="ml-1 mt-1 text-xl" width="14" height="14" viewBox="0 0 4 8"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M3.57143 3.57113C3.57143 3.68746 3.53214 3.80328 3.45305 3.89767L0.901848 6.95895C0.721733 7.17528 0.399771 7.20487 0.183429 7.02425C-0.0329129 6.84415 -0.0619966 6.52271 0.118118 6.30587L2.40196 3.56552L0.200267 0.829751C0.0237236 0.610359 0.05842 0.288925 0.277824 0.112391C0.497227 -0.0641427 0.818169 -0.0294485 0.995222 0.189943L3.45866 3.25123C3.53367 3.34459 3.57143 3.45786 3.57143 3.57113Z"
                                     fill="#454545" />

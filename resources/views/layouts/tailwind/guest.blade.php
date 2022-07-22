@@ -11,14 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-
     <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <!-- Styles -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap"> --}}
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('question.css') }}" rel="stylesheet" id="bootstrap">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
@@ -33,9 +30,93 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 </head>
 
-<body class="bg-black">
+<style>
+    [x-cloak] {
+        display: none !important;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+
+    /* .title {
+        color: white;
+    }
+
+    .title::after{
+        content: "";
+    }
+    .title::before {
+        content: "\22C1";
+        position: absolute;
+        right: 1.25em;
+        top: 1.25em;
+        width: 2px;
+        height: 0.75em;
+        background-color: #7a7572;
+        transition: all 0.2s;
+    }
+
+    .title::after {
+        transform: rotate(180deg);
+    }
+
+    .content {
+        max-height: 0;
+        transition: max-height 0.2s;
+    }
+
+    .toggle:checked+.title,
+    .toggle:checked+.title+.content {
+        /* box-shadow: 3px 3px 6px #ddd, -3px 3px 6px #ddd; */
+    /* }
+
+    .toggle:checked+.title+.content {
+        max-height: 500px;
+    }
+
+    .toggle:checked+.title::before {
+        transform: rotate(180deg) !important;
+    } */
+</style>
+
+<style>
+    label:after {
+        content: '˅';
+        position: absolute;
+        right: 1em;
+        color: #fff;
+    }
+
+    input:checked+label:after {
+        content: '˄';
+        line-height: 1.2em;
+    }
+
+    .accordion__content {
+        max-height: 0em;
+        transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+    }
+
+    input[name='panel']:checked~.accordion__content {
+        max-height: 50em;
+    }
+</style>
+
+<body class="bg-black ">
     {{-- <header class="flex justify-evenly py-7 items-center" style="background-color: rgba(20, 20, 20, 1)">
 
         <div class="flex space-x-4">

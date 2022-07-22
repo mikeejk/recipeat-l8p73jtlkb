@@ -128,6 +128,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/homepage', function () {
 })->name('homepage');
 
 // Recipe Search - Result Display Tab
+
+/*New Recipe View*/
+Route::middleware(['auth:sanctum', 'verified'])->get('/recipeView/{recipe}', [RecipeController::class, 'viewRecipe']);
+/*End New Recipe View*/
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipe_view/{recipe}', [RecipeController::class, 'view_recipe']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/recipeview/{recipe}', [RecipeController::class, 'recipeview']);
 Route::get('/view_recipe/{recipe}', [RecipeController::class, 'nonLoginUser_view_recipe']);

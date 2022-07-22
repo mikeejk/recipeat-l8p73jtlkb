@@ -41,10 +41,10 @@ use App\Notifications\NewRecipePost;
     public function create_recipe1(Request $request)
     {
         $recipe = $request->session()->get('recipe');
-        return view('screens.user.recipe.create_recipe1',compact('recipe')); 
+        return view('screens.user.recipe.create_recipe1',compact('recipe'));
     }
     public function post_recipe1(Request $request)
-    { 
+    {
         $validatedData = $request->validate([
         'recipe_name' => 'required',
         'preparing_time' => 'required',
@@ -550,7 +550,7 @@ use App\Notifications\NewRecipePost;
     //      }
     //     return view('welcome_withoutLogin');
     // }
-    
+
     // Recipe result view
     public function view_recipe(Recipe $recipe)
     {
@@ -560,6 +560,23 @@ use App\Notifications\NewRecipePost;
         $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
         return view('recipe_view', compact('recipe', 'pinboards', 'recipe_ingredients', 'recipe_steps', 'pinrecipes'));
     }
+
+
+    //New Recipe View
+    public function viewRecipe($recipe)
+    {
+        $pinboards = Pinboard::all('id', 'pin_name');
+        $pinrecipes = Pin_recipe::all('pinboard_id');
+        $recipe= Recipe::find($recipe);       
+        $recipe_steps = Recipe_Step::where('recipe_id', '=', $recipe->id)->pluck('steps');
+        $recipe_ingredients = Recipe_Ingredient::where('recipe_id', '=', $recipe->id)->get();
+        $chefProfileImage=DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $recipe->user_id)->first();
+        $user=User::where('id',$chefProfileImage->user_id)->first();
+        $userFollow = DB::table('chef_questions')->join('recipes', 'recipes.user_id', '=', 'chef_questions.user_id')->where('recipes.user_id', $chefProfileImage->user_id)->latest();
+        $homeChefProfileImage =DB::table('questions')->join('recipes', 'recipes.user_id', '=', 'questions.user_id')->where('recipes.user_id', $recipe->user_id)->first();
+        return view('screens.user.recipe.recipeView', compact('recipe','userFollow','pinboards', 'recipe_ingredients', 'recipe_steps', 'pinrecipes','chefProfileImage','user','homeChefProfileImage'));
+    }
+
     public function  nonLoginUser_view_recipe(Recipe $recipe)
     {
         $pinboards = Pinboard::all('id', 'pin_name');
